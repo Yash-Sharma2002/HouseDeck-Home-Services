@@ -1,5 +1,7 @@
 import React from 'react'
 import Header from '../HousDeckWebsiteComponents/Header';
+import HouseDeckServicesBottomList from '../HousDeckWebsiteComponents/MainPageBottomComponents/HouseDeckServicesBottomList'
+import PropertyBoxMainPageHouseDeckServicesGlobal from '../HousDeckWebsiteComponents/MainPageBottomComponents/PropertyBoxMainPageHouseDeckServicesGlobal';
 import MainPageTopQuestions from '../HousDeckWebsiteComponents/MainPageTopQuestions';
 
 
@@ -15,6 +17,9 @@ export default function HouseDeckHomeServicesMainPage() {
     <>
       <Header commonProps={commonProps} />
       <MainPageTopQuestions />
+
+      <HouseDeckServicesBottomList />
+      <PropertyBoxMainPageHouseDeckServicesGlobal />
     </>
   )
 }

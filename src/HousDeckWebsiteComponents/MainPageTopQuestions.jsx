@@ -12,42 +12,68 @@ const TopHeadQuestions = {
     fontSize: '22px',
     paddingBottom: '50px',
     borderBottom: '1px solid #e0e0e0',
-
 }
 
 
 export default function MainPageTopQuestions() {
 
     const [expanded, setExpanded] = React.useState(false);
-    const [state, setState] = React.useState(false)
+    // const [colorTypeA, setColorTypeA] = React.useState(false)
+    // const [colorTypeB, setColorTypeB] = React.useState(false)
+    // const [colorTypeC, setColorTypeC] = React.useState(false)
+    // const [colorTypeD, setColorTypeD] = React.useState(false)
 
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
-        setState(isExpanded? {color: ' #0072E5'}: { color: ' '})
-
+        // console.log(panel)
+        // if (panel === 'panel1') return setColorTypeA(!colorTypeA)
+        // else if (panel === 'panel2') return setColorTypeB(!colorTypeB)
+        // else if (panel === 'panel3') return setColorTypeC(!colorTypeC)
+        // else if (panel === 'panel4') return setColorTypeD(!colorTypeD)
     };
 
-  const AccordianStyle = {
+
+
+    const AccordianStyle = {
         boxShadow: 0,
         borderBottom: '1px solid #e0e0e0',
         textAlign: 'left',
         padding: '20px 15px!important',
-        // '& .colorChange': state
+        // '& .colorChange1': {
+        //     color: colorTypeA ? ' #0072E5' : "black",
+        //     // color: " "
+        // },
+        // '& .colorChange2': {
+        //     color: colorTypeB ? ' #0072E5' : "black",
+        //     // color: " "
+        // },
+        // '& .colorChange3': {
+        //     color: colorTypeC ? ' #0072E5' : "black",
+        //     // color: " "
+        // },
+        // '& .colorChange4': {
+        //     color: colorTypeD ? ' #0072E5' : "black",
+        //     // color: " "
+        // }
 
     }
 
     return (
-        <div style={mainPageMiddleWidth}>
+        <div style={mainPageMiddleWidth} >
             <Typography variant='h4' style={TopHeadQuestions}>Top questions</Typography>
 
 
-            <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} disableGutters sx={AccordianStyle}>
+            <Accordion expanded={expanded === 'panel1'}
+                // onClick={}
+                onChange={handleChange('panel1')}
+                disableGutters
+                sx={AccordianStyle}>
                 <AccordionSummary
-                    expandIcon={<ExpandMoreIcon className='colorChange' />}
+                    expandIcon={<ExpandMoreIcon className='colorChange1' />}
                     aria-controls="panel1bh-content"
                     id="panel1bh-header"
                 >
-                    <Typography className='colorChange'>
+                    <Typography className='colorChange1'>
                         How to book a service on NoBroker?
                     </Typography>
                 </AccordionSummary>
@@ -60,13 +86,14 @@ export default function MainPageTopQuestions() {
             </Accordion>
 
 
-            <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')} disableGutters sx={AccordianStyle}>
+            <Accordion
+                expanded={expanded === 'panel2'} onChange={handleChange('panel2')} disableGutters sx={AccordianStyle}>
                 <AccordionSummary
-                    expandIcon={<ExpandMoreIcon  className='colorChange'/>}
+                    expandIcon={<ExpandMoreIcon className='colorChange2' />}
                     aria-controls="panel2bh-content"
                     id="panel2bh-header"
                 >
-                    <Typography  className='colorChange'>
+                    <Typography className='colorChange2'>
                         Who is going to fulfill the service?
                     </Typography>
                 </AccordionSummary>
@@ -80,11 +107,11 @@ export default function MainPageTopQuestions() {
 
             <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')} disableGutters sx={AccordianStyle}>
                 <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
+                    expandIcon={<ExpandMoreIcon className='colorChange3' />}
                     aria-controls="panel3bh-content"
                     id="panel3bh-header"
                 >
-                    <Typography >
+                    <Typography className='colorChange3' >
                         What all services are available on NoBroker?
                     </Typography>
                 </AccordionSummary>
@@ -96,11 +123,11 @@ export default function MainPageTopQuestions() {
             </Accordion>
             <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')} disableGutters sx={AccordianStyle}>
                 <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
+                    expandIcon={<ExpandMoreIcon className='colorChange4' />}
                     aria-controls="panel4bh-content"
                     id="panel4bh-header"
                 >
-                    <Typography >How are NoBroker services different
+                    <Typography className='colorChange4' >How are NoBroker services different
                         from other online portals?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>

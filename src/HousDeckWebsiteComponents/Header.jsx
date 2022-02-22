@@ -2,16 +2,14 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
 import AddIcCallIcon from '@mui/icons-material/AddIcCall';
 import CallToActionIcon from '@mui/icons-material/CallToAction';
 import Divider from '@mui/material/Divider';
+import HeaderRightMenuMainPage from './HeaderRightMenuMainPage';
+import ResponsiveLeftMenuHeaderMainPage from './ResponsiveLeftMenuHeaderMainPage';
 
 const ImageTheme = {
     width: '10rem'
@@ -30,17 +28,10 @@ export default function Header({ commonProps }) {
 
     // const classes = useStyles();
 
+
+
+
     const PostLogo = <img src={window.location.origin + '/logos/houseDeckLogo.png'} style={ImageTheme} alt="HouseDeck Logo" />
-
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
-    };
-
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-    };
 
     return (
         <AppBar position="static" sx={{ backgroundColor: 'white', color: '#000000' }}>
@@ -57,45 +48,14 @@ export default function Header({ commonProps }) {
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                        <IconButton
-                            size="large"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleOpenNavMenu}
-                            color="inherit"
-                        >
-                            <MenuIcon sx={{ ml: -3 }} />
-                        </IconButton>
-                        <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorElNav}
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'left',
-                            }}
-                            open={Boolean(anchorElNav)}
-                            onClose={handleCloseNavMenu}
-                            sx={{
-                                display: { xs: 'block', md: 'none' },
-                            }} >
-                            {commonProps.map((element) => (
-                                <MenuItem key={element.name} onClick={handleCloseNavMenu} >
-                                    <Typography sx={{ color: 'black' }} textAlign="center">{element.name}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
+                        <ResponsiveLeftMenuHeaderMainPage commonProps={commonProps} />
                     </Box>
 
                     <Typography
                         variant="h6"
                         noWrap
                         component="div"
-                        sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }} >
+                        sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' },ml:{xs:-4} }} >
                         {PostLogo}
                     </Typography>
 
@@ -105,7 +65,6 @@ export default function Header({ commonProps }) {
                         {commonProps.map((element) => (
                             <Button
                                 key={element.name}
-                                onClick={handleCloseNavMenu}
                                 sx={{
                                     my: 2,
                                     color: 'black',
@@ -122,7 +81,7 @@ export default function Header({ commonProps }) {
 
                     {/* -------------------------------------- Right side ---------------------------------- */}
 
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' },justifyContent:'end',marginRight:'-20px' }}>
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'end', marginRight: '-20px' }}>
                         <Button variant='outlined' sx={{
                             color: '#555',
                             border: '0.4px solid #c5c5c5',
@@ -159,7 +118,7 @@ export default function Header({ commonProps }) {
                             border: 'none',
                             textTransform: 'none',
                             color: '#c5c5c5',
-                            padding:'0px 15px',
+                            padding: '0px 15px',
                             '&:hover': {
                                 border: 'none',
                                 backgroundColor: 'white'
@@ -178,7 +137,7 @@ export default function Header({ commonProps }) {
                             border: 'none',
                             textTransform: 'none',
                             color: '#c5c5c5',
-                            padding:'0px 15px',
+                            padding: '0px 15px',
                             '&:hover': {
                                 border: 'none',
                                 backgroundColor: 'white'
@@ -189,24 +148,7 @@ export default function Header({ commonProps }) {
 
                         <Divider orientation='vertical' sx={{ color: '#c5c5c5' }} flexItem />
 
-
-
-                        <Button variant='outlined' sx={{
-                            fontSize: '13px',
-                            height: '30px',
-                            padding:'0px 15px',
-                            userSelect: 'none',
-                            border: 'none',
-                            textTransform: 'none',
-                            color: '#c5c5c5',
-                            '&:hover': {
-                                border: 'none',
-                                backgroundColor: 'white'
-                            }
-                        }} disableRipple>
-                             <MenuIcon sx={{mr:1}} />
-                            Menu
-                        </Button>
+                        <HeaderRightMenuMainPage />
 
 
                     </Box>
