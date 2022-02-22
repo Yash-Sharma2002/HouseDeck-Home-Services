@@ -2,7 +2,6 @@ import React from 'react'
 import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 
 
 export default function PropertyBoxMainPageHouseDeckServicesGlobal() {
@@ -19,7 +18,7 @@ export default function PropertyBoxMainPageHouseDeckServicesGlobal() {
             <Box sx={{ width: '50%', textAlign: 'center' }}>
                 <Typography sx={{ fontSize: '18px', fontWeight: '600' }}>Find Property</Typography>
                 <Typography  sx={{fontSize:'14px'}}>Select from thousands of options, without brokerage.</Typography>
-                <a
+                <a href='#'
                  style={{
                      padding:'3px 20px',
                      backgroundColor:'#464646',
@@ -35,7 +34,7 @@ export default function PropertyBoxMainPageHouseDeckServicesGlobal() {
             <Box sx={{ width: '50%', textAlign: 'center' }}>
                 <Typography sx={{ fontSize: '18px', fontWeight: '600' }}>List your Property</Typography>
                 <Typography sx={{fontSize:'14px'}}>  For Free. Without any brokerage.</Typography>
-                <a
+                <a href='#'
                  style={{
                      padding:'3px 20px',
                      backgroundColor:'#464646',

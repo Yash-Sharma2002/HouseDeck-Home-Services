@@ -25,7 +25,7 @@ const useStyle = makeStyles({
 export default function HouseDeckServicesBottomList() {
   const classes = useStyle();
   return (
-    <div style={mainPageBottomWidth}>
+    <div id='houseDeck-Services' style={mainPageBottomWidth}>
       <Typography sx={TopHeadStyle}>HouseDeck Services</Typography>
       <Box className={classes.ServicesBottomBox}>
         <Box sx={{ width: '46%'}}>
