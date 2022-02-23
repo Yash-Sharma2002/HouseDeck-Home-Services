@@ -6,7 +6,7 @@ import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import Box from '@mui/material/Box';
-import { CustomerRatings, mainPageBottomWidth } from '../../constants/data';
+import { CustomerRatings } from '../../constants/data';
 import Rating from '@mui/material/Rating';
 
 

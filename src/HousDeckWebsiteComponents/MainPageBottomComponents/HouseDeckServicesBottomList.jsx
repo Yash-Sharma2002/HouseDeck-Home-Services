@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { GlobalServicesBottomBuy, GlobalServicesBottomRent, mainPageBottomWidth } from '../../constants/data';
-import { makeStyles } from '@mui/styles';
+// import { makeStyles } from '@mui/styles';
 import Chip from '@mui/material/Chip';
 
 const TopHeadStyle = {
