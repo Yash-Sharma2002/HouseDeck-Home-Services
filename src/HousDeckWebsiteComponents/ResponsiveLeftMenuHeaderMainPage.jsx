@@ -1,5 +1,5 @@
 import React from 'react';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import Drawer from '@mui/material/Drawer';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
@@ -9,6 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
+import CloseIcon from '@mui/icons-material/Close';
 import MailIcon from '@mui/icons-material/Mail';
 
 export default function ResponsiveLeftMenuHeaderMainPage({ commonProps }) {
@@ -37,7 +38,7 @@ export default function ResponsiveLeftMenuHeaderMainPage({ commonProps }) {
                     disableRipple>
                     <MenuIcon />
                 </IconButton>
-                <SwipeableDrawer
+                <Drawer
                     anchor={'left'}
                     open={state['left']}
                     onClose={toggleDrawer('left', false)}
@@ -50,11 +51,11 @@ export default function ResponsiveLeftMenuHeaderMainPage({ commonProps }) {
                         onKeyDown={toggleDrawer('left', false)}
                     >
                         <List>
+                        <ListItem sx={{justifyContent:'right',marginLeft:2}}  onClick={toggleDrawer('left', false)}>
+                                <CloseIcon />
+                                </ListItem>
                             {commonProps.map((element) => (
                                 <ListItem button key={element.name}>
-                                    {/* <ListItemIcon>
-                                        {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                    </ListItemIcon> */}
                                     <ListItemText primary={element.name} />
                                 </ListItem>
                             ))}
@@ -71,7 +72,7 @@ export default function ResponsiveLeftMenuHeaderMainPage({ commonProps }) {
                             ))}
                         </List>
                     </Box>
-                </SwipeableDrawer>
+                </Drawer>
             </React.Fragment>
         </div>
     )

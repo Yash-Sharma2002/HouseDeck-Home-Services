@@ -4,7 +4,6 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { mainPageMiddleWidth } from '../constants/data';
 
 const TopHeadQuestions = {
     fontWeight: '600',
@@ -15,21 +14,12 @@ const TopHeadQuestions = {
 }
 
 
-export default function MainPageTopQuestions() {
 
+const TopQuestions = () => {
     const [expanded, setExpanded] = React.useState(false);
-    // const [colorTypeA, setColorTypeA] = React.useState(false)
-    // const [colorTypeB, setColorTypeB] = React.useState(false)
-    // const [colorTypeC, setColorTypeC] = React.useState(false)
-    // const [colorTypeD, setColorTypeD] = React.useState(false)
 
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
-        // console.log(panel)
-        // if (panel === 'panel1') return setColorTypeA(!colorTypeA)
-        // else if (panel === 'panel2') return setColorTypeB(!colorTypeB)
-        // else if (panel === 'panel3') return setColorTypeC(!colorTypeC)
-        // else if (panel === 'panel4') return setColorTypeD(!colorTypeD)
     };
 
 
@@ -39,32 +29,14 @@ export default function MainPageTopQuestions() {
         borderBottom: '1px solid #e0e0e0',
         textAlign: 'left',
         padding: '20px 15px!important',
-        // '& .colorChange1': {
-        //     color: colorTypeA ? ' #0072E5' : "black",
-        //     // color: " "
-        // },
-        // '& .colorChange2': {
-        //     color: colorTypeB ? ' #0072E5' : "black",
-        //     // color: " "
-        // },
-        // '& .colorChange3': {
-        //     color: colorTypeC ? ' #0072E5' : "black",
-        //     // color: " "
-        // },
-        // '& .colorChange4': {
-        //     color: colorTypeD ? ' #0072E5' : "black",
-        //     // color: " "
-        // }
 
     }
-
     return (
-        <div style={mainPageMiddleWidth} >
+        <>
             <Typography variant='h4' style={TopHeadQuestions}>Top questions</Typography>
 
 
             <Accordion expanded={expanded === 'panel1'}
-                // onClick={}
                 onChange={handleChange('panel1')}
                 disableGutters
                 sx={AccordianStyle}>
@@ -138,7 +110,40 @@ export default function MainPageTopQuestions() {
                     </Typography>
                 </AccordionDetails>
             </Accordion>
+        </>
+    )
+}
 
+
+
+export function XLMainPageTopQuestions() {
+    return (
+        <div style={{
+            padding: '60px 100px'
+        }} >
+            <TopQuestions />
+        </div>
+    )
+}
+
+
+export function SMMainPageTopQuestions() {
+    return (
+        <div style={{
+            padding: '30px 20px'
+        }} >
+            <TopQuestions />
+        </div>
+    )
+}
+
+
+export function MDMainPageTopQuestions() {
+    return (
+        <div style={{
+            padding: '20px'
+        }} >
+            <TopQuestions />
         </div>
     )
 }

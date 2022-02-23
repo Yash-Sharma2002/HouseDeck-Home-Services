@@ -1,5 +1,5 @@
 import React from 'react';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
@@ -8,6 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import CloseIcon from '@mui/icons-material/Close';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 
@@ -45,7 +46,7 @@ export default function HeaderRightMenuMainPage() {
                     <MenuIcon sx={{ mr: 1 }} />
                     Menu
                 </Button>
-                <SwipeableDrawer
+                <Drawer
                     anchor={'right'}
                     open={state['right']}
                     onClose={toggleDrawer('right', false)}
@@ -58,6 +59,9 @@ export default function HeaderRightMenuMainPage() {
                         onKeyDown={toggleDrawer('right', false)}
                     >
                         <List>
+                            <ListItem  onClick={toggleDrawer('right', false)}>
+                                <CloseIcon />
+                                </ListItem>
                             {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
                                 <ListItem button key={text}>
                                     <ListItemIcon>
@@ -79,7 +83,7 @@ export default function HeaderRightMenuMainPage() {
                             ))}
                         </List>
                     </Box>
-                </SwipeableDrawer>
+                </Drawer>
             </React.Fragment>
         </div>
     )
