@@ -25,32 +25,18 @@ export const mainPageBottomWidth = {
 }
 
 
-export const GlobalServicesBottomBuy = [
-  { name: 'Home Loan' },
-  { name: 'Property Legal Services' },
+export const GlobalServicesBottomList = [
   { name: 'Interiors' },
-  { name: 'Sale Agreement' },
-  { name: "HouseDeck for NRI's" },
-  { name: 'New Builder Project' },
-  { name: 'EMI Calulator' },
-  { name: 'Home Loan Balane Transfer' },
+  { name: 'Home Inspection' },
+  { name: 'Housedeck for NRIs' },
+  { name: 'Buy / Sell' },
+  { name: "Home services" },
+  { name: 'Packers and movers' },
+  { name: 'Home services questions' },
+  { name: 'Rent services questions' },
   { name: 'Home Loan ELigiblity Check' },
-  { name: 'Apply Home Loan' },
-  { name: 'Pre Approved Home Loan' },
-  { name: 'Buy / Sell Property Questions' },
 ]
 
-
-export const GlobalServicesBottomRent = [
-  { name: 'Rental Agreement' },
-  { name: 'Pay Rent' },
-  { name: 'Refer and Earn' },
-  { name: 'Home Services' },
-  { name: "Packers and Movers" },
-  { name: 'Property Management in India' },
-  { name: 'Home Services Questions' },
-  { name: 'Rent Services Questions' },
-]
 
 export const IconHeaderImage = {
   width: '15px',

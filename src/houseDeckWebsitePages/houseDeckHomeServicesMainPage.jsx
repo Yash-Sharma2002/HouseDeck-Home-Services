@@ -6,6 +6,7 @@ import CustomerRatingsMainPage from '../HousDeckWebsiteComponents/MainPageMiddle
 import MainPageTopQuestions from '../HousDeckWebsiteComponents/MainPageTopQuestions';
 import RecommendedServices from '../HousDeckWebsiteComponents/MainPageMiddleComponents/RecommendedServices';
 import Footer from '../HousDeckWebsiteComponents/Footer';
+import SearchNSelect from '../HousDeckWebsiteComponents/mainPageTopComponents/SearchNSelect';
 
 
 
@@ -26,6 +27,7 @@ export default function HouseDeckHomeServicesMainPage() {
   return (
     <>
       <Header commonProps={commonProps} />
+      <SearchNSelect />
       <RecommendedServices />
       <CustomerRatingsMainPage />
       <MainPageTopQuestions />

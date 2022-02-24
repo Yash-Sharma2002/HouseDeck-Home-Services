@@ -18,7 +18,7 @@ const ImageTheme = {
     width: '10rem'
 }
 
-const PostLogo = <img src={window.location.origin + '/logos/houseDeckLogo.png'} style={ImageTheme} alt="HouseDeck Logo" />
+const PostLogo = <img src='../logos/houseDeck_copy1.png' style={ImageTheme} alt="HouseDeck" />
 
 
 
@@ -41,7 +41,7 @@ function XLHeader({ commonProps }) {
                         variant="h6"
                         noWrap
                         component="div"
-                        sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+                        sx={{ mr: 2, display: { xs: 'none', md: 'flex' },alignItems:'center' }}
                     >
                         {PostLogo}
 
