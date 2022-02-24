@@ -2,6 +2,7 @@ import React from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
+import { useMediaQuery } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
@@ -21,8 +22,6 @@ const TopQuestions = () => {
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
-
-
 
     const AccordianStyle = {
         boxShadow: 0,
@@ -116,7 +115,7 @@ const TopQuestions = () => {
 
 
 
-export function XLMainPageTopQuestions() {
+function XLMainPageTopQuestions() {
     return (
         <div style={{
             padding: '60px 100px'
@@ -127,7 +126,7 @@ export function XLMainPageTopQuestions() {
 }
 
 
-export function SMMainPageTopQuestions() {
+function SMMainPageTopQuestions() {
     return (
         <div style={{
             padding: '30px 20px'
@@ -138,12 +137,34 @@ export function SMMainPageTopQuestions() {
 }
 
 
-export function MDMainPageTopQuestions() {
+function MDMainPageTopQuestions() {
     return (
         <div style={{
             padding: '20px'
         }} >
             <TopQuestions />
         </div>
+    )
+}
+
+
+export default function MainPageTopQuestions() {
+
+    const xlMax = useMediaQuery('(max-width:2000px)');
+    const xlMin = useMediaQuery('(min-width:1160px)');
+    const mdMax = useMediaQuery('(max-width:1160px)');
+    const mdMin = useMediaQuery('(min-width:600px)');
+    const sm = useMediaQuery('(max-width:600px)');
+    return (
+
+        <>
+            {xlMax && xlMin && (
+                <XLMainPageTopQuestions />
+            )}
+            {!(xlMax && xlMin) && mdMax && mdMin && (
+                <MDMainPageTopQuestions />
+            )}
+            {sm && (<SMMainPageTopQuestions />)}
+        </>
     )
 }

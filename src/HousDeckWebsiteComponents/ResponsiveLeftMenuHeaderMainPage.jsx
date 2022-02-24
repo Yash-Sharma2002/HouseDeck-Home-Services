@@ -51,7 +51,7 @@ export default function ResponsiveLeftMenuHeaderMainPage({ commonProps }) {
                         onKeyDown={toggleDrawer('left', false)}
                     >
                         <List>
-                        <ListItem sx={{justifyContent:'right',marginLeft:2}}  onClick={toggleDrawer('left', false)}>
+                        <ListItem sx={{justifyContent:'right',marginLeft:1}}  onClick={toggleDrawer('left', false)}>
                                 <CloseIcon />
                                 </ListItem>
                             {commonProps.map((element) => (

@@ -2,6 +2,7 @@ import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { RecommendedServicesData } from '../../constants/data';
+import { useMediaQuery } from '@mui/material';
 
 
 const TopHeadQuestions = {
@@ -31,13 +32,13 @@ const Content = () => {
                                 borderRadius: '4px'
                             }}>
                         </Box>
-                        <Box sx={{marginTop:'15px'}}>
+                        <Box sx={{ marginTop: '15px' }}>
                             <Typography sx={{
                                 fontSize: '16px',
                                 fontWeight: '600',
                                 color: '#464646'
                             }}>{data.title}</Typography>
-                            <Typography variant="body2" sx={{margin:'0px 0px 10px',fontSize:'14px'}} color="#787676">
+                            <Typography variant="body2" sx={{ margin: '0px 0px 10px', fontSize: '14px' }} color="#787676">
                                 {data.subText}
                             </Typography>
                             <Typography variant="body2" sx={{
@@ -53,7 +54,7 @@ const Content = () => {
         </Box>
     )
 }
-export default function XLRecommendedServices() {
+function XLRecommendedServices() {
     return (
         <div style={{
             padding: '60px 100px',
@@ -61,4 +62,69 @@ export default function XLRecommendedServices() {
             <Content />
         </div>
     )
+}
+function MDRecommendedServices() {
+    return (
+        <div style={{
+            padding: '20px',
+        }}>
+            <Content />
+        </div>
+    )
+}
+
+
+function SMRecommendedServices() {
+    return (
+        <div style={{
+            padding: '20px',
+        }}>
+            {RecommendedServicesData.map(data =>
+                <Box sx={{ display: 'flex',justifyContent:'space-between',marginTop:'20px',borderBottom: '1px solid #e0e0e0', }}>
+                    <Box>
+                        <Typography sx={{
+                            fontSize: '16px',
+                            fontWeight: '600',
+                            color: '#464646'
+                        }}>{data.title}</Typography>
+                        <Typography variant="body2" sx={{ margin: '0px 0px 10px', fontSize: '14px' }} color="#787676">{data.subText}</Typography>
+                        <Typography variant="body2" sx={{
+                                fontWeight: '600'
+                            }} color="#fd3752">
+                                {data.colorText}</Typography>
+                    </Box>
+                    <Box sx={{
+                        backgroundImage: `url(${data.url})`,
+                        minWidth: '80px',
+                        height: '80px', backgroundPosition: '45%',
+                        backgroundSize: 'cover',
+                    }}>
+                    </Box>
+                </Box>
+
+            )}
+        </div>
+    )
+}
+
+
+export default function RecommendedServices(){
+    
+  const xlMax = useMediaQuery('(max-width:2000px)');
+  const xlMin = useMediaQuery('(min-width:1160px)');
+  const mdMax = useMediaQuery('(max-width:1160px)');
+  const mdMin = useMediaQuery('(min-width:800px)');
+  const sm = useMediaQuery('(max-width:800px)');
+  return (
+      
+    <>
+    {xlMax && xlMin && (
+        <XLRecommendedServices />
+    )}
+    {!(xlMax && xlMin) && mdMax && mdMin && (
+        <MDRecommendedServices />
+    )}
+    {sm && (<SMRecommendedServices />)}
+</>
+  )
 }

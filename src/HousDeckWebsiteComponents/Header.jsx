@@ -11,20 +11,20 @@ import Divider from '@mui/material/Divider';
 import DialogWithoutLoginDisplay from './DialogsComponents/DialogWithoutLoginDisplay';
 import HeaderRightMenuMainPage from './HeaderRightMenuMainPage';
 import ResponsiveLeftMenuHeaderMainPage from './ResponsiveLeftMenuHeaderMainPage';
+import { useMediaQuery } from '@mui/material';
 import { IconHeaderImage, isLogin } from '../constants/data';
 
 const ImageTheme = {
     width: '10rem'
 }
 
+const PostLogo = <img src={window.location.origin + '/logos/houseDeckLogo.png'} style={ImageTheme} alt="HouseDeck Logo" />
 
 
 
-export default function Header({ commonProps }) {
+function XLHeader({ commonProps }) {
     // commonProps where sent from the page so they can be changed anytime in the header 
     // we also have to include Header component in everypage so commonProp can be altered
-
-    // const classes = useStyles();
 
     const [open, setOpen] = React.useState(false);
 
@@ -32,7 +32,6 @@ export default function Header({ commonProps }) {
         setOpen(true);
     };
 
-    const PostLogo = <img src={window.location.origin + '/logos/houseDeckLogo.png'} style={ImageTheme} alt="HouseDeck Logo" />
 
     return (
         <AppBar position="static" sx={{ backgroundColor: 'white', color: '#000000' }}>
@@ -47,19 +46,6 @@ export default function Header({ commonProps }) {
                         {PostLogo}
 
                     </Typography>
-
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                        <ResponsiveLeftMenuHeaderMainPage commonProps={commonProps} />
-                    </Box>
-
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="div"
-                        sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, ml: { xs: -4 } }} >
-                        {PostLogo}
-                    </Typography>
-
 
                     {/* ----------------------------------------------------- Left side------------------------------- */}
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
@@ -90,7 +76,7 @@ export default function Header({ commonProps }) {
                             //     }} >
                             //     {element.name}
                             // </Link>
-                            
+
                         ))}
                     </Box>
 
@@ -98,22 +84,22 @@ export default function Header({ commonProps }) {
                     {/* -------------------------------------- Right side ---------------------------------- */}
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'end', marginRight: '-20px' }}>
-                            <Button  sx={{
-                                color: '#555',
-                                border: '0.4px solid #c5c5c5',
-                                fontSize: '13px',
-                                height: '30px',
-                                userSelect: 'none',
-                                textTransform: 'none',
-                                paddingLeft:'16px',
-                                '&:hover': {
-                                    backgroundColor: 'white',
-                                    borderColor: '#c5c5c5'
-                                }
-                            }} disableRipple onClick={handleClickOpen}>
-                                <CallToActionIcon style={IconHeaderImage} />
-                                MyBookings
-                            </Button>
+                        <Button sx={{
+                            color: '#555',
+                            border: '0.4px solid #c5c5c5',
+                            fontSize: '13px',
+                            height: '30px',
+                            userSelect: 'none',
+                            textTransform: 'none',
+                            paddingLeft: '16px',
+                            '&:hover': {
+                                backgroundColor: 'white',
+                                borderColor: '#c5c5c5'
+                            }
+                        }} disableRipple onClick={handleClickOpen}>
+                            <CallToActionIcon style={IconHeaderImage} />
+                            MyBookings
+                        </Button>
 
                         <Button variant='outlined' sx={{
                             marginLeft: 1,
@@ -123,7 +109,7 @@ export default function Header({ commonProps }) {
                             userSelect: 'none',
                         }} disableRipple>
                             <AddIcCallIcon style={IconHeaderImage} />
-                           18003096606
+                            18003096606
                         </Button>
 
                         <Button variant='outlined' sx={{
@@ -161,7 +147,7 @@ export default function Header({ commonProps }) {
                         }} disableRipple onClick={handleClickOpen}>
                             Login
                         </Button>
-                      
+
                         <Divider orientation='vertical' sx={{ color: '#c5c5c5' }} flexItem />
 
                         <HeaderRightMenuMainPage />
@@ -171,5 +157,48 @@ export default function Header({ commonProps }) {
             </Container>
         </AppBar >
 
+    )
+}
+
+
+function MDHeader({ commonProps }) {
+    return (<>
+    <AppBar position="static" sx={{ backgroundColor: 'white', color: '#000000' }}>
+            <Container maxWidth="xl" sx={{display:'flex'}}>
+        <Box sx={{ flexGrow: 1, display:'flex'}}>
+            <ResponsiveLeftMenuHeaderMainPage commonProps={commonProps} />
+        </Box>
+
+        <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ flexGrow: 1, display: 'flex', ml: { xs: -4 } }} >
+            {PostLogo}
+        </Typography>
+        </Container>
+        </AppBar></>
+    )
+}
+
+// This is the main function which divides every category in responsive 
+
+export default function Header({commonProps}){
+    const xlMax = useMediaQuery('(max-width:2000px)');
+    const xlMin = useMediaQuery('(min-width:1160px)');
+    const mdMax = useMediaQuery('(max-width:1160px)');
+    const mdMin = useMediaQuery('(min-width:1000px)');
+    const sm = useMediaQuery('(max-width:1000px)');
+
+    return (
+        <>
+        {xlMax && xlMin && (
+            <XLHeader commonProps={commonProps} />
+          )}
+          {!(xlMax && xlMin) && mdMax && mdMin && (
+            <MDHeader commonProps={commonProps} />
+          )}
+          {sm && (<MDHeader commonProps={commonProps} />)}
+          </>
     )
 }
