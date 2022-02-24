@@ -79,3 +79,17 @@ export const SocialMediadata=[
   {url:"../socialmedia/linkedin.svg"},
   {url:"../socialmedia/youtube.svg"},
 ]
+
+
+export const ServiceWithImage =[
+  // fixed data 
+  {id:'Painting',src:'../imageService/painting.png',offer:'Flat 25% off'},
+  {id:'Cleaning',src:'../imageService/cleaning.png',offer:'Upto 50% off'},
+  {id:'Home Sanitization',src:'../imageService/home-sanitization.png',offer:'Upto 25% off'},
+  {id:'AC Repair',src:'../imageService/ac_repair.png',offer:'Upto 30% off'},
+  // variable data 
+  {id:'Electricity',src:'../imageService/electricity.png',offer:'Upto 30% off'},
+  {id:'Carpentary',src:'../imageService/carpentary.png',offer:'Upto 30% off'},
+  {id:'Pest Control',src:'../imageService/pest_control.png',offer:'Upto 30% off'},
+  {id:'Plumbing',src:'../imageService/plumbing.png',offer:'Upto 30% off'},
+]
