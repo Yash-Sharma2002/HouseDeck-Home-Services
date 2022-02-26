@@ -17,6 +17,7 @@ const TopHeadQuestions = {
     color: '#464646',
     fontSize: '22px',
     paddingBottom: '50px',
+    marginTop:'40px'
 }
 
 const RatingFunction = ({ width, height }) => {
@@ -62,7 +63,7 @@ const RatingFunction = ({ width, height }) => {
 function XLCustomerRatingsMainPage() {
 
     return (
-        <div style={{
+        <div id="customer-stories" style={{
             padding: '60px 100px'
         }}>
             <Typography variant='h4' style={TopHeadQuestions}>Customer Stories</Typography>
@@ -79,7 +80,7 @@ function XLCustomerRatingsMainPage() {
 const MDCustomerRatingsMainPage = () => {
 
     return (
-        <div style={{
+        <div id="customer-stories" style={{
             padding: '20px'
         }}>
             <Typography variant='h4' style={TopHeadQuestions}>Customer Stories</Typography>
@@ -94,7 +95,7 @@ const MDCustomerRatingsMainPage = () => {
 const SMCustomerRatingsMainPage = () => {
 
     return (
-        <div style={{
+        <div id="customer-stories" style={{
             padding: '20px'
         }}>
             <Typography variant='h4' style={TopHeadQuestions}>Customer Stories</Typography>

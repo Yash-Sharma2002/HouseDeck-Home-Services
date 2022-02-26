@@ -56,19 +56,21 @@ const Content = () => {
 }
 function XLRecommendedServices() {
     return (
-        <div style={{
+        <div id="houseDeck-Recommended-Services"  style={{
             padding: '60px 100px',
         }}>
-            <Content />
+            <div style={{marginTop:'40px'}}><Content /></div>
+            
         </div>
     )
 }
 function MDRecommendedServices() {
     return (
-        <div style={{
+        <div id="houseDeck-Recommended-Services"  style={{
             padding: '20px',
         }}>
-            <Content />
+           
+           <div style={{marginTop:'40px'}}><Content /></div>
         </div>
     )
 }
@@ -76,9 +78,11 @@ function MDRecommendedServices() {
 
 function SMRecommendedServices() {
     return (
-        <div style={{
+        <div id="houseDeck-Recommended-Services"  style={{
             padding: '20px',
         }}>
+            
+            <div style={{marginTop:'40px'}}>
             {RecommendedServicesData.map(data =>
                 <Box sx={{ display: 'flex',justifyContent:'space-between',marginTop:'20px',borderBottom: '1px solid #e0e0e0', }}>
                     <Box>
@@ -102,7 +106,7 @@ function SMRecommendedServices() {
                     </Box>
                 </Box>
 
-            )}
+            )}</div>
         </div>
     )
 }

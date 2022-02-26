@@ -1,10 +1,8 @@
-
 import React from 'react'
 import { FooterLink, SocialMediadata } from '../constants/data'
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import { useMediaQuery } from '@mui/material';
-
+import {Link} from '@mui/material';
 
 
 function FooterContent({fontSIze,margin}) {
@@ -12,20 +10,20 @@ function FooterContent({fontSIze,margin}) {
         <div>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '30px', }}>
                 {FooterLink.map(data =>
-                    <Typography sx={{ fontSize: fontSIze, color: '#464646', margin: margin }}>{data.name}</Typography>
+                    <Link href={data.url} sx={{ fontSize: fontSIze, color: '#464646', margin: margin,textDecoration:'none' }}>{data.name}</Link>
                 )}
             </Box>
             <hr style={{ margin: '35px 8%', color: '#ddd', borderTopWidth: '1px' }} />
             <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', m: 'auto' }}>
                 {['../otherPlatformLink/android.svg', '../otherPlatformLink/ios.svg'].map(data =>
-                    <img style={{ margin: '20px 20px' }} src={data} alt="none" />
+                    <img style={{ margin: '20px 10px' }} src={data} alt="none" />
                 )}
             </Box>
 
             <Box  sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', m: 'auto' }}>
                 {SocialMediadata.map(data=>
                 
-                    <img style={{ margin: '20px 20px' ,background:'#e8e8e8',borderRadius:'100%',padding:'7px 9px'}} src={data.url} alt="none" />
+                    <img style={{ margin: '20px 20px' ,background:'#e8e8e8',borderRadius:'100%',padding:'7px'}} src={data.url} alt="none" />
                  
                     )}
             </Box>
@@ -50,7 +48,7 @@ function SMFooter({fontSIze,margin})
     return <FooterContent fontSIze={fontSIze} margin={margin}  />
 }
 
-export default function Footer(fontSIze){
+export default function Footer(){
 
   const xlMax = useMediaQuery('(max-width:2000px)');
   const xlMin = useMediaQuery('(min-width:1160px)');

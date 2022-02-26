@@ -1,7 +1,6 @@
 import React from 'react'
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import PropTypes from 'prop-types';
@@ -23,7 +22,7 @@ import { CitiesImg } from '../../constants/data';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
-    width: '600px',
+    // width: '600px',
   },
 }));
 
@@ -61,6 +60,16 @@ BootstrapDialogTitle.propTypes = {
 };
 
 export default function SearchNSelect() {
+
+
+  const xlMax = useMediaQuery('(max-width:2000px)');
+  const xlMin = useMediaQuery('(min-width:740px)');
+  const mdMax = useMediaQuery('(max-width:740px)');
+  const mdMin = useMediaQuery('(min-width:360px)');
+  const sm = useMediaQuery('(max-width:360px)');
+
+
+
   const [age, setAge] = React.useState('');
 
   const cityRef = React.useRef()
@@ -70,6 +79,7 @@ export default function SearchNSelect() {
   };
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -88,7 +98,7 @@ export default function SearchNSelect() {
   return (
     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
       <Box >
-        <Box sx={{ minWidth: 120 }}>
+        <Box sx={{ minWidth: 120, backgroundColor: 'white', height: '50px!important' }}>
           <FormControl fullWidth onSubmit={handelSubmit}>
             <InputLabel id="demo-simple-select-label">City</InputLabel>
             <Select
@@ -100,30 +110,93 @@ export default function SearchNSelect() {
               onClick={handleClickOpen}
             >
 
-              <BootstrapDialog
-                fullScreen={fullScreen}
-                onClose={handleClose}
-                aria-labelledby="customized-dialog-title"
-                open={open}
-                maxWidth={false}
-                sx={{ position: 'fixed', height: '550px' }}
-              >
-                <BootstrapDialogTitle sx={{ fontSize: '18px', fontWeight: '600' }} id="customized-dialog-title" onClose={handleClose}>
-                  Select Your City
 
-                </BootstrapDialogTitle>
-                <DialogContent dividers>
-                  <Box sx={{ display: 'flex', flexWrap: 'wrap', padding: '15px' }}>
-                    {CitiesImg.map(data =>
-                      <Box sx={{ width: '25%', textAlign: 'center', padding: '20px 0px', cursor: 'pointer' }} onClose={handelSubmit}>
+              {xlMax && xlMin && (
 
-                        <img style={{ width: '50px', height: '50px' }} src={data.url} alt={data.id} />
-                        <Typography ref={cityRef} value={data.id} sx={{ fontSize: '14px' }}>{data.name}</Typography>
-                      </Box>
-                    )}
-                  </Box>
-                </DialogContent>
-              </BootstrapDialog>
+                <BootstrapDialog
+                  fullScreen={fullScreen}
+                  onClose={handleClose}
+                  aria-labelledby="customized-dialog-title"
+                  open={open}
+                  maxWidth={false}
+                  sx={{ position: 'fixed' }}
+                >
+                  <BootstrapDialogTitle sx={{ fontSize: '18px', fontWeight: '600' }} id="customized-dialog-title" onClose={handleClose}>
+                    Select Your City
+
+                  </BootstrapDialogTitle>
+                  <DialogContent dividers>
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', padding: '15px' }}>
+                      {CitiesImg.map(data =>
+                        <Box sx={{ width: '25%', textAlign: 'center', padding: '20px 0px', cursor: 'pointer', }} onClose={handelSubmit}>
+
+                          <img style={{ width: '50px', height: '50px' }} src={data.url} alt={data.id} />
+                          <Typography ref={cityRef} value={data.id} sx={{ fontSize: '14px' }}>{data.name}</Typography>
+                        </Box>
+                      )}
+                    </Box>
+                  </DialogContent>
+                </BootstrapDialog>
+
+              )}
+              {!(xlMax && xlMin) && mdMax && mdMin && (
+
+                <BootstrapDialog
+                  fullScreen={fullScreen}
+                  onClose={handleClose}
+                  aria-labelledby="customized-dialog-title"
+                  open={open}
+                  maxWidth={false}
+                  sx={{ position: 'fixed' }}
+                >
+                  <BootstrapDialogTitle sx={{ fontSize: '18px', fontWeight: '600' }} id="customized-dialog-title" onClose={handleClose}>
+                    Select Your City
+
+                  </BootstrapDialogTitle>
+                  <DialogContent dividers>
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', padding: '15px' }}>
+                      {CitiesImg.map(data =>
+                        <Box sx={{ width: '33%', textAlign: 'center', padding: '20px 0px', cursor: 'pointer', }} onClose={handelSubmit}>
+
+                          <img style={{ width: '50px', height: '50px' }} src={data.url} alt={data.id} />
+                          <Typography ref={cityRef} value={data.id} sx={{ fontSize: '14px' }}>{data.name}</Typography>
+                        </Box>
+                      )}
+                    </Box>
+                  </DialogContent>
+                </BootstrapDialog>
+
+              )}
+              {sm && (
+
+                <BootstrapDialog
+                  fullScreen={fullScreen}
+                  onClose={handleClose}
+                  aria-labelledby="customized-dialog-title"
+                  open={open}
+                  maxWidth={false}
+                  sx={{ position: 'fixed' }}
+                >
+                  <BootstrapDialogTitle sx={{ fontSize: '18px', fontWeight: '600' }} id="customized-dialog-title" onClose={handleClose}>
+                    Select Your City
+
+                  </BootstrapDialogTitle>
+                  <DialogContent dividers>
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', padding: '15px' }}>
+                      {CitiesImg.map(data =>
+                        <Box sx={{ width: '50%', textAlign: 'center', padding: '20px 0px', cursor: 'pointer', }} onClose={handelSubmit}>
+
+                          <img style={{ width: '50px', height: '50px' }} src={data.url} alt={data.id} />
+                          <Typography ref={cityRef} value={data.id} sx={{ fontSize: '14px' }}>{data.name}</Typography>
+                        </Box>
+                      )}
+                    </Box>
+                  </DialogContent>
+                </BootstrapDialog>
+
+              )}
+
+
             </Select>
           </FormControl>
         </Box>

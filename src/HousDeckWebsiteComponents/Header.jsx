@@ -12,6 +12,7 @@ import DialogWithoutLoginDisplay from './DialogsComponents/DialogWithoutLoginDis
 import HeaderRightMenuMainPage from './HeaderRightMenuMainPage';
 import ResponsiveLeftMenuHeaderMainPage from './ResponsiveLeftMenuHeaderMainPage';
 import { useMediaQuery } from '@mui/material';
+import { Link } from '@mui/material';
 import { IconHeaderImage, isLogin } from '../constants/data';
 
 const ImageTheme = {
@@ -23,8 +24,6 @@ const PostLogo = <img src='../logos/houseDeck_copy1.png' style={ImageTheme} alt=
 
 
 function XLHeader({ commonProps }) {
-    // commonProps where sent from the page so they can be changed anytime in the header 
-    // we also have to include Header component in everypage so commonProp can be altered
 
     const [open, setOpen] = React.useState(false);
 
@@ -34,7 +33,7 @@ function XLHeader({ commonProps }) {
 
 
     return (
-        <AppBar position="static" sx={{ backgroundColor: 'white', color: '#000000' }}>
+        <AppBar position="fixed" sx={{ backgroundColor: 'white', color: '#000000' }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Typography
@@ -50,32 +49,21 @@ function XLHeader({ commonProps }) {
                     {/* ----------------------------------------------------- Left side------------------------------- */}
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {commonProps.map((element) => (
-                            <Button
+
+                            <Link href={element.url}
                                 key={element.name}
                                 sx={{
                                     my: 2,
-                                    color: 'black',
                                     opacity: '0.6',
                                     display: 'block',
-                                    fontSize: '13px',
                                     userSelect: 'none',
+                                    fontSize:'14px',
+                                    color:'#464646',
+                                    textDecoration:'none',
+                                    marginRight:'20px'
                                 }} >
                                 {element.name}
-                            </Button>
-                            // if the links are set for the website the use below code after doing stylings
-
-                            // <Link href={element.url}
-                            //     key={element.name}
-                            //     sx={{
-                            //         my: 2,
-                            //         color: 'black',
-                            //         opacity: '0.6',
-                            //         display: 'block',
-                            //         fontSize: '13px',
-                            //         userSelect: 'none',
-                            //     }} >
-                            //     {element.name}
-                            // </Link>
+                            </Link>
 
                         ))}
                     </Box>

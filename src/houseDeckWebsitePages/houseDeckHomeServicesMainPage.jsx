@@ -6,8 +6,10 @@ import CustomerRatingsMainPage from '../HousDeckWebsiteComponents/MainPageMiddle
 import MainPageTopQuestions from '../HousDeckWebsiteComponents/MainPageTopQuestions';
 import RecommendedServices from '../HousDeckWebsiteComponents/MainPageMiddleComponents/RecommendedServices';
 import Footer from '../HousDeckWebsiteComponents/Footer';
-import SearchNSelect from '../HousDeckWebsiteComponents/mainPageTopComponents/SearchNSelect';
 import ServicesListed from '../HousDeckWebsiteComponents/MainPageMiddleComponents/ServicesListed';
+import SimilarServices from '../HousDeckWebsiteComponents/similarServices';
+import TopFirsrtBar from '../HousDeckWebsiteComponents/mainPageTopComponents/TopFirsrtBar';
+import TopSecondCarousel from '../HousDeckWebsiteComponents/mainPageTopComponents/TopSecondCarousel';
 
 
 
@@ -16,26 +18,23 @@ import ServicesListed from '../HousDeckWebsiteComponents/MainPageMiddleComponent
 export default function HouseDeckHomeServicesMainPage() {
   const commonProps = [
 
-    { name: 'hello' },
-    { name: 'hello2' },
-    { name: 'We can add as many things as we want' }
-
-
-    // { name: 'hello', url: '#' },
-    // { name: 'hello2', url: '#houseDeck-Services' },
-    // { name: 'We can add as many things as we want', url: '#' }
+    { name: 'Home Services', url: '' },
+    { name: 'Recommended Services', url: '#houseDeck-Recommended-Services' },
+    { name: 'Customer Stories', url: '#customer-stories' },
+    { name: 'FAQs', url: '#faqs' },
+    { name: 'HouseDeck Services', url: '#houseDeck-Services' },
   ]
   return (
     <>
       <Header commonProps={commonProps} />
-      <SearchNSelect />
+      <TopFirsrtBar />
+      <TopSecondCarousel />
       <ServicesListed />
       <RecommendedServices />
       <CustomerRatingsMainPage />
       <MainPageTopQuestions />
-      {/* <div style={{height:'10000px'}}></div> */}
+      {/* <SimilarServices /> */}
       <HouseDeckServicesBottomList />
-      {/* <div style={{height:'10000px'}}></div> */}
 
 
       {/* <PropertyBoxMainPageHouseDeckServicesGlobal /> */}

@@ -8,17 +8,18 @@ const TopHeadStyle = {
   fontWeight: '600',
   color: '#464646',
   fontSize: '22px',
-  padding: '20px 10px'
+  padding: '20px 10px',
+  marginTop:'30px'
 
 }
 
 export default function HouseDeckServicesBottomList() {
   return (
-    <div id='houseDeck-Services' style={mainPageBottomWidth} >
+    <Box id='houseDeck-Services' style={mainPageBottomWidth} >
       <Typography sx={TopHeadStyle}>HouseDeck Services</Typography>
-      <Box sx={{ display: { xs: 'block', sm: 'flex' }, flexWrap: 'wrap', justifyContent: 'start' }}>
+      <Box sx={{ display:'flex', flexWrap: 'wrap', justifyContent: 'start' }}>
 
-          <Box sx={{ marginTop: '10px', ml: -1 }}>
+          <Box sx={{ marginTop: '10px'}}>
             {
               GlobalServicesBottomList.map(data =>
                 <Chip label={data.name} sx={{ m: 1, backgroundColor: '#e8e8e8', borderRadius: '7px', height: '23px' }} component="a" href="#" clickable />
@@ -26,6 +27,6 @@ export default function HouseDeckServicesBottomList() {
             }
         </Box>
       </Box>
-    </div>
+    </Box>
   )
 }

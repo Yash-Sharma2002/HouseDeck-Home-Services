@@ -10,6 +10,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import CloseIcon from '@mui/icons-material/Close';
+import { Link } from '@mui/material';
 import MailIcon from '@mui/icons-material/Mail';
 
 export default function ResponsiveLeftMenuHeaderMainPage({ commonProps }) {
@@ -51,12 +52,12 @@ export default function ResponsiveLeftMenuHeaderMainPage({ commonProps }) {
                         onKeyDown={toggleDrawer('left', false)}
                     >
                         <List>
-                        <ListItem sx={{justifyContent:'right',marginLeft:1}}  onClick={toggleDrawer('left', false)}>
+                        <ListItem sx={{justifyContent:'right',marginLeft:0,overflowX:'hiddenImportant'}}  onClick={toggleDrawer('left', false)}>
                                 <CloseIcon />
                                 </ListItem>
                             {commonProps.map((element) => (
                                 <ListItem button key={element.name}>
-                                    <ListItemText primary={element.name} />
+                                    <Link sx={{textDecoration:'none',color:'black'}} href={element.url}>{element.name}</Link>
                                 </ListItem>
                             ))}
                         </List>

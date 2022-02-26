@@ -69,7 +69,7 @@ export const FooterLink = [
   {name:'Privacy Policy'},
   {name:'Testimonials'},
   {name:'Sitemap'},
-  {name:'FAQs'},
+  {name:'FAQs',url:'/home-services/faqs'},
 ]
 
 export const SocialMediadata=[
@@ -93,3 +93,38 @@ export const ServiceWithImage =[
   {id:'Pest Control',src:'../imageService/pest_control.png',offer:'Upto 30% off'},
   {id:'Plumbing',src:'../imageService/plumbing.png',offer:'Upto 30% off'},
 ]
+
+
+export const FAQData = [
+  {ques:'Why choose Housedeck Home Services?',ans:"Housedeck Home Services provides safe, professional, trusted painting services to give your home a painting makeover. Get your home painted in 3 easy steps: 1.Book a site visit 2.Get an instant quotation 3.Enjoy hassle-free home painting",panel:'panel1'},
+  {ques:'What are the cities that Housedeck Home Services currently operates in?',ans:["Bangalore, Pune. We are launching soon in Chennai, Hyderabad."],panel:'panel2'},
+  {ques:'Is the site visit chargeable??',ans:"Yes, we charge 49/- for site visit.",panel:'panel3'},
+  {ques:'Can I get 1 wall or 1 room painted?',ans:"Yes, we take up projects with 1 wall or 1 room requirement. The minimum project value should be Rs.5,000/-",panel:'panel4'},
+  {ques:'What should I expect during the site visit?',ans:"Our Housedeck Consultant will visit your home and take measurements. Based on the on-site conditions and your needs, they will suggest suitable options and share multiple options across paint brands and types. They will also give you a walkthrough of how the project will go ahead if you decide to go ahead with us.",panel:'panel5'},
+  {ques:'Where does housedeck source paint material from?',ans:"All material is sourced from authorized brand stores only, therefore you can be assured of quality. We ensure that all material is genuine through regular checks when the material is delivered on-site and during execution.",panel:'panel6'},
+  {ques:'Can I see few shade samples to choose paint color?',ans:"Housedeck Consultant will show you the paint shade card to help you choose the right shade for your home. We don’t offer trial samples on the wall.",panel:'panel7'},
+
+]
+
+
+
+
+// const xlMax = useMediaQuery('(max-width:2000px)');
+// const xlMin = useMediaQuery('(min-width:740px)');
+// const mdMax = useMediaQuery('(max-width:740px)');
+// const mdMin = useMediaQuery('(min-width:360px)');
+// const sm = useMediaQuery('(max-width:360px)');
+
+
+// {xlMax && xlMin && (
+//   <DialogForCity open={open} setOpen={setOpen} width={'25%'} />
+
+// )}
+// {!(xlMax && xlMin) && mdMax && mdMin && (
+//   <DialogForCity open={open} setOpen={setOpen} width={'33%'} />
+
+// )}
+// {sm && (
+//   <DialogForCity open={open} setOpen={setOpen} width={'50%'} />
+
+// )}

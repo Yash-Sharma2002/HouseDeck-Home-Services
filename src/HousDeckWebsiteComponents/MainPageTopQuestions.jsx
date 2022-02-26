@@ -12,6 +12,7 @@ const TopHeadQuestions = {
     fontSize: '22px',
     paddingBottom: '50px',
     borderBottom: '1px solid #e0e0e0',
+    marginTop:'30px'
 }
 
 
@@ -117,7 +118,7 @@ const TopQuestions = () => {
 
 function XLMainPageTopQuestions() {
     return (
-        <div style={{
+        <div id="faqs" style={{
             padding: '60px 100px'
         }} >
             <TopQuestions />
@@ -128,7 +129,7 @@ function XLMainPageTopQuestions() {
 
 function SMMainPageTopQuestions() {
     return (
-        <div style={{
+        <div id="faqs" style={{
             padding: '30px 20px'
         }} >
             <TopQuestions />
@@ -139,7 +140,7 @@ function SMMainPageTopQuestions() {
 
 function MDMainPageTopQuestions() {
     return (
-        <div style={{
+        <div id="faqs" style={{
             padding: '20px'
         }} >
             <TopQuestions />
