@@ -2,49 +2,43 @@ import React from 'react'
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled } from '@mui/material/styles';
+import Select from 'react-select'
 
+const options = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' }
+]
 
-const Search = styled('div')(({ theme }) => ({
-    position: 'relative',
+const TopStyles = {
+  container: (provided, state) => ({
+    ...provided,
+  }),
+  option: (provided, state) => ({
+    ...provided,
+    fontSize: '16px',
+    color: "#8a8a8a",
+    border: '0px',
+    '&:hover':{ 
+      backgroundColor: "rgb(204, 204, 204)" 
+    }
+  }),
+  control: () => ({
+    cursor: 'text',
     borderRadius: '2px',
-    backgroundColor:'#fff',
-    width:"500px",
-    height:'50px!important',
-    alignItems: 'center',
-  }));
-  
-  const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
     display: 'flex',
+    backgroundColor: '#fff',
+    width: "500px",
+    height: '50px!important',
     alignItems: 'center',
-    justifyContent: 'center',
-    color:"#8a8a8a"
-  }));
-
-  const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: 'inherit',
-    '& .MuiInputBase-input': {
-      padding:'13px 8px 8px 0px',
-      // vertical padding + font size from searchIcon
-      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-      transition: theme.transitions.create('width'),
-      width: '100%',
-    },
-  }));
-  
+  }),
+  singleValue:(provided, state) =>({
+    ...provided,
+    backgroundColor:'yellow'
+  })
+}
 export default function SearchBar() {
   return (
-    <Search>
-    <SearchIconWrapper>
-      <SearchIcon />
-    </SearchIconWrapper>
-    <StyledInputBase
-      placeholder="Search for a service..."
-      inputProps={{ 'aria-label': 'search' }}
-    />
-  </Search>
+    <Select styles={TopStyles} options={options} />
   )
 }

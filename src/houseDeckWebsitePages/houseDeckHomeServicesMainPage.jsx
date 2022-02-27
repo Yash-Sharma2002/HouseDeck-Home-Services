@@ -10,7 +10,10 @@ import ServicesListed from '../HousDeckWebsiteComponents/MainPageMiddleComponent
 import SimilarServices from '../HousDeckWebsiteComponents/similarServices';
 import TopFirsrtBar from '../HousDeckWebsiteComponents/mainPageTopComponents/TopFirsrtBar';
 import TopSecondCarousel from '../HousDeckWebsiteComponents/mainPageTopComponents/TopSecondCarousel';
-
+import Temp from '../temp';
+import SearchBar from '../HousDeckWebsiteComponents/mainPageTopComponents/SearchBar';
+import SearchNSelect from '../HousDeckWebsiteComponents/mainPageTopComponents/SearchNSelect';
+import { Box } from '@mui/system';
 
 
 
@@ -24,11 +27,37 @@ export default function HouseDeckHomeServicesMainPage() {
     { name: 'FAQs', url: '#faqs' },
     { name: 'HouseDeck Services', url: '#houseDeck-Services' },
   ]
+
+  const [city, setCity] = React.useState("Select City")
+  const handleData = (data) => {
+    setCity(data)
+  }
   return (
     <>
       <Header commonProps={commonProps} />
-      <TopFirsrtBar />
+      {/* <TopFirsrtBar /> */}
+
+
+
+      <div style={{
+        background: '#803c6d',
+        width: '100%'
+      }}>
+        <Box sx={{
+          padding: '6rem 100px 3rem 100px',
+          display: 'flex', justifyContent: 'space-between'
+        }}>
+
+          <SearchBar />
+          <SearchNSelect city={city} setCity={setCity} handleData={handleData} />
+        </Box>
+      </div>
+
+
+
       <TopSecondCarousel />
+      {/* <Temp */}
+      <div>{city}</div>
       <ServicesListed />
       <RecommendedServices />
       <CustomerRatingsMainPage />

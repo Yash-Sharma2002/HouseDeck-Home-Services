@@ -49,36 +49,6 @@ const useStyles = makeStyles({
 })
 
 
-
-const BootstrapDialogTitle = (props) => {
-  const { children, onClose, ...other } = props;
-
-  return (
-    <DialogTitle  {...other}>
-      {children}
-      {onClose ? (
-        <IconButton
-          aria-label="close"
-          onClick={onClose}
-          sx={{
-            position: 'absolute',
-            right: 8,
-            top: 8,
-            color: (theme) => theme.palette.grey[500],
-          }}
-        >
-          <CloseIcon />
-        </IconButton>
-      ) : null}
-    </DialogTitle>
-  );
-};
-
-BootstrapDialogTitle.propTypes = {
-  children: PropTypes.node,
-  onClose: PropTypes.func.isRequired,
-};
-
 export default function DialogWithoutLoginDisplay({ open, setOpen }) {
   const classes = useStyles()
   const theme = useTheme();
@@ -95,8 +65,6 @@ export default function DialogWithoutLoginDisplay({ open, setOpen }) {
       open={open}
       maxWidth={false}
     >
-      {/* <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-      </BootstrapDialogTitle> */}
       <Box sx={{ display: 'flex', height: '450px', width: '650px' }} >
         <Box sx={{ width: '40%', background: '#f8f8f8', paddingLeft: '30px' }}>
           <img style={{ height: '100px', width: "100px", marginTop: '9rem' }} src="../logos/isLogin.png" alt="Login" />
