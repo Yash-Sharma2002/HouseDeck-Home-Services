@@ -81,19 +81,163 @@ export const SocialMediadata = [
 ]
 
 
-export const ServiceWithImage = [
+export const ServiceWithImageBangalore = [
   // fixed data 
-  { id: 'Painting', src: '../imageService/painting.png', offer: 'Flat 25% off' },
-  { id: 'Cleaning', src: '../imageService/cleaning.png', offer: 'Upto 50% off' },
-  { id: 'Home Sanitization', src: '../imageService/home-sanitization.png', offer: 'Upto 25% off' },
-  { id: 'AC Repair', src: '../imageService/ac_repair.png', offer: 'Upto 30% off' },
+  { id: 'Painting', src: '../imageService/painting.png', offer: 'Flat 25% off',tag:'1'},
+  { id: 'Cleaning', src: '../imageService/cleaning.png', offer: 'Upto 50% off',tag:'1' },
+  { id: 'Home Sanitization', src: '../imageService/home-sanitization.png', offer: 'Upto 25% off',tag:'1' },
+  { id: 'AC Repair', src: '../imageService/ac_repair.png', offer: 'Upto 30% off' ,tag:'1'},
   // variable data 
-  { id: 'Electricity', src: '../imageService/electricity.png', offer: 'Upto 30% off' },
-  { id: 'Carpentary', src: '../imageService/carpentary.png', offer: 'Upto 30% off' },
-  { id: 'Pest Control', src: '../imageService/pest_control.png', offer: 'Upto 30% off' },
-  { id: 'Plumbing', src: '../imageService/plumbing.png', offer: 'Upto 30% off' },
+  { id: 'Electricity', src: '../imageService/electricity.png', offer: '',tag:'1' },
+  { id: 'Carpentary', src: '../imageService/carpentary.png', offer: '',tag:'1' },
+  { id: 'Plumbing', src: '../imageService/plumbing.png', offer: '',tag:'1' },
+  { id: 'Pest Control', src: '../imageService/pest_control.png', offer: 'Unserviceable',tag:'0.6' },
 ]
 
+
+export const ServiceWithImageChennai = [
+  // fixed data 
+  { id: 'Painting', src: '../imageService/painting.png', offer: 'Flat 25% off',tag:'1'},
+  { id: 'Cleaning', src: '../imageService/cleaning.png', offer: 'Upto 50% off',tag:'1' },
+  { id: 'Home Sanitization', src: '../imageService/home-sanitization.png', offer: 'Upto 25% off',tag:'1' },
+  { id: 'AC Repair', src: '../imageService/ac_repair.png', offer: 'Upto 30% off' ,tag:'1'},
+  // variable data 
+  { id: 'Electricity', src: '../imageService/electricity.png', offer: '',tag:'1' },
+  { id: 'Carpentary', src: '../imageService/carpentary.png', offer: '',tag:'1' },
+  { id: 'Plumbing', src: '../imageService/plumbing.png', offer: '',tag:'1' },
+  { id: 'Pest Control', src: '../imageService/pest_control.png', offer: 'Unserviceable',tag:'0.6' },
+]
+
+
+
+export const ServiceWithImageMumbai = [
+  // fixed data 
+  { id: 'Painting', src: '../imageService/painting.png', offer: 'Flat 25% off',tag:'1'},
+  { id: 'Cleaning', src: '../imageService/cleaning.png', offer: 'Upto 50% off',tag:'1' },
+  { id: 'Home Sanitization', src: '../imageService/home-sanitization.png', offer: 'Upto 25% off',tag:'1' },
+  { id: 'AC Repair', src: '../imageService/ac_repair.png', offer: 'Upto 30% off' ,tag:'1'},
+  // variable data 
+  { id: 'Electricity', src: '../imageService/electricity.png', offer: '',tag:'1' },
+  { id: 'Carpentary', src: '../imageService/carpentary.png', offer: '',tag:'1' },
+  { id: 'Plumbing', src: '../imageService/plumbing.png', offer: '',tag:'1' },
+  { id: 'Pest Control', src: '../imageService/pest_control.png', offer: 'Unserviceable',tag:'0.6' },
+]
+
+
+
+export const ServiceWithImagePune = [
+  // fixed data 
+  { id: 'Painting', src: '../imageService/painting.png', offer: 'Flat 25% off',tag:'1'},
+  { id: 'Cleaning', src: '../imageService/cleaning.png', offer: 'Upto 50% off',tag:'1' },
+  { id: 'Home Sanitization', src: '../imageService/home-sanitization.png', offer: 'Upto 25% off',tag:'1' },
+  { id: 'AC Repair', src: '../imageService/ac_repair.png', offer: 'Upto 30% off' ,tag:'1'},
+  // variable data 
+  { id: 'Electricity', src: '../imageService/electricity.png', offer: '',tag:'1' },
+  { id: 'Carpentary', src: '../imageService/carpentary.png', offer: '',tag:'1' },
+  { id: 'Plumbing', src: '../imageService/plumbing.png', offer: '',tag:'1' },
+  { id: 'Pest Control', src: '../imageService/pest_control.png', offer: 'Unserviceable',tag:'0.6' },
+]
+
+
+
+export const ServiceWithImageHyderabad = [
+  // fixed data 
+  { id: 'Painting', src: '../imageService/painting.png', offer: 'Flat 25% off',tag:'1'},
+  { id: 'Cleaning', src: '../imageService/cleaning.png', offer: 'Upto 50% off',tag:'1' },
+  { id: 'Home Sanitization', src: '../imageService/home-sanitization.png', offer: 'Upto 25% off',tag:'1' },
+  { id: 'AC Repair', src: '../imageService/ac_repair.png', offer: 'Upto 30% off' ,tag:'1'},
+  // variable data 
+  { id: 'Electricity', src: '../imageService/electricity.png',  offer: 'Unserviceable',tag:'0.6'  },
+  { id: 'Carpentary', src: '../imageService/carpentary.png', offer: 'Unserviceable',tag:'0.6'  },
+  { id: 'Plumbing', src: '../imageService/plumbing.png', offer: 'Unserviceable',tag:'0.6'  },
+  { id: 'Pest Control', src: '../imageService/pest_control.png', offer: 'Unserviceable',tag:'0.6' },
+]
+
+
+
+export const ServiceWithImageGurgaon = [
+  // fixed data 
+  { id: 'Painting', src: '../imageService/painting.png', offer: 'Flat 25% off',tag:'1'},
+  { id: 'Cleaning', src: '../imageService/cleaning.png', offer: 'Upto 50% off',tag:'1' },
+  { id: 'Home Sanitization', src: '../imageService/home-sanitization.png', offer: 'Upto 25% off',tag:'1' },
+  { id: 'AC Repair', src: '../imageService/ac_repair.png', offer: 'Upto 30% off' ,tag:'1'},
+  // variable data 
+  { id: 'Electricity', src: '../imageService/electricity.png',  offer: 'Unserviceable',tag:'0.6'  },
+  { id: 'Carpentary', src: '../imageService/carpentary.png', offer: 'Unserviceable',tag:'0.6'  },
+  { id: 'Plumbing', src: '../imageService/plumbing.png', offer: 'Unserviceable',tag:'0.6'  },
+  { id: 'Pest Control', src: '../imageService/pest_control.png', offer: 'Unserviceable',tag:'0.6' },
+]
+
+
+
+export const ServiceWithImageDelhi = [
+  // fixed data 
+  { id: 'Painting', src: '../imageService/painting.png', offer: 'Flat 25% off',tag:'1'},
+  { id: 'Cleaning', src: '../imageService/cleaning.png', offer: 'Upto 50% off',tag:'1' },
+  { id: 'Home Sanitization', src: '../imageService/home-sanitization.png', offer: 'Upto 25% off',tag:'1' },
+  { id: 'AC Repair', src: '../imageService/ac_repair.png', offer: 'Upto 30% off' ,tag:'1'},
+  // variable data 
+  { id: 'Electricity', src: '../imageService/electricity.png',  offer: 'Unserviceable',tag:'0.6'  },
+  { id: 'Carpentary', src: '../imageService/carpentary.png', offer: 'Unserviceable',tag:'0.6'  },
+  { id: 'Plumbing', src: '../imageService/plumbing.png', offer: 'Unserviceable',tag:'0.6'  },
+  { id: 'Pest Control', src: '../imageService/pest_control.png', offer: 'Unserviceable',tag:'0.6' },
+]
+
+
+export const ServiceWithImageNoida= [
+  // fixed data 
+  { id: 'Painting', src: '../imageService/painting.png', offer: 'Flat 25% off',tag:'1'},
+  { id: 'Cleaning', src: '../imageService/cleaning.png', offer: 'Upto 50% off',tag:'1' },
+  { id: 'Home Sanitization', src: '../imageService/home-sanitization.png', offer: 'Upto 25% off',tag:'1' },
+  { id: 'AC Repair', src: '../imageService/ac_repair.png', offer: 'Upto 30% off' ,tag:'1'},
+  // variable data 
+  { id: 'Electricity', src: '../imageService/electricity.png',  offer: 'Unserviceable',tag:'0.6'  },
+  { id: 'Carpentary', src: '../imageService/carpentary.png', offer: 'Unserviceable',tag:'0.6'  },
+  { id: 'Plumbing', src: '../imageService/plumbing.png', offer: 'Unserviceable',tag:'0.6'  },
+  { id: 'Pest Control', src: '../imageService/pest_control.png', offer: 'Unserviceable',tag:'0.6' },
+]
+
+
+export const ServiceWithImageGN = [
+  // fixed data 
+  { id: 'Painting', src: '../imageService/painting.png', offer: 'Flat 25% off',tag:'1'},
+  { id: 'Cleaning', src: '../imageService/cleaning.png', offer: 'Upto 50% off',tag:'1' },
+  { id: 'Home Sanitization', src: '../imageService/home-sanitization.png', offer: 'Upto 25% off',tag:'1' },
+  { id: 'AC Repair', src: '../imageService/ac_repair.png', offer: 'Upto 30% off' ,tag:'1'},
+  // variable data 
+  { id: 'Electricity', src: '../imageService/electricity.png',  offer: 'Unserviceable',tag:'0.6'  },
+  { id: 'Carpentary', src: '../imageService/carpentary.png', offer: 'Unserviceable',tag:'0.6'  },
+  { id: 'Plumbing', src: '../imageService/plumbing.png', offer: 'Unserviceable',tag:'0.6'  },
+  { id: 'Pest Control', src: '../imageService/pest_control.png', offer: 'Unserviceable',tag:'0.6' },
+]
+
+
+
+export const ServiceWithImageGhaziabad = [
+  // fixed data 
+  { id: 'Painting', src: '../imageService/painting.png', offer: 'Flat 25% off',tag:'1'},
+  { id: 'Cleaning', src: '../imageService/cleaning.png', offer: 'Upto 50% off',tag:'1' },
+  { id: 'Home Sanitization', src: '../imageService/home-sanitization.png', offer: 'Upto 25% off',tag:'1' },
+  { id: 'AC Repair', src: '../imageService/ac_repair.png', offer: 'Upto 30% off' ,tag:'1'},
+  // variable data 
+  { id: 'Plumbing', src: '../imageService/plumbing.png', offer: '',tag:'1'  },
+  { id: 'Electricity', src: '../imageService/electricity.png',  offer: '',tag:'1'  },
+  { id: 'Carpentary', src: '../imageService/carpentary.png', offer: 'Unserviceable',tag:'0.6'  },
+  { id: 'Pest Control', src: '../imageService/pest_control.png', offer: 'Unserviceable',tag:'0.6' },
+]
+
+export const ServiceWithImageFaridabad = [
+  // fixed data 
+  { id: 'Painting', src: '../imageService/painting.png', offer: 'Flat 25% off',tag:'1'},
+  { id: 'Cleaning', src: '../imageService/cleaning.png', offer: 'Upto 50% off',tag:'1' },
+  { id: 'Home Sanitization', src: '../imageService/home-sanitization.png', offer: 'Upto 25% off',tag:'1' },
+  { id: 'AC Repair', src: '../imageService/ac_repair.png', offer: 'Upto 30% off' ,tag:'1'},
+  // variable data 
+  { id: 'Electricity', src: '../imageService/electricity.png',  offer: '',tag:'1'  },
+  { id: 'Carpentary', src: '../imageService/carpentary.png', offer: 'Unserviceable',tag:'0.6'  },
+  { id: 'Plumbing', src: '../imageService/plumbing.png', offer: 'Unserviceable',tag:'0.6'  },
+  { id: 'Pest Control', src: '../imageService/pest_control.png', offer: 'Unserviceable',tag:'0.6' },
+]
 
 export const FAQData = [
   { ques: 'Why choose Housedeck Home Services?', ans: <div>Housedeck Home Services provides safe, professional, trusted painting services to give your home a painting

@@ -4,11 +4,11 @@ import SearchIcon from '@mui/icons-material/Search';
 import { styled } from '@mui/material/styles';
 import Select from 'react-select'
 
-const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' }
-]
+// const options = [
+//   { value: 'chocolate', label: 'Chocolate' },
+//   { value: 'strawberry', label: 'Strawberry' },
+//   { value: 'vanilla', label: 'Vanilla' }
+// ]
 
 const TopStyles = {
   container: (provided, state) => ({
@@ -19,6 +19,7 @@ const TopStyles = {
     fontSize: '16px',
     color: "#8a8a8a",
     border: '0px',
+    height:'max-content',
     '&:hover':{ 
       backgroundColor: "rgb(204, 204, 204)" 
     }
@@ -37,7 +38,8 @@ const TopStyles = {
     backgroundColor:'yellow'
   })
 }
-export default function SearchBar() {
+export default function SearchBar({options}) {
+  // const options = CityOptions
   return (
     <Select styles={TopStyles} options={options} />
   )
