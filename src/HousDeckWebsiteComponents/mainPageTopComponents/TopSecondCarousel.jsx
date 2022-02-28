@@ -1,46 +1,89 @@
 import React from 'react'
-// import TopCarousel from ''
+import { TopCarouselData } from '../../constants/data'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { useMediaQuery } from '@mui/material';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
-export default function TopSecondCarousel() {
-    const responsive = {
-        superLargeDesktop: {
-            // the naming can be any, depends on you.
-            breakpoint: { max: 4000, min: 3000 },
-            items: 5
-        },
-        desktop: {
-            breakpoint: { max: 3000, min: 1024 },
-            items: 3
-        },
-        tablet: {
-            breakpoint: { max: 1024, min: 464 },
-            items: 2
-        },
-        mobile: {
-            breakpoint: { max: 464, min: 0 },
-            items: 1
-        }
+
+const responsive = {
+    superLargeDesktop: {
+        breakpoint: { max: 4000, min: 3000 },
+        items: 1,
+        partialVisibilityGutter: 300
+    },
+    desktop: {
+        breakpoint: { max: 3000, min: 1024 },
+        items: 1,
+        partialVisibilityGutter: 200
+    },
+    tablet: {
+        breakpoint: { max: 1024, min: 464 },
+        items: 1,
+        partialVisibilityGutter: 100
+    },
+    mobile: {
+        breakpoint: { max: 464, min: 0 },
+        items: 1,
+    }
+};
+
+
+function Content({ padding, margin }) {
+    const CustomRightArrow = ({ onClick }) => {
+        // onMove means if dragging or swiping in progress.
+        return <i style={{ color: 'black' }} onClick={() => onClick()} />;
+        // <ChevronRightIcon onClick={() => onClick()} />
     };
     return (
         <div style={{
-            // width:"100%",
-            background:'#6e2d5c',
-            // height:'100px',
-            padding:"50px 100px",overflow:"hidden"
+            background: '#6e2d5c',
+            padding: padding, overflow: "hidden"
         }}>
-            <Carousel responsive={responsive} >
-                <div style={{
-                    pading:'20px',
-            backgroundImage:'url(../services/top_carousel_main_image.webp)',
-            backgroundPosition:'50%',
-            backgroundSize:'cover'}}>
-                </div>
-                <div>Item 2</div>
-                <div>Item 3</div>
-                <div>Item 4</div>
-            </Carousel>;
+            <Carousel
+                draggable={true}
+                //  customRightArrow={<CustomRightArrow />}
+                responsive={responsive}
+                partialVisible={true}
+                swipeable={false}
+                draggable={false}
+                //   infinite={false}
+                autoPlay={false}
+            >
+                {TopCarouselData.map(data =>
+                    <div style={{
+
+                        marginRight: margin
+                    }}>
+                        <img style={{
+                            width: '100%',
+                            borderRadius: 10
+                        }} src={data.url} alt="b" />
+                    </div>
+                )}
+            </Carousel>
         </div>
+    )
+}
+export default function TopSecondCarousel() {
+
+    const xlMax = useMediaQuery('(max-width:2000px)');
+    const xlMin = useMediaQuery('(min-width:900px)');
+    const mdMax = useMediaQuery('(max-width:900px)');
+    const mdMin = useMediaQuery('(min-width:360px)');
+    const sm = useMediaQuery('(max-width:360px)');
+    return (
+
+        <>
+            {xlMax && xlMin && (
+                <Content padding={'50px 70px'} margin={'20px'} />
+            )}
+            {!(xlMax && xlMin) && mdMax && mdMin && (
+                <Content padding={'30px 50px'} margin={'15px'} />
+            )}
+            {sm && (
+                <Content padding={'20px 10px'} margin={'0px'} />
+            )}
+        </>
     )
 }

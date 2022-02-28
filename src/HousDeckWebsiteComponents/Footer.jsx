@@ -22,8 +22,10 @@ function FooterContent({fontSIze,margin}) {
 
             <Box  sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', m: 'auto' }}>
                 {SocialMediadata.map(data=>
+                <a href={data.link} target="_blank" rel="noreferrer">
                 
                     <img style={{ margin: '20px 20px' ,background:'#e8e8e8',borderRadius:'100%',padding:'7px'}} src={data.url} alt="none" />
+                </a>
                  
                     )}
             </Box>

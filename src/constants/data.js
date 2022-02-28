@@ -73,14 +73,19 @@ export const FooterLink = [
 ]
 
 export const SocialMediadata = [
-  { url: "../socialmedia/facebook.svg" },
-  { url: "../socialmedia/twitter.svg" },
-  { url: "../socialmedia/instagram.svg" },
-  { url: "../socialmedia/linkedin.svg" },
-  { url: "../socialmedia/youtube.svg" },
+  { url: "../socialmedia/facebook.svg",link:'https://www.facebook.com/HouseDeck-105233744909399' },
+  { url: "../socialmedia/twitter.svg",link:'https://twitter.com/HouseDeck_India' },
+  { url: "../socialmedia/instagram.svg",link:'https://www.instagram.com/housedeck_india/' },
+  { url: "../socialmedia/linkedin.svg",link:'https://www.linkedin.com/company/housedeck/?viewAsMember=true' },
+  { url: "../socialmedia/youtube.svg",link:'https://www.youtube.com/channel/UCynivV8Qp5QeuSJcr81z9zA' },
 ]
 
 
+export const TopCarouselData = [
+  {url:'../topCarousel/banner1.png'},
+  {url:'../topCarousel/banner2.png'},
+  {url:'../topCarousel/banner3.png'},
+]
 
 export const searchBarOptionsBangalore = [
   { value: 'Home Painting', label: 'Home Painting' },
@@ -391,24 +396,3 @@ export const FAQData = [
 ]
 
 
-
-
-// const xlMax = useMediaQuery('(max-width:2000px)');
-// const xlMin = useMediaQuery('(min-width:740px)');
-// const mdMax = useMediaQuery('(max-width:740px)');
-// const mdMin = useMediaQuery('(min-width:360px)');
-// const sm = useMediaQuery('(max-width:360px)');
-
-
-// {xlMax && xlMin && (
-//   <DialogForCity open={open} setOpen={setOpen} width={'25%'} />
-
-// )}
-// {!(xlMax && xlMin) && mdMax && mdMin && (
-//   <DialogForCity open={open} setOpen={setOpen} width={'33%'} />
-
-// )}
-// {sm && (
-//   <DialogForCity open={open} setOpen={setOpen} width={'50%'} />
-
-// )}
