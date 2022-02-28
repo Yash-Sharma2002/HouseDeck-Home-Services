@@ -81,6 +81,113 @@ export const SocialMediadata = [
 ]
 
 
+
+export const searchBarOptionsBangalore = [
+  { value: 'Home Painting', label: 'Home Painting' },
+  { value: 'Home Cleaning', label: 'Home Cleaning' },
+  { value: 'Home Sanitization', label: 'Home Sanitization' },
+  { value: 'Appliance Repair', label: 'Appliance Repair' },
+  { value: 'AC Repair', label: 'AC Repair' },
+  { value: 'Electrician', label: 'Electrician' },
+  { value: 'Carpentary', label: 'Carpentary' },
+  { value: 'Plumbing', label: 'Plumbing' },
+]
+
+
+export const searchBarOptionsNoida = [
+  { value: 'Home Painting', label: 'Home Painting' },
+  { value: 'Home Cleaning', label: 'Home Cleaning' },
+  { value: 'Home Sanitization', label: 'Home Sanitization' },
+  { value: 'Appliance Repair', label: 'Appliance Repair' },
+  { value: 'AC Repair', label: 'AC Repair' },
+]
+
+export const searchBarOptionsMumbai = [
+  { value: 'Home Painting', label: 'Home Painting' },
+  { value: 'Home Cleaning', label: 'Home Cleaning' },
+  { value: 'Home Sanitization', label: 'Home Sanitization' },
+  { value: 'Appliance Repair', label: 'Appliance Repair' },
+  { value: 'AC Repair', label: 'AC Repair' },
+  { value: 'Electrician', label: 'Electrician' },
+  { value: 'Carpentary', label: 'Carpentary' },
+  { value: 'Plumbing', label: 'Plumbing' },
+]
+
+export const searchBarOptionsChennai = [
+  { value: 'Home Painting', label: 'Home Painting' },
+  { value: 'Home Cleaning', label: 'Home Cleaning' },
+  { value: 'Home Sanitization', label: 'Home Sanitization' },
+  { value: 'Appliance Repair', label: 'Appliance Repair' },
+  { value: 'AC Repair', label: 'AC Repair' },
+  { value: 'Electrician', label: 'Electrician' },
+  { value: 'Carpentary', label: 'Carpentary' },
+  { value: 'Plumbing', label: 'Plumbing' },
+]
+
+export const searchBarOptionsPune = [
+  { value: 'Home Painting', label: 'Home Painting' },
+  { value: 'Home Cleaning', label: 'Home Cleaning' },
+  { value: 'Home Sanitization', label: 'Home Sanitization' },
+  { value: 'Appliance Repair', label: 'Appliance Repair' },
+  { value: 'AC Repair', label: 'AC Repair' },
+  { value: 'Electrician', label: 'Electrician' },
+  { value: 'Carpentary', label: 'Carpentary' },
+  { value: 'Plumbing', label: 'Plumbing' },
+]
+
+export const searchBarOptionsHyderabad = [
+  { value: 'Home Painting', label: 'Home Painting' },
+  { value: 'Home Cleaning', label: 'Home Cleaning' },
+  { value: 'Home Sanitization', label: 'Home Sanitization' },
+  { value: 'Appliance Repair', label: 'Appliance Repair' },
+  { value: 'AC Repair', label: 'AC Repair' },
+]
+
+export const searchBarOptionsGurgaon = [
+  { value: 'Home Painting', label: 'Home Painting' },
+  { value: 'Home Cleaning', label: 'Home Cleaning' },
+  { value: 'Home Sanitization', label: 'Home Sanitization' },
+  { value: 'Appliance Repair', label: 'Appliance Repair' },
+  { value: 'AC Repair', label: 'AC Repair' },
+]
+export const searchBarOptionsGhaziabad = [
+  { value: 'Home Painting', label: 'Home Painting' },
+  { value: 'Home Cleaning', label: 'Home Cleaning' },
+  { value: 'Home Sanitization', label: 'Home Sanitization' },
+  { value: 'Appliance Repair', label: 'Appliance Repair' },
+  { value: 'AC Repair', label: 'AC Repair' },
+  { value: 'Electrician', label: 'Electrician' },
+  { value: 'Carpentary', label: 'Carpentary' },
+  { value: 'Plumbing', label: 'Plumbing' },
+]
+
+export const searchBarOptionsDelhi = [
+  { value: 'Home Painting', label: 'Home Painting' },
+  { value: 'Home Cleaning', label: 'Home Cleaning' },
+  { value: 'Home Sanitization', label: 'Home Sanitization' },
+  { value: 'Appliance Repair', label: 'Appliance Repair' },
+  { value: 'AC Repair', label: 'AC Repair' },
+]
+
+export const searchBarOptionsFaridabad = [
+  { value: 'Home Painting', label: 'Home Painting' },
+  { value: 'Home Cleaning', label: 'Home Cleaning' },
+  { value: 'Home Sanitization', label: 'Home Sanitization' },
+  { value: 'Appliance Repair', label: 'Appliance Repair' },
+  { value: 'AC Repair', label: 'AC Repair' },
+  { value: 'Electrician', label: 'Electrician' },
+]
+export const searchBarOptionsGN = [
+  { value: 'Home Painting', label: 'Home Painting' },
+  { value: 'Home Cleaning', label: 'Home Cleaning' },
+  { value: 'Home Sanitization', label: 'Home Sanitization' },
+  { value: 'Appliance Repair', label: 'Appliance Repair' },
+  { value: 'AC Repair', label: 'AC Repair' },
+]
+
+
+
+
 export const ServiceWithImageBangalore = [
   // fixed data 
   { id: 'Painting', src: '../imageService/painting.png', offer: 'Flat 25% off',tag:'1'},

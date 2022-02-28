@@ -55,7 +55,9 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function SearchNSelect({city,setCity,handleData}) {
+
+
+export default function SearchNSelect({city,setCity,handleData,style}) {
 
 
   const xlMax = useMediaQuery('(max-width:2000px)');
@@ -71,6 +73,7 @@ export default function SearchNSelect({city,setCity,handleData}) {
 
   const handleClose = () => {
     setOpen(false);
+    handleData('Bangalore')
   };
 
   const [open, setOpen] = React.useState(true);
@@ -78,13 +81,12 @@ export default function SearchNSelect({city,setCity,handleData}) {
   const handleClickOpen = () => {
     setOpen(!open);
   };
-  // const [city, setCity] = React.useState("Select City")
 
 
   return (
     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
       <Box >
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', borderRadius: '2px', padding: '0px 10px', alignItems: 'center', minWidth: 100, backgroundColor: 'white', height: '50px!important' }} onClick={handleClickOpen}>
+        <Box sx={style} onClick={handleClickOpen}>
 
           <Box>{city}</Box>
           <Box sx={{ marginTop: 1 }}><ExpandMoreIcon /></Box>
@@ -175,9 +177,6 @@ export default function SearchNSelect({city,setCity,handleData}) {
 
           )}
 
-          {/* 
-            </Select>
-          </FormControl> */}
         </Box>
       </Box>
 
