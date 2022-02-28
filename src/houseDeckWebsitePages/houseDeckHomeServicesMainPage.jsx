@@ -9,10 +9,9 @@ import Footer from '../HousDeckWebsiteComponents/Footer';
 import ServicesListed from '../HousDeckWebsiteComponents/MainPageMiddleComponents/ServicesListed';
 import SimilarServices from '../HousDeckWebsiteComponents/similarServices';
 import TopSecondCarousel from '../HousDeckWebsiteComponents/mainPageTopComponents/TopSecondCarousel';
-import Temp from '../temp';
+// import Temp from '../temp';
 import SearchBar from '../HousDeckWebsiteComponents/mainPageTopComponents/SearchBar';
 import SearchNSelect from '../HousDeckWebsiteComponents/mainPageTopComponents/SearchNSelect';
-// import { Box} from '@mui/material';;
 import Button from '@mui/material/Button';
 import { useMediaQuery, Box } from '@mui/material';
 import AddIcCallIcon from '@mui/icons-material/AddIcCall';
@@ -57,7 +56,7 @@ function TopFirstBar({ city, setCity, handleData }) {
     alignItems: 'center',
     minWidth: 100,
     height: '50px!important',
-    color:"black"
+    color:"white"
   }
   return (
 
@@ -66,7 +65,7 @@ function TopFirstBar({ city, setCity, handleData }) {
       {xlMax && xlMin && (
         <div style={{
           background: '#803c6d',
-          width: '100%'
+        
         }}>
           <Box sx={{
             padding: '7rem 100px 3rem 100px',
@@ -92,24 +91,24 @@ function TopFirstBar({ city, setCity, handleData }) {
       {!(xlMax && xlMin) && mdMax && mdMin && (
         <div style={{
           background: '#803c6d',
-          width: '100%'
+        
         }}>
           <Box sx={{
             padding: '4rem 50px 3rem 50px',
             display: 'block',
           }}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: '0rem 0px 1rem 0px', width: '100%',alignItems:'center' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: '0rem 0px 1rem 0px',alignItems:'center' }}>
               <SearchNSelect style={style2} city={city} setCity={setCity} handleData={handleData} />
               <Box>
 
                 <Button variant='outlined' sx={{
                   marginLeft: 1,
-                  borderColor: 'black',
+                  borderColor: 'white',
                   fontSize: '13px',
                   height: '30px',
                   userSelect: 'none',
                   borderRadius:'20px',
-                  color:'black'
+                  color:'white'
                 }} disableRipple>
                   <AddIcCallIcon style={IconHeaderImage} />
                   18003096606
@@ -137,24 +136,24 @@ function TopFirstBar({ city, setCity, handleData }) {
       {sm && (
         <div style={{
           background: '#803c6d',
-          width: '100%'
+        
         }}>
           <Box sx={{
             padding: '3rem 10px 3rem 10px',
             display: 'block',
           }}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: '0rem 155px 1rem 0px', width: '100%',alignItems:'center' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: '0rem 155px 1rem 0px',alignItems:'center' }}>
               <SearchNSelect style={style2} city={city} setCity={setCity} handleData={handleData} />
               <Box>
 
                 <Button variant='outlined' sx={{
                   marginLeft: 1,
-                  borderColor: 'black',
+                  borderColor: 'white',
                   fontSize: '13px',
                   height: '30px',
                   userSelect: 'none',
                   borderRadius:'20px',
-                  color:'black'
+                  color:'white'
                 }} disableRipple>
                   <AddIcCallIcon style={IconHeaderImage} />
                   18003096606
