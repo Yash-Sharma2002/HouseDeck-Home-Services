@@ -10,14 +10,40 @@ import { CustomerRatings } from '../../constants/data';
 import { useMediaQuery } from '@mui/material';
 import Rating from '@mui/material/Rating';
 
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 
+
+const responsive = {
+    superLargeDesktop: {
+        breakpoint: { max: 4000, min: 3000 },
+        items: 1,
+        partialVisibilityGutter: 300
+    },
+    desktop: {
+        breakpoint: { max: 3000, min: 1024 },
+        items: 1,
+        partialVisibilityGutter: 200
+    },
+    tablet: {
+        breakpoint: { max: 1024, min: 464 },
+        items: 1,
+        partialVisibilityGutter: 100
+    },
+    mobile: {
+        breakpoint: { max: 464, min: 0 },
+        items: 1,
+        // partialVisibilityGutter: 30
+
+    }
+};
 const TopHeadQuestions = {
     fontWeight: '600',
     color: '#464646',
     fontSize: '22px',
     paddingBottom: '50px',
-    marginTop:'40px'
+    marginTop: '40px'
 }
 
 const RatingFunction = ({ width, height }) => {
@@ -48,7 +74,7 @@ const RatingFunction = ({ width, height }) => {
                             subheader={CardRating}
                         />
                         <CardContent>
-                            <Typography variant="body2" color="text.secondary">
+                            <Typography  variant="body2" color="text.secondary">
                                 {data.text}
                             </Typography>
                         </CardContent>
@@ -68,8 +94,8 @@ function XLCustomerRatingsMainPage() {
         }}>
             <Typography variant='h4' style={TopHeadQuestions}>Customer Stories</Typography>
 
-            <Box sx={{ display: 'flex',marginLeft:'10px' }}>
-                <RatingFunction width={'29%'} height={'205px'} />
+            <Box sx={{ display: 'flex', marginLeft: '10px' }}>
+                <RatingFunction width={'29%'} height={'unset'} />
             </Box>
         </div>
 
@@ -78,40 +104,118 @@ function XLCustomerRatingsMainPage() {
 
 
 const MDCustomerRatingsMainPage = () => {
+    const CardRating = <Rating sx={{ fontSize: '15px', color: '#009587' }} name="read-only" value={5} readOnly />
 
     return (
         <div id="customer-stories" style={{
             padding: '20px'
         }}>
             <Typography variant='h4' style={TopHeadQuestions}>Customer Stories</Typography>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', m: 'auto' }}>
-                <RatingFunction width={'29%'} height={'unset'} />
-            </Box>
-        </div>
+
+
+            <Carousel
+                draggable={true}
+                responsive={responsive}
+                partialVisible={true}
+                swipeable={false}
+                autoPlay={false}
+            >
+
+
+                {CustomerRatings.map(data =>
+                    <div>
+                        <Card sx={{
+                            maxWidth: '90%',
+                            backgroundColor: '#f3f3f3',
+                            boxShadow: 0,
+                            padding: '19px',
+                            outline: 'none',
+                            overflowY: 'auto',
+                            m: 'auto',
+                            marginTop: '10px',
+                            height: 'unset',ml:3
+                        }}>
+                            <CardHeader
+                                avatar={
+                                    <Avatar sx={{ bgcolor: red[500] }} aria-label="rating">
+                                        {data.key}
+                                    </Avatar>
+                                }
+                                sx={{ marginTop: -1 }}
+                                title={data.name}
+                                subheader={CardRating}
+                            />
+                            <CardContent>
+                                <Typography sx={{ fontSize: '15px' }} variant="body2" color="text.secondary">
+                                    {data.text}
+                                </Typography>
+                            </CardContent>
+
+                        </Card>
+                    </div>
+                )}
+            </Carousel >
+        </div >
 
     )
 }
 
 const SMCustomerRatingsMainPage = () => {
+    const CardRating = <Rating sx={{ fontSize: '15px', color: '#009587' }} name="read-only" value={5} readOnly />
 
     return (
         <div id="customer-stories" style={{
             padding: '20px'
         }}>
             <Typography variant='h4' style={TopHeadQuestions}>Customer Stories</Typography>
-           
-            <Box sx={{ display: 'block', justifyContent: 'space-between', m: 'auto' }}>
-                
-            <RatingFunction width={'90%'} height={'unset'} />
-             </Box>
 
-        </div>
+
+            <Carousel
+                draggable={true}
+                responsive={responsive}
+                partialVisible={true}
+                swipeable={false}
+                autoPlay={false}
+            >
+
+                {CustomerRatings.map(data =>
+                    <div>
+                        <Card sx={{
+                            maxWidth: '100%',
+                            backgroundColor: '#f3f3f3',
+                            boxShadow: 0,
+                            padding: '19px',
+                            outline: 'none',
+                            overflowY: 'auto',
+                            m: 'auto',
+                            marginTop: '10px',
+                            height: 'unset',ml:1
+                        }}>
+                            <CardHeader
+                                avatar={
+                                    <Avatar sx={{ bgcolor: red[500] }} aria-label="rating">
+                                        {data.key}
+                                    </Avatar>
+                                }
+                                sx={{ marginTop: -1 }}
+                                title={data.name}
+                                subheader={CardRating}
+                            />
+                            <CardContent>
+                                <Typography sx={{ fontSize: '15px' }} variant="body2" color="text.secondary">
+                                    {data.text}
+                                </Typography>
+                            </CardContent>
+
+                        </Card>
+                    </div>
+                )}
+            </Carousel >
+        </div >
 
     )
 }
-
-
-export default function CustomerRatingsMainPage(){
+export default function CustomerRatingsMainPage() {
     const xlMax = useMediaQuery('(max-width:2000px)');
     const xlMin = useMediaQuery('(min-width:1160px)');
     const mdMax = useMediaQuery('(max-width:1160px)');

@@ -3,7 +3,6 @@ import { TopCarouselData } from '../../constants/data'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useMediaQuery } from '@mui/material';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 
 const responsive = {
@@ -30,11 +29,6 @@ const responsive = {
 
 
 function Content({ padding, margin }) {
-    const CustomRightArrow = ({ onClick }) => {
-        // onMove means if dragging or swiping in progress.
-        return <i style={{ color: 'black' }} onClick={() => onClick()} />;
-        // <ChevronRightIcon onClick={() => onClick()} />
-    };
     return (
         <div style={{
             background: '#6e2d5c',
@@ -42,12 +36,9 @@ function Content({ padding, margin }) {
         }}>
             <Carousel
                 draggable={true}
-                //  customRightArrow={<CustomRightArrow />}
                 responsive={responsive}
                 partialVisible={true}
                 swipeable={false}
-                draggable={false}
-                //   infinite={false}
                 autoPlay={false}
             >
                 {TopCarouselData.map(data =>
