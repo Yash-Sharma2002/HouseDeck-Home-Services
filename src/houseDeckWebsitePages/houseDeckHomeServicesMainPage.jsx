@@ -25,6 +25,7 @@ import {
   searchBarOptionsDelhi, searchBarOptionsGN, searchBarOptionsGurgaon, searchBarOptionsPune,
   searchBarOptionsFaridabad, searchBarOptionsGhaziabad, searchBarOptionsHyderabad, IconHeaderImage
 } from '../constants/data';
+import SubscribeCard from '../HousDeckWebsiteComponents/MainPageMiddleComponents/SubscribeCard';
 
 
 function TopFirstBar({ city, setCity, handleData }) {
@@ -207,7 +208,6 @@ export default function HouseDeckHomeServicesMainPage() {
 
 
       <TopSecondCarousel />
-      {/* <Temp */}
 
 
       {city === "Bangalore" && <ServicesListed ServiceWithImage={ServiceWithImageBangalore} />}
@@ -233,6 +233,7 @@ export default function HouseDeckHomeServicesMainPage() {
 
       <RecommendedServices />
       <CustomerRatingsMainPage />
+      <SubscribeCard />
       <MainPageTopQuestions />
 
 

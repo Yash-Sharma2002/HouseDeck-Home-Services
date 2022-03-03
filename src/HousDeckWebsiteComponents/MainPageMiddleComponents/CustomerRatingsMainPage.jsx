@@ -95,7 +95,7 @@ function XLCustomerRatingsMainPage() {
             <Typography variant='h4' style={TopHeadQuestions}>Customer Stories</Typography>
 
             <Box sx={{ display: 'flex', marginLeft: '10px' }}>
-                <RatingFunction width={'29%'} height={'unset'} />
+                <RatingFunction width={'29%'} height={'220px'} />
             </Box>
         </div>
 
