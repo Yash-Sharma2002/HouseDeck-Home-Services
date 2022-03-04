@@ -1,16 +1,22 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
 import { useMediaQuery } from '@mui/material'
+import { Link} from 'react-router-dom'
 
 
-function Content({ ServiceWithImage, width }) {
+function Content({ ServiceWithImage, width,city }) {
     return (
         <div>
             <Box sx={{ display: 'flex', WebkitBoxPack: "justify", justifyContent: 'space-between', flexWrap: 'wrap', backgroundColor: '#f7f7f7', padding: '30px 50px', alignItems: "center" }}>
+                
                 {ServiceWithImage.map((data) => {
                     const disabled = `${data.tag}`
                     const offer = `${data.offer}`
                     return (
+                        <Link to={{
+                            pathname:'/home-services/painting',
+                            state:city
+                        }}>
                         <Box sx={{ textAlign: 'center', padding: '5px', cursor: 'pointer', flexDirection: 'column', width: width, opacity: disabled }}>
                             {offer === '' ? null :
                                 <Typography sx={{
@@ -27,6 +33,7 @@ function Content({ ServiceWithImage, width }) {
                             <img style={{ width: '4rem', borderRadius: '10px', padding: '4px' }} src={data.src} alt={data.id} />
                             <Typography sx={{ fontSize: '16px' }}>{data.id}</Typography>
                         </Box>
+                </Link>
                     )
                 })}
             </Box>
@@ -69,7 +76,7 @@ function SmContent({ ServiceWithImage,width }) {
 
 
 
-function VsmContent({ ServiceWithImage,width }) {
+function VsmContent({ ServiceWithImage,width,city }) {
     return (
         <div>
             <Box sx={{ display: 'flex', WebkitBoxPack: "justify", justifyContent: 'space-evenly', flexWrap: 'wrap', backgroundColor: '#f7f7f7', padding: '30px 0px', alignItems: "center",}}>
@@ -105,7 +112,7 @@ function VsmContent({ ServiceWithImage,width }) {
 
 
 
-export default function ServicesListed({ ServiceWithImage }) {
+export default function ServicesListed({ ServiceWithImage,city }) {
 
     const xlMax = useMediaQuery('(max-width:2000px)');
     const xlMin = useMediaQuery('(min-width:1000px)');
@@ -117,17 +124,17 @@ export default function ServicesListed({ ServiceWithImage }) {
     return (
         <>
             {xlMax && xlMin && (
-                <Content width={'unset'} ServiceWithImage={ServiceWithImage} />
+                <Content width={'unset'} city={city} ServiceWithImage={ServiceWithImage} />
 
             )}
             {!(xlMax && xlMin) && mdMax && mdMin && (
-                <Content width={'20%'} ServiceWithImage={ServiceWithImage} />
+                <Content width={'20%'} city={city} ServiceWithImage={ServiceWithImage} />
             )}
             {smMax && smMin &&(
-            <SmContent width={'31%'} ServiceWithImage={ServiceWithImage} />
+            <SmContent width={'31%'} city={city} ServiceWithImage={ServiceWithImage} />
             )}
             {!(smMax && smMin) &&vsm &&(
-            <VsmContent width={'31%'} ServiceWithImage={ServiceWithImage} />
+            <VsmContent width={'31%'} city={city} ServiceWithImage={ServiceWithImage} />
             )}
         </>
     )

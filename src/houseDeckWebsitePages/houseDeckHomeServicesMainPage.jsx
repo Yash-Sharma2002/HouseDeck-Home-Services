@@ -27,6 +27,9 @@ import {
   searchBarOptionsFaridabad, searchBarOptionsGhaziabad, searchBarOptionsHyderabad, IconHeaderImage
 } from '../constants/data';
 import SubscribeCard from '../HousDeckWebsiteComponents/MainPageMiddleComponents/SubscribeCard';
+import HowItWorks2 from '../HousDeckWebsiteComponents/otherPageComponents/HowItWorks2';
+import HowItWorks1 from '../HousDeckWebsiteComponents/otherPageComponents/HowItWorks1';
+import HouseDeckPromise from '../HousDeckWebsiteComponents/otherPageComponents/HouseDeckPromise';
 
 
 function TopFirstBar({ city, setCity, handleData }) {
@@ -224,25 +227,27 @@ export default function HouseDeckHomeServicesMainPage() {
       <TopSecondCarousel />
 
 
-      {city === "Bangalore" && <ServicesListed ServiceWithImage={ServiceWithImageBangalore} />}
-      {city === "Noida" && <ServicesListed ServiceWithImage={ServiceWithImageNoida} />}
-      {city === "Chennai" && <ServicesListed ServiceWithImage={ServiceWithImageChennai} />}
-      {city === "Delhi" && <ServicesListed ServiceWithImage={ServiceWithImageDelhi} />}
-      {city === "Greater Noida" && <ServicesListed ServiceWithImage={ServiceWithImageGN} />}
-      {city === "Gurgaon" && <ServicesListed ServiceWithImage={ServiceWithImageGurgaon} />}
-      {city === "Pune" && <ServicesListed ServiceWithImage={ServiceWithImagePune} />}
-      {city === "Faridabad" && <ServicesListed ServiceWithImage={ServiceWithImageFaridabad} />}
-      {city === "Ghaziabad" && <ServicesListed ServiceWithImage={ServiceWithImageGhaziabad} />}
-      {city === "Hyderabad" && <ServicesListed ServiceWithImage={ServiceWithImageHyderabad} />}
-      {city === "Mumbai" && <ServicesListed ServiceWithImage={ServiceWithImageMumbai} />}
-      {city === " " && <ServicesListed ServiceWithImage={ServiceWithImageBangalore} />}
+      {city === "Bangalore" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageBangalore} />}
+      {city === "Noida" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageNoida} />}
+      {city === "Chennai" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageChennai} />}
+      {city === "Delhi" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageDelhi} />}
+      {city === "Greater Noida" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageGN} />}
+      {city === "Gurgaon" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageGurgaon} />}
+      {city === "Pune" && <ServicesListed city={city} ServiceWithImage={ServiceWithImagePune} />}
+      {city === "Faridabad" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageFaridabad} />}
+      {city === "Ghaziabad" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageGhaziabad} />}
+      {city === "Hyderabad" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageHyderabad} />}
+      {city === "Mumbai" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageMumbai} />}
+      {city === " " && <ServicesListed city={city} ServiceWithImage={ServiceWithImageBangalore} />}
 
 
 
 
 
 
-
+<HowItWorks2 />
+<HowItWorks1 />
+<HouseDeckPromise />
 
 
       <RecommendedServices />
