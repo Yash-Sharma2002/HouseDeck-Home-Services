@@ -14,11 +14,13 @@ function FooterContent({fontSIze,margin}) {
                 )}
             </Box>
             <hr style={{ margin: '35px 8%', color: '#ddd', borderTopWidth: '1px' }} />
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', m: 'auto' }}>
+
+            {/* Sir told me to hide this*/}
+            {/* <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', m: 'auto' }}>
                 {['../otherPlatformLink/android.svg', '../otherPlatformLink/ios.svg'].map(data =>
                     <img style={{ margin: '20px 10px' }} src={data} alt="none" />
                 )}
-            </Box>
+            </Box> */}
 
             <Box  sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', m: 'auto' }}>
                 {SocialMediadata.map(data=>
@@ -30,7 +32,7 @@ function FooterContent({fontSIze,margin}) {
                     )}
             </Box>
             <Box sx={{textAlign:'center',fontSize:fontSIze,marginBottom:'20px'}}>
-            &copy; 2013-22 NoBroker Technologies Solution Pvt. Ltd.
+            HouseDeck Furnishing Pvt. Ltd.  &copy;   2021-22
             </Box>
 
         </div>

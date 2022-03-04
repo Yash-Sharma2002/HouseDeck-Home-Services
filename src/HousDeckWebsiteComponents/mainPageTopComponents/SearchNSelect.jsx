@@ -12,7 +12,7 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import { CitiesImg } from '../../constants/data';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 
 
@@ -88,8 +88,7 @@ export default function SearchNSelect({city,setCity,handleData,style}) {
       <Box >
         <Box sx={style} onClick={handleClickOpen}>
 
-          <Box>{city}</Box>
-          <Box sx={{ marginTop: 1 }}><ExpandMoreIcon /></Box>
+          <Box sx={{fontFamily:'Fredoka'}}>{city}</Box><ArrowDropDownIcon />
           {xlMax && xlMin && (
 
             <BootstrapDialog
@@ -98,7 +97,7 @@ export default function SearchNSelect({city,setCity,handleData,style}) {
               aria-labelledby="customized-dialog-title"
               open={open}
               maxWidth={false}
-              sx={{ position: 'fixed' }}
+              sx={{ width:'650px',margin:'0px auto',height:'550px' }}
             >
               <BootstrapDialogTitle sx={{ fontSize: '18px', fontWeight: '600' }} id="customized-dialog-title" onClose={handleClose}>
                 Select Your City
@@ -128,16 +127,16 @@ export default function SearchNSelect({city,setCity,handleData,style}) {
               aria-labelledby="customized-dialog-title"
               open={open}
               maxWidth={false}
-              sx={{ position: 'fixed' }}
+              sx={{  width:'500px',margin:'0px auto',height:'530px'}}
             >
               <BootstrapDialogTitle sx={{ fontSize: '18px', fontWeight: '600' }} id="customized-dialog-title" onClose={handleClose}>
                 Select Your City
 
               </BootstrapDialogTitle>
               <DialogContent dividers>
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', padding: '15px' }}>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', }}>
                   {CitiesImg.map(data =>
-                    <Button sx={{ width: '33%', display: 'block', color: 'black',textTransform:'none', userSelect: 'none', textAlign: 'center', padding: '20px 0px', cursor: 'pointer', }} onClick={() => handleData(data.name)}>
+                    <Button sx={{ width: '33%', display: 'block', color: 'black',textTransform:'none', userSelect: 'none', textAlign: 'center', padding: '15px 0px', cursor: 'pointer', }} onClick={() => handleData(data.name)}>
 
                       <img style={{ width: '50px', height: '50px' }} src={data.url} alt={data.id} />
                       <Typography sx={{ fontSize: '14px' }}>{data.name}</Typography>

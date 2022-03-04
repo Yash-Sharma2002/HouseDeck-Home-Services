@@ -40,7 +40,7 @@ function XLHeader({ commonProps }) {
                         variant="h6"
                         noWrap
                         component="div"
-                        sx={{ mr: 2, display: { xs: 'none', md: 'flex' },alignItems:'center' }}
+                        sx={{ mr: 2, display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}
                     >
                         {PostLogo}
 
@@ -54,13 +54,13 @@ function XLHeader({ commonProps }) {
                                 key={element.name}
                                 sx={{
                                     my: 2,
-                                    opacity: '0.6',
+                                    // opacity: '0.6',
                                     display: 'block',
                                     userSelect: 'none',
-                                    fontSize:'14px',
-                                    color:'#464646',
-                                    textDecoration:'none',
-                                    marginRight:'20px'
+                                    fontSize: '14px',
+                                    color: '#464646',
+                                    textDecoration: 'none',
+                                    marginRight: '20px'
                                 }} >
                                 {element.name}
                             </Link>
@@ -89,16 +89,22 @@ function XLHeader({ commonProps }) {
                             MyBookings
                         </Button>
 
-                        <Button variant='outlined' sx={{
-                            marginLeft: 1,
-                            borderColor: '#1976d2',
-                            fontSize: '13px',
-                            height: '30px',
-                            userSelect: 'none',
-                        }} disableRipple>
-                            <AddIcCallIcon style={IconHeaderImage} />
-                            18003096606
-                        </Button>
+                        <Link href="tel:18003096606" target="_blank" sx={{
+                            textDecoration: 'none'
+                        }}>
+                            <Button variant='outlined' sx={{
+                                marginLeft: 1,
+                                borderColor: '#1976d2',
+                                fontSize: '13px',
+                                height: '30px',
+                                userSelect: 'none',
+                                '&:hover':{
+                                    backgroundColor:'unset'
+                                }
+                            }} disableRipple>
+                                <AddIcCallIcon style={IconHeaderImage} />
+                                18003096606
+                            </Button></Link>
 
                         <Button variant='outlined' sx={{
                             marginLeft: 2,
@@ -151,27 +157,27 @@ function XLHeader({ commonProps }) {
 
 function MDHeader({ commonProps }) {
     return (<>
-    <AppBar position="static" sx={{ backgroundColor: 'white', color: '#000000' }}>
-            <Container maxWidth="xl" sx={{display:'flex'}}>
-        <Box sx={{ flexGrow: 1, display:'flex'}}>
-            <ResponsiveLeftMenuHeaderMainPage commonProps={commonProps} />
-        </Box>
+        <AppBar position="static" sx={{ backgroundColor: 'white', color: '#000000' }}>
+            <Container maxWidth="xl" sx={{ display: 'flex' }}>
+                <Box sx={{ flexGrow: 1, display: 'flex' }}>
+                    <ResponsiveLeftMenuHeaderMainPage commonProps={commonProps} />
+                </Box>
 
-        <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: 'flex', ml: { xs: -4 } }} >
-            {PostLogo}
-        </Typography>
-        </Container>
+                <Typography
+                    variant="h6"
+                    noWrap
+                    component="div"
+                    sx={{ flexGrow: 1, display: 'flex', ml: { xs: -4 } }} >
+                    {PostLogo}
+                </Typography>
+            </Container>
         </AppBar></>
     )
 }
 
 // This is the main function which divides every category in responsive 
 
-export default function Header({commonProps}){
+export default function Header({ commonProps }) {
     const xlMax = useMediaQuery('(max-width:2000px)');
     const xlMin = useMediaQuery('(min-width:1160px)');
     const mdMax = useMediaQuery('(max-width:1160px)');
@@ -180,13 +186,13 @@ export default function Header({commonProps}){
 
     return (
         <>
-        {xlMax && xlMin && (
-            <XLHeader commonProps={commonProps} />
-          )}
-          {!(xlMax && xlMin) && mdMax && mdMin && (
-            <MDHeader commonProps={commonProps} />
-          )}
-          {sm && (<MDHeader commonProps={commonProps} />)}
-          </>
+            {xlMax && xlMin && (
+                <XLHeader commonProps={commonProps} />
+            )}
+            {!(xlMax && xlMin) && mdMax && mdMin && (
+                <MDHeader commonProps={commonProps} />
+            )}
+            {sm && (<MDHeader commonProps={commonProps} />)}
+        </>
     )
 }

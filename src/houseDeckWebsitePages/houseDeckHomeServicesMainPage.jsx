@@ -13,6 +13,7 @@ import TopSecondCarousel from '../HousDeckWebsiteComponents/mainPageTopComponent
 import SearchBar from '../HousDeckWebsiteComponents/mainPageTopComponents/SearchBar';
 import SearchNSelect from '../HousDeckWebsiteComponents/mainPageTopComponents/SearchNSelect';
 import Button from '@mui/material/Button';
+import { Link } from '@mui/material';
 import { useMediaQuery, Box } from '@mui/material';
 import AddIcCallIcon from '@mui/icons-material/AddIcCall';
 import {
@@ -47,17 +48,17 @@ function TopFirstBar({ city, setCity, handleData }) {
     height: '50px!important'
   }
 
-  
+
   const style2 = {
     display: 'flex',
     justifyContent: 'space-between',
-    border:'none',
+    border: 'none',
     cursor: 'pointer',
     padding: '0px 10px',
     alignItems: 'center',
     minWidth: 100,
     height: '50px!important',
-    color:"white"
+    color: "white"
   }
   return (
 
@@ -66,7 +67,7 @@ function TopFirstBar({ city, setCity, handleData }) {
       {xlMax && xlMin && (
         <div style={{
           background: '#803c6d',
-        
+
         }}>
           <Box sx={{
             padding: '7rem 100px 3rem 100px',
@@ -92,28 +93,34 @@ function TopFirstBar({ city, setCity, handleData }) {
       {!(xlMax && xlMin) && mdMax && mdMin && (
         <div style={{
           background: '#803c6d',
-        
+
         }}>
           <Box sx={{
             padding: '4rem 50px 3rem 50px',
             display: 'block',
           }}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: '0rem 0px 1rem 0px',alignItems:'center' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: '0rem 0px 1rem 0px', alignItems: 'center' }}>
               <SearchNSelect style={style2} city={city} setCity={setCity} handleData={handleData} />
               <Box>
 
-                <Button variant='outlined' sx={{
-                  marginLeft: 1,
-                  borderColor: 'white',
-                  fontSize: '13px',
-                  height: '30px',
-                  userSelect: 'none',
-                  borderRadius:'20px',
-                  color:'white'
-                }} disableRipple>
-                  <AddIcCallIcon style={IconHeaderImage} />
-                  18003096606
-                </Button>
+              <Link href="tel:18003096606" target="_blank" sx={{
+                  textDecoration: 'none'
+                }}>
+                  <Button variant='outlined' sx={{
+                    marginLeft: 1,
+                    borderColor: 'white',
+                    fontSize: '13px',
+                    color:'white',
+                    height: '30px',
+                    borderRadius: '20px',
+                    userSelect: 'none',
+                    '&:hover': {
+                      backgroundColor: 'unset'
+                    }
+                  }} disableRipple>
+                    <AddIcCallIcon style={IconHeaderImage} />
+                    18003096606
+                  </Button></Link>
               </Box>
             </Box>
 
@@ -137,28 +144,35 @@ function TopFirstBar({ city, setCity, handleData }) {
       {sm && (
         <div style={{
           background: '#803c6d',
-        
+
         }}>
           <Box sx={{
             padding: '3rem 10px 3rem 10px',
             display: 'block',
           }}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: '0rem 155px 1rem 0px',alignItems:'center' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: '0rem 0px 1rem 0px', alignItems: 'center' }}>
               <SearchNSelect style={style2} city={city} setCity={setCity} handleData={handleData} />
               <Box>
 
-                <Button variant='outlined' sx={{
-                  marginLeft: 1,
-                  borderColor: 'white',
-                  fontSize: '13px',
-                  height: '30px',
-                  userSelect: 'none',
-                  borderRadius:'20px',
-                  color:'white'
-                }} disableRipple>
-                  <AddIcCallIcon style={IconHeaderImage} />
-                  18003096606
-                </Button>
+                <Link href="tel:18003096606" target="_blank" sx={{
+                  textDecoration: 'none'
+                }}>
+                  <Button variant='outlined' sx={{
+                    marginLeft: 1,
+                    borderColor: 'white',
+                    fontSize: '13px',
+                    color:'white',
+                    height: '30px',
+                    borderRadius: '20px',
+                    userSelect: 'none',
+                    '&:hover': {
+                      backgroundColor: 'unset'
+                    }
+                  }} disableRipple>
+                    <AddIcCallIcon style={IconHeaderImage} />
+                    18003096606
+                  </Button></Link>
+
               </Box>
             </Box>
 
@@ -234,6 +248,7 @@ export default function HouseDeckHomeServicesMainPage() {
       <RecommendedServices />
       <CustomerRatingsMainPage />
       <SubscribeCard />
+      {/* <Temp /> */}
       <MainPageTopQuestions />
 
 
