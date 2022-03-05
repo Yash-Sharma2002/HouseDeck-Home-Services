@@ -27,8 +27,7 @@ const responsive = {
     }
 };
 
-
-function Content({ padding, margin,height }) {
+function Content({ padding, margin}) {
     return (
         <div style={{
             background: '#6e2d5c',
@@ -36,9 +35,10 @@ function Content({ padding, margin,height }) {
         }}>
             <Carousel
                 draggable={true}
+                arrows
                 responsive={responsive}
                 partialVisible={true}
-                swipeable={false}
+                swipeable={true}
                 autoPlay={false}
             >
                 {TopCarouselData.map(data =>
@@ -49,7 +49,6 @@ function Content({ padding, margin,height }) {
                         <img style={{
                             width: '100%',
                             borderRadius:10,
-                            height:height
                         }} src={data.url} alt="Poster" />
                     </div>
                 )}
@@ -68,13 +67,13 @@ export default function TopSecondCarousel() {
 
         <>
             {xlMax && xlMin && (
-                <Content padding={'50px 70px'} margin={'20px'} height={'240px'} />
+                <Content padding={'50px 70px'} margin={'20px'} />
             )}
             {!(xlMax && xlMin) && mdMax && mdMin && (
-                <Content padding={'30px 50px'} margin={'15px'} height={'200px'} />
+                <Content padding={'30px 20px'} margin={'0px'} />
             )}
-            {sm && (
-                <Content padding={'20px 10px'} margin={'0px'} height={'auto'} />
+            {!(mdMax && mdMin) && sm && (
+                <Content padding={'20px 10px'} margin={'0px'} />
             )}
         </>
     )

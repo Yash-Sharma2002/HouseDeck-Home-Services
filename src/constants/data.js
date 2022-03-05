@@ -257,7 +257,7 @@ export const ServiceWithImageBangalore = [
     src: "../imageService/home-sanitization.png",
     offer: "Upto 25% off",
     tag: true,
-    takeToPath: '/home-services/sanitization',
+    takeToPath: '/home-services/home-sanitization',
 
   },
   {
@@ -318,7 +318,7 @@ export const ServiceWithImageChennai = [
     src: "../imageService/home-sanitization.png",
     offer: "Upto 25% off",
     tag: true,
-    takeToPath: '/home-services/sanitization',
+    takeToPath: '/home-services/home-sanitization',
 
   },
   {
@@ -376,7 +376,7 @@ export const ServiceWithImageMumbai = [
     src: "../imageService/home-sanitization.png",
     offer: "Upto 25% off",
     tag: true,
-    takeToPath: '/home-services/sanitization',
+    takeToPath: '/home-services/home-sanitization',
 
   },
   {
@@ -434,7 +434,7 @@ export const ServiceWithImagePune = [
     src: "../imageService/home-sanitization.png",
     offer: "Upto 25% off",
     tag: true,
-    takeToPath: '/home-services/sanitization',
+    takeToPath: '/home-services/home-sanitization',
 
   },
   {
@@ -492,7 +492,7 @@ export const ServiceWithImageHyderabad = [
     src: "../imageService/home-sanitization.png",
     offer: "Upto 25% off",
     tag: true,
-    takeToPath: '/home-services/sanitization',
+    takeToPath: '/home-services/home-sanitization',
 
   },
   {
@@ -555,7 +555,7 @@ export const ServiceWithImageGurgaon = [
     src: "../imageService/home-sanitization.png",
     offer: "Upto 25% off",
     tag: true,
-    takeToPath: '/home-services/sanitization',
+    takeToPath: '/home-services/home-sanitization',
 
   },
   {
@@ -618,7 +618,7 @@ export const ServiceWithImageDelhi = [
     src: "../imageService/home-sanitization.png",
     offer: "Upto 25% off",
     tag: true,
-    takeToPath: '/home-services/sanitization',
+    takeToPath: '/home-services/home-sanitization',
 
   },
   {
@@ -681,7 +681,7 @@ export const ServiceWithImageNoida = [
     src: "../imageService/home-sanitization.png",
     offer: "Upto 25% off",
     tag: true,
-    takeToPath: '/home-services/sanitization',
+    takeToPath: '/home-services/home-sanitization',
 
   },
   {
@@ -744,7 +744,7 @@ export const ServiceWithImageGN = [
     src: "../imageService/home-sanitization.png",
     offer: "Upto 25% off",
     tag: true,
-    takeToPath: '/home-services/sanitization',
+    takeToPath: '/home-services/home-sanitization',
 
   },
   {
@@ -807,7 +807,7 @@ export const ServiceWithImageGhaziabad = [
     src: "../imageService/home-sanitization.png",
     offer: "Upto 25% off",
     tag: true,
-    takeToPath: '/home-services/sanitization',
+    takeToPath: '/home-services/home-sanitization',
 
   },
   {
@@ -865,7 +865,7 @@ export const ServiceWithImageFaridabad = [
     src: "../imageService/home-sanitization.png",
     offer: "Upto 25% off",
     tag: true,
-    takeToPath: '/home-services/sanitization',
+    takeToPath: '/home-services/home-sanitization',
 
   },
   {

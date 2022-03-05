@@ -5,12 +5,12 @@ import { useMediaQuery } from '@mui/material';
 import {Link} from '@mui/material';
 
 
-function FooterContent({fontSIze,margin}) {
+function FooterContent({fontSize,margin}) {
     return (
         <div>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '30px', }}>
                 {FooterLink.map(data =>
-                    <Link href={data.url} sx={{ fontSize: fontSIze, color: '#464646', margin: margin,textDecoration:'none' }}>{data.name}</Link>
+                    <Link href={data.url} sx={{ fontSize: fontSize, color: '#464646', margin: margin,textDecoration:'none' }}>{data.name}</Link>
                 )}
             </Box>
             <hr style={{ margin: '35px 8%', color: '#ddd', borderTopWidth: '1px' }} />
@@ -31,7 +31,7 @@ function FooterContent({fontSIze,margin}) {
                  
                     )}
             </Box>
-            <Box sx={{textAlign:'center',fontSize:fontSIze,marginBottom:'20px'}}>
+            <Box sx={{textAlign:'center',fontSize:fontSize,marginBottom:'20px',color: '#464646'}}>
             HouseDeck Furnishing Pvt. Ltd.  &copy;   2021-22
             </Box>
 
@@ -39,18 +39,6 @@ function FooterContent({fontSIze,margin}) {
     )
 }
 
-function XLFooter ({fontSIze,margin})
-{
-    return <FooterContent fontSIze={fontSIze} margin={margin} />
-}
-function MDFooter ({fontSIze,margin})
-{
-    return <FooterContent fontSIze={fontSIze} margin={margin}  />
-}
-function SMFooter({fontSIze,margin})
-{
-    return <FooterContent fontSIze={fontSIze} margin={margin}  />
-}
 
 export default function Footer(){
 
@@ -64,12 +52,12 @@ export default function Footer(){
 
     <>
     {xlMax && xlMin && (
-        <XLFooter fontSIze={'18px'} margin={'0px 20px'}  />
+        <FooterContent fontSize={'18px'} margin={'0px 20px'}  />
     )}
     {!(xlMax && xlMin) && mdMax && mdMin && (
-        <MDFooter fontSIze={'16px'} margin={"0px 5px 5px"}  />
+        <FooterContent fontSize={'16px'} margin={"0px 5px 5px"}  />
     )}
-    {sm && (<SMFooter fontSIze={'14px'} margin={"0px 5px 5px"}  />)}
+    {sm && (<FooterContent fontSize={'14px'} margin={"0px 5px 5px"}  />)}
 </>
   )
 }

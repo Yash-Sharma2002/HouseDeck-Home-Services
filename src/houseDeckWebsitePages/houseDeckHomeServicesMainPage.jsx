@@ -27,9 +27,6 @@ import {
   searchBarOptionsFaridabad, searchBarOptionsGhaziabad, searchBarOptionsHyderabad, IconHeaderImage
 } from '../constants/data';
 import SubscribeCard from '../HousDeckWebsiteComponents/MainPageMiddleComponents/SubscribeCard';
-import HowItWorks2 from '../HousDeckWebsiteComponents/otherPageComponents/HowItWorks2';
-import HowItWorks1 from '../HousDeckWebsiteComponents/otherPageComponents/HowItWorks1';
-import HouseDeckPromise from '../HousDeckWebsiteComponents/otherPageComponents/HouseDeckPromise';
 
 
 function TopFirstBar({ city, setCity, handleData }) {
@@ -106,14 +103,14 @@ function TopFirstBar({ city, setCity, handleData }) {
               <SearchNSelect style={style2} city={city} setCity={setCity} handleData={handleData} />
               <Box>
 
-              <Link href="tel:18003096606" target="_blank" sx={{
+                <Link href="tel:18003096606" target="_blank" sx={{
                   textDecoration: 'none'
                 }}>
                   <Button variant='outlined' sx={{
                     marginLeft: 1,
                     borderColor: 'white',
                     fontSize: '13px',
-                    color:'white',
+                    color: 'white',
                     height: '30px',
                     borderRadius: '20px',
                     userSelect: 'none',
@@ -144,7 +141,7 @@ function TopFirstBar({ city, setCity, handleData }) {
           </Box>
         </div>
       )}
-      {sm && (
+      {!(mdMax && mdMin) && sm && (
         <div style={{
           background: '#803c6d',
 
@@ -164,7 +161,7 @@ function TopFirstBar({ city, setCity, handleData }) {
                     marginLeft: 1,
                     borderColor: 'white',
                     fontSize: '13px',
-                    color:'white',
+                    color: 'white',
                     height: '30px',
                     borderRadius: '20px',
                     userSelect: 'none',
@@ -203,7 +200,7 @@ function TopFirstBar({ city, setCity, handleData }) {
 
 }
 
-export default function HouseDeckHomeServicesMainPage({city,setCity,handleData}) {
+export default function HouseDeckHomeServicesMainPage({ city, setCity, handleData }) {
   const commonProps = [
 
     { name: 'Home Services', url: '' },
@@ -235,15 +232,6 @@ export default function HouseDeckHomeServicesMainPage({city,setCity,handleData})
       {city === "Hyderabad" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageHyderabad} />}
       {city === "Mumbai" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageMumbai} />}
       {city === " " && <ServicesListed city={city} ServiceWithImage={ServiceWithImageBangalore} />}
-
-
-
-
-
-
-<HowItWorks2 />
-<HowItWorks1 />
-<HouseDeckPromise />
 
 
       <RecommendedServices />

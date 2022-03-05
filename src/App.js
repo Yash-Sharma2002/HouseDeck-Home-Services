@@ -41,7 +41,7 @@ function App() {
       {/* services pages  */}
       <Route exact path='/home-services/painting' element={<HouseDeckHomeServicesPainting city={city} setCity={setCity} handleData={handleData} />} />
       <Route exact path='/home-services/cleaning' element={<HouseDeckHomeServicesCleaning city={city} setCity={setCity} handleData={handleData} />} />
-      <Route exact path='/home-services/home-sanittization' element={<HouseDeckHomeServicesSanitization city={city} setCity={setCity} handleData={handleData} />} />
+      <Route exact path='/home-services/home-sanitization' element={<HouseDeckHomeServicesSanitization city={city} setCity={setCity} handleData={handleData} />} />
       <Route exact path='/home-services/ac-repair' element={<HouseDeckHomeServicesACRepair city={city} setCity={setCity} handleData={handleData} />} />
       <Route exact path='/home-services/electrician' element={<HouseDeckHomeServicesElectrician city={city} setCity={setCity} handleData={handleData} />} />
       <Route exact path='/home-services/carpentary' element={<HouseDeckHomeServicesCarpentary city={city} setCity={setCity} handleData={handleData} />} />

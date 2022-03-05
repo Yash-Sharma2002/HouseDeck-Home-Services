@@ -97,7 +97,7 @@ export default function SearchNSelect({city,setCity,handleData,style}) {
               aria-labelledby="customized-dialog-title"
               open={open}
               maxWidth={false}
-              sx={{ width:'650px',margin:'0px auto',height:'550px' }}
+              sx={{ width:'650px',margin:'0px auto',height:'fit-content' }}
             >
               <BootstrapDialogTitle sx={{ fontSize: '18px', fontWeight: '600' }} id="customized-dialog-title" onClose={handleClose}>
                 Select Your City
@@ -127,7 +127,7 @@ export default function SearchNSelect({city,setCity,handleData,style}) {
               aria-labelledby="customized-dialog-title"
               open={open}
               maxWidth={false}
-              sx={{ margin:'0px auto',height:'530px'}}
+              sx={{ margin:'0px auto',height:'fit-content'}}
             >
               <BootstrapDialogTitle sx={{ fontSize: '18px', fontWeight: '600' }} id="customized-dialog-title" onClose={handleClose}>
                 Select Your City

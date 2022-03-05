@@ -23,7 +23,7 @@ function Content({ padding, padding2, display }) {
             <Box sx={{ display: display, alignItems: 'center', justifyContent: 'center' }}>
 
 
-                <Card sx={{ maxWidth: 370, borderRadius: 4, height: '450px', margin: '0px 10px', background: "rgb(234,253,247)" }}>
+                <Card sx={{width: '33%', borderRadius: 4, height: '450px', margin: '0px 10px', background: "rgb(234,253,247)" }}>
                     <Box sx={{ textAlign: 'center' }}>
                         <Box sx={{
                             background: "url(../ServicePlans/priceSide.jpg)",
@@ -66,7 +66,7 @@ function Content({ padding, padding2, display }) {
                 </Card>
 
 
-                <Card sx={{ maxWidth: 370, borderRadius: 4, height: '500px', margin: '0px 10px', background: "rgb(234,253,247)" }}>
+                <Card sx={{ width: '33%', borderRadius: 4, height: '500px', margin: '0px 10px', background: "rgb(234,253,247)" }}>
                     <Box sx={{ textAlign: 'center' }}>
                         <Box sx={{
                             background: "url(../ServicePlans/priceMain.jpg)",
@@ -109,7 +109,7 @@ function Content({ padding, padding2, display }) {
                 </Card>
 
 
-                <Card sx={{ maxWidth: 370, borderRadius: 4, height: '450px', margin: '0px 10px', background: "rgb(234,253,247)" }}>
+                <Card sx={{ width: '33%', borderRadius: 4, height: '450px', margin: '0px 10px', background: "rgb(234,253,247)" }}>
                     <Box sx={{ textAlign: 'center' }}>
                         <Box sx={{
                             background: "url(../ServicePlans/priceSide.jpg)",
@@ -139,7 +139,7 @@ function Content({ padding, padding2, display }) {
                             borderRadius: 15,
                             background: "#bee9d8",
                             textAlign: 'center',
-                            mt: 6,
+                            mt: 4,
                             boxShadow: 0,
                             '&:hover': {
                                 background: 'rgb(122,220,180)',
@@ -315,8 +315,8 @@ export default function SubscribeCard() {
     const xlMax = useMediaQuery('(max-width:2000px)');
     const xlMin = useMediaQuery('(min-width:1160px)');
     const mdMax = useMediaQuery('(max-width:1160px)');
-    const mdMin = useMediaQuery('(min-width:850px)');
-    const sm = useMediaQuery('(max-width:850px)');
+    const mdMin = useMediaQuery('(min-width:820px)');
+    const sm = useMediaQuery('(max-width:820px)');
     return (
 
         <>
@@ -328,16 +328,10 @@ export default function SubscribeCard() {
                 <Content padding={'30px 20px'} padding2={'10px 20px'} display={'flex'} />
 
             )}
-            {sm && (
+            {!(mdMax && mdMin) && sm && (
                 <SMContent />
             )}
         </>
     )
 
-
-    return (
-        <div>
-
-        </div>
-    )
 }
