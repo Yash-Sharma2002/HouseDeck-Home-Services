@@ -5,7 +5,7 @@ export default function HouseDeckHomeServicesNotFound() {
   return (
     <div>
         <Box sx={{ width: 'fit-content', margin: '20px auto', mt:5,fontFamily: 'Fredoka', fontSize: '40px', borderRight: '2px solid red', borderLeft: '2px solid red', p: '0px 10px' }}>
-          ERROR - 404
+          ERROR - 404 
         </Box>
         <Box sx={{textAlign:'center'}}>
           <img src="../logos/404.webp" alt="Not Found" />

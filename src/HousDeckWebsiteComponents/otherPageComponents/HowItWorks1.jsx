@@ -4,7 +4,7 @@ import { useMediaQuery } from '@mui/material';
 
 function Content({ padding,display,width }) {
     return (
-        <div style={{
+        <div id='how-it-works' style={{
             padding: padding
         }}>
             <Box>
@@ -13,12 +13,13 @@ function Content({ padding,display,width }) {
                     color: '#464646',
                     fontSize: '22px',
                     paddingBottom: '50px',
-                    marginTop: '30px'
+                    marginTop: '20px'
                 }}>
                     How Painiting Works in The Given City
                 </Typography>
-                <Box sx={{ display: display, justifyContent: 'space-between',alignItems:'center',textAlign:'center',margin:'10px auto' }}>
+                <Box sx={{ display: display, justifyContent: 'space-between',textAlign:'center',margin:'10px auto' }}>
                     <Box sx={{width:width,textAlign:'center',wordWrap:'break-word',margin:'10px auto'}}>
+                        <img src="../other/orange icons 11-01.png" style={{width:"75px"}} alt="Select 1" />
                         <Typography sx={{
                             fontWeight: '600',
                             color: '#464646',
@@ -27,6 +28,7 @@ function Content({ padding,display,width }) {
                         <Typography sx={{fontSize:'14px'}}>Get lowest priced quotes for your electrician service</Typography>
                     </Box>
                     <Box sx={{width:width,textAlign:'center',wordWrap:'break-word',margin:'10px auto'}}>
+                    <img src="../other/orange icons 12-01.png" style={{width:"75px"}} alt="Select 1" />
                         <Typography sx={{
                             fontWeight: '600',
                             color: '#464646',
@@ -35,6 +37,8 @@ function Content({ padding,display,width }) {
                         <Typography sx={{fontSize:'14px'}}>Get guarateed lowest price for your service</Typography>
                     </Box>
                     <Box sx={{width:width,textAlign:'center',wordWrap:'break-word',margin:'10px auto'}}>
+                    <img src="../other/orange icons 13-01.png" style={{width:"75px"}} alt="Select 1" />
+
                         <Typography sx={{
                             fontWeight: '600',
                             color: '#464646',

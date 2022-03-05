@@ -4,7 +4,7 @@ import { useMediaQuery } from '@mui/material';
 
 function Content({ padding, display, width }) {
     return (
-        <div style={{
+        <div id='houseDeck-promise' style={{
             padding: padding
         }}>
             <Box>
@@ -13,13 +13,14 @@ function Content({ padding, display, width }) {
                     color: '#464646',
                     fontSize: '22px',
                     paddingBottom: '50px',
-                    marginTop: '30px'
+                    marginTop: '20px'
                 }}>
-                    NoBroker Promise for Painting services in GurgaonLowest Prices
+                    HouseDeck Promise for Painting services in City
 
                 </Typography>
-                <Box sx={{ display: display, justifyContent: 'space-between', alignItems: 'center', textAlign: 'center', margin: '10px auto' }}>
+                <Box sx={{ display: display, justifyContent: 'space-between',  textAlign: 'center', margin: '10px auto' }}>
                     <Box sx={{ width: width, textAlign: 'center', wordWrap: 'break-word', margin: '10px auto' }}>
+                    <img src="../other/orange icons 15-01.png" style={{width:"75px"}} alt="Select 1" />
                         <Typography sx={{
                             fontWeight: '600',
                             color: '#464646',
@@ -30,6 +31,7 @@ function Content({ padding, display, width }) {
                         </Typography>
                     </Box>
                     <Box sx={{ width: width, textAlign: 'center', wordWrap: 'break-word', margin: '10px auto' }}>
+                    <img src="../other/orange 9-01.png" style={{width:"75px"}} alt="Select 1" />
                         <Typography sx={{
                             fontWeight: '600',
                             color: '#464646',
@@ -38,6 +40,7 @@ function Content({ padding, display, width }) {
                         <Typography sx={{ fontSize: '14px' }}>Book now, cancel or change anytime later. No questions asked.</Typography>
                     </Box>
                     <Box sx={{ width: width, textAlign: 'center', wordWrap: 'break-word', margin: '10px auto' }}>
+                    <img src="../other/orange icons 10-01.png" style={{width:"75px"}} alt="Select 1" />
                         <Typography sx={{
                             fontWeight: '600',
                             color: '#464646',

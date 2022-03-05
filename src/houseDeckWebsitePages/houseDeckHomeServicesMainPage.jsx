@@ -203,7 +203,7 @@ function TopFirstBar({ city, setCity, handleData }) {
 
 }
 
-export default function HouseDeckHomeServicesMainPage() {
+export default function HouseDeckHomeServicesMainPage({city,setCity,handleData}) {
   const commonProps = [
 
     { name: 'Home Services', url: '' },
@@ -213,10 +213,6 @@ export default function HouseDeckHomeServicesMainPage() {
     { name: 'HouseDeck Services', url: '#houseDeck-Services' },
   ]
 
-  const [city, setCity] = React.useState(" ")
-  const handleData = (data) => {
-    setCity(data)
-  }
   return (
     <>
       <Header commonProps={commonProps} />

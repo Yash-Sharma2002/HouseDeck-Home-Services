@@ -8,7 +8,7 @@ import HouseDeckPromise from '../HousDeckWebsiteComponents/otherPageComponents/H
 import HowItWorks1 from '../HousDeckWebsiteComponents/otherPageComponents/HowItWorks1'
 // import SimilarServices from '../HousDeckWebsiteComponents/similarServices'
 
-export default function HouseDeckHomeServicesPainting({ city, setCity, handleData }) {
+export default function HouseDeckHomeServicesCleaning({ city, setCity, handleData }) {
   const commonProps = [
     { name: 'Home Services', url: '/home-services' },
     { name: 'How it works', url: '#how-it-works' },
