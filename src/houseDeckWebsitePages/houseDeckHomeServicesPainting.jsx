@@ -24,6 +24,7 @@ export default function HouseDeckHomeServicesPainting({ city, setCity, handleDat
       <HouseDeckPromise />
       <RecommendedServices />
       <CustomerRatingsMainPage />
+      <div>{city}</div>
       <HouseDeckServicesBottomList />
       {/* <SimilarServices /> */}
       <Footer />

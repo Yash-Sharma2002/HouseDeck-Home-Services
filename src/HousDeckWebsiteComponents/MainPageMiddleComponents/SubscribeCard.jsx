@@ -9,21 +9,40 @@ import { useMediaQuery } from '@mui/material'
 function Content({ padding, padding2, display }) {
     return (
         <div style={{ padding: padding }}>
-            <Typography sx={{
-                fontWeight: '600',
-                color: '#464646',
-                fontSize: '22px',
-                paddingBottom: '50px',
-                marginTop: '40px',
-                // textAlign: 'center'
+            <Box sx={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center'
             }}>
-                Service Plans
-            </Typography>
+                <Typography sx={{
+                    fontWeight: '600',
+                    color: '#464646',
+                    fontSize: '22px',
+                    paddingBottom: '50px',
+                    marginTop: '40px',
+                    // textAlign: 'center'
+                }}>
+                    Subscription Services
+                </Typography>
+
+                <Box sx={{
+                    textAlign: 'center',
+                }}>
+                    <a style={{
+                        color: '#1b685f',
+                        fontSize: '16px',
+                        textDecoration: 'none'
+                    }} href="/home-services/subcription">
+                        View all plans &#10140;
+                    </a>
+                </Box>
+
+            </Box>
 
             <Box sx={{ display: display, alignItems: 'center', justifyContent: 'center' }}>
 
 
-                <Card sx={{width: '33%', borderRadius: 4, height: '450px', margin: '0px 10px', background: "rgb(234,253,247)" }}>
+                <Card sx={{ width: '33%', borderRadius: 4, height: '450px', margin: '0px 10px', background: "rgb(234,253,247)" }}>
                     <Box sx={{ textAlign: 'center' }}>
                         <Box sx={{
                             background: "url(../ServicePlans/priceSide.jpg)",
@@ -162,6 +181,11 @@ function Content({ padding, padding2, display }) {
 function SMContent() {
     return (
         <div style={{ padding: '20px' }}>
+             <Box sx={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center'
+            }}>
             <Typography sx={{
                 fontWeight: '600',
                 color: '#464646',
@@ -169,8 +193,22 @@ function SMContent() {
                 paddingBottom: '50px',
                 marginTop: '40px',
             }}>
-                Service Plans
+                Subscription Services
             </Typography>
+
+            <Box sx={{
+                    textAlign: 'center',
+                }}>
+                    <a style={{
+                        color: '#1b685f',
+                        fontSize: '14px',
+                        textDecoration: 'none'
+                    }} href="/home-services/subcription">
+                        View all plans &#10140;
+                    </a>
+                </Box>
+
+                </Box>
 
             <Box sx={{ display: 'block', alignItems: 'center', justifyContent: 'center' }}>
 
@@ -305,6 +343,17 @@ function SMContent() {
 
             </Box>
 
+            <Box sx={{
+                textAlign: 'center',
+            }}>
+                <a style={{
+                    color: '#1b685f',
+                    fontSize: '14px',
+                    textDecoration: 'none'
+                }} href="/home-services/subcription">
+                    & more...
+                </a>
+            </Box>
         </div>
     )
 }

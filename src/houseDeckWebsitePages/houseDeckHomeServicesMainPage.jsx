@@ -45,20 +45,21 @@ function TopFirstBar({ city, setCity, handleData }) {
     alignItems: 'center',
     minWidth: 100,
     backgroundColor: 'white',
-    height: '50px!important'
+    border:"1px solid black",
+    height: '50px!important',
   }
 
 
   const style2 = {
     display: 'flex',
     justifyContent: 'space-between',
-    border: 'none',
     cursor: 'pointer',
     padding: '0px 10px',
     alignItems: 'center',
     minWidth: 100,
     height: '50px!important',
-    color: "white"
+    color: "white",
+    border:"1px solid black"
   }
   return (
 
@@ -66,7 +67,7 @@ function TopFirstBar({ city, setCity, handleData }) {
     <>
       {xlMax && xlMin && (
         <div style={{
-          background: '#803c6d',
+          background: '#e5f6f5',
 
         }}>
           <Box sx={{
@@ -92,7 +93,7 @@ function TopFirstBar({ city, setCity, handleData }) {
       )}
       {!(xlMax && xlMin) && mdMax && mdMin && (
         <div style={{
-          background: '#803c6d',
+          background: '#e5f6f5',
 
         }}>
           <Box sx={{
@@ -143,7 +144,7 @@ function TopFirstBar({ city, setCity, handleData }) {
       )}
       {!(mdMax && mdMin) && sm && (
         <div style={{
-          background: '#803c6d',
+          background: '#e5f6f5',
 
         }}>
           <Box sx={{

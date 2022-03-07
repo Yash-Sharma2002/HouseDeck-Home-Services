@@ -46,7 +46,7 @@ const TopQuestions = () => {
                     id="panel1bh-header"
                 >
                     <Typography className='colorChange1'>
-                        How to book a service on NoBroker?
+                        How to book a service on HouseDeck?
                     </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
@@ -71,7 +71,7 @@ const TopQuestions = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography >
-                        NoBroker Partners are selected individuals / companies who meet our stringent
+                        HouseDeck Partners are selected individuals / companies who meet our stringent
                         criteria for delivering quality home services.
                     </Typography>
                 </AccordionDetails>
@@ -84,7 +84,7 @@ const TopQuestions = () => {
                     id="panel3bh-header"
                 >
                     <Typography className='colorChange3' >
-                        What all services are available on NoBroker?
+                        What all services are available on HouseDeck?
                     </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
@@ -99,14 +99,14 @@ const TopQuestions = () => {
                     aria-controls="panel4bh-content"
                     id="panel4bh-header"
                 >
-                    <Typography className='colorChange4' >How are NoBroker services different
+                    <Typography className='colorChange4' >How are HouseDeck services different
                         from other online portals?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
                         Other online portals merely put you in touch with the service providers
                         leaving the service quality upto individual vendors. On the other hand, all
-                        NoBroker services are owned and fulfilled by NoBroker Partners who adhere to a strict quality criteria.
+                        HouseDeck services are owned and fulfilled by HouseDeck Partners who adhere to a strict quality criteria.
                     </Typography>
                 </AccordionDetails>
             </Accordion>

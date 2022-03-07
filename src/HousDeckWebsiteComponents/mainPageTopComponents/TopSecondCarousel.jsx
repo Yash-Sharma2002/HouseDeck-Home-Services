@@ -30,7 +30,7 @@ const responsive = {
 function Content({ padding, margin}) {
     return (
         <div style={{
-            background: '#6e2d5c',
+            background: '#e5f6f5',
             padding: padding, overflow: "hidden"
         }}>
             <Carousel

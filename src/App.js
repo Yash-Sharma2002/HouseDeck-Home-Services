@@ -4,7 +4,7 @@ import {BrowserRouter, Routes, Route, } from 'react-router-dom';
 import HouseDeckHomeServicesMainPage from './houseDeckWebsitePages/houseDeckHomeServicesMainPage'
 import HouseDeckHomeServicesFAQpage from './houseDeckWebsitePages/houseDeckHomeServicesFAQpage';
 import HouseDeckHomeServicesNotFound from './houseDeckWebsitePages/houseDeckHomeServicesNotFound';
-import HouseDeckHomeServicesTC from './houseDeckWebsitePages/houseDeckHomeServicesTC';
+import HouseDeckHomeServicesPartner from './houseDeckWebsitePages/houseDeckHomeServicesPartner';
 import HouseDeckHomeServicesPrivacy from './houseDeckWebsitePages/houseDeckHomeServicesPrivacy';
 import HouseDeckHomeServicesPainting from './houseDeckWebsitePages/houseDeckHomeServicesPainting';
 import HouseDeckHomeServicesCleaning from './houseDeckWebsitePages/houseDeckHomeServicesCleaning';
@@ -13,15 +13,21 @@ import HouseDeckHomeServicesACRepair from './houseDeckWebsitePages/houseDeckHome
 import HouseDeckHomeServicesElectrician from './houseDeckWebsitePages/houseDeckHomeServicesElectrician';
 import HouseDeckHomeServicesCarpentary from './houseDeckWebsitePages/houseDeckHomeServicesCarpentary';
 import HouseDeckHomeServicesPlumbing from './houseDeckWebsitePages/houseDeckHomeServicesPlumbing';
+import HouseDeckHomeServicesSubscriptionPage from './houseDeckWebsitePages/houseDeckHomeServicesSubscriptionPage';
+import HouseDeckHomeServicesAboutUs from './houseDeckWebsitePages/houseDeckHomeServicesAboutUs';
 
 function App() {
   
-  const [city, setCity] =useState("Select City")
+  var [city, setCity] =useState("Select City")
   
   const handleData = (data) => {
     setCity(data)
   }
-  console.log(city);
+  // React.useEffect(()=>{
+  //   console.log(city);
+  //   // city  = data
+  //   const abc = city
+  // },[city])
 
   return (
     <BrowserRouter>
@@ -33,10 +39,11 @@ function App() {
       <Route exact path='/home' element={<HouseDeckHomeServicesMainPage city={city} setCity={setCity} handleData={handleData} />} />
 
       {/* footer pages  */}
-      <Route exact path='/home-services/terms-and-conditions' element={<HouseDeckHomeServicesTC/>} />
+      <Route exact path='/home-services/about-us' element={<HouseDeckHomeServicesAboutUs />} />
       <Route exact path='/home-services/privacy-policy' element={<HouseDeckHomeServicesPrivacy/>} />
       <Route exact path='/home-services/return-exchange-and-refund' element={<HouseDeckHomeServicesPrivacy/>} />
       <Route exact path='/home-services/faqs' element={<HouseDeckHomeServicesFAQpage />} />
+      <Route exact path='/home-services/housedeck-partner-(Terms-of-Use)' element={<HouseDeckHomeServicesPartner/>} />
 
       {/* services pages  */}
       <Route exact path='/home-services/painting' element={<HouseDeckHomeServicesPainting city={city} setCity={setCity} handleData={handleData} />} />
@@ -49,6 +56,10 @@ function App() {
 
       {/* 404 page  */}
       <Route exact path='*' element={<HouseDeckHomeServicesNotFound city={city} />} />
+
+      {/* Other Pages  */}
+      <Route exact path='/home-services/subcription' element={<HouseDeckHomeServicesSubscriptionPage />} />
+
     </Routes>
     </BrowserRouter>
 

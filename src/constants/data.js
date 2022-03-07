@@ -26,17 +26,20 @@ export const mainPageBottomWidth = {
   margin: "0px auto",
 };
 
-export const GlobalServicesBottomList = [
-  { name: "Interiors" },
-  { name: "Home Inspection" },
+export const GlobalServicesBottomListAvailable = [
+  { name: "Interiors", url: '#' },
+  { name: "Home Inspection", url: '#' },
+  { name: "Home services", url: '/home-services' },
+  { name: "Home services questions", url: '/home-services/faqs' },
+
+];
+export const GlobalServicesBottomListNotAvailable = [
   { name: "Housedeck for NRIs" },
-  { name: "Buy / Sell" },
-  { name: "Home services" },
+  { name: "Property Management" },
   { name: "Packers and movers" },
-  { name: "Home services questions" },
   { name: "Rent services questions" },
   { name: "Home Loan ELigiblity Check" },
-];
+]
 
 export const IconHeaderImage = {
   width: "15px",
@@ -79,7 +82,7 @@ export const RecommendedServicesData = [
     title: "Home Cleaning Service",
     subText:
       "Make your house look like new. Spot free cleaning at lowest prices",
-    colorText: "Get Quotes",
+    colorText: "Book Now",
   },
   {
     key: "pnm",
@@ -92,16 +95,11 @@ export const RecommendedServicesData = [
 
 export const FooterLink = [
   { name: "Home", url: "/home-services" },
-  { name: "About Us" },
-  // { name: "Careers" },
-  { name: "Terms & Condtions", url: "/home-services/terms-and-conditions" },
+  { name: "About Us",url:"/home-services/about-us" },
   { name: "Privacy Policy", url: "/home-services/privacy-policy" },
-  // { name: "Testimonials" },
-  {
-    name: "Return Exchange & Refund",
-    url: "/home-services/return-exchange-and-refund",
-  },
+  { name: "Return Exchange & Refund", url: "/home-services/return-exchange-and-refund", },
   { name: "FAQs", url: "/home-services/faqs" },
+  { name: "Housedeck Partner (Home Services)", url: "/home-services/housedeck-partner-(Terms-of-Use)" },
 ];
 
 export const SocialMediadata = [
@@ -342,10 +340,10 @@ export const ServiceWithImageChennai = [
     id: "Carpentary",
     src: "../imageService/carpentary.png",
     offer: "",
-    takeToPath:'/home-services/carpentary',
+    takeToPath: '/home-services/carpentary',
     tag: true,
   },
-  { id: "Plumbing", src: "../imageService/plumbing.png", offer: "", tag: true ,   takeToPath:'/home-services/plumbing',},
+  { id: "Plumbing", src: "../imageService/plumbing.png", offer: "", tag: true, takeToPath: '/home-services/plumbing', },
   {
     id: "Pest Control",
     src: "../imageService/pest_control.png",
@@ -400,10 +398,10 @@ export const ServiceWithImageMumbai = [
     id: "Carpentary",
     src: "../imageService/carpentary.png",
     offer: "",
-    takeToPath:'/home-services/carpentary',
+    takeToPath: '/home-services/carpentary',
     tag: true,
   },
-  { id: "Plumbing", src: "../imageService/plumbing.png", offer: "", tag: true,   takeToPath:'/home-services/plumbing', },
+  { id: "Plumbing", src: "../imageService/plumbing.png", offer: "", tag: true, takeToPath: '/home-services/plumbing', },
   {
     id: "Pest Control",
     src: "../imageService/pest_control.png",
@@ -457,11 +455,11 @@ export const ServiceWithImagePune = [
   {
     id: "Carpentary",
     src: "../imageService/carpentary.png",
-    takeToPath:'/home-services/carpentary',
+    takeToPath: '/home-services/carpentary',
     offer: "",
     tag: true,
   },
-  { id: "Plumbing", src: "../imageService/plumbing.png", offer: "", tag: true,takeToPath:'/home-services/plumbing', },
+  { id: "Plumbing", src: "../imageService/plumbing.png", offer: "", tag: true, takeToPath: '/home-services/plumbing', },
   {
     id: "Pest Control",
     src: "../imageService/pest_control.png",
@@ -523,7 +521,7 @@ export const ServiceWithImageHyderabad = [
     src: "../imageService/plumbing.png",
     offer: "Unserviceable",
     tag: false,
-    takeToPath:'/home-services/plumbing',
+    takeToPath: '/home-services/plumbing',
   },
   {
     id: "Pest Control",
@@ -586,7 +584,7 @@ export const ServiceWithImageGurgaon = [
     src: "../imageService/plumbing.png",
     offer: "Unserviceable",
     tag: false,
-    takeToPath:'/home-services/plumbing',
+    takeToPath: '/home-services/plumbing',
   },
   {
     id: "Pest Control",
@@ -649,7 +647,7 @@ export const ServiceWithImageDelhi = [
     src: "../imageService/plumbing.png",
     offer: "Unserviceable",
     tag: false,
-    takeToPath:'/home-services/plumbing',
+    takeToPath: '/home-services/plumbing',
   },
   {
     id: "Pest Control",
@@ -712,7 +710,7 @@ export const ServiceWithImageNoida = [
     src: "../imageService/plumbing.png",
     offer: "Unserviceable",
     tag: false,
-    takeToPath:'/home-services/plumbing',
+    takeToPath: '/home-services/plumbing',
   },
   {
     id: "Pest Control",
@@ -775,7 +773,7 @@ export const ServiceWithImageGN = [
     src: "../imageService/plumbing.png",
     offer: "Unserviceable",
     tag: false,
-    takeToPath:'/home-services/plumbing',
+    takeToPath: '/home-services/plumbing',
   },
   {
     id: "Pest Control",
@@ -819,7 +817,7 @@ export const ServiceWithImageGhaziabad = [
 
   },
   // variable data
-  { id: "Plumbing", src: "../imageService/plumbing.png", offer: "", tag: true,takeToPath:'/home-services/plumbing', },
+  { id: "Plumbing", src: "../imageService/plumbing.png", offer: "", tag: true, takeToPath: '/home-services/plumbing', },
   {
     id: "Electrician",
     src: "../imageService/electricity.png",
@@ -897,7 +895,7 @@ export const ServiceWithImageFaridabad = [
     src: "../imageService/plumbing.png",
     offer: "Unserviceable",
     tag: false,
-    takeToPath:'/home-services/plumbing',
+    takeToPath: '/home-services/plumbing',
   },
   {
     id: "Pest Control",
@@ -1097,3 +1095,5 @@ export const FAQData = [
     panel: "panel25",
   },
 ];
+
+

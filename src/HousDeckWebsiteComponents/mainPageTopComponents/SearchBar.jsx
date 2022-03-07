@@ -21,8 +21,9 @@ const TopStyles = {
     }
   }),
   control: () => ({
-    cursor: 'text',
+    cursor: 'pointer',
     borderRadius: '2px',
+    border:'1px solid black',
     display: 'flex',
     backgroundColor: '#fff',
     width: width,
