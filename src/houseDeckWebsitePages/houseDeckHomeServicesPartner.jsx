@@ -76,9 +76,7 @@ function Content({ width, padding, variant,margin }) {
                         <br />
                         <br />
                         Any Person who is not competent to enter into a legally binding contract including minors, un- discharged insolvents, Persons of unsound mind etc. are not eligible to use the Platform. Kindly note, the Platform is intended for individuals who are 18 years of age or above.
-                        <br />
-                        <br />
-                    </Typography>
+                     </Typography>
                     <Typography
                         sx={{
                             mt: 4,
@@ -121,8 +119,6 @@ function Content({ width, padding, variant,margin }) {
                         <br />
                         <br />
                         1.9 “Housedeck Services” shall mean home improvement and allied services listed and offered on the Platform in accordance with the terms and conditions set out hereunder.
-                        <br />
-                        <br />
                     </Typography>
                     <Typography
                         sx={{

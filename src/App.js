@@ -15,6 +15,7 @@ import HouseDeckHomeServicesCarpentary from './houseDeckWebsitePages/houseDeckHo
 import HouseDeckHomeServicesPlumbing from './houseDeckWebsitePages/houseDeckHomeServicesPlumbing';
 import HouseDeckHomeServicesSubscriptionPage from './houseDeckWebsitePages/houseDeckHomeServicesSubscriptionPage';
 import HouseDeckHomeServicesAboutUs from './houseDeckWebsitePages/houseDeckHomeServicesAboutUs';
+import HouseDeckHomeServicesExchangeRefund from './houseDeckWebsitePages/houseDeckHomeServicesExchangeRefund';
 
 function App() {
   
@@ -41,7 +42,7 @@ function App() {
       {/* footer pages  */}
       <Route exact path='/home-services/about-us' element={<HouseDeckHomeServicesAboutUs />} />
       <Route exact path='/home-services/privacy-policy' element={<HouseDeckHomeServicesPrivacy/>} />
-      <Route exact path='/home-services/return-exchange-and-refund' element={<HouseDeckHomeServicesPrivacy/>} />
+      <Route exact path='/home-services/return-exchange-and-refund' element={<HouseDeckHomeServicesExchangeRefund/>} />
       <Route exact path='/home-services/faqs' element={<HouseDeckHomeServicesFAQpage />} />
       <Route exact path='/home-services/housedeck-partner-(Terms-of-Use)' element={<HouseDeckHomeServicesPartner/>} />
 
