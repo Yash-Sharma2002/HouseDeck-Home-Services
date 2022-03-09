@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from '../HousDeckWebsiteComponents/Header'
+import Footer from '../HousDeckWebsiteComponents/Footer'
 import InfoTextAboutus from '../HousDeckWebsiteComponents/otherPageComponents/InfoTextAboutus'
 
 export default function HouseDeckHomeServicesAboutUs() {
@@ -12,6 +13,8 @@ export default function HouseDeckHomeServicesAboutUs() {
       <Header commonProps={commonProps} />
       
       <InfoTextAboutus />
+
+      <Footer />
     </div>
   )
 }
