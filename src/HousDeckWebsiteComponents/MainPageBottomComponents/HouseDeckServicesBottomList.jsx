@@ -3,8 +3,10 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { GlobalServicesBottomListAvailable, GlobalServicesBottomListNotAvailable, mainPageBottomWidth } from '../../constants/data';
 import Chip from '@mui/material/Chip';
-import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
-import { styled } from '@mui/material/styles';
+import { Tooltip } from '@mui/material';
+
+// import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
+// import { styled } from '@mui/material/styles';
 
 const TopHeadStyle = {
   fontWeight: '600',
@@ -40,6 +42,7 @@ export default function HouseDeckServicesBottomList() {
           {
             GlobalServicesBottomListNotAvailable.map(data =>
               <Tooltip title="Coming Soon" placement="top" arrow>
+                {/* we do not need to remove href of do pointer-events:'none' cursor:'no-drop' property do both of them */}
                 <Chip label={data.name} sx={{ m: 1, backgroundColor: '#e8e8e8', borderRadius: '7px', height: '23px', cursor: 'no-drop' }} component="a" href={data.url} clickable />
               </Tooltip>
             )

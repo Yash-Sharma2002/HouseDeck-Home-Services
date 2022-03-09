@@ -29,9 +29,14 @@ function Content({ padding, padding2, display }) {
                     textAlign: 'center',
                 }}>
                     <a style={{
-                        color: '#1b685f',
+                        color: 'white',
                         fontSize: '16px',
-                        textDecoration: 'none'
+                        textDecoration: 'none',
+                        // marginRight:'30px',
+                        padding: '10px',
+                        background: '#1b685f',
+                        fontFamily: "Fredoka",
+                        borderRadius: 5
                     }} href="/home-services/subcription">
                         View all plans &#10140;
                     </a>
@@ -45,7 +50,7 @@ function Content({ padding, padding2, display }) {
                 <Card sx={{ width: '33%', borderRadius: 4, height: '450px', margin: '0px 10px', background: "rgb(234,253,247)" }}>
                     <Box sx={{ textAlign: 'center' }}>
                         <Box sx={{
-                            background: "url(../ServicePlans/priceSide.jpg)",
+                            background: "url(../other/kitchenCleaning.png)",
                             backgroundSize: 'cover',
                             height: '195px',
                             objectFit: 'cover',
@@ -58,7 +63,8 @@ function Content({ padding, padding2, display }) {
                                 fontSize: '55px',
                                 pt: 5
                             }}>
-                                &#8377;3350<span style={{ opacity: '0.6', fontWeight: '900', fontSize: '40px' }}>/m3</span>
+                                &#8377;3350
+                                <div style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</div>
                                 <div style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Kitchen Deep Cleaning</div>
                             </Typography>
                         </Box>
@@ -88,7 +94,7 @@ function Content({ padding, padding2, display }) {
                 <Card sx={{ width: '33%', borderRadius: 4, height: '500px', margin: '0px 10px', background: "rgb(234,253,247)" }}>
                     <Box sx={{ textAlign: 'center' }}>
                         <Box sx={{
-                            background: "url(../ServicePlans/priceMain.jpg)",
+                            background: "url(../other/bathroomCleaning.png)",
                             backgroundSize: 'cover',
                             height: '220px',
                             objectFit: 'cover',
@@ -99,9 +105,10 @@ function Content({ padding, padding2, display }) {
                                 textAlign: 'center',
                                 fontWeight: '900',
                                 fontSize: '58px',
-                                pt: 4
+                                pt: 4,
                             }}>
-                                &#8377;1400<span style={{ opacity: '0.6', fontWeight: '900', fontSize: '40px' }}>/m3</span>
+                                &#8377;1400
+                                <div style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</div>
                                 <div style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Bathroom Cleaning</div>
                             </Typography>
                         </Box>
@@ -131,7 +138,7 @@ function Content({ padding, padding2, display }) {
                 <Card sx={{ width: '33%', borderRadius: 4, height: '450px', margin: '0px 10px', background: "rgb(234,253,247)" }}>
                     <Box sx={{ textAlign: 'center' }}>
                         <Box sx={{
-                            background: "url(../ServicePlans/priceSide.jpg)",
+                            background: "url(../other/sofaCleaning.png)",
                             backgroundSize: 'cover',
                             height: '195px',
                             objectFit: 'cover',
@@ -144,7 +151,8 @@ function Content({ padding, padding2, display }) {
                                 fontSize: '55px',
                                 pt: 5
                             }}>
-                                &#8377;2800<span style={{ opacity: '0.6', fontWeight: '900', fontSize: '40px' }}>/m3</span>
+                                &#8377;2800
+                                <div style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</div>
                                 <div style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Sofa Cleaning (5 Seater)</div>
                             </Typography>
                         </Box>
@@ -181,11 +189,6 @@ function Content({ padding, padding2, display }) {
 function SMContent() {
     return (
         <div style={{ padding: '20px' }}>
-             <Box sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center'
-            }}>
             <Typography sx={{
                 fontWeight: '600',
                 color: '#464646',
@@ -196,19 +199,8 @@ function SMContent() {
                 Subscription Services
             </Typography>
 
-            <Box sx={{
-                    textAlign: 'center',
-                }}>
-                    <a style={{
-                        color: '#1b685f',
-                        fontSize: '14px',
-                        textDecoration: 'none'
-                    }} href="/home-services/subcription">
-                        View all plans &#10140;
-                    </a>
-                </Box>
 
-                </Box>
+
 
             <Box sx={{ display: 'block', alignItems: 'center', justifyContent: 'center' }}>
 
@@ -216,7 +208,7 @@ function SMContent() {
                 <Card sx={{ maxWidth: 'unset', borderRadius: 4, marginTop: '25px', height: '450px', background: "rgb(234,253,247)" }}>
                     <Box sx={{ textAlign: 'center' }}>
                         <Box sx={{
-                            background: "url(../ServicePlans/priceSide.jpg)",
+                            background: "url(../other/kitchenCleaning.png)",
                             backgroundSize: 'cover',
                             height: '195px',
                             objectFit: 'cover',
@@ -229,7 +221,8 @@ function SMContent() {
                                 fontSize: '55px',
                                 pt: 5
                             }}>
-                                &#8377;3350<span style={{ opacity: '0.6', fontWeight: '900', fontSize: '40px' }}>/m3</span>
+                                &#8377;3350
+                                <div style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</div>
                                 <div style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Kitchen Deep Cleaning</div>
                             </Typography>
                         </Box>
@@ -259,7 +252,7 @@ function SMContent() {
                 <Card sx={{ maxWidth: 'unset', borderRadius: 4, marginTop: '25px', height: '450px', background: "rgb(234,253,247)" }}>
                     <Box sx={{ textAlign: 'center' }}>
                         <Box sx={{
-                            background: "url(../ServicePlans/priceMain.jpg)",
+                            background: "url(../other/bathroomCleaning.png)",
                             backgroundSize: 'cover',
                             height: '220px',
                             objectFit: 'cover',
@@ -272,8 +265,10 @@ function SMContent() {
                                 fontSize: '58px',
                                 pt: 4
                             }}>
-                                &#8377;1400<span style={{ opacity: '0.6', fontWeight: '900', fontSize: '40px' }}>/m3</span>
+                                &#8377;1400
+                                <div style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</div>
                                 <div style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Bathroom Cleaning</div>
+
                             </Typography>
                         </Box>
                         <Typography sx={{ textAlign: 'center', wordWrap: 'break-word', fontSize: '16px', marginTop: '20px', padding: '10px 20px' }} variant="body2" color="rgba(27,104,95,0.6)">
@@ -302,7 +297,7 @@ function SMContent() {
                 <Card sx={{ maxWidth: 'unset', borderRadius: 4, marginTop: '25px', height: '450px', background: "rgb(234,253,247)" }}>
                     <Box sx={{ textAlign: 'center' }}>
                         <Box sx={{
-                            background: "url(../ServicePlans/priceSide.jpg)",
+                            background: "url(../other/sofaCleaning.png)",
                             backgroundSize: 'cover',
                             height: '195px',
                             objectFit: 'cover',
@@ -315,7 +310,8 @@ function SMContent() {
                                 fontSize: '55px',
                                 pt: 5
                             }}>
-                                &#8377;2800<span style={{ opacity: '0.6', fontWeight: '900', fontSize: '40px' }}>/m3</span>
+                                &#8377;2800
+                                <div style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</div>
                                 <div style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Sofa Cleaning (5 Seater)</div>
                             </Typography>
                         </Box>
@@ -342,18 +338,24 @@ function SMContent() {
                 </Card>
 
             </Box>
-
             <Box sx={{
                 textAlign: 'center',
+                marginTop: '30px',
             }}>
                 <a style={{
-                    color: '#1b685f',
-                    fontSize: '14px',
-                    textDecoration: 'none'
+                    color: 'white',
+                    fontSize: '16px',
+                    textDecoration: 'none',
+                    padding: '8px',
+                    background: '#1b685f',
+                    fontFamily: "Fredoka",
+                    borderRadius: 5
                 }} href="/home-services/subcription">
-                    & more...
+                    View all plans &#10140;
                 </a>
             </Box>
+
+
         </div>
     )
 }

@@ -2,14 +2,12 @@ import React from 'react'
 import Header from "../HousDeckWebsiteComponents/Header"
 import HouseDeckServicesBottomList from '../HousDeckWebsiteComponents/MainPageBottomComponents/HouseDeckServicesBottomList'
 import CustomerRatingsMainPage from '../HousDeckWebsiteComponents/MainPageMiddleComponents/CustomerRatingsMainPage';
-// import PropertyBoxMainPageHouseDeckServicesGlobal from '../HousDeckWebsiteComponents/MainPageBottomComponents/PropertyBoxMainPageHouseDeckServicesGlobal';
 import MainPageTopQuestions from '../HousDeckWebsiteComponents/MainPageTopQuestions';
 import RecommendedServices from '../HousDeckWebsiteComponents/MainPageMiddleComponents/RecommendedServices';
 import Footer from '../HousDeckWebsiteComponents/Footer';
 import ServicesListed from '../HousDeckWebsiteComponents/MainPageMiddleComponents/ServicesListed';
 import SimilarServices from '../HousDeckWebsiteComponents/similarServices';
 import TopSecondCarousel from '../HousDeckWebsiteComponents/mainPageTopComponents/TopSecondCarousel';
-// import Temp from '../temp';
 import SearchBar from '../HousDeckWebsiteComponents/mainPageTopComponents/SearchBar';
 import SearchNSelect from '../HousDeckWebsiteComponents/mainPageTopComponents/SearchNSelect';
 import Button from '@mui/material/Button';
@@ -28,6 +26,8 @@ import {
 } from '../constants/data';
 import SubscribeCard from '../HousDeckWebsiteComponents/MainPageMiddleComponents/SubscribeCard';
 
+// import Temp from '../temp';
+// import PropertyBoxMainPageHouseDeckServicesGlobal from '../HousDeckWebsiteComponents/MainPageBottomComponents/PropertyBoxMainPageHouseDeckServicesGlobal';
 
 function TopFirstBar({ city, setCity, handleData }) {
   const xlMax = useMediaQuery('(max-width:2000px)');
@@ -236,8 +236,17 @@ export default function HouseDeckHomeServicesMainPage({ city, setCity, handleDat
 
 
       <RecommendedServices />
-      <CustomerRatingsMainPage />
+      <Box sx={{
+        textAlign:'center',
+        margin:'0px auto'
+      }}>
+        <img style={{
+          width:'97%',
+          height:'unset',
+        }} src="../other/bannerOfMiddle.png" alt="Banner" />
+      </Box>
       <SubscribeCard />
+      <CustomerRatingsMainPage />
       {/* <Temp /> */}
       <MainPageTopQuestions />
 
@@ -256,9 +265,6 @@ export default function HouseDeckHomeServicesMainPage({ city, setCity, handleDat
 
 
 
-
-
-      {/* <SimilarServices /> */}
       <HouseDeckServicesBottomList />
 
 
