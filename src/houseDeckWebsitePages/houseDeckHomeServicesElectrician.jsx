@@ -6,7 +6,7 @@ import HouseDeckServicesBottomList from '../HousDeckWebsiteComponents/MainPageBo
 import CustomerRatingsMainPage from '../HousDeckWebsiteComponents/MainPageMiddleComponents/CustomerRatingsMainPage'
 import RecommendedServices from '../HousDeckWebsiteComponents/MainPageMiddleComponents/RecommendedServices'
 import HouseDeckPromise from '../HousDeckWebsiteComponents/otherPageComponents/HouseDeckPromise'
-import { Box,Typography } from '@mui/material'
+import { Box,Typography,useMediaQuery } from '@mui/material'
 import HowItWorks1 from '../HousDeckWebsiteComponents/otherPageComponents/HowItWorks1'
 import {
   searchBarOptionsMumbai, searchBarOptionsBangalore, searchBarOptionsNoida, searchBarOptionsChennai,
@@ -14,38 +14,78 @@ import {
   searchBarOptionsFaridabad, searchBarOptionsGhaziabad, searchBarOptionsHyderabad
 } from '../constants/data'
 import SimilarServicesForOtherPages from '../HousDeckWebsiteComponents/otherPageComponents/similarServicesForOtherPages'
+import ServiceSelector from '../HousDeckWebsiteComponents/otherPageComponents/serviceSelector'
 
+const service = 'Electrician'
+
+const style1 = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  cursor: 'pointer',
+  padding: '0px 10px',
+  alignItems: 'center',
+  minWidth: 100,
+  height: '50px!important',
+  color: 'black'
+}
+
+const TopHead = ({handleData,currentCity,setCity}) => {
+  const xlMax = useMediaQuery('(max-width:2000px)');
+  const xlMin = useMediaQuery('(min-width:900px)');
+  const mdMax = useMediaQuery('(max-width:900px)');
+  const mdMin = useMediaQuery('(min-width:500px)');
+  const sm = useMediaQuery('(max-width:500px)');
+  return (
+    <>
+      {xlMax && xlMin && (
+        <div style={{ padding: '100px', background: '#e5f6f5' }}>
+          <SearchNSelectForOtherPages style={style1} city={currentCity} setCity={setCity} handleData={handleData} />
+          <Box sx={{ ml: 2 }}>
+            <Typography sx={{ fontSize: '30px', fontWeight: '900', color: '#1b685f' }}>Best {service} Services in {currentCity}</Typography>
+            <Typography sx={{ fontSize: '16px', color: '#1b685f' }}>Get lowest prices for {service.toLowerCase()} services in {currentCity}</Typography>
+          </Box>
+          <ServiceSelector width={'480px'} />
+        </div>
+      )}
+      {!(xlMax && xlMin) && mdMax && mdMin &&  (
+        <div style={{ padding: '50px 30px', background: '#e5f6f5' }}>
+          <SearchNSelectForOtherPages style={style1} city={currentCity} setCity={setCity} handleData={handleData} />
+          <Box sx={{ ml: 2 }}>
+            <Typography sx={{ fontSize: '30px', fontWeight: '900', color: '#1b685f' }}>Best {service} Services in {currentCity}</Typography>
+            <Typography sx={{ fontSize: '16px', color: '#1b685f' }}>Get lowest prices for {service.toLowerCase()} services in {currentCity}</Typography>
+          </Box>
+          <ServiceSelector width={'unset'} />
+        </div>
+      )}
+      {!(mdMax && mdMin) && sm &&  (
+        <div style={{ padding: '20px 10px', background: '#e5f6f5' }}>
+          <SearchNSelectForOtherPages style={style1} city={currentCity} setCity={setCity} handleData={handleData} />
+          <Box sx={{ ml: 2 }}>
+            <Typography sx={{ fontSize: '30px', fontWeight: '900', color: '#1b685f' }}>Best {service} Services in {currentCity}</Typography>
+            <Typography sx={{ fontSize: '16px', color: '#1b685f' }}>Get lowest prices for {service.toLowerCase()} services in {currentCity}</Typography>
+          </Box>
+          <ServiceSelector width={'80%'} />
+        </div>
+      )}
+    </>
+
+  )
+
+}
 export default function HouseDeckHomeServicesElectrician({city,setCity,handleData, loadCity}) {
   const currentCity = loadCity()
-  const service = 'Electrician'
 
-  const style1 = {
-    display: 'flex',
-    justifyContent: 'space-between',
-    cursor: 'pointer',
-    padding: '0px 10px',
-    alignItems: 'center',
-    minWidth: 100,
-    height: '50px!important',
-    color:'black'
-  }
   const commonProps = [
     { name: 'Home Services', url: '/home-services' },
     { name: 'How it works', url: '#how-it-works' },
     { name: 'HouseDeck Promise', url: '#houseDeck-promise' },
     { name: 'Customer Stories', url: '#customer-stories' },
-    {name:'Service Details',url:'#similar-services-for-other-pages'},
+    {name:'Similar Services',url:'#similar-services-for-other-pages'},
   ]
   return (
     <div>
       <Header commonProps={commonProps} />
-      <div style={{padding:'100px',paddingTop:'100px',background: '#e5f6f5'}}>
-      <SearchNSelectForOtherPages style={style1} city={currentCity} setCity={setCity} handleData={handleData} />
-      <Box sx={{ml:2}}>
-        <Typography sx={{fontSize:'30px',fontWeight:'900',color:'#1b685f'}}>Best {service} Services in {currentCity}</Typography>
-        <Typography sx={{fontSize:'16px',color:'#1b685f'}}>Get lowest prices for {service.toLowerCase()} services in Bangalore {currentCity}</Typography>
-      </Box>
-        </div>
+      <TopHead handleData={handleData} currentCity={currentCity} setCity={setCity} />
       <HowItWorks1 service={service} city={currentCity} />
       <HouseDeckPromise service={service} city={currentCity} />
       <RecommendedServices />
