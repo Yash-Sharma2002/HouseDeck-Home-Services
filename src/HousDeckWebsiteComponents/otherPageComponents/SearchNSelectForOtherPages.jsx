@@ -69,7 +69,7 @@ export default function SearchNSelectForOtherPages({city,setCity,handleData,styl
 
 
   const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+  const fullScreen = useMediaQuery('(max-width:450px)');
 
   const handleClose = () => {
     setOpen(false);

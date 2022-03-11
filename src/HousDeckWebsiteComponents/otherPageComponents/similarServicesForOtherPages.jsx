@@ -8,14 +8,14 @@ const TopHeadStyle = {
     fontWeight: '600',
     color: '#464646',
     fontSize: '22px',
-    padding: '10px 10px',
+    marginTop:'30px'
 }
 
 export default function SimilarServicesForOtherPages({ currentCity, cityServies,service }) {
     return (
-        <div style={{
+        <div id='similar-services-for-other-pages' style={{
             background: 'hsla(0,0%,92.9%,.4)',
-            padding: '30px 0px'
+            padding: '30px 0px',
         }}>
             <Box style={mainPageBottomWidth} >
                 <Typography sx={TopHeadStyle}>Similar Services</Typography>

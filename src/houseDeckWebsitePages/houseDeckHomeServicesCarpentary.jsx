@@ -34,10 +34,9 @@ export default function HouseDeckHomeServicesCarpentary({city,setCity,handleData
   const commonProps = [
     { name: 'Home Services', url: '/home-services' },
     { name: 'How it works', url: '#how-it-works' },
-    // {name:'Service Details',url:'#service-details'},
     { name: 'HouseDeck Promise', url: '#houseDeck-promise' },
     { name: 'Customer Stories', url: '#customer-stories' },
-    { name: 'HouseDeck Services', url: '#houseDeck-Services' }
+    {name:'Service Details',url:'#similar-services-for-other-pages'},
   ]
   return (
     <div>
