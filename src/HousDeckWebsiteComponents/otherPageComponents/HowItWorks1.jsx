@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Typography } from '@mui/material'
 import { useMediaQuery } from '@mui/material';
 
-function Content({ padding,display,width }) {
+function Content({ padding,display,width,service,city }) {
     return (
         <div id='how-it-works' style={{
             padding: padding
@@ -15,7 +15,7 @@ function Content({ padding,display,width }) {
                     paddingBottom: '50px',
                     marginTop: '20px'
                 }}>
-                    How Painiting Works in The Given City
+                    How it works
                 </Typography>
                 <Box sx={{ display: display, justifyContent: 'space-between',textAlign:'center',margin:'10px auto' }}>
                     <Box sx={{width:width,textAlign:'center',wordWrap:'break-word',margin:'10px auto'}}>
@@ -52,7 +52,7 @@ function Content({ padding,display,width }) {
     )
 }
 
-export default function HowItWorks1() {
+export default function HowItWorks1({service,city}) {
     const xlMax = useMediaQuery('(max-width:2000px)');
     const xlMin = useMediaQuery('(min-width:1200px)');
     const mdMax = useMediaQuery('(max-width:1200px)');
@@ -62,12 +62,12 @@ export default function HowItWorks1() {
 
         <>
             {xlMax && xlMin && (
-                <Content padding={'60px 100px'} display={'flex'} width={'33%'}  />
+                <Content padding={'60px 100px'} display={'flex'} width={'33%'} service={service} city={city}  />
             )}
             {!(xlMax && xlMin) && mdMax && mdMin && (
-                <Content padding={'20px 30px'} display={'flex'} width={'31%'}  />
+                <Content padding={'20px 30px'} display={'flex'} width={'31%'} service={service} city={city}  />
             )}
-            {sm && (<Content padding={'20px'} display={'block'} width={'unset'}  />)}
+            {sm && (<Content padding={'20px'} display={'block'} width={'unset'} service={service} city={city}  />)}
         </>
     )
 
