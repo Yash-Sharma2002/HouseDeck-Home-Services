@@ -8,7 +8,7 @@ import { useMediaQuery } from '@mui/material'
 
 function Content({ padding, padding2, display }) {
     return (
-        <div style={{ padding: padding }}>
+        <div id="subscription-plans" style={{ padding: padding }}>
             <Box sx={{
                 display: 'flex',
                 justifyContent: 'space-between',
@@ -188,7 +188,7 @@ function Content({ padding, padding2, display }) {
 
 function SMContent() {
     return (
-        <div style={{ padding: '20px' }}>
+        <div id="subscription-plans" style={{ padding: '20px' }}>
             <Typography sx={{
                 fontWeight: '600',
                 color: '#464646',

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { GlobalServicesBottomList, mainPageBottomWidth } from '../constants/data';
+import { mainPageBottomWidth } from '../constants/data';
 import Chip from '@mui/material/Chip';
 
 const TopHeadStyle = {
@@ -29,7 +29,7 @@ export default function SimilarServices({options,city}) {
             options.map(data =>{
               const dataAll = `${data.value} in ${city}`
               return (
-              <Chip label={dataAll} sx={{ m: 1, backgroundColor: '#e8e8e8', borderRadius: '7px', height: '23px' }} component="a" href="#" clickable />
+              <Chip label={dataAll} key={dataAll} sx={{ m: 1, backgroundColor: '#e8e8e8', borderRadius: '7px', height: '23px' }} component="a" href="#" clickable />
              )} )
           }
       </Box>

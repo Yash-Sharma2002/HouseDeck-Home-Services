@@ -16,6 +16,7 @@ import HouseDeckHomeServicesPlumbing from './houseDeckWebsitePages/houseDeckHome
 import HouseDeckHomeServicesSubscriptionPage from './houseDeckWebsitePages/houseDeckHomeServicesSubscriptionPage';
 import HouseDeckHomeServicesAboutUs from './houseDeckWebsitePages/houseDeckHomeServicesAboutUs';
 import HouseDeckHomeServicesExchangeRefund from './houseDeckWebsitePages/houseDeckHomeServicesExchangeRefund';
+import HouseDeckHomeServicesMyBookings from './houseDeckWebsitePages/houseDeckHomeServicesMyBookings';
 
 function App() {
   
@@ -60,6 +61,7 @@ function App() {
 
       {/* Other Pages  */}
       <Route exact path='/home-services/subcription' element={<HouseDeckHomeServicesSubscriptionPage />} />
+      <Route exact path='/home-services/my-bookings' element={<HouseDeckHomeServicesMyBookings />} />
 
     </Routes>
     </BrowserRouter>

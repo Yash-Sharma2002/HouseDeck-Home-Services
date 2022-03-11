@@ -132,105 +132,105 @@ export const TopCarouselData = [
 ];
 
 export const searchBarOptionsBangalore = [
-  { value: "Home Painting", label: "Home Painting" },
-  { value: "Home Cleaning", label: "Home Cleaning" },
-  { value: "Home Sanitization", label: "Home Sanitization" },
-  { value: "Appliance Repair", label: "Appliance Repair" },
-  { value: "AC Repair", label: "AC Repair" },
-  { value: "Electrician", label: "Electrician" },
-  { value: "Carpentary", label: "Carpentary" },
-  { value: "Plumbing", label: "Plumbing" },
+  { value: "Home Painting", url: "/home-services/painting" },
+  { value: "Home Cleaning", url: "/home-services/cleaning" },
+  { value: "Home Sanitization", url: '/home-services/home-sanitization' },
+  { value: "Appliance Repair", url: "Appliance Repair" },
+  { value: "AC Repair", url: '/home-services/ac-repair' },
+  { value: "Electrician", url: '/home-services/electrician' },
+  { value: "Carpentary", url: '/home-services/carpentary' },
+  { value: "Plumbing", url: '/home-services/plumbing' },
 ];
 
 export const searchBarOptionsNoida = [
-  { value: "Home Painting", label: "Home Painting" },
-  { value: "Home Cleaning", label: "Home Cleaning" },
-  { value: "Home Sanitization", label: "Home Sanitization" },
-  { value: "Appliance Repair", label: "Appliance Repair" },
-  { value: "AC Repair", label: "AC Repair" },
+  { value: "Home Painting", url: "/home-services/painting" },
+  { value: "Home Cleaning", url: "/home-services/cleaning" },
+  { value: "Home Sanitization", url: '/home-services/home-sanitization' },
+  { value: "Appliance Repair", url: "Appliance Repair" },
+  { value: "AC Repair", url: '/home-services/ac-repair' },
 ];
 
 export const searchBarOptionsMumbai = [
-  { value: "Home Painting", label: "Home Painting" },
-  { value: "Home Cleaning", label: "Home Cleaning" },
-  { value: "Home Sanitization", label: "Home Sanitization" },
-  { value: "Appliance Repair", label: "Appliance Repair" },
-  { value: "AC Repair", label: "AC Repair" },
-  { value: "Electrician", label: "Electrician" },
-  { value: "Carpentary", label: "Carpentary" },
-  { value: "Plumbing", label: "Plumbing" },
+  { value: "Home Painting", url: "/home-services/painting" },
+  { value: "Home Cleaning", url:"/home-services/cleaning" },
+  { value: "Home Sanitization", url: '/home-services/home-sanitization' },
+  { value: "Appliance Repair", url: "Appliance Repair" },
+  { value: "AC Repair", url: '/home-services/ac-repair' },
+  { value: "Electrician", url: '/home-services/electrician' },
+  { value: "Carpentary", url: '/home-services/carpentary' },
+  { value: "Plumbing", url: '/home-services/plumbing' },
 ];
 
 export const searchBarOptionsChennai = [
-  { value: "Home Painting", label: "Home Painting" },
-  { value: "Home Cleaning", label: "Home Cleaning" },
-  { value: "Home Sanitization", label: "Home Sanitization" },
-  { value: "Appliance Repair", label: "Appliance Repair" },
-  { value: "AC Repair", label: "AC Repair" },
-  { value: "Electrician", label: "Electrician" },
-  { value: "Carpentary", label: "Carpentary" },
-  { value: "Plumbing", label: "Plumbing" },
+  { value: "Home Painting", url: "/home-services/painting" },
+  { value: "Home Cleaning", url: "/home-services/cleaning" },
+  { value: "Home Sanitization", url: '/home-services/home-sanitization' },
+  { value: "Appliance Repair", url: "Appliance Repair" },
+  { value: "AC Repair", url: '/home-services/ac-repair' },
+  { value: "Electrician", url: '/home-services/electrician' },
+  { value: "Carpentary", url: '/home-services/carpentary' },
+  { value: "Plumbing", url: '/home-services/plumbing' },
 ];
 
 export const searchBarOptionsPune = [
-  { value: "Home Painting", label: "Home Painting" },
-  { value: "Home Cleaning", label: "Home Cleaning" },
-  { value: "Home Sanitization", label: "Home Sanitization" },
-  { value: "Appliance Repair", label: "Appliance Repair" },
-  { value: "AC Repair", label: "AC Repair" },
-  { value: "Electrician", label: "Electrician" },
-  { value: "Carpentary", label: "Carpentary" },
-  { value: "Plumbing", label: "Plumbing" },
+  { value: "Home Painting", url: "/home-services/painting" },
+  { value: "Home Cleaning", url: "/home-services/cleaning" },
+  { value: "Home Sanitization", url: '/home-services/home-sanitization' },
+  { value: "Appliance Repair", url: "Appliance Repair" },
+  { value: "AC Repair", url: '/home-services/ac-repair' },
+  { value: "Electrician", url: '/home-services/electrician' },
+  { value: "Carpentary", url: '/home-services/carpentary' },
+  { value: "Plumbing", url: '/home-services/plumbing' },
 ];
 
 export const searchBarOptionsHyderabad = [
-  { value: "Home Painting", label: "Home Painting" },
-  { value: "Home Cleaning", label: "Home Cleaning" },
-  { value: "Home Sanitization", label: "Home Sanitization" },
-  { value: "Appliance Repair", label: "Appliance Repair" },
-  { value: "AC Repair", label: "AC Repair" },
+  { value: "Home Painting", url: "/home-services/painting" },
+  { value: "Home Cleaning", url:"/home-services/cleaning" },
+  { value: "Home Sanitization", url: '/home-services/home-sanitization' },
+  { value: "Appliance Repair", url: "Appliance Repair" },
+  { value: "AC Repair", url: '/home-services/ac-repair' },
 ];
 
 export const searchBarOptionsGurgaon = [
-  { value: "Home Painting", label: "Home Painting" },
-  { value: "Home Cleaning", label: "Home Cleaning" },
-  { value: "Home Sanitization", label: "Home Sanitization" },
-  { value: "Appliance Repair", label: "Appliance Repair" },
-  { value: "AC Repair", label: "AC Repair" },
+  { value: "Home Painting", url: "/home-services/painting" },
+  { value: "Home Cleaning", url: "/home-services/cleaning" },
+  { value: "Home Sanitization", url: '/home-services/home-sanitization' },
+  { value: "Appliance Repair", url: "Appliance Repair" },
+  { value: "AC Repair", url: '/home-services/ac-repair' },
 ];
 export const searchBarOptionsGhaziabad = [
-  { value: "Home Painting", label: "Home Painting" },
-  { value: "Home Cleaning", label: "Home Cleaning" },
-  { value: "Home Sanitization", label: "Home Sanitization" },
-  { value: "Appliance Repair", label: "Appliance Repair" },
-  { value: "AC Repair", label: "AC Repair" },
-  { value: "Electrician", label: "Electrician" },
-  { value: "Carpentary", label: "Carpentary" },
-  { value: "Plumbing", label: "Plumbing" },
+  { value: "Home Painting", url: "/home-services/painting" },
+  { value: "Home Cleaning", url:"/home-services/cleaning" },
+  { value: "Home Sanitization", url: '/home-services/home-sanitization' },
+  { value: "Appliance Repair", url: "Appliance Repair" },
+  { value: "AC Repair", url: '/home-services/ac-repair' },
+  { value: "Electrician", url: '/home-services/electrician' },
+  { value: "Carpentary", url: '/home-services/carpentary' },
+  { value: "Plumbing", url: '/home-services/plumbing' },
 ];
 
 export const searchBarOptionsDelhi = [
-  { value: "Home Painting", label: "Home Painting" },
-  { value: "Home Cleaning", label: "Home Cleaning" },
-  { value: "Home Sanitization", label: "Home Sanitization" },
-  { value: "Appliance Repair", label: "Appliance Repair" },
-  { value: "AC Repair", label: "AC Repair" },
+  { value: "Home Painting", url: "/home-services/painting" },
+  { value: "Home Cleaning", url:"/home-services/cleaning" },
+  { value: "Home Sanitization", url: '/home-services/home-sanitization' },
+  { value: "Appliance Repair", url: "Appliance Repair" },
+  { value: "AC Repair", url: '/home-services/ac-repair' },
 ];
 
 export const searchBarOptionsFaridabad = [
-  { value: "Home Painting", label: "Home Painting" },
-  { value: "Home Cleaning", label: "Home Cleaning" },
-  { value: "Home Sanitization", label: "Home Sanitization" },
-  { value: "Appliance Repair", label: "Appliance Repair" },
-  { value: "AC Repair", label: "AC Repair" },
-  { value: "Electrician", label: "Electrician" },
+  { value: "Home Painting", url: "/home-services/painting" },
+  { value: "Home Cleaning", url:"/home-services/cleaning"},
+  { value: "Home Sanitization", url: '/home-services/home-sanitization' },
+  { value: "Appliance Repair", url: "Appliance Repair" },
+  { value: "AC Repair", url: '/home-services/ac-repair' },
+  { value: "Electrician", url: '/home-services/electrician' },
 ];
 export const searchBarOptionsGN = [
-  { value: "Home Painting", label: "Home Painting" },
-  { value: "Home Cleaning", label: "Home Cleaning" },
-  { value: "Home Sanitization", label: "Home Sanitization" },
-  { value: "Appliance Repair", label: "Appliance Repair" },
-  { value: "AC Repair", label: "AC Repair" },
+  { value: "Home Painting", url: "/home-services/painting" },
+  { value: "Home Cleaning", url:"/home-services/cleaning" },
+  { value: "Home Sanitization", url: '/home-services/home-sanitization' },
+  { value: "Appliance Repair", url: "Appliance Repair" },
+  { value: "AC Repair", url: '/home-services/ac-repair' },
 ];
 
 export const ServiceWithImageBangalore = [

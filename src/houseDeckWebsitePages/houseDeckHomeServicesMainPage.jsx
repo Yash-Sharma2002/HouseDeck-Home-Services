@@ -26,6 +26,7 @@ import {
 } from '../constants/data';
 import SubscribeCard from '../HousDeckWebsiteComponents/MainPageMiddleComponents/SubscribeCard';
 
+
 // import Temp from '../temp';
 // import PropertyBoxMainPageHouseDeckServicesGlobal from '../HousDeckWebsiteComponents/MainPageBottomComponents/PropertyBoxMainPageHouseDeckServicesGlobal';
 
@@ -36,6 +37,7 @@ function TopFirstBar({ city, setCity, handleData }) {
   const mdMin = useMediaQuery('(min-width:360px)');
   const sm = useMediaQuery('(max-width:360px)');
 
+  
   const style1 = {
     display: 'flex',
     justifyContent: 'space-between',
@@ -58,8 +60,8 @@ function TopFirstBar({ city, setCity, handleData }) {
     alignItems: 'center',
     minWidth: 100,
     height: '50px!important',
-    color: "white",
-    border:"1px solid black"
+    color: "black",
+    border:"none"
   }
   return (
 
@@ -74,7 +76,7 @@ function TopFirstBar({ city, setCity, handleData }) {
             padding: '7rem 100px 3rem 100px',
             display: 'flex', justifyContent: 'space-between'
           }}>
-            {city === "Bangalore" && <SearchBar width={'500px'} options={searchBarOptionsBangalore} />}
+            {city === "Bangalore" && <SearchBar options={searchBarOptionsBangalore} width={'500px'}  />}
             {city === "Noida" && <SearchBar width={'500px'} options={searchBarOptionsNoida} />}
             {city === "Chennai" && <SearchBar width={'500px'} options={searchBarOptionsChennai} />}
             {city === "Delhi" && <SearchBar width={'500px'} options={searchBarOptionsDelhi} />}
@@ -108,10 +110,9 @@ function TopFirstBar({ city, setCity, handleData }) {
                   textDecoration: 'none'
                 }}>
                   <Button variant='outlined' sx={{
-                    marginLeft: 1,
-                    borderColor: 'white',
+                    borderColor: 'black',
                     fontSize: '13px',
-                    color: 'white',
+                    color: 'black',
                     height: '30px',
                     borderRadius: '20px',
                     userSelect: 'none',
@@ -160,9 +161,9 @@ function TopFirstBar({ city, setCity, handleData }) {
                 }}>
                   <Button variant='outlined' sx={{
                     marginLeft: 1,
-                    borderColor: 'white',
+                    borderColor: 'black',
                     fontSize: '13px',
-                    color: 'white',
+                    color: 'black',
                     height: '30px',
                     borderRadius: '20px',
                     userSelect: 'none',
@@ -204,7 +205,7 @@ function TopFirstBar({ city, setCity, handleData }) {
 export default function HouseDeckHomeServicesMainPage({ city, setCity, handleData }) {
   const commonProps = [
 
-    { name: 'Home Services', url: '' },
+    { name: 'Home Services', url: '/home-services' },
     { name: 'Recommended Services', url: '#houseDeck-Recommended-Services' },
     { name: 'Customer Stories', url: '#customer-stories' },
     { name: 'FAQs', url: '#faqs' },
@@ -236,6 +237,7 @@ export default function HouseDeckHomeServicesMainPage({ city, setCity, handleDat
 
 
       <RecommendedServices />
+
       <Box sx={{
         textAlign:'center',
         margin:'0px auto'
@@ -245,6 +247,7 @@ export default function HouseDeckHomeServicesMainPage({ city, setCity, handleDat
           height:'unset',
         }} src="../other/bannerOfMiddle.png" alt="Banner" />
       </Box>
+      
       <SubscribeCard />
       <CustomerRatingsMainPage />
       {/* <Temp /> */}

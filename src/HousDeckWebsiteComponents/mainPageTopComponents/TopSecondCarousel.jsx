@@ -31,7 +31,8 @@ function Content({ padding, margin}) {
     return (
         <div style={{
             background: '#e5f6f5',
-            padding: padding, overflow: "hidden"
+            padding: padding, overflow: "hidden",
+            
         }}>
             <Carousel
                 draggable={true}
@@ -39,14 +40,13 @@ function Content({ padding, margin}) {
                 responsive={responsive}
                 partialVisible={true}
                 swipeable={true}
-                autoPlay={false}
+                autoPlay={true}
             >
                 {TopCarouselData.map(data =>
-                    <div style={{
-
+                    <div key={data.url} style={{
                         marginRight: margin
                     }}>
-                        <img style={{
+                        <img key={data.url} style={{
                             width: '100%',
                             borderRadius:10,
                         }} src={data.url} alt="Poster" />

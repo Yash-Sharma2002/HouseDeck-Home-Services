@@ -36,14 +36,14 @@ export default function HouseDeckServicesBottomList() {
         <Box sx={{ marginTop: '10px' }}>
           {
             GlobalServicesBottomListAvailable.map(data =>
-              <Chip label={data.name} sx={{ m: 1, backgroundColor: '#e8e8e8', borderRadius: '7px', height: '23px', cursor: 'pointer' }} component="a" href={data.url} clickable />
+              <Chip label={data.name} key={data.name} sx={{ m: 1, backgroundColor: '#e8e8e8', borderRadius: '7px', height: '23px', cursor: 'pointer' }} component="a" href={data.url} clickable />
             )
           }
           {
             GlobalServicesBottomListNotAvailable.map(data =>
-              <Tooltip title="Coming Soon" placement="top" arrow>
+              <Tooltip title="Coming Soon" key={data.name} placement="top" arrow>
                 {/* we do not need to remove href of do pointer-events:'none' cursor:'no-drop' property do both of them */}
-                <Chip label={data.name} sx={{ m: 1, backgroundColor: '#e8e8e8', borderRadius: '7px', height: '23px', cursor: 'no-drop' }} component="a" href={data.url} clickable />
+                <Chip label={data.name} key={data.name} sx={{ m: 1, backgroundColor: '#e8e8e8', borderRadius: '7px', height: '23px', cursor: 'no-drop' }} component="a" href={data.url} clickable />
               </Tooltip>
             )
           }

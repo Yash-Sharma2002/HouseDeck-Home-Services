@@ -72,6 +72,10 @@ function XLHeader({ commonProps }) {
                     {/* -------------------------------------- Right side ---------------------------------- */}
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'end', marginRight: '-20px' }}>
+
+                    <Link href="/home-services/my-bookings" target="_blank" sx={{
+                            textDecoration: 'none'
+                        }}>
                         <Button sx={{
                             color: '#555',
                             border: '0.4px solid #c5c5c5',
@@ -88,6 +92,7 @@ function XLHeader({ commonProps }) {
                             <CallToActionIcon style={IconHeaderImage} />
                             MyBookings
                         </Button>
+                        </Link>
 
                         <Link href="tel:18003096606" target="_blank" sx={{
                             textDecoration: 'none'

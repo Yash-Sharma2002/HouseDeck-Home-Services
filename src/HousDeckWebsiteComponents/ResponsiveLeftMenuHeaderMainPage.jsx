@@ -6,12 +6,10 @@ import Divider from '@mui/material/Divider';
 import MenuIcon from '@mui/icons-material/Menu';
 import ListItem from '@mui/material/ListItem';
 import IconButton from '@mui/material/IconButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link } from '@mui/material';
-import MailIcon from '@mui/icons-material/Mail';
+import { isLogin } from '../constants/data';
+import DialogWithoutLoginDisplay from './DialogsComponents/DialogWithoutLoginDisplay';
 
 export default function ResponsiveLeftMenuHeaderMainPage({ commonProps }) {
     const [state, setState] = React.useState({
@@ -25,6 +23,13 @@ export default function ResponsiveLeftMenuHeaderMainPage({ commonProps }) {
 
         setState({ ...state, [anchor]: open });
     };
+
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
 
     return (
         <div>
@@ -52,28 +57,49 @@ export default function ResponsiveLeftMenuHeaderMainPage({ commonProps }) {
                         onKeyDown={toggleDrawer('left', false)}
                     >
                         <List>
-                        <ListItem sx={{justifyContent:'right',marginLeft:0,overflowX:'hiddenImportant'}}  onClick={toggleDrawer('left', false)}>
+                            <ListItem sx={{ justifyContent: 'right', marginLeft: 0, overflowX: 'hiddenImportant' }} onClick={toggleDrawer('left', false)}>
                                 <CloseIcon />
-                                </ListItem>
+                            </ListItem>
                             {commonProps.map((element) => (
                                 <ListItem button key={element.name}>
-                                    <Link sx={{textDecoration:'none',color:'black'}} href={element.url}>{element.name}</Link>
+                                    <Link sx={{ textDecoration: 'none', color: 'black' }} href={element.url}>{element.name}</Link>
                                 </ListItem>
                             ))}
                         </List>
                         <Divider />
-                        <List>
-                            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                                <ListItem button key={text}>
-                                    <ListItemIcon>
-                                        {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                    </ListItemIcon>
-                                    <ListItemText primary={text} />
-                                </ListItem>
-                            ))}
+
+                        <List sx={{mt:1}}>
+                            <Link href="/home-services/my-bookings" target="_blank" sx={{
+                                textDecoration: 'none',
+                                color: 'black',
+                                fontSize: '16px',
+                                height: '30px',
+                                userSelect: 'none',
+                                textTransform: 'none',
+                                paddingLeft: '16px',
+                            }} >
+                                {/* <Button sx={{
+                                   
+                                }} disableRipple onClick={handleClickOpen}> */}
+                                    MyBookings
+                                {/* </Button> */}
+                            </Link>
+
+                           
+                            <Box sx={{
+                                fontSize: '16px',
+                                userSelect: 'none',
+                                textTransform: 'none',
+                                color: 'black',
+                                padding: '0px 15px',
+                                mt:1
+                            }} onClick={handleClickOpen}>
+                                Login
+                            </Box>
                         </List>
                     </Box>
                 </Drawer>
+                {!isLogin && (<DialogWithoutLoginDisplay open={open} setOpen={setOpen} />)}
             </React.Fragment>
         </div>
     )
