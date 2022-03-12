@@ -44,7 +44,7 @@ export default function DialogWithoutLoginDisplay({ open, setOpen }) {
   const classes = useStyles()
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
-  const [display, setDisplay] = React.useState(true)
+  const [display, setDisplay] = React.useState(false)
   const [displayForButton, setDisplayForButton] = React.useState(false)
   const handleClose = () => {
     setOpen(false);
