@@ -28,7 +28,7 @@ export default function SearchBar({ options, width }) {
 
   return (
     <Box sx={{ width: width, background: 'white', }} >
-      <Box sx={{ display: 'flex', alignItems: 'center', borderRadius: '4px',justifyContent: 'space-evenly', border: '1px solid black', height: '50px!important' }} >
+      <Box sx={{ display: 'flex', alignItems: 'center', borderRadius: '4px', justifyContent: 'space-evenly', border: '1px solid black', height: '50px!important' }} >
         <Input
           placeholder="Search..."
           value={wordEntered}
@@ -52,7 +52,7 @@ export default function SearchBar({ options, width }) {
         <Divider orientation='vertical' sx={{ color: '#c5c5c5' }} flexItem />
         {
           open ? <ExpandLess sx={{ textAlign: 'center' }} onClick={handleClick} />
-               : <ExpandMore sx={{ textAlign: 'center' }} onClick={handleClick} />
+            : <ExpandMore sx={{ textAlign: 'center' }} onClick={handleClick} />
         }
 
       </Box>

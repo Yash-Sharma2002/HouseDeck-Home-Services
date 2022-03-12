@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import './App.css';
 import { BrowserRouter, Routes, Route, } from 'react-router-dom';
 import HouseDeckHomeServicesMainPage from './houseDeckWebsitePages/houseDeckHomeServicesMainPage'
 import HouseDeckHomeServicesFAQpage from './houseDeckWebsitePages/houseDeckHomeServicesFAQpage';
@@ -24,9 +23,11 @@ function App() {
 
   const handleData = (data) => {
     setCity(data)
-    localStorage.setItem('city', JSON.stringify(data))
-      .then(() => console.log('saved city successfully'))
-      .catch(err => console.error('something went wrong', err));
+      try{
+        localStorage.setItem('city', JSON.stringify(data));
+    } catch (err){
+        return undefined;
+    }
   }
   function loadCity() {
     try {
