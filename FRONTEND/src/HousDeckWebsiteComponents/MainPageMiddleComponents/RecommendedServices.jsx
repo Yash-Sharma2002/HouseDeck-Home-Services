@@ -22,7 +22,7 @@ const Content = () => {
             <Typography variant='h4' style={TopHeadQuestions}>Recommended Services</Typography>
             <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
                 {RecommendedServicesData.map(data =>
-                    <Box sx={{ width: '30%', cursor: 'pointer', padding: '10px 0px' }}>
+                    <Box key={data.title} sx={{ width: '30%', cursor: 'pointer', padding: '10px 0px' }}>
                         <Box
                             sx={{
                                 backgroundImage: `url(${data.url})`,

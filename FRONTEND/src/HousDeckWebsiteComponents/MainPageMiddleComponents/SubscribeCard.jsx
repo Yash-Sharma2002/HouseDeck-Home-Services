@@ -64,8 +64,8 @@ function Content({ padding, padding2, display }) {
                                 pt: 5
                             }}>
                                 &#8377;3350
-                                <div style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</div>
-                                <div style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Kitchen Deep Cleaning</div>
+                                <p style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</p>
+                                <p style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Kitchen Deep Cleaning</p>
                             </Typography>
                         </Box>
                         <Typography sx={{ textAlign: 'center', wordWrap: 'break-word', fontSize: '16px', marginTop: '20px', padding: padding2 }} variant="body2" color="rgba(27,104,95,0.6)">
@@ -108,8 +108,8 @@ function Content({ padding, padding2, display }) {
                                 pt: 4,
                             }}>
                                 &#8377;1400
-                                <div style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</div>
-                                <div style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Bathroom Cleaning</div>
+                                <p style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</p>
+                                <p style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Bathroom Cleaning</p>
                             </Typography>
                         </Box>
                         <Typography sx={{ textAlign: 'center', wordWrap: 'break-word', fontSize: '16px', marginTop: '20px', padding: padding2 }} variant="body2" color="rgba(27,104,95,0.6)">
@@ -152,8 +152,8 @@ function Content({ padding, padding2, display }) {
                                 pt: 5
                             }}>
                                 &#8377;2800
-                                <div style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</div>
-                                <div style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Sofa Cleaning (5 Seater)</div>
+                                <p style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</p>
+                                <p style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Sofa Cleaning (5 Seater)</p>
                             </Typography>
                         </Box>
                         <Typography sx={{ textAlign: 'center', wordWrap: 'break-word', fontSize: '16px', marginTop: '20px', padding: padding2 }} variant="body2" color="rgba(27,104,95,0.6)">
@@ -222,8 +222,8 @@ function SMContent() {
                                 pt: 5
                             }}>
                                 &#8377;3350
-                                <div style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</div>
-                                <div style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Kitchen Deep Cleaning</div>
+                                <p style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</p>
+                                <p style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Kitchen Deep Cleaning</p>
                             </Typography>
                         </Box>
                         <Typography sx={{ textAlign: 'center', wordWrap: 'break-word', fontSize: '16px', marginTop: '20px', padding: '10px 20px' }} variant="body2" color="rgba(27,104,95,0.6)">
@@ -266,8 +266,8 @@ function SMContent() {
                                 pt: 4
                             }}>
                                 &#8377;1400
-                                <div style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</div>
-                                <div style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Bathroom Cleaning</div>
+                                <p style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</p>
+                                <p style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Bathroom Cleaning</p>
 
                             </Typography>
                         </Box>
@@ -311,8 +311,8 @@ function SMContent() {
                                 pt: 5
                             }}>
                                 &#8377;2800
-                                <div style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</div>
-                                <div style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Sofa Cleaning (5 Seater)</div>
+                                <p style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</p>
+                                <p style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Sofa Cleaning (5 Seater)</p>
                             </Typography>
                         </Box>
                         <Typography sx={{ textAlign: 'center', wordWrap: 'break-word', fontSize: '16px', marginTop: '20px', padding: '10px 20px' }} variant="body2" color="rgba(27,104,95,0.6)">

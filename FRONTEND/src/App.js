@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { BrowserRouter, Routes, Route, } from 'react-router-dom';
+import ContextProvider from './context/ContextProvider';
 import HouseDeckHomeServicesMainPage from './houseDeckWebsitePages/houseDeckHomeServicesMainPage'
 import HouseDeckHomeServicesFAQpage from './houseDeckWebsitePages/houseDeckHomeServicesFAQpage';
 import HouseDeckHomeServicesNotFound from './houseDeckWebsitePages/houseDeckHomeServicesNotFound';
@@ -42,6 +43,7 @@ function App() {
   }
 
   return (
+    <ContextProvider>
     <BrowserRouter>
       <Routes>
 
@@ -75,7 +77,7 @@ function App() {
 
       </Routes>
     </BrowserRouter>
-
+    </ContextProvider>
 
   );
 }

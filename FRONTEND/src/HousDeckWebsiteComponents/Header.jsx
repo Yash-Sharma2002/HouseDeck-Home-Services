@@ -192,7 +192,7 @@ export default function Header({ commonProps }) {
     return (
         <>
             {xlMax && xlMin && (
-                <XLHeader commonProps={commonProps} />
+                <XLHeader commonProps={commonProps}  />
             )}
             {!(xlMax && xlMin) && mdMax && mdMin && (
                 <MDHeader commonProps={commonProps} />
