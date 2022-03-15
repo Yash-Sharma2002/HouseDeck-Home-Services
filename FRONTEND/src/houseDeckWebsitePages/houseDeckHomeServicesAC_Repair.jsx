@@ -15,6 +15,7 @@ import {
 } from '../constants/data'
 import SimilarServicesForOtherPages from '../HousDeckWebsiteComponents/otherPageComponents/similarServicesForOtherPages'
 import ServiceSelector from '../HousDeckWebsiteComponents/otherPageComponents/serviceSelector'
+import OtherPagesTopCarousel from '../HousDeckWebsiteComponents/otherPageComponents/OtherPagesTopCarousel'
 
 const service = 'AC Repair'
 
@@ -29,7 +30,7 @@ const style1 = {
   color: 'black'
 }
 
-const TopHead = ({handleData,currentCity,setCity}) => {
+const TopHead = ({ handleData, currentCity, setCity }) => {
   const xlMax = useMediaQuery('(max-width:2000px)');
   const xlMin = useMediaQuery('(min-width:900px)');
   const mdMax = useMediaQuery('(max-width:900px)');
@@ -44,10 +45,14 @@ const TopHead = ({handleData,currentCity,setCity}) => {
             <Typography sx={{ fontSize: '30px', fontWeight: '900', color: '#1b685f' }}>Best {service} Services in {currentCity}</Typography>
             <Typography sx={{ fontSize: '16px', color: '#1b685f' }}>Get lowest prices for {service.toLowerCase()} services in {currentCity}</Typography>
           </Box>
-          <ServiceSelector width={'480px'} />
+          {/* <Box sx={{ display: 'inline-flex', justifyContent: 'space-evenly', alignItems: 'center' }}> */}
+            <ServiceSelector width={'480px'} />
+            <OtherPagesTopCarousel />
+          {/* </Box> */}
+
         </div>
       )}
-      {!(xlMax && xlMin) && mdMax && mdMin &&  (
+      {!(xlMax && xlMin) && mdMax && mdMin && (
         <div style={{ padding: '50px 30px', background: '#e5f6f5' }}>
           <SearchNSelectForOtherPages style={style1} city={currentCity} setCity={setCity} handleData={handleData} />
           <Box sx={{ ml: 2 }}>
@@ -57,7 +62,7 @@ const TopHead = ({handleData,currentCity,setCity}) => {
           <ServiceSelector width={'unset'} />
         </div>
       )}
-      {!(mdMax && mdMin) && sm &&  (
+      {!(mdMax && mdMin) && sm && (
         <div style={{ padding: '20px 10px', background: '#e5f6f5' }}>
           <SearchNSelectForOtherPages style={style1} city={currentCity} setCity={setCity} handleData={handleData} />
           <Box sx={{ ml: 2 }}>
@@ -74,7 +79,7 @@ const TopHead = ({handleData,currentCity,setCity}) => {
 }
 
 export default function HouseDeckHomeServicesACRepair({ city, setCity, handleData, loadCity }) {
- 
+
 
   const currentCity = loadCity()
 

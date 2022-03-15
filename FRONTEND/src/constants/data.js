@@ -131,6 +131,16 @@ export const TopCarouselData = [
   { url: "../topCarousel/banner3.png" },
 ];
 
+export const OtherPageTopCarouselData = [
+  { url: "../otherPageBanner/1.png" },
+  { url: "../otherPageBanner/2.png" },
+  { url: "../otherPageBanner/3.png" },
+  { url: "../otherPageBanner/4.png" },
+  { url: "../otherPageBanner/5.png" },
+  { url: "../otherPageBanner/6.png" },
+  { url: "../otherPageBanner/7.png" },
+];
+
 export const searchBarOptionsBangalore = [
   { value: "Home Painting", url: "/home-services/painting" },
   { value: "Home Cleaning", url: "/home-services/cleaning" },
