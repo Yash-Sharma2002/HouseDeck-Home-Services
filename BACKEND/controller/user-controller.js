@@ -1,20 +1,21 @@
 import User from "../model/signUpSchema.js";
 
 
+const status = 500;
 export const userSignUp = async (req, res) => {
     try {
-        // const status = err.status || 500;
-        // const exist = await User.findOne({ phoneNumber: req.body.phoneNumber });
-        // if(exist) {
-        //     return res.status(status).messagejson({ message: 'User already exist'});
-        // }
+        const exist = await User.findOne({ Number: req.body.Number });
+        if (exist) {
+            console.log('User Already existed');
+            return res.send(400 + 'AlreadyExisted');
+        }
         const user = req.body;
         const newUser = new User(user);
         await newUser.save();
-        // res.status(status).json(`${user.username} has been successfully registered`);
-        
+        console.log('User data stored');
+        res.send(200 + 'User data stored')
     } catch (error) {
-        res.json('Error: from controller ', error.message);
+        res.send(500 + 'Error occured');
         console.log('Error: from controller ', error.message);
     }
 }

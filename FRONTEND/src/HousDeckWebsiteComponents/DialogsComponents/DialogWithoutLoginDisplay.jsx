@@ -1,16 +1,15 @@
-import * as React from 'react';
-import './OnlyForDialog.css'
-import { styled } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { useTheme } from '@mui/material/styles';
-import Dialog from '@mui/material/Dialog';
 import CloseIcon from '@mui/icons-material/Close';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import { makeStyles } from '@mui/styles';
 import { Button } from '@mui/material';
-import { RecaptchaVerifier, signInWithPhoneNumber, signOut } from "firebase/auth";
-import { authentication } from '../../Api/otpFireBase'
+import Box from '@mui/material/Box';
+import Dialog from '@mui/material/Dialog';
+import { styled, useTheme } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { makeStyles } from '@mui/styles';
+import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import * as React from 'react';
+import { authentication } from '../../Api/otpFireBase';
+import './OnlyForDialog.css';
 import { authenticateSignup } from '../../Api/signup';
 
 
@@ -93,8 +92,10 @@ export default function DialogWithoutLoginDisplay({ open, setOpen }) {
       .then((confirmationResult) => {
         window.confirmationResult = confirmationResult;
         console.log(`Sending OTP to Phone-Number - ${phoneNumber}`);
+        setMessageForNumber("OTP Sent")
       }).catch((error) => {
         console.log(error);
+        setMessageForOTP(`Error in OTP calling : ${error.message}`)
       });
   }
 
@@ -105,9 +106,7 @@ export default function DialogWithoutLoginDisplay({ open, setOpen }) {
       // const user = result.user;
       console.log('signed in');
       afterVerifiedOTP()
-      //  handleClose()
     }).catch((error) => {
-      // User couldn't sign in (bad verification code?)
       setMessageForOTP("Enter Valid OTP")
       console.log(error);
     });
@@ -159,31 +158,18 @@ export default function DialogWithoutLoginDisplay({ open, setOpen }) {
       setMessageForOTP('OTP must be of 6 number.')
     }
     else if (otp.length === 6) {
-      console.log(otp);
       setMessageForOTP('')
       verifyOTP()
-      // afterVerifiedOTP()
-
     }
   }
-
-  // function OTPNew() {
-  //   signOut(authentication).then(() => {
-  //     // Sign-out successful.
-  //     console.log('out');
-  //   }).catch((error) => {
-  //     // An error happened.
-  //   });
-  //   OTPSender()
-  // }
-
   const sendToDatabase = async () => {
-    console.log(number,username,email)
+
     const signup = {
-      Number: number,
+      Number: `+91${number}`,
       Username: username,
       Email: email
     }
+    console.log(signup);
     let response = await authenticateSignup(signup)
     if (!response) return;
     handleClose();
@@ -235,6 +221,7 @@ export default function DialogWithoutLoginDisplay({ open, setOpen }) {
               <Typography className={classes.LoginBeforeText}>100 Cr+ Brokerage saved monthly.</Typography>
             </Box>
           </Box>
+
           <Box sx={{ ml: 5 }}>
             <Box >
               <CloseIcon onClick={handleClose} sx={{ margin: '8px 0px auto 290px', cursor: 'pointer' }} />
@@ -259,7 +246,7 @@ export default function DialogWithoutLoginDisplay({ open, setOpen }) {
                   fontSize: '14px',
                 }} />
             </Box>
-            <Typography sx={{ color: 'red', fontSize: '14px', my: -1 }}>{messageForNumber}</Typography>
+            <Typography sx={{ color: 'red', fontSize: '14px',marginTop:'-10px' }}>{messageForNumber}</Typography>
 
             <Button sx={{
               display: displayForFirst ? 'block' : 'none', my: 2, boxShadow: 0, width: '96%', background: 'rgb(253, 55, 82)', color: 'white', padding: '8px 0px', textTransform: 'none',
@@ -291,24 +278,6 @@ export default function DialogWithoutLoginDisplay({ open, setOpen }) {
               </Box>
               <Typography sx={{ color: 'red', fontSize: '14px', my: 1 }}>{messageForOTP}</Typography>
 
-              {/* <Button
-                sx={{
-                  color: 'white',
-                  padding: '5px',
-                  background: 'green',
-                  boxShadow: 0,
-                  textTransform: 'none',
-                  margin: '0px auto',
-                  '&:hover': {
-                    color: 'white',
-                    background: 'green',
-                  }
-                }}
-                onClick={OTPNew}
-              >
-                Resend
-              </Button> */}
-
               <Button sx={{
                 my: 2,
                 boxShadow: 0,
@@ -328,7 +297,6 @@ export default function DialogWithoutLoginDisplay({ open, setOpen }) {
             </Box>
 
 
-
             <Box sx={{ display: displayForLast ? 'block' : 'none' }}>
               <input
                 placeholder='Username'
@@ -345,7 +313,7 @@ export default function DialogWithoutLoginDisplay({ open, setOpen }) {
               <Box sx={{ my: 1 }}></Box>
               <input
                 placeholder='Email'
-                onChange ={e => getEmail(e.target)}
+                onChange={e => getEmail(e.target)}
                 type='email'
                 style={{
                   userSelect: 'none',
