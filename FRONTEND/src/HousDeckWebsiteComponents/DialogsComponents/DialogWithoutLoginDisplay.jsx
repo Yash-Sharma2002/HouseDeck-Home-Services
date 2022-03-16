@@ -165,10 +165,19 @@ export default function DialogWithoutLoginDisplay({ open, setOpen, setAccount })
       }
       let response = await authenticateLogin(login)
       if (response) {
+        setAccount((prevType) => prevType = response)
         handleClose();
-        setAccount(response);
+        try {
+          localStorage.setItem('userdata', JSON.stringify({
+            Number: `+91${number}`,
+            Username: response,
+          }));
+        } catch (err) {
+          return undefined;
+        }
       }
       else {
+        setMessageForNumber('')
         afterVerifiedOTP()
       }
     }
@@ -179,11 +188,15 @@ export default function DialogWithoutLoginDisplay({ open, setOpen, setAccount })
       Username: username,
       Email: email
     }
-    console.log(signup);
     let response = await authenticateSignup(signup)
     if (!response) return;
+    setAccount((prevType) => prevType = username)
+    try {
+      localStorage.setItem('userdata', JSON.stringify(signup));
+    } catch (err) {
+      return undefined;
+    }
     handleClose();
-    setAccount(username);
   }
 
   return (

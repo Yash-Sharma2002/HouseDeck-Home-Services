@@ -21,12 +21,12 @@ export const userSignUp = async (req, res) => {
 
 export const userLogIn = async (req, res) => {
     try {
-        let user = await User.findOne({ Number: req.body.Number },{"Username":1});
+        const user = await User.findOne({ Number: req.body.Number },{"Username":1});
         if(user) {
-            console.log(user)
             return res.send(user.Username)
-        } else {
-            return res.status(401).json('Invalid Login');
+        }
+         else {
+            return res.status(500).json('failed');
         }
 
     } catch (error) {

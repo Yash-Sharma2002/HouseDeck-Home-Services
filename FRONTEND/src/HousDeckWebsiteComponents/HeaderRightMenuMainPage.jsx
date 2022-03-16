@@ -12,7 +12,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 
-export default function HeaderRightMenuMainPage() {
+export default function HeaderRightMenuMainPage({setAccount}) {
 
     const [state, setState] = React.useState({
         right: false,
@@ -26,6 +26,18 @@ export default function HeaderRightMenuMainPage() {
         setState({ ...state, [anchor]: open });
     };
 
+    function logout() {
+        setAccount('')
+        try {
+            localStorage.setItem("userdata", JSON.stringify({
+                Number: '',
+                Username: ''
+            }))
+        }
+        catch (err) {
+            console.log(err);;
+        }
+    }
     return (
         <div>
             <React.Fragment key={'right'}>
@@ -50,7 +62,7 @@ export default function HeaderRightMenuMainPage() {
                     anchor={'right'}
                     open={state['right']}
                     onClose={toggleDrawer('right', false)}
-                    onOpen={toggleDrawer('right', true)}
+                // onOpen={toggleDrawer('right', true)}
                 >
                     <Box
                         sx={{ width: 250 }}
@@ -59,9 +71,9 @@ export default function HeaderRightMenuMainPage() {
                         onKeyDown={toggleDrawer('right', false)}
                     >
                         <List>
-                            <ListItem  onClick={toggleDrawer('right', false)}>
+                            <ListItem onClick={toggleDrawer('right', false)}>
                                 <CloseIcon />
-                                </ListItem>
+                            </ListItem>
                             {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
                                 <ListItem button key={text}>
                                     <ListItemIcon>
@@ -82,6 +94,8 @@ export default function HeaderRightMenuMainPage() {
                                 </ListItem>
                             ))}
                         </List>
+
+                        <Button onClick={logout}>logout</Button>
                     </Box>
                 </Drawer>
             </React.Fragment>

@@ -18,7 +18,7 @@ const PostLogo = <img src='../logos/houseDeck_copy1.png' style={ImageTheme} alt=
 
 
 
-function XLHeader({ commonProps, account, setAccount }) {
+function XLHeader({ commonProps, userData, account, setAccount }) {
 
     const [open, setOpen] = React.useState(false);
 
@@ -107,10 +107,10 @@ function XLHeader({ commonProps, account, setAccount }) {
                             </Button></Link>
 
                         {
-                            account ?
-                                <Link href='/home-services/profile' sx={{color:'black',display:'flex',justifyContent:'space-evenly',alignItems:"center",marginLeft:'18px',textDecoration:'none'}}>
+                            (userData.Username || account) ?
+                                <Link href='/home-services/profile' sx={{ color: 'black', display: 'flex', justifyContent: 'space-evenly', alignItems: "center", marginLeft: '18px', textDecoration: 'none' }}>
                                     <AccountCircleIcon />
-                                    <Typography sx={{fontSize:'14px',fontFamily:'Fredoka',marginLeft:'4px'}}>{account}</Typography>
+                                    <Typography sx={{ fontSize: '14px', fontFamily: 'Fredoka', marginLeft: '4px' }}>{userData.Username || account}</Typography>
                                 </Link>
                                 :
                                 <>
@@ -153,7 +153,7 @@ function XLHeader({ commonProps, account, setAccount }) {
                                 </>
                         }
 
-                        <HeaderRightMenuMainPage />
+                        <HeaderRightMenuMainPage setAccount={setAccount} />
                     </Box>
                 </Toolbar>
                 {!isLogin && (<DialogWithoutLoginDisplay open={open} setOpen={setOpen} setAccount={setAccount} />)}
@@ -164,12 +164,12 @@ function XLHeader({ commonProps, account, setAccount }) {
 }
 
 
-function MDHeader({ commonProps, account, setAccount }) {
+function MDHeader({ commonProps, userData, account, setAccount }) {
     return (<>
         <AppBar position="static" sx={{ backgroundColor: 'white', color: '#000000' }}>
             <Container maxWidth="xl" sx={{ display: 'flex' }}>
                 <Box sx={{ flexGrow: 1, display: 'flex' }}>
-                    <ResponsiveLeftMenuHeaderMainPage commonProps={commonProps} setAccount={setAccount} />
+                    <ResponsiveLeftMenuHeaderMainPage commonProps={commonProps} userData={userData} />
                 </Box>
 
                 <Typography
@@ -188,8 +188,20 @@ function MDHeader({ commonProps, account, setAccount }) {
 
 export default function Header({ commonProps }) {
 
-    const { account, setAccount } = React.useContext(LoginContext);
+    function loadUserData() {
+        try {
+            const serializedState = localStorage.getItem('userdata');
+            if (serializedState === null) {
+                return undefined;
+            }
+            return JSON.parse(serializedState);
+        } catch (err) {
+            return undefined;
+        }
+    }
 
+    const [account, setAccount] = React.useState('');
+    const userData = loadUserData()
 
     const xlMax = useMediaQuery('(max-width:2000px)');
     const xlMin = useMediaQuery('(min-width:1160px)');
@@ -200,12 +212,12 @@ export default function Header({ commonProps }) {
     return (
         <>
             {xlMax && xlMin && (
-                <XLHeader commonProps={commonProps} setAccount={setAccount} account={account} />
+                <XLHeader commonProps={commonProps} userData={userData} account={account} setAccount={setAccount} />
             )}
             {!(xlMax && xlMin) && mdMax && mdMin && (
-                <MDHeader commonProps={commonProps} setAccount={setAccount} account={account} />
+                <MDHeader commonProps={commonProps} userData={userData} account={account} setAccount={setAccount} />
             )}
-            {sm && (<MDHeader commonProps={commonProps} setAccount={setAccount} account={account} />)}
+            {sm && (<MDHeader commonProps={commonProps} userData={userData} account={account} setAccount={setAccount} />)}
         </>
     )
 }
