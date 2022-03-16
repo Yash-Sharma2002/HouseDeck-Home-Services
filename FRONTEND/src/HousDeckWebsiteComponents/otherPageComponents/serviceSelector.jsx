@@ -21,6 +21,11 @@ export default function ServiceSelector({width}) {
                     <Typography sx={{  fontSize: '16px',color:'#464646' }}>Cleaning</Typography>
                     <ArrowForwardIosIcon sx={{ fontSize: '16px' ,color:'#464646'}} />
                 </Box>
+                <Divider />
+                <Box sx={{ padding:'15px 0px',display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <Typography sx={{  fontSize: '16px',color:'#464646' }}>Mini Services</Typography>
+                    <ArrowForwardIosIcon sx={{ fontSize: '16px' ,color:'#464646'}} />
+                </Box>
             </Box>
         </div>
     )

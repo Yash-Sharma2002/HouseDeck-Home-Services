@@ -32,10 +32,10 @@ const style1 = {
 
 const TopHead = ({ handleData, currentCity, setCity }) => {
   const xlMax = useMediaQuery('(max-width:2000px)');
-  const xlMin = useMediaQuery('(min-width:900px)');
-  const mdMax = useMediaQuery('(max-width:900px)');
-  const mdMin = useMediaQuery('(min-width:500px)');
-  const sm = useMediaQuery('(max-width:500px)');
+  const xlMin = useMediaQuery('(min-width:1200px)');
+  const mdMax = useMediaQuery('(max-width:1200px)');
+  const mdMin = useMediaQuery('(min-width:800px)');
+  const sm = useMediaQuery('(max-width:800px)');
   return (
     <>
       {xlMax && xlMin && (
@@ -45,10 +45,12 @@ const TopHead = ({ handleData, currentCity, setCity }) => {
             <Typography sx={{ fontSize: '30px', fontWeight: '900', color: '#1b685f' }}>Best {service} Services in {currentCity}</Typography>
             <Typography sx={{ fontSize: '16px', color: '#1b685f' }}>Get lowest prices for {service.toLowerCase()} services in {currentCity}</Typography>
           </Box>
-          {/* <Box sx={{ display: 'inline-flex', justifyContent: 'space-evenly', alignItems: 'center' }}> */}
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <ServiceSelector width={'480px'} />
-            <OtherPagesTopCarousel />
-          {/* </Box> */}
+            <div style={{ width: '45%' }}>
+              <OtherPagesTopCarousel />
+            </div>
+          </Box>
 
         </div>
       )}
@@ -59,7 +61,12 @@ const TopHead = ({ handleData, currentCity, setCity }) => {
             <Typography sx={{ fontSize: '30px', fontWeight: '900', color: '#1b685f' }}>Best {service} Services in {currentCity}</Typography>
             <Typography sx={{ fontSize: '16px', color: '#1b685f' }}>Get lowest prices for {service.toLowerCase()} services in {currentCity}</Typography>
           </Box>
-          <ServiceSelector width={'unset'} />
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <ServiceSelector width={'110%'} />
+            <div style={{ width: '45%' }}>
+              <OtherPagesTopCarousel />
+            </div>
+          </Box>
         </div>
       )}
       {!(mdMax && mdMin) && sm && (
@@ -69,7 +76,12 @@ const TopHead = ({ handleData, currentCity, setCity }) => {
             <Typography sx={{ fontSize: '30px', fontWeight: '900', color: '#1b685f' }}>Best {service} Services in {currentCity}</Typography>
             <Typography sx={{ fontSize: '16px', color: '#1b685f' }}>Get lowest prices for {service.toLowerCase()} services in {currentCity}</Typography>
           </Box>
-          <ServiceSelector width={'80%'} />
+          <Box sx={{ display: 'block' }}>
+            <ServiceSelector width={'unset'} />
+            <div style={{padding:'20px'}}>
+              <OtherPagesTopCarousel />
+            </div>
+          </Box>
         </div>
       )}
     </>

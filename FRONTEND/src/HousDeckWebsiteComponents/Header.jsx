@@ -6,7 +6,6 @@ import HeaderRightMenuMainPage from './HeaderRightMenuMainPage';
 import ResponsiveLeftMenuHeaderMainPage from './ResponsiveLeftMenuHeaderMainPage';
 import { useMediaQuery, Link, Box, Typography, Container, AppBar, Button, Toolbar, Divider } from '@mui/material';
 import { IconHeaderImage, isLogin } from '../constants/data';
-import { LoginContext } from '../context/ContextProvider';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 
@@ -200,7 +199,7 @@ export default function Header({ commonProps }) {
         }
     }
 
-    const [account, setAccount] = React.useState('');
+    const [account, setAccount] = React.useState('')
     const userData = loadUserData()
 
     const xlMax = useMediaQuery('(max-width:2000px)');

@@ -10,7 +10,7 @@ function FooterContent({fontSize,margin}) {
         <div>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '30px', }}>
                 {FooterLink.map(data =>
-                    <Link href={data.url} sx={{ fontSize: fontSize, color: '#464646', margin: margin,textDecoration:'none' }}>{data.name}</Link>
+                    <Link key={data.url} href={data.url} sx={{ fontSize: fontSize, color: '#464646', margin: margin,textDecoration:'none' }}>{data.name}</Link>
                 )}
             </Box>
             <hr style={{ margin: '35px 8%', color: '#ddd', borderTopWidth: '1px' }} />
@@ -24,7 +24,7 @@ function FooterContent({fontSize,margin}) {
 
             <Box  sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', m: 'auto' }}>
                 {SocialMediadata.map(data=>
-                <a href={data.link} target="_blank" rel="noreferrer">
+                <a key={data.link} href={data.link} target="_blank" rel="noreferrer">
                     <img style={{ margin: '20px 20px' ,width:'20px',background: "#e5f6f5",borderRadius:'100%',padding:'7px'}} src={data.url} alt="none" />
                 </a>
                  
