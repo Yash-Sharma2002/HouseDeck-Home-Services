@@ -11,7 +11,7 @@ import { Link } from '@mui/material';
 import { isLogin } from '../constants/data';
 import DialogWithoutLoginDisplay from './DialogsComponents/DialogWithoutLoginDisplay';
 
-export default function ResponsiveLeftMenuHeaderMainPage({ commonProps }) {
+export default function ResponsiveLeftMenuHeaderMainPage({ commonProps,setAccount }) {
     const [state, setState] = React.useState({
         left: false,
     });
@@ -78,11 +78,7 @@ export default function ResponsiveLeftMenuHeaderMainPage({ commonProps }) {
                                 textTransform: 'none',
                                 paddingLeft: '16px',
                             }} >
-                                {/* <Button sx={{
-                                   
-                                }} disableRipple onClick={handleClickOpen}> */}
                                     MyBookings
-                                {/* </Button> */}
                             </Link>
 
                            
@@ -99,7 +95,7 @@ export default function ResponsiveLeftMenuHeaderMainPage({ commonProps }) {
                         </List>
                     </Box>
                 </Drawer>
-                {!isLogin && (<DialogWithoutLoginDisplay open={open} setOpen={setOpen} />)}
+                {!isLogin && (<DialogWithoutLoginDisplay open={open} setOpen={setOpen} setAccount={setAccount} />)}
             </React.Fragment>
         </div>
     )

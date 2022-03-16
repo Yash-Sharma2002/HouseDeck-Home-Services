@@ -1,19 +1,14 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
 import AddIcCallIcon from '@mui/icons-material/AddIcCall';
 import CallToActionIcon from '@mui/icons-material/CallToAction';
-import Divider from '@mui/material/Divider';
 import DialogWithoutLoginDisplay from './DialogsComponents/DialogWithoutLoginDisplay';
 import HeaderRightMenuMainPage from './HeaderRightMenuMainPage';
 import ResponsiveLeftMenuHeaderMainPage from './ResponsiveLeftMenuHeaderMainPage';
-import { useMediaQuery } from '@mui/material';
-import { Link } from '@mui/material';
+import { useMediaQuery, Link, Box, Typography, Container, AppBar, Button, Toolbar, Divider } from '@mui/material';
 import { IconHeaderImage, isLogin } from '../constants/data';
+import { LoginContext } from '../context/ContextProvider';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+
 
 const ImageTheme = {
     width: '10rem'
@@ -23,7 +18,7 @@ const PostLogo = <img src='../logos/houseDeck_copy1.png' style={ImageTheme} alt=
 
 
 
-function XLHeader({ commonProps }) {
+function XLHeader({ commonProps, account, setAccount }) {
 
     const [open, setOpen] = React.useState(false);
 
@@ -73,25 +68,25 @@ function XLHeader({ commonProps }) {
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'end', marginRight: '-20px' }}>
 
-                    <Link href="/home-services/my-bookings" target="_blank" sx={{
+                        <Link href="/home-services/my-bookings" target="_blank" sx={{
                             textDecoration: 'none'
                         }}>
-                        <Button sx={{
-                            color: '#555',
-                            border: '0.4px solid #c5c5c5',
-                            fontSize: '13px',
-                            height: '30px',
-                            userSelect: 'none',
-                            textTransform: 'none',
-                            paddingLeft: '16px',
-                            '&:hover': {
-                                backgroundColor: 'white',
-                                borderColor: '#c5c5c5'
-                            }
-                        }} disableRipple onClick={handleClickOpen}>
-                            <CallToActionIcon style={IconHeaderImage} />
-                            MyBookings
-                        </Button>
+                            <Button sx={{
+                                color: '#555',
+                                border: '0.4px solid #c5c5c5',
+                                fontSize: '13px',
+                                height: '30px',
+                                userSelect: 'none',
+                                textTransform: 'none',
+                                paddingLeft: '16px',
+                                '&:hover': {
+                                    backgroundColor: 'white',
+                                    borderColor: '#c5c5c5'
+                                }
+                            }} disableRipple onClick={handleClickOpen}>
+                                <CallToActionIcon style={IconHeaderImage} />
+                                MyBookings
+                            </Button>
                         </Link>
 
                         <Link href="tel:18003096606" target="_blank" sx={{
@@ -103,56 +98,65 @@ function XLHeader({ commonProps }) {
                                 fontSize: '13px',
                                 height: '30px',
                                 userSelect: 'none',
-                                '&:hover':{
-                                    backgroundColor:'unset'
+                                '&:hover': {
+                                    backgroundColor: 'unset'
                                 }
                             }} disableRipple>
                                 <AddIcCallIcon style={IconHeaderImage} />
                                 18003096606
                             </Button></Link>
 
-                        <Button variant='outlined' sx={{
-                            marginLeft: 2,
-                            fontSize: '13px',
-                            height: '30px',
-                            userSelect: 'none',
-                            border: 'none',
-                            textTransform: 'none',
-                            color: '#c5c5c5',
-                            padding: '0px 15px',
-                            '&:hover': {
-                                border: 'none',
-                                backgroundColor: 'white'
-                            }
-                        }} disableRipple onClick={handleClickOpen}>
-                            Sign Up
-                        </Button>
+                        {
+                            account ?
+                                <Link href='/home-services/profile' sx={{color:'black',display:'flex',justifyContent:'space-evenly',alignItems:"center",marginLeft:'18px',textDecoration:'none'}}>
+                                    <AccountCircleIcon />
+                                    <Typography sx={{fontSize:'14px',fontFamily:'Fredoka',marginLeft:'4px'}}>{account}</Typography>
+                                </Link>
+                                :
+                                <>
+                                    <Button variant='outlined' sx={{
+                                        marginLeft: 2,
+                                        fontSize: '13px',
+                                        height: '30px',
+                                        userSelect: 'none',
+                                        border: 'none',
+                                        textTransform: 'none',
+                                        color: '#c5c5c5',
+                                        padding: '0px 15px',
+                                        '&:hover': {
+                                            border: 'none',
+                                            backgroundColor: 'white'
+                                        }
+                                    }} disableRipple onClick={handleClickOpen}>
+                                        Sign Up
+                                    </Button>
 
-                        <Divider orientation='vertical' sx={{ color: '#c5c5c5' }} flexItem />
+                                    <Divider orientation='vertical' sx={{ color: '#c5c5c5' }} flexItem />
 
 
-                        <Button variant='outlined' sx={{
-                            fontSize: '13px',
-                            height: '30px',
-                            userSelect: 'none',
-                            border: 'none',
-                            textTransform: 'none',
-                            color: '#c5c5c5',
-                            padding: '0px 15px',
-                            '&:hover': {
-                                border: 'none',
-                                backgroundColor: 'white'
-                            }
-                        }} disableRipple onClick={handleClickOpen}>
-                            Login
-                        </Button>
-
-                        <Divider orientation='vertical' sx={{ color: '#c5c5c5' }} flexItem />
+                                    <Button variant='outlined' sx={{
+                                        fontSize: '13px',
+                                        height: '30px',
+                                        userSelect: 'none',
+                                        border: 'none',
+                                        textTransform: 'none',
+                                        color: '#c5c5c5',
+                                        padding: '0px 15px',
+                                        '&:hover': {
+                                            border: 'none',
+                                            backgroundColo18: 'white'
+                                        }
+                                    }} disableRipple onClick={handleClickOpen}>
+                                        Login
+                                    </Button>
+                                    <Divider orientation='vertical' sx={{ color: '#c5c5c5' }} flexItem />
+                                </>
+                        }
 
                         <HeaderRightMenuMainPage />
                     </Box>
                 </Toolbar>
-                {!isLogin && (<DialogWithoutLoginDisplay open={open} setOpen={setOpen} />)}
+                {!isLogin && (<DialogWithoutLoginDisplay open={open} setOpen={setOpen} setAccount={setAccount} />)}
             </Container>
         </AppBar >
 
@@ -160,12 +164,12 @@ function XLHeader({ commonProps }) {
 }
 
 
-function MDHeader({ commonProps }) {
+function MDHeader({ commonProps, account, setAccount }) {
     return (<>
         <AppBar position="static" sx={{ backgroundColor: 'white', color: '#000000' }}>
             <Container maxWidth="xl" sx={{ display: 'flex' }}>
                 <Box sx={{ flexGrow: 1, display: 'flex' }}>
-                    <ResponsiveLeftMenuHeaderMainPage commonProps={commonProps} />
+                    <ResponsiveLeftMenuHeaderMainPage commonProps={commonProps} setAccount={setAccount} />
                 </Box>
 
                 <Typography
@@ -183,6 +187,10 @@ function MDHeader({ commonProps }) {
 // This is the main function which divides every category in responsive 
 
 export default function Header({ commonProps }) {
+
+    const { account, setAccount } = React.useContext(LoginContext);
+
+
     const xlMax = useMediaQuery('(max-width:2000px)');
     const xlMin = useMediaQuery('(min-width:1160px)');
     const mdMax = useMediaQuery('(max-width:1160px)');
@@ -192,12 +200,12 @@ export default function Header({ commonProps }) {
     return (
         <>
             {xlMax && xlMin && (
-                <XLHeader commonProps={commonProps}  />
+                <XLHeader commonProps={commonProps} setAccount={setAccount} account={account} />
             )}
             {!(xlMax && xlMin) && mdMax && mdMin && (
-                <MDHeader commonProps={commonProps} />
+                <MDHeader commonProps={commonProps} setAccount={setAccount} account={account} />
             )}
-            {sm && (<MDHeader commonProps={commonProps} />)}
+            {sm && (<MDHeader commonProps={commonProps} setAccount={setAccount} account={account} />)}
         </>
     )
 }

@@ -42,7 +42,7 @@ const useStyles = makeStyles({
 })
 
 
-export default function DialogWithoutLoginDisplay({ open, setOpen }) {
+export default function DialogWithoutLoginDisplay({ open, setOpen,setAccount }) {
   const classes = useStyles()
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
@@ -173,7 +173,7 @@ export default function DialogWithoutLoginDisplay({ open, setOpen }) {
     let response = await authenticateSignup(signup)
     if (!response) return;
     handleClose();
-    // setAccount(signup.username);
+    setAccount(username);
   }
 
   return (
