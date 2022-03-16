@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 
 
-const Connection =  async() =>{
-    const URL = "mongodb+srv://YashForHouseDeck:Yash2493@housedeck-cluster.z3iki.mongodb.net/HouseDeck-Cluster?retryWrites=true&w=majority"
+const Connection =  async(DB_URL) =>{
+    const URL = `${DB_URL}`
     try{
         await mongoose.connect(URL, { useNewUrlParser: true })
             console.log('connect');
