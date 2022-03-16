@@ -1,7 +1,6 @@
 import User from "../model/signUpSchema.js";
 
 
-const status = 500;
 export const userSignUp = async (req, res) => {
     try {
         const exist = await User.findOne({ Number: req.body.Number });
@@ -15,7 +14,22 @@ export const userSignUp = async (req, res) => {
         console.log('User data stored');
         res.send(200 + 'User data stored')
     } catch (error) {
-        res.send(500 + 'Error occured');
+        res.send(500 + ' Error occured');
         console.log('Error: from controller ', error.message);
+    }
+}
+
+export const userLogIn = async (req, res) => {
+    try {
+        let user = await User.findOne({ Number: req.body.Number },{"Username":1});
+        if(user) {
+            console.log(user)
+            return res.send(user.Username)
+        } else {
+            return res.status(401).json('Invalid Login');
+        }
+
+    } catch (error) {
+        res.json('Error: ', error.message);        
     }
 }

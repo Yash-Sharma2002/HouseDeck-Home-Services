@@ -11,6 +11,7 @@ import * as React from 'react';
 import { authentication } from '../../Api/otpFireBase';
 import './OnlyForDialog.css';
 import { authenticateSignup } from '../../Api/signup';
+import { authenticateLogin } from '../../Api/login';
 
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -42,7 +43,7 @@ const useStyles = makeStyles({
 })
 
 
-export default function DialogWithoutLoginDisplay({ open, setOpen,setAccount }) {
+export default function DialogWithoutLoginDisplay({ open, setOpen, setAccount }) {
   const classes = useStyles()
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
@@ -105,7 +106,6 @@ export default function DialogWithoutLoginDisplay({ open, setOpen,setAccount }) 
       // User signed in successfully.
       // const user = result.user;
       console.log('signed in');
-      afterVerifiedOTP()
     }).catch((error) => {
       setMessageForOTP("Enter Valid OTP")
       console.log(error);
@@ -153,17 +153,27 @@ export default function DialogWithoutLoginDisplay({ open, setOpen,setAccount }) 
   function getEmail(name) {
     setEmail(name.value)
   }
-  function onclickOTPButton() {
+  const onclickOTPButton = async () => {
     if (otp.length < 6 || otp.length > 6) {
       setMessageForOTP('OTP must be of 6 number.')
     }
     else if (otp.length === 6) {
       setMessageForOTP('')
       verifyOTP()
+      const login = {
+        Number: `+91${number}`
+      }
+      let response = await authenticateLogin(login)
+      if (response) {
+        handleClose();
+        setAccount(response);
+      }
+      else {
+        afterVerifiedOTP()
+      }
     }
   }
   const sendToDatabase = async () => {
-
     const signup = {
       Number: `+91${number}`,
       Username: username,
@@ -246,7 +256,7 @@ export default function DialogWithoutLoginDisplay({ open, setOpen,setAccount }) 
                   fontSize: '14px',
                 }} />
             </Box>
-            <Typography sx={{ color: 'red', fontSize: '14px',marginTop:'-10px' }}>{messageForNumber}</Typography>
+            <Typography sx={{ color: 'red', fontSize: '14px', marginTop: '-10px' }}>{messageForNumber}</Typography>
 
             <Button sx={{
               display: displayForFirst ? 'block' : 'none', my: 2, boxShadow: 0, width: '96%', background: 'rgb(253, 55, 82)', color: 'white', padding: '8px 0px', textTransform: 'none',
