@@ -1110,3 +1110,118 @@ export const FAQData = [
 ];
 
 
+export const EssentialHomeCleaningData = [
+  {type:'Bath Room Cleaning',price:'429'},
+  {type:'Sofa Cleaning Services / 3 Seater',price:'359'},
+  {type:'Sofa Cleaning Services / 5 Seater',price:'499'},
+  {type:'Sofa Cleaning Services / 6 Seater',price:'559'},
+] 
+
+export const KitchenCleaning = [
+  {type:'Empty Kitchen Cleaning',price:'899'},
+  {type:'Regular Kitchen Cleaning (With Utensil)',price:'1269'},
+  {type:'Hob & Chimney Cleaning',price:'599'},
+  {type:'Chimney Cleaning',price:'389'},
+  {type:'Fridge Deep Cleaning',price:'319'},
+  {type:'Full Kitchen with Chimney',price:'1,498'},
+  {type:'Full Kitchen without Chimney',price:'1,298'},
+  {type:'Chimney',price:'959'},
+  {type:'Trolley & Shelf',price:'999'},
+] 
+
+export const MiniServices = [
+  {type:'Mirror Cleaning',price:'29'},
+  {type:'Ceiling Fan Cleaning',price:'39'},
+  {type:'Window Cleaning',price:'139'},
+  {type:'Toilet Seat Stain Removal',price:'109'},
+  {type:'Wash Basin Cleaning',price:'49'},
+  {type:'Exhaust Fan Cleaning',price:'79'},
+  {type:'Kitchen Sink Cleaning',price:'79'},
+  {type:'Gas Stove (HOB) Cleaning',price:'89'},
+  {type:'Microwave Cleaning',price:'139'},
+  {type:'Dining Table Cleaning',price:'249'},
+  {type:'Trolley & Shelves cleaning',price:'749'},
+  {type:'Balcony Cleaning',price:'179'},
+  {type:'Fridge Cleaning',price:''},
+  {type:'Carpet Wet Shampooing & Vacumming (25 sq ft)',price:'349'},
+  {type:'Cushion Cleaning (Set of 5)',price:'139'},
+  {type:'Mattress Cleaning',price:'349'},
+  {type:'Curtains Cleaning (Set of 2)',price:'89'}
+] 
+
+export const HomeDeepCleanings = [
+  {type:'Empty Home Deep Cleaning',price:'2499'},
+  {type:'1 BHK Cleaning',price:'1999'},
+  {type:'2 BHK Cleaning',price:'4499'},
+  {type:'3 BHK Cleaning',price:'5999'},
+  {type:'Villa -2000/3000 sq Ft',price:''},
+  {type:'Villa -3000/4000 sq Ft',price:''},
+  {type:'Villa- 5000/6000 sq ft',price:''},
+  {type:'Villa- 6000/7000 Sq Ft',price:''},
+]
+
+export const DisinfectionService = [
+  {type:'Apartment 1 Bhk',price:''},
+  {type:'Apartment 2 Bhk',price:''},
+  {type:'Apartment 3 Bhk',price:''},
+  {type:'Apartment 4 Bhk',price:''},
+  {type:'Apartment 5 Bhk',price:''},
+  {type:'Bunglow (2000/3000 sq ft)',price:''},
+  {type:'Car Hatchback',price:''},
+  {type:'Car Sedan',price:''},
+  {type:'Premium Sedan',price:''},
+  {type:'Sub-Compact SUV',price:''},
+  {type:'SUV/MUV',price:''},
+  {type:'Luxury ',price:''},
+]
+
+export const MoveInReadyHomeServices = [
+  {type:'1 Bhk',price:''},
+  {type:'2 Bhk',price:''},
+  {type:'3 Bhk',price:''},
+  {type:'4 Bhk',price:''},
+]
+
+export const FullHouseDeepCleaning = [
+  {type:'1 RK Full House Deep Cleaning',price:'3,349'},
+  {type:'1 BHK Full House Deep Cleaning',price:'3,999'},
+  {type:'2 BHK Full House Deep Cleaning',price:'4,399'},
+  {type:'3 BHK Full House Deep Cleaning',price:'5,349'},
+  {type:'4 BHK Full House Deep Cleaning',price:'7,349'},
+  {type:'5 BHK Full House Deep Cleaning',price:'8,599'},
+  {type:'1 BHK Full House Deep Cleaning (Duplex)',price:'4,499'},
+  {type:'2 BHK Full House Deep Cleaning (Duplex)',price:'5,349'},
+  {type:'3 BHK Full House Deep Cleaning (Duplex)',price:'7,449'},
+  {type:'4 BHK Full House Deep Cleaning (Duplex)',price:'8,499'},
+  {type:'5 BHK Full House Deep Cleaning (Duplex)',price:'9,549'},
+]
+
+export const FullHouseBasicCleaning = [
+  {type:'1 BHK Full House Deep Cleaning',price:'1,899'},
+  {type:'2 BHK Full House Deep Cleaning',price:'2,299'},
+  {type:'3 BHK Full House Deep Cleaning',price:'2,599'},
+  {type:'4 BHK Full House Deep Cleaning',price:'3,549'},
+]
+
+export const BathroomCleaning = [
+  {type:'Bathroom Cleaning (1 No.)',price:'448'},
+  {type:'Bathroom Cleaning (2 No.)',price:'898'},
+  {type:'Bathroom Cleaning (3 No.)',price:'1,399'},
+  {type:'Bathroom Cleaning (4 No.)',price:'1,798'},
+  {type:'Bathroom Cleaning (5 No.)',price:'2,249'},
+]
+
+export const SofaCleaning = [
+  {type:'Sofa Cleaning (2 No.)',price:'318'},
+  {type:'Sofa Cleaning (3 No.)',price:'398'},
+  {type:'Sofa Cleaning (4 No.)',price:'649'},
+  {type:'Sofa Cleaning (5 No.)',price:'748'},
+  {type:'Sofa Cleaning (6 No.)',price:'898'},
+  {type:'Sofa Cleaning (7 No.)',price:'1,098'},
+  {type:'Sofa Cleaning (8 No.)',price:'1,199'},
+  {type:'Sofa Cleaning (9 No.)',price:'1,298'},
+  {type:'Sofa Cleaning (10 No.)',price:'1,598'},
+  {type:'Cushion Cleaning (6-10 No.)',price:'219'},
+  {type:'Cushion Cleaning (1-5 No.)',price:'158'},
+]
+
