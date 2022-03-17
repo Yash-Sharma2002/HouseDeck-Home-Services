@@ -71,25 +71,28 @@ export const CustomerRatings = [
 export const RecommendedServicesData = [
   {
     key: "painting",
-    url: "../services/painting.webp",
+    img: "../services/painting.webp",
     title: "Home Painting Service",
     subText: "Book your free consultation to get accurate quote.",
     colorText: "Book Consultation",
+    url:'/home-services/painting'
   },
   {
     key: "cleaning",
-    url: "../services/cleaning.webp",
+    img: "../services/cleaning.webp",
     title: "Home Cleaning Service",
     subText:
       "Make your house look like new. Spot free cleaning at lowest prices",
     colorText: "Book Now",
+    url:'/home-services/cleaning'
   },
   {
     key: "pnm",
-    url: "../services/pnm.webp",
+    img: "../services/pnm.webp",
     title: "Packer and Movers",
     subText: "Guaranteed On-time | Safe Delivery",
     colorText: "Estimate Moving Cost",
+    url:'/home-services'
   },
 ];
 

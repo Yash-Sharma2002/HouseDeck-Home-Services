@@ -105,7 +105,7 @@ export default function SearchNSelect({city,setCity,handleData,style}) {
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', padding: '15px' }}>
                   {CitiesImg.map(data =>
                     <>
-                      <Button sx={{ width: '25%', display: 'block', color: 'black',textTransform:'none', userSelect: 'none', textAlign: 'center', padding: '20px 0px', cursor: 'pointer', }} onClick={() => handleData(data.name)}>
+                      <Button key={data.id} sx={{ width: '25%', display: 'block', color: 'black',textTransform:'none', userSelect: 'none', textAlign: 'center', padding: '20px 0px', cursor: 'pointer', }} onClick={() => handleData(data.name)}>
 
                         <img style={{ width: '50px', height: '50px' }} src={data.url} alt={data.id} />
                         <Typography sx={{ fontSize: '14px' }}>{data.name}</Typography>
@@ -134,7 +134,7 @@ export default function SearchNSelect({city,setCity,handleData,style}) {
               <DialogContent dividers>
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', }}>
                   {CitiesImg.map(data =>
-                    <Button sx={{ width: '33%', display: 'block', color: 'black',textTransform:'none', userSelect: 'none', textAlign: 'center', padding: '15px 0px', cursor: 'pointer', }} onClick={() => handleData(data.name)}>
+                    <Button key={data.id} sx={{ width: '33%', display: 'block', color: 'black',textTransform:'none', userSelect: 'none', textAlign: 'center', padding: '15px 0px', cursor: 'pointer', }} onClick={() => handleData(data.name)}>
 
                       <img style={{ width: '50px', height: '50px' }} src={data.url} alt={data.id} />
                       <Typography sx={{ fontSize: '14px' }}>{data.name}</Typography>
@@ -162,7 +162,7 @@ export default function SearchNSelect({city,setCity,handleData,style}) {
               <DialogContent dividers>
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', padding: '15px' }}>
                   {CitiesImg.map(data =>
-                    <Button sx={{ width: '50%', display: 'block', color: 'black',textTransform:'none', userSelect: 'none', textAlign: 'center', padding: '20px 0px', cursor: 'pointer', }} onClick={() => handleData(data.name)}>
+                    <Button key={data.id} sx={{ width: '50%', display: 'block', color: 'black',textTransform:'none', userSelect: 'none', textAlign: 'center', padding: '20px 0px', cursor: 'pointer', }} onClick={() => handleData(data.name)}>
 
                       <img style={{ width: '50px', height: '50px' }} src={data.url} alt={data.id} />
                       <Typography sx={{ fontSize: '14px' }}>{data.name}</Typography>

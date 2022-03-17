@@ -248,7 +248,7 @@ export default function HouseDeckHomeServicesMainPage({ city, setCity, handleDat
         }} src="../other/bannerOfMiddle.png" alt="Banner" />
       </Box>
       
-      <SubscribeCard />
+      <SubscribeCard displayForButton={'inline'} />
       <CustomerRatingsMainPage />
       {/* <Temp /> */}
       <MainPageTopQuestions />

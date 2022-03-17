@@ -147,6 +147,8 @@ export default function DialogWithoutLoginDisplay({ open, setOpen, setAccount })
       setDisplayForLast((prevDisplay) => prevDisplay = false)
     }
   }
+
+
   function getUserName(name) {
     setUsername(name.value)
   }
@@ -165,7 +167,7 @@ export default function DialogWithoutLoginDisplay({ open, setOpen, setAccount })
       }
       let response = await authenticateLogin(login)
       if (response) {
-        setAccount((prevType) => prevType = response)
+        setAccount(response)
         handleClose();
         try {
           localStorage.setItem('userdata', JSON.stringify({
@@ -190,7 +192,7 @@ export default function DialogWithoutLoginDisplay({ open, setOpen, setAccount })
     }
     let response = await authenticateSignup(signup)
     if (!response) return;
-    setAccount((prevType) => prevType = username)
+    setAccount(username)
     try {
       localStorage.setItem('userdata', JSON.stringify(signup));
     } catch (err) {
@@ -249,6 +251,7 @@ export default function DialogWithoutLoginDisplay({ open, setOpen, setAccount })
             <Box >
               <CloseIcon onClick={handleClose} sx={{ margin: '8px 0px auto 290px', cursor: 'pointer' }} />
             </Box>
+
             <Typography sx={{ fontSize: '16px', fontWeight: '600', marginTop: 3 }}>Enter phone to continue</Typography>
 
 

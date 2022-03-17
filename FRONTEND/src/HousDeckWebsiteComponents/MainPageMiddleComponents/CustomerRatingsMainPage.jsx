@@ -52,7 +52,7 @@ const RatingFunction = ({ width, height }) => {
         <>
             {CustomerRatings.map(data =>
                 <>
-                    <Card key={data.name} sx={{
+                    <Card key={data.key} sx={{
                         maxWidth: width,
                         backgroundColor: '#f3f3f3',
                         boxShadow: 0,
@@ -124,7 +124,7 @@ const MDCustomerRatingsMainPage = () => {
 
                 {CustomerRatings.map(data =>
                     <div>
-                        <Card key={data.name} sx={{
+                        <Card key={data.key} sx={{
                             maxWidth: '90%',
                             backgroundColor: '#f3f3f3',
                             boxShadow: 0,
@@ -180,7 +180,7 @@ const SMCustomerRatingsMainPage = () => {
 
                 {CustomerRatings.map(data =>
                     <div>
-                        <Card sx={{
+                        <Card key={data.key} sx={{
                             maxWidth: '100%',
                             backgroundColor: '#f3f3f3',
                             boxShadow: 0,

@@ -14,7 +14,7 @@ export default function HouseDeckHomeServicesSubscriptionPage() {
     // i will change the contents when they are provided later 
     <div>
       <Header commonProps={commonProps} />
-      <SubscribeCard />
+      <SubscribeCard displayForButton={'none'} />
       <RecommendedServices />
       <Footer />
     </div>

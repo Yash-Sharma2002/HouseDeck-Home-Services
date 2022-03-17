@@ -7,6 +7,7 @@ import ResponsiveLeftMenuHeaderMainPage from './ResponsiveLeftMenuHeaderMainPage
 import { useMediaQuery, Link, Box, Typography, Container, AppBar, Button, Toolbar, Divider } from '@mui/material';
 import { IconHeaderImage, isLogin } from '../constants/data';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+// import { LoginContext } from '../context/ContextProvider';
 
 
 const ImageTheme = {
@@ -62,7 +63,6 @@ function XLHeader({ commonProps, userData, account, setAccount }) {
                         ))}
                     </Box>
 
-
                     {/* -------------------------------------- Right side ---------------------------------- */}
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'end', marginRight: '-20px' }}>
@@ -106,10 +106,12 @@ function XLHeader({ commonProps, userData, account, setAccount }) {
                             </Button></Link>
 
                         {
-                            (userData.Username || account) ?
+                            (userData.Username || account) ? 
+                             //(account) ? // for firebase
                                 <Link href='/home-services/profile' sx={{ color: 'black', display: 'flex', justifyContent: 'space-evenly', alignItems: "center", marginLeft: '18px', textDecoration: 'none' }}>
                                     <AccountCircleIcon />
                                     <Typography sx={{ fontSize: '14px', fontFamily: 'Fredoka', marginLeft: '4px' }}>{userData.Username || account}</Typography>
+                                    {/* <Typography sx={{ fontSize: '14px', fontFamily: 'Fredoka', marginLeft: '4px' }}>{account}</Typography> */}
                                 </Link>
                                 :
                                 <>
@@ -198,6 +200,8 @@ export default function Header({ commonProps }) {
             return undefined;
         }
     }
+
+    // const {account, setAccount} = React.useContext(LoginContext)
 
     const [account, setAccount] = React.useState('')
     const userData = loadUserData()

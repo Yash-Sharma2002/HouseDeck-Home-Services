@@ -1,7 +1,7 @@
 import React from 'react';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
+import { Box, Link } from '@mui/material';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -12,7 +12,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 
-export default function HeaderRightMenuMainPage({setAccount}) {
+export default function HeaderRightMenuMainPage({ setAccount }) {
 
     const [state, setState] = React.useState({
         right: false,
@@ -95,7 +95,11 @@ export default function HeaderRightMenuMainPage({setAccount}) {
                             ))}
                         </List>
 
-                        <Button onClick={logout}>logout</Button>
+                        <Link href="/home-services">
+                            <Button onClick={logout}>
+                                logout
+                            </Button>
+                        </Link>
                     </Box>
                 </Drawer>
             </React.Fragment>

@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import { useMediaQuery } from '@mui/material'
 
 
-function Content({ padding, padding2, display }) {
+function Content({ padding, padding2, display ,displayForButton}) {
     return (
         <div id="subscription-plans" style={{ padding: padding }}>
             <Box sx={{
@@ -36,7 +36,8 @@ function Content({ padding, padding2, display }) {
                         padding: '10px',
                         background: '#1b685f',
                         fontFamily: "Fredoka",
-                        borderRadius: 5
+                        borderRadius: 5,
+                        display:displayForButton
                     }} href="/home-services/subcription">
                         View all plans &#10140;
                     </a>
@@ -186,7 +187,7 @@ function Content({ padding, padding2, display }) {
 
 
 
-function SMContent() {
+function SMContent({displayForButton}) {
     return (
         <div id="subscription-plans" style={{ padding: '20px' }}>
             <Typography sx={{
@@ -349,7 +350,8 @@ function SMContent() {
                     padding: '8px',
                     background: '#1b685f',
                     fontFamily: "Fredoka",
-                    borderRadius: 5
+                    borderRadius: 5,
+                    display:displayForButton
                 }} href="/home-services/subcription">
                     View all plans &#10140;
                 </a>
@@ -361,7 +363,7 @@ function SMContent() {
 }
 
 
-export default function SubscribeCard() {
+export default function SubscribeCard({displayForButton}) {
 
     const xlMax = useMediaQuery('(max-width:2000px)');
     const xlMin = useMediaQuery('(min-width:1160px)');
@@ -372,15 +374,15 @@ export default function SubscribeCard() {
 
         <>
             {xlMax && xlMin && (
-                <Content padding={'60px 100px'} padding2={'10px 40px'} display={'flex'} />
+                <Content padding={'60px 100px'} padding2={'10px 40px'} display={'flex'} displayForButton={displayForButton} />
 
             )}
             {!(xlMax && xlMin) && mdMax && mdMin && (
-                <Content padding={'30px 20px'} padding2={'10px 20px'} display={'flex'} />
+                <Content padding={'30px 20px'} padding2={'10px 20px'} display={'flex'} displayForButton={displayForButton} />
 
             )}
             {!(mdMax && mdMin) && sm && (
-                <SMContent />
+                <SMContent displayForButton={displayForButton} />
             )}
         </>
     )

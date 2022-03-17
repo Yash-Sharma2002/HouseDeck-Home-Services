@@ -6,6 +6,8 @@ import { Typography } from "@mui/material";
 import { useMediaQuery } from "@mui/material";
 
 function Content({ width, padding, variant, margin }) {
+
+
   const commonProps = [{ name: "Home Services", url: "/home-services" }];
   return (
     <div>
