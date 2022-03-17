@@ -96,14 +96,19 @@ export default function ResponsiveLeftMenuHeaderMainPage({ commonProps, userData
                                 </Typography>
                             </Link>
 
-                            {userData.Username || account ?
+                            {
+                            // userData.Username || account ?
+                            (account) ? // for firebase
                                 <>
                                     <Typography sx={{
                                         fontSize: '16px',
                                         padding: '0px 15px',
                                         mt: 1,
                                         fontWeight: '900'
-                                    }}>{userData.Username || account} --- Username</Typography>
+                                    }}>
+                                        {/* {userData.Username || account} --- Username */}
+                                        {account} --- Username 
+                                        </Typography>
                                     <Typography sx={{
                                         fontSize: '16px',
                                         padding: '0px 15px',

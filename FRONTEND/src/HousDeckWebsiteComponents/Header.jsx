@@ -106,12 +106,12 @@ function XLHeader({ commonProps, userData, account, setAccount }) {
                             </Button></Link>
 
                         {
-                            (userData.Username || account) ? 
-                             //(account) ? // for firebase
+                            // (userData.Username || account) ? 
+                             (account) ? // for firebase
                                 <Link href='/home-services/profile' sx={{ color: 'black', display: 'flex', justifyContent: 'space-evenly', alignItems: "center", marginLeft: '18px', textDecoration: 'none' }}>
                                     <AccountCircleIcon />
-                                    <Typography sx={{ fontSize: '14px', fontFamily: 'Fredoka', marginLeft: '4px' }}>{userData.Username || account}</Typography>
-                                    {/* <Typography sx={{ fontSize: '14px', fontFamily: 'Fredoka', marginLeft: '4px' }}>{account}</Typography> */}
+                                    {/* <Typography sx={{ fontSize: '14px', fontFamily: 'Fredoka', marginLeft: '4px' }}>{userData.Username || account}</Typography> */}
+                                    <Typography sx={{ fontSize: '14px', fontFamily: 'Fredoka', marginLeft: '4px' }}>{account}</Typography>
                                 </Link>
                                 :
                                 <>
