@@ -170,7 +170,7 @@ function MDHeader({ commonProps, userData, account, setAccount }) {
         <AppBar position="static" sx={{ backgroundColor: 'white', color: '#000000' }}>
             <Container maxWidth="xl" sx={{ display: 'flex' }}>
                 <Box sx={{ flexGrow: 1, display: 'flex' }}>
-                    <ResponsiveLeftMenuHeaderMainPage commonProps={commonProps} userData={userData} />
+                    <ResponsiveLeftMenuHeaderMainPage commonProps={commonProps} userData={userData} account={account} setAccount={setAccount} />
                 </Box>
 
                 <Typography

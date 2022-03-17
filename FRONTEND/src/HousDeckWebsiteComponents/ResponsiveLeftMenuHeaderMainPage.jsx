@@ -7,11 +7,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ListItem from '@mui/material/ListItem';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import { Link } from '@mui/material';
+import { Link, Typography } from '@mui/material';
 import { isLogin } from '../constants/data';
 import DialogWithoutLoginDisplay from './DialogsComponents/DialogWithoutLoginDisplay';
 
-export default function ResponsiveLeftMenuHeaderMainPage({ commonProps,setAccount }) {
+export default function ResponsiveLeftMenuHeaderMainPage({ commonProps, userData, account, setAccount }) {
     const [state, setState] = React.useState({
         left: false,
     });
@@ -31,6 +31,18 @@ export default function ResponsiveLeftMenuHeaderMainPage({ commonProps,setAccoun
     };
 
 
+    function logout() {
+        setAccount('')
+        try {
+            localStorage.setItem("userdata", JSON.stringify({
+                Number: '',
+                Username: ''
+            }))
+        }
+        catch (err) {
+            console.log(err);;
+        }
+    }
     return (
         <div>
             <React.Fragment key={'left'}>
@@ -68,30 +80,50 @@ export default function ResponsiveLeftMenuHeaderMainPage({ commonProps,setAccoun
                         </List>
                         <Divider />
 
-                        <List sx={{mt:1}}>
+                        <List sx={{ mt: 1 }}>
                             <Link href="/home-services/my-bookings" target="_blank" sx={{
                                 textDecoration: 'none',
-                                color: 'black',
-                                fontSize: '16px',
-                                height: '30px',
-                                userSelect: 'none',
-                                textTransform: 'none',
-                                paddingLeft: '16px',
                             }} >
+                                <Typography sx={{
+                                    color: 'black',
+                                    fontSize: '16px',
+                                    height: '30px',
+                                    userSelect: 'none',
+                                    textTransform: 'none',
+                                    paddingLeft: '16px',
+                                }}>
                                     MyBookings
+                                </Typography>
                             </Link>
 
-                           
-                            <Box sx={{
-                                fontSize: '16px',
-                                userSelect: 'none',
-                                textTransform: 'none',
-                                color: 'black',
-                                padding: '0px 15px',
-                                mt:1
-                            }} onClick={handleClickOpen}>
-                                Login
-                            </Box>
+                            {userData.Username || account ?
+                                <>
+                                    <Typography sx={{
+                                        fontSize: '16px',
+                                        padding: '0px 15px',
+                                        mt: 1,
+                                        fontWeight: '900'
+                                    }}>{userData.Username || account} --- Username</Typography>
+                                    <Typography sx={{
+                                        fontSize: '16px',
+                                        padding: '0px 15px',
+                                        mt: 1,
+                                        fontWeight: '600'
+                                    }} onClick={logout}>Logout</Typography>
+                                </>
+
+                                :
+                                <Box sx={{
+                                    fontSize: '16px',
+                                    userSelect: 'none',
+                                    textTransform: 'none',
+                                    color: 'black',
+                                    padding: '0px 15px',
+                                    mt: 1
+                                }} onClick={handleClickOpen}>
+                                    Login
+                                </Box>
+                            }
                         </List>
                     </Box>
                 </Drawer>
