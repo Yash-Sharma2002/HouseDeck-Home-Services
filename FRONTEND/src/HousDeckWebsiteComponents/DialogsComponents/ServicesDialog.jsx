@@ -7,8 +7,9 @@ import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import './OnlyForDialog.css';
+import { v4 as uuidV4 } from 'uuid'
 import { MiniServices } from '../../constants/data';
-import { v4 as uuidV4 } from "uuid"
+import { serviceSender } from '../../Api/serviceSender';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -20,7 +21,7 @@ export default function ServicesDialog({ open, setOpen }) {
 
     const fullScreen = useMediaQuery('(max-width:700px)');
     const [price, setPrice] = React.useState(0)
-    const [items, setItems] = React.useState([])
+    const [Service, setService] = React.useState([])
 
     const handleClose = () => {
         setOpen(false)
@@ -29,11 +30,28 @@ export default function ServicesDialog({ open, setOpen }) {
     function add(service, price) {
         console.log(service, price);
         setPrice((prevPrice) => parseFloat(prevPrice) + parseFloat(price))
-        setItems(prevItems => {
-            return [...prevItems, { id: uuidV4(), ServiceChosen: service, PriceForService: price }]
+        setService(prevItems => {
+            return [...prevItems, { id: uuidV4(), ServiceChoseByUser: service, PriceForService: price }]
         })
-        console.log(items)
     }
+    function remove(id,price) {
+        setService(Service => {
+            return Service.filter(data => data.id !== id)
+        })
+        setPrice((prevPrice) => parseFloat(prevPrice) - parseFloat(price))
+    }
+
+    const sendToDatabase = async () => {
+        const items = { Service, TotalPrice: price }
+        let response = await serviceSender(items)
+        if (response) {
+            console.log(response);
+        } else {
+            console.log('error occured while calling api');
+        }
+    }
+
+    console.log(Service)
     return (
         <>
             <BootstrapDialog
@@ -69,15 +87,17 @@ export default function ServicesDialog({ open, setOpen }) {
                             <Typography>Total</Typography>
                             <Typography>&#8377;{price}</Typography>
                         </Box>
-                        {items.map(data =>
+                        {Service.map(data =>
                             <>
                                 <Box sx={{ my: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                    <Typography>{data.ServiceChosen}</Typography>
-                                    <Typography>{data.PriceForService}</Typography>
+                                    <Typography>{data.ServiceChoseByUser}</Typography>
+                                    {/* <Typography>{data.PriceForService}</Typography> */}
+                                    <CloseIcon onClick={() => remove(data.id,data.PriceForService)} />
                                 </Box>
                             </>
                         )}
                     </Box>
+                    <Button variant="outlined" onClick={sendToDatabase}>Send To database</Button>
                 </Box>
             </BootstrapDialog>
         </>
