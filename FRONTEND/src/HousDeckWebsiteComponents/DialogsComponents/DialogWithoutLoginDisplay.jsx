@@ -210,7 +210,7 @@ function Content({ open, setOpen, setAccount, width, display }) {
         maxWidth={false}
       >
         <Box sx={{ display: 'flex', height: '70vh', width: width }} >
-          <Box sx={{ width: '40%', height: '100vh', background: '#f8f8f8', paddingLeft: '30px' }}>
+          <Box sx={{ width: '40%', background: '#f8f8f8', paddingLeft: '30px' }}>
             <img style={{ height: '100px', width: "100px", marginTop: '9rem' }} src="../logos/isLogin.png" alt="Login" />
             <Typography variant="h6" sx={{ fontSize: '18px', fontWeight: '600', ml: 1 }}>Login/Signup</Typography>
 
