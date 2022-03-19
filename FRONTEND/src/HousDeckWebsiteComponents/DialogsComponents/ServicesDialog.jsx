@@ -8,8 +8,11 @@ import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import './OnlyForDialog.css';
 import { v4 as uuidV4 } from 'uuid'
-import { MiniServices } from '../../constants/data';
 import { serviceSender } from '../../Api/serviceSender';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -17,28 +20,38 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     },
 }));
 
-export default function ServicesDialog({ open, setOpen }) {
+export default function ServicesDialog({ options, open, setOpen }) {
 
     const fullScreen = useMediaQuery('(max-width:700px)');
     const [price, setPrice] = React.useState(0)
     const [Service, setService] = React.useState([])
+    const [display, setDisplay] = React.useState(false)
 
     const handleClose = () => {
         setOpen(false)
 
     };
     function add(service, price) {
-        console.log(service, price);
-        setPrice((prevPrice) => parseFloat(prevPrice) + parseFloat(price))
-        setService(prevItems => {
-            return [...prevItems, { id: uuidV4(), ServiceChoseByUser: service, PriceForService: price }]
-        })
+        if (service && price !== 0) {
+            setPrice((prevPrice) => parseFloat(prevPrice) + parseFloat(price))
+            setService(prevItems => {
+                return [...prevItems, { id: uuidV4(), ServiceChoseByUser: service, PriceForService: price }]
+            })
+            setDisplay(true)
+        }
+        else {
+            setDisplay(false)
+        }
     }
-    function remove(id,price) {
+
+    function remove(id, price) {
         setService(Service => {
             return Service.filter(data => data.id !== id)
         })
         setPrice((prevPrice) => parseFloat(prevPrice) - parseFloat(price))
+        if (price) {
+            setDisplay(false)
+        }
     }
 
     const sendToDatabase = async () => {
@@ -67,37 +80,67 @@ export default function ServicesDialog({ open, setOpen }) {
                         <CloseIcon onClick={handleClose} sx={{ cursor: 'pointer' }} />
                     </Box>
                     <Box>
-                        {MiniServices.map((data) => {
+                        {options.map((data) => {
                             const service = data.type
                             const price = data.price
+                            const fakePrice = parseInt(price) + 200
                             return (
                                 <>
-                                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100px', width: 'inherit' }}>
-                                        <Typography>{service}</Typography>
-                                        <Typography>&#8377;{price}</Typography>
-                                    </Box>
-                                    <Box sx={{ textAlign: 'end' }}>
-                                        <Button variant='outlined' sx={{ marginLeft: 'auto', marginRight: '0px' }} onClick={() => add(service, price)}>Select</Button>
+                                    <Box key={data.type}>
+                                        <Box sx={{ textAlign: 'center' }}>
+                                            <img src="../other/cleaning.jpg" style={{ pdding: '10px', marginTop: '10px' }} />
+                                        </Box>
+                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '8px 4px' }}>
+                                            <Typography sx={{ fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>{service}</Typography>
+                                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
+                                                <Typography sx={{ fontSize: '17px', fontWeight: '600', fontFamily: 'Fredoka', textDecoration: 'line-through', color: 'gray' }}>&#8377;{fakePrice.toLocaleString()}</Typography>
+                                                <Typography sx={{ ml: 2, fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{price.toLocaleString()}</Typography>
+                                            </Box>
+                                        </Box>
+                                        <Box sx={{ textAlign: 'end' }}>
+                                            <Button variant='outlined' sx={{ marginLeft: 'auto', marginRight: '0px', textTransform: 'none' }} onClick={() => add(service, price)}>Select</Button>
+                                        </Box>
                                     </Box>
                                 </>
                             )
                         }
                         )}
-                        <Box sx={{ my: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100px', }}>
-                            <Typography>Total</Typography>
-                            <Typography>&#8377;{price}</Typography>
-                        </Box>
-                        {Service.map(data =>
-                            <>
-                                <Box sx={{ my: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                    <Typography>{data.ServiceChoseByUser}</Typography>
-                                    {/* <Typography>{data.PriceForService}</Typography> */}
-                                    <CloseIcon onClick={() => remove(data.id,data.PriceForService)} />
-                                </Box>
-                            </>
-                        )}
+
+                        {
+                            display ?
+                                <>
+                                    <Accordion disableGutters sx={{
+                                        boxShadow: 0,
+                                    }}>
+                                        <AccordionSummary sx={{padding:0,my: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
+                                                <Box sx={{ display: 'flex', alignItems: 'center', }}>
+                                                    <Typography sx={{fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>See all items</Typography>
+                                                    <ExpandMoreIcon />
+                                                </Box>
+                                                <Box sx={{ display: 'flex',  alignItems: 'center', }}>
+                                                    <Typography sx={{fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{price.toLocaleString()}</Typography>
+                                                    <Button variant='outlined' sx={{ textTransform: 'none' }} onClick={sendToDatabase}>Contnue</Button>
+                                                </Box>
+                                        </AccordionSummary>
+                                        <AccordionDetails>
+                                            {Service.map(data =>
+                                                <>
+                                                    <Box sx={{ my: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                        <Typography>{data.ServiceChoseByUser}</Typography>
+                                                        {/* <Typography>{data.PriceForService}</Typography> */}
+                                                        <CloseIcon onClick={() => remove(data.id, data.PriceForService)} />
+                                                    </Box>
+                                                </>
+                                            )}
+                                        </AccordionDetails>
+                                    </Accordion>
+                                </>
+
+                                : null
+                        }
+
+
                     </Box>
-                    <Button variant="outlined" onClick={sendToDatabase}>Send To database</Button>
                 </Box>
             </BootstrapDialog>
         </>

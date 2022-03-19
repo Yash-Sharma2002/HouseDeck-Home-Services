@@ -1110,6 +1110,7 @@ export const FAQData = [
 ];
 
 
+
 export const EssentialHomeCleaningData = [
   {type:'Bath Room Cleaning',price:'429'},
   {type:'Sofa Cleaning Services / 3 Seater',price:'359'},
@@ -1123,8 +1124,8 @@ export const KitchenCleaning = [
   {type:'Hob & Chimney Cleaning',price:'599'},
   {type:'Chimney Cleaning',price:'389'},
   {type:'Fridge Deep Cleaning',price:'319'},
-  {type:'Full Kitchen with Chimney',price:'1,498'},
-  {type:'Full Kitchen without Chimney',price:'1,298'},
+  {type:'Full Kitchen with Chimney',price:'1498'},
+  {type:'Full Kitchen without Chimney',price:'1298'},
   {type:'Chimney',price:'959'},
   {type:'Trolley & Shelf',price:'999'},
 ] 
@@ -1183,32 +1184,32 @@ export const MoveInReadyHomeServices = [
 ]
 
 export const FullHouseDeepCleaning = [
-  {type:'1 RK Full House Deep Cleaning',price:'3,349'},
-  {type:'1 BHK Full House Deep Cleaning',price:'3,999'},
-  {type:'2 BHK Full House Deep Cleaning',price:'4,399'},
-  {type:'3 BHK Full House Deep Cleaning',price:'5,349'},
-  {type:'4 BHK Full House Deep Cleaning',price:'7,349'},
-  {type:'5 BHK Full House Deep Cleaning',price:'8,599'},
-  {type:'1 BHK Full House Deep Cleaning (Duplex)',price:'4,499'},
-  {type:'2 BHK Full House Deep Cleaning (Duplex)',price:'5,349'},
-  {type:'3 BHK Full House Deep Cleaning (Duplex)',price:'7,449'},
-  {type:'4 BHK Full House Deep Cleaning (Duplex)',price:'8,499'},
-  {type:'5 BHK Full House Deep Cleaning (Duplex)',price:'9,549'},
+  {type:'1 RK Full House Deep Cleaning',price:'3349'},
+  {type:'1 BHK Full House Deep Cleaning',price:'3999'},
+  {type:'2 BHK Full House Deep Cleaning',price:'4399'},
+  {type:'3 BHK Full House Deep Cleaning',price:'5349'},
+  {type:'4 BHK Full House Deep Cleaning',price:'7349'},
+  {type:'5 BHK Full House Deep Cleaning',price:'8599'},
+  {type:'1 BHK Full House Deep Cleaning (Duplex)',price:'4499'},
+  {type:'2 BHK Full House Deep Cleaning (Duplex)',price:'5349'},
+  {type:'3 BHK Full House Deep Cleaning (Duplex)',price:'7449'},
+  {type:'4 BHK Full House Deep Cleaning (Duplex)',price:'8499'},
+  {type:'5 BHK Full House Deep Cleaning (Duplex)',price:'9549'},
 ]
 
 export const FullHouseBasicCleaning = [
-  {type:'1 BHK Full House Deep Cleaning',price:'1,899'},
-  {type:'2 BHK Full House Deep Cleaning',price:'2,299'},
-  {type:'3 BHK Full House Deep Cleaning',price:'2,599'},
-  {type:'4 BHK Full House Deep Cleaning',price:'3,549'},
+  {type:'1 BHK Full House Deep Cleaning',price:'1899'},
+  {type:'2 BHK Full House Deep Cleaning',price:'2299'},
+  {type:'3 BHK Full House Deep Cleaning',price:'2599'},
+  {type:'4 BHK Full House Deep Cleaning',price:'3549'},
 ]
 
 export const BathroomCleaning = [
   {type:'Bathroom Cleaning (1 No.)',price:'448'},
   {type:'Bathroom Cleaning (2 No.)',price:'898'},
-  {type:'Bathroom Cleaning (3 No.)',price:'1,399'},
-  {type:'Bathroom Cleaning (4 No.)',price:'1,798'},
-  {type:'Bathroom Cleaning (5 No.)',price:'2,249'},
+  {type:'Bathroom Cleaning (3 No.)',price:'1399'},
+  {type:'Bathroom Cleaning (4 No.)',price:'1798'},
+  {type:'Bathroom Cleaning (5 No.)',price:'2249'},
 ]
 
 export const SofaCleaning = [
@@ -1217,11 +1218,17 @@ export const SofaCleaning = [
   {type:'Sofa Cleaning (4 No.)',price:'649'},
   {type:'Sofa Cleaning (5 No.)',price:'748'},
   {type:'Sofa Cleaning (6 No.)',price:'898'},
-  {type:'Sofa Cleaning (7 No.)',price:'1,098'},
-  {type:'Sofa Cleaning (8 No.)',price:'1,199'},
-  {type:'Sofa Cleaning (9 No.)',price:'1,298'},
-  {type:'Sofa Cleaning (10 No.)',price:'1,598'},
+  {type:'Sofa Cleaning (7 No.)',price:'1098'},
+  {type:'Sofa Cleaning (8 No.)',price:'1199'},
+  {type:'Sofa Cleaning (9 No.)',price:'1298'},
+  {type:'Sofa Cleaning (10 No.)',price:'1598'},
   {type:'Cushion Cleaning (6-10 No.)',price:'219'},
   {type:'Cushion Cleaning (1-5 No.)',price:'158'},
 ]
 
+export const CleaningServicesData=[
+  {type:'Essential Home Cleaning',options:EssentialHomeCleaningData},
+  {type:'Full Home Cleaning',options:KitchenCleaning},
+  {type:'Full House Deep Cleaning',options:FullHouseDeepCleaning},
+  {type:'Mini Services',options:MiniServices},
+]
