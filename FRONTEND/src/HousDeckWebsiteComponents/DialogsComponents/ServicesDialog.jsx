@@ -109,8 +109,8 @@ export default function ServicesDialog({ options, open, setOpen }) {
             services,
             totalPrice: price,
             locationForService: location,
-            dateForService: date,
-            timeForService: time,
+            dateForService: date.toString().slice(0,15),
+            timeForService: time.toString().slice(16,25),
         }
         console.log(items)
         let response = await serviceSender(items)
@@ -249,7 +249,7 @@ export default function ServicesDialog({ options, open, setOpen }) {
                                     disablePast
                                     calenders={1}
                                     onChange={(newdate) => {
-                                        setdate(newdate.slice(0,15));
+                                        setdate(newdate);
                                     }}
                                     renderInput={(params) => <TextField sx={{ my: 4 }} {...params} />}
                                 />
@@ -259,7 +259,7 @@ export default function ServicesDialog({ options, open, setOpen }) {
                                     value={time}
                                     label="Enter Time"
                                     onChange={(newtime) => {
-                                        settime(newtime.slice(16,25));
+                                        settime(newtime);
                                     }}
                                     minTime={new Date(0, 0, 0, 8)}
                                     maxTime={new Date(0, 0, 0, 18, 45)}
