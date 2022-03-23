@@ -5,7 +5,7 @@ import DialogWithoutLoginDisplay from './DialogsComponents/DialogWithoutLoginDis
 import HeaderRightMenuMainPage from './HeaderRightMenuMainPage';
 import ResponsiveLeftMenuHeaderMainPage from './ResponsiveLeftMenuHeaderMainPage';
 import { useMediaQuery, Link, Box, Typography, Container, AppBar, Button, Toolbar, Divider } from '@mui/material';
-import { IconHeaderImage, isLogin } from '../constants/data';
+import { IconHeaderImage } from '../constants/data';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 // import { LoginContext } from '../context/ContextProvider';
 
@@ -18,13 +18,14 @@ const PostLogo = <img src='../logos/houseDeck_copy1.png' style={ImageTheme} alt=
 
 
 
-function XLHeader({ commonProps, userData, account, setAccount }) {
+function XLHeader({ commonProps, userData, account, setAccount, isLogin }) {
+
 
     const [open, setOpen] = React.useState(false);
-
     const handleClickOpen = () => {
         setOpen(true);
     };
+    console.log(typeof (isLogin));
 
 
     return (
@@ -67,26 +68,50 @@ function XLHeader({ commonProps, userData, account, setAccount }) {
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'end', marginRight: '-20px' }}>
 
-                        <Link href="/home-services/my-bookings" target="_blank" sx={{
-                            textDecoration: 'none'
-                        }}>
-                            <Button sx={{
-                                color: '#555',
-                                border: '0.4px solid #c5c5c5',
-                                fontSize: '13px',
-                                height: '30px',
-                                userSelect: 'none',
-                                textTransform: 'none',
-                                paddingLeft: '16px',
-                                '&:hover': {
-                                    backgroundColor: 'white',
-                                    borderColor: '#c5c5c5'
-                                }
-                            }} disableRipple onClick={handleClickOpen}>
-                                <CallToActionIcon style={IconHeaderImage} />
-                                MyBookings
-                            </Button>
-                        </Link>
+                        {
+                            isLogin ?
+                                <>
+                                    <a href="/home-services/my-bookings" target="_blank" style={{
+                                        textDecoration: 'none'
+                                    }}>
+                                        <Button sx={{
+                                            color: '#555',
+                                            border: '0.4px solid #c5c5c5',
+                                            fontSize: '13px',
+                                            height: '30px',
+                                            userSelect: 'none',
+                                            textTransform: 'none',
+                                            paddingLeft: '16px',
+                                            '&:hover': {
+                                                backgroundColor: 'white',
+                                                borderColor: '#c5c5c5'
+                                            }
+                                        }} disableRipple>
+                                            <CallToActionIcon style={IconHeaderImage} />
+                                            MyBookings
+                                        </Button>
+                                    </a>
+                                </> :
+                                <>
+                                    <Button sx={{
+                                        color: '#555',
+                                        border: '0.4px solid #c5c5c5',
+                                        fontSize: '13px',
+                                        height: '30px',
+                                        userSelect: 'none',
+                                        textTransform: 'none',
+                                        paddingLeft: '16px',
+                                        '&:hover': {
+                                            backgroundColor: 'white',
+                                            borderColor: '#c5c5c5'
+                                        }
+                                    }} disableRipple onClick={handleClickOpen}>
+                                        <CallToActionIcon style={IconHeaderImage} />
+                                        MyBookings
+                                    </Button>
+                                </>
+                        }
+
 
                         <Link href="tel:18003096606" target="_blank" sx={{
                             textDecoration: 'none'
@@ -106,12 +131,12 @@ function XLHeader({ commonProps, userData, account, setAccount }) {
                             </Button></Link>
 
                         {
-                            // (userData.Username || account) ? 
-                             (account) ? // for firebase
+                            ((userData.Username || account) && isLogin) ?
+                                // (account) ? // for firebase
                                 <Link href='/home-services/profile' sx={{ color: 'black', display: 'flex', justifyContent: 'space-evenly', alignItems: "center", marginLeft: '18px', textDecoration: 'none' }}>
                                     <AccountCircleIcon />
-                                    {/* <Typography sx={{ fontSize: '14px', fontFamily: 'Fredoka', marginLeft: '4px' }}>{userData.Username || account}</Typography> */}
-                                    <Typography sx={{ fontSize: '14px', fontFamily: 'Fredoka', marginLeft: '4px' }}>{account}</Typography>
+                                    <Typography sx={{ fontSize: '14px', fontFamily: 'Fredoka', marginLeft: '4px' }}>{userData.Username || account}</Typography>
+                                    {/* <Typography sx={{ fontSize: '14px', fontFamily: 'Fredoka', marginLeft: '4px' }}>{account}</Typography> */}
                                 </Link>
                                 :
                                 <>
@@ -157,7 +182,7 @@ function XLHeader({ commonProps, userData, account, setAccount }) {
                         <HeaderRightMenuMainPage setAccount={setAccount} />
                     </Box>
                 </Toolbar>
-                {!isLogin && (<DialogWithoutLoginDisplay open={open} setOpen={setOpen} setAccount={setAccount} />)}
+                <DialogWithoutLoginDisplay open={open} setOpen={setOpen} setAccount={setAccount} />
             </Container>
         </AppBar >
 
@@ -189,6 +214,15 @@ function MDHeader({ commonProps, userData, account, setAccount }) {
 
 export default function Header({ commonProps }) {
 
+    const [account, setAccount] = React.useState('')
+    const isLogin = forCheckingLogin()
+    const userData = loadUserData()
+    const xlMax = useMediaQuery('(max-width:2000px)');
+    const xlMin = useMediaQuery('(min-width:1160px)');
+    const mdMax = useMediaQuery('(max-width:1160px)');
+    const mdMin = useMediaQuery('(min-width:1000px)');
+    const sm = useMediaQuery('(max-width:1000px)');
+
     function loadUserData() {
         try {
             const serializedState = localStorage.getItem('userdata');
@@ -197,30 +231,46 @@ export default function Header({ commonProps }) {
             }
             return JSON.parse(serializedState);
         } catch (err) {
-            return undefined;
+            localStorage.setItem("userdata", JSON.stringify({
+                Number: '',
+                Username: ''
+            }))
+            const serializedState = localStorage.getItem('userdata');
+            if (serializedState === null) {
+                return undefined;
+            }
+            return JSON.parse(serializedState);
+        }
+        
+    }
+
+    function forCheckingLogin() {
+
+        try {
+            const boolReturner = localStorage.getItem('isLogin')
+            if (boolReturner === 'true') return true
+            if (boolReturner === 'false') return false
+        }
+        catch (err) {
+            localStorage.setItem('isLogin', JSON.stringify(false));
+            return false;
         }
     }
 
+
     // const {account, setAccount} = React.useContext(LoginContext)
 
-    const [account, setAccount] = React.useState('')
-    const userData = loadUserData()
 
-    const xlMax = useMediaQuery('(max-width:2000px)');
-    const xlMin = useMediaQuery('(min-width:1160px)');
-    const mdMax = useMediaQuery('(max-width:1160px)');
-    const mdMin = useMediaQuery('(min-width:1000px)');
-    const sm = useMediaQuery('(max-width:1000px)');
 
     return (
         <>
             {xlMax && xlMin && (
-                <XLHeader commonProps={commonProps} userData={userData} account={account} setAccount={setAccount} />
+                <XLHeader commonProps={commonProps} userData={userData} account={account} setAccount={setAccount} isLogin={isLogin} />
             )}
             {!(xlMax && xlMin) && mdMax && mdMin && (
-                <MDHeader commonProps={commonProps} userData={userData} account={account} setAccount={setAccount} />
+                <MDHeader commonProps={commonProps} userData={userData} account={account} setAccount={setAccount} isLogin={isLogin} />
             )}
-            {sm && (<MDHeader commonProps={commonProps} userData={userData} account={account} setAccount={setAccount} />)}
+            {sm && (<MDHeader commonProps={commonProps} userData={userData} account={account} setAccount={setAccount} isLogin={isLogin} />)}
         </>
     )
 }

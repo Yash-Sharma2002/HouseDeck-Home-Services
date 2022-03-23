@@ -13,6 +13,8 @@ import './OnlyForDialog.css';
 import { authenticateSignup } from '../../Api/signup';
 import { authenticateLogin } from '../../Api/login';
 
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -43,11 +45,15 @@ const useStyles = makeStyles({
 })
 
 
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 function Content({ open, setOpen, setAccount, width, display }) {
   const classes = useStyles()
   const fullScreen = useMediaQuery('(max-width:700px)');
 
-
+  const [show, setShow] = React.useState(false);
   const [displayForFirst, setDisplayForFirst] = React.useState(true)
   const [displayForSecond, setDisplayForSecond] = React.useState(false)
   const [displayForLast, setDisplayForLast] = React.useState(false)
@@ -55,8 +61,8 @@ function Content({ open, setOpen, setAccount, width, display }) {
   const [number, setNumber] = React.useState('')
   const [username, setUsername] = React.useState('')
   const [email, setEmail] = React.useState('')
-  const [messageForNumber, setMessageForNumber] = React.useState('')
-  const [messageForOTP, setMessageForOTP] = React.useState('')
+  const [message, setMessage] = React.useState('')
+  const [messageType, setMessageType] = React.useState('')
 
 
 
@@ -67,10 +73,13 @@ function Content({ open, setOpen, setAccount, width, display }) {
     setDisplayForSecond(false)
     setDisplayForFirst(true)
     setDisplayForLast(false)
-    setMessageForNumber('')
-    setMessageForOTP('')
 
   };
+  const handleAlertClose = () => {
+    setShow(false)
+    setMessage('')
+    setMessageType('')
+  }
 
 
   // ----------For OTP--------------------------
@@ -91,11 +100,12 @@ function Content({ open, setOpen, setAccount, width, display }) {
     signInWithPhoneNumber(authentication, phoneNumber, appVerifier)
       .then((confirmationResult) => {
         window.confirmationResult = confirmationResult;
-        console.log(`Sending OTP to Phone-Number - ${phoneNumber}`);
-        setMessageForNumber("OTP Sent")
       }).catch((error) => {
         console.log(error);
-        setMessageForOTP(`Error in OTP calling : ${error.message}`)
+        setMessageType('error')
+        setShow(true)
+        setMessage(`Too many tries. Try again later.`)
+        setMessageType('error')
       });
   }
 
@@ -103,10 +113,11 @@ function Content({ open, setOpen, setAccount, width, display }) {
     let confirmationResult = window.confirmationResult
     confirmationResult.confirm(otp).then((result) => {
       // User signed in successfully.
-      // const user = result.user;
-      console.log('signed in');
+      // const user = result.user;  
     }).catch((error) => {
-      setMessageForOTP("Enter Valid OTP")
+      setShow(true)
+      setMessageType('error')
+      setMessage("Enter Valid OTP")
       console.log(error);
     });
   }
@@ -122,16 +133,22 @@ function Content({ open, setOpen, setAccount, width, display }) {
 
   function forSecondButtonDisplay() {
     if (number.length < 10 || number.length > 10) {
-      setMessageForNumber('Please enter a valid number')
+      setShow(true);
+      setMessage('Enter valid number')
+      setMessageType('error')
     }
     else if (number.length === 10) {
+      OTPSender()
+      setShow(true)
+      setMessage("OTP Sent")
+      setMessageType('success')
       setDisplayForFirst((prevDisplay) => prevDisplay = false)
       setDisplayForSecond((prevDisplay) => prevDisplay = true)
-      OTPSender()
     }
   }
   function handleNumChange(num) {
-    setMessageForNumber('')
+    setMessage('')
+    setMessageType('')
     setNumber(num.value)
     if (num.value.length < 10) {
       setDisplayForSecond((prevDisplay) => prevDisplay = false)
@@ -139,7 +156,8 @@ function Content({ open, setOpen, setAccount, width, display }) {
     }
   }
   function handleOTPChange(num) {
-    setMessageForOTP('')
+    setMessageType('')
+    setMessage('')
     setOtp(num.value)
     if (num.value.length < 6) {
       setDisplayForSecond((prevDisplay) => prevDisplay = true)
@@ -156,11 +174,17 @@ function Content({ open, setOpen, setAccount, width, display }) {
   }
   const onclickOTPButton = async () => {
     if (otp.length < 6 || otp.length > 6) {
-      setMessageForOTP('OTP must be of 6 number.')
+      setShow(true)
+      setMessage('OTP must be of 6 number.')
+      setMessageType('error')
     }
     else if (otp.length === 6) {
-      setMessageForOTP('')
+      setMessage('')
+      setMessageType('')
       verifyOTP()
+      setShow(true)
+      setMessageType('success')
+      setMessage("OTP Validation complete")
       const login = {
         Number: `+91${number}`
       }
@@ -173,12 +197,16 @@ function Content({ open, setOpen, setAccount, width, display }) {
             Number: `+91${number}`,
             Username: response,
           }));
+
+            localStorage.setItem('isLogin', JSON.stringify(true));
+    
         } catch (err) {
           return undefined;
         }
       }
       else {
-        setMessageForNumber('')
+        setMessageType('')
+        setMessage('')
         afterVerifiedOTP()
       }
     }
@@ -194,6 +222,9 @@ function Content({ open, setOpen, setAccount, width, display }) {
     setAccount(username)
     try {
       localStorage.setItem('userdata', JSON.stringify(signup));
+        localStorage.setItem('isLogin', JSON.stringify(true));
+      
+
     } catch (err) {
       return undefined;
     }
@@ -271,7 +302,8 @@ function Content({ open, setOpen, setAccount, width, display }) {
                   fontSize: '14px',
                 }} />
             </Box>
-            <Typography sx={{ color: 'red', fontSize: '14px', marginTop: '-10px' }}>{messageForNumber}</Typography>
+
+
 
             <Button sx={{
               display: displayForFirst ? 'block' : 'none', my: 2, boxShadow: 0, width: '96%', background: 'rgb(253, 55, 82)', color: 'white', padding: '8px 0px', textTransform: 'none',
@@ -281,6 +313,9 @@ function Content({ open, setOpen, setAccount, width, display }) {
             }} onClick={forSecondButtonDisplay} type="submit">
               Continue
             </Button>
+
+            <Typography sx={{ fontSize: '12px', fontFamily: 'Fredoka', position: 'absolute', bottom: 10 }}>By continuing, you agree to the <a href="/home-services/housedeck-partner-(Terms-of-Use)" style={{ color: 'black', textDecoration: 'none', fontWeight: '700' }}> Terms & Conditions</a></Typography>
+
 
             <Box sx={{ display: displayForSecond ? 'block' : 'none', margin: '0px auto', }}>
 
@@ -301,7 +336,6 @@ function Content({ open, setOpen, setAccount, width, display }) {
                     margin: '5px auto',
                   }} />
               </Box>
-              <Typography sx={{ color: 'red', fontSize: '14px', my: 1 }}>{messageForOTP}</Typography>
 
               <Button sx={{
                 my: 2,
@@ -369,6 +403,11 @@ function Content({ open, setOpen, setAccount, width, display }) {
             </Box>
           </Box>
         </Box>
+        <Snackbar open={show} autoHideDuration={6000} onClose={handleAlertClose}>
+          <Alert onClose={handleAlertClose} severity={messageType} sx={{ width: '100%' }}>
+            {message}
+          </Alert>
+        </Snackbar>
         <div id='sign-in-button'></div>
       </BootstrapDialog>
     </>
@@ -380,7 +419,7 @@ function Content({ open, setOpen, setAccount, width, display }) {
 function SMContent({ open, setOpen, setAccount }) {
   const fullScreen = useMediaQuery('(max-width:700px)');
 
-
+  const [show, setShow] = React.useState(false)
   const [displayForFirst, setDisplayForFirst] = React.useState(true)
   const [displayForSecond, setDisplayForSecond] = React.useState(false)
   const [displayForLast, setDisplayForLast] = React.useState(false)
@@ -388,8 +427,8 @@ function SMContent({ open, setOpen, setAccount }) {
   const [number, setNumber] = React.useState('')
   const [username, setUsername] = React.useState('')
   const [email, setEmail] = React.useState('')
-  const [messageForNumber, setMessageForNumber] = React.useState('')
-  const [messageForOTP, setMessageForOTP] = React.useState('')
+  const [message, setMessage] = React.useState('')
+  const [messageType, setMessageType] = React.useState('')
 
 
 
@@ -400,10 +439,15 @@ function SMContent({ open, setOpen, setAccount }) {
     setDisplayForSecond(false)
     setDisplayForFirst(true)
     setDisplayForLast(false)
-    setMessageForNumber('')
-    setMessageForOTP('')
 
   };
+
+
+  const handleAlertClose = () => {
+    setShow(false)
+    setMessage('')
+    setMessageType('')
+  }
 
 
   // ----------For OTP--------------------------
@@ -425,11 +469,14 @@ function SMContent({ open, setOpen, setAccount }) {
     signInWithPhoneNumber(authentication, phoneNumber, appVerifier)
       .then((confirmationResult) => {
         window.confirmationResult = confirmationResult;
-        console.log(`Sending OTP to Phone-Number - ${phoneNumber}`);
-        setMessageForNumber("OTP Sent")
+        setShow(true)
+        setMessageType('success')
+        setMessage("OTP Sent")
       }).catch((error) => {
         console.log(error);
-        setMessageForOTP(`Error in OTP calling : ${error.message}`)
+        setShow(true)
+        setMessageType('error')
+        setMessage(`Too many tries. Try again later.`)
       });
   }
 
@@ -438,9 +485,13 @@ function SMContent({ open, setOpen, setAccount }) {
     confirmationResult.confirm(otp).then((result) => {
       // User signed in successfully.
       // const user = result.user;
-      console.log('signed in');
+      setShow(true)
+      setMessageType('success')
+      setMessage("OTP Validation complete")
     }).catch((error) => {
-      setMessageForOTP("Enter Valid OTP")
+      setShow(true)
+      setMessage("Enter Valid OTP")
+      setMessageType('error')
       console.log(error);
     });
   }
@@ -456,7 +507,9 @@ function SMContent({ open, setOpen, setAccount }) {
 
   function forSecondButtonDisplay() {
     if (number.length < 10 || number.length > 10) {
-      setMessageForNumber('Please enter a valid number')
+      setShow(true)
+      setMessageType('error')
+      setMessage('Please enter a valid number')
     }
     else if (number.length === 10) {
       setDisplayForFirst((prevDisplay) => prevDisplay = false)
@@ -465,7 +518,8 @@ function SMContent({ open, setOpen, setAccount }) {
     }
   }
   function handleNumChange(num) {
-    setMessageForNumber('')
+    setMessageType('')
+    setMessage('')
     setNumber(num.value)
     if (num.value.length < 10) {
       setDisplayForSecond((prevDisplay) => prevDisplay = false)
@@ -473,7 +527,8 @@ function SMContent({ open, setOpen, setAccount }) {
     }
   }
   function handleOTPChange(num) {
-    setMessageForOTP('')
+    setMessageType('')
+    setMessage('')
     setOtp(num.value)
     if (num.value.length < 6) {
       setDisplayForSecond((prevDisplay) => prevDisplay = true)
@@ -490,10 +545,13 @@ function SMContent({ open, setOpen, setAccount }) {
   }
   const onclickOTPButton = async () => {
     if (otp.length < 6 || otp.length > 6) {
-      setMessageForOTP('OTP must be of 6 number.')
+      setShow(true)
+      setMessage('OTP must be of 6 number.')
+      setMessageType('error')
     }
     else if (otp.length === 6) {
-      setMessageForOTP('')
+      setMessageType('')
+      setMessage('')
       verifyOTP()
       const login = {
         Number: `+91${number}`
@@ -512,7 +570,8 @@ function SMContent({ open, setOpen, setAccount }) {
         }
       }
       else {
-        setMessageForNumber('')
+        setMessage('')
+        setMessageType('')
         afterVerifiedOTP()
       }
     }
@@ -575,7 +634,6 @@ function SMContent({ open, setOpen, setAccount }) {
                   fontSize: '14px',
                 }} />
             </Box>
-            <Typography sx={{ color: 'red', fontSize: '14px', marginTop: '-10px' }}>{messageForNumber}</Typography>
 
             <Button sx={{
               display: displayForFirst ? 'block' : 'none', my: 2, boxShadow: 0, width: '96%', background: 'rgb(253, 55, 82)', color: 'white', padding: '8px 0px', textTransform: 'none',
@@ -605,7 +663,6 @@ function SMContent({ open, setOpen, setAccount }) {
                     margin: '5px auto',
                   }} />
               </Box>
-              <Typography sx={{ color: 'red', fontSize: '14px', my: 1 }}>{messageForOTP}</Typography>
 
               <Button sx={{
                 my: 2,
@@ -674,6 +731,11 @@ function SMContent({ open, setOpen, setAccount }) {
           </Box>
         </Box>
         <div id='sign-in-button'></div>
+        <Snackbar open={show} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} autoHideDuration={6000} onClose={handleAlertClose}>
+          <Alert onClose={handleAlertClose} severity={messageType} sx={{ width: '100%' }}>
+            {message}
+          </Alert>
+        </Snackbar>
       </BootstrapDialog>
     </>
   );

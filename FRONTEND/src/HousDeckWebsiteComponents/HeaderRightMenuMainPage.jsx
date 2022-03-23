@@ -33,6 +33,7 @@ export default function HeaderRightMenuMainPage({ setAccount }) {
                 Number: '',
                 Username: ''
             }))
+            localStorage.setItem('isLogin',JSON.stringify(false))
         }
         catch (err) {
             console.log(err);;

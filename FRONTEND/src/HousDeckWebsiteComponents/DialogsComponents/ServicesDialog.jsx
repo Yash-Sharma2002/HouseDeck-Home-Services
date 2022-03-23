@@ -47,6 +47,7 @@ export default function ServicesDialog({ options, open, setOpen }) {
         setDisplayForServiceSelectionProcess(true)
         setDisplayForStepper(false)
         setDisplayForAppointment(false)
+        setDisplay(false)
     };
     function add(service, price) {
         if (service && price !== 0) {
@@ -62,15 +63,15 @@ export default function ServicesDialog({ options, open, setOpen }) {
     }
 
     function remove(id, price) {
-        setService(Service => {
-            return Service.filter(data => data.id !== id)
-        })
+        setService(Service => Service.filter(data => data.id !== id))
         setPrice((prevPrice) => parseFloat(prevPrice) - parseFloat(price))
-        if (price) {
+
+    }
+    function handleChange(price) {
+        if (price === 0) {
             setDisplay(false)
         }
     }
-
     function getRequiredThings() {
         setDisplayForServiceSelectionProcess(false)
         setDisplayForStepper(true)
@@ -109,8 +110,8 @@ export default function ServicesDialog({ options, open, setOpen }) {
             services,
             totalPrice: price,
             locationForService: location,
-            dateForService: date.toString().slice(0,15),
-            timeForService: time.toString().slice(16,25),
+            dateForService: date.toString().slice(0, 15),
+            timeForService: time.toString().slice(16, 25),
         }
         console.log(items)
         let response = await serviceSender(items)
@@ -131,7 +132,7 @@ export default function ServicesDialog({ options, open, setOpen }) {
                 maxWidth={false}
             >
 
-                <Box className='non-scroll' sx={{ display: displayForServiceSelectionProcess ? 'block' : 'none', height: '90vh', width: '550px', padding: '15px', }}>
+                <Box sx={{ display: displayForServiceSelectionProcess ? 'block' : 'none', height: '90vh', width: '550px', padding: '15px', overflowY: 'auto' }}>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
                         <Typography sx={{ fontSize: "18px", fontWeight: '700' }}>Select Your Services</Typography>
                         <CloseIcon onClick={handleClose} sx={{ cursor: 'pointer' }} />
@@ -166,31 +167,35 @@ export default function ServicesDialog({ options, open, setOpen }) {
                         {
                             display ?
                                 <>
+                                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', my: 1 }}>
+                                        <Typography sx={{ fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>Total Price :</Typography>
+                                        <Typography onChange={handleChange(price)} sx={{ fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{price.toLocaleString()}</Typography>
+                                    </Box>
+                                    <Box sx={{ textAlign: 'end', marginBottom: '10px' }}>
+                                        <Button variant='outlined' sx={{ textTransform: 'none' }} onClick={getRequiredThings}>Contnue</Button>
+                                    </Box>
                                     <Accordion disableGutters sx={{
                                         boxShadow: 0,
                                     }}>
-                                        <AccordionSummary sx={{ padding: 0, my: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
-                                            <Box sx={{ display: 'flex', alignItems: 'center', }}>
-                                                <Typography sx={{ fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>See all items</Typography>
-                                                <ExpandMoreIcon />
-                                            </Box>
-                                            <Box sx={{ display: 'flex', alignItems: 'center', }}>
-                                                <Typography sx={{ fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{price.toLocaleString()}</Typography>
-                                                <Button variant='outlined' sx={{ textTransform: 'none' }} onClick={getRequiredThings}>Contnue</Button>
-                                            </Box>
+                                        <AccordionSummary expandIcon={<ExpandMoreIcon />} sx={{ padding: 0, my: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
+                                            <Typography sx={{ fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>See selected services</Typography>
+
                                         </AccordionSummary>
                                         <AccordionDetails>
                                             {services.map(data =>
                                                 <>
                                                     <Box sx={{ my: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                                         <Typography>{data.ServiceChoseByUser}</Typography>
-                                                        {/* <Typography>{data.PriceForService}</Typography> */}
-                                                        <CloseIcon onClick={() => remove(data.id, data.PriceForService)} />
+                                                        <Box sx={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
+                                                            <Typography sx={{ mr: 1 }}>&#8377;{data.PriceForService}</Typography>
+                                                            <CloseIcon onClick={() => remove(data.id, data.PriceForService)} />
+                                                        </Box>
                                                     </Box>
                                                 </>
                                             )}
                                         </AccordionDetails>
                                     </Accordion>
+
                                 </>
 
                                 : null
@@ -229,9 +234,7 @@ export default function ServicesDialog({ options, open, setOpen }) {
                         <MyLocationIcon />
                         <Typography sx={{ fontSize: '16px', ml: 1 }} >current location</Typography>
                     </Box>
-                    <Box sx={{ textAlign: 'end', mt: 52 }}>
-                        <Button sx={{ fontSize: '16px', marginLeft: 'auto', marginRight: '0px', textTransform: 'none' }} variant='outlined' onClick={locationSubmit}>Continue</Button>
-                    </Box>
+                        <Button sx={{ fontSize: '16px',  textTransform: 'none',position:'absolute',bottom:10 ,right:10}} variant='outlined' onClick={locationSubmit}>Continue</Button>
                 </Box>
 
                 <Box sx={{ display: displayForAppointment ? 'block' : 'none', height: '90vh', width: '550px', padding: '15px', }}>
@@ -268,9 +271,7 @@ export default function ServicesDialog({ options, open, setOpen }) {
                         </LocalizationProvider>
                     </Box>
 
-                    <Box sx={{ textAlign: 'end', mt: 45 }}>
-                        <Button sx={{ fontSize: '16px', marginLeft: 'auto', marginRight: '0px', textTransform: 'none' }} variant='outlined' onClick={sendToDatabase}>Continue</Button>
-                    </Box>
+                        <Button sx={{ fontSize: '16px', marginLeft: 'auto', marginRight: '0px', textTransform: 'none',position:'absolute',bottom:10 ,right:10 }} variant='outlined' onClick={sendToDatabase}>Continue</Button>
                 </Box>
 
             </BootstrapDialog>

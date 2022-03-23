@@ -31,6 +31,20 @@ function App() {
       return undefined;
     }
   }
+  function fetchandCheck() {
+    try {
+      localStorage.getItem('isLogin')
+      localStorage.getItem('userData')
+    }
+    catch (err) {
+      localStorage.setItem('isLogin', JSON.stringify(false));
+      localStorage.setItem('userData', JSON.stringify({
+        Number: '',
+        Username: ''
+      }))
+    }
+  }
+
   function loadCity() {
     try {
       const serializedState = localStorage.getItem('city');
@@ -42,7 +56,7 @@ function App() {
       return undefined;
     }
   }
-
+  fetchandCheck();
   return (
     <ContextProvider>
       <BrowserRouter>
