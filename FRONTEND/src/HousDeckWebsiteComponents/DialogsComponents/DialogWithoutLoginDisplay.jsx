@@ -566,7 +566,7 @@ function SMContent({ open, setOpen, setAccount }) {
             Username: response,
           }));
         } catch (err) {
-          return undefined;
+          return '';
         }
       }
       else {
@@ -588,7 +588,7 @@ function SMContent({ open, setOpen, setAccount }) {
     try {
       localStorage.setItem('userdata', JSON.stringify(signup));
     } catch (err) {
-      return undefined;
+      return '';
     }
     handleClose();
   }

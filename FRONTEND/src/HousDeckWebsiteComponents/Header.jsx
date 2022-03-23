@@ -216,7 +216,7 @@ export default function Header({ commonProps }) {
 
     const [account, setAccount] = React.useState('')
     const isLogin = forCheckingLogin()
-    const userData = loadUserData()
+    const userData= loadUserData()
     const xlMax = useMediaQuery('(max-width:2000px)');
     const xlMin = useMediaQuery('(min-width:1160px)');
     const mdMax = useMediaQuery('(max-width:1160px)');
@@ -227,7 +227,7 @@ export default function Header({ commonProps }) {
         try {
             const serializedState = localStorage.getItem('userdata');
             if (serializedState === null) {
-                return undefined;
+                return '';
             }
             return JSON.parse(serializedState);
         } catch (err) {
@@ -237,7 +237,7 @@ export default function Header({ commonProps }) {
             }))
             const serializedState = localStorage.getItem('userdata');
             if (serializedState === null) {
-                return undefined;
+                return '';
             }
             return JSON.parse(serializedState);
         }
@@ -256,6 +256,23 @@ export default function Header({ commonProps }) {
             return false;
         }
     }
+
+    function fetchandCheck() {
+        try {
+          localStorage.getItem('isLogin')
+          localStorage.getItem('userData')
+        }
+        catch (err) {
+          localStorage.setItem('isLogin', JSON.stringify(false));
+          localStorage.setItem('userData', JSON.stringify({
+            Number: '',
+            Username: ''
+          }))
+        }
+      }
+
+  fetchandCheck();
+
 
 
     // const {account, setAccount} = React.useContext(LoginContext)
