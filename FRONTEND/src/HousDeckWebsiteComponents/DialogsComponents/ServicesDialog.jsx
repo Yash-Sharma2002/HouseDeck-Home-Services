@@ -147,7 +147,7 @@ export default function ServicesDialog({ options, open, setOpen }) {
                 maxWidth={false}
             >
 
-                <Box sx={{ display: displayForServiceSelectionProcess ? 'block' : 'none', height: '90vh', width: '550px', padding: '15px', overflowY: 'auto' }}>
+                <Box sx={{ display: displayForServiceSelectionProcess ? 'block' : 'none', height: '500px', width: '550px', padding: '15px', overflowY: 'auto' }}>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
                         <Typography sx={{ fontSize: "18px", fontWeight: '700' }}>Select Your Services</Typography>
                         <CloseIcon onClick={handleClose} sx={{ cursor: 'pointer' }} />

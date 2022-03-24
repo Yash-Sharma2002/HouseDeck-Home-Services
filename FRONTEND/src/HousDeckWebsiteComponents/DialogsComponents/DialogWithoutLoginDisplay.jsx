@@ -558,13 +558,13 @@ function SMContent({ open, setOpen, setAccount }) {
       }
       const response = await authenticateLogin(login)
       if (response) {
+        setAccount(response)
+        handleClose();
         try {
           localStorage.setItem('userdata', JSON.stringify({
             Number: `+91${number}`,
             Username: response,
           }));
-          setAccount(response)
-          handleClose();
         } catch (err) {
           return '';
         }
