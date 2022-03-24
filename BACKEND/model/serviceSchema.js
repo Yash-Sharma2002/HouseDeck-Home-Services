@@ -1,7 +1,10 @@
 import mongoose from 'mongoose';
 
 const serviceSchema = new mongoose.Schema({
-
+Number:{
+    type: String,
+    required: true,
+},
     services: [{
         ServiceChoseByUser: {
             type: String,

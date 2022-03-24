@@ -13,13 +13,11 @@ import {
 } from '../constants/data'
 import SimilarServicesForOtherPages from '../HousDeckWebsiteComponents/otherPageComponents/similarServicesForOtherPages'
 import TopHead from '../HousDeckWebsiteComponents/otherPageComponents/TopHead'
-
 const service = 'Home Cleaning'
 
 
 export default function HouseDeckHomeServicesCleaning({city,setCity,handleData, loadCity}) {
   const currentCity = loadCity()
-
 
 
   const commonProps = [
@@ -33,11 +31,15 @@ export default function HouseDeckHomeServicesCleaning({city,setCity,handleData, 
     <div>
       <Header commonProps={commonProps} />
       <TopHead service={service} handleData={handleData} currentCity={currentCity} setCity={setCity} />
+
+
       <HowItWorks1 service={service} city={currentCity} />
       <HouseDeckPromise service={service} city={currentCity} />
       <RecommendedServices />
       <CustomerRatingsMainPage />
       
+
+
       {currentCity === "Bangalore" && <SimilarServicesForOtherPages cityServies={searchBarOptionsBangalore} currentCity={currentCity} service={service} />}
       {currentCity === "Noida" && <SimilarServicesForOtherPages cityServies={searchBarOptionsNoida} currentCity={currentCity} service={service} />}
       {currentCity === "Chennai" && <SimilarServicesForOtherPages cityServies={searchBarOptionsChennai} currentCity={currentCity} service={service} />}

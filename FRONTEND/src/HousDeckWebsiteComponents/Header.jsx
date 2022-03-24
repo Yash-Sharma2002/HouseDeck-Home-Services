@@ -25,7 +25,6 @@ function XLHeader({ commonProps, userData, account, setAccount, isLogin }) {
     const handleClickOpen = () => {
         setOpen(true);
     };
-    console.log(typeof (isLogin));
 
 
     return (
@@ -182,6 +181,7 @@ function XLHeader({ commonProps, userData, account, setAccount, isLogin }) {
                         <HeaderRightMenuMainPage setAccount={setAccount} />
                     </Box>
                 </Toolbar>
+                
                 <DialogWithoutLoginDisplay open={open} setOpen={setOpen} setAccount={setAccount} />
             </Container>
         </AppBar >

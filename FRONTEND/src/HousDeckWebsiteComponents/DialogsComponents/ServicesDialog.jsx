@@ -1,6 +1,6 @@
 import * as React from 'react';
 import CloseIcon from '@mui/icons-material/Close';
-import { Button } from '@mui/material';
+import { Button, Divider } from '@mui/material';
 import Box from '@mui/material/Box';
 import Dialog from '@mui/material/Dialog';
 import { styled } from '@mui/material/styles';
@@ -9,10 +9,6 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import './OnlyForDialog.css';
 import { v4 as uuidV4 } from 'uuid'
 import { serviceSender } from '../../Api/serviceSender';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MyLocationIcon from '@mui/icons-material/MyLocation';
 import TextField from '@mui/material/TextField';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
@@ -38,7 +34,7 @@ export default function ServicesDialog({ options, open, setOpen }) {
     const [displayForServiceSelectionProcess, setDisplayForServiceSelectionProcess] = React.useState(true)
     const [displayForStepper, setDisplayForStepper] = React.useState(false)
     const [displayForAppointment, setDisplayForAppointment] = React.useState(false)
-    const [display, setDisplay] = React.useState(false)
+    const [display, setDisplay] = React.useState(true)
 
     const handleClose = () => {
         setOpen(false)
@@ -49,33 +45,29 @@ export default function ServicesDialog({ options, open, setOpen }) {
         setDisplayForAppointment(false)
         setDisplay(false)
     };
-    function add(service, price) {
-        if (service && price !== 0) {
-            setPrice((prevPrice) => parseFloat(prevPrice) + parseFloat(price))
-            setService(prevItems => {
-                return [...prevItems, { id: uuidV4(), ServiceChoseByUser: service, PriceForService: price }]
-            })
+    
+    function Select(service, price) {
+        if (!services.map((item) => item.ServiceChoseByUser).includes(service)) {
+            setService((prevItems) => [
+                ...prevItems,
+                { id: uuidV4(), ServiceChoseByUser: service, PriceForService: price }
+            ]);
             setDisplay(true)
-        }
-        else {
-            setDisplay(false)
-        }
-    }
-
-    function remove(id, price) {
-        setService(Service => Service.filter(data => data.id !== id))
-        setPrice((prevPrice) => parseFloat(prevPrice) - parseFloat(price))
-
-    }
-    function handleChange(price) {
-        if (price === 0) {
-            setDisplay(false)
+            setPrice((prevPrice) => parseFloat(prevPrice) + parseFloat(price))
+        } else {
+            const allOtherServices = services.filter(
+                (item) => item.ServiceChoseByUser !== service
+            );
+            setService([...allOtherServices]);
+            setPrice((prevPrice) => parseFloat(prevPrice) - parseFloat(price))
         }
     }
     function getRequiredThings() {
-        setDisplayForServiceSelectionProcess(false)
-        setDisplayForStepper(true)
-        setDisplayForAppointment(false)
+        if (services) {
+            setDisplayForServiceSelectionProcess(false)
+            setDisplayForStepper(true)
+            setDisplayForAppointment(false)
+        }
         // var autocomplete = new google.maps.places.Autocomplete((document.getElementById('searchInput')), {
         //     types: ['geocode'],
         /*componentRestrictions: {
@@ -105,8 +97,31 @@ export default function ServicesDialog({ options, open, setOpen }) {
         }
     }
 
+    function loadUserData() {
+        try {
+            const serializedState = localStorage.getItem('userdata');
+            if (serializedState === null) {
+                return '';
+            }
+            return JSON.parse(serializedState);
+        } catch (err) {
+            localStorage.setItem("userdata", JSON.stringify({
+                Number: '',
+                Username: ''
+            }))
+            const serializedState = localStorage.getItem('userdata');
+            if (serializedState === null) {
+                return '';
+            }
+            return JSON.parse(serializedState);
+        }
+        
+    }
+
     const sendToDatabase = async () => {
+        const userData = loadUserData()
         const items = {
+            Number:userData.Number,
             services,
             totalPrice: price,
             locationForService: location,
@@ -116,7 +131,7 @@ export default function ServicesDialog({ options, open, setOpen }) {
         console.log(items)
         let response = await serviceSender(items)
         if (response) {
-            console.log(response);
+            handleClose()
         } else {
             console.log('error occured while calling api');
         }
@@ -156,7 +171,11 @@ export default function ServicesDialog({ options, open, setOpen }) {
                                             </Box>
                                         </Box>
                                         <Box sx={{ textAlign: 'end' }}>
-                                            <Button variant='outlined' sx={{ marginLeft: 'auto', marginRight: '0px', textTransform: 'none' }} onClick={() => add(service, price)}>Select</Button>
+                                            <Button variant='outlined' sx={{ marginLeft: 'auto', marginRight: '0px', textTransform: 'none' }} onClick={() => Select(service, price)}>
+                                                {!services.map((item) => item.ServiceChoseByUser).includes(data.type)
+                                                    ? "Select"
+                                                    : "Unselect"}
+                                            </Button>
                                         </Box>
                                     </Box>
                                 </>
@@ -165,37 +184,14 @@ export default function ServicesDialog({ options, open, setOpen }) {
                         )}
 
                         {
-                            display ?
+                            (display && !(price===0)) ?
                                 <>
-                                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', my: 1 }}>
-                                        <Typography sx={{ fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>Total Price :</Typography>
-                                        <Typography onChange={handleChange(price)} sx={{ fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{price.toLocaleString()}</Typography>
+                                    <Box sx={{ mt: 4, display: 'flex', alignItems: 'center', justifyContent: 'end' }}>
+                                        <Typography sx={{ mr: 1, fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{price}</Typography>
+                                        <Divider orientation='vertical' sx={{ color: 'black' }} flexItem />
+                                        <Typography sx={{ ml: 1, color: 'gray', fontSize: '13px', fontFamily: 'Fredoka' }}>{services.length} item</Typography>
+                                        <Button variant='outlined' sx={{ ml: 1, textTransform: 'none' }} onClick={getRequiredThings}>Continue</Button>
                                     </Box>
-                                    <Box sx={{ textAlign: 'end', marginBottom: '10px' }}>
-                                        <Button variant='outlined' sx={{ textTransform: 'none' }} onClick={getRequiredThings}>Contnue</Button>
-                                    </Box>
-                                    <Accordion disableGutters sx={{
-                                        boxShadow: 0,
-                                    }}>
-                                        <AccordionSummary expandIcon={<ExpandMoreIcon />} sx={{ padding: 0, my: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
-                                            <Typography sx={{ fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>See selected services</Typography>
-
-                                        </AccordionSummary>
-                                        <AccordionDetails>
-                                            {services.map(data =>
-                                                <>
-                                                    <Box sx={{ my: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                                        <Typography>{data.ServiceChoseByUser}</Typography>
-                                                        <Box sx={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
-                                                            <Typography sx={{ mr: 1 }}>&#8377;{data.PriceForService}</Typography>
-                                                            <CloseIcon onClick={() => remove(data.id, data.PriceForService)} />
-                                                        </Box>
-                                                    </Box>
-                                                </>
-                                            )}
-                                        </AccordionDetails>
-                                    </Accordion>
-
                                 </>
 
                                 : null
@@ -234,7 +230,7 @@ export default function ServicesDialog({ options, open, setOpen }) {
                         <MyLocationIcon />
                         <Typography sx={{ fontSize: '16px', ml: 1 }} >current location</Typography>
                     </Box>
-                        <Button sx={{ fontSize: '16px',  textTransform: 'none',position:'absolute',bottom:10 ,right:10}} variant='outlined' onClick={locationSubmit}>Continue</Button>
+                    <Button sx={{ fontSize: '16px', textTransform: 'none', position: 'absolute', bottom: 10, right: 10 }} variant='outlined' onClick={locationSubmit}>Continue</Button>
                 </Box>
 
                 <Box sx={{ display: displayForAppointment ? 'block' : 'none', height: '90vh', width: '550px', padding: '15px', }}>
@@ -271,7 +267,7 @@ export default function ServicesDialog({ options, open, setOpen }) {
                         </LocalizationProvider>
                     </Box>
 
-                        <Button sx={{ fontSize: '16px', marginLeft: 'auto', marginRight: '0px', textTransform: 'none',position:'absolute',bottom:10 ,right:10 }} variant='outlined' onClick={sendToDatabase}>Continue</Button>
+                    <Button sx={{ fontSize: '16px', marginLeft: 'auto', marginRight: '0px', textTransform: 'none', position: 'absolute', bottom: 10, right: 10 }} variant='outlined' onClick={sendToDatabase}>Continue</Button>
                 </Box>
 
             </BootstrapDialog>
