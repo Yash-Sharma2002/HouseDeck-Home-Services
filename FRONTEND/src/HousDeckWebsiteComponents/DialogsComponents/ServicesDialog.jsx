@@ -1,25 +1,27 @@
-import * as React from 'react';
-import CloseIcon from '@mui/icons-material/Close';
-import { Button, Divider } from '@mui/material';
-import Box from '@mui/material/Box';
-import Dialog from '@mui/material/Dialog';
-import { styled } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import './OnlyForDialog.css';
+import * as React from 'react'
+import CloseIcon from '@mui/icons-material/Close'
+import { Button, Divider } from '@mui/material'
+import Box from '@mui/material/Box'
+import Dialog from '@mui/material/Dialog'
+import { styled } from '@mui/material/styles'
+import Typography from '@mui/material/Typography'
+import useMediaQuery from '@mui/material/useMediaQuery'
 import { v4 as uuidV4 } from 'uuid'
-import { serviceSender } from '../../Api/serviceSender';
-import MyLocationIcon from '@mui/icons-material/MyLocation';
-import TextField from '@mui/material/TextField';
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import DatePicker from '@mui/lab/DatePicker';
-import TimePicker from '@mui/lab/TimePicker';
-import Stack from '@mui/material/Stack';
+import { serviceSender } from '../../Api/serviceSender'
+import MyLocationIcon from '@mui/icons-material/MyLocation'
+import TextField from '@mui/material/TextField'
+import AdapterDateFns from '@mui/lab/AdapterDateFns'
+import LocalizationProvider from '@mui/lab/LocalizationProvider'
+import DatePicker from '@mui/lab/DatePicker'
+import TimePicker from '@mui/lab/TimePicker'
+import Stack from '@mui/material/Stack'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import ServiceSelector from '../otherPageComponents/serviceSelector'
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
-        // width: '600px'
+        width: 'unset',
+        height: 'inherit',
     },
 }));
 
@@ -34,6 +36,7 @@ export default function ServicesDialog({ options, open, setOpen }) {
     const [displayForServiceSelectionProcess, setDisplayForServiceSelectionProcess] = React.useState(true)
     const [displayForStepper, setDisplayForStepper] = React.useState(false)
     const [displayForAppointment, setDisplayForAppointment] = React.useState(false)
+    const [displayAtStart, setDisplayAtStart] = React.useState(false)
     const [display, setDisplay] = React.useState(true)
 
     const handleClose = () => {
@@ -43,15 +46,17 @@ export default function ServicesDialog({ options, open, setOpen }) {
         setDisplayForServiceSelectionProcess(true)
         setDisplayForStepper(false)
         setDisplayForAppointment(false)
+        setDisplayAtStart(false)
         setDisplay(false)
     };
-    
+
     function Select(service, price) {
         if (!services.map((item) => item.ServiceChoseByUser).includes(service)) {
             setService((prevItems) => [
                 ...prevItems,
                 { id: uuidV4(), ServiceChoseByUser: service, PriceForService: price }
             ]);
+            setDisplayAtStart(false)
             setDisplay(true)
             setPrice((prevPrice) => parseFloat(prevPrice) + parseFloat(price))
         } else {
@@ -67,6 +72,7 @@ export default function ServicesDialog({ options, open, setOpen }) {
             setDisplayForServiceSelectionProcess(false)
             setDisplayForStepper(true)
             setDisplayForAppointment(false)
+            setDisplayAtStart(false)
         }
         // var autocomplete = new google.maps.places.Autocomplete((document.getElementById('searchInput')), {
         //     types: ['geocode'],
@@ -83,6 +89,7 @@ export default function ServicesDialog({ options, open, setOpen }) {
     function locationSubmit() {
         setDisplayForServiceSelectionProcess(false)
         setDisplayForStepper(false)
+        setDisplayAtStart(false)
         setDisplayForAppointment(true)
     }
 
@@ -115,13 +122,20 @@ export default function ServicesDialog({ options, open, setOpen }) {
             }
             return JSON.parse(serializedState);
         }
-        
+
+    }
+
+    function AtStart() {
+        setDisplayAtStart(true)
+        setDisplayForServiceSelectionProcess(false)
+        setDisplayForStepper(false)
+        setDisplayForAppointment(false)
     }
 
     const sendToDatabase = async () => {
         const userData = loadUserData()
         const items = {
-            Number:userData.Number,
+            Number: userData.Number,
             services,
             totalPrice: price,
             locationForService: location,
@@ -142,18 +156,26 @@ export default function ServicesDialog({ options, open, setOpen }) {
             <BootstrapDialog
                 fullScreen={fullScreen}
                 onClose={handleClose}
-                aria-labelledby="customized-dialog-title"
                 open={open}
                 maxWidth={false}
             >
 
-                <Box sx={{ display: displayForServiceSelectionProcess ? 'block' : 'none', height: '500px', width: '550px', padding: '15px', overflowY: 'auto' }}>
+                {
+                    displayAtStart ?
+                        <Box sx={{ display: 'block' }}>
+                            <ServiceSelector width={'500px'} />
+                        </Box>
+                        :
+                        null
+                }
+
+                <Box sx={{ display: displayForServiceSelectionProcess ? 'block' : 'none', padding: '15px', }}>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
                         <Typography sx={{ fontSize: "18px", fontWeight: '700' }}>Select Your Services</Typography>
                         <CloseIcon onClick={handleClose} sx={{ cursor: 'pointer' }} />
                     </Box>
                     <Box>
-                        {options.map((data) => {
+                        {options.innerData.map((data) => {
                             const service = data.type
                             const price = data.price
                             const fakePrice = parseInt(price) + 200
@@ -161,7 +183,7 @@ export default function ServicesDialog({ options, open, setOpen }) {
                                 <>
                                     <Box key={data.type}>
                                         <Box sx={{ textAlign: 'center' }}>
-                                            <img src="../other/cleaning.jpg" alt="" style={{ pdding: '10px', marginTop: '10px' }} />
+                                            <img src={options.imgUrl} alt="" style={{ marginTop: '10px', width: '100%' }} />
                                         </Box>
                                         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '8px 4px' }}>
                                             <Typography sx={{ fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>{service}</Typography>
@@ -170,32 +192,66 @@ export default function ServicesDialog({ options, open, setOpen }) {
                                                 <Typography sx={{ ml: 2, fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{price.toLocaleString()}</Typography>
                                             </Box>
                                         </Box>
-                                        <Box sx={{ textAlign: 'end' }}>
-                                            <Button variant='outlined' sx={{ marginLeft: 'auto', marginRight: '0px', textTransform: 'none' }} onClick={() => Select(service, price)}>
+
+                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', }}>
+                                            <Box sx={{ display: 'block' }}>
+                                                {options.quotes.map(data1 =>
+                                                    <>
+                                                        <Box sx={{
+                                                            display: 'flex',
+                                                            color: 'rgba(54,54,54,.8)',
+                                                            alignItems: 'center'
+                                                        }}>
+                                                            <Box sx={{
+                                                                borderWidth: '0px 2px 2px 0px',
+                                                                borderStyle: 'solid',
+                                                                borderColor: '#7b7b7b',
+                                                                position: 'absolute',
+                                                                transform: 'rotate(45deg)',
+                                                                height: '8px',
+                                                                width: '3px',
+                                                                display: 'block',
+                                                                marginTop: '-4px',
+                                                                ml: 1
+                                                            }}></Box>
+                                                            <Typography sx={{
+                                                                fontSize: '14px',
+                                                                marginLeft: '20px',
+                                                            }}>{data1.text}</Typography>
+                                                        </Box>
+                                                    </>
+                                                )}
+                                            </Box>
+                                            <Button variant='outlined' sx={{ textTransform: 'none' }} onClick={() => Select(service, price)}>
                                                 {!services.map((item) => item.ServiceChoseByUser).includes(data.type)
                                                     ? "Select"
                                                     : "Unselect"}
                                             </Button>
                                         </Box>
+
+
                                     </Box>
                                 </>
                             )
+                        })
                         }
-                        )}
+                        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                            <ArrowBackIcon onClick={AtStart} sx={{ mt: 3, cursor: 'pointer' }} />
+                            {
+                                (display && !(price === 0)) ?
+                                    <>
+                                        <Box sx={{ mt: 3, display: 'flex', alignItems: 'center', justifyContent: 'end' }}>
+                                            <Typography sx={{ mr: 1, fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{price}</Typography>
+                                            <Divider orientation='vertical' sx={{ color: 'black' }} flexItem />
+                                            <Typography sx={{ ml: 1, color: 'gray', fontSize: '13px', fontFamily: 'Fredoka' }}>{services.length} item</Typography>
+                                            <Button variant='outlined' sx={{ ml: 1, textTransform: 'none' }} onClick={getRequiredThings}>Continue</Button>
+                                        </Box>
+                                    </>
 
-                        {
-                            (display && !(price===0)) ?
-                                <>
-                                    <Box sx={{ mt: 4, display: 'flex', alignItems: 'center', justifyContent: 'end' }}>
-                                        <Typography sx={{ mr: 1, fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{price}</Typography>
-                                        <Divider orientation='vertical' sx={{ color: 'black' }} flexItem />
-                                        <Typography sx={{ ml: 1, color: 'gray', fontSize: '13px', fontFamily: 'Fredoka' }}>{services.length} item</Typography>
-                                        <Button variant='outlined' sx={{ ml: 1, textTransform: 'none' }} onClick={getRequiredThings}>Continue</Button>
-                                    </Box>
-                                </>
+                                    : <Box></Box>
+                            }
 
-                                : null
-                        }
+                        </Box>
 
 
                     </Box>
@@ -230,7 +286,10 @@ export default function ServicesDialog({ options, open, setOpen }) {
                         <MyLocationIcon />
                         <Typography sx={{ fontSize: '16px', ml: 1 }} >current location</Typography>
                     </Box>
-                    <Button sx={{ fontSize: '16px', textTransform: 'none', position: 'absolute', bottom: 10, right: 10 }} variant='outlined' onClick={locationSubmit}>Continue</Button>
+                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <ArrowBackIcon onClick={AtStart} sx={{ position: 'absolute', bottom: 20, cursor: 'pointer' }} />
+                        <Button sx={{ fontSize: '16px', textTransform: 'none', position: 'absolute', bottom: 10, right: 10 }} variant='outlined' onClick={locationSubmit}>Continue</Button>
+                    </Box>
                 </Box>
 
                 <Box sx={{ display: displayForAppointment ? 'block' : 'none', height: '90vh', width: '550px', padding: '15px', }}>
@@ -267,7 +326,10 @@ export default function ServicesDialog({ options, open, setOpen }) {
                         </LocalizationProvider>
                     </Box>
 
-                    <Button sx={{ fontSize: '16px', marginLeft: 'auto', marginRight: '0px', textTransform: 'none', position: 'absolute', bottom: 10, right: 10 }} variant='outlined' onClick={sendToDatabase}>Continue</Button>
+                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <ArrowBackIcon onClick={AtStart} sx={{ position: 'absolute', bottom: 17, cursor: 'pointer' }} />
+                        <Button sx={{ fontSize: '16px', marginLeft: 'auto', marginRight: '0px', textTransform: 'none', position: 'absolute', bottom: 10, right: 10 }} variant='outlined' onClick={sendToDatabase}>Continue</Button>
+                    </Box>
                 </Box>
 
             </BootstrapDialog>

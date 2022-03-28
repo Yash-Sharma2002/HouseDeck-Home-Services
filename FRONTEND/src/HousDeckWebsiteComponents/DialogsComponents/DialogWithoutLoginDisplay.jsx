@@ -44,6 +44,7 @@ const useStyles = makeStyles({
   },
 })
 
+const LoginQuotes = ['Zero Brokerage', 'Thousands of new listings daily.', '100 Cr+ Brokerage saved monthly.']
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -198,8 +199,8 @@ function Content({ open, setOpen, setAccount, width, display }) {
             Username: response,
           }));
 
-            localStorage.setItem('isLogin', JSON.stringify(true));
-    
+          localStorage.setItem('isLogin', JSON.stringify(true));
+
         } catch (err) {
           return undefined;
         }
@@ -222,8 +223,8 @@ function Content({ open, setOpen, setAccount, width, display }) {
     setAccount(username)
     try {
       localStorage.setItem('userdata', JSON.stringify(signup));
-        localStorage.setItem('isLogin', JSON.stringify(true));
-      
+      localStorage.setItem('isLogin', JSON.stringify(true));
+
 
     } catch (err) {
       return undefined;
@@ -245,36 +246,20 @@ function Content({ open, setOpen, setAccount, width, display }) {
             <img style={{ height: '100px', width: "100px", marginTop: '9rem' }} src="../logos/isLogin.png" alt="Login" />
             <Typography variant="h6" sx={{ fontSize: '18px', fontWeight: '600', ml: 1 }}>Login/Signup</Typography>
 
-            <Box sx={{
-              display: display,
-              color: 'grey',
-              fontSize: '12px',
-              alignItems: 'center'
-            }}>
-              <Box className={classes.abc} sx={{ ml: 1.5 }}></Box>
-              <Typography className={classes.LoginBeforeText}>Zero Brokerage</Typography>
-            </Box>
-
-            <Box sx={{
-              display: 'flex',
-              color: 'grey',
-              fontSize: '12px',
-              alignItems: 'center'
-            }}>
-              <Box className={classes.abc} sx={{ ml: 1.5 }}></Box>
-              <Typography className={classes.LoginBeforeText}>
-                Thousands of new listings daily.</Typography>
-
-            </Box>
-            <Box sx={{
-              display: 'flex',
-              color: 'grey',
-              fontSize: '12px',
-              alignItems: 'center'
-            }}>
-              <Box className={classes.abc} sx={{ ml: 1.5 }}></Box>
-              <Typography className={classes.LoginBeforeText}>100 Cr+ Brokerage saved monthly.</Typography>
-            </Box>
+            {LoginQuotes.map(data =>
+              <>
+                <Box sx={{
+                  display: display,
+                  color: 'grey',
+                  fontSize: '12px',
+                  alignItems: 'center'
+                }}>
+                  <Box className={classes.abc} sx={{ ml: 1.5 }}></Box>
+                  <Typography className={classes.LoginBeforeText}>{data}</Typography>
+                </Box>
+              </>
+            )}
+            
           </Box>
 
           <Box sx={{ ml: 5 }}>

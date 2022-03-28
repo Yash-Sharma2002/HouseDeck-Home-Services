@@ -75,7 +75,7 @@ export const RecommendedServicesData = [
     title: "Home Painting Service",
     subText: "Book your free consultation to get accurate quote.",
     colorText: "Book Consultation",
-    url:'/home-services/painting'
+    url: '/home-services/painting'
   },
   {
     key: "cleaning",
@@ -84,7 +84,7 @@ export const RecommendedServicesData = [
     subText:
       "Make your house look like new. Spot free cleaning at lowest prices",
     colorText: "Book Now",
-    url:'/home-services/cleaning'
+    url: '/home-services/cleaning'
   },
   {
     key: "pnm",
@@ -92,13 +92,13 @@ export const RecommendedServicesData = [
     title: "Packer and Movers",
     subText: "Guaranteed On-time | Safe Delivery",
     colorText: "Estimate Moving Cost",
-    url:'/home-services'
+    url: '/home-services'
   },
 ];
 
 export const FooterLink = [
   { name: "Home", url: "/home-services" },
-  { name: "About Us",url:"/home-services/about-us" },
+  { name: "About Us", url: "/home-services/about-us" },
   { name: "Privacy Policy", url: "/home-services/privacy-policy" },
   { name: "Return Exchange & Refund", url: "/home-services/return-exchange-and-refund", },
   { name: "FAQs", url: "/home-services/faqs" },
@@ -165,7 +165,7 @@ export const searchBarOptionsNoida = [
 
 export const searchBarOptionsMumbai = [
   { value: "Home Painting", url: "/home-services/painting" },
-  { value: "Home Cleaning", url:"/home-services/cleaning" },
+  { value: "Home Cleaning", url: "/home-services/cleaning" },
   { value: "Home Sanitization", url: '/home-services/home-sanitization' },
   { value: "Appliance Repair", url: "Appliance Repair" },
   { value: "AC Repair", url: '/home-services/ac-repair' },
@@ -198,7 +198,7 @@ export const searchBarOptionsPune = [
 
 export const searchBarOptionsHyderabad = [
   { value: "Home Painting", url: "/home-services/painting" },
-  { value: "Home Cleaning", url:"/home-services/cleaning" },
+  { value: "Home Cleaning", url: "/home-services/cleaning" },
   { value: "Home Sanitization", url: '/home-services/home-sanitization' },
   { value: "Appliance Repair", url: "Appliance Repair" },
   { value: "AC Repair", url: '/home-services/ac-repair' },
@@ -213,7 +213,7 @@ export const searchBarOptionsGurgaon = [
 ];
 export const searchBarOptionsGhaziabad = [
   { value: "Home Painting", url: "/home-services/painting" },
-  { value: "Home Cleaning", url:"/home-services/cleaning" },
+  { value: "Home Cleaning", url: "/home-services/cleaning" },
   { value: "Home Sanitization", url: '/home-services/home-sanitization' },
   { value: "Appliance Repair", url: "Appliance Repair" },
   { value: "AC Repair", url: '/home-services/ac-repair' },
@@ -224,7 +224,7 @@ export const searchBarOptionsGhaziabad = [
 
 export const searchBarOptionsDelhi = [
   { value: "Home Painting", url: "/home-services/painting" },
-  { value: "Home Cleaning", url:"/home-services/cleaning" },
+  { value: "Home Cleaning", url: "/home-services/cleaning" },
   { value: "Home Sanitization", url: '/home-services/home-sanitization' },
   { value: "Appliance Repair", url: "Appliance Repair" },
   { value: "AC Repair", url: '/home-services/ac-repair' },
@@ -232,7 +232,7 @@ export const searchBarOptionsDelhi = [
 
 export const searchBarOptionsFaridabad = [
   { value: "Home Painting", url: "/home-services/painting" },
-  { value: "Home Cleaning", url:"/home-services/cleaning"},
+  { value: "Home Cleaning", url: "/home-services/cleaning" },
   { value: "Home Sanitization", url: '/home-services/home-sanitization' },
   { value: "Appliance Repair", url: "Appliance Repair" },
   { value: "AC Repair", url: '/home-services/ac-repair' },
@@ -240,7 +240,7 @@ export const searchBarOptionsFaridabad = [
 ];
 export const searchBarOptionsGN = [
   { value: "Home Painting", url: "/home-services/painting" },
-  { value: "Home Cleaning", url:"/home-services/cleaning" },
+  { value: "Home Cleaning", url: "/home-services/cleaning" },
   { value: "Home Sanitization", url: '/home-services/home-sanitization' },
   { value: "Appliance Repair", url: "Appliance Repair" },
   { value: "AC Repair", url: '/home-services/ac-repair' },
@@ -1111,124 +1111,156 @@ export const FAQData = [
 
 
 
-export const EssentialHomeCleaningData = [
-  {type:'Bath Room Cleaning',price:'429'},
-  {type:'Sofa Cleaning Services / 3 Seater',price:'359'},
-  {type:'Sofa Cleaning Services / 5 Seater',price:'499'},
-  {type:'Sofa Cleaning Services / 6 Seater',price:'559'},
-] 
+// export const EssentialHomeCleaningData = [
+//   { type: 'Bath Room Cleaning', price: '429' },
+//   { type: 'Sofa Cleaning Services / 3 Seater', price: '359' },
+//   { type: 'Sofa Cleaning Services / 5 Seater', price: '499' },
+//   { type: 'Sofa Cleaning Services / 6 Seater', price: '559' },
+// ]
 
-export const KitchenCleaning = [
-  {type:'Empty Kitchen Cleaning',price:'899'},
-  {type:'Regular Kitchen Cleaning (With Utensil)',price:'1269'},
-  {type:'Hob & Chimney Cleaning',price:'599'},
-  {type:'Chimney Cleaning',price:'389'},
-  {type:'Fridge Deep Cleaning',price:'319'},
-  {type:'Full Kitchen with Chimney',price:'1498'},
-  {type:'Full Kitchen without Chimney',price:'1298'},
-  {type:'Chimney',price:'959'},
-  {type:'Trolley & Shelf',price:'999'},
-] 
+export const KitchenCleaning = {
+  imgUrl: '../other/kitchenCleaning.jpg',
+  innerData: [
+    { type: 'Empty Kitchen Cleaning', price: '899' },
+    { type: 'Regular Kitchen Cleaning (With Utensil)', price: '1269' },
+    { type: 'Hob & Chimney Cleaning', price: '599' },
+    { type: 'Chimney Cleaning', price: '389' },
+    { type: 'Fridge Deep Cleaning', price: '319' },
+    { type: 'Full Kitchen with Chimney', price: '1498' },
+    { type: 'Full Kitchen without Chimney', price: '1298' },
+    { type: 'Chimney', price: '959' },
+    { type: 'Trolley & Shelf', price: '999' },
+  ],
+  quotes: [{ text: 'Floor Scubbing machine' }, { text: 'Cleaning of gas stoves, tiles, slabs' }, { text: 'Exterior Degreasing of chimney and exhaust fan' }, { text: 'Chimney filter cleaning' }]
+}
 
-export const MiniServices = [
-  {type:'Mirror Cleaning',price:'29'},
-  {type:'Ceiling Fan Cleaning',price:'39'},
-  {type:'Window Cleaning',price:'139'},
-  {type:'Toilet Seat Stain Removal',price:'109'},
-  {type:'Wash Basin Cleaning',price:'49'},
-  {type:'Exhaust Fan Cleaning',price:'79'},
-  {type:'Kitchen Sink Cleaning',price:'79'},
-  {type:'Gas Stove (HOB) Cleaning',price:'89'},
-  {type:'Microwave Cleaning',price:'139'},
-  {type:'Dining Table Cleaning',price:'249'},
-  {type:'Trolley & Shelves cleaning',price:'749'},
-  {type:'Balcony Cleaning',price:'179'},
-  {type:'Fridge Cleaning',price:''},
-  {type:'Carpet Wet Shampooing & Vacumming (25 sq ft)',price:'349'},
-  {type:'Cushion Cleaning (Set of 5)',price:'139'},
-  {type:'Mattress Cleaning',price:'349'},
-  {type:'Curtains Cleaning (Set of 2)',price:'89'}
-] 
+export const MiniServices = {
+  imgUrl: '../other/cleaning.jpg',
+  innerData: [
+    { type: 'Mirror Cleaning', price: '29' },
+    { type: 'Ceiling Fan Cleaning', price: '39' },
+    { type: 'Window Cleaning', price: '139' },
+    { type: 'Toilet Seat Stain Removal', price: '109' },
+    { type: 'Wash Basin Cleaning', price: '49' },
+    { type: 'Exhaust Fan Cleaning', price: '79' },
+    { type: 'Kitchen Sink Cleaning', price: '79' },
+    { type: 'Gas Stove (HOB) Cleaning', price: '89' },
+    { type: 'Microwave Cleaning', price: '139' },
+    { type: 'Dining Table Cleaning', price: '249' },
+    { type: 'Trolley & Shelves cleaning', price: '749' },
+    { type: 'Balcony Cleaning', price: '179' },
+    { type: 'Fridge Cleaning', price: '' },
+    { type: 'Carpet Wet Shampooing & Vacumming (25 sq ft)', price: '349' },
+    { type: 'Cushion Cleaning (Set of 5)', price: '139' },
+    { type: 'Mattress Cleaning', price: '349' },
+    { type: 'Curtains Cleaning (Set of 2)', price: '89' }
+  ],
+  quotes: [{ text: 'Floor Scubbing machine' }, { text: 'Government approved chemicals' }, { text: 'Hard water stains can be removed upto 75%' }, { text: 'Also includes balcony and utility areas' }]
+}
 
-export const HomeDeepCleanings = [
-  {type:'Empty Home Deep Cleaning',price:'2499'},
-  {type:'1 BHK Cleaning',price:'1999'},
-  {type:'2 BHK Cleaning',price:'4499'},
-  {type:'3 BHK Cleaning',price:'5999'},
-  {type:'Villa -2000/3000 sq Ft',price:''},
-  {type:'Villa -3000/4000 sq Ft',price:''},
-  {type:'Villa- 5000/6000 sq ft',price:''},
-  {type:'Villa- 6000/7000 Sq Ft',price:''},
-]
+// export const HomeDeepCleanings = [
+//   { type: 'Empty Home Deep Cleaning', price: '2499' },
+//   { type: '1 BHK Cleaning', price: '1999' },
+//   { type: '2 BHK Cleaning', price: '4499' },
+//   { type: '3 BHK Cleaning', price: '5999' },
+//   { type: 'Villa -2000/3000 sq Ft', price: '' },
+//   { type: 'Villa -3000/4000 sq Ft', price: '' },
+//   { type: 'Villa- 5000/6000 sq ft', price: '' },
+//   { type: 'Villa- 6000/7000 Sq Ft', price: '' },
+// ]
 
 export const DisinfectionService = [
-  {type:'Apartment 1 Bhk',price:''},
-  {type:'Apartment 2 Bhk',price:''},
-  {type:'Apartment 3 Bhk',price:''},
-  {type:'Apartment 4 Bhk',price:''},
-  {type:'Apartment 5 Bhk',price:''},
-  {type:'Bunglow (2000/3000 sq ft)',price:''},
-  {type:'Car Hatchback',price:''},
-  {type:'Car Sedan',price:''},
-  {type:'Premium Sedan',price:''},
-  {type:'Sub-Compact SUV',price:''},
-  {type:'SUV/MUV',price:''},
-  {type:'Luxury ',price:''},
+  { type: 'Apartment 1 Bhk', price: '' },
+  { type: 'Apartment 2 Bhk', price: '' },
+  { type: 'Apartment 3 Bhk', price: '' },
+  { type: 'Apartment 4 Bhk', price: '' },
+  { type: 'Apartment 5 Bhk', price: '' },
+  { type: 'Bunglow (2000/3000 sq ft)', price: '' },
+  { type: 'Car Hatchback', price: '' },
+  { type: 'Car Sedan', price: '' },
+  { type: 'Premium Sedan', price: '' },
+  { type: 'Sub-Compact SUV', price: '' },
+  { type: 'SUV/MUV', price: '' },
+  { type: 'Luxury ', price: '' },
 ]
 
 export const MoveInReadyHomeServices = [
-  {type:'1 Bhk',price:''},
-  {type:'2 Bhk',price:''},
-  {type:'3 Bhk',price:''},
-  {type:'4 Bhk',price:''},
+  { type: '1 Bhk', price: '' },
+  { type: '2 Bhk', price: '' },
+  { type: '3 Bhk', price: '' },
+  { type: '4 Bhk', price: '' },
 ]
 
-export const FullHouseDeepCleaning = [
-  {type:'1 RK Full House Deep Cleaning',price:'3349'},
-  {type:'1 BHK Full House Deep Cleaning',price:'3999'},
-  {type:'2 BHK Full House Deep Cleaning',price:'4399'},
-  {type:'3 BHK Full House Deep Cleaning',price:'5349'},
-  {type:'4 BHK Full House Deep Cleaning',price:'7349'},
-  {type:'5 BHK Full House Deep Cleaning',price:'8599'},
-  {type:'1 BHK Full House Deep Cleaning (Duplex)',price:'4499'},
-  {type:'2 BHK Full House Deep Cleaning (Duplex)',price:'5349'},
-  {type:'3 BHK Full House Deep Cleaning (Duplex)',price:'7449'},
-  {type:'4 BHK Full House Deep Cleaning (Duplex)',price:'8499'},
-  {type:'5 BHK Full House Deep Cleaning (Duplex)',price:'9549'},
-]
+export const FullHouseDeepCleaning = {
+  imgUrl: '../other/cleaning.jpg',
+  innerData: [
+    { type: 'Empty Home Deep Cleaning', price: '2499' },
+    { type: '1 BHK Cleaning', price: '1999' },
+    { type: '2 BHK Cleaning', price: '4499' },
+    { type: '3 BHK Cleaning', price: '5999' },
+    { type: '1 RK Full House Deep Cleaning', price: '3349' },
+    { type: '1 BHK Full House Deep Cleaning', price: '3999' },
+    { type: '2 BHK Full House Deep Cleaning', price: '4399' },
+    { type: '3 BHK Full House Deep Cleaning', price: '5349' },
+    { type: '4 BHK Full House Deep Cleaning', price: '7349' },
+    { type: '5 BHK Full House Deep Cleaning', price: '8599' },
+    { type: '1 BHK Full House Deep Cleaning (Duplex)', price: '4499' },
+    { type: '2 BHK Full House Deep Cleaning (Duplex)', price: '5349' },
+    { type: '3 BHK Full House Deep Cleaning (Duplex)', price: '7449' },
+    { type: '4 BHK Full House Deep Cleaning (Duplex)', price: '8499' },
+    { type: '5 BHK Full House Deep Cleaning (Duplex)', price: '9549' },
+    { type: 'Villa -2000/3000 sq Ft', price: '' },
+    { type: 'Villa -3000/4000 sq Ft', price: '' },
+    { type: 'Villa- 5000/6000 sq ft', price: '' },
+    { type: 'Villa- 6000/7000 Sq Ft', price: '' },
+  ],
+  quotes: [{ text: 'Floor Scubbing machine' }, { text: 'Government approved chemicals' }, { text: 'Hard water stains can be removed upto 75%' }, { text: 'Also includes balcony and utility areas' }]
+}
 
-export const FullHouseBasicCleaning = [
-  {type:'1 BHK Full House Deep Cleaning',price:'1899'},
-  {type:'2 BHK Full House Deep Cleaning',price:'2299'},
-  {type:'3 BHK Full House Deep Cleaning',price:'2599'},
-  {type:'4 BHK Full House Deep Cleaning',price:'3549'},
-]
+// export const FullHouseBasicCleaning = [
+//   { type: '1 BHK Full House Deep Cleaning', price: '1899' },
+//   { type: '2 BHK Full House Deep Cleaning', price: '2299' },
+//   { type: '3 BHK Full House Deep Cleaning', price: '2599' },
+//   { type: '4 BHK Full House Deep Cleaning', price: '3549' },
+// ]
 
-export const BathroomCleaning = [
-  {type:'Bathroom Cleaning (1 No.)',price:'448'},
-  {type:'Bathroom Cleaning (2 No.)',price:'898'},
-  {type:'Bathroom Cleaning (3 No.)',price:'1399'},
-  {type:'Bathroom Cleaning (4 No.)',price:'1798'},
-  {type:'Bathroom Cleaning (5 No.)',price:'2249'},
-]
+export const BathroomCleaning = {
+  imgUrl: '../other/bathroomCleaning.jpg',
+  innerData: [
+    { type: 'Bathroom Cleaning (1 No.)', price: '448' },
+    { type: 'Bathroom Cleaning (2 No.)', price: '898' },
+    { type: 'Bathroom Cleaning (3 No.)', price: '1399' },
+    { type: 'Bathroom Cleaning (4 No.)', price: '1798' },
+    { type: 'Bathroom Cleaning (5 No.)', price: '2249' },
+  ],
+  quotes: [{ text: 'Government approved chemicals' }, { text: 'Descaling of floors, tiles, WC, Wash Basin, taps, fixtures' }, { text: ' Hard water stains can be removed upto 75%' }]
+}
 
-export const SofaCleaning = [
-  {type:'Sofa Cleaning (2 No.)',price:'318'},
-  {type:'Sofa Cleaning (3 No.)',price:'398'},
-  {type:'Sofa Cleaning (4 No.)',price:'649'},
-  {type:'Sofa Cleaning (5 No.)',price:'748'},
-  {type:'Sofa Cleaning (6 No.)',price:'898'},
-  {type:'Sofa Cleaning (7 No.)',price:'1098'},
-  {type:'Sofa Cleaning (8 No.)',price:'1199'},
-  {type:'Sofa Cleaning (9 No.)',price:'1298'},
-  {type:'Sofa Cleaning (10 No.)',price:'1598'},
-  {type:'Cushion Cleaning (6-10 No.)',price:'219'},
-  {type:'Cushion Cleaning (1-5 No.)',price:'158'},
-]
+export const SofaCleaning = {
+  imgUrl: '../other/sofaCleaning.jpg',
+  innerData: [
+    { type: 'Sofa Cleaning (2 No.)', price: '318' },
+    { type: 'Sofa Cleaning (3 No.)', price: '398' },
+    { type: 'Sofa Cleaning (4 No.)', price: '649' },
+    { type: 'Sofa Cleaning (5 No.)', price: '748' },
+    { type: 'Sofa Cleaning (6 No.)', price: '898' },
+    { type: 'Sofa Cleaning (7 No.)', price: '1098' },
+    { type: 'Sofa Cleaning (8 No.)', price: '1199' },
+    { type: 'Sofa Cleaning (9 No.)', price: '1298' },
+    { type: 'Sofa Cleaning (10 No.)', price: '1598' },
+    { type: 'Cushion Cleaning (6-10 No.)', price: '219' },
+    { type: 'Cushion Cleaning (1-5 No.)', price: '158' },
+  ],
+  quotes: [{ text: 'Shampooing of sofa seats' }, { text: 'Dry and wet vacuuming' }, { text: 'Cushions not included' }]
+}
 
-export const CleaningServicesData=[
-  {type:'Essential Home Cleaning',options:EssentialHomeCleaningData},
-  {type:'Full Home Cleaning',options:KitchenCleaning},
-  {type:'Full House Deep Cleaning',options:FullHouseDeepCleaning},
-  {type:'Mini Services',options:MiniServices},
+export const CleaningServicesData = [
+  // { type: 'Essential Home Cleaning', options: EssentialHomeCleaningData },
+  // { type: 'Home Deep Cleaning', options: HomeDeepCleanings },
+  { imgUrl:'../other/cleaning.jpg',type: 'Full House Deep Cleaning', options: FullHouseDeepCleaning },
+  // { type: 'Full House Basic Cleaning', options: FullHouseBasicCleaning },
+  { imgUrl:'../other/kitchenCleaning.jpg',type: 'Kitchen Cleaning', options: KitchenCleaning },
+  { imgUrl:'../other/bathroomCleaning.jpg',type: 'Bathroom Cleaning', options: BathroomCleaning },
+  { imgUrl:'../other/sofaCleaning.jpg',type: 'Sofa Cleaning', options: SofaCleaning },
+  { imgUrl:'../other/cleaning.jpg',type: 'Mini Services', options: MiniServices },
 ]
