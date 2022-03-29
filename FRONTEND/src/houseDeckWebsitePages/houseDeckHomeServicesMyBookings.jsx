@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { getBookings } from '../Api/getBookings'
 import Header from '../HousDeckWebsiteComponents/Header'
-import { Box, Typography, Breadcrumbs, Link } from '@mui/material'
+import { Box, Typography, Breadcrumbs, Link, Divider } from '@mui/material'
 
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
@@ -32,6 +32,7 @@ export default function HouseDeckHomeServicesMyBookings() {
 
   }
 
+
   const getMyBookings = async () => {
     console.log('functions called');
     const userData = loadUserData()
@@ -40,54 +41,70 @@ export default function HouseDeckHomeServicesMyBookings() {
       setBookings(response)
     }
   }
-  console.log(bookings)
+
+
+  useEffect(() => {
+    let ignore = false;
+
+    if (!ignore) getMyBookings()
+    return () => { ignore = true; }
+  }, []);
+
+
   return (
     <div>
       <Header commonProps={commonProps} />
 
       <Box sx={{ background: 'rgb(229, 246, 245)', height: '300px', }}>
-        <Box sx={{ pt: '5rem', }}>
-          <Breadcrumbs
-            sx={{ ml: 10 }}
-            separator={<NavigateNextIcon fontSize="small" />}
-          >
-            <Link underline="hover" key="1" color="black" href="/">
-              Home
-            </Link>,
-            <Link
-              underline="hover"
-              key="2"
-              color="black"
-              href="/home-services"
+        <Box sx={{ width: '70%', margin: '0px auto' }}>
+          <Box sx={{ pt: '5rem', }}>
+            <Breadcrumbs
+              sx={{ mt: 10 }}
+              separator={<NavigateNextIcon fontSize="small" />}
             >
-              Home Services
-            </Link>,
-            <Typography key="3" color="text.primary">
-              My Bookings
-            </Typography>,
+              <Link underline="hover" key="1" color="black" href="/">
+                Home
+              </Link>,
+              <Link
+                underline="hover"
+                key="2"
+                color="black"
+                href="/home-services"
+              >
+                Home Services
+              </Link>,
+              <Typography key="3" color="text.primary">
+                My Bookings
+              </Typography>,
 
-          </Breadcrumbs>
-        </Box>
-        <Box sx={{ background: 'white', width: '70%', height: '400px', border: '1px solid black', borderRadius: 4, margin: '0px auto', mt: 10, overflowY: 'auto' }}>
-          {bookings.map((item) => {
-            const services = item.services
-            console.log(services);
-            return (
-              services.map(data =>
+            </Breadcrumbs>
+          </Box>
+          <Box sx={{ background: 'white', height: '500px', border: '1px solid black', borderRadius: 4, margin: '0px auto', mt: 1, overflowY: 'auto' }}>
+            {bookings.map((item) => {
+              const services = item.Services
+              return (
                 <>
-                  <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <Typography sx={{ fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>{data.ServiceChoseByUser}</Typography>
-                    <Typography sx={{ fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{data.PriceForService}</Typography>
+                   <Divider sx={{mt:2,px:2,fontSize: '18px',}}>{item.Service_Chosen_Date} {item.Service_Chosen_Time}</Divider>
+                  {services.map(data =>
+                    <>
+                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: 2, pt: 1 }}>
+                        <Typography sx={{ fontSize: '16px', fontWeight: '600', }}>{data.Services_Chosen_By_User}</Typography>
+                        <Typography sx={{ fontSize: '16px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{data.Price_For_Chosen_Services}</Typography>
+                      </Box>
+                    </>
+
+                  )}
+                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: 2, pt: 1 }}>
+                    <Typography sx={{ fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>Total Price</Typography>
+                    <Typography sx={{ fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{item.Total_Price}</Typography>
                   </Box>
                 </>
-
               )
-            )
-          })}
+            })}
+          </Box>
         </Box>
       </Box>
 
-      <button onClick={getMyBookings}>click me</button>
       <Box>
 
 

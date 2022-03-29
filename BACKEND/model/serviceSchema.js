@@ -1,34 +1,42 @@
 import mongoose from 'mongoose';
 
 const serviceSchema = new mongoose.Schema({
-Number:{
+Contact_Number_Of_User:{
     type: String,
     required: true,
 },
-    services: [{
-        ServiceChoseByUser: {
+    Services: [{
+        Services_Chosen_By_User: {
             type: String,
             trim: true,
         },
-        PriceForService: {
+        Price_For_Chosen_Services: {
             type: String,
             trim: true,
         },
         _id: 0
     }],
-    totalPrice: {
+    Total_Price: {
         type: String,
         required: true,
     },
-    locationForService: {
+    Location_Chosen_For_Service: {
         type: String,
         required: true,
     },
-    dateForService: {
+    Date_Chose_For_Service: {
         type: String,
         // required: true,
     },
-    timeForService: {
+    Time_Chose_For_Service: {
+        type: String,
+        // required: true,
+    },
+    Service_Chosen_Date:{
+        type: String,
+        // required: true,
+    },
+    Service_Chosen_Time:{
         type: String,
         // required: true,
     },

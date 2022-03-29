@@ -9,5 +9,6 @@ export const serviceSender = async (service) => {
         return await axios.post(`${URL}/service`, service)
     } catch (error) {
         console.log('error while calling login API: ', error);
+        return false
     }
 }

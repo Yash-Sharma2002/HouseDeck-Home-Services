@@ -15,6 +15,7 @@ import { authenticateLogin } from '../../Api/login';
 
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import { LoginContext } from '../../context/ContextProvider';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -54,6 +55,9 @@ function Content({ open, setOpen, setAccount, width, display }) {
   const classes = useStyles()
   const fullScreen = useMediaQuery('(max-width:700px)');
 
+  const { message, setMessage } = React.useContext(LoginContext)
+  const { messageType, setMessageType } = React.useContext(LoginContext)
+
   const [show, setShow] = React.useState(false);
   const [displayForFirst, setDisplayForFirst] = React.useState(true)
   const [displayForSecond, setDisplayForSecond] = React.useState(false)
@@ -62,8 +66,8 @@ function Content({ open, setOpen, setAccount, width, display }) {
   const [number, setNumber] = React.useState('')
   const [username, setUsername] = React.useState('')
   const [email, setEmail] = React.useState('')
-  const [message, setMessage] = React.useState('')
-  const [messageType, setMessageType] = React.useState('')
+  // const [message, setMessage] = React.useState('')
+  // const [messageType, setMessageType] = React.useState('')
 
 
 
@@ -191,6 +195,7 @@ function Content({ open, setOpen, setAccount, width, display }) {
       }
       let response = await authenticateLogin(login)
       if (response) {
+        window.location.reload(false)
         setAccount(response)
         handleClose();
         try {
@@ -220,6 +225,7 @@ function Content({ open, setOpen, setAccount, width, display }) {
     }
     let response = await authenticateSignup(signup)
     if (!response) return;
+    window.location.reload(false)
     setAccount(username)
     try {
       localStorage.setItem('userdata', JSON.stringify(signup));
@@ -259,7 +265,7 @@ function Content({ open, setOpen, setAccount, width, display }) {
                 </Box>
               </>
             )}
-            
+
           </Box>
 
           <Box sx={{ ml: 5 }}>
@@ -268,8 +274,6 @@ function Content({ open, setOpen, setAccount, width, display }) {
             </Box>
 
             <Typography sx={{ fontSize: '16px', fontWeight: '600', marginTop: 3 }}>Enter phone to continue</Typography>
-
-
             <Box sx={{
               display: 'flex', alignItems: 'center', justifyContent: 'space-between', border: '1px solid #e5e5e5', width: '95%', my: 2, textAlign: 'center',
             }}>
@@ -404,6 +408,8 @@ function Content({ open, setOpen, setAccount, width, display }) {
 function SMContent({ open, setOpen, setAccount }) {
   const fullScreen = useMediaQuery('(max-width:700px)');
 
+  const { message, setMessage } = React.useContext(LoginContext)
+  const { messageType, setMessageType } = React.useContext(LoginContext)
   const [show, setShow] = React.useState(false)
   const [displayForFirst, setDisplayForFirst] = React.useState(true)
   const [displayForSecond, setDisplayForSecond] = React.useState(false)
@@ -412,8 +418,8 @@ function SMContent({ open, setOpen, setAccount }) {
   const [number, setNumber] = React.useState('')
   const [username, setUsername] = React.useState('')
   const [email, setEmail] = React.useState('')
-  const [message, setMessage] = React.useState('')
-  const [messageType, setMessageType] = React.useState('')
+  // const [message, setMessage] = React.useState('')
+  // const [messageType, setMessageType] = React.useState('')
 
 
 

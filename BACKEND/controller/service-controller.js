@@ -17,7 +17,7 @@ export const sendService = async (req, res) => {
 
 export const getBookings = async (req, res) => {
     try {
-        const user = await Service.find({ Number: req.body.Number },{"services":1,"_id":0});
+        const user = await Service.find({ Contact_Number_Of_User: req.body.Number },{"Services":1,"_id":0,"Service_Chosen_Date":1,"Service_Chosen_Time":1,"Total_Price":1});
         if(user) {
             return res.send(user)
         }

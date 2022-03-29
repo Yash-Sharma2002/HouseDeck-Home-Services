@@ -15,8 +15,12 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider'
 import DatePicker from '@mui/lab/DatePicker'
 import TimePicker from '@mui/lab/TimePicker'
 import Stack from '@mui/material/Stack'
+import { CleaningServicesData } from '../../constants/data';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
-import ServiceSelector from '../otherPageComponents/serviceSelector'
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+import { LoginContext } from '../../context/ContextProvider'
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -25,18 +29,28 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     },
 }));
 
-export default function ServicesDialog({ options, open, setOpen }) {
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
+
+export default function ServicesDialog({ options, setOptions, open, setOpen }) {
+
+    const { message, setMessage } = React.useContext(LoginContext)
+    const { messageType, setMessageType } = React.useContext(LoginContext)
 
     const fullScreen = useMediaQuery('(max-width:700px)');
     const [price, setPrice] = React.useState(0)
     const [date, setdate] = React.useState('');
     const [location, setLocation] = React.useState('');
     const [time, settime] = React.useState('');
-    const [services, setService] = React.useState([])
+    const [Services, setServices] = React.useState([])
     const [displayForServiceSelectionProcess, setDisplayForServiceSelectionProcess] = React.useState(true)
     const [displayForStepper, setDisplayForStepper] = React.useState(false)
     const [displayForAppointment, setDisplayForAppointment] = React.useState(false)
     const [displayAtStart, setDisplayAtStart] = React.useState(false)
+    const [show, setShow] = React.useState(false)
     const [display, setDisplay] = React.useState(true)
 
     const handleClose = () => {
@@ -48,27 +62,28 @@ export default function ServicesDialog({ options, open, setOpen }) {
         setDisplayForAppointment(false)
         setDisplayAtStart(false)
         setDisplay(false)
+        setServices([])
     };
 
     function Select(service, price) {
-        if (!services.map((item) => item.ServiceChoseByUser).includes(service)) {
-            setService((prevItems) => [
+        if (!Services.map((item) => item.Services_Chosen_By_User).includes(service)) {
+            setServices((prevItems) => [
                 ...prevItems,
-                { id: uuidV4(), ServiceChoseByUser: service, PriceForService: price }
+                { id: uuidV4(), Services_Chosen_By_User: service, Price_For_Chosen_Services: price }
             ]);
             setDisplayAtStart(false)
             setDisplay(true)
             setPrice((prevPrice) => parseFloat(prevPrice) + parseFloat(price))
         } else {
-            const allOtherServices = services.filter(
-                (item) => item.ServiceChoseByUser !== service
+            const allOtherServices = Services.filter(
+                (item) => item.Services_Chosen_By_User !== service
             );
-            setService([...allOtherServices]);
+            setServices([...allOtherServices]);
             setPrice((prevPrice) => parseFloat(prevPrice) - parseFloat(price))
         }
     }
     function getRequiredThings() {
-        if (services) {
+        if (Services) {
             setDisplayForServiceSelectionProcess(false)
             setDisplayForStepper(true)
             setDisplayForAppointment(false)
@@ -98,9 +113,11 @@ export default function ServicesDialog({ options, open, setOpen }) {
             navigator.geolocation.getCurrentPosition((position) => {
                 setLocation(`${position.coords.latitude} ${position.coords.longitude}`)
             });
-            locationSubmit();
+            locationSubmit(); 
         } else {
-            console.log("Geolocation is not supported by this browser.")
+            setShow(true)
+            setMessage('Error Occured. Location not valid')
+            setMessageType('error')
         }
     }
 
@@ -125,6 +142,13 @@ export default function ServicesDialog({ options, open, setOpen }) {
 
     }
 
+    const handleAlertClose = () => {
+        setShow(false)
+        setMessage('')
+        setMessageType('')
+    }
+
+
     function AtStart() {
         setDisplayAtStart(true)
         setDisplayForServiceSelectionProcess(false)
@@ -134,21 +158,35 @@ export default function ServicesDialog({ options, open, setOpen }) {
 
     const sendToDatabase = async () => {
         const userData = loadUserData()
+        const currentDateTime = new Date()
         const items = {
-            Number: userData.Number,
-            services,
-            totalPrice: price,
-            locationForService: location,
-            dateForService: date.toString().slice(0, 15),
-            timeForService: time.toString().slice(16, 25),
+            Contact_Number_Of_User: userData.Number,
+            Services,
+            Total_Price: price,
+            Location_Chosen_For_Service: location,
+            Date_Chose_For_Service: date.toString().slice(0, 15),
+            Time_Chose_For_Service: time.toString().slice(16, 25),
+            Service_Chosen_Date: currentDateTime.toString().slice(0, 15),
+            Service_Chosen_Time:currentDateTime.toString().slice(16, 25),
         }
-        console.log(items)
         let response = await serviceSender(items)
+        console.log(response);
         if (response) {
             handleClose()
         } else {
-            console.log('error occured while calling api');
+        console.log('he');
+            setShow(true)
+            setMessage('Cannot setup Service. Sorry for inconvenience. Please try again later.')
+            setMessageType('error')
         }
+    }
+
+    const handleClickOpen = (services) => {
+        setOptions(services)
+        setDisplayAtStart(false)
+        setDisplayForServiceSelectionProcess(true)
+        setDisplayForStepper(false)
+        setDisplayForAppointment(false)
     }
 
     return (
@@ -162,8 +200,23 @@ export default function ServicesDialog({ options, open, setOpen }) {
 
                 {
                     displayAtStart ?
-                        <Box sx={{ display: 'block' }}>
-                            <ServiceSelector width={'500px'} />
+                        <Box sx={{ width: '500px', background: 'white', borderRadius: 3, padding: '0px 24px', }}>
+                            <Typography sx={{ mt: 2, padding: '20px 0 8px', fontSize: '18px', fontWeight: '600', color: '#464646' }}>Select Your Service</Typography>
+
+                            {
+                                CleaningServicesData.map(data =>
+                                    <>
+                                        <Box key={data.options} sx={{ padding: '15px 0px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }} onClick={() => handleClickOpen(data.options)}>
+                                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
+                                                <Box sx={{ background: `url(${data.imgUrl})`, width: '40px', height: '40px', borderRadius: '100%', backgroundPosition: '50%', backgroundRepeat: 'no-repeat', backgroundSize: 'auto 100%' }}></Box>
+                                                <Typography sx={{ fontSize: '16px', color: '#464646', ml: 1 }}>{data.type}</Typography>
+                                            </Box>
+                                            <ArrowForwardIosIcon sx={{ fontSize: '16px', color: '#464646' }} />
+                                        </Box>
+                                        <Divider />
+                                    </>
+                                )
+                            }
                         </Box>
                         :
                         null
@@ -223,7 +276,7 @@ export default function ServicesDialog({ options, open, setOpen }) {
                                                 )}
                                             </Box>
                                             <Button variant='outlined' sx={{ textTransform: 'none' }} onClick={() => Select(service, price)}>
-                                                {!services.map((item) => item.ServiceChoseByUser).includes(data.type)
+                                                {!Services.map((item) => item.Services_Chosen_By_User).includes(data.type)
                                                     ? "Select"
                                                     : "Unselect"}
                                             </Button>
@@ -243,7 +296,7 @@ export default function ServicesDialog({ options, open, setOpen }) {
                                         <Box sx={{ mt: 3, display: 'flex', alignItems: 'center', justifyContent: 'end' }}>
                                             <Typography sx={{ mr: 1, fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{price}</Typography>
                                             <Divider orientation='vertical' sx={{ color: 'black' }} flexItem />
-                                            <Typography sx={{ ml: 1, color: 'gray', fontSize: '13px', fontFamily: 'Fredoka' }}>{services.length} item</Typography>
+                                            <Typography sx={{ ml: 1, color: 'gray', fontSize: '13px', fontFamily: 'Fredoka' }}>{Services.length} item</Typography>
                                             <Button variant='outlined' sx={{ ml: 1, textTransform: 'none' }} onClick={getRequiredThings}>Continue</Button>
                                         </Box>
                                     </>
@@ -310,6 +363,7 @@ export default function ServicesDialog({ options, open, setOpen }) {
                                         setdate(newdate);
                                     }}
                                     renderInput={(params) => <TextField sx={{ my: 4 }} {...params} />}
+                                    required
                                 />
 
                                 <TimePicker
@@ -321,6 +375,7 @@ export default function ServicesDialog({ options, open, setOpen }) {
                                     }}
                                     minTime={new Date(0, 0, 0, 8)}
                                     maxTime={new Date(0, 0, 0, 18, 45)}
+                                    required
                                 />
                             </Stack>
                         </LocalizationProvider>
@@ -331,7 +386,11 @@ export default function ServicesDialog({ options, open, setOpen }) {
                         <Button sx={{ fontSize: '16px', marginLeft: 'auto', marginRight: '0px', textTransform: 'none', position: 'absolute', bottom: 10, right: 10 }} variant='outlined' onClick={sendToDatabase}>Continue</Button>
                     </Box>
                 </Box>
-
+                <Snackbar open={show} autoHideDuration={6000} onClose={handleAlertClose}>
+          <Alert onClose={handleAlertClose} severity={messageType} sx={{ width: '100%' }}>
+            {message}
+          </Alert>
+        </Snackbar>
             </BootstrapDialog>
         </>
     )

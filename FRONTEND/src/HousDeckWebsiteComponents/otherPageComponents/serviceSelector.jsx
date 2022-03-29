@@ -57,7 +57,7 @@ export default function ServiceSelector({ width }) {
                 }
             </Box>
             <DialogWithoutLoginDisplay open={open} setOpen={setOpen} />
-            <ServicesDialog options={options} open={openForService} setOpen={setOpenForService} />
+            <ServicesDialog options={options} setOptions={setOptions} open={openForService} setOpen={setOpenForService} />
         </div>
     )
 }
