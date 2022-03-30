@@ -9,6 +9,5 @@ export const authenticateLogin = async (user) => {
         const Username = await axios.post(`${URL}/login`, user)
         return Username.data
     } catch (error) {
-        console.log('error while calling login API: ', error);
     }
 }

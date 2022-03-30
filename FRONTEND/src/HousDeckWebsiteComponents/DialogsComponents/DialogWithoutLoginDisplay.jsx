@@ -184,8 +184,7 @@ function Content({ open, setOpen, setAccount, width, display }) {
       setMessageType('error')
     }
     else if (otp.length === 6) {
-      setMessage('')
-      setMessageType('')
+      setShow(false)
       verifyOTP()
       setShow(true)
       setMessageType('success')

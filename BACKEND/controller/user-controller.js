@@ -26,10 +26,12 @@ export const userLogIn = async (req, res) => {
             return res.send(user.Username)
         }
          else {
-            return res.status(500).json('failed');
+        console.log('error in else');
+        return res.sendStatus(500)
         }
 
     } catch (error) {
-        res.json('Error: ', error.message);        
+        console.log('error in catch');
+        res.json('Error: ', error.message);      
     }
 }
