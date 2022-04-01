@@ -86,7 +86,7 @@ export default function SearchNSelectForOtherPages({city,setCity,handleData,styl
       <Box >
         <Box sx={style} onClick={handleClickOpen}>
 
-         <LocationOnIcon sx={{fontSize:'19px'}} /> <Box sx={{fontFamily:'Fredoka'}}>{city}</Box><ArrowDropDownIcon />
+         <LocationOnIcon sx={{fontSize:'19px' ,color:'#1b685f'}} /> <Box sx={{fontFamily:'Fredoka' ,color:'#1b685f'}}>{city}</Box><ArrowDropDownIcon sx={{ color:'#1b685f'}} />
           {xlMax && xlMin && (
 
             <BootstrapDialog

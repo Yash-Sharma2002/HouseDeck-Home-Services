@@ -92,7 +92,6 @@ export default function SearchNSelect({city,setCity,handleData,style}) {
             <BootstrapDialog
               fullScreen={fullScreen}
               onClose={handleClose}
-              aria-labelledby="customized-dialog-title"
               open={open}
               maxWidth={false}
               sx={{ width:'650px',margin:'0px auto',height:'fit-content' }}

@@ -76,7 +76,8 @@ export default function OtherPagesTopCarousel() {
         }}>
           <img style={{
             maxWidth: '400px',
-            borderRadius: 10,
+            borderRadius: 10,border:'1px solid #e5e5e5' ,
+            boxShadow:''
           }} src={data.url} alt="Poster" />
         </div>
       )}

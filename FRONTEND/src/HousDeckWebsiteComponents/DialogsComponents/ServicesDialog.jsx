@@ -12,6 +12,7 @@ import MyLocationIcon from '@mui/icons-material/MyLocation'
 import TextField from '@mui/material/TextField'
 import AdapterDateFns from '@mui/lab/AdapterDateFns'
 import LocalizationProvider from '@mui/lab/LocalizationProvider'
+import './OnlyForDialog.css'
 import DatePicker from '@mui/lab/DatePicker'
 import TimePicker from '@mui/lab/TimePicker'
 import Stack from '@mui/material/Stack'
@@ -42,9 +43,9 @@ export default function ServicesDialog({ options, setOptions, open, setOpen }) {
 
     const fullScreen = useMediaQuery('(max-width:700px)');
     const [price, setPrice] = React.useState(0)
-    const [date, setdate] = React.useState('');
+    const [date, setdate] = React.useState(null)
     const [location, setLocation] = React.useState('');
-    const [time, settime] = React.useState('');
+    const [time, settime] = React.useState(new Date('2022-03-01 12:00'))
     const [Services, setServices] = React.useState([])
     const [displayForServiceSelectionProcess, setDisplayForServiceSelectionProcess] = React.useState(true)
     const [displayForStepper, setDisplayForStepper] = React.useState(false)
@@ -113,7 +114,7 @@ export default function ServicesDialog({ options, setOptions, open, setOpen }) {
             navigator.geolocation.getCurrentPosition((position) => {
                 setLocation(`${position.coords.latitude} ${position.coords.longitude}`)
             });
-            locationSubmit(); 
+            locationSubmit();
         } else {
             setShow(true)
             setMessage('Error Occured. Location not valid')
@@ -156,6 +157,14 @@ export default function ServicesDialog({ options, setOptions, open, setOpen }) {
         setDisplayForAppointment(false)
     }
 
+    React.useEffect(() => {
+
+        var style = document.createElement("style");
+        style.innerHTML = `.non-scroll::-webkit-scrollbar {display: none;}`;
+        document.head.appendChild(style);
+    }
+    )
+
     const sendToDatabase = async () => {
         const userData = loadUserData()
         const currentDateTime = new Date()
@@ -167,14 +176,14 @@ export default function ServicesDialog({ options, setOptions, open, setOpen }) {
             Date_Chose_For_Service: date.toString().slice(0, 15),
             Time_Chose_For_Service: time.toString().slice(16, 25),
             Service_Chosen_Date: currentDateTime.toString().slice(0, 15),
-            Service_Chosen_Time:currentDateTime.toString().slice(16, 25),
+            Service_Chosen_Time: currentDateTime.toString().slice(16, 25),
         }
         let response = await serviceSender(items)
         console.log(response);
         if (response) {
             handleClose()
         } else {
-        console.log('he');
+            console.log('he');
             setShow(true)
             setMessage('Cannot setup Service. Sorry for inconvenience. Please try again later.')
             setMessageType('error')
@@ -222,73 +231,78 @@ export default function ServicesDialog({ options, setOptions, open, setOpen }) {
                         null
                 }
 
-                <Box sx={{ display: displayForServiceSelectionProcess ? 'block' : 'none', padding: '15px', }}>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
+                <Box sx={{ display: displayForServiceSelectionProcess ? 'block' : 'none', }}>
+                    <Box sx={{ position: 'sticky', top: 0, display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '70px', background: 'white', width: 'inherit', zIndex: '1000', px: '10px' }}>
                         <Typography sx={{ fontSize: "18px", fontWeight: '700' }}>Select Your Services</Typography>
                         <CloseIcon onClick={handleClose} sx={{ cursor: 'pointer' }} />
                     </Box>
                     <Box>
-                        {options.innerData.map((data) => {
-                            const service = data.type
-                            const price = data.price
-                            const fakePrice = parseInt(price) + 200
-                            return (
-                                <>
-                                    <Box key={data.type}>
-                                        <Box sx={{ textAlign: 'center' }}>
-                                            <img src={options.imgUrl} alt="" style={{ marginTop: '10px', width: '100%' }} />
-                                        </Box>
-                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '8px 4px' }}>
-                                            <Typography sx={{ fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>{service}</Typography>
-                                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
-                                                <Typography sx={{ fontSize: '17px', fontWeight: '600', fontFamily: 'Fredoka', textDecoration: 'line-through', color: 'gray' }}>&#8377;{fakePrice.toLocaleString()}</Typography>
-                                                <Typography sx={{ ml: 2, fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{price.toLocaleString()}</Typography>
+                        <div className='childdiv' style={{ padding: '15px' }}>
+                            {options.innerData.map((data) => {
+                                const service = data.type
+                                const price = data.price
+                                const fakePrice = parseInt(price) + 200
+                                return (
+                                    <>
+                                        <Box key={data.type}>
+                                            <Box sx={{ textAlign: 'center' }}>
+                                                <img src={options.imgUrl} alt="" style={{ marginTop: '10px', width: '100%' }} />
                                             </Box>
-                                        </Box>
+                                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '8px 4px' }}>
+                                                <Typography sx={{ fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>{service}</Typography>
+                                                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
+                                                    <Typography sx={{ fontSize: '17px', fontWeight: '600', fontFamily: 'Fredoka', textDecoration: 'line-through', color: 'gray' }}>&#8377;{fakePrice.toLocaleString()}</Typography>
+                                                    <Typography sx={{ ml: 2, fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{price.toLocaleString()}</Typography>
+                                                </Box>
+                                            </Box>
 
-                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', }}>
-                                            <Box sx={{ display: 'block' }}>
-                                                {options.quotes.map(data1 =>
-                                                    <>
-                                                        <Box sx={{
-                                                            display: 'flex',
-                                                            color: 'rgba(54,54,54,.8)',
-                                                            alignItems: 'center'
-                                                        }}>
+                                            <Box sx={{
+                                                display: 'flex', justifyContent: 'space-between', alignItems: 'baseline',
+                                            }}>
+                                                <Box sx={{ display: 'block' }}>
+                                                    {options.quotes.map(data1 =>
+                                                        <>
                                                             <Box sx={{
-                                                                borderWidth: '0px 2px 2px 0px',
-                                                                borderStyle: 'solid',
-                                                                borderColor: '#7b7b7b',
-                                                                position: 'absolute',
-                                                                transform: 'rotate(45deg)',
-                                                                height: '8px',
-                                                                width: '3px',
-                                                                display: 'block',
-                                                                marginTop: '-4px',
-                                                                ml: 1
-                                                            }}></Box>
-                                                            <Typography sx={{
-                                                                fontSize: '14px',
-                                                                marginLeft: '20px',
-                                                            }}>{data1.text}</Typography>
-                                                        </Box>
-                                                    </>
-                                                )}
+                                                                display: 'flex',
+                                                                color: 'rgba(54,54,54,.8)',
+                                                                alignItems: 'center'
+                                                            }}>
+                                                                <Box sx={{
+                                                                    borderWidth: '0px 2px 2px 0px',
+                                                                    borderStyle: 'solid',
+                                                                    borderColor: '#7b7b7b',
+                                                                    position: 'absolute',
+                                                                    transform: 'rotate(45deg)',
+                                                                    height: '8px',
+                                                                    width: '3px',
+                                                                    display: 'block',
+                                                                    marginTop: '-4px',
+                                                                    ml: 1
+                                                                }}></Box>
+                                                                <Typography sx={{
+                                                                    fontSize: '14px',
+                                                                    marginLeft: '20px',
+                                                                }}>{data1.text}</Typography>
+                                                            </Box>
+                                                        </>
+                                                    )}
+                                                </Box>
+                                                <Button variant='outlined' sx={{ textTransform: 'none' }} onClick={() => Select(service, price)}>
+                                                    {!Services.map((item) => item.Services_Chosen_By_User).includes(data.type)
+                                                        ? "Select"
+                                                        : "Unselect"}
+                                                </Button>
                                             </Box>
-                                            <Button variant='outlined' sx={{ textTransform: 'none' }} onClick={() => Select(service, price)}>
-                                                {!Services.map((item) => item.Services_Chosen_By_User).includes(data.type)
-                                                    ? "Select"
-                                                    : "Unselect"}
-                                            </Button>
+
+
                                         </Box>
+                                    </>
+                                )
+                            })
+                            }
+                        </div>
 
-
-                                    </Box>
-                                </>
-                            )
-                        })
-                        }
-                        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <Box sx={{ position: 'sticky', bottom: 0, display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '70px', background: 'white', width: 'inherit', zIndex: '1000', px: '10px' }}>
                             <ArrowBackIcon onClick={AtStart} sx={{ mt: 3, cursor: 'pointer' }} />
                             {
                                 (display && !(price === 0)) ?
@@ -305,7 +319,6 @@ export default function ServicesDialog({ options, setOptions, open, setOpen }) {
                             }
 
                         </Box>
-
 
                     </Box>
                 </Box>
@@ -369,13 +382,12 @@ export default function ServicesDialog({ options, setOptions, open, setOpen }) {
                                 <TimePicker
                                     renderInput={(params) => <TextField {...params} />}
                                     value={time}
-                                    label="Enter Time"
+                                    label="Enter time"
                                     onChange={(newtime) => {
                                         settime(newtime);
                                     }}
                                     minTime={new Date(0, 0, 0, 8)}
                                     maxTime={new Date(0, 0, 0, 18, 45)}
-                                    required
                                 />
                             </Stack>
                         </LocalizationProvider>
@@ -387,10 +399,10 @@ export default function ServicesDialog({ options, setOptions, open, setOpen }) {
                     </Box>
                 </Box>
                 <Snackbar open={show} autoHideDuration={6000} onClose={handleAlertClose}>
-          <Alert onClose={handleAlertClose} severity={messageType} sx={{ width: '100%' }}>
-            {message}
-          </Alert>
-        </Snackbar>
+                    <Alert onClose={handleAlertClose} severity={messageType} sx={{ width: '100%' }}>
+                        {message}
+                    </Alert>
+                </Snackbar>
             </BootstrapDialog>
         </>
     )

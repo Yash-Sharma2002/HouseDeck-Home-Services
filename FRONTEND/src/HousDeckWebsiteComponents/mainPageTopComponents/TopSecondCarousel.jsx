@@ -30,7 +30,7 @@ const responsive = {
 function Content({ padding, margin}) {
     return (
         <div style={{
-            background: '#e5f6f5',
+            background: '#24C6DC',
             padding: padding, overflow: "hidden",
             
         }}>
@@ -44,10 +44,10 @@ function Content({ padding, margin}) {
             >
                 {TopCarouselData.map(data =>
                     <div key={data.url} style={{
-                        marginRight: margin
+                        marginRight: margin,
                     }}>
                         <img key={data.url} style={{
-                            width: '100%',
+                        width: '100%',
                             borderRadius:10,
                         }} src={data.url} alt="Poster" />
                     </div>

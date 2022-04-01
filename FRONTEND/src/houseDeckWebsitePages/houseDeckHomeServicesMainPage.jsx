@@ -47,7 +47,6 @@ function TopFirstBar({ city, setCity, handleData }) {
     alignItems: 'center',
     minWidth: 100,
     backgroundColor: 'white',
-    border:"1px solid black",
     height: '50px!important',
   }
 
@@ -61,7 +60,6 @@ function TopFirstBar({ city, setCity, handleData }) {
     minWidth: 100,
     height: '50px!important',
     color: "black",
-    border:"none"
   }
   return (
 
@@ -69,7 +67,7 @@ function TopFirstBar({ city, setCity, handleData }) {
     <>
       {xlMax && xlMin && (
         <div style={{
-          background: '#e5f6f5',
+          background: '#24C6DC',
 
         }}>
           <Box sx={{
@@ -95,7 +93,7 @@ function TopFirstBar({ city, setCity, handleData }) {
       )}
       {!(xlMax && xlMin) && mdMax && mdMin && (
         <div style={{
-          background: '#e5f6f5',
+          background: '#24C6DC',
 
         }}>
           <Box sx={{
@@ -145,7 +143,7 @@ function TopFirstBar({ city, setCity, handleData }) {
       )}
       {!(mdMax && mdMin) && sm && (
         <div style={{
-          background: '#e5f6f5',
+          background: '#24C6DC',
 
         }}>
           <Box sx={{

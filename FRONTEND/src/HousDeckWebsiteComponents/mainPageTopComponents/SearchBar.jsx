@@ -27,8 +27,8 @@ export default function SearchBar({ options, width }) {
   }
 
   return (
-    <Box sx={{ width: width, background: 'white', }} >
-      <Box sx={{ display: 'flex', alignItems: 'center', borderRadius: '4px', justifyContent: 'space-evenly', border: '1px solid black', height: '50px!important' }} >
+    <Box sx={{ width: width, background: 'white', borderRadius: '4px'}} >
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-evenly', height: '50px!important' }} >
         <Input
           placeholder="Search..."
           value={wordEntered}
@@ -39,6 +39,7 @@ export default function SearchBar({ options, width }) {
             border: 'none!important',
             userSelect: 'none',
             width: '90%',
+            paddingLeft:'10px',
             '&::before': {
               border: 'none',
               content: '""',
@@ -51,8 +52,8 @@ export default function SearchBar({ options, width }) {
         />
         <Divider orientation='vertical' sx={{ color: '#c5c5c5' }} flexItem />
         {
-          open ? <ExpandLess sx={{ textAlign: 'center' }} onClick={handleClick} />
-            : <ExpandMore sx={{ textAlign: 'center' }} onClick={handleClick} />
+          open ? <ExpandLess sx={{ textAlign: 'center',cursor:'pointer' }} onClick={handleClick} />
+            : <ExpandMore sx={{ textAlign: 'center',cursor:'pointer' }} onClick={handleClick} />
         }
 
       </Box>
@@ -63,6 +64,7 @@ export default function SearchBar({ options, width }) {
         position: 'absolute',
         zIndex: '1000',
         display: open ? 'grid' : 'none',
+        padding:'10px'
       }}>
         {options.map(item =>
           <Link href={item.url} sx={{
@@ -70,7 +72,8 @@ export default function SearchBar({ options, width }) {
             textDecoration: 'none',
             color: 'black',
             '&:hover': {
-              background: '#f7f7f7'
+              background: '#24C6DC',
+              color:'white'
             }
           }}>
             {item.value}
@@ -93,7 +96,8 @@ export default function SearchBar({ options, width }) {
               textDecoration: 'none',
               color: 'black',
               '&:hover': {
-                background: '#f7f7f7'
+                background: '#24C6DC',
+                color:'white'
               }
             }}>{item.value} </Link>
           )}

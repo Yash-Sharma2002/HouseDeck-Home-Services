@@ -34,11 +34,10 @@ export default function HouseDeckHomeServicesMyBookings() {
 
 
   const getMyBookings = async () => {
-    console.log('functions called');
     const userData = loadUserData()
     const response = await getBookings({ Number: userData.Number })
     if (response) {
-      setBookings(response)
+      setBookings(response.reverse())
     }
   }
 
@@ -47,10 +46,9 @@ export default function HouseDeckHomeServicesMyBookings() {
     let ignore = false;
 
     if (!ignore) getMyBookings()
+    
     return () => { ignore = true; }
   }, []);
-
-
   return (
     <div>
       <Header commonProps={commonProps} />
@@ -81,6 +79,7 @@ export default function HouseDeckHomeServicesMyBookings() {
           </Box>
           <Box sx={{ background: 'white', height: '500px', border: '1px solid black', borderRadius: 4, margin: '0px auto', mt: 1, overflowY: 'auto' }}>
             {bookings.map((item) => {
+              
               const services = item.Services
               return (
                 <>

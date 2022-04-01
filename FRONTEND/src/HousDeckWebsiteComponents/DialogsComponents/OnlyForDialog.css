@@ -23,3 +23,13 @@ input[type=email]:focus,
     input[type=email]:focus-visible{
    outline:none;
 }
+
+
+#non-scroll::-webkit-scrollbar{
+  display: none;
+}
+
+
+div::-webkit-scrollbar{
+  display: none;
+}
