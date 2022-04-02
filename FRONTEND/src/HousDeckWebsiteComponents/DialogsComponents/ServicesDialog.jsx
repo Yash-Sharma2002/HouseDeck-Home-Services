@@ -391,7 +391,7 @@ function Content({ options, setOptions, open, setOpen ,width}) {
                                         settime(newtime);
                                     }}
                                     minTime={new Date(0, 0, 0, 8)}
-                                    maxTime={new Date(0, 0, 0, 18, 45)}
+                                    maxTime={new Date(0, 0, 0, 18)}
                                 />
                             </Stack>
                         </LocalizationProvider>
