@@ -1111,21 +1111,90 @@ export const FAQData = [
 
 
 
-// export const EssentialHomeCleaningData = [
-//   { type: 'Bath Room Cleaning', price: '429' },
-//   { type: 'Sofa Cleaning Services / 3 Seater', price: '359' },
-//   { type: 'Sofa Cleaning Services / 5 Seater', price: '499' },
-//   { type: 'Sofa Cleaning Services / 6 Seater', price: '559' },
-// ]
+export const DisinfectionService = [
+  { type: 'Apartment 1 Bhk', price: '' },
+  { type: 'Apartment 2 Bhk', price: '' },
+  { type: 'Apartment 3 Bhk', price: '' },
+  { type: 'Apartment 4 Bhk', price: '' },
+  { type: 'Apartment 5 Bhk', price: '' },
+  { type: 'Bunglow (2000/3000 sq ft)', price: '' },
+  { type: 'Car Hatchback', price: '' },
+  { type: 'Car Sedan', price: '' },
+  { type: 'Premium Sedan', price: '' },
+  { type: 'Sub-Compact SUV', price: '' },
+  { type: 'SUV/MUV', price: '' },
+  { type: 'Luxury ', price: '' },
+]
+
+export const MoveInReadyHomeServices = [
+  { type: '1 Bhk', price: '' },
+  { type: '2 Bhk', price: '' },
+  { type: '3 Bhk', price: '' },
+  { type: '4 Bhk', price: '' },
+]
+
+export const FullHouseDeepCleaning = {
+  imgUrl: '../other/cleaning.jpg',
+  innerData: [
+    { type: '1 RK Full House Deep Cleaning', price: '3349' },
+    { type: '1 BHK Full House Deep Cleaning', price: '3999' },
+    { type: '2 BHK Full House Deep Cleaning', price: '4399' },
+    { type: '3 BHK Full House Deep Cleaning', price: '5349' },
+    { type: '4 BHK Full House Deep Cleaning', price: '7349' },
+    { type: '5 BHK Full House Deep Cleaning', price: '8599' },
+    { type: '1 BHK Full House Deep Cleaning (Duplex)', price: '4499' },
+    { type: '2 BHK Full House Deep Cleaning (Duplex)', price: '5349' },
+    { type: '3 BHK Full House Deep Cleaning (Duplex)', price: '7449' },
+    { type: '4 BHK Full House Deep Cleaning (Duplex)', price: '8499' },
+    { type: '5 BHK Full House Deep Cleaning (Duplex)', price: '9549' },
+  ],
+  quotes: [{ text: 'Floor Scubbing machine' }, { text: 'Government approved chemicals' }, { text: 'Hard water stains can be removed upto 75%' }, { text: 'Also includes balcony and utility areas' }]
+}
+
+export const FullHouseBasicCleaning = {
+  imgUrl: '../other/cleaning.jpg',
+  innerData: [
+    { type: '1 BHK Full House Deep Cleaning', price: '1899' },
+    { type: '2 BHK Full House Deep Cleaning', price: '2299' },
+    { type: '3 BHK Full House Deep Cleaning', price: '2599' },
+    { type: '4 BHK Full House Deep Cleaning', price: '3549' },
+  ],
+  quotes: [{ text: 'Government approved chemicals' }, { text: 'Descaling of floors, tiles, WC, Wash Basin, taps, fixtures' }, { text: ' Hard water stains can be removed upto 75%' }]
+}
+
+export const BathroomCleaning = {
+  imgUrl: '../other/bathroomCleaning.jpg',
+  innerData: [
+    { type: 'Bathroom Cleaning (1 No.)', price: '448' },
+    { type: 'Bathroom Cleaning (2 No.)', price: '898' },
+    { type: 'Bathroom Cleaning (3 No.)', price: '1399' },
+    { type: 'Bathroom Cleaning (4 No.)', price: '1798' },
+    { type: 'Bathroom Cleaning (5 No.)', price: '2249' },
+  ],
+  quotes: [{ text: 'Government approved chemicals' }, { text: 'Descaling of floors, tiles, WC, Wash Basin, taps, fixtures' }, { text: ' Hard water stains can be removed upto 75%' }]
+}
+
+export const SofaCleaning = {
+  imgUrl: '../other/sofaCleaning.jpg',
+  innerData: [
+    { type: 'Sofa Cleaning (2 No.)', price: '318' },
+    { type: 'Sofa Cleaning (3 No.)', price: '398' },
+    { type: 'Sofa Cleaning (4 No.)', price: '649' },
+    { type: 'Sofa Cleaning (5 No.)', price: '748' },
+    { type: 'Sofa Cleaning (6 No.)', price: '898' },
+    { type: 'Sofa Cleaning (7 No.)', price: '1098' },
+    { type: 'Sofa Cleaning (8 No.)', price: '1199' },
+    { type: 'Sofa Cleaning (9 No.)', price: '1298' },
+    { type: 'Sofa Cleaning (10 No.)', price: '1598' },
+    { type: 'Cushion Cleaning (6-10 No.)', price: '219' },
+    { type: 'Cushion Cleaning (1-5 No.)', price: '158' },
+  ],
+  quotes: [{ text: 'Shampooing of sofa seats' }, { text: 'Dry and wet vacuuming' }, { text: 'Cushions not included' }]
+}
 
 export const KitchenCleaning = {
   imgUrl: '../other/kitchenCleaning.jpg',
   innerData: [
-    { type: 'Empty Kitchen Cleaning', price: '899' },
-    { type: 'Regular Kitchen Cleaning (With Utensil)', price: '1269' },
-    { type: 'Hob & Chimney Cleaning', price: '599' },
-    { type: 'Chimney Cleaning', price: '389' },
-    { type: 'Fridge Deep Cleaning', price: '319' },
     { type: 'Full Kitchen with Chimney', price: '1498' },
     { type: 'Full Kitchen without Chimney', price: '1298' },
     { type: 'Chimney', price: '959' },
@@ -1158,109 +1227,11 @@ export const MiniServices = {
   quotes: [{ text: 'Floor Scubbing machine' }, { text: 'Government approved chemicals' }, { text: 'Hard water stains can be removed upto 75%' }, { text: 'Also includes balcony and utility areas' }]
 }
 
-// export const HomeDeepCleanings = [
-//   { type: 'Empty Home Deep Cleaning', price: '2499' },
-//   { type: '1 BHK Cleaning', price: '1999' },
-//   { type: '2 BHK Cleaning', price: '4499' },
-//   { type: '3 BHK Cleaning', price: '5999' },
-//   { type: 'Villa -2000/3000 sq Ft', price: '' },
-//   { type: 'Villa -3000/4000 sq Ft', price: '' },
-//   { type: 'Villa- 5000/6000 sq ft', price: '' },
-//   { type: 'Villa- 6000/7000 Sq Ft', price: '' },
-// ]
-
-export const DisinfectionService = [
-  { type: 'Apartment 1 Bhk', price: '' },
-  { type: 'Apartment 2 Bhk', price: '' },
-  { type: 'Apartment 3 Bhk', price: '' },
-  { type: 'Apartment 4 Bhk', price: '' },
-  { type: 'Apartment 5 Bhk', price: '' },
-  { type: 'Bunglow (2000/3000 sq ft)', price: '' },
-  { type: 'Car Hatchback', price: '' },
-  { type: 'Car Sedan', price: '' },
-  { type: 'Premium Sedan', price: '' },
-  { type: 'Sub-Compact SUV', price: '' },
-  { type: 'SUV/MUV', price: '' },
-  { type: 'Luxury ', price: '' },
-]
-
-export const MoveInReadyHomeServices = [
-  { type: '1 Bhk', price: '' },
-  { type: '2 Bhk', price: '' },
-  { type: '3 Bhk', price: '' },
-  { type: '4 Bhk', price: '' },
-]
-
-export const FullHouseDeepCleaning = {
-  imgUrl: '../other/cleaning.jpg',
-  innerData: [
-    { type: 'Empty Home Deep Cleaning', price: '2499' },
-    { type: '1 BHK Cleaning', price: '1999' },
-    { type: '2 BHK Cleaning', price: '4499' },
-    { type: '3 BHK Cleaning', price: '5999' },
-    { type: '1 RK Full House Deep Cleaning', price: '3349' },
-    { type: '1 BHK Full House Deep Cleaning', price: '3999' },
-    { type: '2 BHK Full House Deep Cleaning', price: '4399' },
-    { type: '3 BHK Full House Deep Cleaning', price: '5349' },
-    { type: '4 BHK Full House Deep Cleaning', price: '7349' },
-    { type: '5 BHK Full House Deep Cleaning', price: '8599' },
-    { type: '1 BHK Full House Deep Cleaning (Duplex)', price: '4499' },
-    { type: '2 BHK Full House Deep Cleaning (Duplex)', price: '5349' },
-    { type: '3 BHK Full House Deep Cleaning (Duplex)', price: '7449' },
-    { type: '4 BHK Full House Deep Cleaning (Duplex)', price: '8499' },
-    { type: '5 BHK Full House Deep Cleaning (Duplex)', price: '9549' },
-    { type: 'Villa -2000/3000 sq Ft', price: '' },
-    { type: 'Villa -3000/4000 sq Ft', price: '' },
-    { type: 'Villa- 5000/6000 sq ft', price: '' },
-    { type: 'Villa- 6000/7000 Sq Ft', price: '' },
-  ],
-  quotes: [{ text: 'Floor Scubbing machine' }, { text: 'Government approved chemicals' }, { text: 'Hard water stains can be removed upto 75%' }, { text: 'Also includes balcony and utility areas' }]
-}
-
-// export const FullHouseBasicCleaning = [
-//   { type: '1 BHK Full House Deep Cleaning', price: '1899' },
-//   { type: '2 BHK Full House Deep Cleaning', price: '2299' },
-//   { type: '3 BHK Full House Deep Cleaning', price: '2599' },
-//   { type: '4 BHK Full House Deep Cleaning', price: '3549' },
-// ]
-
-export const BathroomCleaning = {
-  imgUrl: '../other/bathroomCleaning.jpg',
-  innerData: [
-    { type: 'Bathroom Cleaning (1 No.)', price: '448' },
-    { type: 'Bathroom Cleaning (2 No.)', price: '898' },
-    { type: 'Bathroom Cleaning (3 No.)', price: '1399' },
-    { type: 'Bathroom Cleaning (4 No.)', price: '1798' },
-    { type: 'Bathroom Cleaning (5 No.)', price: '2249' },
-  ],
-  quotes: [{ text: 'Government approved chemicals' }, { text: 'Descaling of floors, tiles, WC, Wash Basin, taps, fixtures' }, { text: ' Hard water stains can be removed upto 75%' }]
-}
-
-export const SofaCleaning = {
-  imgUrl: '../other/sofaCleaning.jpg',
-  innerData: [
-    { type: 'Sofa Cleaning (2 No.)', price: '318' },
-    { type: 'Sofa Cleaning (3 No.)', price: '398' },
-    { type: 'Sofa Cleaning (4 No.)', price: '649' },
-    { type: 'Sofa Cleaning (5 No.)', price: '748' },
-    { type: 'Sofa Cleaning (6 No.)', price: '898' },
-    { type: 'Sofa Cleaning (7 No.)', price: '1098' },
-    { type: 'Sofa Cleaning (8 No.)', price: '1199' },
-    { type: 'Sofa Cleaning (9 No.)', price: '1298' },
-    { type: 'Sofa Cleaning (10 No.)', price: '1598' },
-    { type: 'Cushion Cleaning (6-10 No.)', price: '219' },
-    { type: 'Cushion Cleaning (1-5 No.)', price: '158' },
-  ],
-  quotes: [{ text: 'Shampooing of sofa seats' }, { text: 'Dry and wet vacuuming' }, { text: 'Cushions not included' }]
-}
-
 export const CleaningServicesData = [
-  // { type: 'Essential Home Cleaning', options: EssentialHomeCleaningData },
-  // { type: 'Home Deep Cleaning', options: HomeDeepCleanings },
-  { imgUrl:'../other/cleaning.jpg',type: 'Full House Deep Cleaning', options: FullHouseDeepCleaning },
-  // { type: 'Full House Basic Cleaning', options: FullHouseBasicCleaning },
-  { imgUrl:'../other/kitchenCleaning.jpg',type: 'Kitchen Cleaning', options: KitchenCleaning },
-  { imgUrl:'../other/bathroomCleaning.jpg',type: 'Bathroom Cleaning', options: BathroomCleaning },
-  { imgUrl:'../other/sofaCleaning.jpg',type: 'Sofa Cleaning', options: SofaCleaning },
-  { imgUrl:'../other/cleaning.jpg',type: 'Mini Services', options: MiniServices },
+  { imgUrl: '../other/cleaning.jpg', type: 'House Basic Cleaning', options: FullHouseBasicCleaning },
+  { imgUrl: '../other/cleaning.jpg', type: 'Full House Deep Cleaning', options: FullHouseDeepCleaning },
+  { imgUrl: '../other/kitchenCleaning.jpg', type: 'Kitchen Cleaning', options: KitchenCleaning },
+  { imgUrl: '../other/bathroomCleaning.jpg', type: 'Bathroom Cleaning', options: BathroomCleaning },
+  { imgUrl: '../other/sofaCleaning.jpg', type: 'Sofa Cleaning', options: SofaCleaning },
+  { imgUrl: '../other/cleaning.jpg', type: 'Mini Services', options: MiniServices },
 ]

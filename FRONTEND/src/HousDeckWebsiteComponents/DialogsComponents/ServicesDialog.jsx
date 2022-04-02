@@ -36,12 +36,12 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 });
 
 
-export default function ServicesDialog({ options, setOptions, open, setOpen }) {
+function Content({ options, setOptions, open, setOpen ,width}) {
 
     const { message, setMessage } = React.useContext(LoginContext)
     const { messageType, setMessageType } = React.useContext(LoginContext)
 
-    const fullScreen = useMediaQuery('(max-width:700px)');
+    const fullScreen = useMediaQuery('(max-width:650px)');
     const [price, setPrice] = React.useState(0)
     const [date, setdate] = React.useState(null)
     const [location, setLocation] = React.useState('');
@@ -209,8 +209,12 @@ export default function ServicesDialog({ options, setOptions, open, setOpen }) {
 
                 {
                     displayAtStart ?
-                        <Box sx={{ width: '500px', background: 'white', borderRadius: 3, padding: '0px 24px', }}>
-                            <Typography sx={{ mt: 2, padding: '20px 0 8px', fontSize: '18px', fontWeight: '600', color: '#464646' }}>Select Your Service</Typography>
+                        <Box sx={{ width: width, background: 'white', borderRadius: 3, padding: '0px 24px', }}>
+                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <Typography sx={{ padding: '20px 0 8px', fontSize: '18px', fontWeight: '600', color: '#464646' }}>Select Your Service</Typography>
+                                <CloseIcon onClick={handleClose} sx={{ cursor: 'pointer', pt: '10px' }} />
+                            </Box>
+
 
                             {
                                 CleaningServicesData.map(data =>
@@ -232,7 +236,7 @@ export default function ServicesDialog({ options, setOptions, open, setOpen }) {
                 }
 
                 <Box sx={{ display: displayForServiceSelectionProcess ? 'block' : 'none', }}>
-                    <Box sx={{ position: 'sticky', top: 0, display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '70px', background: 'white', width: 'inherit', zIndex: '1000', px: '10px' }}>
+                    <Box sx={{ position: 'sticky', top: 0, display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '70px', background: 'white', width: width, zIndex: '1000', px: '10px' }}>
                         <Typography sx={{ fontSize: "18px", fontWeight: '700' }}>Select Your Services</Typography>
                         <CloseIcon onClick={handleClose} sx={{ cursor: 'pointer' }} />
                     </Box>
@@ -311,7 +315,7 @@ export default function ServicesDialog({ options, setOptions, open, setOpen }) {
                                             <Typography sx={{ mr: 1, fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{price}</Typography>
                                             <Divider orientation='vertical' sx={{ color: 'black' }} flexItem />
                                             <Typography sx={{ ml: 1, color: 'gray', fontSize: '13px', fontFamily: 'Fredoka' }}>{Services.length} item</Typography>
-                                            <Button variant='outlined' sx={{ ml: 1, textTransform: 'none' }} onClick={getRequiredThings}>Continue</Button>
+                                            <Button variant='contained' sx={{ ml: 1, textTransform: 'none', boxShadow: 0 }} onClick={getRequiredThings}>Continue</Button>
                                         </Box>
                                     </>
 
@@ -325,7 +329,7 @@ export default function ServicesDialog({ options, setOptions, open, setOpen }) {
 
                 {/* ---------------------Stepper code is here -------------- */}
 
-                <Box sx={{ display: displayForStepper ? 'block' : 'none', height: '90vh', width: '550px', padding: '15px', }}>
+                <Box sx={{ display: displayForStepper ? 'block' : 'none', width: width,height:'90vh',padding:'15px' }}>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
                         <Typography sx={{ fontSize: "18px", fontWeight: '700' }}>Select Your Services</Typography>
                         <CloseIcon onClick={handleClose} sx={{ cursor: 'pointer' }} />
@@ -340,7 +344,7 @@ export default function ServicesDialog({ options, setOptions, open, setOpen }) {
                             style={{
                                 border: '1px solid #e5e5e5',
                                 userSelect: 'none',
-                                width: '97%',
+                                width: '-webkit-fill-available',
                                 height: '40px',
                                 fontSize: '14px',
                                 marginTop: '30px',
@@ -354,11 +358,11 @@ export default function ServicesDialog({ options, setOptions, open, setOpen }) {
                     </Box>
                     <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                         <ArrowBackIcon onClick={AtStart} sx={{ position: 'absolute', bottom: 20, cursor: 'pointer' }} />
-                        <Button sx={{ fontSize: '16px', textTransform: 'none', position: 'absolute', bottom: 10, right: 10 }} variant='outlined' onClick={locationSubmit}>Continue</Button>
+                        <Button sx={{ fontSize: '16px', textTransform: 'none', position: 'absolute', bottom: 10, right: 10 }} variant='contained' onClick={locationSubmit}>Continue</Button>
                     </Box>
                 </Box>
 
-                <Box sx={{ display: displayForAppointment ? 'block' : 'none', height: '90vh', width: '550px', padding: '15px', }}>
+                <Box sx={{ display: displayForAppointment ? 'block' : 'none', height: '90vh', width: width, padding: '15px', }}>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
                         <Typography sx={{ fontSize: "18px", fontWeight: '700' }}>Select Date and Time</Typography>
                         <CloseIcon onClick={handleClose} sx={{ cursor: 'pointer' }} />
@@ -366,7 +370,7 @@ export default function ServicesDialog({ options, setOptions, open, setOpen }) {
 
                     <Box>
                         <LocalizationProvider dateAdapter={AdapterDateFns}>
-                            <Stack spacing={1} sx={{ width: '300px' }}>
+                            <Stack spacing={1} sx={{ width: '-webkit-fill-available' }}>
                                 <DatePicker
                                     label="Enter date"
                                     value={date}
@@ -395,7 +399,7 @@ export default function ServicesDialog({ options, setOptions, open, setOpen }) {
 
                     <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                         <ArrowBackIcon onClick={AtStart} sx={{ position: 'absolute', bottom: 17, cursor: 'pointer' }} />
-                        <Button sx={{ fontSize: '16px', marginLeft: 'auto', marginRight: '0px', textTransform: 'none', position: 'absolute', bottom: 10, right: 10 }} variant='outlined' onClick={sendToDatabase}>Continue</Button>
+                        <Button sx={{ fontSize: '16px', marginLeft: 'auto', marginRight: '0px', textTransform: 'none', position: 'absolute', bottom: 10, right: 10 }} variant='contained' onClick={sendToDatabase}>Continue</Button>
                     </Box>
                 </Box>
                 <Snackbar open={show} autoHideDuration={6000} onClose={handleAlertClose}>
@@ -404,6 +408,25 @@ export default function ServicesDialog({ options, setOptions, open, setOpen }) {
                     </Alert>
                 </Snackbar>
             </BootstrapDialog>
+        </>
+    )
+}
+
+
+
+export default function ServicesDialog({ options, setOptions, open, setOpen }) {
+
+    const xlMax = useMediaQuery('(max-width:2000px)');
+    const xlMin = useMediaQuery('(min-width:650px)');
+    const sm = useMediaQuery('(max-width:650px)');
+    return (
+
+        <>
+            {xlMax && xlMin && (
+                <Content options={options} setOptions={setOptions} open={open} setOpen={setOpen} width={'550px'} />
+            )}
+            {sm && (<Content options={options} setOptions={setOptions} open={open} setOpen={setOpen} width={'auto'} />)}
+
         </>
     )
 }
