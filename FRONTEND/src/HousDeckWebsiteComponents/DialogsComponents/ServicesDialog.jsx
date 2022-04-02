@@ -183,7 +183,6 @@ function Content({ options, setOptions, open, setOpen ,width}) {
         if (response) {
             handleClose()
         } else {
-            console.log('he');
             setShow(true)
             setMessage('Cannot setup Service. Sorry for inconvenience. Please try again later.')
             setMessageType('error')

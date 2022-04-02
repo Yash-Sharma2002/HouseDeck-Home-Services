@@ -66,8 +66,6 @@ function Content({ open, setOpen, setAccount, width, display }) {
   const [number, setNumber] = React.useState('')
   const [username, setUsername] = React.useState('')
   const [email, setEmail] = React.useState('')
-  // const [message, setMessage] = React.useState('')
-  // const [messageType, setMessageType] = React.useState('')
 
 
 
@@ -107,7 +105,6 @@ function Content({ open, setOpen, setAccount, width, display }) {
         window.confirmationResult = confirmationResult;
       }).catch((error) => {
         console.log(error);
-        setMessageType('error')
         setShow(true)
         setMessage(`Too many tries. Try again later.`)
         setMessageType('error')
@@ -152,17 +149,13 @@ function Content({ open, setOpen, setAccount, width, display }) {
     }
   }
   function handleNumChange(num) {
-    setMessage('')
-    setMessageType('')
     setNumber(num.value)
-    if (num.value.length < 10) {
+    if (num.value.length < 10 || number.length > 10) {
       setDisplayForSecond((prevDisplay) => prevDisplay = false)
       setDisplayForFirst((prevDisplay) => prevDisplay = true)
     }
   }
   function handleOTPChange(num) {
-    setMessageType('')
-    setMessage('')
     setOtp(num.value)
     if (num.value.length < 6) {
       setDisplayForSecond((prevDisplay) => prevDisplay = true)
@@ -184,11 +177,7 @@ function Content({ open, setOpen, setAccount, width, display }) {
       setMessageType('error')
     }
     else if (otp.length === 6) {
-      setShow(false)
       verifyOTP()
-      setShow(true)
-      setMessageType('success')
-      setMessage("OTP Validation complete")
       const login = {
         Number: `+91${number}`
       }
@@ -202,16 +191,14 @@ function Content({ open, setOpen, setAccount, width, display }) {
             Number: `+91${number}`,
             Username: response,
           }));
-
           localStorage.setItem('isLogin', JSON.stringify(true));
-
+          setShow(true)
+          setMessageType('success')
+          setMessage("OTP Validation complete")
         } catch (err) {
           return undefined;
         }
-      }
-      else {
-        setMessageType('')
-        setMessage('')
+      }else{
         afterVerifiedOTP()
       }
     }
@@ -229,8 +216,6 @@ function Content({ open, setOpen, setAccount, width, display }) {
     try {
       localStorage.setItem('userdata', JSON.stringify(signup));
       localStorage.setItem('isLogin', JSON.stringify(true));
-
-
     } catch (err) {
       return undefined;
     }
@@ -417,8 +402,6 @@ function SMContent({ open, setOpen, setAccount }) {
   const [number, setNumber] = React.useState('')
   const [username, setUsername] = React.useState('')
   const [email, setEmail] = React.useState('')
-  // const [message, setMessage] = React.useState('')
-  // const [messageType, setMessageType] = React.useState('')
 
 
 
@@ -475,9 +458,6 @@ function SMContent({ open, setOpen, setAccount }) {
     confirmationResult.confirm(otp).then((result) => {
       // User signed in successfully.
       // const user = result.user;
-      setShow(true)
-      setMessageType('success')
-      setMessage("OTP Validation complete")
     }).catch((error) => {
       setShow(true)
       setMessage("Enter Valid OTP")
@@ -508,8 +488,6 @@ function SMContent({ open, setOpen, setAccount }) {
     }
   }
   function handleNumChange(num) {
-    setMessageType('')
-    setMessage('')
     setNumber(num.value)
     if (num.value.length < 10) {
       setDisplayForSecond((prevDisplay) => prevDisplay = false)
@@ -517,8 +495,6 @@ function SMContent({ open, setOpen, setAccount }) {
     }
   }
   function handleOTPChange(num) {
-    setMessageType('')
-    setMessage('')
     setOtp(num.value)
     if (num.value.length < 6) {
       setDisplayForSecond((prevDisplay) => prevDisplay = true)
@@ -540,8 +516,6 @@ function SMContent({ open, setOpen, setAccount }) {
       setMessageType('error')
     }
     else if (otp.length === 6) {
-      setMessageType('')
-      setMessage('')
       verifyOTP()
       const login = {
         Number: `+91${number}`
@@ -555,13 +529,13 @@ function SMContent({ open, setOpen, setAccount }) {
             Number: `+91${number}`,
             Username: response,
           }));
+          setShow(true)
+          setMessageType('success')
+          setMessage("OTP Validation complete")
         } catch (err) {
           return '';
         }
-      }
-      else {
-        setMessage('')
-        setMessageType('')
+      }else{
         afterVerifiedOTP()
       }
     }
