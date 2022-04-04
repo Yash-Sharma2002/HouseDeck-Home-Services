@@ -189,12 +189,10 @@ function Content({ open, setOpen, setAccount, width, display }) {
         try {
           localStorage.setItem('userdata', JSON.stringify({
             Number: `+91${number}`,
-            Username: response,
+            Username: response.Username,
+            Email: response.Email,
           }));
           localStorage.setItem('isLogin', JSON.stringify(true));
-          setShow(true)
-          setMessageType('success')
-          setMessage("OTP Validation complete")
         } catch (err) {
           return undefined;
         }
@@ -204,6 +202,13 @@ function Content({ open, setOpen, setAccount, width, display }) {
     }
   }
   const sendToDatabase = async () => {
+    var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    if(!email.match(validRegex)){
+      setShow(true)
+      setMessageType('error')
+      setMessage("Invalid Email")
+      return
+    }
     const signup = {
       Number: `+91${number}`,
       Username: username,

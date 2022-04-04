@@ -1,48 +1,81 @@
 import mongoose from 'mongoose';
 
-const serviceSchema = new mongoose.Schema({
-Contact_Number_Of_User:{
-    type: String,
-    required: true,
-},
-    Services: [{
-        Services_Chosen_By_User: {
+const serviceAsDraftSchema = new mongoose.Schema({
+    Order_Details:{
+        Order_Id:  {
             type: String,
-            trim: true,
+            required: true,
         },
-        Price_For_Chosen_Services: {
+        Order_Date:{
             type: String,
-            trim: true,
+            required: true,
         },
-        _id: 0
-    }],
-    Total_Price: {
+        Order_Time:  {
+            type: String,
+            required: true,
+        },
+        Services: [{
+            Service: {
+                type: String,
+                trim: true,
+            },
+            Price: {
+                type: String,
+                trim: true,
+            },
+            _id: 0
+        }],
+        Total_Price: {
+            type: String,
+            required: true,
+        },
+        Appointment_Location: {
+            type: String,
+            required: true,
+        },
+        Appointment_Date:{
+            type: String,
+            required: true,
+        },
+        Appointment_Time:{
+            type: String,
+            required: true,
+        },
+    },
+    Draft: {
         type: String,
         required: true,
     },
-    Location_Chosen_For_Service: {
-        type: String,
-        required: true,
+    Payment_Details:{
+        Paid: {
+            type: String,
+            required: true,
+        },
+        Payment_Link: {
+            type: String,
+            required: true,
+        },
     },
-    Date_Chose_For_Service: {
-        type: String,
-        // required: true,
-    },
-    Time_Chose_For_Service: {
-        type: String,
-        // required: true,
-    },
-    Service_Chosen_Date:{
-        type: String,
-        // required: true,
-    },
-    Service_Chosen_Time:{
-        type: String,
-        // required: true,
-    },
+    Customer_Details: {
 
+        Customer_Id: {
+            type: String,
+            required: true,
+            trim: true,
+        },
+        Customer_Email: {
+            type: String,
+            required: true,
+            trim: true,
+        },
+        Customer_Phone: {
+            type: String,
+            required: true,
+            trim: true,
+        },
+    },
 });
 
-const Service = mongoose.model('service', serviceSchema);
+const ServiceAsDraft = mongoose.model('service_as_draft', serviceAsDraftSchema);
 
-export default Service;
+export default ServiceAsDraft;

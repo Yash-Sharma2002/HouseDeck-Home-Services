@@ -1,13 +1,14 @@
 import * as React from 'react'
 import CloseIcon from '@mui/icons-material/Close'
-import { Button, Divider } from '@mui/material'
+import { Button, Divider, Link } from '@mui/material'
+import { makePayments } from '../../Api/paymentCashfreeApi'
 import Box from '@mui/material/Box'
 import Dialog from '@mui/material/Dialog'
 import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { v4 as uuidV4 } from 'uuid'
-import { serviceSender } from '../../Api/serviceSender'
+import { serviceSenderAsDraft } from '../../Api/serviceSender'
 import MyLocationIcon from '@mui/icons-material/MyLocation'
 import TextField from '@mui/material/TextField'
 import AdapterDateFns from '@mui/lab/AdapterDateFns'
@@ -36,7 +37,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 });
 
 
-function Content({ options, setOptions, open, setOpen ,width}) {
+function Content({ options, setOptions, open, setOpen, width }) {
 
     const { message, setMessage } = React.useContext(LoginContext)
     const { messageType, setMessageType } = React.useContext(LoginContext)
@@ -51,8 +52,10 @@ function Content({ options, setOptions, open, setOpen ,width}) {
     const [displayForStepper, setDisplayForStepper] = React.useState(false)
     const [displayForAppointment, setDisplayForAppointment] = React.useState(false)
     const [displayAtStart, setDisplayAtStart] = React.useState(false)
+    const [displayForPayment, setDisplayForPayment] = React.useState(false)
     const [show, setShow] = React.useState(false)
     const [display, setDisplay] = React.useState(true)
+    const [paymentLink, setPaymentLink] = React.useState('')
 
     const handleClose = () => {
         setOpen(false)
@@ -62,22 +65,23 @@ function Content({ options, setOptions, open, setOpen ,width}) {
         setDisplayForStepper(false)
         setDisplayForAppointment(false)
         setDisplayAtStart(false)
+        setDisplayForPayment(false)
         setDisplay(false)
         setServices([])
     };
 
     function Select(service, price) {
-        if (!Services.map((item) => item.Services_Chosen_By_User).includes(service)) {
+        if (!Services.map((item) => item.Service).includes(service)) {
             setServices((prevItems) => [
                 ...prevItems,
-                { id: uuidV4(), Services_Chosen_By_User: service, Price_For_Chosen_Services: price }
+                { Service: service, Price: price }
             ]);
             setDisplayAtStart(false)
             setDisplay(true)
             setPrice((prevPrice) => parseFloat(prevPrice) + parseFloat(price))
         } else {
             const allOtherServices = Services.filter(
-                (item) => item.Services_Chosen_By_User !== service
+                (item) => item.Service !== service
             );
             setServices([...allOtherServices]);
             setPrice((prevPrice) => parseFloat(prevPrice) - parseFloat(price))
@@ -88,6 +92,7 @@ function Content({ options, setOptions, open, setOpen ,width}) {
             setDisplayForServiceSelectionProcess(false)
             setDisplayForStepper(true)
             setDisplayForAppointment(false)
+            setDisplayForPayment(false)
             setDisplayAtStart(false)
         }
         // var autocomplete = new google.maps.places.Autocomplete((document.getElementById('searchInput')), {
@@ -106,6 +111,7 @@ function Content({ options, setOptions, open, setOpen ,width}) {
         setDisplayForServiceSelectionProcess(false)
         setDisplayForStepper(false)
         setDisplayAtStart(false)
+        setDisplayForPayment(false)
         setDisplayForAppointment(true)
     }
 
@@ -142,7 +148,6 @@ function Content({ options, setOptions, open, setOpen ,width}) {
         }
 
     }
-
     const handleAlertClose = () => {
         setShow(false)
         setMessage('')
@@ -154,32 +159,60 @@ function Content({ options, setOptions, open, setOpen ,width}) {
         setDisplayAtStart(true)
         setDisplayForServiceSelectionProcess(false)
         setDisplayForStepper(false)
+        setDisplayForPayment(false)
         setDisplayForAppointment(false)
     }
 
-    React.useEffect(() => {
 
-        var style = document.createElement("style");
-        style.innerHTML = `.non-scroll::-webkit-scrollbar {display: none;}`;
-        document.head.appendChild(style);
+    const CreateOrder = async () => {
+        const userData = loadUserData()
+        const data = {
+            order_id: uuidV4(),
+            order_amount: price,
+            order_currency: 'INR',
+            customer_details: {
+                customer_id: userData.Username,
+                customer_email: userData.Email,
+                customer_phone: userData.Number
+            },
+        }
+        let response = await makePayments(data)
+        if (response) {
+            setDisplayAtStart(false)
+            setDisplayForServiceSelectionProcess(false)
+            setDisplayForStepper(false)
+            setDisplayForAppointment(false)
+            setDisplayForPayment(true)
+            setPaymentLink(response.data.payment_link)
+        }
     }
-    )
 
-    const sendToDatabase = async () => {
+    const saveDraft = async () => {
         const userData = loadUserData()
         const currentDateTime = new Date()
         const items = {
-            Contact_Number_Of_User: userData.Number,
-            Services,
-            Total_Price: price,
-            Location_Chosen_For_Service: location,
-            Date_Chose_For_Service: date.toString().slice(0, 15),
-            Time_Chose_For_Service: time.toString().slice(16, 25),
-            Service_Chosen_Date: currentDateTime.toString().slice(0, 15),
-            Service_Chosen_Time: currentDateTime.toString().slice(16, 25),
+            Order_Details: {
+                Order_Id: `OrderId_${uuidV4()}`,
+                Order_Date: currentDateTime.toString().slice(0, 15),
+                Order_Time: currentDateTime.toString().slice(16, 25),
+                Services,
+                Total_Price: price,
+                Appointment_Location: location,
+                Appointment_Date: date.toString().slice(0, 15),
+                Appointment_Time: time.toString().slice(16, 25),
+            },
+            Draft: 'Yes',
+            Payment_Details: {
+                Paid: 'No',
+                Payment_Link: paymentLink,
+            },
+            Customer_Details: {
+                Customer_Id: userData.Username,
+                Customer_Email: userData.Email,
+                Customer_Phone: userData.Number
+            }
         }
-        let response = await serviceSender(items)
-        console.log(response);
+        let response = await serviceSenderAsDraft(items)
         if (response) {
             handleClose()
         } else {
@@ -291,7 +324,7 @@ function Content({ options, setOptions, open, setOpen ,width}) {
                                                     )}
                                                 </Box>
                                                 <Button variant='outlined' sx={{ textTransform: 'none' }} onClick={() => Select(service, price)}>
-                                                    {!Services.map((item) => item.Services_Chosen_By_User).includes(data.type)
+                                                    {!Services.map((item) => item.Service).includes(data.type)
                                                         ? "Select"
                                                         : "Unselect"}
                                                 </Button>
@@ -328,7 +361,7 @@ function Content({ options, setOptions, open, setOpen ,width}) {
 
                 {/* ---------------------Stepper code is here -------------- */}
 
-                <Box sx={{ display: displayForStepper ? 'block' : 'none', width: width,height:'90vh',padding:'15px' }}>
+                <Box sx={{ display: displayForStepper ? 'block' : 'none', width: width, height: '90vh', padding: '15px' }}>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
                         <Typography sx={{ fontSize: "18px", fontWeight: '700' }}>Select Your Services</Typography>
                         <CloseIcon onClick={handleClose} sx={{ cursor: 'pointer' }} />
@@ -398,9 +431,22 @@ function Content({ options, setOptions, open, setOpen ,width}) {
 
                     <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                         <ArrowBackIcon onClick={AtStart} sx={{ position: 'absolute', bottom: 17, cursor: 'pointer' }} />
-                        <Button sx={{ fontSize: '16px', marginLeft: 'auto', marginRight: '0px', textTransform: 'none', position: 'absolute', bottom: 10, right: 10 }} variant='contained' onClick={sendToDatabase}>Continue</Button>
+                        <Button sx={{ fontSize: '16px', marginLeft: 'auto', marginRight: '0px', textTransform: 'none', position: 'absolute', bottom: 10, right: 10 }} variant='contained' onClick={CreateOrder}>Create Order</Button>
                     </Box>
                 </Box>
+
+                <Box sx={{ display: displayForPayment ? 'block' : 'none', height: '90vh', width: width, padding: '15px', }}>
+                    <Stack spacing={2} sx={{ textAlign: 'center', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }}>
+                        <a href={paymentLink} style={{ textDecoration: 'none', }} target="_blank" rel="noreferrer">
+                            <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' >Pay</Button>
+                        </a>
+
+                        <Link href='' sx={{ textDecoration: 'none', }}>
+                            <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={saveDraft}>Save as Draft</Button>
+                        </Link>
+                    </Stack>
+                </Box>
+
                 <Snackbar open={show} autoHideDuration={6000} onClose={handleAlertClose}>
                     <Alert onClose={handleAlertClose} severity={messageType} sx={{ width: '100%' }}>
                         {message}

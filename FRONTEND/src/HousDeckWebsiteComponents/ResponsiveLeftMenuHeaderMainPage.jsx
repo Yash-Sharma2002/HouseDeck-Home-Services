@@ -36,7 +36,8 @@ export default function ResponsiveLeftMenuHeaderMainPage({ commonProps, userData
         try {
             localStorage.setItem("userdata", JSON.stringify({
                 Number: '',
-                Username: ''
+                Username: '',
+                Email:''
             }))
         }
         catch (err) {

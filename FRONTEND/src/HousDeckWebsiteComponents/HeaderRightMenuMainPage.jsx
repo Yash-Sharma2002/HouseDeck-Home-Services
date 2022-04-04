@@ -31,7 +31,8 @@ export default function HeaderRightMenuMainPage({ setAccount }) {
         try {
             localStorage.setItem("userdata", JSON.stringify({
                 Number: '',
-                Username: ''
+                Username: '',
+                Email:''
             }))
             localStorage.setItem('isLogin',JSON.stringify(false))
         }

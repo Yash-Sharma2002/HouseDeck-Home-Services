@@ -21,9 +21,9 @@ export const userSignUp = async (req, res) => {
 
 export const userLogIn = async (req, res) => {
     try {
-        const user = await User.findOne({ Number: req.body.Number },{"Username":1});
+        const user = await User.findOne({ Number: req.body.Number },{_id:0,"Username":1,"Email":1});
         if(user) {
-            return res.send(user.Username)
+            return res.send(user)
         }
          else {
         console.log('error in else');

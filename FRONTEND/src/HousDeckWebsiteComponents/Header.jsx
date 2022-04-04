@@ -181,7 +181,7 @@ function XLHeader({ commonProps, userData, account, setAccount, isLogin }) {
                         <HeaderRightMenuMainPage setAccount={setAccount} />
                     </Box>
                 </Toolbar>
-                
+
                 <DialogWithoutLoginDisplay open={open} setOpen={setOpen} setAccount={setAccount} />
             </Container>
         </AppBar >
@@ -216,7 +216,7 @@ export default function Header({ commonProps }) {
 
     const [account, setAccount] = React.useState('')
     const isLogin = forCheckingLogin()
-    const userData= loadUserData()
+    const userData = loadUserData()
     const xlMax = useMediaQuery('(max-width:2000px)');
     const xlMin = useMediaQuery('(min-width:1160px)');
     const mdMax = useMediaQuery('(max-width:1160px)');
@@ -233,7 +233,8 @@ export default function Header({ commonProps }) {
         } catch (err) {
             localStorage.setItem("userdata", JSON.stringify({
                 Number: '',
-                Username: ''
+                Username: '',
+                Email: '',
             }))
             const serializedState = localStorage.getItem('userdata');
             if (serializedState === null) {
@@ -241,7 +242,7 @@ export default function Header({ commonProps }) {
             }
             return JSON.parse(serializedState);
         }
-        
+
     }
 
     function forCheckingLogin() {
@@ -259,19 +260,19 @@ export default function Header({ commonProps }) {
 
     function fetchandCheck() {
         try {
-          localStorage.getItem('isLogin')
-          localStorage.getItem('userData')
+            localStorage.getItem('isLogin')
+            localStorage.getItem('userData')
         }
         catch (err) {
-          localStorage.setItem('isLogin', JSON.stringify(false));
-          localStorage.setItem('userData', JSON.stringify({
-            Number: '',
-            Username: ''
-          }))
+            localStorage.setItem('isLogin', JSON.stringify(false));
+            localStorage.setItem('userData', JSON.stringify({
+                Number: '',
+                Username: ''
+            }))
         }
-      }
+    }
 
-  fetchandCheck();
+    fetchandCheck();
 
 
 

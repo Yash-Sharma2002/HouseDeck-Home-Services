@@ -27,8 +27,9 @@ export default function SearchBar({ options, width }) {
   }
 
   return (
-    <Box sx={{ width: width, background: 'white', borderRadius: '4px'}} >
-      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-evenly', height: '50px!important' }} >
+        
+        <Box sx={{ width: width, background: 'white'}} >
+      <Box sx={{ display: 'flex', alignItems: 'center', borderRadius: '4px', justifyContent: 'space-evenly', height: '50px!important' }} >
         <Input
           placeholder="Search..."
           value={wordEntered}
@@ -64,16 +65,15 @@ export default function SearchBar({ options, width }) {
         position: 'absolute',
         zIndex: '1000',
         display: open ? 'grid' : 'none',
-        padding:'10px'
       }}>
         {options.map(item =>
-          <Link href={item.url} sx={{
+          <Link key={item.url} href={item.url} sx={{
             padding: '10px',
             textDecoration: 'none',
             color: 'black',
             '&:hover': {
               background: '#24C6DC',
-              color:'white'
+              // color:'white'
             }
           }}>
             {item.value}
@@ -91,13 +91,13 @@ export default function SearchBar({ options, width }) {
           zIndex: '1000',
         }} >
           {filteredData.map(item =>
-            <Link href={item.url} sx={{
+            <Link key={item.url} href={item.url} sx={{
               padding: '10px',
               textDecoration: 'none',
               color: 'black',
               '&:hover': {
                 background: '#24C6DC',
-                color:'white'
+                // color:'white'
               }
             }}>{item.value} </Link>
           )}

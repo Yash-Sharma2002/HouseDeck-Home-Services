@@ -6,8 +6,8 @@ const URL = 'http://localhost:8000';
 
 export const authenticateLogin = async (user) => {
     try {
-        const Username = await axios.post(`${URL}/login`, user)
-        return Username.data
+        const response = await axios.post(`${URL}/login`, user)
+        return response.data
     } catch (error) {
     }
 }
