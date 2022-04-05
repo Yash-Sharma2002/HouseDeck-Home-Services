@@ -47,6 +47,7 @@ function Content({ padding, padding2, display, displayForButton }) {
             },
         }
         let response = await makePayments(data)
+        console.log(response);
         if (response) {
             const currentDateTime = new Date()
             const items = {
@@ -93,7 +94,6 @@ function Content({ padding, padding2, display, displayForButton }) {
         }
     }
 
-
     return (
         <div id="subscription-plans" style={{ padding: padding }}>
             <Box sx={{
@@ -107,7 +107,6 @@ function Content({ padding, padding2, display, displayForButton }) {
                     fontSize: '22px',
                     paddingBottom: '50px',
                     marginTop: '40px',
-                    // textAlign: 'center'
                 }}>
                     Subscription Services
                 </Typography>
@@ -119,7 +118,6 @@ function Content({ padding, padding2, display, displayForButton }) {
                         color: 'white',
                         fontSize: '16px',
                         textDecoration: 'none',
-                        // marginRight:'30px',
                         padding: '10px',
                         background: '#1b685f',
                         fontFamily: "Fredoka",
@@ -172,7 +170,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                                 background: 'rgb(122,220,180)',
                                 color: 'white'
                             }
-                        }} onClick={CreateOrder('Kitchen Deep Cleaning - [For 3 months]', '3350')}>
+                        }} onClick={()=>CreateOrder('Kitchen Deep Cleaning - [For 3 months]', '3350')}>
                             Order Now
                         </Button>
                     </Box>
