@@ -14,7 +14,7 @@ export const getDraftBookingsAPI = async (user) => {
     }
 }
 
-export const getPaidBookings = async (user) => {
+export const getPaidBookingsAPI = async (user) => {
     try {
         const bookings = await axios.post(`${URL}/my-bookings-paid`, user)
         return bookings.data

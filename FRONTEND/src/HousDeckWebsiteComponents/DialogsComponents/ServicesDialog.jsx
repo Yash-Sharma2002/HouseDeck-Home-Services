@@ -1,7 +1,7 @@
 import * as React from 'react'
 import CloseIcon from '@mui/icons-material/Close'
 import { Button, Divider, Link } from '@mui/material'
-import { makePayments } from '../../Api/paymentCashfreeApi'
+import { checkPaymentStatus, makePayments } from '../../Api/paymentCashfreeApi'
 import Box from '@mui/material/Box'
 import Dialog from '@mui/material/Dialog'
 import { styled } from '@mui/material/styles'
@@ -20,8 +20,6 @@ import Stack from '@mui/material/Stack'
 import { CleaningServicesData } from '../../constants/data';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
-import Snackbar from '@mui/material/Snackbar';
-import MuiAlert from '@mui/material/Alert';
 import { LoginContext } from '../../context/ContextProvider'
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -32,15 +30,9 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 
-const Alert = React.forwardRef(function Alert(props, ref) {
-    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
-
-
 function Content({ options, setOptions, open, setOpen, width }) {
 
-    const { message, setMessage } = React.useContext(LoginContext)
-    const { messageType, setMessageType } = React.useContext(LoginContext)
+    const { setMessage, setMessageType, setShow } = React.useContext(LoginContext)
 
     const fullScreen = useMediaQuery('(max-width:650px)');
     const [price, setPrice] = React.useState(0)
@@ -53,21 +45,23 @@ function Content({ options, setOptions, open, setOpen, width }) {
     const [displayForAppointment, setDisplayForAppointment] = React.useState(false)
     const [displayAtStart, setDisplayAtStart] = React.useState(false)
     const [displayForPayment, setDisplayForPayment] = React.useState(false)
-    const [show, setShow] = React.useState(false)
     const [display, setDisplay] = React.useState(true)
     const [paymentLink, setPaymentLink] = React.useState('')
-
+    const [orderId, setOrderId] = React.useState('')
     const handleClose = () => {
         setOpen(false)
         setdate(null)
-        settime(null)
+        settime(new Date('2022-03-01 12:00'))
         setDisplayForServiceSelectionProcess(true)
         setDisplayForStepper(false)
         setDisplayForAppointment(false)
         setDisplayAtStart(false)
         setDisplayForPayment(false)
         setDisplay(false)
+        setPrice(0)
         setServices([])
+        setPaymentLink('')
+        setOrderId('')
     };
 
     function Select(service, price) {
@@ -94,6 +88,7 @@ function Content({ options, setOptions, open, setOpen, width }) {
             setDisplayForAppointment(false)
             setDisplayForPayment(false)
             setDisplayAtStart(false)
+            setOrderId(uuidV4())
         }
         // var autocomplete = new google.maps.places.Autocomplete((document.getElementById('searchInput')), {
         //     types: ['geocode'],
@@ -148,11 +143,6 @@ function Content({ options, setOptions, open, setOpen, width }) {
         }
 
     }
-    const handleAlertClose = () => {
-        setShow(false)
-        setMessage('')
-        setMessageType('')
-    }
 
 
     function AtStart() {
@@ -167,8 +157,8 @@ function Content({ options, setOptions, open, setOpen, width }) {
     const CreateOrder = async () => {
         const userData = loadUserData()
         const data = {
-            order_id: uuidV4(),
-            order_amount: price,
+            order_id: `OrderId_${orderId}`,
+            order_amount: `${price}.00`,
             order_currency: 'INR',
             customer_details: {
                 customer_id: userData.Username,
@@ -192,11 +182,11 @@ function Content({ options, setOptions, open, setOpen, width }) {
         const currentDateTime = new Date()
         const items = {
             Order_Details: {
-                Order_Id: `OrderId_${uuidV4()}`,
+                Order_Id: `OrderId_${orderId}`,
                 Order_Date: currentDateTime.toString().slice(0, 15),
                 Order_Time: currentDateTime.toString().slice(16, 25),
                 Services,
-                Total_Price: price,
+                Order_Amount: `${price}.00`,
                 Appointment_Location: location,
                 Appointment_Date: date.toString().slice(0, 15),
                 Appointment_Time: time.toString().slice(16, 25),
@@ -214,6 +204,9 @@ function Content({ options, setOptions, open, setOpen, width }) {
         }
         let response = await serviceSenderAsDraft(items)
         if (response) {
+            setShow(true)
+            setMessage('Saving as Draft....')
+            setMessageType('info')
             handleClose()
         } else {
             setShow(true)
@@ -228,6 +221,54 @@ function Content({ options, setOptions, open, setOpen, width }) {
         setDisplayForServiceSelectionProcess(true)
         setDisplayForStepper(false)
         setDisplayForAppointment(false)
+    }
+    const onClickPay = async () => {
+        const userData = loadUserData()
+        const currentDateTime = new Date()
+        const items = {
+            Order_Details: {
+                Order_Id: `OrderId_${orderId}`,
+                Order_Date: currentDateTime.toString().slice(0, 15),
+                Order_Time: currentDateTime.toString().slice(16, 25),
+                Services,
+                Order_Amount: `${price}.00`,
+                Appointment_Location: location,
+                Appointment_Date: date.toString().slice(0, 15),
+                Appointment_Time: time.toString().slice(16, 25),
+            },
+            Draft: 'No',
+            Payment_Details: {
+                Paid: 'Yes',
+            },
+            Customer_Details: {
+                Customer_Id: userData.Username,
+                Customer_Email: userData.Email,
+                Customer_Phone: userData.Number
+            }
+        }
+        const interval = setInterval(async () => {
+            const response = await checkPaymentStatus(items)
+            if (response) {
+                if (response.order_status === 'PAID') {
+                    clearInterval(interval)
+                    handleClose()
+                    setShow(true)
+                    setMessage('Order Placed')
+                    setMessageType('success')
+                } else {
+                    setShow(true)
+                    setMessage('Payment is processing...')
+                    setMessageType('info')
+                }
+            }
+            else {
+                setShow(true)
+                setMessage('Payment Unsuccessful')
+                clearInterval(interval)
+                setMessageType('error')
+                saveDraft()
+            }
+        }, 10000);
     }
 
     return (
@@ -282,7 +323,7 @@ function Content({ options, setOptions, open, setOpen, width }) {
                                     <>
                                         <Box key={data.type}>
                                             <Box sx={{ textAlign: 'center' }}>
-                                                <img src={options.imgUrl} alt="" style={{ marginTop: '10px', width: '100%' }} />
+                                                <img src={options.imgUrl} alt="" style={{ marginTop: '10px', width: width }} />
                                             </Box>
                                             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '8px 4px' }}>
                                                 <Typography sx={{ fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>{service}</Typography>
@@ -436,9 +477,13 @@ function Content({ options, setOptions, open, setOpen, width }) {
                 </Box>
 
                 <Box sx={{ display: displayForPayment ? 'block' : 'none', height: '90vh', width: width, padding: '15px', }}>
+                    <Box sx={{textAlign:'right'}}>
+                        <CloseIcon onClick={handleClose} sx={{ cursor: 'pointer', }} />
+                    </Box>
+
                     <Stack spacing={2} sx={{ textAlign: 'center', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }}>
                         <a href={paymentLink} style={{ textDecoration: 'none', }} target="_blank" rel="noreferrer">
-                            <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' >Pay</Button>
+                            <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={onClickPay} >Pay</Button>
                         </a>
 
                         <Link href='' sx={{ textDecoration: 'none', }}>
@@ -447,11 +492,7 @@ function Content({ options, setOptions, open, setOpen, width }) {
                     </Stack>
                 </Box>
 
-                <Snackbar open={show} autoHideDuration={6000} onClose={handleAlertClose}>
-                    <Alert onClose={handleAlertClose} severity={messageType} sx={{ width: '100%' }}>
-                        {message}
-                    </Alert>
-                </Snackbar>
+
             </BootstrapDialog>
         </>
     )

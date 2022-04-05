@@ -3,10 +3,97 @@ import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { v4 as uuidV4 } from 'uuid'
 import { useMediaQuery } from '@mui/material'
+import { checkPaymentStatus, makePayments } from '../../Api/paymentCashfreeApi'
+import { LoginContext } from '../../context/ContextProvider'
 
 
-function Content({ padding, padding2, display ,displayForButton}) {
+function Content({ padding, padding2, display, displayForButton }) {
+    const { setMessage, setMessageType, setShow } = React.useContext(LoginContext)
+
+    function loadUserData() {
+        try {
+            const serializedState = localStorage.getItem('userdata');
+            if (serializedState === null) {
+                return '';
+            }
+            return JSON.parse(serializedState);
+        } catch (err) {
+            localStorage.setItem("userdata", JSON.stringify({
+                Number: '',
+                Username: ''
+            }))
+            const serializedState = localStorage.getItem('userdata');
+            if (serializedState === null) {
+                return '';
+            }
+            return JSON.parse(serializedState);
+        }
+
+    }
+
+    const CreateOrder = async (name, price) => {
+        const userData = loadUserData()
+        const orderId = uuidV4()
+        const data = {
+            order_id: `OrderId_${orderId}`,
+            order_amount: `${price}.00`,
+            order_currency: 'INR',
+            customer_details: {
+                customer_id: userData.Username,
+                customer_email: userData.Email,
+                customer_phone: userData.Number
+            },
+        }
+        let response = await makePayments(data)
+        if (response) {
+            const currentDateTime = new Date()
+            const items = {
+                Order_Details: {
+                    Order_Id: `OrderId_${orderId}`,
+                    Order_Date: currentDateTime.toString().slice(0, 15),
+                    Order_Time: currentDateTime.toString().slice(16, 25),
+                    Subscription: {
+                        Name: `${name}`,
+                        Price: `${price}.00`,
+                    },
+                    Order_Amount: `${price}.00`,
+                },
+                Payment_Details: {
+                    Paid: 'Yes',
+                },
+                Customer_Details: {
+                    Customer_Id: userData.Username,
+                    Customer_Email: userData.Email,
+                    Customer_Phone: userData.Number
+                }
+            }
+            const interval = setInterval(async () => {
+                const response = await checkPaymentStatus(items)
+                if (response) {
+                    if (response.order_status === 'PAID') {
+                        clearInterval(interval)
+                        setShow(true)
+                        setMessage('Order Placed')
+                        setMessageType('success')
+                    } else {
+                        setShow(true)
+                        setMessage('Payment is processing...')
+                        setMessageType('info')
+                    }
+                }
+                else {
+                    setShow(true)
+                    setMessage('Payment Unsuccessful')
+                    clearInterval(interval)
+                    setMessageType('error')
+                }
+            }, 10000);
+        }
+    }
+
+
     return (
         <div id="subscription-plans" style={{ padding: padding }}>
             <Box sx={{
@@ -37,7 +124,7 @@ function Content({ padding, padding2, display ,displayForButton}) {
                         background: '#1b685f',
                         fontFamily: "Fredoka",
                         borderRadius: 5,
-                        display:displayForButton
+                        display: displayForButton
                     }} href="/home-services/subcription">
                         View all plans &#10140;
                     </a>
@@ -85,7 +172,7 @@ function Content({ padding, padding2, display ,displayForButton}) {
                                 background: 'rgb(122,220,180)',
                                 color: 'white'
                             }
-                        }}>
+                        }} onClick={CreateOrder('Kitchen Deep Cleaning - [For 3 months]', '3350')}>
                             Order Now
                         </Button>
                     </Box>
@@ -187,7 +274,7 @@ function Content({ padding, padding2, display ,displayForButton}) {
 
 
 
-function SMContent({displayForButton}) {
+function SMContent({ displayForButton }) {
     return (
         <div id="subscription-plans" style={{ padding: '20px' }}>
             <Typography sx={{
@@ -282,7 +369,7 @@ function SMContent({displayForButton}) {
                             borderRadius: 15,
                             background: "#bee9d8",
                             textAlign: 'center',
-                            marginTop: 6,
+                            marginTop: 4,
                             boxShadow: 0,
                             '&:hover': {
                                 background: 'rgb(122,220,180)',
@@ -351,7 +438,7 @@ function SMContent({displayForButton}) {
                     background: '#1b685f',
                     fontFamily: "Fredoka",
                     borderRadius: 5,
-                    display:displayForButton
+                    display: displayForButton
                 }} href="/home-services/subcription">
                     View all plans &#10140;
                 </a>
@@ -363,7 +450,7 @@ function SMContent({displayForButton}) {
 }
 
 
-export default function SubscribeCard({displayForButton}) {
+export default function SubscribeCard({ displayForButton }) {
 
     const xlMax = useMediaQuery('(max-width:2000px)');
     const xlMin = useMediaQuery('(min-width:1160px)');

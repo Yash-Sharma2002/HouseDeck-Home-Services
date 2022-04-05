@@ -1134,7 +1134,7 @@ export const MoveInReadyHomeServices = [
 ]
 
 export const FullHouseDeepCleaning = {
-  imgUrl: '../other/cleaning.jpg',
+  imgUrl: '../other/deepHomeCleaning.jpeg',
   innerData: [
     { type: '1 RK Full House Deep Cleaning', price: '3349' },
     { type: '1 BHK Full House Deep Cleaning', price: '3999' },
@@ -1152,7 +1152,7 @@ export const FullHouseDeepCleaning = {
 }
 
 export const FullHouseBasicCleaning = {
-  imgUrl: '../other/cleaning.jpg',
+  imgUrl: '../other/essentialHomeCleaning.jpeg',
   innerData: [
     { type: '1 BHK Full House Deep Cleaning', price: '1899' },
     { type: '2 BHK Full House Deep Cleaning', price: '2299' },
@@ -1204,7 +1204,7 @@ export const KitchenCleaning = {
 }
 
 export const MiniServices = {
-  imgUrl: '../other/cleaning.jpg',
+  imgUrl: '../other/miniServices.jpeg',
   innerData: [
     { type: 'Mirror Cleaning', price: '29' },
     { type: 'Ceiling Fan Cleaning', price: '39' },
@@ -1228,10 +1228,10 @@ export const MiniServices = {
 }
 
 export const CleaningServicesData = [
-  { imgUrl: '../other/cleaning.jpg', type: 'House Basic Cleaning', options: FullHouseBasicCleaning },
-  { imgUrl: '../other/cleaning.jpg', type: 'Full House Deep Cleaning', options: FullHouseDeepCleaning },
+  { imgUrl: '../other/essentialHomeCleaning.jpeg', type: 'House Basic Cleaning', options: FullHouseBasicCleaning },
+  { imgUrl: '../other/deepHomeCleaning.jpeg', type: 'Full House Deep Cleaning', options: FullHouseDeepCleaning },
   { imgUrl: '../other/kitchenCleaning.jpg', type: 'Kitchen Cleaning', options: KitchenCleaning },
   { imgUrl: '../other/bathroomCleaning.jpg', type: 'Bathroom Cleaning', options: BathroomCleaning },
   { imgUrl: '../other/sofaCleaning.jpg', type: 'Sofa Cleaning', options: SofaCleaning },
-  { imgUrl: '../other/cleaning.jpg', type: 'Mini Services', options: MiniServices },
+  { imgUrl: '../other/miniServices.jpeg', type: 'Mini Services', options: MiniServices },
 ]

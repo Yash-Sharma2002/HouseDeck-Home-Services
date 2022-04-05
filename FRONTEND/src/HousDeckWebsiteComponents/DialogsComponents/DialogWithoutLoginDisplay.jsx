@@ -13,8 +13,6 @@ import './OnlyForDialog.css';
 import { authenticateSignup } from '../../Api/signup';
 import { authenticateLogin } from '../../Api/login';
 
-import Snackbar from '@mui/material/Snackbar';
-import MuiAlert from '@mui/material/Alert';
 import { LoginContext } from '../../context/ContextProvider';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -45,20 +43,13 @@ const useStyles = makeStyles({
   },
 })
 
-const LoginQuotes = ['Zero Brokerage', 'Thousands of new listings daily.', '100 Cr+ Brokerage saved monthly.']
-
-const Alert = React.forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
-
 function Content({ open, setOpen, setAccount, width, display }) {
   const classes = useStyles()
   const fullScreen = useMediaQuery('(max-width:700px)');
 
-  const { message, setMessage } = React.useContext(LoginContext)
-  const { messageType, setMessageType } = React.useContext(LoginContext)
+  const { setMessage,setMessageType,setShow } = React.useContext(LoginContext)
 
-  const [show, setShow] = React.useState(false);
+
   const [displayForFirst, setDisplayForFirst] = React.useState(true)
   const [displayForSecond, setDisplayForSecond] = React.useState(false)
   const [displayForLast, setDisplayForLast] = React.useState(false)
@@ -77,13 +68,7 @@ function Content({ open, setOpen, setAccount, width, display }) {
     setDisplayForFirst(true)
     setDisplayForLast(false)
 
-  };
-  const handleAlertClose = () => {
-    setShow(false)
-    setMessage('')
-    setMessageType('')
   }
-
 
   // ----------For OTP--------------------------
   const generateReCaptcha = () => {
@@ -202,11 +187,18 @@ function Content({ open, setOpen, setAccount, width, display }) {
     }
   }
   const sendToDatabase = async () => {
-    var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    if(!email.match(validRegex)){
+    var validRegexForEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    var validRegexForUsername = /^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/;
+    if(!email.match(validRegexForEmail)){
       setShow(true)
       setMessageType('error')
       setMessage("Invalid Email")
+      return
+    }
+    if(!username.match(validRegexForUsername)){
+      setShow(true)
+      setMessageType('error')
+      setMessage("Username does not contains spaces and must be alphanumeric")
       return
     }
     const signup = {
@@ -241,7 +233,7 @@ function Content({ open, setOpen, setAccount, width, display }) {
             <img style={{ height: '100px', width: "100px", marginTop: '9rem' }} src="../logos/isLogin.png" alt="Login" />
             <Typography variant="h6" sx={{ fontSize: '18px', fontWeight: '600', ml: 1 }}>Login/Signup</Typography>
 
-            {LoginQuotes.map(data =>
+            {['Zero Brokerage', 'Thousands of new listings daily.', '100 Cr+ Brokerage saved monthly.'].map(data =>
               <>
                 <Box sx={{
                   display: display,
@@ -381,11 +373,6 @@ function Content({ open, setOpen, setAccount, width, display }) {
             </Box>
           </Box>
         </Box>
-        <Snackbar open={show} autoHideDuration={6000} onClose={handleAlertClose}>
-          <Alert onClose={handleAlertClose} severity={messageType} sx={{ width: '100%' }}>
-            {message}
-          </Alert>
-        </Snackbar>
         <div id='sign-in-button'></div>
       </BootstrapDialog>
     </>
@@ -397,9 +384,8 @@ function Content({ open, setOpen, setAccount, width, display }) {
 function SMContent({ open, setOpen, setAccount }) {
   const fullScreen = useMediaQuery('(max-width:700px)');
 
-  const { message, setMessage } = React.useContext(LoginContext)
-  const { messageType, setMessageType } = React.useContext(LoginContext)
-  const [show, setShow] = React.useState(false)
+  const { setMessage,setMessageType,setShow } = React.useContext(LoginContext)
+
   const [displayForFirst, setDisplayForFirst] = React.useState(true)
   const [displayForSecond, setDisplayForSecond] = React.useState(false)
   const [displayForLast, setDisplayForLast] = React.useState(false)
@@ -421,11 +407,6 @@ function SMContent({ open, setOpen, setAccount }) {
   };
 
 
-  const handleAlertClose = () => {
-    setShow(false)
-    setMessage('')
-    setMessageType('')
-  }
 
 
   // ----------For OTP--------------------------
@@ -525,20 +506,20 @@ function SMContent({ open, setOpen, setAccount }) {
       const login = {
         Number: `+91${number}`
       }
-      const response = await authenticateLogin(login)
+      let response = await authenticateLogin(login)
       if (response) {
+        window.location.reload(false)
         setAccount(response)
         handleClose();
         try {
           localStorage.setItem('userdata', JSON.stringify({
             Number: `+91${number}`,
-            Username: response,
+            Username: response.Username,
+            Email: response.Email,
           }));
-          setShow(true)
-          setMessageType('success')
-          setMessage("OTP Validation complete")
+          localStorage.setItem('isLogin', JSON.stringify(true));
         } catch (err) {
-          return '';
+          return undefined;
         }
       }else{
         afterVerifiedOTP()
@@ -546,6 +527,20 @@ function SMContent({ open, setOpen, setAccount }) {
     }
   }
   const sendToDatabase = async () => {
+    var validRegexForEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    var validRegexForUsername = /^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/;
+    if(!email.match(validRegexForEmail)){
+      setShow(true)
+      setMessageType('error')
+      setMessage("Invalid Email")
+      return
+    }
+    if(!username.match(validRegexForUsername)){
+      setShow(true)
+      setMessageType('error')
+      setMessage("Username does not contains spaces and must be alphanumeric")
+      return
+    }
     const signup = {
       Number: `+91${number}`,
       Username: username,
@@ -700,11 +695,6 @@ function SMContent({ open, setOpen, setAccount }) {
           </Box>
         </Box>
         <div id='sign-in-button'></div>
-        <Snackbar open={show} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} autoHideDuration={6000} onClose={handleAlertClose}>
-          <Alert onClose={handleAlertClose} severity={messageType} sx={{ width: '100%' }}>
-            {message}
-          </Alert>
-        </Snackbar>
       </BootstrapDialog>
     </>
   );

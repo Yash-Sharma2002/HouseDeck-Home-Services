@@ -190,12 +190,12 @@ function XLHeader({ commonProps, userData, account, setAccount, isLogin }) {
 }
 
 
-function MDHeader({ commonProps, userData, account, setAccount }) {
+function MDHeader({ commonProps,  account, setAccount,isLogin }) {
     return (<>
         <AppBar position="static" sx={{ backgroundColor: 'white', color: '#000000' }}>
             <Container maxWidth="xl" sx={{ display: 'flex' }}>
                 <Box sx={{ flexGrow: 1, display: 'flex' }}>
-                    <ResponsiveLeftMenuHeaderMainPage commonProps={commonProps} userData={userData} account={account} setAccount={setAccount} />
+                    <ResponsiveLeftMenuHeaderMainPage commonProps={commonProps} account={account} setAccount={setAccount} isLogin={isLogin} />
                 </Box>
 
                 <Typography
@@ -276,8 +276,6 @@ export default function Header({ commonProps }) {
 
 
 
-    // const {account, setAccount} = React.useContext(LoginContext)
-
 
 
     return (
@@ -286,9 +284,9 @@ export default function Header({ commonProps }) {
                 <XLHeader commonProps={commonProps} userData={userData} account={account} setAccount={setAccount} isLogin={isLogin} />
             )}
             {!(xlMax && xlMin) && mdMax && mdMin && (
-                <MDHeader commonProps={commonProps} userData={userData} account={account} setAccount={setAccount} isLogin={isLogin} />
+                <MDHeader commonProps={commonProps} account={account} setAccount={setAccount} isLogin={isLogin} />
             )}
-            {sm && (<MDHeader commonProps={commonProps} userData={userData} account={account} setAccount={setAccount} isLogin={isLogin} />)}
+            {sm && (<MDHeader commonProps={commonProps} account={account} setAccount={setAccount} isLogin={isLogin} />)}
         </>
     )
 }
