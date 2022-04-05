@@ -33,67 +33,71 @@ function Content({ padding, padding2, display, displayForButton }) {
 
     }
 
-    const CreateOrder = async (name, price) => {
-        const userData = loadUserData()
-        const orderId = uuidV4()
-        const data = {
-            order_id: `OrderId_${orderId}`,
-            order_amount: `${price}.00`,
-            order_currency: 'INR',
-            customer_details: {
-                customer_id: userData.Username,
-                customer_email: userData.Email,
-                customer_phone: userData.Number
-            },
-        }
-        let response = await makePayments(data)
-        console.log(response);
-        if (response) {
-            const currentDateTime = new Date()
-            const items = {
-                Order_Details: {
-                    Order_Id: `OrderId_${orderId}`,
-                    Order_Date: currentDateTime.toString().slice(0, 15),
-                    Order_Time: currentDateTime.toString().slice(16, 25),
-                    Subscription: {
-                        Name: `${name}`,
-                        Price: `${price}.00`,
-                    },
-                    Order_Amount: `${price}.00`,
-                },
-                Payment_Details: {
-                    Paid: 'Yes',
-                },
-                Customer_Details: {
-                    Customer_Id: userData.Username,
-                    Customer_Email: userData.Email,
-                    Customer_Phone: userData.Number
-                }
-            }
-            const interval = setInterval(async () => {
-                const response = await checkPaymentStatus(items)
-                if (response) {
-                    if (response.order_status === 'PAID') {
-                        clearInterval(interval)
-                        setShow(true)
-                        setMessage('Order Placed')
-                        setMessageType('success')
-                    } else {
-                        setShow(true)
-                        setMessage('Payment is processing...')
-                        setMessageType('info')
-                    }
-                }
-                else {
-                    setShow(true)
-                    setMessage('Payment Unsuccessful')
-                    clearInterval(interval)
-                    setMessageType('error')
-                }
-            }, 10000);
-        }
-    }
+    // const CreateOrder = async (name, price) => {
+    //     const userData = loadUserData()
+    //     const orderId = uuidV4()
+    //     const data = {
+    //         order_id: `OrderId_${orderId}`,
+    //         order_amount: `${price}.00`,
+    //         order_currency: 'INR',
+    //         customer_details: {
+    //             customer_id: userData.Username,
+    //             customer_email: userData.Email,
+    //             customer_phone: userData.Number
+    //         },
+    //     }
+    //     let response = await makePayments(data)
+    //     console.log(response);
+    //     if (response) {
+    //         const currentDateTime = new Date()
+    //         const items = {
+    //             Order_Details: {
+    //                 Order_Id: `OrderId_${orderId}`,
+    //                 Order_Date: currentDateTime.toString().slice(0, 15),
+    //                 Order_Time: currentDateTime.toString().slice(16, 25),
+    //                 Subscription: {
+    //                     Name: `${name}`,
+    //                     Price: `${price}.00`,
+    //                 },
+    //                 Order_Amount: `${price}.00`,
+    //             },
+    //             Payment_Details: {
+    //                 Paid: 'Yes',
+    //             },
+    //             Customer_Details: {
+    //                 Customer_Id: userData.Username,
+    //                 Customer_Email: userData.Email,
+    //                 Customer_Phone: userData.Number
+    //             }
+    //         }
+    //         const interval = setInterval(async () => {
+    //             const response = await checkPaymentStatus(items)
+    //             if (response) {
+    //                 if (response.order_status === 'PAID') {
+    //                     clearInterval(interval)
+    //                     setShow(true)
+    //                     setMessage('Order Placed')
+    //                     setMessageType('success')
+    //                 } else {
+    //                     setShow(true)
+    //                     setMessage('Payment is processing...')
+    //                     setMessageType('info')
+    //                 }
+    //             }
+    //             else {
+    //                 setShow(true)
+    //                 setMessage('Payment Unsuccessful')
+    //                 clearInterval(interval)
+    //                 setMessageType('error')
+    //             }
+    //         }, 10000);
+    //     }
+    // }
 
+
+    const CreateOrder=(name,price)=>{
+        console.log(name,price);
+    }
     return (
         <div id="subscription-plans" style={{ padding: padding }}>
             <Box sx={{
