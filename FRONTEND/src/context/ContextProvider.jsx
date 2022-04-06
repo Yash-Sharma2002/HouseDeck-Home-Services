@@ -10,31 +10,30 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 export const LoginContext = createContext(null);
 
-const ContextProvider = ({children}) => {
+const ContextProvider = ({ children }) => {
 
-    const [ account, setAccount ] = useState('');
-    
-  const [message, setMessage] = React.useState('')
-  const [messageType, setMessageType] = React.useState('')
-  const [show, setShow] = React.useState(false)
+    const [account, setAccount] = useState('');
 
-  
-  const handleAlertClose = () => {
-    setShow(false)
-    setMessage('')
-    setMessageType('')
-}
+    const [message, setMessage] = React.useState('')
+    const [messageType, setMessageType] = React.useState('')
+    const [show, setShow] = React.useState(false)
 
-    
+    const handleAlertClose = () => {
+        setShow(false)
+        setMessage('')
+        setMessageType('')
+    }
+
+
     return (
-        <LoginContext.Provider value={{ account, setAccount,message, setMessage ,messageType, setMessageType,show,setShow,handleAlertClose}}>
+        <LoginContext.Provider value={{ account, setAccount, message, setMessage, messageType, setMessageType, show, setShow, handleAlertClose }}>
             {children}
-            <Snackbar open={show} autoHideDuration={6000} onClose={handleAlertClose}>
-                    <Alert onClose={handleAlertClose} severity={messageType} sx={{ width: '100%' }}>
-                        {message}
-                    </Alert>
-                </Snackbar>
-        </LoginContext.Provider>
+            < Snackbar open={show} autoHideDuration={6000} onClose={handleAlertClose}>
+                <Alert onClose={handleAlertClose} severity={messageType} sx={{ width: '100%' }}>
+                    {message}
+                </Alert>
+            </Snackbar>
+        </LoginContext.Provider >
     )
 }
 

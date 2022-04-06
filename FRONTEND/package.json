@@ -26,6 +26,7 @@
     "react-scripts": "5.0.0",
     "react-select": "^5.2.2",
     "react-simply-carousel": "^5.1.4",
+    "react-spinners": "^0.11.0",
     "uuid": "^8.3.2",
     "web-vitals": "^2.1.4"
   },

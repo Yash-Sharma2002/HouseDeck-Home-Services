@@ -5,9 +5,7 @@ import CustomerRatingsMainPage from '../HousDeckWebsiteComponents/MainPageMiddle
 import MainPageTopQuestions from '../HousDeckWebsiteComponents/MainPageTopQuestions';
 import RecommendedServices from '../HousDeckWebsiteComponents/MainPageMiddleComponents/RecommendedServices';
 import Footer from '../HousDeckWebsiteComponents/Footer';
-import ServicesListed from '../HousDeckWebsiteComponents/MainPageMiddleComponents/ServicesListed';
 import SimilarServices from '../HousDeckWebsiteComponents/similarServices';
-import TopSecondCarousel from '../HousDeckWebsiteComponents/mainPageTopComponents/TopSecondCarousel';
 import SearchBar from '../HousDeckWebsiteComponents/mainPageTopComponents/SearchBar';
 import SearchNSelect from '../HousDeckWebsiteComponents/mainPageTopComponents/SearchNSelect';
 import Button from '@mui/material/Button';
@@ -25,10 +23,11 @@ import {
   searchBarOptionsFaridabad, searchBarOptionsGhaziabad, searchBarOptionsHyderabad, IconHeaderImage
 } from '../constants/data';
 import SubscribeCard from '../HousDeckWebsiteComponents/MainPageMiddleComponents/SubscribeCard';
+import Loader from '../constants/loader';
 
 
-// import Temp from '../temp';
-// import PropertyBoxMainPageHouseDeckServicesGlobal from '../HousDeckWebsiteComponents/MainPageBottomComponents/PropertyBoxMainPageHouseDeckServicesGlobal';
+const ServicesListed = React.lazy(() => import('../HousDeckWebsiteComponents/MainPageMiddleComponents/ServicesListed'))
+const TopSecondCarousel = React.lazy(() => import('../HousDeckWebsiteComponents/mainPageTopComponents/TopSecondCarousel'))
 
 function TopFirstBar({ city, setCity, handleData }) {
   const xlMax = useMediaQuery('(max-width:2000px)');
@@ -37,7 +36,7 @@ function TopFirstBar({ city, setCity, handleData }) {
   const mdMin = useMediaQuery('(min-width:360px)');
   const sm = useMediaQuery('(max-width:360px)');
 
-  
+
   const style1 = {
     display: 'flex',
     justifyContent: 'space-between',
@@ -74,7 +73,7 @@ function TopFirstBar({ city, setCity, handleData }) {
             padding: '7rem 100px 3rem 100px',
             display: 'flex', justifyContent: 'space-between'
           }}>
-            {city === "Bangalore" && <SearchBar options={searchBarOptionsBangalore} width={'500px'}  />}
+            {city === "Bangalore" && <SearchBar options={searchBarOptionsBangalore} width={'500px'} />}
             {city === "Noida" && <SearchBar width={'500px'} options={searchBarOptionsNoida} />}
             {city === "Chennai" && <SearchBar width={'500px'} options={searchBarOptionsChennai} />}
             {city === "Delhi" && <SearchBar width={'500px'} options={searchBarOptionsDelhi} />}
@@ -193,9 +192,6 @@ function TopFirstBar({ city, setCity, handleData }) {
           </Box>
         </div>)}
     </>
-
-
-
   )
 
 }
@@ -209,43 +205,37 @@ export default function HouseDeckHomeServicesMainPage({ city, setCity, handleDat
     { name: 'FAQs', url: '#faqs' },
     { name: 'HouseDeck Services', url: '#houseDeck-Services' },
   ]
-
   return (
     <>
       <Header commonProps={commonProps} />
-
       <TopFirstBar city={city} setCity={setCity} handleData={handleData} />
-
-
-      <TopSecondCarousel />
-
-
-      {city === "Bangalore" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageBangalore} />}
-      {city === "Noida" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageNoida} />}
-      {city === "Chennai" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageChennai} />}
-      {city === "Delhi" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageDelhi} />}
-      {city === "Greater Noida" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageGN} />}
-      {city === "Gurgaon" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageGurgaon} />}
-      {city === "Pune" && <ServicesListed city={city} ServiceWithImage={ServiceWithImagePune} />}
-      {city === "Faridabad" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageFaridabad} />}
-      {city === "Ghaziabad" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageGhaziabad} />}
-      {city === "Hyderabad" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageHyderabad} />}
-      {city === "Mumbai" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageMumbai} />}
-      {city === " " && <ServicesListed city={city} ServiceWithImage={ServiceWithImageBangalore} />}
-
+      <React.Suspense fallback={<div><Loader /></div>}>
+        <TopSecondCarousel />
+        {city === "Bangalore" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageBangalore} />}
+        {city === "Noida" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageNoida} />}
+        {city === "Chennai" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageChennai} />}
+        {city === "Delhi" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageDelhi} />}
+        {city === "Greater Noida" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageGN} />}
+        {city === "Gurgaon" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageGurgaon} />}
+        {city === "Pune" && <ServicesListed city={city} ServiceWithImage={ServiceWithImagePune} />}
+        {city === "Faridabad" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageFaridabad} />}
+        {city === "Ghaziabad" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageGhaziabad} />}
+        {city === "Hyderabad" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageHyderabad} />}
+        {city === "Mumbai" && <ServicesListed city={city} ServiceWithImage={ServiceWithImageMumbai} />}
+        {city === " " && <ServicesListed city={city} ServiceWithImage={ServiceWithImageBangalore} />}
+      </React.Suspense>
 
       <RecommendedServices />
-
       <Box sx={{
-        textAlign:'center',
-        margin:'0px auto'
+        textAlign: 'center',
+        margin: '0px auto'
       }}>
         <img style={{
-          width:'97%',
-          height:'unset',
+          width: '97%',
+          height: 'unset',
         }} src="../other/bannerOfMiddle.png" alt="Banner" />
       </Box>
-      
+
       <SubscribeCard displayForButton={'inline'} />
       <CustomerRatingsMainPage />
       {/* <Temp /> */}
@@ -269,7 +259,6 @@ export default function HouseDeckHomeServicesMainPage({ city, setCity, handleDat
       <HouseDeckServicesBottomList />
 
 
-      {/* <PropertyBoxMainPageHouseDeckServicesGlobal /> */}
 
       <Footer />
     </>

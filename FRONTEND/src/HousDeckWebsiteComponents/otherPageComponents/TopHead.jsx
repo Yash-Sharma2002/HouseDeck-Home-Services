@@ -2,7 +2,8 @@ import React from 'react'
 import SearchNSelectForOtherPages from './SearchNSelectForOtherPages'
 import { Box, Typography, useMediaQuery } from '@mui/material'
 import ServiceSelector from '../otherPageComponents/serviceSelector'
-import OtherPagesTopCarousel from './OtherPagesTopCarousel'
+const OtherPagesTopCarousel = React.lazy(()=>import('./OtherPagesTopCarousel'))
+
 
 const TopHead = ({ service, handleData, currentCity, setCity }) => {
     const xlMax = useMediaQuery('(max-width:2000px)');
