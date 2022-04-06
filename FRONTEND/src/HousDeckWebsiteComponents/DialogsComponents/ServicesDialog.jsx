@@ -323,7 +323,7 @@ function Content({ options, setOptions, open, setOpen, width }) {
                                     <>
                                         <Box key={data.type}>
                                             <Box sx={{ textAlign: 'center' }}>
-                                                <img src={options.imgUrl} alt="" style={{ marginTop: '10px', width: width }} />
+                                                <img src={options.imgUrl} alt={service} style={{ marginTop: '10px', width: (width === 'auto') ? '-webkit-fill-available' : width }} />
                                             </Box>
                                             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '8px 4px' }}>
                                                 <Typography sx={{ fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>{service}</Typography>
@@ -477,7 +477,7 @@ function Content({ options, setOptions, open, setOpen, width }) {
                 </Box>
 
                 <Box sx={{ display: displayForPayment ? 'block' : 'none', height: '90vh', width: width, padding: '15px', }}>
-                    <Box sx={{textAlign:'right'}}>
+                    <Box sx={{ textAlign: 'right' }}>
                         <CloseIcon onClick={handleClose} sx={{ cursor: 'pointer', }} />
                     </Box>
 
