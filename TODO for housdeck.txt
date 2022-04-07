@@ -40,7 +40,13 @@ This is the list of the To-DO tasks needed for the website line by line
 
 10. When click on any paid or draft service a dialog opens containing its all the details that has been stored by the user
 
-11.Also try to make resend otp for login or signup.
+11. Also try to make resend otp for login or signup.
+
+12. Remove appliance repair from all the tags.
+
+13. Remove unnecessary lines of code and imporvize the data for the searchbar for we have to send many things to it.
+
+14. Add getting and setting items to the context and also remove account and set acount from header because it is not needed.
 
 
 -------------------------------------------- For Backend. --------------------------------------
