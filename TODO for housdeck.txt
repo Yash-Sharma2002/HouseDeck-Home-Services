@@ -1,0 +1,61 @@
+This is the list of the To-DO tasks needed for the website line by line
+
+------------- After Checking it from long time. These are baic tasks that need to do. -------------
+
+
+1. Add all the images in the src folder by making - assets - folder. 
+   Also, change the address for them in the src directory.
+
+2. Add lazy loading in the required components and the images for a better experience.
+
+3. Change the folders and files' names by giving them legit names.
+   Also, merge some files  for making lesser files.
+
+4. Optimize the code in every file because I have seen that unnecessary code is written in many files.
+
+
+
+
+
+--------------------------------------------- For Frontend -------------------------------------
+
+
+1. Add box shadow to the searchbar.
+
+2. Use good carousel in the components.
+
+3. Add payments to the subscription card.
+
+4. Make about us page and the profile page.
+
+5. When the service is not available in the particular redirect to home page.
+
+6. Also add random service from the menu sidebar of the destop.
+
+7. Also optimize the login in reposive header in main page ad dropdown to it.
+
+8. Make date and time also the location required by using if statement.
+
+9. Also make available to change date and time of the appointment when in the draft messages.
+
+10. When click on any paid or draft service a dialog opens containing its all the details that has been stored by the user
+
+11.Also try to make resend otp for login or signup.
+
+
+-------------------------------------------- For Backend. --------------------------------------
+
+
+1. Users can change or upadte their info in profile page.
+
+2. Website does contain uploading photo so make it available. If photos not available avatar is showed.
+
+
+
+------------------------------------------- Things to research. ----------------------------------
+
+1. How to make url like `${all_URL}:id` for this so i dont have to make several pages so i can add service pages to it.
+
+2. How to upload images in mongodb.
+
+* for now only this *
