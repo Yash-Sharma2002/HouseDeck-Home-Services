@@ -1,7 +1,11 @@
 import React from 'react'
-import { FooterLink, SocialMediadata } from '../../constants/data'
+import { FooterLink} from '../../constants/data'
 import { useMediaQuery,Box,Link } from '@mui/material';
-
+import Facebook from '../../assets/socialmedia/facebook.svg'
+import Instagram from '../../assets/socialmedia/instagram.svg'
+import LinkedIn from '../../assets/socialmedia/linkedin.svg'
+import Twitter from '../../assets/socialmedia/twitter.svg'
+import YouTube from '../../assets/socialmedia/youtube.svg'
 
 function FooterContent({fontSize,margin}) {
     return (
@@ -15,21 +19,30 @@ function FooterContent({fontSize,margin}) {
 
             {/* Sir told me to hide this*/}
             {/* <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', m: 'auto' }}>
-                {['../otherPlatformLink/android.svg', '../otherPlatformLink/ios.svg'].map(data =>
+                {['../../assets/otherPlatformLink/android.svg', '../../assets/otherPlatformLink/ios.svg'].map(data =>
                     <img style={{ margin: '20px 10px' }} src={data} alt="none" />
                 )}
             </Box> */}
 
             <Box  sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', m: 'auto' }}>
-                {SocialMediadata.map(data=>
-                <a key={data.link} href={data.link} target="_blank" rel="noreferrer">
-                    <img style={{ margin: '20px 20px' ,width:'20px',background: "#e5f6f5",borderRadius:'100%',padding:'7px'}} src={data.url} alt="none" />
+                <a href= "https://www.facebook.com/HouseDeck-105233744909399" target="_blank" rel="noreferrer">
+                    <img style={{ margin: '20px 20px' ,width:'20px',background: "#e5f6f5",borderRadius:'100%',padding:'7px'}} src={Facebook} alt="none" />
                 </a>
-                 
-                    )}
+                <a href="https://twitter.com/HouseDeck_India" target="_blank" rel="noreferrer">
+                    <img style={{ margin: '20px 20px' ,width:'20px',background: "#e5f6f5",borderRadius:'100%',padding:'7px'}} src={Twitter} alt="none" />
+                </a>
+                 <a href="https://www.instagram.com/housedeck_india/" target="_blank" rel="noreferrer">
+                    <img style={{ margin: '20px 20px' ,width:'20px',background: "#e5f6f5",borderRadius:'100%',padding:'7px'}} src={Instagram} alt="none" />
+                </a>
+                <a href="https://www.linkedin.com/company/housedeck/?viewAsMember=true" target="_blank" rel="noreferrer">
+                    <img style={{ margin: '20px 20px' ,width:'20px',background: "#e5f6f5",borderRadius:'100%',padding:'7px'}} src={LinkedIn} alt="none" />
+                </a>
+                <a href="https://www.youtube.com/channel/UCynivV8Qp5QeuSJcr81z9zA" target="_blank" rel="noreferrer">
+                    <img style={{ margin: '20px 20px' ,width:'20px',background: "#e5f6f5",borderRadius:'100%',padding:'7px'}} src={YouTube} alt="none" />
+                </a>
             </Box>
             <Box sx={{textAlign:'center',fontSize:fontSize,marginBottom:'20px',color: '#464646'}}>
-            HouseDeck Furnishing Pvt. Ltd.  &copy;   2021-22
+            HouseDeck Furnishing Pvt. Ltd.  &copy;   2021-22 
             </Box>
 
         </div>

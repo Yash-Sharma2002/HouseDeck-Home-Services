@@ -107,29 +107,6 @@ export const FooterLink = [
   { name: "Housedeck Partner (Home Services)", url: "/home-services/housedeck-partner-(Terms-of-Use)" },
 ];
 
-export const SocialMediadata = [
-  {
-    url: require("../assets/socialmedia/facebook.svg"),
-      link: "https://www.facebook.com/HouseDeck-105233744909399",
-  },
-  {
-    url: require("../assets/socialmedia/twitter.svg"),
-      link: "https://twitter.com/HouseDeck_India",
-  },
-  {
-    url: require("../assets/socialmedia/instagram.svg"),
-      link: "https://www.instagram.com/housedeck_india/",
-  },
-  {
-    url: require("../assets/socialmedia/linkedin.svg"),
-      link: "https://www.linkedin.com/company/housedeck/?viewAsMember=true",
-  },
-  {
-    url: require("../assets/socialmedia/youtube.svg"),
-      link: "https://www.youtube.com/channel/UCynivV8Qp5QeuSJcr81z9zA",
-  },
-];
-
 export const TopCarouselData = [
   { url: require("../assets/topCarousel/banner1.png") },
   { url: require("../assets/topCarousel/banner2.png") },
