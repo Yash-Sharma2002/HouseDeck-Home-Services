@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Loader from './constants/loader';
+import Loader from './components/overall/loader';
 
 const App = React.lazy(()=>import('./App'))
 ReactDOM.render(
