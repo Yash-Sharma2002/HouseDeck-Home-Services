@@ -38,7 +38,7 @@ export const GlobalServicesBottomListAvailable = [
 export const GlobalServicesBottomListNotAvailable = [
   { name: "Housedeck for NRIs", url: '' },
   { name: "Property Management", url: '' },
-  { name: "Packers and movers" , url: ''},
+  { name: "Packers and movers", url: '' },
   { name: "Rent services questions", url: '' },
   { name: "Home Loan ELigiblity Check", url: '' },
 ]
@@ -877,7 +877,16 @@ export const ServiceWithImage = {
       tag: false,
     },
   ],
+  '': [
+    {
+      id: "Not Available",
+      src: '',
+      offer: "",
+      tag: true,
+      takeToPath: '',
 
+    }
+  ]
 
 }
 export const FAQData = [
