@@ -5,7 +5,7 @@ This is the list of the To-DO tasks needed for the website line by line
 --------------------------------------------- For Frontend -------------------------------------
 
 
-
+1. Add images sent by tanya
 
 2. Use good carousel in the components.
 
