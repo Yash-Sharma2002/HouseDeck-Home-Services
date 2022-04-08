@@ -69,7 +69,6 @@ export default function Search({ options, width }) {
         {options.map(item =>
           <Link key={item.url} href={item.url} sx={{
             padding: '10px',
-            width: width,
             textDecoration: 'none',
             color: 'black',
             '&:hover': {
