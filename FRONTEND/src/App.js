@@ -43,6 +43,7 @@ export default function App() {
 
               {/* 404 page  */}
               <Route exact path='*' element={<Unknown />} />
+              <Route exact path='/home-services/404-Not-Found' element={<Unknown />} />
 
               {/* Other Pages  */}
               <Route exact path='/home-services/subcription' element={<Subscriptions />} />

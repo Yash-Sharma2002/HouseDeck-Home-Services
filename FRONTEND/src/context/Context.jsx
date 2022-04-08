@@ -13,7 +13,7 @@ const ContextProvider = ({ children }) => {
 
     const [message, setMessage] = React.useState('')
     const [messageType, setMessageType] = React.useState('')
-    const [city, setCity] = React.useState("Select City")
+    const [city, setCity] = React.useState("")
     const [show, setShow] = React.useState(false)
     const isLogin = forCheckingLogin()
     const userData = loadUserData()

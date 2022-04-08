@@ -1,13 +1,17 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
 import { useMediaQuery } from '@mui/material'
+import { ServiceWithImage } from '../../constants/data'
+import { LoginContext } from '../../context/Context'
 
-function Content({ ServiceWithImage, width }) {
+function Content({ width }) {
+    const { city } = React.useContext(LoginContext)
+    const currentCity = city.replace(/ /g, '_').toLowerCase()
     return (
         <div>
             <Box sx={{ display: 'flex', WebkitBoxPack: "justify", justifyContent: 'space-between', flexWrap: 'wrap', backgroundColor: '#f7f7f7', padding: '30px 50px', alignItems: "center" }}>
 
-                {ServiceWithImage.map((data) => {
+                {ServiceWithImage[currentCity].map((data) => {
                     const notDisabled = data.tag
                     const offer = `${data.offer}`
                     return (
@@ -43,11 +47,13 @@ function Content({ ServiceWithImage, width }) {
         </div >
     )
 }
-function SmContent({ ServiceWithImage, width }) {
+function SmContent({ width }) {
+    const { city } = React.useContext(LoginContext)
+    const currentCity = city.replace(/ /g, '_').toLowerCase()
     return (
         <div>
             <Box sx={{ display: 'flex', WebkitBoxPack: "justify", justifyContent: 'inherit', flexWrap: 'wrap', backgroundColor: '#f7f7f7', padding: '30px 0px', alignItems: "center", margin: '0px auto' }}>
-                {ServiceWithImage.map((data) => {
+                {ServiceWithImage[currentCity].map((data) => {
                     const notDisabled = data.tag
                     const offer = `${data.offer}`
                     return (
@@ -89,11 +95,13 @@ function SmContent({ ServiceWithImage, width }) {
 
 
 
-function VsmContent({ ServiceWithImage, width }) {
+function VsmContent({ width }) {
+    const { city } = React.useContext(LoginContext)
+    const currentCity = city.replace(/ /g, '_').toLowerCase()
     return (
         <div>
             <Box sx={{ display: 'flex', WebkitBoxPack: "justify", justifyContent: 'space-evenly', flexWrap: 'wrap', backgroundColor: '#f7f7f7', padding: '30px 0px', alignItems: "center", }}>
-                {ServiceWithImage.map((data) => {
+                {ServiceWithImage[currentCity].map((data) => {
                     const notDisabled = data.tag
                     const offer = `${data.offer}`
                     return (
@@ -135,7 +143,7 @@ function VsmContent({ ServiceWithImage, width }) {
 
 
 
-export default function Services({ ServiceWithImage, city }) {
+export default function Services() {
 
     const xlMax = useMediaQuery('(max-width:2000px)');
     const xlMin = useMediaQuery('(min-width:1000px)');
@@ -147,17 +155,17 @@ export default function Services({ ServiceWithImage, city }) {
     return (
         <>
             {xlMax && xlMin && (
-                <Content width={'unset'} ServiceWithImage={ServiceWithImage} />
+                <Content width={'unset'} />
 
             )}
             {!(xlMax && xlMin) && mdMax && mdMin && (
-                <Content width={'20%'} ServiceWithImage={ServiceWithImage} />
+                <Content width={'20%'} />
             )}
             {smMax && smMin && (
-                <SmContent width={'31%'} ServiceWithImage={ServiceWithImage} />
+                <SmContent width={'31%'} />
             )}
             {!(smMax && smMin) && vsm && (
-                <VsmContent width={'31%'} ServiceWithImage={ServiceWithImage} />
+                <VsmContent width={'31%'} />
             )}
         </>
     )

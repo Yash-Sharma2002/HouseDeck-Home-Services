@@ -1,7 +1,7 @@
 
 
 export const CitiesImg = [
-  { id: "bangalore", url: require("../assets/cities/bangalore.png"), name: "Bangalore",  },
+  { id: "bangalore", url: require("../assets/cities/bangalore.png"), name: "Bangalore", },
   { id: "chennai", url: require("../assets/cities/chennai.png"), name: "Chennai" },
   { id: "delhi", url: require("../assets/cities/delhi.png"), name: "Delhi" },
   { id: "faridabad", url: require("../assets/cities/faridabad.png"), name: "Faridabad" },
@@ -9,7 +9,7 @@ export const CitiesImg = [
   {
     id: "greater_noida",
     url: require("../assets/cities/greater_noida.png"),
-      name: "Greater Noida",
+    name: "Greater Noida",
   },
   { id: "gurgaon", url: require("../assets/cities/gurgaon.png"), name: "Gurgaon" },
   { id: "hyderabad", url: require("../assets/cities/hyderabad.png"), name: "Hyderabad" },
@@ -36,11 +36,11 @@ export const GlobalServicesBottomListAvailable = [
 
 ];
 export const GlobalServicesBottomListNotAvailable = [
-  { name: "Housedeck for NRIs" },
-  { name: "Property Management" },
-  { name: "Packers and movers" },
-  { name: "Rent services questions" },
-  { name: "Home Loan ELigiblity Check" },
+  { name: "Housedeck for NRIs", url: '' },
+  { name: "Property Management", url: '' },
+  { name: "Packers and movers" , url: ''},
+  { name: "Rent services questions", url: '' },
+  { name: "Home Loan ELigiblity Check", url: '' },
 ]
 
 export const IconHeaderImage = {
@@ -74,27 +74,27 @@ export const RecommendedServicesData = [
   {
     key: "painting",
     img: require("../assets/services/painting.webp"),
-      title: "Home Painting Service",
-      subText: "Book your free consultation to get accurate quote.",
-      colorText: "Book Consultation",
-      url: '/home-services/Home Painting'
+    title: "Home Painting Service",
+    subText: "Book your free consultation to get accurate quote.",
+    colorText: "Book Consultation",
+    url: '/home-services/service=Home Painting'
   },
   {
     key: "cleaning",
     img: require("../assets/services/cleaning.webp"),
-      title: "Home Cleaning Service",
-      subText:
+    title: "Home Cleaning Service",
+    subText:
       "Make your house look like new. Spot free cleaning at lowest prices",
-      colorText: "Book Now",
-      url: '/home-services/Home Cleaning'
+    colorText: "Book Now",
+    url: '/home-services/service=Home Cleaning'
   },
   {
     key: "pnm",
     img: require("../assets/services/pnm.webp"),
-      title: "Packer and Movers",
-      subText: "Guaranteed On-time | Safe Delivery",
-      colorText: "Estimate Moving Cost",
-      url: '/home-services'
+    title: "Packer and Movers",
+    subText: "Guaranteed On-time | Safe Delivery",
+    colorText: "Estimate Moving Cost",
+    url: '/home-services'
   },
 ];
 
@@ -123,769 +123,763 @@ export const OtherPageTopCarouselData = [
   { url: require("../assets/otherPageBanner/7.png") },
 ];
 
-export const searchBarOptionsBangalore = [
-  { value: "Home Painting", url: "/home-services/Home Painting" },
-  { value: "Home Cleaning", url: "/home-services/Home Cleaning" },
-  { value: "Home Sanitization", url: '/home-services/Home Sanitization' },
-  { value: "AC Repair", url: '/home-services/AC Repair' },
-  { value: "Electrician", url: '/home-services/Electrician' },
-  { value: "Carpentary", url: '/home-services/Carpentary' },
-  { value: "Plumbing", url: '/home-services/Plumbing' },
-];
+export const SearchBar = {
+  'bangalore': [
+    { value: "Home Painting", url: "/home-services/service=Home Painting" },
+    { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
+    { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
+    { value: "AC Repair", url: '/home-services/service=AC Repair' },
+    { value: "Electrician", url: '/home-services/service=Electrician' },
+    { value: "Carpentary", url: '/home-services/service=Carpentary' },
+    { value: "Plumbing", url: '/home-services/service=Plumbing' },
+  ],
+  'noida': [
+    { value: "Home Painting", url: "/home-services/service=Home Painting" },
+    { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
+    { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
+    { value: "AC Repair", url: '/home-services/service=AC-Repair' },
+  ],
+  'mumbai': [
+    { value: "Home Painting", url: "/home-services/service=Home Painting" },
+    { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
+    { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
+    { value: "AC Repair", url: '/home-services/service=AC Repair' },
+    { value: "Electrician", url: '/home-services/service=Electrician' },
+    { value: "Carpentary", url: '/home-services/service=Carpentary' },
+    { value: "Plumbing", url: '/home-services/service=Plumbing' },
+  ],
+  'chennai': [
+    { value: "Home Painting", url: "/home-services/service=Home Painting" },
+    { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
+    { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
+    { value: "AC Repair", url: '/home-services/service=AC Repair' },
+    { value: "Electrician", url: '/home-services/service=Electrician' },
+    { value: "Carpentary", url: '/home-services/service=Carpentary' },
+    { value: "Plumbing", url: '/home-services/service=Plumbing' },
+  ],
+  'pune': [
+    { value: "Home Painting", url: "/home-services/service=Home Painting" },
+    { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
+    { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
+    { value: "AC Repair", url: '/home-services/service=AC Repair' },
+    { value: "Electrician", url: '/home-services/service=Electrician' },
+    { value: "Carpentary", url: '/home-services/service=Carpentary' },
+    { value: "Plumbing", url: '/home-services/service=Plumbing' },
+  ],
+  'hyderabad': [
+    { value: "Home Painting", url: "/home-services/service=Home Painting" },
+    { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
+    { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
+    { value: "AC Repair", url: '/home-services/service=AC-Repair' },
+  ],
+  'gurgaon': [
+    { value: "Home Painting", url: "/home-services/service=Home Painting" },
+    { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
+    { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
+    { value: "AC Repair", url: '/home-services/service=AC-Repair' },
+  ],
+  'ghaziabad': [
+    { value: "Home Painting", url: "/home-services/service=Home Painting" },
+    { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
+    { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
+    { value: "AC Repair", url: '/home-services/service=AC Repair' },
+    { value: "Electrician", url: '/home-services/service=Electrician' },
+    { value: "Carpentary", url: '/home-services/service=Carpentary' },
+    { value: "Plumbing", url: '/home-services/service=Plumbing' },
+  ],
+  'delhi': [
+    { value: "Home Painting", url: "/home-services/service=Home Painting" },
+    { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
+    { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
+    { value: "AC Repair", url: '/home-services/service=AC-Repair' },
+  ],
+  'faridabad': [
+    { value: "Home Painting", url: "/home-services/service=Home Painting" },
+    { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
+    { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
+    { value: "AC Repair", url: '/home-services/service=AC Repair' },
+    { value: "Electrician", url: '/home-services/service=Electrician' },
+  ],
+  'greater_noida': [
+    { value: "Home Painting", url: "/home-services/service=Home Painting" },
+    { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
+    { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
+    { value: "AC Repair", url: '/home-services/service=AC Repair' },
+  ],
+  '': [
+    { value: "No Service Available", url: "" },
+  ],
+}
 
-export const searchBarOptionsNoida = [
-  { value: "Home Painting", url: "/home-services/Home Painting" },
-  { value: "Home Cleaning", url: "/home-services/Home Cleaning" },
-  { value: "Home Sanitization", url: '/home-services/Home Sanitization' },
-  { value: "AC Repair", url: '/home-services/AC-Repair' },
-];
+export const ServiceWithImage = {
+  'bangalore': [
 
-export const searchBarOptionsMumbai = [
-  { value: "Home Painting", url: "/home-services/Home Painting" },
-  { value: "Home Cleaning", url: "/home-services/Home Cleaning" },
-  { value: "Home Sanitization", url: '/home-services/Home Sanitization' },
-  { value: "AC Repair", url: '/home-services/AC-Repair' },
-  { value: "Electrician", url: '/home-services/Electrician' },
-  { value: "Carpentary", url: '/home-services/Carpentary' },
-  { value: "Plumbing", url: '/home-services/Plumbing' },
-];
-
-export const searchBarOptionsChennai = [
-  { value: "Home Painting", url: "/home-services/Home Painting" },
-  { value: "Home Cleaning", url: "/home-services/Home Cleaning" },
-  { value: "Home Sanitization", url: '/home-services/Home Sanitization' },
-  { value: "AC Repair", url: '/home-services/AC-Repair' },
-  { value: "Electrician", url: '/home-services/Electrician' },
-  { value: "Carpentary", url: '/home-services/Carpentary' },
-  { value: "Plumbing", url: '/home-services/Plumbing' },
-];
-
-export const searchBarOptionsPune = [
-  { value: "Home Painting", url: "/home-services/Home Painting" },
-  { value: "Home Cleaning", url: "/home-services/Home Cleaning" },
-  { value: "Home Sanitization", url: '/home-services/Home Sanitization' },
-  { value: "AC Repair", url: '/home-services/AC-Repair' },
-  { value: "Electrician", url: '/home-services/Electrician' },
-  { value: "Carpentary", url: '/home-services/Carpentary' },
-  { value: "Plumbing", url: '/home-services/Plumbing' },
-];
-
-export const searchBarOptionsHyderabad = [
-  { value: "Home Painting", url: "/home-services/Home Painting" },
-  { value: "Home Cleaning", url: "/home-services/Home Cleaning" },
-  { value: "Home Sanitization", url: '/home-services/Home Sanitization' },
-  { value: "AC Repair", url: '/home-services/AC-Repair' },
-];
-
-export const searchBarOptionsGurgaon = [
-  { value: "Home Painting", url: "/home-services/Home Painting" },
-  { value: "Home Cleaning", url: "/home-services/Home Cleaning" },
-  { value: "Home Sanitization", url: '/home-services/Home Sanitization' },
-  { value: "AC Repair", url: '/home-services/AC-Repair' },
-];
-export const searchBarOptionsGhaziabad = [
-  { value: "Home Painting", url: "/home-services/Home Painting" },
-  { value: "Home Cleaning", url: "/home-services/Home Cleaning" },
-  { value: "Home Sanitization", url: '/home-services/Home Sanitization' },
-  { value: "AC Repair", url: '/home-services/AC-Repair' },
-  { value: "Electrician", url: '/home-services/Electrician' },
-  { value: "Carpentary", url: '/home-services/Carpentary' },
-  { value: "Plumbing", url: '/home-services/Plumbing' },
-];
-
-export const searchBarOptionsDelhi = [
-  { value: "Home Painting", url: "/home-services/Home Painting" },
-  { value: "Home Cleaning", url: "/home-services/Home Cleaning" },
-  { value: "Home Sanitization", url: '/home-services/Home Sanitization' },
-  { value: "AC Repair", url: '/home-services/AC-Repair' },
-];
-
-export const searchBarOptionsFaridabad = [
-  { value: "Home Painting", url: "/home-services/Home Painting" },
-  { value: "Home Cleaning", url: "/home-services/Home Cleaning" },
-  { value: "Home Sanitization", url: '/home-services/Home Sanitization' },
-  { value: "AC Repair", url: '/home-services/AC-Repair' },
-  { value: "Electrician", url: '/home-services/Electrician' },
-];
-export const searchBarOptionsGN = [
-  { value: "Home Painting", url: "/home-services/Home Painting" },
-  { value: "Home Cleaning", url: "/home-services/Home Cleaning" },
-  { value: "Home Sanitization", url: '/home-services/Home Sanitization' },
-  { value: "AC Repair", url: '/home-services/AC-Repair' },
-];
-
-export const ServiceWithImageBangalore = [
-  // fixed data
-  {
-    id: "Painting",
-    src: require("../assets/imageService/painting.png"),
+    // fixed data
+    {
+      id: "Painting",
+      src: require("../assets/imageService/painting.png"),
       offer: "Flat 25% off",
       tag: true,
-      takeToPath: '/home-services/Home Painting',
+      takeToPath: '/home-services/service=Home Painting',
 
-  },
-  {
-    id: "Cleaning",
-    src: require("../assets/imageService/cleaning.png"),
+    },
+    {
+      id: "Cleaning",
+      src: require("../assets/imageService/cleaning.png"),
       offer: "Upto 50% off",
       tag: true,
-      takeToPath: '/home-services/Home Cleaning',
-  },
-  {
-    id: "Home Sanitization",
-    src: require("../assets/imageService/home-sanitization.png"),
+      takeToPath: '/home-services/service=Home Cleaning',
+    },
+    {
+      id: "Home Sanitization",
+      src: require("../assets/imageService/home-sanitization.png"),
       offer: "Upto 25% off",
       tag: true,
-      takeToPath: '/home-services/Home Sanitization',
+      takeToPath: '/home-services/service=Home Sanitization',
 
-  },
-  {
-    id: "AC Repair",
-    src: require("../assets/imageService/ac_repair.png"),
+    },
+    {
+      id: "AC Repair",
+      src: require("../assets/imageService/ac_repair.png"),
       offer: "Upto 30% off",
       tag: true,
-      takeToPath: '/home-services/AC-Repair',
+      takeToPath: '/home-services/service=AC-Repair',
 
-  },
-  // variable data
-  {
-    id: "Electrician",
-    src: require("../assets/imageService/electricity.png"),
+    },
+
+    // variable data
+    {
+      id: "Electrician",
+      src: require("../assets/imageService/electricity.png"),
       offer: "",
       tag: true,
-      takeToPath: '/home-services/Electrician',
+      takeToPath: '/home-services/service=Electrician',
 
-  },
-  {
-    id: "Carpentary",
-    src: require("../assets/imageService/carpentary.png"),
+    },
+    {
+      id: "Carpentary",
+      src: require("../assets/imageService/carpentary.png"),
       offer: "",
-      takeToPath: '/home-services/Carpentary',
+      takeToPath: '/home-services/service=Carpentary',
       tag: true,
-  },
-  {
-    id: "Plumbing", src: require("../assets/imageService/plumbing.png"), offer: "", tag: true, takeToPath: '/home-services/Plumbing',
-  },
-  {
-    id: "Pest Control",
-    src: require("../assets/imageService/pest_control.png"),
+    },
+    {
+      id: "Plumbing", src: require("../assets/imageService/plumbing.png"), offer: "", tag: true, takeToPath: '/home-services/service=Plumbing',
+    },
+    {
+      id: "Pest Control",
+      src: require("../assets/imageService/pest_control.png"),
       offer: "Unserviceable",
       tag: false,
-  },
-];
+    },
+  ],
+  'chennai': [
 
-export const ServiceWithImageChennai = [
-  // fixed data
-  {
-    id: "Painting",
-    src: require("../assets/imageService/painting.png"),
+    // fixed data
+    {
+      id: "Painting",
+      src: require("../assets/imageService/painting.png"),
       offer: "Flat 25% off",
       tag: true,
-      takeToPath: '/home-services/Home Painting',
+      takeToPath: '/home-services/service=Home Painting',
 
 
-  },
-  {
-    id: "Cleaning",
-    src: require("../assets/imageService/cleaning.png"),
+    },
+    {
+      id: "Cleaning",
+      src: require("../assets/imageService/cleaning.png"),
       offer: "Upto 50% off",
       tag: true,
-      takeToPath: '/home-services/Home Cleaning',
-  },
-  {
-    id: "Home Sanitization",
-    src: require("../assets/imageService/home-sanitization.png"),
+      takeToPath: '/home-services/service=Home Cleaning',
+    },
+    {
+      id: "Home Sanitization",
+      src: require("../assets/imageService/home-sanitization.png"),
       offer: "Upto 25% off",
       tag: true,
-      takeToPath: '/home-services/Home Sanitization',
+      takeToPath: '/home-services/service=Home Sanitization',
 
-  },
-  {
-    id: "AC Repair",
-    src: require("../assets/imageService/ac_repair.png"),
+    },
+    {
+      id: "AC Repair",
+      src: require("../assets/imageService/ac_repair.png"),
       offer: "Upto 30% off",
       tag: true,
-      takeToPath: '/home-services/AC-Repair',
+      takeToPath: '/home-services/service=AC-Repair',
 
-  },
-  // variable data
-  {
-    id: "Electrician",
-    src: require("../assets/imageService/electricity.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/home-services/Electrician',
+    },
 
-  },
-  {
-    id: "Carpentary",
-    src: require("../assets/imageService/carpentary.png"),
-      offer: "",
-      takeToPath: '/home-services/Carpentary',
-      tag: true,
-  },
-  { id: "Plumbing", src: require("../assets/imageService/plumbing.png"), offer: "", tag: true, takeToPath: '/home-services/Plumbing', },
-  {
-    id: "Pest Control",
-    src: require("../assets/imageService/pest_control.png"),
-      offer: "Unserviceable",
-      tag: false,
-  },
-];
-
-export const ServiceWithImageMumbai = [
-  // fixed data
-  {
-    id: "Painting",
-    src: require("../assets/imageService/painting.png"),
-      offer: "Flat 25% off",
-      tag: true,
-      takeToPath: '/home-services/Home Painting',
-
-  },
-  {
-    id: "Cleaning",
-    src: require("../assets/imageService/cleaning.png"),
-      offer: "Upto 50% off",
-      tag: true,
-      takeToPath: '/home-services/Home Cleaning',
-  },
-  {
-    id: "Home Sanitization",
-    src: require("../assets/imageService/home-sanitization.png"),
-      offer: "Upto 25% off",
-      tag: true,
-      takeToPath: '/home-services/Home Sanitization',
-
-  },
-  {
-    id: "AC Repair",
-    src: require("../assets/imageService/ac_repair.png"),
-      offer: "Upto 30% off",
-      tag: true,
-      takeToPath: '/home-services/AC-Repair',
-
-  },
-  // variable data
-  {
-    id: "Electrician",
-    src: require("../assets/imageService/electricity.png"),
+    // variable data
+    {
+      id: "Electrician",
+      src: require("../assets/imageService/electricity.png"),
       offer: "",
       tag: true,
-      takeToPath: '/home-services/Electrician',
+      takeToPath: '/home-services/service=Electrician',
 
-  },
-  {
-    id: "Carpentary",
-    src: require("../assets/imageService/carpentary.png"),
+    },
+    {
+      id: "Carpentary",
+      src: require("../assets/imageService/carpentary.png"),
       offer: "",
-      takeToPath: '/home-services/Carpentary',
+      takeToPath: '/home-services/service=Carpentary',
       tag: true,
-  },
-  { id: "Plumbing", src: require("../assets/imageService/plumbing.png"), offer: "", tag: true, takeToPath: '/home-services/Plumbing', },
-  {
-    id: "Pest Control",
-    src: require("../assets/imageService/pest_control.png"),
+    },
+    { id: "Plumbing", src: require("../assets/imageService/plumbing.png"), offer: "", tag: true, takeToPath: '/home-services/service=Plumbing', },
+    {
+      id: "Pest Control",
+      src: require("../assets/imageService/pest_control.png"),
       offer: "Unserviceable",
       tag: false,
-  },
-];
-
-export const ServiceWithImagePune = [
-  // fixed data
-  {
-    id: "Painting",
-    src: require("../assets/imageService/painting.png"),
+    },
+  ],
+  'mumbai': [
+    // fixed data
+    {
+      id: "Painting",
+      src: require("../assets/imageService/painting.png"),
       offer: "Flat 25% off",
       tag: true,
-      takeToPath: '/home-services/Home Painting',
+      takeToPath: '/home-services/service=Home Painting',
 
-  },
-  {
-    id: "Cleaning",
-    src: require("../assets/imageService/cleaning.png"),
+    },
+    {
+      id: "Cleaning",
+      src: require("../assets/imageService/cleaning.png"),
       offer: "Upto 50% off",
       tag: true,
-      takeToPath: '/home-services/Home Cleaning',
-  },
-  {
-    id: "Home Sanitization",
-    src: require("../assets/imageService/home-sanitization.png"),
+      takeToPath: '/home-services/service=Home Cleaning',
+    },
+    {
+      id: "Home Sanitization",
+      src: require("../assets/imageService/home-sanitization.png"),
       offer: "Upto 25% off",
       tag: true,
-      takeToPath: '/home-services/Home Sanitization',
+      takeToPath: '/home-services/service=Home Sanitization',
 
-  },
-  {
-    id: "AC Repair",
-    src: require("../assets/imageService/ac_repair.png"),
+    },
+    {
+      id: "AC Repair",
+      src: require("../assets/imageService/ac_repair.png"),
       offer: "Upto 30% off",
       tag: true,
-      takeToPath: '/home-services/AC-Repair',
+      takeToPath: '/home-services/service=AC-Repair',
 
-  },
-  // variable data
-  {
-    id: "Electrician",
-    src: require("../assets/imageService/electricity.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/home-services/Electrician',
-
-  },
-  {
-    id: "Carpentary",
-    src: require("../assets/imageService/carpentary.png"),
-      takeToPath: '/home-services/Carpentary',
+    },
+    // variable data
+    {
+      id: "Electrician",
+      src: require("../assets/imageService/electricity.png"),
       offer: "",
       tag: true,
-  },
-  { id: "Plumbing", src: require("../assets/imageService/plumbing.png"), offer: "", tag: true, takeToPath: '/home-services/Plumbing', },
-  {
-    id: "Pest Control",
-    src: require("../assets/imageService/pest_control.png"),
+      takeToPath: '/home-services/service=Electrician',
+
+    },
+    {
+      id: "Carpentary",
+      src: require("../assets/imageService/carpentary.png"),
+      offer: "",
+      takeToPath: '/home-services/service=Carpentary',
+      tag: true,
+    },
+    { id: "Plumbing", src: require("../assets/imageService/plumbing.png"), offer: "", tag: true, takeToPath: '/home-services/service=Plumbing', },
+    {
+      id: "Pest Control",
+      src: require("../assets/imageService/pest_control.png"),
       offer: "Unserviceable",
       tag: false,
-  },
-];
-
-export const ServiceWithImageHyderabad = [
-  // fixed data
-  {
-    id: "Painting",
-    src: require("../assets/imageService/painting.png"),
+    },
+  ],
+  'pune': [
+    // fixed data
+    {
+      id: "Painting",
+      src: require("../assets/imageService/painting.png"),
       offer: "Flat 25% off",
       tag: true,
-      takeToPath: '/home-services/Home Painting',
+      takeToPath: '/home-services/service=Home Painting',
 
-  },
-  {
-    id: "Cleaning",
-    src: require("../assets/imageService/cleaning.png"),
+    },
+    {
+      id: "Cleaning",
+      src: require("../assets/imageService/cleaning.png"),
       offer: "Upto 50% off",
       tag: true,
-      takeToPath: '/home-services/Home Cleaning',
-  },
-  {
-    id: "Home Sanitization",
-    src: require("../assets/imageService/home-sanitization.png"),
+      takeToPath: '/home-services/service=Home Cleaning',
+    },
+    {
+      id: "Home Sanitization",
+      src: require("../assets/imageService/home-sanitization.png"),
       offer: "Upto 25% off",
       tag: true,
-      takeToPath: '/home-services/Home Sanitization',
+      takeToPath: '/home-services/service=Home Sanitization',
 
-  },
-  {
-    id: "AC Repair",
-    src: require("../assets/imageService/ac_repair.png"),
+    },
+    {
+      id: "AC Repair",
+      src: require("../assets/imageService/ac_repair.png"),
       offer: "Upto 30% off",
       tag: true,
-      takeToPath: '/home-services/AC-Repair',
+      takeToPath: '/home-services/service=AC-Repair',
 
-  },
-  // variable data
-  {
-    id: "Electrician",
-    src: require("../assets/imageService/electricity.png"),
-      offer: "Unserviceable",
-      tag: false,
-      takeToPath: '/home-services/Electrician',
-  },
-  {
-    id: "Carpentary",
-    src: require("../assets/imageService/carpentary.png"),
-      offer: "Unserviceable",
-      tag: false,
-      takeToPath: '/home-services/Carpentary',
-  },
-  {
-    id: "Plumbing",
-    src: require("../assets/imageService/plumbing.png"),
-      offer: "Unserviceable",
-      tag: false,
-      takeToPath: '/home-services/Plumbing',
-  },
-  {
-    id: "Pest Control",
-    src: require("../assets/imageService/pest_control.png"),
-      offer: "Unserviceable",
-      tag: false,
-  },
-];
-
-export const ServiceWithImageGurgaon = [
-  // fixed data
-  {
-    id: "Painting",
-    src: require("../assets/imageService/painting.png"),
-      offer: "Flat 25% off",
-      tag: true,
-      takeToPath: '/home-services/Home Painting',
-
-  },
-  {
-    id: "Cleaning",
-    src: require("../assets/imageService/cleaning.png"),
-      offer: "Upto 50% off",
-      tag: true,
-      takeToPath: '/home-services/Home Cleaning',
-  },
-  {
-    id: "Home Sanitization",
-    src: require("../assets/imageService/home-sanitization.png"),
-      offer: "Upto 25% off",
-      tag: true,
-      takeToPath: '/home-services/Home Sanitization',
-
-  },
-  {
-    id: "AC Repair",
-    src: require("../assets/imageService/ac_repair.png"),
-      offer: "Upto 30% off",
-      tag: true,
-      takeToPath: '/home-services/AC-Repair',
-
-  },
-  // variable data
-  {
-    id: "Electrician",
-    src: require("../assets/imageService/electricity.png"),
-      offer: "Unserviceable",
-      tag: false,
-      takeToPath: '/home-services/Electrician',
-  },
-  {
-    id: "Carpentary",
-    src: require("../assets/imageService/carpentary.png"),
-      offer: "Unserviceable",
-      tag: false,
-      takeToPath: '/home-services/Carpentary',
-  },
-  {
-    id: "Plumbing",
-    src: require("../assets/imageService/plumbing.png"),
-      offer: "Unserviceable",
-      tag: false,
-      takeToPath: '/home-services/Plumbing',
-  },
-  {
-    id: "Pest Control",
-    src: require("../assets/imageService/pest_control.png"),
-      offer: "Unserviceable",
-      tag: false,
-  },
-];
-
-export const ServiceWithImageDelhi = [
-  // fixed data
-  {
-    id: "Painting",
-    src: require("../assets/imageService/painting.png"),
-      offer: "Flat 25% off",
-      tag: true,
-      takeToPath: '/home-services/Home Painting',
-
-  },
-  {
-    id: "Cleaning",
-    src: require("../assets/imageService/cleaning.png"),
-      offer: "Upto 50% off",
-      tag: true,
-      takeToPath: '/home-services/Home Cleaning',
-  },
-  {
-    id: "Home Sanitization",
-    src: require("../assets/imageService/home-sanitization.png"),
-      offer: "Upto 25% off",
-      tag: true,
-      takeToPath: '/home-services/Home Sanitization',
-
-  },
-  {
-    id: "AC Repair",
-    src: require("../assets/imageService/ac_repair.png"),
-      offer: "Upto 30% off",
-      tag: true,
-      takeToPath: '/home-services/AC-Repair',
-
-  },
-  // variable data
-  {
-    id: "Electrician",
-    src: require("../assets/imageService/electricity.png"),
-      offer: "Unserviceable",
-      tag: false,
-      takeToPath: '/home-services/Electrician',
-  },
-  {
-    id: "Carpentary",
-    src: require("../assets/imageService/carpentary.png"),
-      offer: "Unserviceable",
-      tag: false,
-      takeToPath: '/home-services/Carpentary',
-  },
-  {
-    id: "Plumbing",
-    src: require("../assets/imageService/plumbing.png"),
-      offer: "Unserviceable",
-      tag: false,
-      takeToPath: '/home-services/Plumbing',
-  },
-  {
-    id: "Pest Control",
-    src: require("../assets/imageService/pest_control.png"),
-      offer: "Unserviceable",
-      tag: false,
-  },
-];
-
-export const ServiceWithImageNoida = [
-  // fixed data
-  {
-    id: "Painting",
-    src: require("../assets/imageService/painting.png"),
-      offer: "Flat 25% off",
-      tag: true,
-      takeToPath: '/home-services/Home Painting',
-
-  },
-  {
-    id: "Cleaning",
-    src: require("../assets/imageService/cleaning.png"),
-      offer: "Upto 50% off",
-      tag: true,
-      takeToPath: '/home-services/Home Cleaning',
-  },
-  {
-    id: "Home Sanitization",
-    src: require("../assets/imageService/home-sanitization.png"),
-      offer: "Upto 25% off",
-      tag: true,
-      takeToPath: '/home-services/Home Sanitization',
-
-  },
-  {
-    id: "AC Repair",
-    src: require("../assets/imageService/ac_repair.png"),
-      offer: "Upto 30% off",
-      tag: true,
-      takeToPath: '/home-services/AC-Repair',
-
-  },
-  // variable data
-  {
-    id: "Electrician",
-    src: require("../assets/imageService/electricity.png"),
-      offer: "Unserviceable",
-      tag: false,
-      takeToPath: '/home-services/Electrician',
-  },
-  {
-    id: "Carpentary",
-    src: require("../assets/imageService/carpentary.png"),
-      offer: "Unserviceable",
-      tag: false,
-      takeToPath: '/home-services/Carpentary',
-  },
-  {
-    id: "Plumbing",
-    src: require("../assets/imageService/plumbing.png"),
-      offer: "Unserviceable",
-      tag: false,
-      takeToPath: '/home-services/Plumbing',
-  },
-  {
-    id: "Pest Control",
-    src: require("../assets/imageService/pest_control.png"),
-      offer: "Unserviceable",
-      tag: false,
-  },
-];
-
-export const ServiceWithImageGN = [
-  // fixed data
-  {
-    id: "Painting",
-    src: require("../assets/imageService/painting.png"),
-      offer: "Flat 25% off",
-      tag: true,
-      takeToPath: '/home-services/Home Painting',
-
-  },
-  {
-    id: "Cleaning",
-    src: require("../assets/imageService/cleaning.png"),
-      offer: "Upto 50% off",
-      tag: true,
-      takeToPath: '/home-services/Home Cleaning',
-  },
-  {
-    id: "Home Sanitization",
-    src: require("../assets/imageService/home-sanitization.png"),
-      offer: "Upto 25% off",
-      tag: true,
-      takeToPath: '/home-services/Home Sanitization',
-
-  },
-  {
-    id: "AC Repair",
-    src: require("../assets/imageService/ac_repair.png"),
-      offer: "Upto 30% off",
-      tag: true,
-      takeToPath: '/home-services/AC-Repair',
-
-  },
-  // variable data
-  {
-    id: "Electrician",
-    src: require("../assets/imageService/electricity.png"),
-      offer: "Unserviceable",
-      tag: false,
-      takeToPath: '/home-services/Electrician',
-  },
-  {
-    id: "Carpentary",
-    src: require("../assets/imageService/carpentary.png"),
-      offer: "Unserviceable",
-      tag: false,
-      takeToPath: '/home-services/Carpentary',
-  },
-  {
-    id: "Plumbing",
-    src: require("../assets/imageService/plumbing.png"),
-      offer: "Unserviceable",
-      tag: false,
-      takeToPath: '/home-services/Plumbing',
-  },
-  {
-    id: "Pest Control",
-    src: require("../assets/imageService/pest_control.png"),
-      offer: "Unserviceable",
-      tag: false,
-  },
-];
-
-export const ServiceWithImageGhaziabad = [
-  // fixed data
-  {
-    id: "Painting",
-    src: require("../assets/imageService/painting.png"),
-      offer: "Flat 25% off",
-      tag: true,
-      takeToPath: '/home-services/Home Painting',
-
-  },
-  {
-    id: "Cleaning",
-    src: require("../assets/imageService/cleaning.png"),
-      offer: "Upto 50% off",
-      tag: true,
-      takeToPath: '/home-services/Home Cleaning',
-  },
-  {
-    id: "Home Sanitization",
-    src: require("../assets/imageService/home-sanitization.png"),
-      offer: "Upto 25% off",
-      tag: true,
-      takeToPath: '/home-services/Home Sanitization',
-
-  },
-  {
-    id: "AC Repair",
-    src: require("../assets/imageService/ac_repair.png"),
-      offer: "Upto 30% off",
-      tag: true,
-      takeToPath: '/home-services/AC-Repair',
-
-  },
-  // variable data
-  { id: "Plumbing", src: require("../assets/imageService/plumbing.png"), offer: "", tag: true, takeToPath: '/home-services/Plumbing', },
-  {
-    id: "Electrician",
-    src: require("../assets/imageService/electricity.png"),
+    },
+    // variable data
+    {
+      id: "Electrician",
+      src: require("../assets/imageService/electricity.png"),
       offer: "",
       tag: true,
-      takeToPath: '/home-services/Electrician',
+      takeToPath: '/home-services/service=Electrician',
 
-  },
-  {
-    id: "Carpentary",
-    src: require("../assets/imageService/carpentary.png"),
-      offer: "Unserviceable",
-      tag: false,
-      takeToPath: '/home-services/Carpentary',
-  },
-  {
-    id: "Pest Control",
-    src: require("../assets/imageService/pest_control.png"),
-      offer: "Unserviceable",
-      tag: false,
-  },
-];
-
-export const ServiceWithImageFaridabad = [
-  // fixed data
-  {
-    id: "Painting",
-    src: require("../assets/imageService/painting.png"),
-      offer: "Flat 25% off",
-      tag: true,
-      takeToPath: '/home-services/Home Painting',
-
-  },
-  {
-    id: "Cleaning",
-    src: require("../assets/imageService/cleaning.png"),
-      offer: "Upto 50% off",
-      tag: true,
-      takeToPath: '/home-services/Home Cleaning',
-  },
-  {
-    id: "Home Sanitization",
-    src: require("../assets/imageService/home-sanitization.png"),
-      offer: "Upto 25% off",
-      tag: true,
-      takeToPath: '/home-services/Home Sanitization',
-
-  },
-  {
-    id: "AC Repair",
-    src: require("../assets/imageService/ac_repair.png"),
-      offer: "Upto 30% off",
-      tag: true,
-      takeToPath: '/home-services/AC-Repair',
-
-  },
-  // variable data
-  {
-    id: "Electrician",
-    src: require("../assets/imageService/electricity.png"),
+    },
+    {
+      id: "Carpentary",
+      src: require("../assets/imageService/carpentary.png"),
+      takeToPath: '/home-services/service=Carpentary',
       offer: "",
       tag: true,
-      takeToPath: '/home-services/Electrician',
+    },
+    { id: "Plumbing", src: require("../assets/imageService/plumbing.png"), offer: "", tag: true, takeToPath: '/home-services/service=Plumbing', },
+    {
+      id: "Pest Control",
+      src: require("../assets/imageService/pest_control.png"),
+      offer: "Unserviceable",
+      tag: false,
+    },
+  ],
+  'hyderabad': [
+    // fixed data
+    {
+      id: "Painting",
+      src: require("../assets/imageService/painting.png"),
+      offer: "Flat 25% off",
+      tag: true,
+      takeToPath: '/home-services/service=Home Painting',
 
-  },
-  {
-    id: "Carpentary",
-    src: require("../assets/imageService/carpentary.png"),
-      offer: "Unserviceable",
-      tag: false,
-      takeToPath: '/home-services/Carpentary',
-  },
-  {
-    id: "Plumbing",
-    src: require("../assets/imageService/plumbing.png"),
-      offer: "Unserviceable",
-      tag: false,
-      takeToPath: '/home-services/Plumbing',
-  },
-  {
-    id: "Pest Control",
-    src: require("../assets/imageService/pest_control.png"),
-      offer: "Unserviceable",
-      tag: false,
-  },
-];
+    },
+    {
+      id: "Cleaning",
+      src: require("../assets/imageService/cleaning.png"),
+      offer: "Upto 50% off",
+      tag: true,
+      takeToPath: '/home-services/service=Home Cleaning',
+    },
+    {
+      id: "Home Sanitization",
+      src: require("../assets/imageService/home-sanitization.png"),
+      offer: "Upto 25% off",
+      tag: true,
+      takeToPath: '/home-services/service=Home Sanitization',
 
+    },
+    {
+      id: "AC Repair",
+      src: require("../assets/imageService/ac_repair.png"),
+      offer: "Upto 30% off",
+      tag: true,
+      takeToPath: '/home-services/service=AC-Repair',
+
+    },
+    // variable data
+    {
+      id: "Electrician",
+      src: require("../assets/imageService/electricity.png"),
+      offer: "Unserviceable",
+      tag: false,
+      takeToPath: '/home-services/service=Electrician',
+    },
+    {
+      id: "Carpentary",
+      src: require("../assets/imageService/carpentary.png"),
+      offer: "Unserviceable",
+      tag: false,
+      takeToPath: '/home-services/service=Carpentary',
+    },
+    {
+      id: "Plumbing",
+      src: require("../assets/imageService/plumbing.png"),
+      offer: "Unserviceable",
+      tag: false,
+      takeToPath: '/home-services/service=Plumbing',
+    },
+    {
+      id: "Pest Control",
+      src: require("../assets/imageService/pest_control.png"),
+      offer: "Unserviceable",
+      tag: false,
+    },
+  ],
+  'gurgaon': [
+    // fixed data
+    {
+      id: "Painting",
+      src: require("../assets/imageService/painting.png"),
+      offer: "Flat 25% off",
+      tag: true,
+      takeToPath: '/home-services/service=Home Painting',
+
+    },
+    {
+      id: "Cleaning",
+      src: require("../assets/imageService/cleaning.png"),
+      offer: "Upto 50% off",
+      tag: true,
+      takeToPath: '/home-services/service=Home Cleaning',
+    },
+    {
+      id: "Home Sanitization",
+      src: require("../assets/imageService/home-sanitization.png"),
+      offer: "Upto 25% off",
+      tag: true,
+      takeToPath: '/home-services/service=Home Sanitization',
+
+    },
+    {
+      id: "AC Repair",
+      src: require("../assets/imageService/ac_repair.png"),
+      offer: "Upto 30% off",
+      tag: true,
+      takeToPath: '/home-services/service=AC-Repair',
+
+    },
+    // variable data
+    {
+      id: "Electrician",
+      src: require("../assets/imageService/electricity.png"),
+      offer: "Unserviceable",
+      tag: false,
+      takeToPath: '/home-services/service=Electrician',
+    },
+    {
+      id: "Carpentary",
+      src: require("../assets/imageService/carpentary.png"),
+      offer: "Unserviceable",
+      tag: false,
+      takeToPath: '/home-services/service=Carpentary',
+    },
+    {
+      id: "Plumbing",
+      src: require("../assets/imageService/plumbing.png"),
+      offer: "Unserviceable",
+      tag: false,
+      takeToPath: '/home-services/service=Plumbing',
+    },
+    {
+      id: "Pest Control",
+      src: require("../assets/imageService/pest_control.png"),
+      offer: "Unserviceable",
+      tag: false,
+    },
+  ],
+  'delhi': [
+    // fixed data
+    {
+      id: "Painting",
+      src: require("../assets/imageService/painting.png"),
+      offer: "Flat 25% off",
+      tag: true,
+      takeToPath: '/home-services/service=Home Painting',
+
+    },
+    {
+      id: "Cleaning",
+      src: require("../assets/imageService/cleaning.png"),
+      offer: "Upto 50% off",
+      tag: true,
+      takeToPath: '/home-services/service=Home Cleaning',
+    },
+    {
+      id: "Home Sanitization",
+      src: require("../assets/imageService/home-sanitization.png"),
+      offer: "Upto 25% off",
+      tag: true,
+      takeToPath: '/home-services/service=Home Sanitization',
+
+    },
+    {
+      id: "AC Repair",
+      src: require("../assets/imageService/ac_repair.png"),
+      offer: "Upto 30% off",
+      tag: true,
+      takeToPath: '/home-services/service=AC-Repair',
+
+    },
+    // variable data
+    {
+      id: "Electrician",
+      src: require("../assets/imageService/electricity.png"),
+      offer: "Unserviceable",
+      tag: false,
+      takeToPath: '/home-services/service=Electrician',
+    },
+    {
+      id: "Carpentary",
+      src: require("../assets/imageService/carpentary.png"),
+      offer: "Unserviceable",
+      tag: false,
+      takeToPath: '/home-services/service=Carpentary',
+    },
+    {
+      id: "Plumbing",
+      src: require("../assets/imageService/plumbing.png"),
+      offer: "Unserviceable",
+      tag: false,
+      takeToPath: '/home-services/service=Plumbing',
+    },
+    {
+      id: "Pest Control",
+      src: require("../assets/imageService/pest_control.png"),
+      offer: "Unserviceable",
+      tag: false,
+    },
+  ],
+  'noida': [
+    // fixed data
+    {
+      id: "Painting",
+      src: require("../assets/imageService/painting.png"),
+      offer: "Flat 25% off",
+      tag: true,
+      takeToPath: '/home-services/service=Home Painting',
+
+    },
+    {
+      id: "Cleaning",
+      src: require("../assets/imageService/cleaning.png"),
+      offer: "Upto 50% off",
+      tag: true,
+      takeToPath: '/home-services/service=Home Cleaning',
+    },
+    {
+      id: "Home Sanitization",
+      src: require("../assets/imageService/home-sanitization.png"),
+      offer: "Upto 25% off",
+      tag: true,
+      takeToPath: '/home-services/service=Home Sanitization',
+
+    },
+    {
+      id: "AC Repair",
+      src: require("../assets/imageService/ac_repair.png"),
+      offer: "Upto 30% off",
+      tag: true,
+      takeToPath: '/home-services/service=AC-Repair',
+
+    },
+    // variable data
+    {
+      id: "Electrician",
+      src: require("../assets/imageService/electricity.png"),
+      offer: "Unserviceable",
+      tag: false,
+      takeToPath: '/home-services/service=Electrician',
+    },
+    {
+      id: "Carpentary",
+      src: require("../assets/imageService/carpentary.png"),
+      offer: "Unserviceable",
+      tag: false,
+      takeToPath: '/home-services/service=Carpentary',
+    },
+    {
+      id: "Plumbing",
+      src: require("../assets/imageService/plumbing.png"),
+      offer: "Unserviceable",
+      tag: false,
+      takeToPath: '/home-services/service=Plumbing',
+    },
+    {
+      id: "Pest Control",
+      src: require("../assets/imageService/pest_control.png"),
+      offer: "Unserviceable",
+      tag: false,
+    },
+  ],
+  'greater_noida': [
+    // fixed data
+    {
+      id: "Painting",
+      src: require("../assets/imageService/painting.png"),
+      offer: "Flat 25% off",
+      tag: true,
+      takeToPath: '/home-services/service=Home Painting',
+
+    },
+    {
+      id: "Cleaning",
+      src: require("../assets/imageService/cleaning.png"),
+      offer: "Upto 50% off",
+      tag: true,
+      takeToPath: '/home-services/service=Home Cleaning',
+    },
+    {
+      id: "Home Sanitization",
+      src: require("../assets/imageService/home-sanitization.png"),
+      offer: "Upto 25% off",
+      tag: true,
+      takeToPath: '/home-services/service=Home Sanitization',
+
+    },
+    {
+      id: "AC Repair",
+      src: require("../assets/imageService/ac_repair.png"),
+      offer: "Upto 30% off",
+      tag: true,
+      takeToPath: '/home-services/service=AC-Repair',
+
+    },
+    // variable data
+    {
+      id: "Electrician",
+      src: require("../assets/imageService/electricity.png"),
+      offer: "Unserviceable",
+      tag: false,
+      takeToPath: '/home-services/service=Electrician',
+    },
+    {
+      id: "Carpentary",
+      src: require("../assets/imageService/carpentary.png"),
+      offer: "Unserviceable",
+      tag: false,
+      takeToPath: '/home-services/service=Carpentary',
+    },
+    {
+      id: "Plumbing",
+      src: require("../assets/imageService/plumbing.png"),
+      offer: "Unserviceable",
+      tag: false,
+      takeToPath: '/home-services/service=Plumbing',
+    },
+    {
+      id: "Pest Control",
+      src: require("../assets/imageService/pest_control.png"),
+      offer: "Unserviceable",
+      tag: false,
+    },
+  ],
+  'ghaziabad': [
+    // fixed data
+    {
+      id: "Painting",
+      src: require("../assets/imageService/painting.png"),
+      offer: "Flat 25% off",
+      tag: true,
+      takeToPath: '/home-services/service=Home Painting',
+
+    },
+    {
+      id: "Cleaning",
+      src: require("../assets/imageService/cleaning.png"),
+      offer: "Upto 50% off",
+      tag: true,
+      takeToPath: '/home-services/service=Home Cleaning',
+    },
+    {
+      id: "Home Sanitization",
+      src: require("../assets/imageService/home-sanitization.png"),
+      offer: "Upto 25% off",
+      tag: true,
+      takeToPath: '/home-services/service=Home Sanitization',
+
+    },
+    {
+      id: "AC Repair",
+      src: require("../assets/imageService/ac_repair.png"),
+      offer: "Upto 30% off",
+      tag: true,
+      takeToPath: '/home-services/service=AC-Repair',
+
+    },
+    // variable data
+    { id: "Plumbing", src: require("../assets/imageService/plumbing.png"), offer: "", tag: true, takeToPath: '/home-services/service=Plumbing', },
+    {
+      id: "Electrician",
+      src: require("../assets/imageService/electricity.png"),
+      offer: "",
+      tag: true,
+      takeToPath: '/home-services/service=Electrician',
+
+    },
+    {
+      id: "Carpentary",
+      src: require("../assets/imageService/carpentary.png"),
+      offer: "Unserviceable",
+      tag: false,
+      takeToPath: '/home-services/service=Carpentary',
+    },
+    {
+      id: "Pest Control",
+      src: require("../assets/imageService/pest_control.png"),
+      offer: "Unserviceable",
+      tag: false,
+    },
+  ],
+  'faridabad': [
+    // fixed data
+    {
+      id: "Painting",
+      src: require("../assets/imageService/painting.png"),
+      offer: "Flat 25% off",
+      tag: true,
+      takeToPath: '/home-services/service=Home Painting',
+
+    },
+    {
+      id: "Cleaning",
+      src: require("../assets/imageService/cleaning.png"),
+      offer: "Upto 50% off",
+      tag: true,
+      takeToPath: '/home-services/service=Home Cleaning',
+    },
+    {
+      id: "Home Sanitization",
+      src: require("../assets/imageService/home-sanitization.png"),
+      offer: "Upto 25% off",
+      tag: true,
+      takeToPath: '/home-services/service=Home Sanitization',
+
+    },
+    {
+      id: "AC Repair",
+      src: require("../assets/imageService/ac_repair.png"),
+      offer: "Upto 30% off",
+      tag: true,
+      takeToPath: '/home-services/service=AC-Repair',
+
+    },
+    // variable data
+    {
+      id: "Electrician",
+      src: require("../assets/imageService/electricity.png"),
+      offer: "",
+      tag: true,
+      takeToPath: '/home-services/service=Electrician',
+
+    },
+    {
+      id: "Carpentary",
+      src: require("../assets/imageService/carpentary.png"),
+      offer: "Unserviceable",
+      tag: false,
+      takeToPath: '/home-services/service=Carpentary',
+    },
+    {
+      id: "Plumbing",
+      src: require("../assets/imageService/plumbing.png"),
+      offer: "Unserviceable",
+      tag: false,
+      takeToPath: '/home-services/service=Plumbing',
+    },
+    {
+      id: "Pest Control",
+      src: require("../assets/imageService/pest_control.png"),
+      offer: "Unserviceable",
+      tag: false,
+    },
+  ],
+
+
+}
 export const FAQData = [
   {
     ques: "Why choose Housedeck Home Services?",
@@ -1103,7 +1097,7 @@ export const MoveInReadyHomeServices = [
 
 export const FullHouseDeepCleaning = {
   imgUrl: require('../assets/other/deepHomeCleaning.jpeg'),
-    innerData: [
+  innerData: [
     { type: '1 RK Full House Deep Cleaning', price: '3349' },
     { type: '1 BHK Full House Deep Cleaning', price: '3999' },
     { type: '2 BHK Full House Deep Cleaning', price: '4399' },
@@ -1116,35 +1110,35 @@ export const FullHouseDeepCleaning = {
     { type: '4 BHK Full House Deep Cleaning (Duplex)', price: '8499' },
     { type: '5 BHK Full House Deep Cleaning (Duplex)', price: '9549' },
   ],
-    quotes: [{ text: 'Floor Scubbing machine' }, { text: 'Government approved chemicals' }, { text: 'Hard water stains can be removed upto 75%' }, { text: 'Also includes balcony and utility areas' }]
+  quotes: [{ text: 'Floor Scubbing machine' }, { text: 'Government approved chemicals' }, { text: 'Hard water stains can be removed upto 75%' }, { text: 'Also includes balcony and utility areas' }]
 }
 
 export const FullHouseBasicCleaning = {
   imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'),
-    innerData: [
+  innerData: [
     { type: '1 BHK Full House Deep Cleaning', price: '1899' },
     { type: '2 BHK Full House Deep Cleaning', price: '2299' },
     { type: '3 BHK Full House Deep Cleaning', price: '2599' },
     { type: '4 BHK Full House Deep Cleaning', price: '3549' },
   ],
-    quotes: [{ text: 'Government approved chemicals' }, { text: 'Descaling of floors, tiles, WC, Wash Basin, taps, fixtures' }, { text: ' Hard water stains can be removed upto 75%' }]
+  quotes: [{ text: 'Government approved chemicals' }, { text: 'Descaling of floors, tiles, WC, Wash Basin, taps, fixtures' }, { text: ' Hard water stains can be removed upto 75%' }]
 }
 
 export const BathroomCleaning = {
   imgUrl: require('../assets/other/bathroomCleaning.jpg'),
-    innerData: [
+  innerData: [
     { type: 'Bathroom Cleaning (1 No.)', price: '448' },
     { type: 'Bathroom Cleaning (2 No.)', price: '898' },
     { type: 'Bathroom Cleaning (3 No.)', price: '1399' },
     { type: 'Bathroom Cleaning (4 No.)', price: '1798' },
     { type: 'Bathroom Cleaning (5 No.)', price: '2249' },
   ],
-    quotes: [{ text: 'Government approved chemicals' }, { text: 'Descaling of floors, tiles, WC, Wash Basin, taps, fixtures' }, { text: ' Hard water stains can be removed upto 75%' }]
+  quotes: [{ text: 'Government approved chemicals' }, { text: 'Descaling of floors, tiles, WC, Wash Basin, taps, fixtures' }, { text: ' Hard water stains can be removed upto 75%' }]
 }
 
 export const SofaCleaning = {
   imgUrl: require('../assets/other/sofaCleaning.jpg'),
-    innerData: [
+  innerData: [
     { type: 'Sofa Cleaning (2 No.)', price: '318' },
     { type: 'Sofa Cleaning (3 No.)', price: '398' },
     { type: 'Sofa Cleaning (4 No.)', price: '649' },
@@ -1157,23 +1151,23 @@ export const SofaCleaning = {
     { type: 'Cushion Cleaning (6-10 No.)', price: '219' },
     { type: 'Cushion Cleaning (1-5 No.)', price: '158' },
   ],
-    quotes: [{ text: 'Shampooing of sofa seats' }, { text: 'Dry and wet vacuuming' }, { text: 'Cushions not included' }]
+  quotes: [{ text: 'Shampooing of sofa seats' }, { text: 'Dry and wet vacuuming' }, { text: 'Cushions not included' }]
 }
 
 export const KitchenCleaning = {
   imgUrl: require('../assets/other/kitchenCleaning.jpg'),
-    innerData: [
+  innerData: [
     { type: 'Full Kitchen with Chimney', price: '1498' },
     { type: 'Full Kitchen without Chimney', price: '1298' },
     { type: 'Chimney', price: '959' },
     { type: 'Trolley & Shelf', price: '999' },
   ],
-    quotes: [{ text: 'Floor Scubbing machine' }, { text: 'Cleaning of gas stoves, tiles, slabs' }, { text: 'Exterior Degreasing of chimney and exhaust fan' }, { text: 'Chimney filter cleaning' }]
+  quotes: [{ text: 'Floor Scubbing machine' }, { text: 'Cleaning of gas stoves, tiles, slabs' }, { text: 'Exterior Degreasing of chimney and exhaust fan' }, { text: 'Chimney filter cleaning' }]
 }
 
 export const MiniServices = {
   imgUrl: require('../assets/other/miniServices.jpeg'),
-    innerData: [
+  innerData: [
     { type: 'Mirror Cleaning', price: '29' },
     { type: 'Ceiling Fan Cleaning', price: '39' },
     { type: 'Window Cleaning', price: '139' },
@@ -1192,7 +1186,7 @@ export const MiniServices = {
     { type: 'Mattress Cleaning', price: '349' },
     { type: 'Curtains Cleaning (Set of 2)', price: '89' }
   ],
-    quotes: [{ text: 'Floor Scubbing machine' }, { text: 'Government approved chemicals' }, { text: 'Hard water stains can be removed upto 75%' }, { text: 'Also includes balcony and utility areas' }]
+  quotes: [{ text: 'Floor Scubbing machine' }, { text: 'Government approved chemicals' }, { text: 'Hard water stains can be removed upto 75%' }, { text: 'Also includes balcony and utility areas' }]
 }
 
 export const CleaningServicesData = [

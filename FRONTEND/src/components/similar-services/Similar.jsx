@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { mainPageBottomWidth } from '../../constants/data';
+import { mainPageBottomWidth, SearchBar } from '../../constants/data';
 import Chip from '@mui/material/Chip';
 import { LoginContext } from '../../context/Context';
 
@@ -11,8 +11,9 @@ const TopHeadStyle = {
   fontSize: '22px',
   padding: '10px 10px',
 }
-export default function Similar({ options }) {
+export default function Similar() {
   const { city } = React.useContext(LoginContext)
+  const currentCity = city.replace(/ /g, '_').toLowerCase()
   return (
     <div style={{
       background: 'hsla(0,0%,92.9%,.4)',
@@ -29,7 +30,7 @@ export default function Similar({ options }) {
 
           <Box sx={{ marginTop: '10px', }}>
             {
-              options.map(data => {
+              SearchBar[currentCity].map(data => {
                 const dataAll = `${data.value} in ${city}`
                 return (
                   <Chip label={dataAll} key={dataAll} sx={{ m: 1, backgroundColor: '#e8e8e8', borderRadius: '7px', height: '23px' }} component="a" href="#" clickable />

@@ -1,16 +1,22 @@
 import React, { useState } from 'react'
 import { Box, Link, Divider, Input } from '@mui/material';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
+import { LoginContext } from '../../context/Context';
+import { SearchBar } from '../../constants/data';
 
-export default function Search({ options, width }) {
+export default function Search({ width }) {
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
   const [open, setOpen] = useState(false);
+  // const city = 'Greater Noida'
+  const {city} = React.useContext(LoginContext)
+  const currentCity = city.replace(/ /g,'_').toLowerCase()
+
 
   const handleFilter = (event) => {
     const searchWord = event.target.value;
     setWordEntered(searchWord);
-    const newFilter = options.filter((item) => {
+    const newFilter = SearchBar[currentCity].filter((item) => {
       return item.value.toLowerCase().includes(searchWord.toLowerCase())
     });
 
@@ -25,7 +31,6 @@ export default function Search({ options, width }) {
     setWordEntered('')
     setFilteredData([]);
   }
-
   return (
 
     <Box sx={{ width: width, background: 'white',boxShadow:2 }} >
@@ -66,7 +71,7 @@ export default function Search({ options, width }) {
         display: open ? 'grid' : 'none',
         boxShadow: 2
       }}>
-        {options.map(item =>
+        {SearchBar[currentCity].map(item =>
           <Link key={item.url} href={item.url} sx={{
             padding: '10px',
             textDecoration: 'none',

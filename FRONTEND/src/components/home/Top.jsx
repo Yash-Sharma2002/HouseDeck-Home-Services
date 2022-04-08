@@ -2,18 +2,12 @@ import React from 'react'
 import { Link } from '@mui/material';
 import { useMediaQuery, Box, Button } from '@mui/material';
 import AddIcCallIcon from '@mui/icons-material/AddIcCall';
-import {
-  searchBarOptionsBangalore, searchBarOptionsNoida, searchBarOptionsChennai,
-  searchBarOptionsDelhi, searchBarOptionsGN, searchBarOptionsGurgaon, searchBarOptionsPune, searchBarOptionsMumbai,
-  searchBarOptionsFaridabad, searchBarOptionsGhaziabad, searchBarOptionsHyderabad, IconHeaderImage
-} from '../../constants/data';
-import { LoginContext } from '../../context/Context'
+import { IconHeaderImage } from '../../constants/data';
 import Search from './Search'
 
-const CitySelector = React.lazy(()=>import('../city-selector/CitySelector'))
+const CitySelector = React.lazy(() => import('../city-selector/CitySelector'))
 
 export default function Top() {
-  const { city } = React.useContext(LoginContext)
   const xlMax = useMediaQuery('(max-width:2000px)');
   const xlMin = useMediaQuery('(min-width:900px)');
   const mdMax = useMediaQuery('(max-width:900px)');
@@ -57,18 +51,7 @@ export default function Top() {
             padding: '7rem 100px 3rem 100px',
             display: 'flex', justifyContent: 'space-between'
           }}>
-            {city === "Bangalore" && <Search options={searchBarOptionsBangalore} width={'500px'} />}
-            {city === "Noida" && <Search width={'500px'} options={searchBarOptionsNoida} />}
-            {city === "Chennai" && <Search width={'500px'} options={searchBarOptionsChennai} />}
-            {city === "Delhi" && <Search width={'500px'} options={searchBarOptionsDelhi} />}
-            {city === "Greater Noida" && <Search width={'500px'} options={searchBarOptionsGN} />}
-            {city === "Gurgaon" && <Search width={'500px'} options={searchBarOptionsGurgaon} />}
-            {city === "Pune" && <Search width={'500px'} options={searchBarOptionsPune} />}
-            {city === "Faridabad" && <Search width={'500px'} options={searchBarOptionsFaridabad} />}
-            {city === "Ghaziabad" && <Search width={'500px'} options={searchBarOptionsGhaziabad} />}
-            {city === "Hyderabad" && <Search width={'500px'} options={searchBarOptionsHyderabad} />}
-            {city === "Mumbai" && <Search width={'500px'} options={searchBarOptionsMumbai} />}
-            {city === " " && <Search width={'500px'} options={searchBarOptionsBangalore} />}
+            <Search width={'500px'} />
 
             <CitySelector style={style1} />
           </Box>
@@ -106,21 +89,7 @@ export default function Top() {
                   </Button></Link>
               </Box>
             </Box>
-
-
-            {city === "Bangalore" && <Search width={'100%'} options={searchBarOptionsBangalore} />}
-            {city === "Noida" && <Search width={'100%'} options={searchBarOptionsNoida} />}
-            {city === "Chennai" && <Search width={'100%'} options={searchBarOptionsChennai} />}
-            {city === "Delhi" && <Search width={'100%'} options={searchBarOptionsDelhi} />}
-            {city === "Greater Noida" && <Search width={'100%'} options={searchBarOptionsGN} />}
-            {city === "Gurgaon" && <Search width={'100%'} options={searchBarOptionsGurgaon} />}
-            {city === "Pune" && <Search width={'100%'} options={searchBarOptionsPune} />}
-            {city === "Faridabad" && <Search width={'100%'} options={searchBarOptionsFaridabad} />}
-            {city === "Ghaziabad" && <Search width={'100%'} options={searchBarOptionsGhaziabad} />}
-            {city === "Hyderabad" && <Search width={'100%'} options={searchBarOptionsHyderabad} />}
-            {city === "Mumbai" && <Search width={'100%'} options={searchBarOptionsMumbai} />}
-            {city === " " && <Search width={'100%'} options={searchBarOptionsBangalore} />}
-
+            <Search width={'100%'} />
           </Box>
         </div>
       )}
@@ -158,21 +127,7 @@ export default function Top() {
 
               </Box>
             </Box>
-
-
-            {city === "Bangalore" && <Search width={'100%'} options={searchBarOptionsBangalore} />}
-            {city === "Noida" && <Search width={'100%'} options={searchBarOptionsNoida} />}
-            {city === "Chennai" && <Search width={'100%'} options={searchBarOptionsChennai} />}
-            {city === "Delhi" && <Search width={'100%'} options={searchBarOptionsDelhi} />}
-            {city === "Greater Noida" && <Search width={'100%'} options={searchBarOptionsGN} />}
-            {city === "Gurgaon" && <Search width={'100%'} options={searchBarOptionsGurgaon} />}
-            {city === "Pune" && <Search width={'100%'} options={searchBarOptionsPune} />}
-            {city === "Faridabad" && <Search width={'100%'} options={searchBarOptionsFaridabad} />}
-            {city === "Ghaziabad" && <Search width={'100%'} options={searchBarOptionsGhaziabad} />}
-            {city === "Hyderabad" && <Search width={'100%'} options={searchBarOptionsHyderabad} />}
-            {city === "Mumbai" && <Search width={'100%'} options={searchBarOptionsMumbai} />}
-            {city === " " && <Search width={'100%'} options={searchBarOptionsBangalore} />}
-
+            <Search width={'100%'} />
           </Box>
         </div>)}
     </>

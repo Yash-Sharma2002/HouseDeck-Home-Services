@@ -5,7 +5,7 @@ This is the list of the To-DO tasks needed for the website line by line
 --------------------------------------------- For Frontend -------------------------------------
 
 
-1. Add box shadow to the searchbar.
+
 
 2. Use good carousel in the components.
 
@@ -27,11 +27,7 @@ This is the list of the To-DO tasks needed for the website line by line
 
 11. Also try to make resend otp for login or signup.
 
-12. Remove appliance repair from all the tags.
 
-13. Remove unnecessary lines of code and imporvize the data for the searchbar for we have to send many things to it.
-
-14. Add getting and setting items to the context and also remove account and set acount from header because it is not needed.
 
 
 -------------------------------------------- For Backend. --------------------------------------
@@ -45,7 +41,7 @@ This is the list of the To-DO tasks needed for the website line by line
 
 ------------------------------------------- Things to research. ----------------------------------
 
-1. How to make url like `${all_URL}:id` for this so i dont have to make several pages so i can add service pages to it.
+
 
 2. How to upload images in mongodb.
 
