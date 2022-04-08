@@ -1,20 +1,5 @@
 This is the list of the To-DO tasks needed for the website line by line
 
-------------- After Checking it from long time. These are baic tasks that need to do. -------------
-
-
-1. Add all the images in the src folder by making - assets - folder. 
-   Also, change the address for them in the src directory.
-
-2. Add lazy loading in the required components and the images for a better experience.
-
-3. Change the folders and files' names by giving them legit names.
-   Also, merge some files  for making lesser files.
-
-4. Optimize the code in every file because I have seen that unnecessary code is written in many files.
-
-
-
 
 
 --------------------------------------------- For Frontend -------------------------------------

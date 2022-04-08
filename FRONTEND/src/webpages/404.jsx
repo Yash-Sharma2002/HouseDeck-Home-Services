@@ -8,7 +8,7 @@ export default function Unknown() {
           ERROR - 404 
         </Box>
         <Box sx={{textAlign:'center'}}>
-          <img src="../logos/404.webp" alt="Not Found" />
+          <img src={require('../assets/logos/404.webp')} alt="Not Found" />
         </Box>
       <Box sx={{ textAlign: 'center' }}>
         <Box sx={{ textAlign: 'center',  lineHeight: 0, }}>

@@ -11,7 +11,7 @@ import { LoginContext } from '../../context/Context';
 
 
 
-const PostLogo = <img src='../logos/houseDeck_copy1.png' style={{width: '10rem'}} alt="HouseDeck" />
+const PostLogo = <img src={require('../../assets/logos/houseDeck_copy1.png')} style={{width: '10rem'}} alt="HouseDeck" />
 
 
 

@@ -3,38 +3,17 @@ import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { v4 as uuidV4 } from 'uuid'
+// import { v4 as uuidV4 } from 'uuid'
 import { useMediaQuery } from '@mui/material'
-import { checkPaymentStatus, makePayments } from '../../Api/paymentCashfreeApi'
-import { LoginContext } from '../../context/Context'
+// import { checkPaymentStatus, makePayments } from '../../Api/paymentCashfreeApi'
+// import { LoginContext } from '../../context/Context'
 
 
 function Content({ padding, padding2, display, displayForButton }) {
-    const { setMessage, setMessageType, setShow } = React.useContext(LoginContext)
+    // const { setMessage, setMessageType, setShow,userData } = React.useContext(LoginContext)
 
-    function loadUserData() {
-        try {
-            const serializedState = localStorage.getItem('userdata');
-            if (serializedState === null) {
-                return '';
-            }
-            return JSON.parse(serializedState);
-        } catch (err) {
-            localStorage.setItem("userdata", JSON.stringify({
-                Number: '',
-                Username: ''
-            }))
-            const serializedState = localStorage.getItem('userdata');
-            if (serializedState === null) {
-                return '';
-            }
-            return JSON.parse(serializedState);
-        }
-
-    }
 
     // const CreateOrder = async (name, price) => {
-    //     const userData = loadUserData()
     //     const orderId = uuidV4()
     //     const data = {
     //         order_id: `OrderId_${orderId}`,
@@ -140,7 +119,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                 <Card sx={{ width: '33%', borderRadius: 4, height: '450px', margin: '0px 10px', background: "rgb(234,253,247)" }}>
                     <Box sx={{ textAlign: 'center' }}>
                         <Box sx={{
-                            background: "url(../other/kitchenCleaning.png)",
+                            background: `url(${require('../../assets/other/kitchenCleaning.png')})`,
                             backgroundSize: 'cover',
                             height: '195px',
                             objectFit: 'cover',
@@ -184,7 +163,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                 <Card sx={{ width: '33%', borderRadius: 4, height: '500px', margin: '0px 10px', background: "rgb(234,253,247)" }}>
                     <Box sx={{ textAlign: 'center' }}>
                         <Box sx={{
-                            background: "url(../other/bathroomCleaning.png)",
+                            background: `url(${require('../../assets/other/bathroomCleaning.png')})`,
                             backgroundSize: 'cover',
                             height: '220px',
                             objectFit: 'cover',
@@ -228,7 +207,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                 <Card sx={{ width: '33%', borderRadius: 4, height: '450px', margin: '0px 10px', background: "rgb(234,253,247)" }}>
                     <Box sx={{ textAlign: 'center' }}>
                         <Box sx={{
-                            background: "url(../other/sofaCleaning.png)",
+                            background: `url(${require('../../assets/other/sofaCleaning.png')})`,
                             backgroundSize: 'cover',
                             height: '195px',
                             objectFit: 'cover',
@@ -298,7 +277,7 @@ function SMContent({ displayForButton }) {
                 <Card sx={{ maxWidth: 'unset', borderRadius: 4, marginTop: '25px', height: '450px', background: "rgb(234,253,247)" }}>
                     <Box sx={{ textAlign: 'center' }}>
                         <Box sx={{
-                            background: "url(../other/kitchenCleaning.png)",
+                            background: `url(${require('../../assets/other/kitchenCleaning.png')})`,
                             backgroundSize: 'cover',
                             height: '195px',
                             objectFit: 'cover',
@@ -342,7 +321,7 @@ function SMContent({ displayForButton }) {
                 <Card sx={{ maxWidth: 'unset', borderRadius: 4, marginTop: '25px', height: '450px', background: "rgb(234,253,247)" }}>
                     <Box sx={{ textAlign: 'center' }}>
                         <Box sx={{
-                            background: "url(../other/bathroomCleaning.png)",
+                            background: `url(${require('../../assets/other/bathroomCleaning.png')})`,
                             backgroundSize: 'cover',
                             height: '220px',
                             objectFit: 'cover',
@@ -387,7 +366,7 @@ function SMContent({ displayForButton }) {
                 <Card sx={{ maxWidth: 'unset', borderRadius: 4, marginTop: '25px', height: '450px', background: "rgb(234,253,247)" }}>
                     <Box sx={{ textAlign: 'center' }}>
                         <Box sx={{
-                            background: "url(../other/sofaCleaning.png)",
+                            background: `url(${require('../../assets/other/sofaCleaning.png')})`,
                             backgroundSize: 'cover',
                             height: '195px',
                             objectFit: 'cover',

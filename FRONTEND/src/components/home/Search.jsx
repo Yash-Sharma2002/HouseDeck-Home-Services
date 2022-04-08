@@ -27,8 +27,8 @@ export default function Search({ options, width }) {
   }
 
   return (
-        
-        <Box sx={{ width: width, background: 'white'}} >
+
+    <Box sx={{ width: width, background: 'white' }} >
       <Box sx={{ display: 'flex', alignItems: 'center', borderRadius: '4px', justifyContent: 'space-evenly', height: '50px!important' }} >
         <Input
           placeholder="Search..."
@@ -40,7 +40,7 @@ export default function Search({ options, width }) {
             border: 'none!important',
             userSelect: 'none',
             width: '90%',
-            paddingLeft:'10px',
+            paddingLeft: '10px',
             '&::before': {
               border: 'none',
               content: '""',
@@ -53,27 +53,27 @@ export default function Search({ options, width }) {
         />
         <Divider orientation='vertical' sx={{ color: '#c5c5c5' }} flexItem />
         {
-          open ? <ExpandLess sx={{ textAlign: 'center',cursor:'pointer' }} onClick={handleClick} />
-            : <ExpandMore sx={{ textAlign: 'center',cursor:'pointer' }} onClick={handleClick} />
+          open ? <ExpandLess sx={{ textAlign: 'center', cursor: 'pointer' }} onClick={handleClick} />
+            : <ExpandMore sx={{ textAlign: 'center', cursor: 'pointer' }} onClick={handleClick} />
         }
 
       </Box>
       <Box sx={{
-        width: width,
-        height: 'auto',
+        width:width,
         backgroundColor: 'white',
         position: 'absolute',
         zIndex: '1000',
         display: open ? 'grid' : 'none',
+        boxShadow: 2
       }}>
         {options.map(item =>
           <Link key={item.url} href={item.url} sx={{
             padding: '10px',
+            width: width,
             textDecoration: 'none',
             color: 'black',
             '&:hover': {
               background: '#24C6DC',
-              // color:'white'
             }
           }}>
             {item.value}
@@ -81,10 +81,11 @@ export default function Search({ options, width }) {
         )}
       </Box>
 
+
+
       {filteredData.length !== 0 && (
         <Box sx={{
           width: width,
-          height: 'auto',
           position: 'absolute',
           backgroundColor: 'white',
           display: 'grid',
@@ -97,12 +98,13 @@ export default function Search({ options, width }) {
               color: 'black',
               '&:hover': {
                 background: '#24C6DC',
-                // color:'white'
               }
             }}>{item.value} </Link>
           )}
         </Box>
       )}
+
+
     </Box>
   )
 }

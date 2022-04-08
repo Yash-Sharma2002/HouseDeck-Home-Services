@@ -17,7 +17,6 @@ import Footer from '../components/foot/Footer';
 import Top from '../components/home/Top';
 import Recommended from '../components/overall/Recommended';
 import Faq from '../components/home/Faq';
-// import Review from '../components/overall/Review';
 
 
 const Services = React.lazy(() => import('../components/home/Services'))
@@ -65,7 +64,7 @@ export default function Home() {
         <img style={{
           width: '97%',
           height: 'unset',
-        }} src="../other/bannerOfMiddle.png" alt="Banner" />
+        }} src={require('../assets/other/bannerOfMiddle.png')} alt="Banner" />
       </Box>
 
       <SubscribeCard displayForButton={'inline'} />
