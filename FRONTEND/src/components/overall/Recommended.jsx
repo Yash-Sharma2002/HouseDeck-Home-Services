@@ -19,16 +19,17 @@ const Content = () => {
         }}>
             <Typography variant='h4' style={TopHeadQuestions}>Recommended Services</Typography>
             <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-                {RecommendedServicesData .map(data =>
+                {RecommendedServicesData.map(data =>
 
                     <Link key={data.title} href={data.url} sx={{ textDecoration: 'none', width: '30%', cursor: 'pointer', padding: '10px 0px' }}>
                         <Box
                             sx={{
                                 backgroundImage: `url(${data.img})`,
                                 minWidth: '200px',
-                                height: '100px',
+                                height: '200px',
                                 backgroundSize: 'cover',
-                                borderRadius: '4px'
+                                borderRadius: '4px',
+                                boxShadow:1
                             }}>
                         </Box>
                         <Box sx={{ marginTop: '15px' }}>
@@ -83,7 +84,7 @@ function SMRecommended() {
         }}>
 
             <div style={{ marginTop: '40px' }}>
-                {RecommendedServicesData .map(data =>
+                {RecommendedServicesData.map(data =>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px', borderBottom: '1px solid #e0e0e0', }}>
                         <Box>
                             <Typography sx={{

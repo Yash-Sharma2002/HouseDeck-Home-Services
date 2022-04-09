@@ -74,8 +74,8 @@ function Content({ padding, padding2, display, displayForButton }) {
     // }
 
 
-    const CreateOrder=(name,price)=>{
-        console.log(name,price);
+    const CreateOrder = (name, price) => {
+        console.log(name, price);
     }
     return (
         <div id="subscription-plans" style={{ padding: padding }}>
@@ -124,13 +124,17 @@ function Content({ padding, padding2, display, displayForButton }) {
                             height: '195px',
                             objectFit: 'cover',
                             backgroundPosition: 'center',
+                            // filter: 'blur(3px)'
                         }}>
+
+                        {/* </Box>
+                        <Box> */}
                             <Typography sx={{
                                 fontFamily: "Hubballi, cursive",
                                 textAlign: 'center',
                                 fontWeight: '900',
                                 fontSize: '55px',
-                                pt: 5
+                                pt: 5,
                             }}>
                                 &#8377;3350
                                 <p style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</p>
@@ -153,7 +157,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                                 background: 'rgb(122,220,180)',
                                 color: 'white'
                             }
-                        }} onClick={()=>CreateOrder('Kitchen Deep Cleaning - [For 3 months]', '3350')}>
+                        }} onClick={() => CreateOrder('Kitchen Deep Cleaning - [For 3 months]', '3350')}>
                             Order Now
                         </Button>
                     </Box>
