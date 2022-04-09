@@ -57,10 +57,10 @@ BootstrapDialogTitle.propTypes = {
 
 
 
-export default function CitySelector({style}) {
+export default function CitySelector({ style }) {
 
-  const {city,handleData} = React.useContext(LoginContext)
-  const [open, setOpen] = React.useState(true);
+  const { city, handleData } = React.useContext(LoginContext)
+  const [open, setOpen] = React.useState(false);
 
   const fullScreen = useMediaQuery('(max-width:450px)');
   const xlMax = useMediaQuery('(max-width:2000px)');
@@ -82,13 +82,16 @@ export default function CitySelector({style}) {
     setOpen(!open);
   };
 
+  React.useEffect(() => {
+    if (!city) return setOpen(true)
+  }, [])
 
   return (
     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-      <Box sx={{boxShadow:2}} >
+      <Box sx={{ boxShadow: 2 }} >
         <Box sx={style} onClick={handleClickOpen}>
 
-          <Box sx={{fontFamily:'Fredoka'}}>{city}</Box><ArrowDropDownIcon />
+          <Box sx={{ fontFamily: 'Fredoka' }}>{city}</Box><ArrowDropDownIcon />
           {xlMax && xlMin && (
 
             <BootstrapDialog
@@ -96,7 +99,7 @@ export default function CitySelector({style}) {
               onClose={handleClose}
               open={open}
               maxWidth={false}
-              sx={{ width:'650px',margin:'0px auto',height:'fit-content' }}
+              sx={{ width: '650px', margin: '0px auto', height: 'fit-content' }}
             >
               <BootstrapDialogTitle sx={{ fontSize: '18px', fontWeight: '600' }} id="customized-dialog-title" onClose={handleClose}>
                 Select Your City
@@ -106,7 +109,7 @@ export default function CitySelector({style}) {
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', padding: '15px' }}>
                   {CitiesImg.map(data =>
                     <>
-                      <Button key={data.id} sx={{ width: '25%', display: 'block', color: 'black',textTransform:'none', userSelect: 'none', textAlign: 'center', padding: '20px 0px', cursor: 'pointer', }} onClick={() => handleData(data.name)}>
+                      <Button key={data.id} sx={{ width: '25%', display: 'block', color: 'black', textTransform: 'none', userSelect: 'none', textAlign: 'center', padding: '20px 0px', cursor: 'pointer', }} onClick={() => handleData(data.name)}>
 
                         <img style={{ width: '50px', height: '50px' }} src={data.url} alt={data.id} />
                         <Typography sx={{ fontSize: '14px' }}>{data.name}</Typography>
@@ -126,7 +129,7 @@ export default function CitySelector({style}) {
               aria-labelledby="customized-dialog-title"
               open={open}
               maxWidth={false}
-              sx={{ margin:'0px auto',height:'fit-content'}}
+              sx={{ margin: '0px auto', height: 'fit-content' }}
             >
               <BootstrapDialogTitle sx={{ fontSize: '18px', fontWeight: '600' }} id="customized-dialog-title" onClose={handleClose}>
                 Select Your City
@@ -135,7 +138,7 @@ export default function CitySelector({style}) {
               <DialogContent dividers>
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', }}>
                   {CitiesImg.map(data =>
-                    <Button key={data.id} sx={{ width: '33%', display: 'block', color: 'black',textTransform:'none', userSelect: 'none', textAlign: 'center', padding: '15px 0px', cursor: 'pointer', }} onClick={() => handleData(data.name)}>
+                    <Button key={data.id} sx={{ width: '33%', display: 'block', color: 'black', textTransform: 'none', userSelect: 'none', textAlign: 'center', padding: '15px 0px', cursor: 'pointer', }} onClick={() => handleData(data.name)}>
 
                       <img style={{ width: '50px', height: '50px' }} src={data.url} alt={data.id} />
                       <Typography sx={{ fontSize: '14px' }}>{data.name}</Typography>
@@ -163,7 +166,7 @@ export default function CitySelector({style}) {
               <DialogContent dividers>
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', padding: '15px' }}>
                   {CitiesImg.map(data =>
-                    <Button key={data.id} sx={{ width: '50%', display: 'block', color: 'black',textTransform:'none', userSelect: 'none', textAlign: 'center', padding: '20px 0px', cursor: 'pointer', }} onClick={() => handleData(data.name)}>
+                    <Button key={data.id} sx={{ width: '50%', display: 'block', color: 'black', textTransform: 'none', userSelect: 'none', textAlign: 'center', padding: '20px 0px', cursor: 'pointer', }} onClick={() => handleData(data.name)}>
 
                       <img style={{ width: '50px', height: '50px' }} src={data.url} alt={data.id} />
                       <Typography sx={{ fontSize: '14px' }}>{data.name}</Typography>

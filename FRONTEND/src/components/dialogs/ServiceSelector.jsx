@@ -150,6 +150,18 @@ function Content({ options, setOptions, open, setOpen, width }) {
 
 
     const CreateOrder = async () => {
+        if(!date) {
+            setShow(true)
+            setMessage('Enter Date.')
+            setMessageType('error')
+            return
+        }
+        if(!time) {
+            setShow(true)
+            setMessage('Enter Time.')
+            setMessageType('error')
+            return
+        }
         const userData = loadUserData()
         const data = {
             order_id: `OrderId_${orderId}`,

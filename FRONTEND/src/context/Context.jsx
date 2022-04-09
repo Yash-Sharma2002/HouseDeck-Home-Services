@@ -28,6 +28,8 @@ const ContextProvider = ({ children }) => {
         setMessage('')
         setMessageType('')
     }
+    
+    
 
     function loadUserData() {
         try {

@@ -7,19 +7,18 @@ This is the list of the To-DO tasks needed for the website line by line
 
 1. Add images sent by tanya
 
-2. Use good carousel in the components.
+
 
 3. Add payments to the subscription card.
 
 4. Make about us page and the profile page.
 
-5. When the service is not available in the particular redirect to home page.
+
 
 6. Also add random service from the menu sidebar of the destop.
 
 7. Also optimize the login in reposive header in main page ad dropdown to it.
 
-8. Make date and time also the location required by using if statement.
 
 9. Also make available to change date and time of the appointment when in the draft messages.
 

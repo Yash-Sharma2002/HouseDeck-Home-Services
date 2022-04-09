@@ -137,7 +137,7 @@ export const SearchBar = {
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
     { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
-    { value: "AC Repair", url: '/home-services/service=AC-Repair' },
+    { value: "AC Repair", url: '/home-services/service=AC Repair' },
   ],
   'mumbai': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
@@ -170,13 +170,13 @@ export const SearchBar = {
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
     { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
-    { value: "AC Repair", url: '/home-services/service=AC-Repair' },
+    { value: "AC Repair", url: '/home-services/service=AC Repair' },
   ],
   'gurgaon': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
     { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
-    { value: "AC Repair", url: '/home-services/service=AC-Repair' },
+    { value: "AC Repair", url: '/home-services/service=AC Repair' },
   ],
   'ghaziabad': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
@@ -191,7 +191,7 @@ export const SearchBar = {
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
     { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
-    { value: "AC Repair", url: '/home-services/service=AC-Repair' },
+    { value: "AC Repair", url: '/home-services/service=AC Repair' },
   ],
   'faridabad': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
@@ -243,7 +243,7 @@ export const ServiceWithImage = {
       src: require("../assets/imageService/ac_repair.png"),
       offer: "Upto 30% off",
       tag: true,
-      takeToPath: '/home-services/service=AC-Repair',
+      takeToPath: '/home-services/service=AC Repair',
 
     },
 
@@ -305,7 +305,7 @@ export const ServiceWithImage = {
       src: require("../assets/imageService/ac_repair.png"),
       offer: "Upto 30% off",
       tag: true,
-      takeToPath: '/home-services/service=AC-Repair',
+      takeToPath: '/home-services/service=AC Repair',
 
     },
 
@@ -363,7 +363,7 @@ export const ServiceWithImage = {
       src: require("../assets/imageService/ac_repair.png"),
       offer: "Upto 30% off",
       tag: true,
-      takeToPath: '/home-services/service=AC-Repair',
+      takeToPath: '/home-services/service=AC Repair',
 
     },
     // variable data
@@ -420,7 +420,7 @@ export const ServiceWithImage = {
       src: require("../assets/imageService/ac_repair.png"),
       offer: "Upto 30% off",
       tag: true,
-      takeToPath: '/home-services/service=AC-Repair',
+      takeToPath: '/home-services/service=AC Repair',
 
     },
     // variable data
@@ -477,7 +477,7 @@ export const ServiceWithImage = {
       src: require("../assets/imageService/ac_repair.png"),
       offer: "Upto 30% off",
       tag: true,
-      takeToPath: '/home-services/service=AC-Repair',
+      takeToPath: '/home-services/service=AC Repair',
 
     },
     // variable data
@@ -539,7 +539,7 @@ export const ServiceWithImage = {
       src: require("../assets/imageService/ac_repair.png"),
       offer: "Upto 30% off",
       tag: true,
-      takeToPath: '/home-services/service=AC-Repair',
+      takeToPath: '/home-services/service=AC Repair',
 
     },
     // variable data
@@ -601,7 +601,7 @@ export const ServiceWithImage = {
       src: require("../assets/imageService/ac_repair.png"),
       offer: "Upto 30% off",
       tag: true,
-      takeToPath: '/home-services/service=AC-Repair',
+      takeToPath: '/home-services/service=AC Repair',
 
     },
     // variable data
@@ -663,7 +663,7 @@ export const ServiceWithImage = {
       src: require("../assets/imageService/ac_repair.png"),
       offer: "Upto 30% off",
       tag: true,
-      takeToPath: '/home-services/service=AC-Repair',
+      takeToPath: '/home-services/service=AC Repair',
 
     },
     // variable data
@@ -725,7 +725,7 @@ export const ServiceWithImage = {
       src: require("../assets/imageService/ac_repair.png"),
       offer: "Upto 30% off",
       tag: true,
-      takeToPath: '/home-services/service=AC-Repair',
+      takeToPath: '/home-services/service=AC Repair',
 
     },
     // variable data
@@ -787,7 +787,7 @@ export const ServiceWithImage = {
       src: require("../assets/imageService/ac_repair.png"),
       offer: "Upto 30% off",
       tag: true,
-      takeToPath: '/home-services/service=AC-Repair',
+      takeToPath: '/home-services/service=AC Repair',
 
     },
     // variable data
@@ -844,7 +844,7 @@ export const ServiceWithImage = {
       src: require("../assets/imageService/ac_repair.png"),
       offer: "Upto 30% off",
       tag: true,
-      takeToPath: '/home-services/service=AC-Repair',
+      takeToPath: '/home-services/service=AC Repair',
 
     },
     // variable data

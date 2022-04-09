@@ -60,7 +60,8 @@ BootstrapDialogTitle.propTypes = {
 export default function CitySelector2({style}) {
 
   const {city,handleData} = React.useContext(LoginContext)
-
+  const [open, setOpen] = React.useState(false);
+  
   const xlMax = useMediaQuery('(max-width:2000px)');
   const xlMin = useMediaQuery('(min-width:740px)');
   const mdMax = useMediaQuery('(max-width:740px)');
@@ -76,7 +77,6 @@ export default function CitySelector2({style}) {
     handleData('Bangalore')
   };
 
-  const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(!open);

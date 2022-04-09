@@ -72,7 +72,7 @@ function Content({ open, setOpen, setAccount, width, display }) {
   // ----------For OTP--------------------------
   const generateReCaptcha = () => {
     window.recaptchaVerifier = new RecaptchaVerifier('sign-in-button', {
-      'size': 'invisible',
+      'size': 'visible',
       'callback': (response) => {
         // reCAPTCHA solved, allow signInWithPhoneNumber.
       }
@@ -227,7 +227,7 @@ function Content({ open, setOpen, setAccount, width, display }) {
       >
         <Box sx={{ display: 'flex', height: '70vh', width: width }} >
           <Box sx={{ width: '40%', background: '#f8f8f8', paddingLeft: '30px' }}>
-            <img style={{ height: '100px', width: "100px", marginTop: '9rem' }} src="../logos/isLogin.png" alt="Login" />
+            <img style={{ height: '100px', width: "100px", marginTop: '9rem' }} src={require('../../assets/logos/isLogin.png')} alt="Login" />
             <Typography variant="h6" sx={{ fontSize: '18px', fontWeight: '600', ml: 1 }}>Login/Signup</Typography>
 
             {['Zero Brokerage', 'Thousands of new listings daily.', '100 Cr+ Brokerage saved monthly.'].map(data =>
@@ -304,6 +304,10 @@ function Content({ open, setOpen, setAccount, width, display }) {
                   }} />
               </Box>
 
+              <Box sx={{ my: 1 }}>
+                <div id='sign-in-button'></div>
+              </Box>
+
               <Button sx={{
                 my: 2,
                 boxShadow: 0,
@@ -370,7 +374,6 @@ function Content({ open, setOpen, setAccount, width, display }) {
             </Box>
           </Box>
         </Box>
-        <div id='sign-in-button'></div>
       </BootstrapDialog>
     </>
   );
@@ -566,7 +569,7 @@ function SMContent({ open, setOpen, setAccount }) {
             <CloseIcon onClick={handleClose} sx={{ margin: '8px 0px auto 290px', cursor: 'pointer' }} />
           </Box>
           <Box sx={{ textAlign: 'center' }}>
-            <img style={{ height: '100px', width: "100px", }} src="../logos/isLogin.png" alt="Login" />
+            <img style={{ height: '100px', width: "100px", }} src={require('../../assets/logos/isLogin.png')} alt="Login" />
             <Typography variant="h6" sx={{ fontSize: '18px', fontWeight: '600' }}>Login/Signup</Typography>
 
           </Box>
@@ -621,6 +624,10 @@ function SMContent({ open, setOpen, setAccount }) {
                     fontSize: '14px',
                     margin: '5px auto',
                   }} />
+              </Box>
+
+              <Box sx={{ my: 1 }}>
+                <div id='sign-in-button'></div>
               </Box>
 
               <Button sx={{
