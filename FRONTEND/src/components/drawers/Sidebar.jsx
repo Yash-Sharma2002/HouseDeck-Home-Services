@@ -8,6 +8,7 @@ import ListItem from '@mui/material/ListItem';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link, Typography } from '@mui/material';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Login from '../dialogs/Login';
 import { LoginContext } from '../../context/Context';
 
@@ -77,14 +78,10 @@ export default function Sidebar({ commonProps }) {
                             {
                                 ((userData.Username) && isLogin) ?
                                     <>
-                                        <Typography sx={{
-                                            fontSize: '16px',
-                                            padding: '0px 15px',
-                                            mt: 1,
-                                            fontWeight: '900'
-                                        }}>
-                                            {userData.Username}
-                                        </Typography>
+                                        <Link href='/home-services/profile' sx={{ color: 'black', display: 'flex', justifyContent: 'flex-start', alignItems: "center", marginLeft: '18px', textDecoration: 'none' }}>
+                                            <AccountCircleIcon />
+                                            <Typography sx={{ fontSize: '14px', fontFamily: 'Fredoka', marginLeft: '4px' }}>{userData.Username}</Typography>
+                                        </Link>
                                     </>
 
                                     : null
@@ -141,7 +138,6 @@ export default function Sidebar({ commonProps }) {
                                             fontSize: '16px',
                                             padding: '0px 15px',
                                             mt: 1,
-                                            fontWeight: '600'
                                         }} onClick={logout}>Logout</Typography>
                                     </>
 

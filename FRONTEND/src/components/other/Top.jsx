@@ -38,7 +38,7 @@ const TopHead = ({ service}) => {
                         <Typography sx={{ fontSize: '16px', color: '#1b685f' }}>Get lowest prices for {service.toLowerCase()} services in {city}</Typography>
                     </Box>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
-                        <ServicesProvider width={'480px'} />
+                        <ServicesProvider service={service} width={'480px'} />
                         <div style={{ width: '45%' }}>
                             <Carousel2 />
                         </div>
@@ -57,7 +57,7 @@ const TopHead = ({ service}) => {
                         <Typography sx={{ fontSize: '16px', color: '#1b685f' }}>Get lowest prices for {service.toLowerCase()} services in {city}</Typography>
                     </Box>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <ServicesProvider width={'110%'} />
+                        <ServicesProvider service={service} width={'110%'} />
                         <div style={{ width: '45%' }}>
                             <Carousel2 />
                         </div>
@@ -75,7 +75,7 @@ const TopHead = ({ service}) => {
                         <Typography sx={{ fontSize: '16px', color: '#1b685f' }}>Get lowest prices for {service.toLowerCase()} services in {city}</Typography>
                     </Box>
                     <Box sx={{ display: 'block' }}>
-                        <ServicesProvider width={'unset'} />
+                        <ServicesProvider service={service} width={'unset'} />
                         <div style={{ padding: '20px' }}>
                             <Carousel2 />
                         </div>

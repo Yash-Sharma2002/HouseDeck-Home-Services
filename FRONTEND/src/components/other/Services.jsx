@@ -2,19 +2,22 @@ import React from 'react'
 import { Box, Typography, Divider } from '@mui/material'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ServiceSelector from '../dialogs/ServiceSelector';
-import { CleaningServicesData } from '../../constants/data';
+import {  ServiceDialogData } from '../../constants/data';
 import Login from '../dialogs/Login';
 import { LoginContext } from '../../context/Context';
 
-export default function ServicesProvider({ width }) {
+export default function ServicesProvider({ service,width }) {
     const [openForService, setOpenForService] = React.useState(false)
     const [open, setOpen] = React.useState(false)
     const {isLogin} = React.useContext(LoginContext)
+    const newService = service.replace(/ /g, '_').toLowerCase()
     const [options, setOptions] = React.useState({
         imgUrl: '',
         innerData: [{ type: '', price: '' }],
         quotes: [{ text: '' }]
     })
+    console.log(newService);
+    console.log(ServiceDialogData[newService],newService);
     const handleClickOpen = (services) => {
         // if (isLogin) {
             setOpenForService(!open);
@@ -30,7 +33,7 @@ export default function ServicesProvider({ width }) {
                 <Typography sx={{ mt: 2, padding: '20px 0 8px', fontSize: '18px', fontWeight: '600', color: '#464646' }}>Select Your Service</Typography>
 
                 {
-                    CleaningServicesData.map(data =>
+                    ServiceDialogData[newService].map(data =>
                         <>
                             <Box key={data.options} sx={{ padding: '15px 0px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }} onClick={() => handleClickOpen(data.options)}>
                                 <Box sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center',}}>
@@ -45,7 +48,7 @@ export default function ServicesProvider({ width }) {
                 }
             </Box>
             <Login open={open} setOpen={setOpen} />
-            <ServiceSelector options={options} setOptions={setOptions} open={openForService} setOpen={setOpenForService} />
+            <ServiceSelector options={options} data={ServiceDialogData[newService]} setOptions={setOptions} open={openForService} setOpen={setOpenForService} />
         </div>
     )
 }

@@ -9,7 +9,6 @@ This is the list of the To-DO tasks needed for the website line by line
 
 
 
-3. Add payments to the subscription card.
 
 4. Make about us page and the profile page.
 
@@ -17,7 +16,7 @@ This is the list of the To-DO tasks needed for the website line by line
 
 6. Also add random service from the menu sidebar of the destop.
 
-7. Also optimize the login in reposive header in main page ad dropdown to it.
+
 
 
 9. Also make available to change date and time of the appointment when in the draft messages.

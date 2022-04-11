@@ -17,20 +17,14 @@ function Content({ padding, padding2, display, displayForButton }) {
     const [orderId, setOrderId] = React.useState('')
     const [open, setOpen] = React.useState(false);
 
-
     const handleClickOpen = () => {
         setOpen(true);
     };
 
-    // React.useEffect(() => {
-    //     setOrderId(uuidV4())
-    // }, [])
-    const GetSubscription = async (id, price) => {
-        // if (id !== 0) {
+    function changeOrderId() {
         setOrderId(uuidV4())
-        // console.log(orderId,id);
-        // }
-        console.log(orderId, id);
+    }
+    const GetSubscription = async (id, price) => {
         const data = {
             order_id: `OrderId_${orderId}`,
             order_amount: `${price}.00`,
@@ -41,7 +35,6 @@ function Content({ padding, padding2, display, displayForButton }) {
                 customer_phone: userData.Number
             },
         }
-        console.log(data);
         let response = await makePayments(data)
         if (response) {
             setShow(true)
@@ -53,7 +46,6 @@ function Content({ padding, padding2, display, displayForButton }) {
         }
     }
     const GetPayment = async (name, price) => {
-        console.log(orderId, name);
         const currentDateTime = new Date()
         const items = {
             Order_Details: {
@@ -182,7 +174,8 @@ function Content({ padding, padding2, display, displayForButton }) {
                                             background: 'rgb(122,220,180)',
                                             color: 'white'
                                         }
-                                    }} onClick={() => GetPayment('Kitchen Deep Cleaning - [For 3 months]', '3350')}>
+                                    }}
+                                        onClick={() => GetPayment('Kitchen Deep Cleaning - [For 3 months]', '3350')}>
                                         Pay now
                                     </Button>
                                 </Link>
@@ -202,7 +195,9 @@ function Content({ padding, padding2, display, displayForButton }) {
                                                 background: 'rgb(122,220,180)',
                                                 color: 'white'
                                             }
-                                        }} onClick={() => GetSubscription(0, '3350')}>
+                                        }}
+                                            onMouseEnter={() => changeOrderId()}
+                                            onClick={() => GetSubscription(0, '3350')}>
                                             Book Now
                                         </Button>
                                             :
@@ -292,7 +287,9 @@ function Content({ padding, padding2, display, displayForButton }) {
                                                 background: 'rgb(122,220,180)',
                                                 color: 'white'
                                             }
-                                        }} onClick={() => GetSubscription(1, '1400')}>
+                                        }}
+                                            onMouseEnter={() => changeOrderId()}
+                                            onClick={() => GetSubscription(1, '1400')}>
                                             Book Now
                                         </Button>
                                             :
@@ -383,7 +380,9 @@ function Content({ padding, padding2, display, displayForButton }) {
                                                 background: 'rgb(122,220,180)',
                                                 color: 'white'
                                             }
-                                        }} onClick={() => GetSubscription(2, '2800')}>
+                                        }}
+                                            onMouseEnter={() => changeOrderId()}
+                                            onClick={() => GetSubscription(2, '2800')}>
                                             Book Now
                                         </Button>
                                             :
@@ -429,9 +428,10 @@ function SMContent({ displayForButton }) {
     const handleClickOpen = () => {
         setOpen(true);
     };
-
-    const GetSubscription = async (id, price) => {
+    function changeOrderId() {
         setOrderId(uuidV4())
+    }
+    const GetSubscription = async (id, price) => {
         const data = {
             order_id: `OrderId_${orderId}`,
             order_amount: `${price}.00`,
@@ -579,7 +579,9 @@ function SMContent({ displayForButton }) {
                                                 background: 'rgb(122,220,180)',
                                                 color: 'white'
                                             }
-                                        }} onClick={() => GetSubscription(0, '3350')}>
+                                        }}
+                                            onMouseEnter={() => changeOrderId()}
+                                            onClick={() => GetSubscription(0, '3350')}>
                                             Book Now
                                         </Button>
                                             :
@@ -670,7 +672,9 @@ function SMContent({ displayForButton }) {
                                                 background: 'rgb(122,220,180)',
                                                 color: 'white'
                                             }
-                                        }} onClick={() => GetSubscription(1, '1400')}>
+                                        }}
+                                            onMouseEnter={() => changeOrderId()}
+                                            onClick={() => GetSubscription(1, '1400')}>
                                             Book Now
                                         </Button>
                                             :
@@ -761,7 +765,9 @@ function SMContent({ displayForButton }) {
                                                 background: 'rgb(122,220,180)',
                                                 color: 'white'
                                             }
-                                        }} onClick={() => GetSubscription(2, '2800')}>
+                                        }}
+                                            onMouseEnter={() => changeOrderId()}
+                                            onClick={() => GetSubscription(2, '2800')}>
                                             Book Now
                                         </Button>
                                             :

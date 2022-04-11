@@ -12,7 +12,7 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider'
 import '../../css/OnlyForDialog.css';
 import DatePicker from '@mui/lab/DatePicker'
 import TimePicker from '@mui/lab/TimePicker'
-import { CleaningServicesData } from '../../constants/data';
+// import { CleaningServicesData } from '../../constants/data';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import { LoginContext } from '../../context/Context'
@@ -25,7 +25,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 
-function Content({ options, setOptions, open, setOpen, width }) {
+function Content({ options,data, setOptions, open, setOpen, width }) {
 
     const { setMessage, setMessageType, setShow } = React.useContext(LoginContext)
 
@@ -221,7 +221,7 @@ function Content({ options, setOptions, open, setOpen, width }) {
             setMessageType('error')
         }
     }
-
+console.log(data);
     const handleClickOpen = (services) => {
         setOptions(services)
         setDisplayAtStart(false)
@@ -297,7 +297,7 @@ function Content({ options, setOptions, open, setOpen, width }) {
 
 
                             {
-                                CleaningServicesData.map(data =>
+                                data.map(data =>
                                     <>
                                         <Box key={data.options} sx={{ padding: '15px 0px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }} onClick={() => handleClickOpen(data.options)}>
                                             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
@@ -507,18 +507,19 @@ function Content({ options, setOptions, open, setOpen, width }) {
 
 
 
-export default function ServiceSelector({ options, setOptions, open, setOpen }) {
+export default function ServiceSelector({ options,data, setOptions, open, setOpen }) {
 
     const xlMax = useMediaQuery('(max-width:2000px)');
     const xlMin = useMediaQuery('(min-width:650px)');
     const sm = useMediaQuery('(max-width:650px)');
+    console.log(options);
     return (
 
         <>
             {xlMax && xlMin && (
-                <Content options={options} setOptions={setOptions} open={open} setOpen={setOpen} width={'550px'} />
+                <Content options={options} data={data} setOptions={setOptions} open={open} setOpen={setOpen} width={'550px'} />
             )}
-            {sm && (<Content options={options} setOptions={setOptions} open={open} setOpen={setOpen} width={'auto'} />)}
+            {sm && (<Content options={options} data={data} setOptions={setOptions} open={open} setOpen={setOpen} width={'auto'} />)}
 
         </>
     )

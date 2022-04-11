@@ -96,7 +96,6 @@ export const checkSubscriptionStatus = async (req, res) => {
                 return response.json()
             })
             .then(async (data) => {
-                console.log(data);
                 if (!(data.order_amount === parseFloat(req.body.Order_Details.Order_Amount))) {
                     console.log('erroe here');
                     res.sendStatus(500)

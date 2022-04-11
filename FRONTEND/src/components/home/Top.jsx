@@ -22,7 +22,6 @@ export default function Top() {
     cursor: 'pointer',
     padding: '0px 10px',
     alignItems: 'center',
-    minWidth: 100,
     backgroundColor: 'white',
     height: '50px!important',
     minWidth:'150px',
