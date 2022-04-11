@@ -1,4 +1,5 @@
 import express from "express";
+import { otpSend } from "../controller/otpSend.js";
 import { checkPaymentStatus, checkSubscriptionStatus, makePayments } from "../controller/payment-controller.js";
 import { getDraftBookings, sendService, getPaidBookings, getSubscriptions } from "../controller/service-controller.js";
 import { userSignUp, userLogIn } from "../controller/user-controller.js";
@@ -12,6 +13,7 @@ router.post('/login', userLogIn);
 router.post('/service', sendService);
 router.post('/create-order', makePayments);
 router.post('/check-payment', checkPaymentStatus);
+router.post('/send-otp', otpSend);
 router.post('/check-subscription', checkSubscriptionStatus);
 router.post('/my-bookings-draft', getDraftBookings);
 router.post('/my-bookings-paid', getPaidBookings);

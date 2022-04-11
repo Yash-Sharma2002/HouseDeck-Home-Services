@@ -7,8 +7,7 @@ import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { makeStyles } from '@mui/styles';
-import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
-import { authentication } from '../../Api/otpFireBase';
+import { sendOTP } from '../../Api/otpSend';
 import '../../css/OnlyForDialog.css';
 import { authenticateSignup } from '../../Api/signup';
 import { authenticateLogin } from '../../Api/login';
@@ -56,7 +55,9 @@ function Content({ open, setOpen, setAccount, width, display }) {
   const [number, setNumber] = React.useState('')
   const [username, setUsername] = React.useState('')
   const [email, setEmail] = React.useState('')
-
+  const [RealOTP, setRealOTP] = React.useState('')
+  const [isResend, setIsResend] = React.useState(false)
+  const [resendTime, setResendTime] = React.useState(60)
 
 
   // ----------------------------functions------------------------------ 
@@ -70,42 +71,35 @@ function Content({ open, setOpen, setAccount, width, display }) {
   }
 
   // ----------For OTP--------------------------
-  const generateReCaptcha = () => {
-    window.recaptchaVerifier = new RecaptchaVerifier('sign-in-button', {
-      'size': 'visible',
-      'callback': (response) => {
-        // reCAPTCHA solved, allow signInWithPhoneNumber.
+
+
+
+  async function OTPSender() {
+    setIsResend(false)
+    const items = {
+      Number: `+91${number}`
+    }
+    const response = await sendOTP(items)
+    if (response) {
+      setRealOTP(response.slice(0, 6))
+    }
+    const interval = setTimeout(() => {
+      if (resendTime !== 0) {
+        setIsResend(false)
+        setResendTime(time => time - 1)
+      } else{
+        setIsResend(true)
+        clearTimeout(interval)
+        setResendTime(60)
       }
-    }, authentication);
+    }, 60000);
   }
-
-
-  function OTPSender() {
-    const phoneNumber = `+91${number}`
-    generateReCaptcha();
-    const appVerifier = window.recaptchaVerifier;
-    signInWithPhoneNumber(authentication, phoneNumber, appVerifier)
-      .then((confirmationResult) => {
-        window.confirmationResult = confirmationResult;
-      }).catch((error) => {
-        console.log(error);
-        setShow(true)
-        setMessage(`Too many tries. Try again later.`)
-        setMessageType('error')
-      });
-  }
-
-  const verifyOTP = () => {
-    let confirmationResult = window.confirmationResult
-    confirmationResult.confirm(otp).then((result) => {
-      // User signed in successfully.
-      // const user = result.user;  
-    }).catch((error) => {
-      setShow(true)
-      setMessageType('error')
-      setMessage("Enter Valid OTP")
-      console.log(error);
-    });
+  const verifyOTP = (enteredOtp) => {
+    if (RealOTP === enteredOtp) {
+      return true
+    } else {
+      return false
+    }
   }
 
   //---------------END--------------------------
@@ -147,6 +141,10 @@ function Content({ open, setOpen, setAccount, width, display }) {
     }
   }
 
+  function onClickResend() {
+    OTPSender()
+    setIsResend(false)
+  }
 
   function getUserName(name) {
     setUsername(name.value)
@@ -161,23 +159,27 @@ function Content({ open, setOpen, setAccount, width, display }) {
       setMessageType('error')
     }
     else if (otp.length === 6) {
-      verifyOTP()
-      const login = {
-        Number: `+91${number}`
-      }
-      let response = await authenticateLogin(login)
-      if (response) {
-        window.location.reload(false)
-        handleClose();
-        try {
-          localStorage.setItem('userdata', JSON.stringify({
-            Number: `+91${number}`,
-            Username: response.Username,
-            Email: response.Email,
-          }));
-          localStorage.setItem('isLogin', JSON.stringify(true));
-        } catch (err) {
-          return undefined;
+      const success = verifyOTP(otp)
+      if (success) {
+        const login = {
+          Number: `+91${number}`
+        }
+        let response = await authenticateLogin(login)
+        if (response) {
+          window.location.reload(false)
+          handleClose();
+          try {
+            localStorage.setItem('userdata', JSON.stringify({
+              Number: `+91${number}`,
+              Username: response.Username,
+              Email: response.Email,
+            }));
+            localStorage.setItem('isLogin', JSON.stringify(true));
+          } catch (err) {
+            return undefined;
+          }
+        } else {
+          afterVerifiedOTP()
         }
       } else {
         afterVerifiedOTP()
@@ -303,11 +305,11 @@ function Content({ open, setOpen, setAccount, width, display }) {
                     margin: '5px auto',
                   }} />
               </Box>
-
-              <Box sx={{ my: 1 }}>
-                <div id='sign-in-button'></div>
+              <Box sx={{ textAlign: 'center' }}>
+                <Typography sx={{ my: 1, pointerEvents: isResend ? 'auto' : 'none', opacity: isResend ? '1' : '0.6' }} onClick={() => onClickResend()}>
+                  Resend {resendTime}
+                </Typography>
               </Box>
-
               <Button sx={{
                 my: 2,
                 boxShadow: 0,
@@ -393,7 +395,7 @@ function SMContent({ open, setOpen, setAccount }) {
   const [number, setNumber] = React.useState('')
   const [username, setUsername] = React.useState('')
   const [email, setEmail] = React.useState('')
-
+  const [RealOTP, setRealOTP] = React.useState('')
 
 
   // ----------------------------functions------------------------------ 
@@ -410,46 +412,21 @@ function SMContent({ open, setOpen, setAccount }) {
 
 
   // ----------For OTP--------------------------
-
-  const generateReCaptcha = () => {
-    window.recaptchaVerifier = new RecaptchaVerifier('sign-in-button', {
-      'size': 'invisible',
-      'callback': (response) => {
-        // reCAPTCHA solved, allow signInWithPhoneNumber.
-      }
-    }, authentication);
+  async function OTPSender() {
+    const items = {
+      Number: `+91${number}`
+    }
+    const response = await sendOTP(items)
+    if (response) {
+      setRealOTP(response.slice(0, 6))
+    }
   }
-
-
-  function OTPSender() {
-    const phoneNumber = `+91${number}`
-    generateReCaptcha();
-    const appVerifier = window.recaptchaVerifier;
-    signInWithPhoneNumber(authentication, phoneNumber, appVerifier)
-      .then((confirmationResult) => {
-        window.confirmationResult = confirmationResult;
-        setShow(true)
-        setMessageType('success')
-        setMessage("OTP Sent")
-      }).catch((error) => {
-        console.log(error);
-        setShow(true)
-        setMessageType('error')
-        setMessage(`Too many tries. Try again later.`)
-      });
-  }
-
-  const verifyOTP = () => {
-    let confirmationResult = window.confirmationResult
-    confirmationResult.confirm(otp).then((result) => {
-      // User signed in successfully.
-      // const user = result.user;
-    }).catch((error) => {
-      setShow(true)
-      setMessage("Enter Valid OTP")
-      setMessageType('error')
-      console.log(error);
-    });
+  const verifyOTP = (enteredOtp) => {
+    if (RealOTP === enteredOtp) {
+      return true
+    } else {
+      return false
+    }
   }
 
   //---------------END--------------------------
@@ -502,23 +479,27 @@ function SMContent({ open, setOpen, setAccount }) {
       setMessageType('error')
     }
     else if (otp.length === 6) {
-      verifyOTP()
-      const login = {
-        Number: `+91${number}`
-      }
-      let response = await authenticateLogin(login)
-      if (response) {
-        window.location.reload(false)
-        handleClose();
-        try {
-          localStorage.setItem('userdata', JSON.stringify({
-            Number: `+91${number}`,
-            Username: response.Username,
-            Email: response.Email,
-          }));
-          localStorage.setItem('isLogin', JSON.stringify(true));
-        } catch (err) {
-          return undefined;
+      const success = verifyOTP(otp)
+      if (success) {
+        const login = {
+          Number: `+91${number}`
+        }
+        let response = await authenticateLogin(login)
+        if (response) {
+          window.location.reload(false)
+          handleClose();
+          try {
+            localStorage.setItem('userdata', JSON.stringify({
+              Number: `+91${number}`,
+              Username: response.Username,
+              Email: response.Email,
+            }));
+            localStorage.setItem('isLogin', JSON.stringify(true));
+          } catch (err) {
+            return undefined;
+          }
+        } else {
+          afterVerifiedOTP()
         }
       } else {
         afterVerifiedOTP()
@@ -625,11 +606,6 @@ function SMContent({ open, setOpen, setAccount }) {
                     margin: '5px auto',
                   }} />
               </Box>
-
-              <Box sx={{ my: 1 }}>
-                <div id='sign-in-button'></div>
-              </Box>
-
               <Button sx={{
                 my: 2,
                 boxShadow: 0,
