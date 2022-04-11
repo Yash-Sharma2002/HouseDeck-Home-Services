@@ -75,6 +75,6 @@ const serviceSchema = new mongoose.Schema({
     },
 });
 
-export const ServiceAsDraft = mongoose.model('services_draft', serviceSchema);
-export const ServiceAsPaid = mongoose.model('services_paid', serviceSchema);
+export const ServiceAsDraft = mongoose.model('Shortlisted_Services', serviceSchema);
+export const ServiceAsPaid = mongoose.model('Booked_Services', serviceSchema);
 

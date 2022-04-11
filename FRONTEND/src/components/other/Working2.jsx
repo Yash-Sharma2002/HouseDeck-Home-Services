@@ -18,7 +18,7 @@ function Content({ padding, display, width, service, city }) {
                     How it works
                 </Typography>
                 <Box sx={{ display: display, justifyContent: 'space-between', textAlign: 'center', margin: '10px auto' }}>
-                    <Box sx={{ width: width, textAlign: 'center', wordWrap: 'break-word', margin: '10px auto' }}>
+                    <Box sx={{ width: width, textAlign: 'center', wordWrap: 'break-word', margin: '7px auto' }}>
                         <img src={require("../../assets/other/orange icons 11-01.png")} style={{ width: "75px" }} alt="Select 1" />
                         <Typography sx={{
                             fontWeight: '600',
@@ -27,7 +27,7 @@ function Content({ padding, display, width, service, city }) {
                         }}>Book your Service</Typography>
                         <Typography sx={{ fontSize: '14px' }}>Tell us preferred time to book</Typography>
                     </Box>
-                    <Box sx={{ width: width, textAlign: 'center', wordWrap: 'break-word', margin: '10px auto' }}>
+                    <Box sx={{ width: width, textAlign: 'center', wordWrap: 'break-word', margin: '7px auto' }}>
                         <img src={require("../../assets/other/orange icons 12-01.png")} style={{ width: "75px" }} alt="Select 1" />
                         <Typography sx={{
                             fontWeight: '600',
@@ -36,7 +36,7 @@ function Content({ padding, display, width, service, city }) {
                         }}>Lowest Priced Instant Quote</Typography>
                         <Typography sx={{ fontSize: '14px' }}>Get guarateed lowest price for your service</Typography>
                     </Box>
-                    <Box sx={{ width: width, textAlign: 'center', wordWrap: 'break-word', margin: '10px auto' }}>
+                    <Box sx={{ width: width, textAlign: 'center', wordWrap: 'break-word', margin: '7px auto' }}>
                         <img src={require("../../assets/other/orange icons 13-01.png")} style={{ width: "75px" }} alt="Select 1" />
                         <Typography sx={{
                             fontWeight: '600',

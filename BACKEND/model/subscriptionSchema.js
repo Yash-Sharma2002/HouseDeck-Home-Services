@@ -14,14 +14,14 @@ const subscriptionSchema = new mongoose.Schema({
             type: String,
             required: true,
         },
-        Subscriptions: {
+        Subscription: {
             Name: {
                 type: String,
-                required: true,
+                // required: true,
             },
             Price: {
                 type: String,
-                required: true,
+                // required: true,
             }
         },
         Order_Amount: {
@@ -58,5 +58,5 @@ const subscriptionSchema = new mongoose.Schema({
     },
 });
 
-export const Subscriptions = mongoose.model('subscriptions', subscriptionSchema);
+export const Subscriptions = mongoose.model('Subscriptions', subscriptionSchema);
 

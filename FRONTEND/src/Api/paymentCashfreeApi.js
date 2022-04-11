@@ -21,3 +21,12 @@ export const checkPaymentStatus = async (orderInfo) => {
         console.log('Error while calling Payment'+error);
     }
 }
+
+export const checkSubscriptionStatus = async (orderInfo) => {
+    try {
+        const response = await axios.post(`${URL}/check-subscription`, orderInfo)
+        return response.data
+    } catch (error) {
+        console.log('Error while calling Payment'+error);
+    }
+}

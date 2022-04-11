@@ -1,6 +1,7 @@
 import fetch from "node-fetch";
 import dotenv from 'dotenv'
 import { ServiceAsPaid } from '../model/serviceSchema.js'
+import {Subscriptions} from '../model/subscriptionSchema.js'
 
 dotenv.config({ path: './data.env' })
 
@@ -75,4 +76,47 @@ export const checkPaymentStatus = async (req, res) => {
         console.log('Error: from payment controller ', error);
     }
 }
+
+
+export const checkSubscriptionStatus = async (req, res) => {
+    try {
+        const postParams = {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'order_id': req.body.Order_Details.Order_Id,
+                'x-client-id': process.env.API_APP_ID,
+                'x-client-secret': process.env.API_APP_SECRET_KEY,
+                'x-api-version': '2022-01-01',
+            },
+        }
+        await fetch(`${process.env.API_APP_ENV_URL}/${req.body.Order_Details.Order_Id}`, postParams)
+            .then((response) => {
+                return response.json()
+            })
+            .then(async (data) => {
+                console.log(data);
+                if (!(data.order_amount === parseFloat(req.body.Order_Details.Order_Amount))) {
+                    console.log('erroe here');
+                    res.sendStatus(500)
+                } else if (data.order_status === 'PAID') {
+                    try {
+                        const subscription = req.body;
+                        const newSubscription = new Subscriptions(subscription);
+                        await newSubscription.save();
+                        return res.send(data)
+                    } catch (error) {
+                        res.send(500 + ' Error occured');
+                        console.log('Error: from service controller ', error);
+                    }
+                }
+            })
+
+    } catch (error) {
+        res.send(500 + ' Error occured');
+        console.log('Error: from payment controller ', error);
+    }
+}
+
 

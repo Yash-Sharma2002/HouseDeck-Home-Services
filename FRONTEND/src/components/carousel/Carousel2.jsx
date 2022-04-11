@@ -1,6 +1,7 @@
 import React from 'react'
 import { OtherPageTopCarouselData } from '../../constants/data';
 import Carousel from "react-multi-carousel";
+import Box from '@mui/material/Box'
 import "react-multi-carousel/lib/styles.css";
 
 
@@ -60,6 +61,7 @@ export default function Carousel2() {
   };
 
   return (
+    <Box sx={{boxShadow:2}}>
     <Carousel
       draggable={true}
       responsive={responsive}
@@ -68,16 +70,18 @@ export default function Carousel2() {
       autoPlay={false}
     >
       {OtherPageTopCarouselData.map(data =>
-        <div key={data.url} style={{
-          marginRight: '10px'
+        <Box key={data.url} sx={{
+          marginRight: '10px',
+            border:'5px solid orange',
+            // boxShadow:2,
         }}>
           <img style={{
             maxWidth: '400px',
             borderRadius: 10,
-            boxShadow:''
           }} src={data.url} alt="Poster" />
-        </div>
+        </Box>
       )}
     </Carousel>
+    </Box>
   )
 }

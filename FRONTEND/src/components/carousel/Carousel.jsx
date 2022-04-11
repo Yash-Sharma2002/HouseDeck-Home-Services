@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import { TopCarouselData } from '../../constants/data'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -30,7 +30,7 @@ const responsive = {
 function Content({ padding, margin}) {
     return (
         <div style={{
-            background: '#24C6DC',
+            // background: '#24C6DC',
             padding: padding, overflow: "hidden",
             
         }}>

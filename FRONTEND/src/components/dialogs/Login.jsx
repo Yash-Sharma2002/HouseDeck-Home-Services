@@ -705,7 +705,7 @@ function SMContent({ open, setOpen, setAccount }) {
 
 
 
-export default function DialogWithoutLoginDisplay({ open, setOpen, setAccount }) {
+export default function Login({ open, setOpen, setAccount }) {
   const xlMax = useMediaQuery('(max-width:2000px)');
   const xlMin = useMediaQuery('(min-width:1160px)');
   const mdMax = useMediaQuery('(max-width:1160px)');

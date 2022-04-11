@@ -88,7 +88,7 @@ export default function CitySelector({ style }) {
 
   return (
     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-      <Box sx={{ boxShadow: 2 }} >
+      <Box>
         <Box sx={style} onClick={handleClickOpen}>
 
           <Box sx={{ fontFamily: 'Fredoka' }}>{city}</Box><ArrowDropDownIcon />

@@ -28,10 +28,18 @@ const ContextProvider = ({ children }) => {
         setMessage('')
         setMessageType('')
     }
+
+    function encrypt(text) {
+        var algorithm = 'aes256'; // or any other algorithm supported by OpenSSL
+        var key = 'password';
+        var cipher = crypto.createCipher(algorithm, key);
+        var encrypted = cipher.update(text, 'utf8', 'hex') + cipher.final('hex');
+    }
     
     
 
     function loadUserData() {
+    //    const data = encrypt()
         try {
             const serializedState = localStorage.getItem('userdata');
             if (serializedState === null) {

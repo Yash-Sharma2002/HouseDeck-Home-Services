@@ -17,7 +17,7 @@ export default function Top() {
 
   const style1 = {
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     borderRadius: '4px',
     cursor: 'pointer',
     padding: '0px 10px',
@@ -25,6 +25,9 @@ export default function Top() {
     minWidth: 100,
     backgroundColor: 'white',
     height: '50px!important',
+    minWidth:'150px',
+    border:'7px solid orange',
+    textAlign:'center'
   }
 
 
@@ -44,7 +47,7 @@ export default function Top() {
     <>
       {xlMax && xlMin && (
         <div style={{
-          background: '#24C6DC',
+          // background: '#24C6DC',
 
         }}>
           <Box sx={{
@@ -52,21 +55,20 @@ export default function Top() {
             display: 'flex', justifyContent: 'space-between'
           }}>
             <Search width={'500px'} />
-
             <CitySelector style={style1} />
           </Box>
         </div>
       )}
       {!(xlMax && xlMin) && mdMax && mdMin && (
         <div style={{
-          background: '#24C6DC',
+          // background: '#24C6DC',
 
         }}>
           <Box sx={{
             padding: '4rem 50px 3rem 50px',
             display: 'block',
           }}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: '0rem 0px 1rem 0px', alignItems: 'center' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: '0rem 0px 1rem 0px', alignItems: 'center'}}>
               <CitySelector style={style2} />
               <Box>
 
@@ -95,14 +97,14 @@ export default function Top() {
       )}
       {!(mdMax && mdMin) && sm && (
         <div style={{
-          background: '#24C6DC',
+          // background: '#24C6DC',
 
         }}>
           <Box sx={{
             padding: '3rem 10px 3rem 10px',
             display: 'block',
           }}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: '0rem 0px 1rem 0px', alignItems: 'center' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: '0rem 0px 1rem 0px', alignItems: 'center', }}>
               <CitySelector style={style2} />
               <Box>
 

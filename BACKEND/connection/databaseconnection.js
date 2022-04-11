@@ -7,7 +7,7 @@ const Connection =  async(DB_URL) =>{
         await mongoose.connect(URL, { useNewUrlParser: true })
             console.log('connect');
     } catch(error) {
-        console.log('Error: from database ', error.message);
+        console.log('Error: from database ', error);
     }
 }
 

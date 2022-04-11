@@ -9,8 +9,8 @@ export default function Search({ width }) {
   const [wordEntered, setWordEntered] = useState("");
   const [open, setOpen] = useState(false);
   // const city = 'Greater Noida'
-  const {city} = React.useContext(LoginContext)
-  const currentCity = city.replace(/ /g,'_').toLowerCase()
+  const { city } = React.useContext(LoginContext)
+  const currentCity = city.replace(/ /g, '_').toLowerCase()
 
 
   const handleFilter = (event) => {
@@ -33,7 +33,7 @@ export default function Search({ width }) {
   }
   return (
 
-    <Box sx={{ width: width, background: 'white',boxShadow:2 }} >
+    <Box sx={{ width: width, background: 'white',border:'7px solid orange',overflow:'hidden' }} >
       <Box sx={{ display: 'flex', alignItems: 'center', borderRadius: '4px', justifyContent: 'space-evenly', height: '50px!important' }} >
         <Input
           placeholder="Search..."
@@ -63,51 +63,54 @@ export default function Search({ width }) {
         }
 
       </Box>
-      <Box sx={{
-        width:width,
-        backgroundColor: 'white',
-        position: 'absolute',
-        zIndex: '1000',
-        display: open ? 'grid' : 'none',
-        boxShadow: 2
-      }}>
-        {SearchBar[currentCity].map(item =>
-          <Link key={item.url} href={item.url} sx={{
-            padding: '10px',
-            textDecoration: 'none',
-            color: 'black',
-            '&:hover': {
-              background: '#24C6DC',
-            }
-          }}>
-            {item.value}
-          </Link>
-        )}
-      </Box>
 
 
-
-      {filteredData.length !== 0 && (
         <Box sx={{
-          width: width,
-          position: 'absolute',
           backgroundColor: 'white',
-          display: 'grid',
+          width:width,
+          position: 'absolute',
           zIndex: '1000',
-        }} >
-          {filteredData.map(item =>
+          display: open ? 'grid' : 'none',
+          boxShadow: 2
+        }}>
+          {SearchBar[currentCity].map(item =>
             <Link key={item.url} href={item.url} sx={{
               padding: '10px',
               textDecoration: 'none',
               color: 'black',
               '&:hover': {
-                background: '#24C6DC',
+                background: 'orange',
+                color:'white'
               }
-            }}>{item.value} </Link>
+            }}>
+              {item.value}
+            </Link>
           )}
         </Box>
-      )}
 
+
+
+        {filteredData.length !== 0 && (
+          <Box sx={{
+            width: width,
+            position: 'absolute',
+            backgroundColor: 'white',
+            display: 'grid',
+            zIndex: '1000',
+          }} >
+            {filteredData.map(item =>
+              <Link key={item.url} href={item.url} sx={{
+                padding: '10px',
+                textDecoration: 'none',
+                color: 'black',
+                '&:hover': {
+                  background: 'orange',
+                  color:'white'
+                }
+              }}>{item.value} </Link>
+            )}
+          </Box>
+        )}
 
     </Box>
   )

@@ -17,7 +17,7 @@ function Content({ padding,display,width,service}) {
                 }}>
                     How it works
                 </Typography>
-                <Box sx={{ display: display, justifyContent: 'space-between',textAlign:'center',margin:'10px auto' }}>
+                <Box sx={{ display: display, justifyContent: 'space-between',textAlign:'center',margin:'7px auto' }}>
                     <Box sx={{width:width,textAlign:'center',wordWrap:'break-word',margin:'10px auto'}}>
                         <img src={require("../../assets/other/orange icons 11-01.png")} style={{width:"75px"}} alt="Select 1" />
                         <Typography sx={{
@@ -27,7 +27,7 @@ function Content({ padding,display,width,service}) {
                         }}>Select The Service You Need</Typography>
                         <Typography sx={{fontSize:'14px'}}>Get lowest priced quotes for your {service.toLowerCase()} service</Typography>
                     </Box>
-                    <Box sx={{width:width,textAlign:'center',wordWrap:'break-word',margin:'10px auto'}}>
+                    <Box sx={{width:width,textAlign:'center',wordWrap:'break-word',margin:'7px auto'}}>
                     <img src={require("../../assets/other/orange icons 12-01.png")} style={{width:"75px"}} alt="Select 1" />
                         <Typography sx={{
                             fontWeight: '600',
@@ -36,7 +36,7 @@ function Content({ padding,display,width,service}) {
                         }}>Lowest Priced Instant Quote</Typography>
                         <Typography sx={{fontSize:'14px'}}>Get guarateed lowest price for your service</Typography>
                     </Box>
-                    <Box sx={{width:width,textAlign:'center',wordWrap:'break-word',margin:'10px auto'}}>
+                    <Box sx={{width:width,textAlign:'center',wordWrap:'break-word',margin:'7px auto'}}>
                     <img src={require("../../assets/other/orange icons 13-01.png")} style={{width:"75px"}} alt="Select 1" />
 
                         <Typography sx={{

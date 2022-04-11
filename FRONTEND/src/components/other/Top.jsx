@@ -30,7 +30,7 @@ const TopHead = ({ service}) => {
             {xlMax && xlMin && (
                 <div style={{
                     padding: '100px',
-                      background: '#24C6DC'
+                    //   background: '#24C6DC'
                 }}>
                     <CitySelector2 style={style1} />
                     <Box sx={{ ml: 2 }}>
@@ -49,7 +49,7 @@ const TopHead = ({ service}) => {
             {!(xlMax && xlMin) && mdMax && mdMin && (
                 <div style={{
                     padding: '50px 30px',
-                      background: '#24C6DC' 
+                    //   background: '#24C6DC' 
                 }}>
                     <CitySelector2 style={style1} />
                     <Box sx={{ ml: 2 }}>
@@ -67,7 +67,7 @@ const TopHead = ({ service}) => {
             {!(mdMax && mdMin) && sm && (
                 <div style={{
                     padding: '20px 10px',
-                    background: '#24C6DC'
+                    // background: '#24C6DC'
                 }}>
                     <CitySelector2 style={style1} />
                     <Box sx={{ ml: 2 }}>
