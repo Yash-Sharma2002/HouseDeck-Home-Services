@@ -7,7 +7,7 @@ import { Tooltip } from '@mui/material';
 
 const TopHeadStyle = {
   fontWeight: '600',
-  color: '#464646',
+  color: '#F45C43',
   fontSize: '22px',
   padding: '20px 10px',
   marginTop: '30px'

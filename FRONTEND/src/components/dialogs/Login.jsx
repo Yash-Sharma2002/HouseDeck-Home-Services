@@ -41,12 +41,14 @@ const useStyles = makeStyles({
   },
 })
 
-function Content({ open, setOpen, setAccount, width, display }) {
+function Content({ open, setOpen, width, display }) {
+
   const classes = useStyles()
   const fullScreen = useMediaQuery('(max-width:700px)');
 
   const { setMessage, setMessageType, setShow } = React.useContext(LoginContext)
 
+  const timeRef = React.useRef()
 
   const [displayForFirst, setDisplayForFirst] = React.useState(true)
   const [displayForSecond, setDisplayForSecond] = React.useState(false)
@@ -56,7 +58,6 @@ function Content({ open, setOpen, setAccount, width, display }) {
   const [username, setUsername] = React.useState('')
   const [email, setEmail] = React.useState('')
   const [RealOTP, setRealOTP] = React.useState('')
-  const [isResend, setIsResend] = React.useState(false)
   const [resendTime, setResendTime] = React.useState(60)
 
 
@@ -75,7 +76,9 @@ function Content({ open, setOpen, setAccount, width, display }) {
 
 
   async function OTPSender() {
-    setIsResend(false)
+    setRealOTP('')
+    clearInterval(timeRef.current);
+    setResendTime(60);
     const items = {
       Number: `+91${number}`
     }
@@ -83,16 +86,12 @@ function Content({ open, setOpen, setAccount, width, display }) {
     if (response) {
       setRealOTP(response.slice(0, 6))
     }
-    const interval = setTimeout(() => {
-      if (resendTime !== 0) {
-        setIsResend(false)
-        setResendTime(time => time - 1)
-      } else{
-        setIsResend(true)
-        clearTimeout(interval)
-        setResendTime(60)
-      }
-    }, 60000);
+    timeRef.current = setInterval(() => {
+      setResendTime((time) => time - 1)
+    }, 1000);
+  }
+  if (resendTime === 0) {
+    clearInterval(timeRef.current)
   }
   const verifyOTP = (enteredOtp) => {
     if (RealOTP === enteredOtp) {
@@ -142,8 +141,8 @@ function Content({ open, setOpen, setAccount, width, display }) {
   }
 
   function onClickResend() {
+    setRealOTP('')
     OTPSender()
-    setIsResend(false)
   }
 
   function getUserName(name) {
@@ -253,7 +252,7 @@ function Content({ open, setOpen, setAccount, width, display }) {
               <CloseIcon onClick={handleClose} sx={{ margin: '8px 0px auto 290px', cursor: 'pointer' }} />
             </Box>
 
-            <Typography sx={{ fontSize: '16px', fontWeight: '600', marginTop: 3 }}>Enter phone to continue</Typography>
+            <Typography sx={{ fontSize: '16px', fontWeight: '600', marginTop: 3,color:'#e65c00' }}>Enter phone to continue</Typography>
             <Box sx={{
               display: 'flex', alignItems: 'center', justifyContent: 'space-between', border: '1px solid #e5e5e5', width: '95%', my: 2, textAlign: 'center',
             }}>
@@ -269,6 +268,7 @@ function Content({ open, setOpen, setAccount, width, display }) {
                   width: '85%',
                   height: '40px',
                   fontSize: '14px',
+                  textAlign:'center'
                 }} />
             </Box>
 
@@ -287,8 +287,17 @@ function Content({ open, setOpen, setAccount, width, display }) {
 
 
             <Box sx={{ display: displayForSecond ? 'block' : 'none', margin: '0px auto', }}>
-
-              <Typography sx={{ fontSize: '14px', fontWeight: '600', textALign: 'start' }}>Enter OTP : </Typography>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <Typography sx={{ fontSize: '14px', fontWeight: '600', textALign: 'start' }}>Enter OTP : </Typography>
+                <Box sx={{ textAlign: 'center' }}>
+                  <Typography sx={{ pointerEvents: resendTime === 0 ? 'auto' : 'none', opacity: resendTime === 0 ? '1' : '0.6', cursor: resendTime === 0 ? 'pointer' : 'no-drop', fontSize: '16px', mr: 1 }} onClick={() => onClickResend()}>
+                    Resend {
+                      resendTime === 0 ? null :
+                        <span>0:{resendTime < 10 ? `0${resendTime}` : resendTime}</span>
+                    }
+                  </Typography>
+                </Box>
+              </Box>
 
               <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <input
@@ -305,11 +314,7 @@ function Content({ open, setOpen, setAccount, width, display }) {
                     margin: '5px auto',
                   }} />
               </Box>
-              <Box sx={{ textAlign: 'center' }}>
-                <Typography sx={{ my: 1, pointerEvents: isResend ? 'auto' : 'none', opacity: isResend ? '1' : '0.6' }} onClick={() => onClickResend()}>
-                  Resend {resendTime}
-                </Typography>
-              </Box>
+
               <Button sx={{
                 my: 2,
                 boxShadow: 0,
@@ -383,10 +388,12 @@ function Content({ open, setOpen, setAccount, width, display }) {
 
 
 
-function SMContent({ open, setOpen, setAccount }) {
+function SMContent({ open, setOpen }) {
   const fullScreen = useMediaQuery('(max-width:700px)');
 
   const { setMessage, setMessageType, setShow } = React.useContext(LoginContext)
+
+  const timeRef = React.useRef()
 
   const [displayForFirst, setDisplayForFirst] = React.useState(true)
   const [displayForSecond, setDisplayForSecond] = React.useState(false)
@@ -396,6 +403,7 @@ function SMContent({ open, setOpen, setAccount }) {
   const [username, setUsername] = React.useState('')
   const [email, setEmail] = React.useState('')
   const [RealOTP, setRealOTP] = React.useState('')
+  const [resendTime, setResendTime] = React.useState(60)
 
 
   // ----------------------------functions------------------------------ 
@@ -412,7 +420,11 @@ function SMContent({ open, setOpen, setAccount }) {
 
 
   // ----------For OTP--------------------------
+
   async function OTPSender() {
+    setRealOTP('')
+    clearInterval(timeRef.current);
+    setResendTime(60);
     const items = {
       Number: `+91${number}`
     }
@@ -420,6 +432,12 @@ function SMContent({ open, setOpen, setAccount }) {
     if (response) {
       setRealOTP(response.slice(0, 6))
     }
+    timeRef.current = setInterval(() => {
+      setResendTime((time) => time - 1)
+    }, 1000);
+  }
+  if (resendTime === 0) {
+    clearInterval(timeRef.current)
   }
   const verifyOTP = (enteredOtp) => {
     if (RealOTP === enteredOtp) {
@@ -428,6 +446,7 @@ function SMContent({ open, setOpen, setAccount }) {
       return false
     }
   }
+
 
   //---------------END--------------------------
 
@@ -465,6 +484,10 @@ function SMContent({ open, setOpen, setAccount }) {
     }
   }
 
+  function onClickResend() {
+    setRealOTP('')
+    OTPSender()
+  }
 
   function getUserName(name) {
     setUsername(name.value)
@@ -606,6 +629,14 @@ function SMContent({ open, setOpen, setAccount }) {
                     margin: '5px auto',
                   }} />
               </Box>
+              <Box sx={{ textAlign: 'center' }}>
+                  <Typography sx={{ my: 1, pointerEvents: resendTime === 0 ? 'auto' : 'none', opacity: resendTime === 0 ? '1' : '0.6', cursor: resendTime === 0 ? 'pointer' : 'no-drop', fontSize: '16px', mr: 1 }} onClick={() => onClickResend()}>
+                    Resend {
+                      resendTime === 0 ? null :
+                        <span>0:{resendTime < 10 ? `0${resendTime}` : resendTime}</span>
+                    }
+                  </Typography>
+                </Box>
               <Button sx={{
                 my: 2,
                 boxShadow: 0,

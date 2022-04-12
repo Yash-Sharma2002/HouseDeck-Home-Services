@@ -18,15 +18,15 @@ export default function Top() {
   const style1 = {
     display: 'flex',
     justifyContent: 'space-around',
-    borderRadius: '4px',
     cursor: 'pointer',
     padding: '0px 10px',
     alignItems: 'center',
     backgroundColor: 'white',
     height: '50px!important',
-    minWidth:'150px',
-    border:'7px solid orange',
-    textAlign:'center'
+    minWidth: '150px',
+    border: '7px solid orange',
+    textAlign: 'center',
+    borderRadius: '30px'
   }
 
 
@@ -53,8 +53,12 @@ export default function Top() {
             padding: '7rem 100px 3rem 100px',
             display: 'flex', justifyContent: 'space-between'
           }}>
-            <Search width={'500px'} />
-            <CitySelector style={style1} />
+            <Box sx={{ boxShadow: 2 }}>
+              <Search width={'500px'} />
+            </Box>
+            <Box sx={{ boxShadow: 2 }}>
+              <CitySelector style={style1} />
+            </Box>
           </Box>
         </div>
       )}
@@ -67,7 +71,7 @@ export default function Top() {
             padding: '4rem 50px 3rem 50px',
             display: 'block',
           }}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: '0rem 0px 1rem 0px', alignItems: 'center'}}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: '0rem 0px 1rem 0px', alignItems: 'center' }}>
               <CitySelector style={style2} />
               <Box>
 

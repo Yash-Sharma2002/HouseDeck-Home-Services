@@ -25,9 +25,9 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 
-function Content({ options,data, setOptions, open, setOpen, width }) {
+function Content({ options,category, data, setOptions, open, setOpen, width }) {
 
-    const { setMessage, setMessageType, setShow } = React.useContext(LoginContext)
+    const { setMessage, setMessageType, setShow, userData } = React.useContext(LoginContext)
 
     const fullScreen = useMediaQuery('(max-width:650px)');
     const [price, setPrice] = React.useState(0)
@@ -58,7 +58,6 @@ function Content({ options,data, setOptions, open, setOpen, width }) {
         setPaymentLink('')
         setOrderId('')
     };
-
     function Select(service, price) {
         if (!Services.map((item) => item.Service).includes(service)) {
             setServices((prevItems) => [
@@ -118,26 +117,6 @@ function Content({ options,data, setOptions, open, setOpen, width }) {
         }
     }
 
-    function loadUserData() {
-        try {
-            const serializedState = localStorage.getItem('userdata');
-            if (serializedState === null) {
-                return '';
-            }
-            return JSON.parse(serializedState);
-        } catch (err) {
-            localStorage.setItem("userdata", JSON.stringify({
-                Number: '',
-                Username: ''
-            }))
-            const serializedState = localStorage.getItem('userdata');
-            if (serializedState === null) {
-                return '';
-            }
-            return JSON.parse(serializedState);
-        }
-
-    }
 
 
     function AtStart() {
@@ -150,19 +129,19 @@ function Content({ options,data, setOptions, open, setOpen, width }) {
 
 
     const CreateOrder = async () => {
-        if(!date) {
+        if (!date) {
             setShow(true)
             setMessage('Enter Date.')
             setMessageType('error')
             return
         }
-        if(!time) {
+        if (!time) {
             setShow(true)
             setMessage('Enter Time.')
             setMessageType('error')
             return
         }
-        const userData = loadUserData()
+
         const data = {
             order_id: `OrderId_${orderId}`,
             order_amount: `${price}.00`,
@@ -185,13 +164,14 @@ function Content({ options,data, setOptions, open, setOpen, width }) {
     }
 
     const saveDraft = async () => {
-        const userData = loadUserData()
+
         const currentDateTime = new Date()
         const items = {
             Order_Details: {
                 Order_Id: `OrderId_${orderId}`,
                 Order_Date: currentDateTime.toString().slice(0, 15),
                 Order_Time: currentDateTime.toString().slice(16, 25),
+                Category:category,
                 Services,
                 Order_Amount: `${price}.00`,
                 Appointment_Location: location,
@@ -221,7 +201,6 @@ function Content({ options,data, setOptions, open, setOpen, width }) {
             setMessageType('error')
         }
     }
-console.log(data);
     const handleClickOpen = (services) => {
         setOptions(services)
         setDisplayAtStart(false)
@@ -230,13 +209,14 @@ console.log(data);
         setDisplayForAppointment(false)
     }
     const onClickPay = async () => {
-        const userData = loadUserData()
+
         const currentDateTime = new Date()
         const items = {
             Order_Details: {
                 Order_Id: `OrderId_${orderId}`,
                 Order_Date: currentDateTime.toString().slice(0, 15),
                 Order_Time: currentDateTime.toString().slice(16, 25),
+                Category:category,
                 Services,
                 Order_Amount: `${price}.00`,
                 Appointment_Location: location,
@@ -434,7 +414,7 @@ console.log(data);
 
                     <Box sx={{ display: 'flex', justifyContent: 'start', alignItems: 'center', color: 'rgb(25, 118, 210)', my: 4 }} onClick={getLocation}>
                         <MyLocationIcon />
-                        <Typography sx={{ fontSize: '16px', ml: 1 }} >current location</Typography>
+                        <Typography sx={{ fontSize: '16px', ml: 1, cursor: 'pointer' }} >current location</Typography>
                     </Box>
                     <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                         <ArrowBackIcon onClick={AtStart} sx={{ position: 'absolute', bottom: 20, cursor: 'pointer' }} />
@@ -479,47 +459,92 @@ console.log(data);
 
                     <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                         <ArrowBackIcon onClick={AtStart} sx={{ position: 'absolute', bottom: 17, cursor: 'pointer' }} />
-                        <Button sx={{ fontSize: '16px', marginLeft: 'auto', marginRight: '0px', textTransform: 'none', position: 'absolute', bottom: 10, right: 10 }} variant='contained' onClick={CreateOrder}>Create Order</Button>
+                        <Button sx={{ fontSize: '16px', marginLeft: 'auto', marginRight: '0px', textTransform: 'none', position: 'absolute', bottom: 10, right: 10 }} variant='contained' onClick={()=>{
+                              setDisplayAtStart(false)
+                              setDisplayForServiceSelectionProcess(false)
+                              setDisplayForStepper(false)
+                              setDisplayForAppointment(false)
+                              setDisplayForPayment(true)
+                        }}>Continue</Button>
+                </Box>
+            </Box>
+
+            <Box sx={{ display: displayForPayment ? 'block' : 'none', height: '90vh', width: width, padding: '15px', }}>
+                <Box sx={{ textAlign: 'right' }}>
+                    <CloseIcon onClick={handleClose} sx={{ cursor: 'pointer', }} />
+                </Box>
+
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
+                    <Typography sx={{ fontSize: "18px", fontWeight: '700' }}>Your Order</Typography>
+                </Box>
+                <Box>
+                    {Services.map((data, index) => {
+                        return (
+                            <Box key={index} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <Typography sx={{ fontSize: '16px', fontFamily: 'Fredoka' }}>{data.Service}</Typography>
+                                <Typography sx={{ fontSize: '16px', fontFamily: 'Fredoka' }}>{data.Price}</Typography>
+                            </Box>
+                        )
+                    })}
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>Total Price</Typography>
+                        <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>&#8377;{price}</Typography>
                     </Box>
                 </Box>
 
-                <Box sx={{ display: displayForPayment ? 'block' : 'none', height: '90vh', width: width, padding: '15px', }}>
-                    <Box sx={{ textAlign: 'right' }}>
-                        <CloseIcon onClick={handleClose} sx={{ cursor: 'pointer', }} />
+                <Box sx={{ my: 10, textAlign: 'center' }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
+                        <Typography sx={{ fontSize: "18px", fontWeight: '700' }}>Enter Promo-Code</Typography>
                     </Box>
-
-                    <Stack spacing={2} sx={{ textAlign: 'center', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }}>
-                        <a href={paymentLink} style={{ textDecoration: 'none', }} target="_blank" rel="noreferrer">
-                            <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={onClickPay} >Pay</Button>
-                        </a>
-
-                        <Link href='' sx={{ textDecoration: 'none', }}>
-                            <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={saveDraft}>Save as Draft</Button>
-                        </Link>
-                    </Stack>
+                    <Box sx={{ textAlign: 'center' }}>
+                        <TextField
+                            placeholder="Enter Promo-Code (if any)"
+                            variant="standard"
+                            sx={{ margin: '0px auto',textAlign:'center' }}
+                        />
+                    </Box>
+                    <Button sx={{ fontSize: '16px', textTransform: 'none', my: 2 }} variant='contained'  >Apply</Button>
                 </Box>
+                <Box sx={{ position: 'absolute', bottom: 10, left: 10 }}>
+
+                    <Link href='' sx={{ textDecoration: 'none', }}>
+                        <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={saveDraft}>Shortlist</Button>
+                    </Link>
+
+                </Box>
+                <Box sx={{ position: 'absolute', bottom: 10, right: 10 }}>
+                    {
+                        paymentLink ?
+                            <a href={paymentLink} style={{ textDecoration: 'none', }} target="_blank" rel="noreferrer">
+                                <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={onClickPay} >Pay Now</Button>
+                            </a>
+                            :
+                            <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={CreateOrder} >Start Order</Button>
+                    }
+
+                </Box>
+            </Box>
 
 
-            </BootstrapDialog>
+        </BootstrapDialog>
         </>
     )
 }
 
 
 
-export default function ServiceSelector({ options,data, setOptions, open, setOpen }) {
+export default function ServiceSelector({ options, category,data, setOptions, open, setOpen }) {
 
     const xlMax = useMediaQuery('(max-width:2000px)');
     const xlMin = useMediaQuery('(min-width:650px)');
     const sm = useMediaQuery('(max-width:650px)');
-    console.log(options);
     return (
 
         <>
             {xlMax && xlMin && (
-                <Content options={options} data={data} setOptions={setOptions} open={open} setOpen={setOpen} width={'550px'} />
+                <Content options={options} category={category} data={data} setOptions={setOptions} open={open} setOpen={setOpen} width={'550px'} />
             )}
-            {sm && (<Content options={options} data={data} setOptions={setOptions} open={open} setOpen={setOpen} width={'auto'} />)}
+            {sm && (<Content options={options} category={category} data={data} setOptions={setOptions} open={open} setOpen={setOpen} width={'auto'} />)}
 
         </>
     )

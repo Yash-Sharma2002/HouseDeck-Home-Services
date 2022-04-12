@@ -55,6 +55,14 @@ export default function Bookings() {
   const [subscription, setSubscriptions] = React.useState([])
   const [value, setValue] = React.useState(0);
   const { userData } = React.useContext(LoginContext)
+  const items = {
+    Customer_Details: {
+      Customer_Id: userData.Username,
+      Customer_Email: userData.Email,
+      Customer_Phone: userData.Number
+    }
+  }
+
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -69,7 +77,7 @@ export default function Bookings() {
 
 
   const getDraftBookings = async () => {
-    const response = await getDraftBookingsAPI({ Number: userData.Number })
+    const response = await getDraftBookingsAPI(items)
     if (response) {
       setSubscriptions([])
       setBookings(response.reverse())
@@ -79,7 +87,7 @@ export default function Bookings() {
     }
   }
   const getPaidBookings = async () => {
-    const response = await getPaidBookingsAPI({ Number: userData.Number })
+    const response = await getPaidBookingsAPI(items)
     if (response) {
       setSubscriptions([])
       setBookings(response.reverse())
@@ -89,13 +97,22 @@ export default function Bookings() {
     }
   }
   const getSubscriptions = async () => {
-    const response = await getSubscriptionDetails({ Number: userData.Number })
+    const response = await getSubscriptionDetails(items)
     if (response) {
       setBookings([])
       setSubscriptions(response.reverse())
     } else {
       setSubscriptions([])
     }
+  }
+
+  function toTitle(str) {
+    return str.replace(
+      /\w\S*/g,
+      function (txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+      }
+    );
   }
   return (
     <div>
@@ -141,11 +158,15 @@ export default function Bookings() {
             <TabPanel value={value} index={value === 0 ? 0 : 1}>
               {
                 bookings.length !== 0 ? bookings.map((item) => {
-
+                   const category = toTitle(item.Order_Details.Category.replace(/_/g, ' '))
                   const services = item.Order_Details.Services
                   return (
                     <>
                       <Divider sx={{ mt: 2, px: 2, fontSize: '18px', }}>{item.Order_Details.Order_Date} {item.Order_Details.Order_Time}</Divider>
+                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: 2, pt: 1 }}>
+                        <Typography sx={{ fontSize: '16px', fontWeight: '600', }}>Category</Typography>
+                        <Typography sx={{ fontSize: '16px', fontWeight: '600', fontFamily: 'Fredoka' }}>{category}</Typography>
+                      </Box>
                       {services.map(data =>
                         <>
                           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: 2, pt: 1 }}>
@@ -159,18 +180,20 @@ export default function Bookings() {
                         <Typography sx={{ fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>Total Price</Typography>
                         <Typography sx={{ fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{item.Order_Details.Order_Amount}</Typography>
                       </Box>
+
                       {
-                        item.Payment_Details.Payment_Link ?
-                          <Box sx={{ textAlign: 'center', mt: 2 }}>
-                            <a href={item.Payment_Details.Payment_Link} style={{ textDecoration: 'none', }} target="_blank" rel="noreferrer">
-                              <Button variant="contained">
-                                Pay Now
-                              </Button>
-                            </a>
-                          </Box>
-                          :
-                          <Box></Box>
+                        item.Draft==='Yes'?
+                        <Box sx={{ textAlign: 'center', mt: 2 }}>
+                        <a href={`/home-services/service=${category}`} style={{ textDecoration: 'none', }} target="_blank" rel="noreferrer">
+                          <Button variant="contained">
+                            Start Again
+                          </Button>
+                        </a>
+                      </Box>
+                      :
+                      <Box></Box>
                       }
+                      
                     </>
                   )
                 })

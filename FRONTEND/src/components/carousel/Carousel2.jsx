@@ -67,7 +67,7 @@ export default function Carousel2() {
       responsive={responsive}
       partialVisible={true}
       swipeable={true}
-      autoPlay={false}
+      autoPlay={true}
     >
       {OtherPageTopCarouselData.map(data =>
         <Box key={data.url} sx={{

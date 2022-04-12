@@ -101,7 +101,7 @@ function Content({ padding, padding2, display, displayForButton }) {
             }}>
                 <Typography sx={{
                     fontWeight: '600',
-                    color: '#464646',
+                    color: '#F45C43',
                     fontSize: '22px',
                     paddingBottom: '50px',
                     marginTop: '40px',
@@ -117,7 +117,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                         fontSize: '16px',
                         textDecoration: 'none',
                         padding: '10px',
-                        background: '#1b685f',
+                        background: 'linear-gradient(to right,#F45C43 ,#EB3349 )',
                         fontFamily: "Fredoka",
                         borderRadius: 5,
                         display: displayForButton
@@ -139,7 +139,6 @@ function Content({ padding, padding2, display, displayForButton }) {
                             height: '195px',
                             objectFit: 'cover',
                             backgroundPosition: 'center',
-                            // filter:'brightness(0.5)'
                         }}>
                         </Box>
                         <Box>
@@ -163,7 +162,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                                 <Link href={paymentLink} target='_blank' rel="noreferrer" sx={{ textDecoration: 'none' }}>
                                     <Button sx={{
                                         fontSize: '12px',
-                                        color: 'rgb(65,88,208) ',
+                                        color: '#3a7bd5 ',
                                         padding: '15px 20px',
                                         borderRadius: 15,
                                         background: "#bee9d8",
@@ -171,7 +170,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                                         mt: 6,
                                         boxShadow: 0,
                                         '&:hover': {
-                                            background: 'rgb(122,220,180)',
+                                            background: '#F45C43',
                                             color: 'white'
                                         }
                                     }}
@@ -184,7 +183,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                                     {
                                         isLogin ? <Button sx={{
                                             fontSize: '12px',
-                                            color: 'rgb(65,88,208) ',
+                                            color: '#3a7bd5 ',
                                             padding: '15px 20px',
                                             borderRadius: 15,
                                             background: "#bee9d8",
@@ -192,7 +191,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                                             mt: 6,
                                             boxShadow: 0,
                                             '&:hover': {
-                                                background: 'rgb(122,220,180)',
+                                                background: '#F45C43',
                                                 color: 'white'
                                             }
                                         }}
@@ -203,7 +202,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                                             :
                                             <Button sx={{
                                                 fontSize: '12px',
-                                                color: 'rgb(65,88,208) ',
+                                                color: '#3a7bd5 ',
                                                 padding: '15px 20px',
                                                 borderRadius: 15,
                                                 background: "#bee9d8",
@@ -211,7 +210,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                                                 mt: 6,
                                                 boxShadow: 0,
                                                 '&:hover': {
-                                                    background: 'rgb(122,220,180)',
+                                                    background: '#F45C43',
                                                     color: 'white'
                                                 }
                                             }} onClick={handleClickOpen}>
@@ -256,7 +255,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                                 <Link href={paymentLink} target='_blank' rel="noreferrer" sx={{ textDecoration: 'none' }}>
                                     <Button sx={{
                                         fontSize: '12px',
-                                        color: 'rgb(65,88,208) ',
+                                        color: '#3a7bd5 ',
                                         padding: '15px 20px',
                                         borderRadius: 15,
                                         background: "#bee9d8",
@@ -264,7 +263,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                                         mt: 6,
                                         boxShadow: 0,
                                         '&:hover': {
-                                            background: 'rgb(122,220,180)',
+                                            background: '#F45C43',
                                             color: 'white'
                                         }
                                     }} onClick={() => GetPayment('Bathroom Cleaning- [For 3 months]', '1400')}>
@@ -276,7 +275,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                                     {
                                         isLogin ? <Button sx={{
                                             fontSize: '12px',
-                                            color: 'rgb(65,88,208) ',
+                                            color: '#3a7bd5 ',
                                             padding: '15px 20px',
                                             borderRadius: 15,
                                             background: "#bee9d8",
@@ -284,7 +283,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                                             mt: 6,
                                             boxShadow: 0,
                                             '&:hover': {
-                                                background: 'rgb(122,220,180)',
+                                                background: '#F45C43',
                                                 color: 'white'
                                             }
                                         }}
@@ -295,7 +294,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                                             :
                                             <Button sx={{
                                                 fontSize: '12px',
-                                                color: 'rgb(65,88,208) ',
+                                                color: '#3a7bd5 ',
                                                 padding: '15px 20px',
                                                 borderRadius: 15,
                                                 background: "#bee9d8",
@@ -303,7 +302,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                                                 mt: 6,
                                                 boxShadow: 0,
                                                 '&:hover': {
-                                                    background: 'rgb(122,220,180)',
+                                                    background: '#F45C43',
                                                     color: 'white'
                                                 }
                                             }} onClick={handleClickOpen}>
@@ -348,7 +347,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                                 <Link href={paymentLink} target='_blank' rel="noreferrer" sx={{ textDecoration: 'none' }}>
                                     <Button sx={{
                                         fontSize: '12px',
-                                        color: 'rgb(65,88,208) ',
+                                        color: '#3a7bd5 ',
                                         padding: '15px 20px',
                                         borderRadius: 15,
                                         background: "#bee9d8",
@@ -356,7 +355,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                                         mt: 6,
                                         boxShadow: 0,
                                         '&:hover': {
-                                            background: 'rgb(122,220,180)',
+                                            background: '#F45C43',
                                             color: 'white'
                                         }
                                     }}
@@ -369,7 +368,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                                     {
                                         isLogin ? <Button sx={{
                                             fontSize: '12px',
-                                            color: 'rgb(65,88,208) ',
+                                            color: '#3a7bd5 ',
                                             padding: '15px 20px',
                                             borderRadius: 15,
                                             background: "#bee9d8",
@@ -377,7 +376,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                                             mt: 6,
                                             boxShadow: 0,
                                             '&:hover': {
-                                                background: 'rgb(122,220,180)',
+                                                background: '#F45C43',
                                                 color: 'white'
                                             }
                                         }}
@@ -388,7 +387,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                                             :
                                             <Button sx={{
                                                 fontSize: '12px',
-                                                color: 'rgb(65,88,208) ',
+                                                color: '#3a7bd5 ',
                                                 padding: '15px 20px',
                                                 borderRadius: 15,
                                                 background: "#bee9d8",
@@ -396,7 +395,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                                                 mt: 6,
                                                 boxShadow: 0,
                                                 '&:hover': {
-                                                    background: 'rgb(122,220,180)',
+                                                    background: '#F45C43',
                                                     color: 'white'
                                                 }
                                             }} onClick={handleClickOpen}>
@@ -503,7 +502,7 @@ function SMContent({ displayForButton }) {
         <div id="subscription-plans" style={{ padding: '20px' }}>
             <Typography sx={{
                 fontWeight: '600',
-                color: '#464646',
+                color: '#F45C43',
                 fontSize: '22px',
                 paddingBottom: '50px',
                 marginTop: '40px',
@@ -548,7 +547,7 @@ function SMContent({ displayForButton }) {
                                 <Link href={paymentLink} target='_blank' rel="noreferrer" sx={{ textDecoration: 'none' }}>
                                     <Button sx={{
                                         fontSize: '12px',
-                                        color: 'rgb(65,88,208) ',
+                                        color: '#3a7bd5 ',
                                         padding: '15px 20px',
                                         borderRadius: 15,
                                         background: "#bee9d8",
@@ -556,7 +555,7 @@ function SMContent({ displayForButton }) {
                                         mt: 6,
                                         boxShadow: 0,
                                         '&:hover': {
-                                            background: 'rgb(122,220,180)',
+                                            background: '#F45C43',
                                             color: 'white'
                                         }
                                     }} onClick={() => GetPayment('Kitchen Deep Cleaning - [For 3 months]', '3350')}>
@@ -568,7 +567,7 @@ function SMContent({ displayForButton }) {
                                     {
                                         isLogin ? <Button sx={{
                                             fontSize: '12px',
-                                            color: 'rgb(65,88,208) ',
+                                            color: '#3a7bd5 ',
                                             padding: '15px 20px',
                                             borderRadius: 15,
                                             background: "#bee9d8",
@@ -576,7 +575,7 @@ function SMContent({ displayForButton }) {
                                             mt: 6,
                                             boxShadow: 0,
                                             '&:hover': {
-                                                background: 'rgb(122,220,180)',
+                                                background: '#F45C43',
                                                 color: 'white'
                                             }
                                         }}
@@ -587,7 +586,7 @@ function SMContent({ displayForButton }) {
                                             :
                                             <Button sx={{
                                                 fontSize: '12px',
-                                                color: 'rgb(65,88,208) ',
+                                                color: '#3a7bd5 ',
                                                 padding: '15px 20px',
                                                 borderRadius: 15,
                                                 background: "#bee9d8",
@@ -595,7 +594,7 @@ function SMContent({ displayForButton }) {
                                                 mt: 6,
                                                 boxShadow: 0,
                                                 '&:hover': {
-                                                    background: 'rgb(122,220,180)',
+                                                    background: '#F45C43',
                                                     color: 'white'
                                                 }
                                             }} onClick={handleClickOpen}>
@@ -641,7 +640,7 @@ function SMContent({ displayForButton }) {
                                 <Link href={paymentLink} target='_blank' rel="noreferrer" sx={{ textDecoration: 'none' }}>
                                     <Button sx={{
                                         fontSize: '12px',
-                                        color: 'rgb(65,88,208) ',
+                                        color: '#3a7bd5 ',
                                         padding: '15px 20px',
                                         borderRadius: 15,
                                         background: "#bee9d8",
@@ -649,7 +648,7 @@ function SMContent({ displayForButton }) {
                                         mt: 6,
                                         boxShadow: 0,
                                         '&:hover': {
-                                            background: 'rgb(122,220,180)',
+                                            background: '#F45C43',
                                             color: 'white'
                                         }
                                     }} onClick={() => GetPayment('Bathroom Cleaning- [For 3 months]', '1400')}>
@@ -661,7 +660,7 @@ function SMContent({ displayForButton }) {
                                     {
                                         isLogin ? <Button sx={{
                                             fontSize: '12px',
-                                            color: 'rgb(65,88,208) ',
+                                            color: '#3a7bd5 ',
                                             padding: '15px 20px',
                                             borderRadius: 15,
                                             background: "#bee9d8",
@@ -669,7 +668,7 @@ function SMContent({ displayForButton }) {
                                             mt: 6,
                                             boxShadow: 0,
                                             '&:hover': {
-                                                background: 'rgb(122,220,180)',
+                                                background: '#F45C43',
                                                 color: 'white'
                                             }
                                         }}
@@ -680,7 +679,7 @@ function SMContent({ displayForButton }) {
                                             :
                                             <Button sx={{
                                                 fontSize: '12px',
-                                                color: 'rgb(65,88,208) ',
+                                                color: '#3a7bd5 ',
                                                 padding: '15px 20px',
                                                 borderRadius: 15,
                                                 background: "#bee9d8",
@@ -688,7 +687,7 @@ function SMContent({ displayForButton }) {
                                                 mt: 6,
                                                 boxShadow: 0,
                                                 '&:hover': {
-                                                    background: 'rgb(122,220,180)',
+                                                    background: '#F45C43',
                                                     color: 'white'
                                                 }
                                             }} onClick={handleClickOpen}>
@@ -733,7 +732,7 @@ function SMContent({ displayForButton }) {
                                 <Link href={paymentLink} target='_blank' rel="noreferrer" sx={{ textDecoration: 'none' }}>
                                     <Button sx={{
                                         fontSize: '12px',
-                                        color: 'rgb(65,88,208) ',
+                                        color: '#3a7bd5 ',
                                         padding: '15px 20px',
                                         borderRadius: 15,
                                         background: "#bee9d8",
@@ -741,7 +740,7 @@ function SMContent({ displayForButton }) {
                                         mt: 6,
                                         boxShadow: 0,
                                         '&:hover': {
-                                            background: 'rgb(122,220,180)',
+                                            background: '#F45C43',
                                             color: 'white'
                                         }
                                     }}
@@ -754,7 +753,7 @@ function SMContent({ displayForButton }) {
                                     {
                                         isLogin ? <Button sx={{
                                             fontSize: '12px',
-                                            color: 'rgb(65,88,208) ',
+                                            color: '#3a7bd5 ',
                                             padding: '15px 20px',
                                             borderRadius: 15,
                                             background: "#bee9d8",
@@ -762,7 +761,7 @@ function SMContent({ displayForButton }) {
                                             mt: 6,
                                             boxShadow: 0,
                                             '&:hover': {
-                                                background: 'rgb(122,220,180)',
+                                                background: '#F45C43',
                                                 color: 'white'
                                             }
                                         }}
@@ -773,7 +772,7 @@ function SMContent({ displayForButton }) {
                                             :
                                             <Button sx={{
                                                 fontSize: '12px',
-                                                color: 'rgb(65,88,208) ',
+                                                color: '#3a7bd5 ',
                                                 padding: '15px 20px',
                                                 borderRadius: 15,
                                                 background: "#bee9d8",
@@ -781,7 +780,7 @@ function SMContent({ displayForButton }) {
                                                 mt: 6,
                                                 boxShadow: 0,
                                                 '&:hover': {
-                                                    background: 'rgb(122,220,180)',
+                                                    background: '#F45C43',
                                                     color: 'white'
                                                 }
                                             }} onClick={handleClickOpen}>
@@ -804,7 +803,7 @@ function SMContent({ displayForButton }) {
                     fontSize: '16px',
                     textDecoration: 'none',
                     padding: '8px',
-                    background: '#1b685f',
+                    background: 'linear-gradient(to right,#F45C43 ,#EB3349 )',
                     fontFamily: "Fredoka",
                     borderRadius: 5,
                     display: displayForButton

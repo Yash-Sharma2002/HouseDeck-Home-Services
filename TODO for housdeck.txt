@@ -13,17 +13,17 @@ This is the list of the To-DO tasks needed for the website line by line
 4. Make about us page and the profile page.
 
 
-
+5. Why user have to verify their number first
 6. Also add random service from the menu sidebar of the destop.
 
 
-
+7. Add delete option in draft services.
 
 9. Also make available to change date and time of the appointment when in the draft messages.
 
 10. When click on any paid or draft service a dialog opens containing its all the details that has been stored by the user
 
-11. Also try to make resend otp for login or signup.
+
 
 
 
@@ -33,14 +33,5 @@ This is the list of the To-DO tasks needed for the website line by line
 
 1. Users can change or upadte their info in profile page.
 
-2. Website does contain uploading photo so make it available. If photos not available avatar is showed.
 
 
-
-------------------------------------------- Things to research. ----------------------------------
-
-
-
-2. How to upload images in mongodb.
-
-* for now only this *

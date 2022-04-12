@@ -40,7 +40,7 @@ const responsive = {
 };
 const TopHeadQuestions = {
     fontWeight: '600',
-    color: '#464646',
+    color: '#F45C43',
     fontSize: '22px',
     paddingBottom: '50px',
     marginTop: '40px'

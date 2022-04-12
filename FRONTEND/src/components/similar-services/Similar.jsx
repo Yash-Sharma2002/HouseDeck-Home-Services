@@ -7,7 +7,7 @@ import { LoginContext } from '../../context/Context';
 
 const TopHeadStyle = {
   fontWeight: '600',
-  color: '#464646',
+  color: '#F45C43',
   fontSize: '22px',
   padding: '10px 10px',
 }
@@ -33,7 +33,7 @@ export default function Similar() {
               SearchBar[currentCity].map(data => {
                 const dataAll = `${data.value} in ${city}`
                 return (
-                  <Chip label={dataAll} key={dataAll} sx={{ m: 1, backgroundColor: '#e8e8e8', borderRadius: '7px', height: '23px' }} component="a" href="#" clickable />
+                  <Chip label={dataAll} key={dataAll} sx={{ m: 1, backgroundColor: '#e8e8e8', borderRadius: '7px', height: '23px' }} component="a" href={data.url} clickable />
                 )
               })
             }

@@ -8,7 +8,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const TopHeadQuestions = {
     fontWeight: '600',
-    color: '#464646',
+    color:'#F45C43',
     fontSize: '22px',
     paddingBottom: '50px',
     borderBottom: '1px solid #e0e0e0',
@@ -19,9 +19,15 @@ const TopHeadQuestions = {
 
 const TopQuestions = () => {
     const [expanded, setExpanded] = React.useState(false);
+    const [id,setId] = React.useState(5)
 
-    const handleChange = (panel) => (event, isExpanded) => {
+    const handleChange = (panel,id) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
+        if(panel && isExpanded){
+            setId(parseInt(panel.slice(5,)))
+        }else{
+            setId(null)
+        }
     };
 
     const AccordianStyle = {
@@ -29,23 +35,24 @@ const TopQuestions = () => {
         borderBottom: '1px solid #e0e0e0',
         textAlign: 'left',
         padding: '20px 15px!important',
-
     }
     return (
         <>
             <Typography variant='h4' style={TopHeadQuestions}>Top questions</Typography>
 
 
-            <Accordion expanded={expanded === 'panel1'}
-                onChange={handleChange('panel1')}
+            <Accordion
+            expanded={expanded === 'panel1'}
+                onChange={handleChange('panel1',1)}
                 disableGutters
                 sx={AccordianStyle}>
                 <AccordionSummary
-                    expandIcon={<ExpandMoreIcon className='colorChange1' />}
+                    expandIcon={<ExpandMoreIcon sx={{color:id===1?'#FF512F':'#464646',}} />}
                     aria-controls="panel1bh-content"
                     id="panel1bh-header"
                 >
-                    <Typography className='colorChange1'>
+        
+                    <Typography sx={{color:id===1?'#FF512F':'#464646',}}>
                         How to book a service on HouseDeck?
                     </Typography>
                 </AccordionSummary>
@@ -59,13 +66,13 @@ const TopQuestions = () => {
 
 
             <Accordion
-                expanded={expanded === 'panel2'} onChange={handleChange('panel2')} disableGutters sx={AccordianStyle}>
+                expanded={expanded === 'panel2'} onChange={handleChange('panel2',2)} disableGutters sx={AccordianStyle}>
                 <AccordionSummary
-                    expandIcon={<ExpandMoreIcon className='colorChange2' />}
+                    expandIcon={<ExpandMoreIcon sx={{color:id===2?'#FF512F':'#464646',}}/>}
                     aria-controls="panel2bh-content"
                     id="panel2bh-header"
                 >
-                    <Typography className='colorChange2'>
+                    <Typography sx={{color:id===2?'#FF512F':'#464646',}}>
                         Who is going to fulfill the service?
                     </Typography>
                 </AccordionSummary>
@@ -77,13 +84,13 @@ const TopQuestions = () => {
                 </AccordionDetails>
             </Accordion>
 
-            <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')} disableGutters sx={AccordianStyle}>
+            <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3',3)} disableGutters sx={AccordianStyle}>
                 <AccordionSummary
-                    expandIcon={<ExpandMoreIcon className='colorChange3' />}
+                    expandIcon={<ExpandMoreIcon sx={{color:id===3?'#FF512F':'#464646',}} />}
                     aria-controls="panel3bh-content"
                     id="panel3bh-header"
                 >
-                    <Typography className='colorChange3' >
+                    <Typography sx={{color:id===3?'#FF512F':'#464646',}} >
                         What all services are available on HouseDeck?
                     </Typography>
                 </AccordionSummary>
@@ -93,13 +100,13 @@ const TopQuestions = () => {
                     </Typography>
                 </AccordionDetails>
             </Accordion>
-            <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')} disableGutters sx={AccordianStyle}>
+            <Accordion   expanded={expanded === 'panel4'} onChange={handleChange('panel4',4)} disableGutters sx={AccordianStyle}>
                 <AccordionSummary
-                    expandIcon={<ExpandMoreIcon className='colorChange4' />}
+                    expandIcon={<ExpandMoreIcon sx={{color:id===4?'#FF512F':'#464646',}} />}
                     aria-controls="panel4bh-content"
                     id="panel4bh-header"
                 >
-                    <Typography className='colorChange4' >How are HouseDeck services different
+                    <Typography sx={{color:id===4?'#FF512F':'#464646',}} >How are HouseDeck services different
                         from other online portals?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>

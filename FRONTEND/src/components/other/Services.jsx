@@ -4,20 +4,18 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ServiceSelector from '../dialogs/ServiceSelector';
 import {  ServiceDialogData } from '../../constants/data';
 import Login from '../dialogs/Login';
-import { LoginContext } from '../../context/Context';
+// import { LoginContext } from '../../context/Context';
 
 export default function ServicesProvider({ service,width }) {
     const [openForService, setOpenForService] = React.useState(false)
     const [open, setOpen] = React.useState(false)
-    const {isLogin} = React.useContext(LoginContext)
+    // const {isLogin} = React.useContext(LoginContext)
     const newService = service.replace(/ /g, '_').toLowerCase()
     const [options, setOptions] = React.useState({
         imgUrl: '',
         innerData: [{ type: '', price: '' }],
         quotes: [{ text: '' }]
     })
-    console.log(newService);
-    console.log(ServiceDialogData[newService],newService);
     const handleClickOpen = (services) => {
         // if (isLogin) {
             setOpenForService(!open);
@@ -48,7 +46,7 @@ export default function ServicesProvider({ service,width }) {
                 }
             </Box>
             <Login open={open} setOpen={setOpen} />
-            <ServiceSelector options={options} data={ServiceDialogData[newService]} setOptions={setOptions} open={openForService} setOpen={setOpenForService} />
+            <ServiceSelector options={options} category={newService} data={ServiceDialogData[newService]} setOptions={setOptions} open={openForService} setOpen={setOpenForService} />
         </div>
     )
 }

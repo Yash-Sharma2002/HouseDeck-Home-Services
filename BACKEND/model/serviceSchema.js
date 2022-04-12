@@ -14,6 +14,10 @@ const serviceSchema = new mongoose.Schema({
             type: String,
             required: true,
         },
+        Category: {
+            type: String,
+            required: true,
+        },
         Services: [{
             Service: {
                 type: String,
