@@ -146,18 +146,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
 
 
     const CreateOrder = async () => {
-        if (!date) {
-            setShow(true)
-            setMessage('Enter Date.')
-            setMessageType('error')
-            return
-        }
-        if (!time) {
-            setShow(true)
-            setMessage('Enter Time.')
-            setMessageType('error')
-            return
-        }
+     
 
         const data = {
             order_id: `OrderId_${orderId}`,
@@ -476,6 +465,18 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                     <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                         <ArrowBackIcon onClick={AtStart} sx={{ position: 'absolute', bottom: 17, cursor: 'pointer' }} />
                         <Button sx={{ fontSize: '16px', marginLeft: 'auto', marginRight: '0px', textTransform: 'none', position: 'absolute', bottom: 10, right: 10 }} variant='outlined' color='secondary' endIcon={<SendIcon />} onClick={() => {
+                               if (!date) {
+                                setShow(true)
+                                setMessage('Enter Date.')
+                                setMessageType('error')
+                                return
+                            }
+                            if (!time) {
+                                setShow(true)
+                                setMessage('Enter Time.')
+                                setMessageType('error')
+                                return
+                            }
                             setDisplayAtStart(false)
                             setDisplayForServiceSelectionProcess(false)
                             setDisplayForStepper(false)
@@ -498,7 +499,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                             return (
                                 <Box key={index} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                     <Typography sx={{ fontSize: '16px', fontFamily: 'Fredoka' }}>{data.Service}</Typography>
-                                    <Typography sx={{ fontSize: '16px', fontFamily: 'Fredoka' }}>{data.Price}</Typography>
+                                    <Typography sx={{ fontSize: '16px', fontFamily: 'Fredoka' }}>&#8377;{data.Price}</Typography>
                                 </Box>
                             )
                         })}

@@ -69,7 +69,6 @@ export const getSubscriptions = async (req, res) => {
 export const deleteDraftBookings = async (req, res) => {
     try {
         await ServiceAsDraft.deleteOne({ "Customer_Details.Customer_Phone": req.body.Number,_id:req.body._id});
-        console.log('data deleted');
         await res.send(200 + 'Service data deleted')
 
     } catch (error) {

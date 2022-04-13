@@ -71,7 +71,7 @@ export default function Profile() {
       window.location.reload(false)
       try {
         localStorage.setItem('START_DATA', JSON.stringify({
-          USERDATA_AS_NUMBER:userData.USERDATA_AS_NUMBER,
+          USERDATA_AS_NUMBER: userData.USERDATA_AS_NUMBER,
           USERDATA_AS_USERNAME: encrypt(username),
           USERDATA_AS_EMAIL: encrypt(email),
         }));
@@ -79,7 +79,7 @@ export default function Profile() {
         return undefined;
       }
     }
-    else{
+    else {
       setShow(true)
       setMessageType('error')
       setMessage("Something went wrong.Try again later.")
@@ -163,11 +163,12 @@ export default function Profile() {
                   color: 'white',
                   fontSize: '16px',
                   textDecoration: 'none',
-                margin:'0px auto',
-                padding: '8px',
+                  margin: '0px auto',
+                  padding: '8px',
                   background: 'linear-gradient(to right,#F45C43 ,#EB3349 )',
                   fontFamily: "Fredoka",
-                  width:'8%'
+                  width: '8%',
+                  cursor: 'pointer'
                 }}
                   onClick={updateProfile}
                 >
@@ -242,6 +243,7 @@ export default function Profile() {
                 textDecoration: 'none',
                 padding: '8px',
                 background: 'linear-gradient(to right,#F45C43 ,#EB3349 )',
+                cursor: 'pointer',
                 fontFamily: "Fredoka",
               }}
                 onClick={updateProfile}
