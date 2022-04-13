@@ -10,18 +10,15 @@ This is the list of the To-DO tasks needed for the website line by line
 
 
 
-4. Make about us page and the profile page.
+4. Make about us page .
 
 
-5. Why user have to verify their number first
-6. Also add random service from the menu sidebar of the destop.
+
+6. Also add random service from the menu sidebar of the destop (sended by subhankar sir).
 
 
-7. Add delete option in draft services.
 
-9. Also make available to change date and time of the appointment when in the draft messages.
 
-10. When click on any paid or draft service a dialog opens containing its all the details that has been stored by the user
 
 
 

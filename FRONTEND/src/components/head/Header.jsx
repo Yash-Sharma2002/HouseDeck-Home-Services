@@ -11,12 +11,12 @@ import { LoginContext } from '../../context/Context';
 
 
 
-const PostLogo = <img src={require('../../assets/logos/houseDeck_copy1.png')} style={{width: '10rem'}} alt="HouseDeck" />
+const PostLogo = <img src={require('../../assets/logos/houseDeck_copy1.png')} style={{ width: '10rem' }} alt="HouseDeck" />
 
 
 
-function XLHeader({ commonProps}) {
-    const {isLogin,userData} = React.useContext(LoginContext)
+function XLHeader({ commonProps }) {
+    const { isLogin, userData ,decrypt} = React.useContext(LoginContext)
     const [open, setOpen] = React.useState(false);
     const handleClickOpen = () => {
         setOpen(true);
@@ -25,7 +25,7 @@ function XLHeader({ commonProps}) {
 
     return (
         <AppBar position="fixed" sx={{ backgroundColor: 'white', color: '#000000' }}>
-            <Container maxWidth="xl">
+            <Container maxWidth="2000px">
                 <Toolbar disableGutters>
                     <Typography
                         variant="h6"
@@ -126,10 +126,10 @@ function XLHeader({ commonProps}) {
                             </Button></Link>
 
                         {
-                            (userData.Username && isLogin) ?
+                            (userData.USERDATA_AS_USERNAME && isLogin) ?
                                 <Link href='/home-services/profile' sx={{ color: 'black', display: 'flex', justifyContent: 'space-evenly', alignItems: "center", marginLeft: '18px', textDecoration: 'none' }}>
                                     <AccountCircleIcon />
-                                    <Typography sx={{ fontSize: '14px', fontFamily: 'Fredoka', marginLeft: '4px' }}>{userData.Username}</Typography>
+                                    <Typography sx={{ fontSize: '14px', fontFamily: 'Fredoka', marginLeft: '4px' }}>{decrypt(userData.USERDATA_AS_USERNAME)}</Typography>
                                 </Link>
                                 :
                                 <>
@@ -172,7 +172,7 @@ function XLHeader({ commonProps}) {
                                 </>
                         }
 
-                        <Menubar  />
+                        <Menubar />
                     </Box>
                 </Toolbar>
 
@@ -219,7 +219,7 @@ export default function Header({ commonProps }) {
     return (
         <>
             {xlMax && xlMin && (
-                <XLHeader commonProps={commonProps}/>
+                <XLHeader commonProps={commonProps} />
             )}
             {!(xlMax && xlMin) && mdMax && mdMin && (
                 <MDHeader commonProps={commonProps} />

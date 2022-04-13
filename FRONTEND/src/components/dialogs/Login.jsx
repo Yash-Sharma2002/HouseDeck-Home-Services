@@ -46,7 +46,7 @@ function Content({ open, setOpen, width, display }) {
   const classes = useStyles()
   const fullScreen = useMediaQuery('(max-width:700px)');
 
-  const { setMessage, setMessageType, setShow } = React.useContext(LoginContext)
+  const { setMessage, setMessageType, setShow ,encrypt} = React.useContext(LoginContext)
 
   const timeRef = React.useRef()
 
@@ -140,6 +140,7 @@ function Content({ open, setOpen, width, display }) {
     }
   }
 
+ 
   function onClickResend() {
     setRealOTP('')
     OTPSender()
@@ -165,15 +166,16 @@ function Content({ open, setOpen, width, display }) {
         }
         let response = await authenticateLogin(login)
         if (response) {
+          console.log(response);
           window.location.reload(false)
           handleClose();
           try {
-            localStorage.setItem('userdata', JSON.stringify({
-              Number: `+91${number}`,
-              Username: response.Username,
-              Email: response.Email,
+            localStorage.setItem('START_DATA', JSON.stringify({
+              USERDATA_AS_NUMBER: encrypt(response.Number),
+              USERDATA_AS_USERNAME: encrypt(response.Username),
+              USERDATA_AS_EMAIL: encrypt(response.Email),
             }));
-            localStorage.setItem('isLogin', JSON.stringify(true));
+            localStorage.setItem('INIT_DATA', JSON.stringify(true));
           } catch (err) {
             return undefined;
           }
@@ -209,8 +211,12 @@ function Content({ open, setOpen, width, display }) {
     if (!response) return;
     window.location.reload(false)
     try {
-      localStorage.setItem('userdata', JSON.stringify(signup));
-      localStorage.setItem('isLogin', JSON.stringify(true));
+      localStorage.setItem('START_DATA', JSON.stringify({
+        USERDATA_AS_NUMBER: encrypt(`+91${number}`),
+        USERDATA_AS_USERNAME: encrypt(response.Username),
+        USERDATA_AS_EMAIL: encrypt(response.Email),
+      }));
+      localStorage.setItem('INIT_DATA', JSON.stringify(true));
     } catch (err) {
       return undefined;
     }
@@ -252,7 +258,7 @@ function Content({ open, setOpen, width, display }) {
               <CloseIcon onClick={handleClose} sx={{ margin: '8px 0px auto 290px', cursor: 'pointer' }} />
             </Box>
 
-            <Typography sx={{ fontSize: '16px', fontWeight: '600', marginTop: 3,color:'#e65c00' }}>Enter phone to continue</Typography>
+            <Typography sx={{ fontSize: '16px', fontWeight: '600', marginTop: 3, color: '#e65c00' }}>Enter phone to continue</Typography>
             <Box sx={{
               display: 'flex', alignItems: 'center', justifyContent: 'space-between', border: '1px solid #e5e5e5', width: '95%', my: 2, textAlign: 'center',
             }}>
@@ -268,7 +274,6 @@ function Content({ open, setOpen, width, display }) {
                   width: '85%',
                   height: '40px',
                   fontSize: '14px',
-                  textAlign:'center'
                 }} />
             </Box>
 
@@ -391,7 +396,7 @@ function Content({ open, setOpen, width, display }) {
 function SMContent({ open, setOpen }) {
   const fullScreen = useMediaQuery('(max-width:700px)');
 
-  const { setMessage, setMessageType, setShow } = React.useContext(LoginContext)
+  const { setMessage, setMessageType, setShow ,encrypt} = React.useContext(LoginContext)
 
   const timeRef = React.useRef()
 
@@ -509,15 +514,16 @@ function SMContent({ open, setOpen }) {
         }
         let response = await authenticateLogin(login)
         if (response) {
+          console.log(response);
           window.location.reload(false)
           handleClose();
           try {
-            localStorage.setItem('userdata', JSON.stringify({
-              Number: `+91${number}`,
-              Username: response.Username,
-              Email: response.Email,
+            localStorage.setItem('START_DATA', JSON.stringify({
+              USERDATA_AS_NUMBER: encrypt(response.Number),
+              USERDATA_AS_USERNAME: encrypt(response.Username),
+              USERDATA_AS_EMAIL: encrypt(response.Email),
             }));
-            localStorage.setItem('isLogin', JSON.stringify(true));
+            localStorage.setItem('INIT_DATA', JSON.stringify(true));
           } catch (err) {
             return undefined;
           }
@@ -551,13 +557,20 @@ function SMContent({ open, setOpen }) {
     }
     let response = await authenticateSignup(signup)
     if (!response) return;
+    window.location.reload(false)
     try {
-      localStorage.setItem('userdata', JSON.stringify(signup));
+      localStorage.setItem('START_DATA', JSON.stringify({
+        USERDATA_AS_NUMBER: encrypt(`+91${number}`),
+        USERDATA_AS_USERNAME: encrypt(response.Username),
+        USERDATA_AS_EMAIL: encrypt(response.Email),
+      }));
+      localStorage.setItem('INIT_DATA', JSON.stringify(true));
     } catch (err) {
-      return '';
+      return undefined;
     }
     handleClose();
   }
+
 
   return (
     <>
@@ -630,13 +643,13 @@ function SMContent({ open, setOpen }) {
                   }} />
               </Box>
               <Box sx={{ textAlign: 'center' }}>
-                  <Typography sx={{ my: 1, pointerEvents: resendTime === 0 ? 'auto' : 'none', opacity: resendTime === 0 ? '1' : '0.6', cursor: resendTime === 0 ? 'pointer' : 'no-drop', fontSize: '16px', mr: 1 }} onClick={() => onClickResend()}>
-                    Resend {
-                      resendTime === 0 ? null :
-                        <span>0:{resendTime < 10 ? `0${resendTime}` : resendTime}</span>
-                    }
-                  </Typography>
-                </Box>
+                <Typography sx={{ my: 1, pointerEvents: resendTime === 0 ? 'auto' : 'none', opacity: resendTime === 0 ? '1' : '0.6', cursor: resendTime === 0 ? 'pointer' : 'no-drop', fontSize: '16px', mr: 1 }} onClick={() => onClickResend()}>
+                  Resend {
+                    resendTime === 0 ? null :
+                      <span>0:{resendTime < 10 ? `0${resendTime}` : resendTime}</span>
+                  }
+                </Typography>
+              </Box>
               <Button sx={{
                 my: 2,
                 boxShadow: 0,

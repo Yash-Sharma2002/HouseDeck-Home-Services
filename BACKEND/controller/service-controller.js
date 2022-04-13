@@ -17,7 +17,7 @@ export const sendService = async (req, res) => {
 
 export const getDraftBookings = async (req, res) => {
     try {
-        const user = await ServiceAsDraft.find({  Customer_Details: req.body.Customer_Details }, { _id: 0, "Order_Details": 1, "Draft": 1, "Payment_Details": 1 });
+        const user = await ServiceAsDraft.find({ "Customer_Details.Customer_Phone": req.body.Number}, { "Order_Details": 1, "Draft": 1, "Payment_Details": 1 });
         if (user) {
             return res.send(user)
         }
@@ -34,7 +34,7 @@ export const getDraftBookings = async (req, res) => {
 
 export const getPaidBookings = async (req, res) => {
     try {
-        const user = await ServiceAsPaid.find({ Customer_Details: req.body.Customer_Details }, { _id: 0, "Order_Details": 1, "Draft": 1, "Payment_Details": 1 });
+        const user = await ServiceAsPaid.find({ "Customer_Details.Customer_Phone": req.body.Number}, { "Order_Details": 1, "Draft": 1, "Payment_Details": 1 });
         if (user) {
             return res.send(user)
         }
@@ -51,13 +51,26 @@ export const getPaidBookings = async (req, res) => {
 
 export const getSubscriptions = async (req, res) => {
     try {
-        const user = await Subscriptions.find({  Customer_Details: req.body.Customer_Details }, { _id: 0, "Order_Details": 1, "Subscription": 1, "Payment_Details": 1 });
+        const user = await Subscriptions.find({ "Customer_Details.Customer_Phone": req.body.Number}, { "Order_Details": 1, "Subscription": 1, "Payment_Details": 1 });
         if (user) {
             return res.send(user)
         }
         else {
             return res.status(300).json('not find');
         }
+
+    } catch (error) {
+        console.log(error)
+
+        return res.status(500).json('failed');
+    }
+}
+
+export const deleteDraftBookings = async (req, res) => {
+    try {
+        await ServiceAsDraft.deleteOne({ "Customer_Details.Customer_Phone": req.body.Number,_id:req.body._id});
+        console.log('data deleted');
+        await res.send(200 + 'Service data deleted')
 
     } catch (error) {
         console.log(error)

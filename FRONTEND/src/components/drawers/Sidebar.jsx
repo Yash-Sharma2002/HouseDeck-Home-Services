@@ -13,7 +13,7 @@ import Login from '../dialogs/Login';
 import { LoginContext } from '../../context/Context';
 
 export default function Sidebar({ commonProps }) {
-    const { isLogin, userData } = React.useContext(LoginContext)
+    const { isLogin, userData, decrypt } = React.useContext(LoginContext)
     const [open, setOpen] = React.useState(false);
     const [state, setState] = React.useState({
         left: false,
@@ -35,11 +35,12 @@ export default function Sidebar({ commonProps }) {
 
     function logout() {
         try {
-            localStorage.setItem("userdata", JSON.stringify({
-                Number: '',
-                Username: '',
-                Email: ''
-            }))
+            localStorage.setItem('START_DATA', JSON.stringify({
+                USERDATA_AS_NUMBER: '',
+                USERDATA_AS_USERNAME: '',
+                USERDATA_AS_EMAIL: '',
+            }));
+            localStorage.setItem('INIT_DATA', JSON.stringify(false))
         }
         catch (err) {
             console.log(err);;
@@ -76,11 +77,11 @@ export default function Sidebar({ commonProps }) {
                                 <CloseIcon />
                             </ListItem>
                             {
-                                ((userData.Username) && isLogin) ?
+                                ((userData.USERDATA_AS_USERNAME) && isLogin) ?
                                     <>
                                         <Link href='/home-services/profile' sx={{ color: 'black', display: 'flex', justifyContent: 'flex-start', alignItems: "center", marginLeft: '18px', textDecoration: 'none' }}>
                                             <AccountCircleIcon />
-                                            <Typography sx={{ fontSize: '14px', fontFamily: 'Fredoka', marginLeft: '4px' }}>{userData.Username}</Typography>
+                                            <Typography sx={{ fontSize: '14px', fontFamily: 'Fredoka', marginLeft: '4px' }}>{decrypt(userData.USERDATA_AS_USERNAME)}</Typography>
                                         </Link>
                                     </>
 
@@ -98,7 +99,7 @@ export default function Sidebar({ commonProps }) {
 
 
                             {
-                                ((userData.Username) && isLogin) ?
+                                ((userData.USERDATA_AS_USERNAME) && isLogin) ?
                                     <>
                                         <Link href="/home-services/my-bookings" target="_blank" sx={{
                                             textDecoration: 'none',
@@ -132,7 +133,7 @@ export default function Sidebar({ commonProps }) {
 
 
                             {
-                                ((userData.Username) && isLogin) ?
+                                ((userData.USERDATA_AS_USERNAME) && isLogin) ?
                                     <>
                                         <Typography sx={{
                                             fontSize: '16px',

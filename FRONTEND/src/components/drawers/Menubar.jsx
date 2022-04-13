@@ -13,7 +13,6 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 
 export default function Menubar() {
-
     const [state, setState] = React.useState({
         right: false,
     });
@@ -28,12 +27,12 @@ export default function Menubar() {
 
     function logout() {
         try {
-            localStorage.setItem("userdata", JSON.stringify({
-                Number: '',
-                Username: '',
-                Email:''
-            }))
-            localStorage.setItem('isLogin',JSON.stringify(false))
+            localStorage.setItem('START_DATA', JSON.stringify({
+                USERDATA_AS_NUMBER: '',
+                USERDATA_AS_USERNAME: '',
+                USERDATA_AS_EMAIL: '',
+            }));
+            localStorage.setItem('INIT_DATA', JSON.stringify(false));
         }
         catch (err) {
             console.log(err);;

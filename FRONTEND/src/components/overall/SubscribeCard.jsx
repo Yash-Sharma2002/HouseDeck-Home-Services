@@ -11,7 +11,7 @@ import Login from '../dialogs/Login';
 
 
 function Content({ padding, padding2, display, displayForButton }) {
-    const { setMessage, setMessageType, setShow, userData, isLogin } = React.useContext(LoginContext)
+    const { setMessage, setMessageType, setShow, userData,decrypt, isLogin } = React.useContext(LoginContext)
     const [show, hide] = React.useState(null)
     const [paymentLink, setPaymentLink] = React.useState('')
     const [orderId, setOrderId] = React.useState('')
@@ -30,9 +30,9 @@ function Content({ padding, padding2, display, displayForButton }) {
             order_amount: `${price}.00`,
             order_currency: 'INR',
             customer_details: {
-                customer_id: userData.Username,
-                customer_email: userData.Email,
-                customer_phone: userData.Number
+                customer_id: decrypt(userData.USERDATA_AS_USERNAME),
+                customer_email:decrypt(userData.USERDATA_AS_EMAIL),
+                customer_phone:decrypt(userData.USERDATA_AS_NUMBER)
             },
         }
         let response = await makePayments(data)
@@ -62,9 +62,9 @@ function Content({ padding, padding2, display, displayForButton }) {
                 Paid: 'Yes',
             },
             Customer_Details: {
-                Customer_Id: userData.Username,
-                Customer_Email: userData.Email,
-                Customer_Phone: userData.Number
+                Customer_Id: decrypt(userData.USERDATA_AS_USERNAME),
+                Customer_Email:decrypt(userData.USERDATA_AS_EMAIL),
+                Customer_Phone:decrypt(userData.USERDATA_AS_NUMBER)
             }
         }
         const interval = setInterval(async () => {
@@ -417,7 +417,7 @@ function Content({ padding, padding2, display, displayForButton }) {
 
 
 function SMContent({ displayForButton }) {
-    const { setMessage, setMessageType, setShow, userData, isLogin } = React.useContext(LoginContext)
+    const { setMessage, setMessageType, setShow, userData,decrypt, isLogin } = React.useContext(LoginContext)
     const [show, hide] = React.useState(null)
     const [paymentLink, setPaymentLink] = React.useState('')
     const [orderId, setOrderId] = React.useState('')
@@ -436,9 +436,9 @@ function SMContent({ displayForButton }) {
             order_amount: `${price}.00`,
             order_currency: 'INR',
             customer_details: {
-                customer_id: userData.Username,
-                customer_email: userData.Email,
-                customer_phone: userData.Number
+                customer_id: decrypt(userData.USERDATA_AS_USERNAME),
+                customer_email:decrypt(userData.USERDATA_AS_EMAIL),
+                customer_phone:decrypt(userData.USERDATA_AS_NUMBER)
             },
         }
         let response = await makePayments(data)
@@ -469,9 +469,9 @@ function SMContent({ displayForButton }) {
                 Paid: 'Yes',
             },
             Customer_Details: {
-                Customer_Id: userData.Username,
-                Customer_Email: userData.Email,
-                Customer_Phone: userData.Number
+                Customer_Id: decrypt(userData.USERDATA_AS_USERNAME),
+                Customer_Email:decrypt(userData.USERDATA_AS_EMAIL),
+                Customer_Phone:decrypt(userData.USERDATA_AS_NUMBER)
             }
         }
         const interval = setInterval(async () => {

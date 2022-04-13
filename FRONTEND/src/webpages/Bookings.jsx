@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { getPaidBookingsAPI, getDraftBookingsAPI } from '../Api/getBookings'
+import { getPaidBookingsAPI, getDraftBookingsAPI, deletDraftBookingsAPI } from '../Api/getBookings'
 import { getSubscriptionDetails } from '../Api/getSubscriptionDetails'
 import { Box, Typography, Breadcrumbs, Link, Divider, Button } from '@mui/material'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext'
@@ -54,14 +54,7 @@ export default function Bookings() {
   const [bookings, setBookings] = React.useState([])
   const [subscription, setSubscriptions] = React.useState([])
   const [value, setValue] = React.useState(0);
-  const { userData } = React.useContext(LoginContext)
-  const items = {
-    Customer_Details: {
-      Customer_Id: userData.Username,
-      Customer_Email: userData.Email,
-      Customer_Phone: userData.Number
-    }
-  }
+  const { userData, decrypt } = React.useContext(LoginContext)
 
 
   const handleChange = (event, newValue) => {
@@ -77,7 +70,7 @@ export default function Bookings() {
 
 
   const getDraftBookings = async () => {
-    const response = await getDraftBookingsAPI(items)
+    const response = await getDraftBookingsAPI({ Number: decrypt(userData.USERDATA_AS_NUMBER) })
     if (response) {
       setSubscriptions([])
       setBookings(response.reverse())
@@ -87,7 +80,7 @@ export default function Bookings() {
     }
   }
   const getPaidBookings = async () => {
-    const response = await getPaidBookingsAPI(items)
+    const response = await getPaidBookingsAPI({ Number: decrypt(userData.USERDATA_AS_NUMBER) })
     if (response) {
       setSubscriptions([])
       setBookings(response.reverse())
@@ -97,12 +90,25 @@ export default function Bookings() {
     }
   }
   const getSubscriptions = async () => {
-    const response = await getSubscriptionDetails(items)
+    const response = await getSubscriptionDetails({ Number: decrypt(userData.USERDATA_AS_NUMBER) })
     if (response) {
       setBookings([])
       setSubscriptions(response.reverse())
     } else {
       setSubscriptions([])
+    }
+  }
+  const deleteDraft = async (id) => {
+    const items = {
+      _id: id,
+      Number: decrypt(userData.USERDATA_AS_NUMBER)
+    }
+    const response = await deletDraftBookingsAPI(items)
+    if (response) {
+      window.location.reload(false)
+    }
+    else {
+      setBookings([])
     }
   }
 
@@ -158,7 +164,7 @@ export default function Bookings() {
             <TabPanel value={value} index={value === 0 ? 0 : 1}>
               {
                 bookings.length !== 0 ? bookings.map((item) => {
-                   const category = toTitle(item.Order_Details.Category.replace(/_/g, ' '))
+                  const category = toTitle(item.Order_Details.Category.replace(/_/g, ' '))
                   const services = item.Order_Details.Services
                   return (
                     <>
@@ -182,18 +188,22 @@ export default function Bookings() {
                       </Box>
 
                       {
-                        item.Draft==='Yes'?
-                        <Box sx={{ textAlign: 'center', mt: 2 }}>
-                        <a href={`/home-services/service=${category}`} style={{ textDecoration: 'none', }} target="_blank" rel="noreferrer">
-                          <Button variant="contained">
-                            Start Again
-                          </Button>
-                        </a>
-                      </Box>
-                      :
-                      <Box></Box>
+                        item.Draft === 'Yes' ?
+                          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 2 }}>
+                            <Button variant="outlined" color='error' sx={{ textTransform: 'none' }} onClick={()=>deleteDraft(item._id)}>
+                              Delete
+                            </Button>
+                            <a href={`/home-services/service=${category}`} style={{ textDecoration: 'none', }} target="_blank" rel="noreferrer">
+                              <Button variant="outlined" color="secondary" sx={{ textTransform: 'none' }}>
+                                Start Again
+                              </Button>
+                            </a>
+
+                          </Box>
+                          :
+                          <Box></Box>
                       }
-                      
+
                     </>
                   )
                 })

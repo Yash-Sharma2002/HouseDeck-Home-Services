@@ -1,7 +1,7 @@
 import * as React from 'react'
 import CloseIcon from '@mui/icons-material/Close'
 import { Box, Stack, Typography, Dialog, useMediaQuery, TextField } from '@mui/material'
-import { Button, Divider, Link } from '@mui/material'
+import { Button, Divider } from '@mui/material'
 import { checkPaymentStatus, makePayments } from '../../Api/paymentCashfreeApi'
 import { styled } from '@mui/material/styles'
 import { v4 as uuidV4 } from 'uuid'
@@ -12,7 +12,11 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider'
 import '../../css/OnlyForDialog.css';
 import DatePicker from '@mui/lab/DatePicker'
 import TimePicker from '@mui/lab/TimePicker'
-// import { CleaningServicesData } from '../../constants/data';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import SendIcon from '@mui/icons-material/Send';
+import FormLabel from '@mui/material/FormLabel';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import { LoginContext } from '../../context/Context'
@@ -25,9 +29,9 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 
-function Content({ options,category, data, setOptions, open, setOpen, width }) {
+function Content({ options, category, data, setOptions, open, setOpen, width }) {
 
-    const { setMessage, setMessageType, setShow, userData } = React.useContext(LoginContext)
+    const { setMessage, setMessageType, setShow, userData, decrypt } = React.useContext(LoginContext)
 
     const fullScreen = useMediaQuery('(max-width:650px)');
     const [price, setPrice] = React.useState(0)
@@ -43,6 +47,8 @@ function Content({ options,category, data, setOptions, open, setOpen, width }) {
     const [display, setDisplay] = React.useState(true)
     const [paymentLink, setPaymentLink] = React.useState('')
     const [orderId, setOrderId] = React.useState('')
+    const [value, setValue] = React.useState('');
+    const [dispplayForCode, setDisplayForCode] = React.useState('');
     const handleClose = () => {
         setOpen(false)
         setdate(null)
@@ -57,6 +63,17 @@ function Content({ options,category, data, setOptions, open, setOpen, width }) {
         setServices([])
         setPaymentLink('')
         setOrderId('')
+        setDisplayForCode(false)
+    };
+
+    const handleChange = (event) => {
+        setValue(event.target.value);
+        if (event.target.value === 'Yes') {
+            setDisplayForCode(true);
+        }
+        if (event.target.value === 'No') {
+            setDisplayForCode(false);
+        }
     };
     function Select(service, price) {
         if (!Services.map((item) => item.Service).includes(service)) {
@@ -86,9 +103,9 @@ function Content({ options,category, data, setOptions, open, setOpen, width }) {
         }
         // var autocomplete = new google.maps.places.Autocomplete((document.getElementById('searchInput')), {
         //     types: ['geocode'],
-        /*componentRestrictions: {
-         country: "USA"
-        }*/
+        // componentRestrictions: {
+        //  country: "USA"
+        // }
         // });
 
         // google.maps.event.addListener(autocomplete, 'place_changed', function () {
@@ -147,9 +164,9 @@ function Content({ options,category, data, setOptions, open, setOpen, width }) {
             order_amount: `${price}.00`,
             order_currency: 'INR',
             customer_details: {
-                customer_id: userData.Username,
-                customer_email: userData.Email,
-                customer_phone: userData.Number
+                customer_id: decrypt(userData.USERDATA_AS_USERNAME),
+                customer_email: decrypt(userData.USERDATA_AS_EMAIL),
+                customer_phone: decrypt(userData.USERDATA_AS_NUMBER)
             },
         }
         let response = await makePayments(data)
@@ -164,14 +181,13 @@ function Content({ options,category, data, setOptions, open, setOpen, width }) {
     }
 
     const saveDraft = async () => {
-
         const currentDateTime = new Date()
         const items = {
             Order_Details: {
                 Order_Id: `OrderId_${orderId}`,
                 Order_Date: currentDateTime.toString().slice(0, 15),
                 Order_Time: currentDateTime.toString().slice(16, 25),
-                Category:category,
+                Category: category,
                 Services,
                 Order_Amount: `${price}.00`,
                 Appointment_Location: location,
@@ -184,9 +200,9 @@ function Content({ options,category, data, setOptions, open, setOpen, width }) {
                 Payment_Link: paymentLink,
             },
             Customer_Details: {
-                Customer_Id: userData.Username,
-                Customer_Email: userData.Email,
-                Customer_Phone: userData.Number
+                Customer_Id: decrypt(userData.USERDATA_AS_USERNAME),
+                Customer_Email: decrypt(userData.USERDATA_AS_EMAIL),
+                Customer_Phone: decrypt(userData.USERDATA_AS_NUMBER)
             }
         }
         let response = await serviceSenderAsDraft(items)
@@ -216,7 +232,7 @@ function Content({ options,category, data, setOptions, open, setOpen, width }) {
                 Order_Id: `OrderId_${orderId}`,
                 Order_Date: currentDateTime.toString().slice(0, 15),
                 Order_Time: currentDateTime.toString().slice(16, 25),
-                Category:category,
+                Category: category,
                 Services,
                 Order_Amount: `${price}.00`,
                 Appointment_Location: location,
@@ -228,9 +244,9 @@ function Content({ options,category, data, setOptions, open, setOpen, width }) {
                 Paid: 'Yes',
             },
             Customer_Details: {
-                Customer_Id: userData.Username,
-                Customer_Email: userData.Email,
-                Customer_Phone: userData.Number
+                Customer_Id: decrypt(userData.USERDATA_AS_USERNAME),
+                Customer_Email: decrypt(userData.USERDATA_AS_EMAIL),
+                Customer_Phone: decrypt(userData.USERDATA_AS_NUMBER)
             }
         }
         const interval = setInterval(async () => {
@@ -375,7 +391,7 @@ function Content({ options,category, data, setOptions, open, setOpen, width }) {
                                             <Typography sx={{ mr: 1, fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{price}</Typography>
                                             <Divider orientation='vertical' sx={{ color: 'black' }} flexItem />
                                             <Typography sx={{ ml: 1, color: 'gray', fontSize: '13px', fontFamily: 'Fredoka' }}>{Services.length} item</Typography>
-                                            <Button variant='contained' sx={{ ml: 1, textTransform: 'none', boxShadow: 0 }} onClick={getRequiredThings}>Continue</Button>
+                                            <Button variant='outlined' sx={{ ml: 1, textTransform: 'none', boxShadow: 0 }} color='secondary' endIcon={<SendIcon />} onClick={getRequiredThings}>Next</Button>
                                         </Box>
                                     </>
 
@@ -418,7 +434,7 @@ function Content({ options,category, data, setOptions, open, setOpen, width }) {
                     </Box>
                     <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                         <ArrowBackIcon onClick={AtStart} sx={{ position: 'absolute', bottom: 20, cursor: 'pointer' }} />
-                        <Button sx={{ fontSize: '16px', textTransform: 'none', position: 'absolute', bottom: 10, right: 10 }} variant='contained' onClick={locationSubmit}>Continue</Button>
+                        <Button sx={{ fontSize: '16px', textTransform: 'none', position: 'absolute', bottom: 10, right: 10 }} variant='outlined' color='secondary' endIcon={<SendIcon />} onClick={locationSubmit}>Next</Button>
                     </Box>
                 </Box>
 
@@ -459,81 +475,89 @@ function Content({ options,category, data, setOptions, open, setOpen, width }) {
 
                     <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                         <ArrowBackIcon onClick={AtStart} sx={{ position: 'absolute', bottom: 17, cursor: 'pointer' }} />
-                        <Button sx={{ fontSize: '16px', marginLeft: 'auto', marginRight: '0px', textTransform: 'none', position: 'absolute', bottom: 10, right: 10 }} variant='contained' onClick={()=>{
-                              setDisplayAtStart(false)
-                              setDisplayForServiceSelectionProcess(false)
-                              setDisplayForStepper(false)
-                              setDisplayForAppointment(false)
-                              setDisplayForPayment(true)
-                        }}>Continue</Button>
-                </Box>
-            </Box>
-
-            <Box sx={{ display: displayForPayment ? 'block' : 'none', height: '90vh', width: width, padding: '15px', }}>
-                <Box sx={{ textAlign: 'right' }}>
-                    <CloseIcon onClick={handleClose} sx={{ cursor: 'pointer', }} />
-                </Box>
-
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
-                    <Typography sx={{ fontSize: "18px", fontWeight: '700' }}>Your Order</Typography>
-                </Box>
-                <Box>
-                    {Services.map((data, index) => {
-                        return (
-                            <Box key={index} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <Typography sx={{ fontSize: '16px', fontFamily: 'Fredoka' }}>{data.Service}</Typography>
-                                <Typography sx={{ fontSize: '16px', fontFamily: 'Fredoka' }}>{data.Price}</Typography>
-                            </Box>
-                        )
-                    })}
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>Total Price</Typography>
-                        <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>&#8377;{price}</Typography>
+                        <Button sx={{ fontSize: '16px', marginLeft: 'auto', marginRight: '0px', textTransform: 'none', position: 'absolute', bottom: 10, right: 10 }} variant='outlined' color='secondary' endIcon={<SendIcon />} onClick={() => {
+                            setDisplayAtStart(false)
+                            setDisplayForServiceSelectionProcess(false)
+                            setDisplayForStepper(false)
+                            setDisplayForAppointment(false)
+                            setDisplayForPayment(true)
+                        }}>Next</Button>
                     </Box>
                 </Box>
 
-                <Box sx={{ my: 10, textAlign: 'center' }}>
+                <Box sx={{ display: displayForPayment ? 'block' : 'none', height: '90vh', width: width, padding: '15px', }}>
+                    <Box sx={{ textAlign: 'right' }}>
+                        <CloseIcon onClick={handleClose} sx={{ cursor: 'pointer', }} />
+                    </Box>
+
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
-                        <Typography sx={{ fontSize: "18px", fontWeight: '700' }}>Enter Promo-Code</Typography>
+                        <Typography sx={{ fontSize: "18px", fontWeight: '700' }}>Your Order</Typography>
                     </Box>
-                    <Box sx={{ textAlign: 'center' }}>
-                        <TextField
-                            placeholder="Enter Promo-Code (if any)"
-                            variant="standard"
-                            sx={{ margin: '0px auto',textAlign:'center' }}
-                        />
+                    <Box>
+                        {Services.map((data, index) => {
+                            return (
+                                <Box key={index} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                    <Typography sx={{ fontSize: '16px', fontFamily: 'Fredoka' }}>{data.Service}</Typography>
+                                    <Typography sx={{ fontSize: '16px', fontFamily: 'Fredoka' }}>{data.Price}</Typography>
+                                </Box>
+                            )
+                        })}
+                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>Total Price</Typography>
+                            <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>&#8377;{price}</Typography>
+                        </Box>
                     </Box>
-                    <Button sx={{ fontSize: '16px', textTransform: 'none', my: 2 }} variant='contained'  >Apply</Button>
-                </Box>
-                <Box sx={{ position: 'absolute', bottom: 10, left: 10 }}>
-
-                    <Link href='' sx={{ textDecoration: 'none', }}>
-                        <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={saveDraft}>Shortlist</Button>
-                    </Link>
-
-                </Box>
-                <Box sx={{ position: 'absolute', bottom: 10, right: 10 }}>
+                    <Box sx={{ my: 2, textAlign: 'center' }}>
+                        <FormLabel >Do you Have a promocode</FormLabel>
+                        <RadioGroup row value={value} onChange={handleChange} sx={{ m: '0px auto', justifyContent: 'center' }}>
+                            <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
+                            <FormControlLabel value="No" control={<Radio />} label="No" />
+                        </RadioGroup>
+                    </Box>
                     {
-                        paymentLink ?
-                            <a href={paymentLink} style={{ textDecoration: 'none', }} target="_blank" rel="noreferrer">
-                                <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={onClickPay} >Pay Now</Button>
-                            </a>
+                        dispplayForCode ?
+                            <Box sx={{ my: 10, textAlign: 'center' }}>
+                                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
+                                    <Typography sx={{ fontSize: "18px", fontWeight: '700' }}>Enter Promo-Code</Typography>
+                                </Box>
+                                <Box sx={{ textAlign: 'center' }}>
+                                    <TextField
+                                        placeholder="Enter Promo-Code (if any)"
+                                        variant="standard"
+                                        sx={{ margin: '0px auto', textAlign: 'center' }}
+                                    />
+                                </Box>
+                                <Button sx={{ fontSize: '16px', textTransform: 'none', my: 2 }} variant='outlined' color='success' >Apply</Button>
+                            </Box>
                             :
-                            <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={CreateOrder} >Start Order</Button>
+                            <Box></Box>
+
                     }
+                    <Box sx={{ position: 'absolute', bottom: 10, left: 10 }}>
+                        <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={saveDraft}>Shortlist</Button>
+                    </Box>
+                    <Box sx={{ position: 'absolute', bottom: 10, right: 10 }}>
+                        {
+                            paymentLink ?
+                                <a href={paymentLink} style={{ textDecoration: 'none', }} target="_blank" rel="noreferrer">
+                                    <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={onClickPay} >Pay Now</Button>
+                                </a>
+                                :
+                                <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={CreateOrder} >Start Order</Button>
+                        }
 
+                    </Box>
                 </Box>
-            </Box>
 
 
-        </BootstrapDialog>
+            </BootstrapDialog>
         </>
     )
 }
 
 
 
-export default function ServiceSelector({ options, category,data, setOptions, open, setOpen }) {
+export default function ServiceSelector({ options, category, data, setOptions, open, setOpen }) {
 
     const xlMax = useMediaQuery('(max-width:2000px)');
     const xlMin = useMediaQuery('(min-width:650px)');
