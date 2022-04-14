@@ -2,7 +2,6 @@
   "name": "housedeck-home-services",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/home-services",
   "dependencies": {
     "@date-io/date-fns": "^2.13.1",
     "@date-io/dayjs": "^2.13.1",

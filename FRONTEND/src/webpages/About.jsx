@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '../components/head/Header';
 import Footer from '../components/foot/Footer';
 import AboutUs from '../components/other/About';
+import AboutMid from '../components/other/AboutMid';
 
 export default function About() {
   const commonProps = [
@@ -9,12 +10,12 @@ export default function About() {
     { name: 'Who we are', url: '#who-we-are' }
   ]
   return (
-      <div>
-        <Header commonProps={commonProps} />
+    <div>
+      <Header commonProps={commonProps} />
 
-        <AboutUs />
-
-        <Footer />
-      </div>
+      <AboutUs />
+      <AboutMid />
+      <Footer />
+    </div>
   )
 }

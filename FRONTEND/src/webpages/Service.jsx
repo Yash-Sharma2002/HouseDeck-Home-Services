@@ -11,6 +11,7 @@ import Promise from '../components/other/Promise'
 import BottomServices from '../components/overall/Services'
 import { SearchBar } from '../constants/data';
 import { LoginContext } from '../context/Context';
+import FaqPainting from '../components/other/FaqPainting';
 
 const Similar2 = React.lazy(() => import('../components/similar-services/Similar2'))
 
@@ -61,6 +62,10 @@ export default function Service() {
       <Recommended />
 
       <Review />
+      {newService === 'Home Painting' ?
+        <FaqPainting />
+        : null
+      }
       <Similar2 service={newService} />
 
       <BottomServices />

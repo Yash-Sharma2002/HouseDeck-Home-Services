@@ -19,7 +19,7 @@ const TopHeadQuestions = {
 
 const TopQuestions = () => {
     const [expanded, setExpanded] = React.useState(false);
-    const [id,setId] = React.useState(5)
+    const [id,setId] = React.useState(null)
 
     const handleChange = (panel,id) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
