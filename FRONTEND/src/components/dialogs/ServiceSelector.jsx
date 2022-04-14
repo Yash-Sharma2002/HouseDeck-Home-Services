@@ -349,7 +349,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                                                             <Box sx={{
                                                                 display: 'flex',
                                                                 color: 'rgba(54,54,54,.8)',
-                                                                alignItems: 'center'
+                                                                alignItems: 'baseline'
                                                             }}>
                                                                 <Box sx={{
                                                                     borderWidth: '0px 2px 2px 0px',
@@ -360,7 +360,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                                                                     height: '8px',
                                                                     width: '3px',
                                                                     display: 'block',
-                                                                    marginTop: '-4px',
+                                                                    marginTop: '3px',
                                                                     ml: 1
                                                                 }}></Box>
                                                                 <Typography sx={{
@@ -586,7 +586,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                                     <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={onClickPay} >Pay Now</Button>
                                 </a>
                                 :
-                                <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={CreateOrder} >Start Order</Button>
+                                <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={CreateOrder} >Book</Button>
                         }
 
                     </Box>

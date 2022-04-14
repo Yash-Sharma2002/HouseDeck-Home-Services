@@ -1254,7 +1254,7 @@ export const ServiceDialogData = {
     { imgUrl: require('../assets/other/miniServices.jpeg'), type: 'Mini Services', options: MiniServices },
   ],
   'home_painting': [
-    { imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'), type: 'Consultation', options: HomePainting },
+    { imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'), type: 'Painting Consultation', options: HomePainting },
   ],
   'home_sanitization': [
     { imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'), type: 'Disinfection Service', options: DisinfectionService },
