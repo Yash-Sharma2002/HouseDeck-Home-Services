@@ -53,12 +53,8 @@ export default function Top() {
             padding: '7rem 100px 3rem 100px',
             display: 'flex', justifyContent: 'space-between'
           }}>
-            <Box sx={{ boxShadow: 2 }}>
               <Search width={'500px'} />
-            </Box>
-            <Box sx={{ boxShadow: 2 }}>
               <CitySelector style={style1} />
-            </Box>
           </Box>
         </div>
       )}

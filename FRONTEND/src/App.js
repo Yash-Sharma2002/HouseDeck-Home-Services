@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react'
 import { BrowserRouter, Routes, Route, } from 'react-router-dom';
 import ContextProvider from './context/Context'
-import Loader from './components/overall/loader';
+import Loader from './components/overall/loader'
 
 
 
@@ -22,14 +22,13 @@ export default function App() {
   return (
     <>
       <ContextProvider>
-        <BrowserRouter>
+        <BrowserRouter >
           <Suspense fallback={<div><Loader /></div>}>
             <Routes>
 
               {/* home page  */}
               <Route exact path='/' element={<Home />} />
               <Route exact path='/home-services' element={<Home />} />
-              <Route exact path='/home' element={<Home />} />
 
               {/* footer pages  */}
               <Route exact path='/home-services/about-us' element={<About />} />
@@ -39,7 +38,7 @@ export default function App() {
               <Route exact path='/home-services/housedeck-partner-(Terms-of-Use)' element={<Partner />} />
 
               {/* services pages  */}
-              <Route exact path='/home-services/:service' element={<Service  />} />
+              <Route exact path='/home-services/:service' element={<Service />} />
 
               {/* 404 page  */}
               <Route exact path='*' element={<Unknown />} />

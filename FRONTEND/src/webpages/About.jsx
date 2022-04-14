@@ -5,16 +5,16 @@ import AboutUs from '../components/other/About';
 
 export default function About() {
   const commonProps = [
-    {name:'Who we are',url:'#who-we-are'}
+    { name: 'Home Services', url: '/home-services' },
+    { name: 'Who we are', url: '#who-we-are' }
   ]
   return (
+      <div>
+        <Header commonProps={commonProps} />
 
-    <div>
-      <Header commonProps={commonProps} />
-      
-      <AboutUs />
+        <AboutUs />
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
   )
 }

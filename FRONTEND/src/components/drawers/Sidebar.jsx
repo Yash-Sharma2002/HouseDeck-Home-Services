@@ -6,7 +6,10 @@ import Divider from '@mui/material/Divider';
 import MenuIcon from '@mui/icons-material/Menu';
 import ListItem from '@mui/material/ListItem';
 import IconButton from '@mui/material/IconButton';
+import ListItemText from '@mui/material/ListItemText';
+import { Tooltip } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import { DrawerData } from '../../constants/data'
 import { Link, Typography } from '@mui/material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Login from '../dialogs/Login';
@@ -41,6 +44,7 @@ export default function Sidebar({ commonProps }) {
                 USERDATA_AS_EMAIL: '',
             }));
             localStorage.setItem('INIT_DATA', JSON.stringify(false))
+            window.location.reload(false)
         }
         catch (err) {
             console.log(err);;
@@ -76,31 +80,30 @@ export default function Sidebar({ commonProps }) {
                             <ListItem sx={{ justifyContent: 'right', marginLeft: 0, overflowX: 'hiddenImportant' }} onClick={toggleDrawer('left', false)}>
                                 <CloseIcon />
                             </ListItem>
+
                             {
                                 ((userData.USERDATA_AS_USERNAME) && isLogin) ?
                                     <>
-                                        <Link href='/home-services/profile' sx={{ color: 'black', display: 'flex', justifyContent: 'flex-start', alignItems: "center", marginLeft: '18px', textDecoration: 'none' }}>
+                                    <Link href='/home-services/profile' sx={{ color: 'black', display: 'flex', justifyContent: 'flex-start', alignItems: "center", marginLeft: '10px', textDecoration: 'none'}}>
                                             <AccountCircleIcon />
                                             <Typography sx={{ fontSize: '14px', fontFamily: 'Fredoka', marginLeft: '4px' }}>{decrypt(userData.USERDATA_AS_USERNAME)}</Typography>
                                         </Link>
-                                    </>
-
-                                    : null
-                            }
-                            {commonProps.map((element) => (
-                                <ListItem button key={element.name}>
-                                    <Link sx={{ textDecoration: 'none', color: 'black' }} href={element.url}>{element.name}</Link>
-                                </ListItem>
-                            ))}
-                        </List>
-                        <Divider />
-
-                        <List sx={{ mt: 1 }}>
-
-
-                            {
-                                ((userData.USERDATA_AS_USERNAME) && isLogin) ?
-                                    <>
+                                        <Link href="/home-services/profile" target="_blank" sx={{
+                                            textDecoration: 'none',
+                                        }} >
+                                            <Typography sx={{
+                                                color: 'black',
+                                                fontSize: '16px',
+                                                height: '30px',
+                                                userSelect: 'none',
+                                                textTransform: 'none',
+                                                paddingLeft: '16px',
+                                                ml: 3,
+                                                mt:1
+                                            }}>
+                                                Profile
+                                            </Typography>
+                                        </Link>
                                         <Link href="/home-services/my-bookings" target="_blank" sx={{
                                             textDecoration: 'none',
                                         }} >
@@ -111,51 +114,83 @@ export default function Sidebar({ commonProps }) {
                                                 userSelect: 'none',
                                                 textTransform: 'none',
                                                 paddingLeft: '16px',
+                                                ml: 3
                                             }}>
                                                 MyBookings
                                             </Typography>
                                         </Link>
-                                    </>
-
-                                    :
-                                    <Typography sx={{
-                                        color: 'black',
-                                        fontSize: '16px',
-                                        height: '30px',
-                                        userSelect: 'none',
-                                        textTransform: 'none',
-                                        paddingLeft: '16px',
-                                    }} onClick={() => setOpen(true)}>
-                                        MyBookings
-                                    </Typography>
-                            }
-
-
-
-                            {
-                                ((userData.USERDATA_AS_USERNAME) && isLogin) ?
-                                    <>
                                         <Typography sx={{
                                             fontSize: '16px',
                                             padding: '0px 15px',
-                                            mt: 1,
+                                            ml: 3
                                         }} onClick={logout}>Logout</Typography>
                                     </>
 
                                     :
-                                    <Box sx={{
-                                        fontSize: '16px',
-                                        userSelect: 'none',
-                                        textTransform: 'none',
-                                        color: 'black',
-                                        padding: '0px 15px',
-                                        mt: 1
-                                    }} onClick={handleClickOpen}>
-                                        Login
-                                    </Box>
+                                    <>
+                                        <Box sx={{
+                                            fontSize: '16px',
+                                            userSelect: 'none',
+                                            textTransform: 'none',
+                                            color: 'black',
+                                            padding: '0px 15px',
+                                            mt:1
+                                        }} onClick={handleClickOpen}>
+                                            Login
+                                        </Box>
+                                        <Typography sx={{
+                                            color: 'black',
+                                            fontSize: '16px',
+                                            height: '30px',
+                                            userSelect: 'none',
+                                            textTransform: 'none',
+                                            paddingLeft: '16px',
+                                            mt:1
+                                        }} onClick={() => setOpen(true)}>
+                                            MyBookings
+                                        </Typography>
+                                    </>
                             }
 
                         </List>
+                        <Divider />
+
+                        <List sx={{ mt: 1 }}>
+
+
+                            {
+                                DrawerData.map((data, index) => (
+                                    <div key={index}>
+                                        {
+                                            data.tag ?
+                                                <>
+                                                    <Link href={data.url} sx={{ textDecoration: 'none', color: 'black' }}>
+                                                        <ListItem button key={data.name} >
+                                                            <ListItemText primary={data.name} />
+                                                        </ListItem>
+                                                    </Link>
+                                                </>
+                                                :
+                                                <>
+                                                    <Tooltip title="Coming Soon" placement="top" arrow>
+                                                        <ListItem button key={data.name} >
+                                                            <ListItemText primary={data.name} />
+                                                        </ListItem>
+                                                    </Tooltip>
+                                                </>
+                                        }
+                                    </div>
+                                ))}
+
+
+                        </List>
+                        <Divider />
+                        <ListItem button  >
+                            <ListItemText primary='Contact us' />
+                        </ListItem>
+                        <Typography sx={{ display: 'flex', justifyContent: 'space-evenly', alignItems: "center" }}>
+                            Email - <a href="mailto:hello@housedeck.in">hello@housedeck.in</a>
+                        </Typography>
                     </Box>
                 </Drawer>
                 {!isLogin && (<Login open={open} setOpen={setOpen} />)}

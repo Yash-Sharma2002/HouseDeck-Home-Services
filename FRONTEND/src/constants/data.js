@@ -123,6 +123,22 @@ export const OtherPageTopCarouselData = [
   { url: require("../assets/otherPageBanner/7.png") },
 ];
 
+
+export const DrawerData = [
+  { url: 'https://housedeck.in/book-free-online-consultation/', name: "Home Interior", tag: true },
+  { url: 'https://housedecklite.com/home-inspection/', name: "Home Inspection", tag: true },
+  { url: '/home-services/service=Home Painting', name: "Painting", tag: true },
+  { url: '', name: 'False Ceiling', tag: false },
+  { url: '', name: 'Pay Utility bills', tag: false },
+  { url: '', name: 'Rent Furniture', tag: false },
+  { url: '', name: 'Buy Furniture', tag: false },
+  { url: '', name: 'Storage Solution', tag: false },
+  { url: '', name: 'Packers & Movers', tag: false },
+  { url: 'https://housedeck.in/magazine/', name: 'HouseDeck Ideas', tag: true },
+]
+
+
+
 export const SearchBar = {
   'bangalore': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
@@ -229,7 +245,7 @@ export const ServiceWithImage = {
     {
       id: "Painting",
       src: require("../assets/imageService/painting.png"),
-      offer: "Flat 25% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Painting',
 
@@ -237,14 +253,14 @@ export const ServiceWithImage = {
     {
       id: "Cleaning",
       src: require("../assets/imageService/cleaning.png"),
-      offer: "Upto 50% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Cleaning',
     },
     {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
-      offer: "Upto 25% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Sanitization',
 
@@ -252,7 +268,7 @@ export const ServiceWithImage = {
     {
       id: "Pest Control",
       src: require("../assets/imageService/pest_control.png"),
-      offer: "Upto 10% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Pest Control',
     },
@@ -290,21 +306,21 @@ export const ServiceWithImage = {
     {
       id: "Painting",
       src: require("../assets/imageService/painting.png"),
-      offer: "Flat 25% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Painting',
     },
     {
       id: "Cleaning",
       src: require("../assets/imageService/cleaning.png"),
-      offer: "Upto 50% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Cleaning',
     },
     {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
-      offer: "Upto 25% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Sanitization',
 
@@ -312,7 +328,7 @@ export const ServiceWithImage = {
     {
       id: "Pest Control",
       src: require("../assets/imageService/pest_control.png"),
-      offer: "Upto 10% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Pest Control',
     },
@@ -348,7 +364,7 @@ export const ServiceWithImage = {
     {
       id: "Painting",
       src: require("../assets/imageService/painting.png"),
-      offer: "Flat 25% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Painting',
 
@@ -356,14 +372,14 @@ export const ServiceWithImage = {
     {
       id: "Cleaning",
       src: require("../assets/imageService/cleaning.png"),
-      offer: "Upto 50% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Cleaning',
     },
     {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
-      offer: "Upto 25% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Sanitization',
 
@@ -371,7 +387,7 @@ export const ServiceWithImage = {
     {
       id: "Pest Control",
       src: require("../assets/imageService/pest_control.png"),
-      offer: "Upto 10% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Pest Control',
     },
@@ -406,7 +422,7 @@ export const ServiceWithImage = {
     {
       id: "Painting",
       src: require("../assets/imageService/painting.png"),
-      offer: "Flat 25% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Painting',
 
@@ -414,14 +430,14 @@ export const ServiceWithImage = {
     {
       id: "Cleaning",
       src: require("../assets/imageService/cleaning.png"),
-      offer: "Upto 50% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Cleaning',
     },
     {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
-      offer: "Upto 25% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Sanitization',
 
@@ -429,7 +445,7 @@ export const ServiceWithImage = {
     {
       id: "Pest Control",
       src: require("../assets/imageService/pest_control.png"),
-      offer: "Upto 10% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Pest Control',
     },
@@ -464,7 +480,7 @@ export const ServiceWithImage = {
     {
       id: "Painting",
       src: require("../assets/imageService/painting.png"),
-      offer: "Flat 25% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Painting',
 
@@ -472,14 +488,14 @@ export const ServiceWithImage = {
     {
       id: "Cleaning",
       src: require("../assets/imageService/cleaning.png"),
-      offer: "Upto 50% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Cleaning',
     },
     {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
-      offer: "Upto 25% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Sanitization',
 
@@ -487,7 +503,7 @@ export const ServiceWithImage = {
     {
       id: "Pest Control",
       src: require("../assets/imageService/pest_control.png"),
-      offer: "Upto 10% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Pest Control',
     },
@@ -527,7 +543,7 @@ export const ServiceWithImage = {
     {
       id: "Painting",
       src: require("../assets/imageService/painting.png"),
-      offer: "Flat 25% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Painting',
 
@@ -535,14 +551,14 @@ export const ServiceWithImage = {
     {
       id: "Cleaning",
       src: require("../assets/imageService/cleaning.png"),
-      offer: "Upto 50% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Cleaning',
     },
     {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
-      offer: "Upto 25% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Sanitization',
 
@@ -550,7 +566,7 @@ export const ServiceWithImage = {
     {
       id: "Pest Control",
       src: require("../assets/imageService/pest_control.png"),
-      offer: "Upto 10% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Pest Control',
     },
@@ -590,7 +606,7 @@ export const ServiceWithImage = {
     {
       id: "Painting",
       src: require("../assets/imageService/painting.png"),
-      offer: "Flat 25% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Painting',
 
@@ -598,14 +614,14 @@ export const ServiceWithImage = {
     {
       id: "Cleaning",
       src: require("../assets/imageService/cleaning.png"),
-      offer: "Upto 50% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Cleaning',
     },
     {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
-      offer: "Upto 25% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Sanitization',
 
@@ -613,7 +629,7 @@ export const ServiceWithImage = {
     {
       id: "Pest Control",
       src: require("../assets/imageService/pest_control.png"),
-      offer: "Upto 10% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Pest Control',
     },
@@ -653,7 +669,7 @@ export const ServiceWithImage = {
     {
       id: "Painting",
       src: require("../assets/imageService/painting.png"),
-      offer: "Flat 25% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Painting',
 
@@ -661,14 +677,14 @@ export const ServiceWithImage = {
     {
       id: "Cleaning",
       src: require("../assets/imageService/cleaning.png"),
-      offer: "Upto 50% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Cleaning',
     },
     {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
-      offer: "Upto 25% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Sanitization',
 
@@ -676,7 +692,7 @@ export const ServiceWithImage = {
     {
       id: "Pest Control",
       src: require("../assets/imageService/pest_control.png"),
-      offer: "Upto 10% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Pest Control',
     },
@@ -716,7 +732,7 @@ export const ServiceWithImage = {
     {
       id: "Painting",
       src: require("../assets/imageService/painting.png"),
-      offer: "Flat 25% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Painting',
 
@@ -724,14 +740,14 @@ export const ServiceWithImage = {
     {
       id: "Cleaning",
       src: require("../assets/imageService/cleaning.png"),
-      offer: "Upto 50% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Cleaning',
     },
     {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
-      offer: "Upto 25% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Sanitization',
 
@@ -739,7 +755,7 @@ export const ServiceWithImage = {
     {
       id: "Pest Control",
       src: require("../assets/imageService/pest_control.png"),
-      offer: "Upto 10% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Pest Control',
     },
@@ -779,7 +795,7 @@ export const ServiceWithImage = {
     {
       id: "Painting",
       src: require("../assets/imageService/painting.png"),
-      offer: "Flat 25% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Painting',
 
@@ -787,14 +803,14 @@ export const ServiceWithImage = {
     {
       id: "Cleaning",
       src: require("../assets/imageService/cleaning.png"),
-      offer: "Upto 50% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Cleaning',
     },
     {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
-      offer: "Upto 25% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Sanitization',
 
@@ -802,7 +818,7 @@ export const ServiceWithImage = {
     {
       id: "Pest Control",
       src: require("../assets/imageService/pest_control.png"),
-      offer: "Upto 10% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Pest Control',
     },
@@ -837,7 +853,7 @@ export const ServiceWithImage = {
     {
       id: "Painting",
       src: require("../assets/imageService/painting.png"),
-      offer: "Flat 25% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Painting',
 
@@ -845,14 +861,14 @@ export const ServiceWithImage = {
     {
       id: "Cleaning",
       src: require("../assets/imageService/cleaning.png"),
-      offer: "Upto 50% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Cleaning',
     },
     {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
-      offer: "Upto 25% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Sanitization',
 
@@ -860,7 +876,7 @@ export const ServiceWithImage = {
     {
       id: "Pest Control",
       src: require("../assets/imageService/pest_control.png"),
-      offer: "Upto 10% off",
+      offer: "",
       tag: true,
       takeToPath: '/home-services/service=Pest Control',
     },

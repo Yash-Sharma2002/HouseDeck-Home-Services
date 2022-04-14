@@ -6,7 +6,7 @@ import Dialog from '@mui/material/Dialog';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { makeStyles } from '@mui/styles';
+// import { makeStyles } from '@mui/styles';
 import { sendOTP } from '../../Api/otpSend';
 import '../../css/OnlyForDialog.css';
 import { authenticateSignup } from '../../Api/signup';
@@ -21,29 +21,29 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 
-const useStyles = makeStyles({
-  LoginBeforeText: {
-    color: 'grey',
-    fontSize: '12px',
-    marginLeft: '23px'
-  },
-  abc: {
-    borderWidth: '0px 2px 2px 0px',
-    borderStyle: 'solid',
-    borderColor: '#7b7b7b',
-    position: 'absolute',
-    transform: 'rotate(45deg)',
-    height: '8px',
-    width: '3px',
-    display: 'block',
-    marginTop: '-4px',
-    ml: 1
-  },
-})
+// const useStyles = makeStyles({
+//   LoginBeforeText: {
+//     color: 'grey',
+//     fontSize: '12px',
+//     marginLeft: '23px'
+//   },
+//   abc: {
+//     borderWidth: '0px 2px 2px 0px',
+//     borderStyle: 'solid',
+//     borderColor: '#7b7b7b',
+//     position: 'absolute',
+//     transform: 'rotate(45deg)',
+//     height: '8px',
+//     width: '3px',
+//     display: 'block',
+//     marginTop: '-4px',
+//     ml: 1
+//   },
+// })
 
 function Content({ open, setOpen, width, display }) {
 
-  const classes = useStyles()
+  // const classes = useStyles()
   const fullScreen = useMediaQuery('(max-width:700px)');
 
   const { setMessage, setMessageType, setShow ,encrypt} = React.useContext(LoginContext)
@@ -237,7 +237,7 @@ function Content({ open, setOpen, width, display }) {
             <img style={{ height: '100px', width: "100px", marginTop: '9rem' }} src={require('../../assets/logos/isLogin.png')} alt="Login" />
             <Typography variant="h6" sx={{ fontSize: '18px', fontWeight: '600', ml: 1 }}>Login/Signup</Typography>
 
-            {['Zero Brokerage', 'Thousands of new listings daily.', '100 Cr+ Brokerage saved monthly.'].map(data =>
+            {/* {['Zero Brokerage', 'Thousands of new listings daily.', '100 Cr+ Brokerage saved monthly.'].map(data =>
               <>
                 <Box sx={{
                   display: display,
@@ -249,7 +249,7 @@ function Content({ open, setOpen, width, display }) {
                   <Typography className={classes.LoginBeforeText}>{data}</Typography>
                 </Box>
               </>
-            )}
+            )} */}
 
           </Box>
 

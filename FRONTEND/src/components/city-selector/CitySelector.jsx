@@ -84,7 +84,7 @@ export default function CitySelector({ style }) {
 
   React.useEffect(() => {
     if (!city) return setOpen(true)
-  }, [])
+  }, [city])
 
   return (
     <div style={{ display: 'flex', justifyContent: 'space-between' }}>

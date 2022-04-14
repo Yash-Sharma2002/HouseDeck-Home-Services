@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { getPaidBookingsAPI, getDraftBookingsAPI, deletDraftBookingsAPI } from '../Api/getBookings'
 import { getSubscriptionDetails } from '../Api/getSubscriptionDetails'
-import { Box, Typography, Breadcrumbs, Link, Divider, Button } from '@mui/material'
+import { Box, Typography, Breadcrumbs, Link, Divider, Button, useMediaQuery } from '@mui/material'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext'
 import PropTypes from 'prop-types'
 import Tabs from '@mui/material/Tabs'
@@ -13,7 +13,7 @@ import { LoginContext } from '../context/Context'
 
 
 function TabPanel(props) {
-  const { children, value, index, ...other } = props
+  const { children, value, change,index, ...other } = props
 
   return (
     <div
@@ -24,7 +24,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box sx={{ p:change?'2px 3px': 3 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -46,7 +46,7 @@ function a11yProps(index) {
 }
 
 
-export default function Bookings() {
+function Content({ change }) {
   const commonProps = [
     { name: 'Home Services', url: '/home-services' },
   ]
@@ -128,7 +128,7 @@ export default function Bookings() {
         // background: 'rgb(229, 246, 245)', 
         height: '300px',
       }}>
-        <Box sx={{ width: '70%', margin: '0px auto', mt: 10 }}>
+        <Box sx={{ width: change ? '98%' : '70%', margin: '0px auto', mt: change ? 2 : 10 }}>
 
           <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', my: 3 }} >
             <Tabs value={value} onChange={handleChange}>
@@ -161,28 +161,28 @@ export default function Bookings() {
           </Box>
           <Box sx={{ background: 'white', height: '500px', border: '5px solid orange', borderRadius: 4, margin: '0px auto', mt: 1, overflowY: 'auto' }}>
 
-            <TabPanel value={value} index={value === 0 ? 0 : 1}>
+            <TabPanel change={change} value={value} index={value === 0 ? 0 : 1}>
               {
                 bookings.length !== 0 ? bookings.map((item) => {
                   const category = toTitle(item.Order_Details.Category.replace(/_/g, ' '))
                   const services = item.Order_Details.Services
                   return (
                     <>
-                      <Divider sx={{ mt: 2, px: 2, fontSize: '18px', }}>{item.Order_Details.Order_Date} {item.Order_Details.Order_Time}</Divider>
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: 2, pt: 1 }}>
+                      <Divider sx={{ mt: 2, px: change ? 0 : 2, fontSize: '18px', }}>{item.Order_Details.Order_Date} {item.Order_Details.Order_Time}</Divider>
+                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: change ? 0 : 2, pt: 1 }}>
                         <Typography sx={{ fontSize: '16px', fontWeight: '600', }}>Category</Typography>
                         <Typography sx={{ fontSize: '16px', fontWeight: '600', fontFamily: 'Fredoka' }}>{category}</Typography>
                       </Box>
                       {services.map(data =>
                         <>
-                          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: 2, pt: 1 }}>
+                          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: change ? 0 : 2, pt: 1 }}>
                             <Typography sx={{ fontSize: '16px', fontWeight: '600', }}>{data.Service}</Typography>
                             <Typography sx={{ fontSize: '16px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{data.Price}</Typography>
                           </Box>
                         </>
 
                       )}
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: 2, pt: 1 }}>
+                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: change ? 0 : 2, pt: 1 }}>
                         <Typography sx={{ fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>Total Price</Typography>
                         <Typography sx={{ fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{item.Order_Details.Order_Amount}</Typography>
                       </Box>
@@ -190,7 +190,7 @@ export default function Bookings() {
                       {
                         item.Draft === 'Yes' ?
                           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 2 }}>
-                            <Button variant="outlined" color='error' sx={{ textTransform: 'none' }} onClick={()=>deleteDraft(item._id)}>
+                            <Button variant="outlined" color='error' sx={{ textTransform: 'none' }} onClick={() => deleteDraft(item._id)}>
                               Delete
                             </Button>
                             <a href={`/home-services/service=${category}`} style={{ textDecoration: 'none', }} target="_blank" rel="noreferrer">
@@ -217,8 +217,8 @@ export default function Bookings() {
               {
                 subscription.length !== 0 ? subscription.map((item) =>
                   <>
-                    <Divider sx={{ mt: 2, px: 2, fontSize: '18px', }}>{item.Order_Details.Order_Date} {item.Order_Details.Order_Time}</Divider>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: 2, pt: 1 }}>
+                    <Divider sx={{ mt: 2, px: change ? 0 : 2, fontSize: '18px', }}>{item.Order_Details.Order_Date} {item.Order_Details.Order_Time}</Divider>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: change ? 0 : 2, pt: 1 }}>
                       <Typography sx={{ fontSize: '16px', fontWeight: '600', }}>{item.Order_Details.Subscription.Name}</Typography>
                       <Typography sx={{ fontSize: '16px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{item.Order_Details.Subscription.Price}</Typography>
                     </Box>
@@ -237,5 +237,20 @@ export default function Bookings() {
       </Box>
 
     </div >
+  )
+}
+
+
+export default function Bookings() {
+  const xlMax = useMediaQuery('(max-width:2000px)');
+  const xlMin = useMediaQuery('(min-width:1170px)');
+  const sm = useMediaQuery('(max-width:1170px)');
+  return (
+    <>
+      {xlMax && xlMin && (
+        <Content change={false} />
+      )}
+      {!(xlMax && xlMin) && sm && (<Content change={true} />)}
+    </>
   )
 }

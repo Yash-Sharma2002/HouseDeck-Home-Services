@@ -25,17 +25,18 @@ function Content({ width }) {
                             opacity: notDisabled ? '1' : '0.6',
                             cursor: data.tag ? 'pointer' : 'no-drop',
                         }}>
-                            <Typography sx={{
-                                textAlign: 'center',
-                                fontSize: '12px',
-                                border: '1px solid #ba7a16',
-                                backgroundColor: '#fff1d6',
-                                color: '#ba7a16',
-                                padding: '2px 8px',
-                                borderRadius: '20px',
-                                width: 'fit-content',
-                                margin: 'auto',
-                            }}>{data.offer}</Typography>
+                            {data.offer === '' ? null :
+                                <Typography sx={{
+                                    textAlign: 'center',
+                                    fontSize: '12px',
+                                    border: '1px solid #ba7a16',
+                                    backgroundColor: '#fff1d6',
+                                    color: '#ba7a16',
+                                    padding: '2px 8px',
+                                    borderRadius: '20px',
+                                    width: 'fit-content',
+                                    margin: 'auto',
+                                }}>{data.offer}</Typography>}
                             <img style={{ width: '4rem', borderRadius: '10px', padding: '4px' }} src={data.src} alt={data.id} />
                             <Typography sx={{ fontSize: '16px' }}>{data.id}</Typography>
                         </a>
@@ -53,7 +54,6 @@ function SmContent({ width }) {
             <Box sx={{ display: 'flex', WebkitBoxPack: "justify", justifyContent: 'inherit', flexWrap: 'wrap', backgroundColor: '#f7f7f7', padding: '30px 0px', alignItems: "center", margin: '0px auto' }}>
                 {ServiceWithImage[currentCity].map((data) => {
                     const notDisabled = data.tag
-                    const offer = `${data.offer}`
                     return (
                         <>
                             <a href={data.takeToPath} style={{
@@ -68,7 +68,7 @@ function SmContent({ width }) {
                                 width: width,
                                 opacity: notDisabled ? '1' : '0.6',
                             }}>
-                                {offer === '' ? null :
+                                {data.offer === '' ? null :
                                     <Typography sx={{
                                         textAlign: 'center',
                                         fontSize: '12px',

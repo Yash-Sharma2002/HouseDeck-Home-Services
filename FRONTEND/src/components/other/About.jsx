@@ -3,6 +3,7 @@ import { Box, Typography, useMediaQuery } from '@mui/material'
 
 
 function StepWritten({padding,display}) {
+
     return (
         <Box sx={{ padding: padding }}>
             <Typography sx={{ color: '#fb7f7f', fontFamily: 'Dancing script', fontSize: '33px', fontWeight: '900', textAlign: 'center' }}>About Us</Typography>

@@ -1,16 +1,15 @@
 import React from 'react';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
-import { Box, Link } from '@mui/material';
+import { Box, Link, Typography } from '@mui/material';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import MenuIcon from '@mui/icons-material/Menu';
 import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import { Tooltip } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import { DrawerData } from '../../constants/data'
 
 export default function Menubar() {
     const [state, setState] = React.useState({
@@ -25,19 +24,7 @@ export default function Menubar() {
         setState({ ...state, [anchor]: open });
     };
 
-    function logout() {
-        try {
-            localStorage.setItem('START_DATA', JSON.stringify({
-                USERDATA_AS_NUMBER: '',
-                USERDATA_AS_USERNAME: '',
-                USERDATA_AS_EMAIL: '',
-            }));
-            localStorage.setItem('INIT_DATA', JSON.stringify(false));
-        }
-        catch (err) {
-            console.log(err);;
-        }
-    }
+
     return (
         <div>
             <React.Fragment key={'right'}>
@@ -73,35 +60,40 @@ export default function Menubar() {
                             <ListItem onClick={toggleDrawer('right', false)}>
                                 <CloseIcon />
                             </ListItem>
-                            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                                <ListItem button key={text}>
-                                    <ListItemIcon>
-                                        {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                    </ListItemIcon>
-                                    <ListItemText primary={text} />
-                                </ListItem>
-                            ))}
+                            {
+                                DrawerData.map((data, index) => (
+                                    <div key={index}>
+                                        {
+                                            data.tag ?
+                                                <>
+                                                    <Link href={data.url} sx={{ textDecoration: 'none', color: 'black' }}>
+                                                        <ListItem button key={data.name} >
+                                                            <ListItemText primary={data.name} />
+                                                        </ListItem>
+                                                    </Link>
+                                                </>
+                                                :
+                                                <>
+                                                    <Tooltip title="Coming Soon" placement="top" arrow>
+                                                        <ListItem button key={data.name} >
+                                                            <ListItemText primary={data.name} />
+                                                        </ListItem>
+                                                    </Tooltip>
+                                                </>
+                                        }
+                                    </div>
+                                ))}
                         </List>
                         <Divider />
-                        <List>
-                            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                                <ListItem button key={text}>
-                                    <ListItemIcon>
-                                        {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                    </ListItemIcon>
-                                    <ListItemText primary={text} />
-                                </ListItem>
-                            ))}
-                        </List>
-
-                        <Link href="/home-services">
-                            <Button onClick={logout}>
-                                logout
-                            </Button>
-                        </Link>
+                        <ListItem button  >
+                            <ListItemText primary='Contact us' />
+                        </ListItem>
+                        <Typography sx={{ display: 'flex', justifyContent: 'space-evenly', alignItems: "center" }}>
+                            Email - <a href="mailto:hello@housedeck.in">hello@housedeck.in</a>
+                        </Typography>
                     </Box>
                 </Drawer>
             </React.Fragment>
-        </div>
+        </div >
     )
 }

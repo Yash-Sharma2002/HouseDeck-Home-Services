@@ -18,8 +18,10 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import SendIcon from '@mui/icons-material/Send';
 import FormLabel from '@mui/material/FormLabel';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import { LoginContext } from '../../context/Context'
+import { getPlace } from '../../Api/getPlaces'
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -31,11 +33,12 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 
 function Content({ options, category, data, setOptions, open, setOpen, width }) {
 
-    const { setMessage, setMessageType, setShow, userData, decrypt } = React.useContext(LoginContext)
+    const { city, setMessage, setMessageType, setShow, userData, decrypt } = React.useContext(LoginContext)
 
     const fullScreen = useMediaQuery('(max-width:650px)');
     const [price, setPrice] = React.useState(0)
     const [date, setdate] = React.useState(null)
+    const [relatedLocation, setRelatedLocation] = React.useState({ predictions: [], status: '' })
     const [location, setLocation] = React.useState('');
     const [time, settime] = React.useState(new Date('2022-03-01 12:00'))
     const [Services, setServices] = React.useState([])
@@ -48,6 +51,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
     const [paymentLink, setPaymentLink] = React.useState('')
     const [orderId, setOrderId] = React.useState('')
     const [value, setValue] = React.useState('');
+    const [valueForLocation, setValueForLocation] = React.useState('');
     const [dispplayForCode, setDisplayForCode] = React.useState('');
     const handleClose = () => {
         setOpen(false)
@@ -64,6 +68,8 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
         setPaymentLink('')
         setOrderId('')
         setDisplayForCode(false)
+        setRelatedLocation({ predictions: [], status: '' })
+        setValueForLocation('')
     };
 
     const handleChange = (event) => {
@@ -75,6 +81,16 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
             setDisplayForCode(false);
         }
     };
+
+    async function handleRelatedLocationChange(value) {
+        setValueForLocation(value)
+        var response = await getPlace({ input: value })
+        if (response) {
+            // console.log(response);
+            setRelatedLocation(response)
+        }
+    }
+
     function Select(service, price) {
         if (!Services.map((item) => item.Service).includes(service)) {
             setServices((prevItems) => [
@@ -101,16 +117,6 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
             setDisplayAtStart(false)
             setOrderId(uuidV4())
         }
-        // var autocomplete = new google.maps.places.Autocomplete((document.getElementById('searchInput')), {
-        //     types: ['geocode'],
-        // componentRestrictions: {
-        //  country: "USA"
-        // }
-        // });
-
-        // google.maps.event.addListener(autocomplete, 'place_changed', function () {
-        //     var near_place = autocomplete.getPlace();
-        // });
     }
 
     function locationSubmit() {
@@ -121,16 +127,27 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
         setDisplayForAppointment(true)
     }
 
-    function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition((position) => {
-                setLocation(`${position.coords.latitude} ${position.coords.longitude}`)
-            });
-            locationSubmit();
+    function getLocation(value, enteredCity) {
+        if (!value) {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((position) => {
+                    setLocation(`${position.coords.latitude} ${position.coords.longitude}`)
+                });
+                locationSubmit();
+            } else {
+                setShow(true)
+                setMessage('Error Occured. Location not valid')
+                setMessageType('error')
+            }
         } else {
-            setShow(true)
-            setMessage('Error Occured. Location not valid')
-            setMessageType('error')
+            if (!(city === enteredCity)) {
+                setShow(true)
+                setMessage('Select a location nearby selected city')
+                setMessageType('error')
+            } else {
+                setLocation(value)
+                setValueForLocation(value)
+            }
         }
     }
 
@@ -146,8 +163,6 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
 
 
     const CreateOrder = async () => {
-     
-
         const data = {
             order_id: `OrderId_${orderId}`,
             order_amount: `${price}.00`,
@@ -402,10 +417,12 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
 
                     <Box>
                         <input
+                            value={valueForLocation}
                             id='searchInput'
                             placeholder='Enter your location'
                             type='text'
-                            // onChange={e => handleNumChange(e.target)}
+                            autocomplete="off"
+                            onChange={(e) => handleRelatedLocationChange(e.target.value)}
                             style={{
                                 border: '1px solid #e5e5e5',
                                 userSelect: 'none',
@@ -415,9 +432,34 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                                 marginTop: '30px',
                                 paddingLeft: '10px'
                             }} />
+                        {
+                            relatedLocation.status === 'OK' ? relatedLocation.predictions.map((data, index) => {
+                                var enteredCity = ''
+                                if (data.types.includes('locality')) {
+                                    const id = data.types.indexOf('locality')
+                                    enteredCity = data.terms[id].value
+
+                                } else if (data.types.includes('sublocality')) {
+                                    const id = data.types.indexOf('sublocality')
+                                    enteredCity = data.terms[id].value
+                                }
+                                return (
+                                    <Box key={index}>
+                                        <Box sx={{ display: 'flex', justifyContent: 'start', alignItems: 'flex-start',cursor:'pointer' }} onClick={() => getLocation(data.description, enteredCity)}>
+
+                                            <LocationOnIcon sx={{ fontSize: '19px', paddingTop: '4px', ml: 1 }} />
+                                            <Typography sx={{ ml: 1 }}>
+                                                <span style={{ fontWeight: '900' }}>{data.description.slice(0, data.matched_substrings[0].length)}</span><span>{data.description.slice(data.matched_substrings[0].length,)}</span>
+                                            </Typography>
+                                        </Box>
+                                    </Box>
+                                )
+                            }) :
+                                <Box></Box>
+                        }
                     </Box>
 
-                    <Box sx={{ display: 'flex', justifyContent: 'start', alignItems: 'center', color: 'rgb(25, 118, 210)', my: 4 }} onClick={getLocation}>
+                    <Box sx={{ display: 'flex', justifyContent: 'start', alignItems: 'center', color: 'rgb(25, 118, 210)', my: 4 }} onClick={() => getLocation('', '')}>
                         <MyLocationIcon />
                         <Typography sx={{ fontSize: '16px', ml: 1, cursor: 'pointer' }} >current location</Typography>
                     </Box>
@@ -465,7 +507,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                     <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                         <ArrowBackIcon onClick={AtStart} sx={{ position: 'absolute', bottom: 17, cursor: 'pointer' }} />
                         <Button sx={{ fontSize: '16px', marginLeft: 'auto', marginRight: '0px', textTransform: 'none', position: 'absolute', bottom: 10, right: 10 }} variant='outlined' color='secondary' endIcon={<SendIcon />} onClick={() => {
-                               if (!date) {
+                            if (!date) {
                                 setShow(true)
                                 setMessage('Enter Date.')
                                 setMessageType('error')
