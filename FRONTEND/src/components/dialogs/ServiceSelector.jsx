@@ -33,6 +33,13 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     },
 }));
 
+// displayAtStart - 0
+// displayForServiceSelectionProcess - 1
+// display-2
+// displayForStepper - 3
+// displayForAppointment - 4
+// displayForPayment - 5
+// displayForCode - 6
 
 function Content({ options, category, data, setOptions, open, setOpen, width }) {
 
@@ -57,7 +64,8 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
     const [value, setValue] = React.useState('');
     const [promoCode, setPromoCode] = React.useState({
         code: '',
-        applied: false
+        applied: false,
+        redution: 0
     })
     const [valueForLocation, setValueForLocation] = React.useState('');
     const [displayForCode, setDisplayForCode] = React.useState('');
@@ -80,7 +88,8 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
         setValueForLocation('')
         setPromoCode({
             code: '',
-            applied: false
+            applied: false,
+            reduction: 0
         })
     };
 
@@ -228,7 +237,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                 setShow(true)
                 setMessage('Code Applied, Price Reduced')
                 setMessageType('success')
-                setPromoCode({ code: promoCode.code, applied: true })
+                setPromoCode({ code: promoCode.code, applied: true, reduction: parseInt(response.Price_Reduction) })
                 setPrice((prevPrice) => prevPrice - parseInt(response.Price_Reduction))
             } else {
                 setShow(true)
@@ -609,8 +618,14 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                             {
                                 promoCode.applied ?
                                     <>
-                                        <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>New Price</Typography>
-                                        <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>&#8377;{totalPrice}</Typography>
+                                        <Box>
+                                            <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>Total Price</Typography>
+                                            <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>New Price</Typography>
+                                        </Box>
+                                        <Box>
+                                            <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>&#8377;{totalPrice + promoCode.reduction}</Typography>
+                                            <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>&#8377;{totalPrice}</Typography>
+                                        </Box>
                                     </>
                                     :
                                     <>
@@ -632,7 +647,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                                 <>
                                     <Box sx={{ textAlign: 'center' }}>
                                         <Typography sx={{ fontSize: '16px' }}>Applied PromoCode</Typography>
-                                        <Typography sx={{ fontSize: '16px' }}>{promoCode.code}</Typography>
+                                        <Typography sx={{ fontSize: '16px' ,textDecoration:'underline'}}>{promoCode.code}</Typography>
                                     </Box>
                                 </>
                                 :
