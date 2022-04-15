@@ -177,7 +177,7 @@ function Content({ change }) {
                         <>
                           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: change ? 0 : 2, pt: 1 }}>
                             <Typography sx={{ fontSize: '16px', fontWeight: '600', }}>{data.Service}</Typography>
-                            <Typography sx={{ fontSize: '16px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{data.Price}</Typography>
+                            <Typography sx={{ fontSize: '16px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{data.Price}.00</Typography>
                           </Box>
                         </>
 

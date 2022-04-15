@@ -33,8 +33,8 @@ export const makePayments = async (req, res) => {
             })
 
     } catch (error) {
-        res.send(500 + ' Error occured');
         console.log('Error: from payment controller ', error);
+        return res.status(500).json('failed');
     }
 }
 
@@ -57,7 +57,7 @@ export const checkPaymentStatus = async (req, res) => {
             })
             .then(async (data) => {
                 if (!(data.order_amount === parseFloat(req.body.Order_Details.Order_Amount))) {
-                    res.sendStatus(500)
+                    return res.status(500).json('failed');
                 } else if (data.order_status === 'PAID') {
                     try {
                         const service = req.body;
@@ -65,15 +65,15 @@ export const checkPaymentStatus = async (req, res) => {
                         await newService.save();
                         return res.send(data)
                     } catch (error) {
-                        res.send(500 + ' Error occured');
                         console.log('Error: from service controller ', error);
+                        return res.status(500).json('failed');
                     }
                 }
             })
 
     } catch (error) {
-        res.send(500 + ' Error occured');
         console.log('Error: from payment controller ', error);
+        return res.status(500).json('failed');
     }
 }
 
@@ -97,8 +97,7 @@ export const checkSubscriptionStatus = async (req, res) => {
             })
             .then(async (data) => {
                 if (!(data.order_amount === parseFloat(req.body.Order_Details.Order_Amount))) {
-                    console.log('erroe here');
-                    res.sendStatus(500)
+                    return res.status(500).json('failed');
                 } else if (data.order_status === 'PAID') {
                     try {
                         const subscription = req.body;
@@ -106,15 +105,15 @@ export const checkSubscriptionStatus = async (req, res) => {
                         await newSubscription.save();
                         return res.send(data)
                     } catch (error) {
-                        res.send(500 + ' Error occured');
                         console.log('Error: from service controller ', error);
+                        return res.status(500).json('failed');
                     }
                 }
             })
 
     } catch (error) {
-        res.send(500 + ' Error occured');
         console.log('Error: from payment controller ', error);
+        return res.status(500).json('failed');
     }
 }
 

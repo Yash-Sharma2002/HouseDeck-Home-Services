@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom'
 import AddIcCallIcon from '@mui/icons-material/AddIcCall';
 import CallToActionIcon from '@mui/icons-material/CallToAction';
 import Login from '../dialogs/Login';
@@ -8,20 +9,46 @@ import { useMediaQuery, Link, Box, Typography, Container, AppBar, Button, Toolba
 import { IconHeaderImage } from '../../constants/data';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { LoginContext } from '../../context/Context';
-
-
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
 const PostLogo = <img src={require('../../assets/logos/houseDeck_copy1.png')} style={{ width: '10rem' }} alt="HouseDeck" />
 
 
 
 function XLHeader({ commonProps }) {
-    const { isLogin, userData ,decrypt} = React.useContext(LoginContext)
+    const navigate = useNavigate()
+    const { isLogin, userData, decrypt } = React.useContext(LoginContext)
     const [open, setOpen] = React.useState(false);
     const handleClickOpen = () => {
         setOpen(true);
     };
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open1 = Boolean(anchorEl);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = (link) => {
+        setAnchorEl(null);
+        navigate(link)
+    };
 
+    function logout() {
+        try {
+            localStorage.setItem('START_DATA', JSON.stringify({
+                USERDATA_AS_NUMBER: '',
+                USERDATA_AS_USERNAME: '',
+                USERDATA_AS_EMAIL: '',
+            }));
+            localStorage.setItem('INIT_DATA', JSON.stringify(false))
+            window.location.reload(false)
+        }
+        catch (err) {
+            console.log(err);;
+        }
+    }
 
     return (
         <AppBar position="fixed" sx={{ backgroundColor: 'white', color: '#000000' }}>
@@ -127,10 +154,29 @@ function XLHeader({ commonProps }) {
 
                         {
                             (userData.USERDATA_AS_USERNAME && isLogin) ?
-                                <Link href='/home-services/profile' sx={{ color: 'black', display: 'flex', justifyContent: 'space-evenly', alignItems: "center", marginLeft: '18px', textDecoration: 'none' }}>
-                                    <AccountCircleIcon />
-                                    <Typography sx={{ fontSize: '14px', fontFamily: 'Fredoka', marginLeft: '4px' }}>{decrypt(userData.USERDATA_AS_USERNAME)}</Typography>
-                                </Link>
+                                <>
+                                    <Link href='/home-services/profile' sx={{ color: 'black', display: 'flex', justifyContent: 'space-evenly', alignItems: "center", marginLeft: '18px', textDecoration: 'none' }}>
+                                        <AccountCircleIcon />
+                                        <Typography sx={{ fontSize: '14px', fontFamily: 'Fredoka', marginLeft: '4px' }} >{decrypt(userData.USERDATA_AS_USERNAME)}</Typography>
+                                    </Link>
+                                    {open1 ? <ExpandLessIcon sx={{ mt: '2px', cursor: 'pointer' }} /> : <ExpandMoreIcon sx={{ mt: '2px', cursor: 'pointer' }} onClick={handleClick} />}
+                                    <Menu
+                                        anchorEl={anchorEl}
+                                        open={open1}
+                                        onClose={handleClose}
+                                        sx={{ right: '91px', top: '44px', left: 'auto', width: "150px" }}
+                                    >
+                                        <MenuItem onClick={() => handleClose('/home-services/profile')}><Link href='/home-services/profile' sx={{
+                                            color: 'black',
+                                            textDecoration: 'none'
+                                        }} >Profile</Link>  </MenuItem>
+                                        <MenuItem onClick={() => handleClose('/home-services/my-bookings')}><Link href='/home-services/my-bookings' sx={{
+                                            color: 'black',
+                                            textDecoration: 'none'
+                                        }}>My Bookings</Link>  </MenuItem>
+                                        <MenuItem onClick={logout}>Logout</MenuItem>
+                                    </Menu>
+                                </>
                                 :
                                 <>
                                     <Button variant='outlined' sx={{

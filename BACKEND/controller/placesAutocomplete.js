@@ -22,5 +22,6 @@ export const PlacesAutoComplete = async (req,res) => {
 
     } catch (error) {
         console.log('error in map calling ' + error);
+        return res.status(500).json('failed');
     }
 }

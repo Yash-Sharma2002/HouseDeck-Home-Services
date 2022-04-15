@@ -22,6 +22,9 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import { LoginContext } from '../../context/Context'
 import { getPlace } from '../../Api/getPlaces'
+import Login from './Login'
+import { MiniServices } from '../../constants/data'
+import { promocodeFetch, promocodeStore } from '../../Api/priceReductionPromocode'
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -33,13 +36,14 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 
 function Content({ options, category, data, setOptions, open, setOpen, width }) {
 
-    const { city, setMessage, setMessageType, setShow, userData, decrypt } = React.useContext(LoginContext)
+    const { city, isLogin, setMessage, setMessageType, setShow, userData, decrypt } = React.useContext(LoginContext)
 
     const fullScreen = useMediaQuery('(max-width:650px)');
-    const [price, setPrice] = React.useState(0)
+    const [totalPrice, setPrice] = React.useState(0)
     const [date, setdate] = React.useState(null)
     const [relatedLocation, setRelatedLocation] = React.useState({ predictions: [], status: '' })
     const [location, setLocation] = React.useState('');
+    const [openLogin, setOpenLogin] = React.useState(false)
     const [time, settime] = React.useState(new Date('2022-03-01 12:00'))
     const [Services, setServices] = React.useState([])
     const [displayForServiceSelectionProcess, setDisplayForServiceSelectionProcess] = React.useState(true)
@@ -51,8 +55,12 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
     const [paymentLink, setPaymentLink] = React.useState('')
     const [orderId, setOrderId] = React.useState('')
     const [value, setValue] = React.useState('');
+    const [promoCode, setPromoCode] = React.useState({
+        code: '',
+        applied: false
+    })
     const [valueForLocation, setValueForLocation] = React.useState('');
-    const [dispplayForCode, setDisplayForCode] = React.useState('');
+    const [displayForCode, setDisplayForCode] = React.useState('');
     const handleClose = () => {
         setOpen(false)
         setdate(null)
@@ -70,6 +78,10 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
         setDisplayForCode(false)
         setRelatedLocation({ predictions: [], status: '' })
         setValueForLocation('')
+        setPromoCode({
+            code: '',
+            applied: false
+        })
     };
 
     const handleChange = (event) => {
@@ -86,12 +98,18 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
         setValueForLocation(value)
         var response = await getPlace({ input: value })
         if (response) {
-            // console.log(response);
             setRelatedLocation(response)
         }
     }
 
+
     function Select(service, price) {
+        if (options === MiniServices && totalPrice === 0) {
+            setShow(true)
+            setMessage('Mini Services can only be selected with other services')
+            setMessageType('error')
+            return
+        }
         if (!Services.map((item) => item.Service).includes(service)) {
             setServices((prevItems) => [
                 ...prevItems,
@@ -109,13 +127,18 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
         }
     }
     function getRequiredThings() {
-        if (Services) {
-            setDisplayForServiceSelectionProcess(false)
-            setDisplayForStepper(true)
-            setDisplayForAppointment(false)
-            setDisplayForPayment(false)
-            setDisplayAtStart(false)
-            setOrderId(uuidV4())
+        if (isLogin) {
+            if (Services) {
+
+                setDisplayForServiceSelectionProcess(false)
+                setDisplayForStepper(true)
+                setDisplayForAppointment(false)
+                setDisplayForPayment(false)
+                setDisplayAtStart(false)
+                setOrderId(uuidV4())
+            }
+        } else {
+            setOpenLogin(!openLogin)
         }
     }
 
@@ -165,7 +188,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
     const CreateOrder = async () => {
         const data = {
             order_id: `OrderId_${orderId}`,
-            order_amount: `${price}.00`,
+            order_amount: `${totalPrice}.00`,
             order_currency: 'INR',
             customer_details: {
                 customer_id: decrypt(userData.USERDATA_AS_USERNAME),
@@ -184,6 +207,41 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
         }
     }
 
+    async function OnPromoCodeApply() {
+        if (!promoCode.applied) {
+            const response = await promocodeFetch({
+                Code: promoCode.code,
+                Customer_Details: {
+                    Customer_Id: decrypt(userData.USERDATA_AS_USERNAME),
+                    Customer_Email: decrypt(userData.USERDATA_AS_EMAIL),
+                    Customer_Phone: decrypt(userData.USERDATA_AS_NUMBER)
+                }
+            })
+            // const response = await promocodeStore({ Code: promoCode.code,Price_Reduction:'200' })
+            if (response) {
+                if (response === 400) {
+                    setShow(true)
+                    setMessage('This code is not available for you now')
+                    setMessageType('info')
+                    return
+                }
+                setShow(true)
+                setMessage('Code Applied, Price Reduced')
+                setMessageType('success')
+                setPromoCode({ code: promoCode.code, applied: true })
+                setPrice((prevPrice) => prevPrice - parseInt(response.Price_Reduction))
+            } else {
+                setShow(true)
+                setMessage('Wrong PromoCode')
+                setMessageType('error')
+                return
+            }
+        } else {
+            setShow(true)
+            setMessage('Code already applied.')
+            setMessageType('secondary')
+        }
+    }
     const saveDraft = async () => {
         const currentDateTime = new Date()
         const items = {
@@ -193,7 +251,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                 Order_Time: currentDateTime.toString().slice(16, 25),
                 Category: category,
                 Services,
-                Order_Amount: `${price}.00`,
+                Order_Amount: `${totalPrice}.00`,
                 Appointment_Location: location,
                 Appointment_Date: date.toString().slice(0, 15),
                 Appointment_Time: time.toString().slice(16, 25),
@@ -226,6 +284,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
         setDisplayAtStart(false)
         setDisplayForServiceSelectionProcess(true)
         setDisplayForStepper(false)
+        setDisplayForPayment(false)
         setDisplayForAppointment(false)
     }
     const onClickPay = async () => {
@@ -238,7 +297,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                 Order_Time: currentDateTime.toString().slice(16, 25),
                 Category: category,
                 Services,
-                Order_Amount: `${price}.00`,
+                Order_Amount: `${totalPrice}.00`,
                 Appointment_Location: location,
                 Appointment_Date: date.toString().slice(0, 15),
                 Appointment_Time: time.toString().slice(16, 25),
@@ -389,10 +448,10 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                         <Box sx={{ position: 'sticky', bottom: 0, display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '70px', background: 'white', width: 'inherit', zIndex: '1000', px: '10px' }}>
                             <ArrowBackIcon onClick={AtStart} sx={{ mt: 3, cursor: 'pointer' }} />
                             {
-                                (display && !(price === 0)) ?
+                                (display && !(totalPrice === 0)) ?
                                     <>
                                         <Box sx={{ mt: 3, display: 'flex', alignItems: 'center', justifyContent: 'end' }}>
-                                            <Typography sx={{ mr: 1, fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{price}</Typography>
+                                            <Typography sx={{ mr: 1, fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{totalPrice}</Typography>
                                             <Divider orientation='vertical' sx={{ color: 'black' }} flexItem />
                                             <Typography sx={{ ml: 1, color: 'gray', fontSize: '13px', fontFamily: 'Fredoka' }}>{Services.length} item</Typography>
                                             <Button variant='outlined' sx={{ ml: 1, textTransform: 'none', boxShadow: 0 }} color='secondary' endIcon={<SendIcon />} onClick={getRequiredThings}>Next</Button>
@@ -445,7 +504,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                                 }
                                 return (
                                     <Box key={index}>
-                                        <Box sx={{ display: 'flex', justifyContent: 'start', alignItems: 'flex-start',cursor:'pointer' }} onClick={() => getLocation(data.description, enteredCity)}>
+                                        <Box sx={{ display: 'flex', justifyContent: 'start', alignItems: 'flex-start', cursor: 'pointer' }} onClick={() => getLocation(data.description, enteredCity)}>
 
                                             <LocationOnIcon sx={{ fontSize: '19px', paddingTop: '4px', ml: 1 }} />
                                             <Typography sx={{ ml: 1 }}>
@@ -546,36 +605,68 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                             )
                         })}
                         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>Total Price</Typography>
-                            <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>&#8377;{price}</Typography>
+
+                            {
+                                promoCode.applied ?
+                                    <>
+                                        <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>New Price</Typography>
+                                        <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>&#8377;{totalPrice}</Typography>
+                                    </>
+                                    :
+                                    <>
+                                        <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>Total Price</Typography>
+                                        <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>&#8377;{totalPrice}</Typography>
+                                    </>
+                            }
                         </Box>
                     </Box>
-                    <Box sx={{ my: 2, textAlign: 'center' }}>
-                        <FormLabel >Do you Have a promocode</FormLabel>
-                        <RadioGroup row value={value} onChange={handleChange} sx={{ m: '0px auto', justifyContent: 'center' }}>
-                            <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
-                            <FormControlLabel value="No" control={<Radio />} label="No" />
-                        </RadioGroup>
-                    </Box>
-                    {
-                        dispplayForCode ?
-                            <Box sx={{ my: 10, textAlign: 'center' }}>
-                                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
-                                    <Typography sx={{ fontSize: "18px", fontWeight: '700' }}>Enter Promo-Code</Typography>
-                                </Box>
-                                <Box sx={{ textAlign: 'center' }}>
-                                    <TextField
-                                        placeholder="Enter Promo-Code (if any)"
-                                        variant="standard"
-                                        sx={{ margin: '0px auto', textAlign: 'center' }}
-                                    />
-                                </Box>
-                                <Button sx={{ fontSize: '16px', textTransform: 'none', my: 2 }} variant='outlined' color='success' >Apply</Button>
-                            </Box>
-                            :
-                            <Box></Box>
 
-                    }
+                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <Typography sx={{ fontSize: '17px' }}>Also checkout our</Typography>
+                        <Typography sx={{ fontSize: '17px', color: '#1565c0', cursor: 'pointer', textDecoration: 'underline', ml: 1, my: 2 }} onClick={() => handleClickOpen(MiniServices)}>Mini Services</Typography>
+                    </Box>
+                    <Box sx={{ my: 2, textAlign: 'center' }}>
+
+                        {
+                            promoCode.applied ?
+                                <>
+                                    <Box sx={{ textAlign: 'center' }}>
+                                        <Typography sx={{ fontSize: '16px' }}>Applied PromoCode</Typography>
+                                        <Typography sx={{ fontSize: '16px' }}>{promoCode.code}</Typography>
+                                    </Box>
+                                </>
+                                :
+                                <>
+                                    <FormLabel >Do you Have a promocode</FormLabel>
+
+                                    <RadioGroup row value={value} onChange={handleChange} sx={{ m: '0px auto', justifyContent: 'center' }}>
+                                        <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
+                                        <FormControlLabel value="No" control={<Radio />} label="No" />
+                                    </RadioGroup>
+                                    {
+                                        displayForCode ?
+                                            <Box sx={{ my: 10, textAlign: 'center' }}>
+                                                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
+                                                    <Typography sx={{ fontSize: "18px", fontWeight: '700' }}>Enter Promo-Code</Typography>
+                                                </Box>
+                                                <Box sx={{ textAlign: 'center' }}>
+                                                    <TextField
+                                                        placeholder="Enter Promo-Code (if any)"
+                                                        variant="standard"
+                                                        onChange={(e) => setPromoCode({ code: e.target.value, applied: false })}
+                                                        sx={{ margin: '0px auto', textAlign: 'center' }}
+                                                    />
+                                                </Box>
+                                                <Button sx={{ fontSize: '16px', textTransform: 'none', my: 2 }} variant='outlined' color='success' onClick={OnPromoCodeApply} >Apply</Button>
+                                            </Box>
+                                            :
+                                            <Box></Box>
+
+                                    }
+                                </>
+                        }
+                    </Box>
+
                     <Box sx={{ position: 'absolute', bottom: 10, left: 10 }}>
                         <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={saveDraft}>Shortlist</Button>
                     </Box>
@@ -591,6 +682,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
 
                     </Box>
                 </Box>
+                <Login open={openLogin} setOpen={setOpenLogin} />
 
 
             </BootstrapDialog>

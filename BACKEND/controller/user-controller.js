@@ -1,5 +1,4 @@
 import User from "../model/signUpSchema.js";
-import crypto from 'crypto'
 
 export const userSignUp = async (req, res) => {
     try {
@@ -11,11 +10,10 @@ export const userSignUp = async (req, res) => {
         const user = req.body;
         const newUser = new User(user);
         await newUser.save();
-        console.log('User data stored');
-        res.send(200 + 'User data stored')
+        return res.status(200).json('success');
     } catch (error) {
-        res.send(500 + ' Error occured');
         console.log('Error: from controller ', error.message);
+        return res.status(500).json('failed');
     }
 }
 
@@ -26,13 +24,12 @@ export const userLogIn = async (req, res) => {
             return res.send(user)
         }
         else {
-            console.log('error in else');
-            return res.sendStatus(500)
+            return res.status(500).json('failed');
         }
 
     } catch (error) {
-        console.log('error in catch');
-        res.json('Error: ', error.message);
+        console.log('error in catch',error);
+        return res.status(500).json('failed');
     }
 }
 
@@ -44,12 +41,12 @@ export const userUpdate = async (req, res) => {
             return res.send(user)
         }
         else {
-            console.log('error in else');
-            return res.sendStatus(500)
+            console.log('error in catch',error);
+            return res.status(500).json('failed');
         }
 
     } catch (error) {
-        console.log('error in catch');
-        res.json('Error: ', error.message);
+        console.log('error in catch',error);
+        return res.status(500).json('failed');
     }
 }

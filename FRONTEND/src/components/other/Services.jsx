@@ -4,12 +4,10 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ServiceSelector from '../dialogs/ServiceSelector';
 import {  ServiceDialogData } from '../../constants/data';
 import Login from '../dialogs/Login';
-// import { LoginContext } from '../../context/Context';
 
 export default function ServicesProvider({ service,width }) {
     const [openForService, setOpenForService] = React.useState(false)
     const [open, setOpen] = React.useState(false)
-    // const {isLogin} = React.useContext(LoginContext)
     const newService = service.replace(/ /g, '_').toLowerCase()
     const [options, setOptions] = React.useState({
         imgUrl: '',
@@ -17,12 +15,9 @@ export default function ServicesProvider({ service,width }) {
         quotes: [{ text: '' }]
     })
     const handleClickOpen = (services) => {
-        // if (isLogin) {
             setOpenForService(!open);
             setOptions(services)
-        // } else {
-        //     setOpen(!open)
-        // }
+        
     }
 
     return (
