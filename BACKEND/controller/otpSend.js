@@ -8,7 +8,7 @@ const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TO
 
 export const otpSend = async (req, res) => {
     try {
-        var otp = parseInt(Math.random() * 1000000)
+        var otp = parseInt(Math.floor(100000 + Math.random() * 900000))
         await client.messages.create({
             to: req.body.Number,
             from: process.env.TWILIO_APP_NUMBER,
@@ -34,7 +34,7 @@ export const otpSend = async (req, res) => {
 // only work when integrated
 export const mailVerification = async (req, res) => {
     try {
-        var otp = parseInt(Math.random() * 1000000)
+        var otp = parseInt(Math.floor(100000 + Math.random() * 900000))
         await client.messages.create({
             to: 'yashsharmams_cse19@its.edu.in',
             from: 'tech@housedeck.in',
