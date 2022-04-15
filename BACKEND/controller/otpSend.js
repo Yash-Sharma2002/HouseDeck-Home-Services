@@ -4,17 +4,11 @@ import dotenv from 'dotenv'
 dotenv.config({ path: './data.env' })
 const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN)
 
-function makeOTP() {
-    var otp = parseInt(Math.random() * 1000000)
-    if (otp.length !== 6) {
-        otp = makeOTP()
-    }
-    return otp
-}
+
 
 export const otpSend = async (req, res) => {
     try {
-        const otp = makeOTP()
+        var otp = parseInt(Math.random() * 1000000)
         await client.messages.create({
             to: req.body.Number,
             from: process.env.TWILIO_APP_NUMBER,
@@ -40,7 +34,7 @@ export const otpSend = async (req, res) => {
 // only work when integrated
 export const mailVerification = async (req, res) => {
     try {
-        const otp = makeOTP()
+        var otp = parseInt(Math.random() * 1000000)
         await client.messages.create({
             to: 'yashsharmams_cse19@its.edu.in',
             from: 'tech@housedeck.in',

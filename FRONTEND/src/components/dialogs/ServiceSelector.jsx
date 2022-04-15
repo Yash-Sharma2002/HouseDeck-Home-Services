@@ -636,9 +636,9 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                         </Box>
                     </Box>
 
-                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <Typography sx={{ fontSize: '17px' }}>Also checkout our</Typography>
-                        <Typography sx={{ fontSize: '17px', color: '#1565c0', cursor: 'pointer', textDecoration: 'underline', ml: 1, my: 2 }} onClick={() => handleClickOpen(MiniServices)}>Mini Services</Typography>
+                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center',border:'9px solid orange',borderRadius:'4px',my:3,margin:'0px auto',width:"fit-content",padding:'0px 9px',borderRadius:'32px' }}>
+                        <Typography sx={{ fontSize: '17px' }}>Add-on</Typography>
+                        <Typography sx={{ fontSize: '17px', fontFamily:'Fredoka',fontWeight:'800',color: '#1565c0', cursor: 'pointer', textDecoration: 'underline', ml: 1, my: 2 }} onClick={() => handleClickOpen(MiniServices)}>Mini Services</Typography>
                     </Box>
                     <Box sx={{ my: 2, textAlign: 'center' }}>
 

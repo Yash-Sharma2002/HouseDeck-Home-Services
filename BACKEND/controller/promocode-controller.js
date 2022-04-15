@@ -1,8 +1,8 @@
 import { PromoCode } from "../model/promocodeSchema.js";
 
 export const promocodeStore = async (req, res) => {
+    console.log(req.body);
     try {
-        console.log(req.body);
         const exist = await PromoCode.findOne({ Code: req.body.Code });
         if (exist) {
             console.log('Code Already existed');
@@ -13,7 +13,7 @@ export const promocodeStore = async (req, res) => {
         await newCode.save();
         return res.status(200).json('sucess')
     } catch (error) {
-        console.log('error in catch', error);
+        // console.log('error in catch', error);
         return res.status(500).json('failed');
     }
 }
