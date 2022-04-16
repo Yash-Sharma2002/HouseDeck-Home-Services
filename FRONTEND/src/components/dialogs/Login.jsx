@@ -209,7 +209,6 @@ function Content({ open, setOpen, width, display }) {
     }
     let response = await authenticateSignup(signup)
     if (!response) return;
-    window.location.reload(false)
     try {
       localStorage.setItem('START_DATA', JSON.stringify({
         USERDATA_AS_NUMBER: encrypt(`+91${number}`),
@@ -217,6 +216,7 @@ function Content({ open, setOpen, width, display }) {
         USERDATA_AS_EMAIL: encrypt(response.Email),
       }));
       localStorage.setItem('INIT_DATA', JSON.stringify(true));
+      window.location.reload(false)
     } catch (err) {
       return undefined;
     }

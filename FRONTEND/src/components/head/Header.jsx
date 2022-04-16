@@ -49,6 +49,8 @@ function XLHeader({ commonProps }) {
             console.log(err);;
         }
     }
+    console.log(userData.USERDATA_AS_USERNAME);
+    console.log(decrypt(userData.USERDATA_AS_USERNAME));
 
     return (
         <AppBar position="fixed" sx={{ backgroundColor: 'white', color: '#000000' }}>
@@ -153,7 +155,7 @@ function XLHeader({ commonProps }) {
                             </Button></Link>
 
                         {
-                            (userData.USERDATA_AS_USERNAME && isLogin) ?
+                            ((userData.USERDATA_AS_USERNAME) && isLogin) ?
                                 <>
                                     <Link href='/home-services/profile' sx={{ color: 'black', display: 'flex', justifyContent: 'space-evenly', alignItems: "center", marginLeft: '18px', textDecoration: 'none' }}>
                                         <AccountCircleIcon />

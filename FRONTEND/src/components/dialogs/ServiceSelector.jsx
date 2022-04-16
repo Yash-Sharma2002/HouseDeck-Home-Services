@@ -506,10 +506,32 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                                 if (data.types.includes('locality')) {
                                     const id = data.types.indexOf('locality')
                                     enteredCity = data.terms[id].value
-
+                                        if (enteredCity === 'Bengaluru') {
+                                            enteredCity = 'Bangalore'
+                                        }
+                                        if (enteredCity === 'New Delhi') {
+                                            enteredCity = 'Delhi'
+                                        }
                                 } else if (data.types.includes('sublocality')) {
                                     const id = data.types.indexOf('sublocality')
                                     enteredCity = data.terms[id].value
+                                    if (data.structured_formatting.secondary_text.includes(enteredCity)) {
+
+                                        if (enteredCity === 'Bengaluru') {
+                                            enteredCity = 'Bangalore'
+                                        }
+                                        if (enteredCity === 'New Delhi') {
+                                            enteredCity = 'Delhi'
+                                        }
+                                    } else {
+                                        enteredCity = data.terms[id+1].value
+                                        if (enteredCity === 'Bengaluru') {
+                                            enteredCity = 'Bangalore'
+                                        }
+                                        if (enteredCity === 'New Delhi') {
+                                            enteredCity = 'Delhi'
+                                        }
+                                    }
                                 }
                                 return (
                                     <Box key={index}>
@@ -636,9 +658,9 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                         </Box>
                     </Box>
 
-                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center',border:'9px solid orange',borderRadius:'4px',my:3,margin:'0px auto',width:"fit-content",padding:'0px 9px',borderRadius:'32px' }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', border: '9px solid orange', my: 3, margin: '0px auto', width: "fit-content", padding: '0px 9px', borderRadius: '32px' }}>
                         <Typography sx={{ fontSize: '17px' }}>Add-on</Typography>
-                        <Typography sx={{ fontSize: '17px', fontFamily:'Fredoka',fontWeight:'800',color: '#1565c0', cursor: 'pointer', textDecoration: 'underline', ml: 1, my: 2 }} onClick={() => handleClickOpen(MiniServices)}>Mini Services</Typography>
+                        <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka', fontWeight: '800', color: '#1565c0', cursor: 'pointer', textDecoration: 'underline', ml: 1, my: 2 }} onClick={() => handleClickOpen(MiniServices)}>Mini Services</Typography>
                     </Box>
                     <Box sx={{ my: 2, textAlign: 'center' }}>
 
@@ -647,7 +669,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                                 <>
                                     <Box sx={{ textAlign: 'center' }}>
                                         <Typography sx={{ fontSize: '16px' }}>Applied PromoCode</Typography>
-                                        <Typography sx={{ fontSize: '16px' ,textDecoration:'underline'}}>{promoCode.code}</Typography>
+                                        <Typography sx={{ fontSize: '16px', textDecoration: 'underline' }}>{promoCode.code}</Typography>
                                     </Box>
                                 </>
                                 :

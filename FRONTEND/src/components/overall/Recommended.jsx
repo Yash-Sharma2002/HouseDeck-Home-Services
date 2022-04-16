@@ -99,7 +99,7 @@ function SMRecommended() {
                                 {data.colorText}</Typography>
                         </Box>
                         <Box sx={{
-                            backgroundImage: `url(${data.url})`,
+                            backgroundImage: `url(${data.img})`,
                             minWidth: '80px',
                             height: '80px', backgroundPosition: '45%',
                             backgroundSize: 'cover',
