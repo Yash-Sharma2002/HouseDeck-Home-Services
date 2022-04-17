@@ -20,7 +20,7 @@ const PostLogo = <img src={require('../../assets/logos/houseDeck_copy1.png')} st
 
 function XLHeader({ commonProps }) {
     const navigate = useNavigate()
-    const { isLogin, userData, decrypt } = React.useContext(LoginContext)
+    const { userData, isLogin, decrypt } = React.useContext(LoginContext)
     const [open, setOpen] = React.useState(false);
     const handleClickOpen = () => {
         setOpen(true);
@@ -49,9 +49,6 @@ function XLHeader({ commonProps }) {
             console.log(err);;
         }
     }
-    console.log(userData.USERDATA_AS_USERNAME);
-    console.log(decrypt(userData.USERDATA_AS_USERNAME));
-
     return (
         <AppBar position="fixed" sx={{ backgroundColor: 'white', color: '#000000' }}>
             <Container maxWidth="2000px">

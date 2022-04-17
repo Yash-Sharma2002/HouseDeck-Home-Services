@@ -212,8 +212,8 @@ function Content({ open, setOpen, width, display }) {
     try {
       localStorage.setItem('START_DATA', JSON.stringify({
         USERDATA_AS_NUMBER: encrypt(`+91${number}`),
-        USERDATA_AS_USERNAME: encrypt(response.Username),
-        USERDATA_AS_EMAIL: encrypt(response.Email),
+        USERDATA_AS_USERNAME: encrypt(signup.Username),
+        USERDATA_AS_EMAIL: encrypt(signup.Email),
       }));
       localStorage.setItem('INIT_DATA', JSON.stringify(true));
       window.location.reload(false)

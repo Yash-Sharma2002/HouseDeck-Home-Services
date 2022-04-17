@@ -36,9 +36,9 @@ const ContextProvider = ({ children }) => {
         return ciphertext
     }
     function decrypt(ciphertext) {
-        var bytes = CryptoJS.AES.decrypt(ciphertext, 'housedeck-is in-bangalore');
-        var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-        return decryptedData
+            var bytes = CryptoJS.AES.decrypt(ciphertext, 'housedeck-is in-bangalore');
+            var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+            return decryptedData
     }
 
 
@@ -59,7 +59,7 @@ const ContextProvider = ({ children }) => {
             if (serializedState === null) {
                 return '';
             }
-            return JSON.parse(serializedState);
+            return serializedState
         }
 
     }
