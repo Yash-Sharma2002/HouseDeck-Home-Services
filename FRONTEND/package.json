@@ -1,6 +1,7 @@
 {
   "name": "housedeck-home-services",
   "version": "0.1.0",
+  "homepage": "https://home-services.housedeck.in/",
   "private": true,
   "dependencies": {
     "@date-io/date-fns": "^2.13.1",
