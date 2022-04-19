@@ -1,7 +1,7 @@
 import twilio from 'twilio'
 import dotenv from 'dotenv'
 
-dotenv.config({ path: './data.env' })
+dotenv.config({ path: './config.env' })
 const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN)
 
 
@@ -24,7 +24,7 @@ export const otpSend = async (req, res) => {
 
     } catch (error) {
         console.log('Error: from otp controller ', error);
-        return res.status(500).json('failed');
+        return res.send(error)
 
     }
 

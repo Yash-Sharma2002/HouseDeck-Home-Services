@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 import { ServiceAsPaid } from '../model/serviceSchema.js'
 import {Subscriptions} from '../model/subscriptionSchema.js'
 
-dotenv.config({ path: './data.env' })
+dotenv.config({ path: './config.env' })
 
 export const makePayments = async (req, res) => {
     try {
