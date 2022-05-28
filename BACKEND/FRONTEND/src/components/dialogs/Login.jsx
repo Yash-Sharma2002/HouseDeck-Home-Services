@@ -21,32 +21,10 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 
-// const useStyles = makeStyles({
-//   LoginBeforeText: {
-//     color: 'grey',
-//     fontSize: '12px',
-//     marginLeft: '23px'
-//   },
-//   abc: {
-//     borderWidth: '0px 2px 2px 0px',
-//     borderStyle: 'solid',
-//     borderColor: '#7b7b7b',
-//     position: 'absolute',
-//     transform: 'rotate(45deg)',
-//     height: '8px',
-//     width: '3px',
-//     display: 'block',
-//     marginTop: '-4px',
-//     ml: 1
-//   },
-// })
-
 function Content({ open, setOpen, width, display }) {
-
-  // const classes = useStyles()
   const fullScreen = useMediaQuery('(max-width:700px)');
 
-  const { setMessage, setMessageType, setShow ,encrypt} = React.useContext(LoginContext)
+  const { setMessage, setMessageType, setShow, encrypt } = React.useContext(LoginContext)
 
   const timeRef = React.useRef()
 
@@ -140,7 +118,7 @@ function Content({ open, setOpen, width, display }) {
     }
   }
 
- 
+
   function onClickResend() {
     setRealOTP('')
     OTPSender()
@@ -199,7 +177,7 @@ function Content({ open, setOpen, width, display }) {
     if (!username.match(validRegexForUsername)) {
       setShow(true)
       setMessageType('error')
-      setMessage("Username does not contains spaces and must be alphanumeric")
+      setMessage("Username mut be 8 characters long and alphanumeric")
       return
     }
     const signup = {
@@ -236,23 +214,7 @@ function Content({ open, setOpen, width, display }) {
           <Box sx={{ width: '40%', background: '#f8f8f8', paddingLeft: '30px' }}>
             <img style={{ height: '100px', width: "100px", marginTop: '9rem' }} src={require('../../assets/logos/isLogin.png')} alt="Login" />
             <Typography variant="h6" sx={{ fontSize: '18px', fontWeight: '600', ml: 1 }}>Login/Signup</Typography>
-
-            {/* {['Zero Brokerage', 'Thousands of new listings daily.', '100 Cr+ Brokerage saved monthly.'].map(data =>
-              <>
-                <Box sx={{
-                  display: display,
-                  color: 'grey',
-                  fontSize: '12px',
-                  alignItems: 'center'
-                }}>
-                  <Box className={classes.abc} sx={{ ml: 1.5 }}></Box>
-                  <Typography className={classes.LoginBeforeText}>{data}</Typography>
-                </Box>
-              </>
-            )} */}
-
           </Box>
-
           <Box sx={{ ml: 5 }}>
             <Box >
               <CloseIcon onClick={handleClose} sx={{ margin: '8px 0px auto 290px', cursor: 'pointer' }} />
@@ -396,7 +358,7 @@ function Content({ open, setOpen, width, display }) {
 function SMContent({ open, setOpen }) {
   const fullScreen = useMediaQuery('(max-width:700px)');
 
-  const { setMessage, setMessageType, setShow ,encrypt} = React.useContext(LoginContext)
+  const { setMessage, setMessageType, setShow, encrypt } = React.useContext(LoginContext)
 
   const timeRef = React.useRef()
 

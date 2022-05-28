@@ -1,0 +1,41 @@
+Generating public/private rsa key pair.
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home1/shashkjq/.ssh/id_rsa.
+Your public key has been saved in /home1/shashkjq/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:+Sv/XkoTxIuDEhR3+wzoRWQsPgRRjXuaJSxJm23FS/8 
+The key's randomart image is:
++---[RSA 2048]----+
+|      ==o*=      |
+|     ...+=*o     |
+|     ..O.=+oo    |
+|      =oO++*..   |
+|      .oSBo =.   |
+|       .o. . .E  |
+|          . o .  |
+|        .  o +   |
+|         ooo+    |
++----[SHA256]-----+
+
+
+
+
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCS9ID4cX8yeROA40k0tw3gEC3C/hqNwl21zrw1UDJiaY+ocww3xcOxp1bPMXr6fL4Nb1gXHbWlz2ZT9m/oZroUQrfwnvhrAGvfAV5SgZyPmzVcA3Yl8oRuZK3qgdPcL9Zz7WYm4MymiheFMNbqB1aJq+n45pvvnJUMg3BS6cxI+kBakXkg0KV5QDaMCBh8NXeF7m/Fmmhk5WfTw58eeD125rpsFrvp9tSz6R+rZH+yJCm6BCliafVof5Qlk483bN3ZCdQLcYzL1qFyndeOIyOqdlBLD/hWWt2JFlBjq7fEZlI7yWsULetfxQTCk4AD6LJlxbzjx9p30BdjAu66tkJD rsa-key-20220501
+
+ssh -oHostKeyAlgorithms=+ssh-dss shashkjq@162.241.148.128
+
+ssh-rsa 2048 SHA256:z/lbI+S4c42CztY55KYX8/1kWsfEzl6iwc1OpfJYFXk
+
+shashkjq@162.241.148.128:/home1/shashkjq/home_services
+
+rsa-key-20220501
+
+D:\Yash\React websites\housedeck-home-services\BACKEND
+
+Yash@2493housedeck
+
+new shashkjq pass - Subha@001@
+
+ssh and scp

@@ -6,8 +6,8 @@ import { promocodeStore, promocodeFetch } from "../controller/promocode-controll
 import { getDraftBookings, sendService, getPaidBookings, getSubscriptions, deleteDraftBookings } from "../controller/service-controller.js";
 import { userSignUp, userLogIn, userUpdate } from "../controller/user-controller.js";
 
-
 const router = express.Router()
+
 
 
 router.post('/signup', userSignUp)
