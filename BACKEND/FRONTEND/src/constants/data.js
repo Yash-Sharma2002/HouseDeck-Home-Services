@@ -143,8 +143,8 @@ export const SearchBar = {
   'bangalore': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
-    { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
-    { value: "Pest Control", url: '/home-services/service=Pest Control' },
+    // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
+    // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
     // { value: "Electrician", url: '/home-services/service=Electrician' },
     // { value: "Carpentary", url: '/home-services/service=Carpentary' },
@@ -153,15 +153,15 @@ export const SearchBar = {
   'noida': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
-    { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
-    { value: "Pest Control", url: '/home-services/service=Pest Control' },
+    // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
+    // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
   ],
   'mumbai': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
-    { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
-    { value: "Pest Control", url: '/home-services/service=Pest Control' },
+    // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
+    // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
     // { value: "Electrician", url: '/home-services/service=Electrician' },
     // { value: "Carpentary", url: '/home-services/service=Carpentary' },
@@ -170,8 +170,8 @@ export const SearchBar = {
   'chennai': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
-    { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
-    { value: "Pest Control", url: '/home-services/service=Pest Control' },
+    // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
+    // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
     // { value: "Electrician", url: '/home-services/service=Electrician' },
     // { value: "Carpentary", url: '/home-services/service=Carpentary' },
@@ -180,8 +180,8 @@ export const SearchBar = {
   'pune': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
-    { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
-    { value: "Pest Control", url: '/home-services/service=Pest Control' },
+    // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
+    // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
     // { value: "Electrician", url: '/home-services/service=Electrician' },
     // { value: "Carpentary", url: '/home-services/service=Carpentary' },
@@ -190,22 +190,22 @@ export const SearchBar = {
   'hyderabad': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
-    { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
-    { value: "Pest Control", url: '/home-services/service=Pest Control' },
+    // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
+    // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
   ],
   'gurgaon': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
-    { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
-    { value: "Pest Control", url: '/home-services/service=Pest Control' },
+    // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
+    // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
   ],
   'ghaziabad': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
-    { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
-    { value: "Pest Control", url: '/home-services/service=Pest Control' },
+    // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
+    // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
     // { value: "Electrician", url: '/home-services/service=Electrician' },
     // { value: "Carpentary", url: '/home-services/service=Carpentary' },
@@ -214,23 +214,23 @@ export const SearchBar = {
   'delhi': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
-    { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
-    { value: "Pest Control", url: '/home-services/service=Pest Control' },
+    // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
+    // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
   ],
   'faridabad': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
-    { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
-    { value: "Pest Control", url: '/home-services/service=Pest Control' },
+    // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
+    // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
     // { value: "Electrician", url: '/home-services/service=Electrician' },
   ],
   'greater_noida': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
-    { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
-    { value: "Pest Control", url: '/home-services/service=Pest Control' },
+    // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
+    // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
   ],
   '': [
@@ -260,16 +260,16 @@ export const ServiceWithImage = {
     {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
-      offer: "",
-      tag: true,
+      offer: "Coming Soon",
+      tag: false,
       takeToPath: '/home-services/service=Home Sanitization',
 
     },
     {
       id: "Pest Control",
       src: require("../assets/imageService/pest_control.png"),
-      offer: "",
-      tag: true,
+      offer: "Coming Soon",
+      tag: false,
       takeToPath: '/home-services/service=Pest Control',
     },
     // variable data
@@ -320,16 +320,16 @@ export const ServiceWithImage = {
     {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
-      offer: "",
-      tag: true,
+      offer: "Coming Soon",
+      tag: false,
       takeToPath: '/home-services/service=Home Sanitization',
 
     },
     {
       id: "Pest Control",
       src: require("../assets/imageService/pest_control.png"),
-      offer: "",
-      tag: true,
+      offer: "Coming Soon",
+      tag: false,
       takeToPath: '/home-services/service=Pest Control',
     },
     // variable data
@@ -379,16 +379,16 @@ export const ServiceWithImage = {
     {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
-      offer: "",
-      tag: true,
+      offer: "Coming Soon",
+      tag: false,
       takeToPath: '/home-services/service=Home Sanitization',
 
     },
     {
       id: "Pest Control",
       src: require("../assets/imageService/pest_control.png"),
-      offer: "",
-      tag: true,
+      offer: "Coming Soon",
+      tag: false,
       takeToPath: '/home-services/service=Pest Control',
     },
     // variable data
@@ -437,16 +437,16 @@ export const ServiceWithImage = {
     {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
-      offer: "",
-      tag: true,
+      offer: "Coming Soon",
+      tag: false,
       takeToPath: '/home-services/service=Home Sanitization',
 
     },
     {
       id: "Pest Control",
       src: require("../assets/imageService/pest_control.png"),
-      offer: "",
-      tag: true,
+      offer: "Coming Soon",
+      tag: false,
       takeToPath: '/home-services/service=Pest Control',
     },
     // variable data
@@ -495,16 +495,16 @@ export const ServiceWithImage = {
     {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
-      offer: "",
-      tag: true,
+      offer: "Coming Soon",
+      tag: false,
       takeToPath: '/home-services/service=Home Sanitization',
 
     },
     {
       id: "Pest Control",
       src: require("../assets/imageService/pest_control.png"),
-      offer: "",
-      tag: true,
+      offer: "Coming Soon",
+      tag: false,
       takeToPath: '/home-services/service=Pest Control',
     },
     // variable data
@@ -558,16 +558,16 @@ export const ServiceWithImage = {
     {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
-      offer: "",
-      tag: true,
+      offer: "Coming Soon",
+      tag: false,
       takeToPath: '/home-services/service=Home Sanitization',
 
     },
     {
       id: "Pest Control",
       src: require("../assets/imageService/pest_control.png"),
-      offer: "",
-      tag: true,
+      offer: "Coming Soon",
+      tag: false,
       takeToPath: '/home-services/service=Pest Control',
     },
     // variable data
@@ -621,16 +621,16 @@ export const ServiceWithImage = {
     {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
-      offer: "",
-      tag: true,
+      offer: "Coming Soon",
+      tag: false,
       takeToPath: '/home-services/service=Home Sanitization',
 
     },
     {
       id: "Pest Control",
       src: require("../assets/imageService/pest_control.png"),
-      offer: "",
-      tag: true,
+      offer: "Coming Soon",
+      tag: false,
       takeToPath: '/home-services/service=Pest Control',
     },
     // variable data
@@ -684,16 +684,16 @@ export const ServiceWithImage = {
     {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
-      offer: "",
-      tag: true,
+      offer: "Coming Soon",
+      tag: false,
       takeToPath: '/home-services/service=Home Sanitization',
 
     },
     {
       id: "Pest Control",
       src: require("../assets/imageService/pest_control.png"),
-      offer: "",
-      tag: true,
+      offer: "Coming Soon",
+      tag: false,
       takeToPath: '/home-services/service=Pest Control',
     },
     // variable data
@@ -747,16 +747,16 @@ export const ServiceWithImage = {
     {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
-      offer: "",
-      tag: true,
+      offer: "Coming Soon",
+      tag: false,
       takeToPath: '/home-services/service=Home Sanitization',
 
     },
     {
       id: "Pest Control",
       src: require("../assets/imageService/pest_control.png"),
-      offer: "",
-      tag: true,
+      offer: "Coming Soon",
+      tag: false,
       takeToPath: '/home-services/service=Pest Control',
     },
     // variable data
@@ -810,16 +810,16 @@ export const ServiceWithImage = {
     {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
-      offer: "",
-      tag: true,
+      offer: "Coming Soon",
+      tag: false,
       takeToPath: '/home-services/service=Home Sanitization',
 
     },
     {
       id: "Pest Control",
       src: require("../assets/imageService/pest_control.png"),
-      offer: "",
-      tag: true,
+      offer: "Coming Soon",
+      tag: false,
       takeToPath: '/home-services/service=Pest Control',
     },
     // variable data
@@ -868,16 +868,16 @@ export const ServiceWithImage = {
     {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
-      offer: "",
-      tag: true,
+      offer: "Coming Soon",
+      tag: false,
       takeToPath: '/home-services/service=Home Sanitization',
 
     },
     {
       id: "Pest Control",
       src: require("../assets/imageService/pest_control.png"),
-      offer: "",
-      tag: true,
+      offer: "Coming Soon",
+      tag: false,
       takeToPath: '/home-services/service=Pest Control',
     },
     // variable data

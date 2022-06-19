@@ -46,7 +46,6 @@ function XLHeader({ commonProps }) {
             window.location.reload(false)
         }
         catch (err) {
-            console.log(err);;
         }
     }
     return (
@@ -89,7 +88,8 @@ function XLHeader({ commonProps }) {
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'end', marginRight: '-20px' }}>
 
-                        {
+                  
+                    {
                             isLogin ?
                                 <>
                                     <a href="/home-services/my-bookings" target="_blank" style={{
@@ -134,95 +134,95 @@ function XLHeader({ commonProps }) {
                         }
 
 
-                        <Link href="tel:18003096606" target="_blank" sx={{
-                            textDecoration: 'none'
-                        }}>
-                            <Button variant='outlined' sx={{
-                                marginLeft: 1,
-                                borderColor: '#1976d2',
-                                fontSize: '13px',
-                                height: '30px',
-                                userSelect: 'none',
-                                '&:hover': {
-                                    backgroundColor: 'unset'
-                                }
-                            }} disableRipple>
-                                <AddIcCallIcon style={IconHeaderImage} />
-                                18003096606
-                            </Button></Link>
+                    <Link href="tel:18003096606" target="_blank" sx={{
+                        textDecoration: 'none'
+                    }}>
+                        <Button variant='outlined' sx={{
+                            marginLeft: 1,
+                            borderColor: '#1976d2',
+                            fontSize: '13px',
+                            height: '30px',
+                            userSelect: 'none',
+                            '&:hover': {
+                                backgroundColor: 'unset'
+                            }
+                        }} disableRipple>
+                            <AddIcCallIcon style={IconHeaderImage} />
+                            18003096606
+                        </Button></Link>
 
-                        {
-                            ((userData.USERDATA_AS_USERNAME) && isLogin) ?
-                                <>
-                                    <Link href='/home-services/profile' sx={{ color: 'black', display: 'flex', justifyContent: 'space-evenly', alignItems: "center", marginLeft: '18px', textDecoration: 'none' }}>
-                                        <AccountCircleIcon />
-                                        <Typography sx={{ fontSize: '14px', fontFamily: 'Fredoka', marginLeft: '4px' }} >{decrypt(userData.USERDATA_AS_USERNAME)}</Typography>
-                                    </Link>
-                                    {open1 ? <ExpandLessIcon sx={{ mt: '2px', cursor: 'pointer' }} /> : <ExpandMoreIcon sx={{ mt: '2px', cursor: 'pointer' }} onClick={handleClick} />}
-                                    <Menu
-                                        anchorEl={anchorEl}
-                                        open={open1}
-                                        onClose={handleClose}
-                                        sx={{ right: '91px', top: '44px', left: 'auto', width: "150px" }}
-                                    >
-                                        <MenuItem onClick={() => handleClose('/home-services/profile')}><Link href='/home-services/profile' sx={{
-                                            color: 'black',
-                                            textDecoration: 'none'
-                                        }} >Profile</Link>  </MenuItem>
-                                        <MenuItem onClick={() => handleClose('/home-services/my-bookings')}><Link href='/home-services/my-bookings' sx={{
-                                            color: 'black',
-                                            textDecoration: 'none'
-                                        }}>My Bookings</Link>  </MenuItem>
-                                        <MenuItem onClick={logout}>Logout</MenuItem>
-                                    </Menu>
-                                </>
-                                :
-                                <>
-                                    <Button variant='outlined' sx={{
-                                        marginLeft: 2,
-                                        fontSize: '13px',
-                                        height: '30px',
-                                        userSelect: 'none',
+                    {
+                        ((userData.USERDATA_AS_USERNAME) && isLogin) ?
+                            <>
+                                <Link href='/home-services/profile' sx={{ color: 'black', display: 'flex', justifyContent: 'space-evenly', alignItems: "center", marginLeft: '18px', textDecoration: 'none' }}>
+                                    <AccountCircleIcon />
+                                    <Typography sx={{ fontSize: '14px', fontFamily: 'Fredoka', marginLeft: '4px' }} >{decrypt(userData.USERDATA_AS_USERNAME)}</Typography>
+                                </Link>
+                                {open1 ? <ExpandLessIcon sx={{ mt: '2px', cursor: 'pointer' }} /> : <ExpandMoreIcon sx={{ mt: '2px', cursor: 'pointer' }} onClick={handleClick} />}
+                                <Menu
+                                    anchorEl={anchorEl}
+                                    open={open1}
+                                    onClose={handleClose}
+                                    sx={{ right: '91px', top: '44px', left: 'auto', width: "150px" }}
+                                >
+                                    <MenuItem onClick={() => handleClose('/home-services/profile')}><Link href='/home-services/profile' sx={{
+                                        color: 'black',
+                                        textDecoration: 'none'
+                                    }} >Profile</Link>  </MenuItem>
+                                    <MenuItem onClick={() => handleClose('/home-services/my-bookings')}><Link href='/home-services/my-bookings' sx={{
+                                        color: 'black',
+                                        textDecoration: 'none'
+                                    }}>My Bookings</Link>  </MenuItem>
+                                    <MenuItem onClick={logout}>Logout</MenuItem>
+                                </Menu>
+                            </>
+                            :
+                            <>
+                                <Button variant='outlined' sx={{
+                                    marginLeft: 2,
+                                    fontSize: '13px',
+                                    height: '30px',
+                                    color:'black',
+                                    userSelect: 'none',
+                                    border: 'none',
+                                    textTransform: 'none',
+                                    padding: '0px 15px',
+                                    '&:hover': {
                                         border: 'none',
-                                        textTransform: 'none',
-                                        color: '#c5c5c5',
-                                        padding: '0px 15px',
-                                        '&:hover': {
-                                            border: 'none',
-                                            backgroundColor: 'white'
-                                        }
-                                    }} disableRipple onClick={handleClickOpen}>
-                                        Sign Up
-                                    </Button>
+                                        backgroundColor: 'white'
+                                    }
+                                }} disableRipple onClick={handleClickOpen}>
+                                    Sign Up
+                                </Button>
 
-                                    <Divider orientation='vertical' sx={{ color: '#c5c5c5' }} flexItem />
+                                <Divider orientation='vertical' sx={{ color: '#c5c5c5' }} flexItem />
 
 
-                                    <Button variant='outlined' sx={{
-                                        fontSize: '13px',
-                                        height: '30px',
-                                        userSelect: 'none',
+                                <Button variant='outlined' sx={{
+                                    fontSize: '13px',
+                                    height: '30px',
+                                    userSelect: 'none',
+                                    border: 'none',
+                                    textTransform: 'none',
+                                    color:'black',
+                                    padding: '0px 15px',
+                                    '&:hover': {
                                         border: 'none',
-                                        textTransform: 'none',
-                                        color: '#c5c5c5',
-                                        padding: '0px 15px',
-                                        '&:hover': {
-                                            border: 'none',
-                                            backgroundColo18: 'white'
-                                        }
-                                    }} disableRipple onClick={handleClickOpen}>
-                                        Login
-                                    </Button>
-                                    <Divider orientation='vertical' sx={{ color: '#c5c5c5' }} flexItem />
-                                </>
-                        }
+                                        backgroundColor: 'white'
+                                    },
+                                }} disableRipple onClick={handleClickOpen}>
+                                    Login 
+                                </Button>
+                                <Divider orientation='vertical' sx={{ color: '#c5c5c5' }} flexItem />
+                            </>
+                    }
 
-                        <Menubar />
-                    </Box>
-                </Toolbar>
+                    <Menubar />
+                </Box>
+            </Toolbar>
 
-                <Login open={open} setOpen={setOpen} />
-            </Container>
+            <Login open={open} setOpen={setOpen} />
+        </Container>
         </AppBar >
 
     )

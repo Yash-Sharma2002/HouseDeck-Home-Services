@@ -266,7 +266,7 @@ function Content({ open, setOpen, width, display }) {
                 </Box>
               </Box>
 
-              <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <Box sx={{ textAlign:"center"}}>
                 <input
                   placeholder='OTP'
                   type='number'
@@ -275,6 +275,7 @@ function Content({ open, setOpen, width, display }) {
                     border: 'none',
                     borderBottom: "1px solid black",
                     userSelect: 'none',
+                    textAlign:'center',
                     width: '50%',
                     height: '35px',
                     fontSize: '14px',
@@ -589,7 +590,7 @@ function SMContent({ open, setOpen }) {
 
               <Typography sx={{ fontSize: '14px', fontWeight: '600', textALign: 'start' }}>Enter OTP : </Typography>
 
-              <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <Box sx={{textAlign:"center"}}>
                 <input
                   placeholder='OTP'
                   type='number'
@@ -599,6 +600,7 @@ function SMContent({ open, setOpen }) {
                     borderBottom: "1px solid black",
                     userSelect: 'none',
                     width: '50%',
+                    textAlign:'center',
                     height: '35px',
                     fontSize: '14px',
                     margin: '5px auto',

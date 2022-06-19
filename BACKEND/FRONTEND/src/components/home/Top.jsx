@@ -95,10 +95,6 @@ export default function Top() {
         </div>
       )}
       {!(mdMax && mdMin) && sm && (
-        <div style={{
-          // background: '#24C6DC',
-
-        }}>
           <Box sx={{
             padding: '3rem 10px 3rem 10px',
             display: 'block',
@@ -129,8 +125,7 @@ export default function Top() {
               </Box>
             </Box>
             <Search width={'100%'} />
-          </Box>
-        </div>)}
+          </Box>)}
     </>
   )
 

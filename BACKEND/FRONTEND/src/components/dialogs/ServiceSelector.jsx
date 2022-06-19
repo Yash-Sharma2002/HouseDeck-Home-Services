@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useNavigate } from 'react-router-dom'
 import CloseIcon from '@mui/icons-material/Close'
 import { Box, Stack, Typography, Dialog, useMediaQuery, TextField } from '@mui/material'
 import { Button, Divider } from '@mui/material'
@@ -24,7 +25,7 @@ import { LoginContext } from '../../context/Context'
 import { getPlace } from '../../Api/getPlaces'
 import Login from './Login'
 import { MiniServices } from '../../constants/data'
-import { promocodeFetch, promocodeStore } from '../../Api/priceReductionPromocode'
+import { promocodeFetch, } from '../../Api/priceReductionPromocode'
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -44,7 +45,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 function Content({ options, category, data, setOptions, open, setOpen, width }) {
 
     const { city, isLogin, setMessage, setMessageType, setShow, userData, decrypt } = React.useContext(LoginContext)
-
+    const navigate = useNavigate()
     const fullScreen = useMediaQuery('(max-width:650px)');
     const [totalPrice, setPrice] = React.useState(0)
     const [date, setdate] = React.useState(null)
@@ -61,7 +62,6 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
     const [display, setDisplay] = React.useState(true)
     const [paymentLink, setPaymentLink] = React.useState('')
     const [orderId, setOrderId] = React.useState('')
-    const [value, setValue] = React.useState('');
     const [promoCode, setPromoCode] = React.useState({
         code: '',
         applied: false,
@@ -94,7 +94,6 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
     };
 
     const handleChange = (event) => {
-        setValue(event.target.value);
         if (event.target.value === 'Yes') {
             setDisplayForCode(true);
         }
@@ -281,6 +280,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
             setShow(true)
             setMessage('Saving as Draft....')
             setMessageType('info')
+            navigate('/home-services/my-bookings')
             handleClose()
         } else {
             setShow(true)
@@ -330,18 +330,12 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                     setShow(true)
                     setMessage('Order Placed')
                     setMessageType('success')
+                    navigate('/home-services/my-bookings')
                 } else {
                     setShow(true)
                     setMessage('Payment is processing...')
                     setMessageType('info')
                 }
-            }
-            else {
-                setShow(true)
-                setMessage('Payment Unsuccessful')
-                clearInterval(interval)
-                setMessageType('error')
-                saveDraft()
             }
         }, 10000);
     }
@@ -506,12 +500,12 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                                 if (data.types.includes('locality')) {
                                     const id = data.types.indexOf('locality')
                                     enteredCity = data.terms[id].value
-                                        if (enteredCity === 'Bengaluru') {
-                                            enteredCity = 'Bangalore'
-                                        }
-                                        if (enteredCity === 'New Delhi') {
-                                            enteredCity = 'Delhi'
-                                        }
+                                    if (enteredCity === 'Bengaluru') {
+                                        enteredCity = 'Bangalore'
+                                    }
+                                    if (enteredCity === 'New Delhi') {
+                                        enteredCity = 'Delhi'
+                                    }
                                 } else if (data.types.includes('sublocality')) {
                                     const id = data.types.indexOf('sublocality')
                                     enteredCity = data.terms[id].value
@@ -524,7 +518,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                                             enteredCity = 'Delhi'
                                         }
                                     } else {
-                                        enteredCity = data.terms[id+1].value
+                                        enteredCity = data.terms[id + 1].value
                                         if (enteredCity === 'Bengaluru') {
                                             enteredCity = 'Bangalore'
                                         }
@@ -676,7 +670,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                                 <>
                                     <FormLabel >Do you Have a promocode</FormLabel>
 
-                                    <RadioGroup row value={value} onChange={handleChange} sx={{ m: '0px auto', justifyContent: 'center' }}>
+                                    <RadioGroup row  defaultValue="No" onChange={handleChange} sx={{ justifyContent:'center'}}>
                                         <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
                                         <FormControlLabel value="No" control={<Radio />} label="No" />
                                     </RadioGroup>

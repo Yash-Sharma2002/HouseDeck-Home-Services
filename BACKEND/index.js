@@ -18,14 +18,14 @@ const app = express();
 
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname,"/FRONTEND/build/index.html")));
+app.use(express.static(path.join(__dirname,'FRONTEND','build')));
 app.use(cors());
 app.use('/', router);
 app.use(express.json())
 
 // if (process.env.NODE_ENV == "production") {
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname ,'./FRONTEND/build/index.html'));
+app.get("/*", (req, res) => {
+  res.sendFile(path.resolve(__dirname,'FRONTEND','build','index.html'));
 })
 // }
 
