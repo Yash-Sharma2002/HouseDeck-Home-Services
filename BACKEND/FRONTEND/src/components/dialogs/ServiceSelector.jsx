@@ -651,10 +651,14 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                             }
                         </Box>
                     </Box>
-
-                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', border: '9px solid orange', my: 3, margin: '0px auto', width: "fit-content", padding: '0px 9px', borderRadius: '32px' }}>
-                        <Typography sx={{ fontSize: '17px' }}>Add-on</Typography>
-                        <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka', fontWeight: '800', color: '#1565c0', cursor: 'pointer', textDecoration: 'underline', ml: 1, my: 2 }} onClick={() => handleClickOpen(MiniServices)}>Mini Services</Typography>
+                    <Box sx={{ textAlign: 'center', mt: 2 }}>
+                        <Box sx={{ position: 'absolute', zIndex: '1000', top:"50%",left:'50%',transform:"translate(-50%,-50%)"}}>
+                            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', my: 3, padding: '0px 9px', borderRadius: 1, background: 'white' }}>
+                                <Typography sx={{ fontSize: '17px' }}>Add-on</Typography>
+                                <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka', fontWeight: '800', color: '#1565c0', cursor: 'pointer', textDecoration: 'underline', ml: 1, my: 2 }} onClick={() => handleClickOpen(MiniServices)}>Mini Services</Typography>
+                            </Box>
+                        </Box>
+                        <img src={require('../../assets/other/addon_service2.jpg')} alt="paypal" style={{ width: '100%', }} />
                     </Box>
                     <Box sx={{ my: 2, textAlign: 'center' }}>
 
@@ -670,7 +674,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                                 <>
                                     <FormLabel >Do you Have a promocode</FormLabel>
 
-                                    <RadioGroup row  defaultValue="No" onChange={handleChange} sx={{ justifyContent:'center'}}>
+                                    <RadioGroup row defaultValue="No" onChange={handleChange} sx={{ justifyContent: 'center' }}>
                                         <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
                                         <FormControlLabel value="No" control={<Radio />} label="No" />
                                     </RadioGroup>
@@ -697,20 +701,26 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                                 </>
                         }
                     </Box>
+                    <Box sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                    }}>
 
-                    <Box sx={{ position: 'absolute', bottom: 10, left: 10 }}>
-                        <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={saveDraft}>Shortlist</Button>
-                    </Box>
-                    <Box sx={{ position: 'absolute', bottom: 10, right: 10 }}>
-                        {
-                            paymentLink ?
-                                <a href={paymentLink} style={{ textDecoration: 'none', }} target="_blank" rel="noreferrer">
-                                    <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={onClickPay} >Pay Now</Button>
-                                </a>
-                                :
-                                <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={CreateOrder} >Book</Button>
-                        }
+                        <Box sx={{ mt: 'auto', mb: '10px' }}>
+                            <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={saveDraft}>Shortlist</Button>
+                        </Box>
+                        <Box sx={{ mt: 'auto', mb: '10px' }}>
+                            {
+                                paymentLink ?
+                                    <a href={paymentLink} style={{ textDecoration: 'none', }} target="_blank" rel="noreferrer">
+                                        <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={onClickPay} >Pay Now</Button>
+                                    </a>
+                                    :
+                                    <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={CreateOrder} >Book</Button>
+                            }
 
+                        </Box>
                     </Box>
                 </Box>
                 <Login open={openLogin} setOpen={setOpenLogin} />

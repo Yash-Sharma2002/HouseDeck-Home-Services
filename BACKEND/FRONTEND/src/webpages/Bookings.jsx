@@ -125,6 +125,7 @@ function Content({ change }) {
       <Header commonProps={commonProps} />
 
       <Box sx={{
+        mt:4,
         // background: 'rgb(229, 246, 245)', 
         height: '300px',
       }}>

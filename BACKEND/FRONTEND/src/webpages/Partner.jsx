@@ -532,7 +532,7 @@ export default function Partner() {
             {!(xlMax && xlMin) && mdMax && mdMin && (
                 <Content width={"unset"} padding={"0px 70px"} variant={'h3'} margin={"50px auto"} />
             )}
-            {sm && <Content width={"unset"} padding={"0px 20px"} variant={'h5'} margin={"20px auto"} />}
+            {sm && <Content width={"unset"} padding={"0px 20px"} variant={'h5'} margin={"40px auto"} />}
         </>
     );
 }

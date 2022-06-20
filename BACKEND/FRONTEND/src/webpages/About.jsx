@@ -12,7 +12,6 @@ export default function About() {
   return (
     <div>
       <Header commonProps={commonProps} />
-
       <AboutUs />
       <AboutMid />
       <Footer />

@@ -1115,15 +1115,68 @@ export const FAQData = [
   },
 ];
 
+
+// Painting Data
 export const HomePainting = {
   imgUrl: require('../assets/other/deepHomeCleaning.jpeg'),
   innerData: [
     { type: 'Consulation', price: '49' },
   ],
-  quotes: [{ text: 'Floor Scubbing machine' }, { text: 'Government approved chemicals' }, { text: 'Hard water stains can be removed upto 75%' }, { text: 'Also includes balcony and utility areas' }]
+  quotes: [{ text: 'Consultation Duration Up to 50 min' }, { text: 'Visiting Team :  1-2 Experts' }, { text: 'Laser Measurement' }, { text: 'Design Consultation' }, { text: 'Experience Expert Professionals To handle the Project' }, { text: '100% Customization' }, { text: 'Price quotation(s) customized to your needs' },]
 }
 
 
+export const InteriorPainting = {
+  imgUrl: require('../assets/other/deepHomeCleaning.jpeg'),
+  innerData: [
+    { type: 'Consulation', price: '49' },
+  ],
+  quotes: [{ text: 'Consultation Duration Up to 50 min' }, { text: 'Visiting Team :  1-2 Experts' }, { text: 'Laser Measurement' }, { text: 'Design Consultation' }, { text: 'Experience Expert Professionals To handle the Project' }, { text: '100% Customization' }, { text: 'Price quotation(s) customized to your needs' },]
+}
+
+export const ExteriorPainitng = {
+  imgUrl: require('../assets/other/deepHomeCleaning.jpeg'),
+  innerData: [
+    { type: 'Consulation', price: '49' },
+  ],
+  quotes: [{ text: 'Consultation Duration Up to 50 min' }, { text: 'Visiting Team :  1-2 Experts' }, { text: 'Laser Measurement' }, { text: 'Design Consultation' }, { text: 'Experience Expert Professionals To handle the Project' }, { text: '100% Customization' }, { text: 'Price quotation(s) customized to your needs' },]
+}
+
+
+export const WaterProofing = {
+  imgUrl: require('../assets/other/deepHomeCleaning.jpeg'),
+  innerData: [
+    { type: 'Consulation', price: '49' },
+  ],
+  quotes: [{ text: 'Consultation Duration Up to 50 min' }, { text: 'Visiting Team :  1-2 Experts' }, { text: 'Laser Measurement' }, { text: 'Design Consultation' }, { text: 'Experience Expert Professionals To handle the Project' }, { text: '100% Customization' }, { text: 'Price quotation(s) customized to your needs' },]
+}
+
+export const WallsWallPapers = {
+  imgUrl: require('../assets/other/deepHomeCleaning.jpeg'),
+  innerData: [
+    { type: 'Consulation', price: '49' },
+  ],
+  quotes: [{ text: 'Consultation Duration Up to 50 min' }, { text: 'Visiting Team :  1-2 Experts' }, { text: 'Laser Measurement' }, { text: 'Design Consultation' }, { text: 'Experience Expert Professionals To handle the Project' }, { text: '100% Customization' }, { text: 'Price quotation(s) customized to your needs' },]
+}
+
+export const FalseCeiling = {
+  imgUrl: require('../assets/other/deepHomeCleaning.jpeg'),
+  innerData: [
+    { type: 'Consulation', price: '49' },
+  ],
+  quotes: [{ text: 'Consultation Duration Up to 50 min' }, { text: 'Visiting Team :  1-2 Experts' }, { text: 'Laser Measurement' }, { text: 'Design Consultation' }, { text: 'Experience Expert Professionals To handle the Project' }, { text: '100% Customization' }, { text: 'Price quotation(s) customized to your needs' },]
+}
+
+export const EnamelPolish = {
+  imgUrl: require('../assets/other/deepHomeCleaning.jpeg'),
+  innerData: [
+    { type: 'Consulation', price: '49' },
+  ],
+  quotes: [{ text: 'Consultation Duration Up to 50 min' }, { text: 'Visiting Team :  1-2 Experts' }, { text: 'Laser Measurement' }, { text: 'Design Consultation' }, { text: 'Experience Expert Professionals To handle the Project' }, { text: '100% Customization' }, { text: 'Price quotation(s) customized to your needs' },]
+}
+
+
+//disinfection data
 export const DisinfectionService = {
   imgUrl: require('../assets/other/deepHomeCleaning.jpeg'),
   innerData: [
@@ -1143,6 +1196,8 @@ export const DisinfectionService = {
   quotes: [{ text: 'Floor Scubbing machine' }, { text: 'Government approved chemicals' }, { text: 'Hard water stains can be removed upto 75%' }, { text: 'Also includes balcony and utility areas' }]
 }
 
+
+//home cleaning data
 export const MoveInReadyHomeServices = [
   { type: '1 Bhk', price: '' },
   { type: '2 Bhk', price: '' },
@@ -1255,6 +1310,12 @@ export const ServiceDialogData = {
   ],
   'home_painting': [
     { imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'), type: 'Painting Consultation', options: HomePainting },
+    { imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'), type: 'False Ceiling', options: FalseCeiling },
+    { imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'), type: 'Interior Painting', options: InteriorPainting },
+    { imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'), type: 'Exterior Painting', options: ExteriorPainitng },
+    { imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'), type: 'WaterProofing', options: WaterProofing },
+    { imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'), type: 'Textured Walls & Wallpapers', options: WallsWallPapers },
+    { imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'), type: 'Wood & Enamel Polish', options: EnamelPolish },
   ],
   'home_sanitization': [
     { imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'), type: 'Disinfection Service', options: DisinfectionService },

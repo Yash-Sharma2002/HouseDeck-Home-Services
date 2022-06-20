@@ -231,8 +231,8 @@ function XLHeader({ commonProps }) {
 
 function MDHeader({ commonProps }) {
     return (<>
-        <AppBar position="static" sx={{ backgroundColor: 'white', color: '#000000' }}>
-            <Container maxWidth="xl" sx={{ display: 'flex' }}>
+        <AppBar position="absolute" sx={{ backgroundColor: 'white', color: '#000000',mb:3 }}>
+            <Container maxWidth="xl" sx={{ display: 'flex',}}>
                 <Box sx={{ flexGrow: 1, display: 'flex' }}>
                     <Sidebar commonProps={commonProps} />
                 </Box>

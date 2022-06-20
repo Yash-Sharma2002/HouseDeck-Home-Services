@@ -93,7 +93,7 @@ export default function Profile() {
         {
           xlMax && xlMin && (
 
-            <Box sx={{ display: "flex", height: '730px' }}>
+            <Box sx={{ display: "flex", height: '730px', }}>
               <Box sx={{ width: '20%', pt: 10 }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', cursor: 'pointer', alignItems: 'center', borderTop: '2px solid white', borderBottom: '2px solid white', px: 4, py: 2, background: '#1CD8D2' }}>
                   <Typography sx={{ fontSize: '16px', }}> Profile</Typography>
@@ -184,7 +184,7 @@ export default function Profile() {
 
         {
           !(xlMax && xlMin) && sm && (
-            <Box sx={{ width: '100%' }}>
+            <Box sx={{ width: '100%',mt:8 }}>
               <Typography sx={{ color: '#F45C43', fontSize: '18px', ml: 3, py: 2 }}>Edit Your Profile</Typography>
               <Divider />
 

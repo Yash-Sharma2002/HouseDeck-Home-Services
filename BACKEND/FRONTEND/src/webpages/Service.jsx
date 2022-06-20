@@ -50,7 +50,7 @@ export default function Service() {
   return (
     <div>
       <Header commonProps={commonProps} />
-
+      <div style={{ marginTop: '40px' }}></div>
       <Top service={newService} />
       {
         work ? <Working service={newService} /> : <Working2 service={newService} />

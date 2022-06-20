@@ -13,7 +13,7 @@ function Content({ width, padding, variant }) {
         sx={{
           textAlign: "start",
           width: width,
-          margin: "100px auto",
+          margin: "130px auto",
           padding: padding,
           wordWrap: "break-word",
         }}
