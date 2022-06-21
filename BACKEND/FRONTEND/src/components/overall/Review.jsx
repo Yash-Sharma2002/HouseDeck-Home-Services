@@ -50,9 +50,8 @@ const RatingFunction = ({ width, height }) => {
     const CardRating = <Rating sx={{ fontSize: '15px', color: '#009587' }} name="read-only" value={5} readOnly />
     return (
         <>
-            {CustomerRatings.map(data =>
-                <>
-                    <Card key={data.key} sx={{
+            {CustomerRatings.map((data,idx) =>
+                    <Card key={idx} sx={{
                         maxWidth: width,
                         backgroundColor: '#f3f3f3',
                         boxShadow: 0,
@@ -80,7 +79,6 @@ const RatingFunction = ({ width, height }) => {
                         </CardContent>
 
                     </Card>
-                </>
             )}
         </>
     )

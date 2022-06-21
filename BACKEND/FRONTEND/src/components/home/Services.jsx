@@ -11,10 +11,10 @@ function Content({ width }) {
         <div>
             <Box sx={{ display: 'flex', WebkitBoxPack: "justify", justifyContent: 'space-between', flexWrap: 'wrap', backgroundColor: '#f7f7f7', padding: '30px 50px', alignItems: "center" }}>
 
-                {ServiceWithImage[currentCity].map((data) => {
+                {ServiceWithImage[currentCity].map((data,idx) => {
                     const notDisabled = data.tag
                     return (
-                        <a href={data.takeToPath} style={{
+                        <a key={idx} href={data.takeToPath} style={{
                             textDecoration: 'none',
                             color: 'black',
                             pointerEvents: notDisabled ? 'auto' : 'none',

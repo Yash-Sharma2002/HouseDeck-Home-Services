@@ -99,8 +99,8 @@ export default function AboutMid() {
     const xlMax = useMediaQuery('(max-width:2000px)');
     const xlMin = useMediaQuery('(min-width:1300px)');
     const MdMax = useMediaQuery('(max-width:1300px)');
-    const MdMin = useMediaQuery('(min-width:500px)');
-    const sm = useMediaQuery('(max-width:500px)');
+    const MdMin = useMediaQuery('(min-width:650px)');
+    const sm = useMediaQuery('(max-width:650px)');
     return (
 
         <>

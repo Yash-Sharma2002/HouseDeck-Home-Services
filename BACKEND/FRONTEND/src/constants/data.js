@@ -143,6 +143,7 @@ export const SearchBar = {
   'bangalore': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
+    { value: "False Ceiling", url: "/home-services/service=Home Cleaning" },
     // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
     // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
@@ -153,6 +154,7 @@ export const SearchBar = {
   'noida': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
+    { value: "False Ceiling", url: "/home-services/service=Home Cleaning" },
     // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
     // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
@@ -160,6 +162,7 @@ export const SearchBar = {
   'mumbai': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
+    { value: "False Ceiling", url: "/home-services/service=Home Cleaning" },
     // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
     // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
@@ -170,6 +173,7 @@ export const SearchBar = {
   'chennai': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
+    { value: "False Ceiling", url: "/home-services/service=Home Cleaning" },
     // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
     // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
@@ -180,6 +184,7 @@ export const SearchBar = {
   'pune': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
+    { value: "False Ceiling", url: "/home-services/service=Home Cleaning" },
     // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
     // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
@@ -190,6 +195,7 @@ export const SearchBar = {
   'hyderabad': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
+    { value: "False Ceiling", url: "/home-services/service=Home Cleaning" },
     // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
     // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
@@ -197,6 +203,7 @@ export const SearchBar = {
   'gurgaon': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
+    { value: "False Ceiling", url: "/home-services/service=Home Cleaning" },
     // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
     // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
@@ -204,6 +211,7 @@ export const SearchBar = {
   'ghaziabad': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
+    { value: "False Ceiling", url: "/home-services/service=Home Cleaning" },
     // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
     // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
@@ -214,6 +222,7 @@ export const SearchBar = {
   'delhi': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
+    { value: "False Ceiling", url: "/home-services/service=Home Cleaning" },
     // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
     // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
@@ -221,6 +230,7 @@ export const SearchBar = {
   'faridabad': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
+    { value: "False Ceiling", url: "/home-services/service=Home Cleaning" },
     // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
     // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
@@ -229,6 +239,7 @@ export const SearchBar = {
   'greater_noida': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
+    { value: "False Ceiling", url: "/home-services/service=Home Cleaning" },
     // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
     // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
@@ -256,6 +267,14 @@ export const ServiceWithImage = {
       offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Cleaning',
+    },
+       {
+      id: "False Ceiling",
+      src: require("../assets/imageService/painting.png"),
+      offer: "",
+      tag: true,
+      takeToPath: '/home-services/service=False Ceiling',
+
     },
     {
       id: "Home Sanitization",
@@ -376,6 +395,14 @@ export const ServiceWithImage = {
       tag: true,
       takeToPath: '/home-services/service=Home Cleaning',
     },
+       {
+      id: "False Ceiling",
+      src: require("../assets/imageService/painting.png"),
+      offer: "",
+      tag: true,
+      takeToPath: '/home-services/service=False Ceiling',
+
+    },
     {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
@@ -434,6 +461,14 @@ export const ServiceWithImage = {
       tag: true,
       takeToPath: '/home-services/service=Home Cleaning',
     },
+       {
+      id: "False Ceiling",
+      src: require("../assets/imageService/painting.png"),
+      offer: "",
+      tag: true,
+      takeToPath: '/home-services/service=False Ceiling',
+
+    },
     {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
@@ -491,6 +526,14 @@ export const ServiceWithImage = {
       offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Cleaning',
+    },
+       {
+      id: "False Ceiling",
+      src: require("../assets/imageService/painting.png"),
+      offer: "",
+      tag: true,
+      takeToPath: '/home-services/service=False Ceiling',
+
     },
     {
       id: "Home Sanitization",
@@ -555,6 +598,14 @@ export const ServiceWithImage = {
       tag: true,
       takeToPath: '/home-services/service=Home Cleaning',
     },
+       {
+      id: "False Ceiling",
+      src: require("../assets/imageService/painting.png"),
+      offer: "",
+      tag: true,
+      takeToPath: '/home-services/service=False Ceiling',
+
+    },
     {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
@@ -617,6 +668,14 @@ export const ServiceWithImage = {
       offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Cleaning',
+    },
+       {
+      id: "False Ceiling",
+      src: require("../assets/imageService/painting.png"),
+      offer: "",
+      tag: true,
+      takeToPath: '/home-services/service=False Ceiling',
+
     },
     {
       id: "Home Sanitization",
@@ -681,6 +740,14 @@ export const ServiceWithImage = {
       tag: true,
       takeToPath: '/home-services/service=Home Cleaning',
     },
+       {
+      id: "False Ceiling",
+      src: require("../assets/imageService/painting.png"),
+      offer: "",
+      tag: true,
+      takeToPath: '/home-services/service=False Ceiling',
+
+    },
     {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
@@ -743,6 +810,14 @@ export const ServiceWithImage = {
       offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Cleaning',
+    },
+       {
+      id: "False Ceiling",
+      src: require("../assets/imageService/painting.png"),
+      offer: "",
+      tag: true,
+      takeToPath: '/home-services/service=False Ceiling',
+
     },
     {
       id: "Home Sanitization",
@@ -807,6 +882,14 @@ export const ServiceWithImage = {
       tag: true,
       takeToPath: '/home-services/service=Home Cleaning',
     },
+       {
+      id: "False Ceiling",
+      src: require("../assets/imageService/painting.png"),
+      offer: "",
+      tag: true,
+      takeToPath: '/home-services/service=False Ceiling',
+
+    },
     {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
@@ -864,6 +947,14 @@ export const ServiceWithImage = {
       offer: "",
       tag: true,
       takeToPath: '/home-services/service=Home Cleaning',
+    },
+       {
+      id: "False Ceiling",
+      src: require("../assets/imageService/painting.png"),
+      offer: "",
+      tag: true,
+      takeToPath: '/home-services/service=False Ceiling',
+
     },
     {
       id: "Home Sanitization",
@@ -1310,12 +1401,14 @@ export const ServiceDialogData = {
   ],
   'home_painting': [
     { imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'), type: 'Painting Consultation', options: HomePainting },
-    { imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'), type: 'False Ceiling', options: FalseCeiling },
     { imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'), type: 'Interior Painting', options: InteriorPainting },
     { imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'), type: 'Exterior Painting', options: ExteriorPainitng },
     { imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'), type: 'WaterProofing', options: WaterProofing },
     { imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'), type: 'Textured Walls & Wallpapers', options: WallsWallPapers },
     { imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'), type: 'Wood & Enamel Polish', options: EnamelPolish },
+  ],
+  'false_ceiling': [
+    { imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'), type: 'False Ceiling (POP)', options: FalseCeiling },
   ],
   'home_sanitization': [
     { imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'), type: 'Disinfection Service', options: DisinfectionService },

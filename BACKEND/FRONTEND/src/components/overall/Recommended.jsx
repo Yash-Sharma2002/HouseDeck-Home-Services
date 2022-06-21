@@ -84,8 +84,8 @@ function SMRecommended() {
         }}>
 
             <div style={{ marginTop: '40px' }}>
-                {RecommendedServicesData.map(data =>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px', borderBottom: '1px solid #e0e0e0', }}>
+                {RecommendedServicesData.map((data,idx) =>
+                    <Link key={idx} href={data.url} sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px', borderBottom: '1px solid #e0e0e0', textDecoration:'none'}}>
                         <Box>
                             <Typography sx={{
                                 fontSize: '16px',
@@ -105,7 +105,7 @@ function SMRecommended() {
                             backgroundSize: 'cover',
                         }}>
                         </Box>
-                    </Box>
+                    </Link>
 
                 )}</div>
         </div>

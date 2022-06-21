@@ -23,6 +23,7 @@ export default function Service() {
   const currentCity = city.replace(/ /g, '_').toLowerCase()
   const result = SearchBar[currentCity].map(a => a.value)
   const [work, setWork] = React.useState(true)
+  const checkavailability = React.useRef(() => { })
   const commonProps = [
     { name: 'Home Services', url: '/home-services' },
     { name: 'How it works', url: '#how-it-works' },
@@ -30,23 +31,24 @@ export default function Service() {
     { name: 'Customer Stories', url: '#customer-stories' },
     { name: 'Similar Services', url: '#similar-services-for-other-pages' },
   ]
-  function checkavailability() {
+  checkavailability.current = () => {
     if (!result.includes(newService)) {
       setShow(true)
       setMessageType('error')
       setMessage(`${newService} is not Available in ${city}`)
-      navigate('/home-services')
+      navigate('/home-services/404-Not-Found')
+      return
     }
-  }
-  React.useEffect(() => {
     const random = Math.random()
     if (service.slice(0, 7) !== 'service') return navigate('/home-services/404-Not-Found')
     if (random > 0.5) return setWork(false)
     if (random < 0.5) return setWork(true)
-    checkavailability()
+    return
+  }
+  React.useEffect(() => {
+    checkavailability.current()
   }, [])
 
-  checkavailability()
   return (
     <div>
       <Header commonProps={commonProps} />

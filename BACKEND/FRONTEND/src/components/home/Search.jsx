@@ -63,15 +63,15 @@ export default function Search({ width }) {
       </Box>
       <Box sx={{
         backgroundColor: 'white',
-        width: width==='100%'?'80%':width,
+        width: width === '100%' ? '80%' : width,
         position: 'absolute',
         zIndex: '1000',
         display: open ? 'grid' : 'none',
         boxShadow: 2,
-        mt:2
+        mt: 2
       }}>
-        {SearchBar[currentCity].map(item =>
-          <Link key={item.url} href={item.url} sx={{
+        {SearchBar[currentCity].map((item, idx) =>
+          <Link key={idx} href={item.url} sx={{
             padding: '10px',
             textDecoration: 'none',
             color: 'black',
@@ -89,15 +89,16 @@ export default function Search({ width }) {
 
       {filteredData.length !== 0 && (
         <Box sx={{
-          width: width==='100%'?'80%':width,
+          width: width === '100%' ? '80%' : width,
           position: 'absolute',
           backgroundColor: 'white',
           display: 'grid',
           zIndex: '1000',
-          mt:2
+          boxShadow: 2,
+          mt: 2,
         }} >
-          {filteredData.map(item =>
-            <Link key={item.url} href={item.url} sx={{
+          {filteredData.map((item, idx) =>
+            <Link key={idx} href={item.url} sx={{
               padding: '10px',
               textDecoration: 'none',
               color: 'black',

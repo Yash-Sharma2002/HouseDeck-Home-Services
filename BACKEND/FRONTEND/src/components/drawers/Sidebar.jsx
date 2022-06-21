@@ -86,7 +86,7 @@ export default function Sidebar({ commonProps }) {
                                     <>
                                     <Link href='/home-services/profile' sx={{ color: 'black', display: 'flex', justifyContent: 'flex-start', alignItems: "center", marginLeft: '10px', textDecoration: 'none'}}>
                                             <AccountCircleIcon />
-                                            <Typography sx={{ fontSize: '14px', fontFamily: 'Fredoka', marginLeft: '4px' }}>{decrypt(userData.USERDATA_AS_USERNAME)}</Typography>
+                                            <Typography sx={{ fontSize: '16px', fontFamily: 'Fredoka', marginLeft: '4px' }}>{decrypt(userData.USERDATA_AS_USERNAME)}</Typography>
                                         </Link>
                                         <Link href="/home-services/profile" target="_blank" sx={{
                                             textDecoration: 'none',
@@ -128,18 +128,15 @@ export default function Sidebar({ commonProps }) {
 
                                     :
                                     <>
-                                        <Box sx={{
+                                        <Typography sx={{
                                             fontSize: '16px',
-                                            userSelect: 'none',
                                             textTransform: 'none',
-                                            color: 'black',
                                             padding: '0px 15px',
-                                            mt:1
+                                            my:1
                                         }} onClick={handleClickOpen}>
                                             Login
-                                        </Box>
+                                        </Typography>
                                         <Typography sx={{
-                                            color: 'black',
                                             fontSize: '16px',
                                             height: '30px',
                                             userSelect: 'none',

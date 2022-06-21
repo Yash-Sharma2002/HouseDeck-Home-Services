@@ -3,6 +3,7 @@ import Header from '../components/head/Header';
 import Footer from '../components/foot/Footer';
 import AboutUs from '../components/other/About';
 import AboutMid from '../components/other/AboutMid';
+import AboutEnd from '../components/other/AboutEnd';
 
 export default function About() {
   const commonProps = [
@@ -14,6 +15,7 @@ export default function About() {
       <Header commonProps={commonProps} />
       <AboutUs />
       <AboutMid />
+      <AboutEnd />
       <Footer />
     </div>
   )
