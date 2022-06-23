@@ -143,7 +143,7 @@ export const SearchBar = {
   'bangalore': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
-    { value: "False Ceiling", url: "/home-services/service=Home Cleaning" },
+    { value: "False Ceiling", url: "/home-services/service=False Ceiling" },
     // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
     // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
@@ -154,7 +154,7 @@ export const SearchBar = {
   'noida': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
-    { value: "False Ceiling", url: "/home-services/service=Home Cleaning" },
+    { value: "False Ceiling", url: "/home-services/service=False Ceiling" },
     // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
     // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
@@ -162,7 +162,7 @@ export const SearchBar = {
   'mumbai': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
-    { value: "False Ceiling", url: "/home-services/service=Home Cleaning" },
+    { value: "False Ceiling", url: "/home-services/service=False Ceiling" },
     // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
     // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
@@ -173,7 +173,7 @@ export const SearchBar = {
   'chennai': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
-    { value: "False Ceiling", url: "/home-services/service=Home Cleaning" },
+    { value: "False Ceiling", url: "/home-services/service=False Ceiling" },
     // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
     // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
@@ -184,7 +184,7 @@ export const SearchBar = {
   'pune': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
-    { value: "False Ceiling", url: "/home-services/service=Home Cleaning" },
+    { value: "False Ceiling", url: "/home-services/service=False Ceiling" },
     // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
     // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
@@ -195,7 +195,7 @@ export const SearchBar = {
   'hyderabad': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
-    { value: "False Ceiling", url: "/home-services/service=Home Cleaning" },
+    { value: "False Ceiling", url: "/home-services/service=False Ceiling" },
     // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
     // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
@@ -203,7 +203,7 @@ export const SearchBar = {
   'gurgaon': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
-    { value: "False Ceiling", url: "/home-services/service=Home Cleaning" },
+    { value: "False Ceiling", url: "/home-services/service=False Ceiling" },
     // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
     // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
@@ -211,7 +211,7 @@ export const SearchBar = {
   'ghaziabad': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
-    { value: "False Ceiling", url: "/home-services/service=Home Cleaning" },
+    { value: "False Ceiling", url: "/home-services/service=False Ceiling" },
     // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
     // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
@@ -222,7 +222,7 @@ export const SearchBar = {
   'delhi': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
-    { value: "False Ceiling", url: "/home-services/service=Home Cleaning" },
+    { value: "False Ceiling", url: "/home-services/service=False Ceiling" },
     // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
     // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
@@ -230,7 +230,7 @@ export const SearchBar = {
   'faridabad': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
-    { value: "False Ceiling", url: "/home-services/service=Home Cleaning" },
+    { value: "False Ceiling", url: "/home-services/service=False Ceiling" },
     // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
     // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },
@@ -239,7 +239,7 @@ export const SearchBar = {
   'greater_noida': [
     { value: "Home Painting", url: "/home-services/service=Home Painting" },
     { value: "Home Cleaning", url: "/home-services/service=Home Cleaning" },
-    { value: "False Ceiling", url: "/home-services/service=Home Cleaning" },
+    { value: "False Ceiling", url: "/home-services/service=False Ceiling" },
     // { value: "Home Sanitization", url: '/home-services/service=Home Sanitization' },
     // { value: "Pest Control", url: '/home-services/service=Pest Control' },
     // { value: "AC Repair", url: '/home-services/service=AC Repair' },

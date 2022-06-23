@@ -52,15 +52,12 @@ function XLHeader({ commonProps }) {
         <AppBar position="fixed" sx={{ backgroundColor: 'white', color: '#000000' }}>
             <Container maxWidth="2000px">
                 <Toolbar disableGutters>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="div"
+                    <Box
                         sx={{ mr: 2, display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}
                     >
                         {PostLogo}
 
-                    </Typography>
+                    </Box>
 
                     {/* ----------------------------------------------------- Left side------------------------------- */}
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>

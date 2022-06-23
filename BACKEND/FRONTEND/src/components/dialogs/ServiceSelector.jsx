@@ -377,7 +377,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                         null
                 }
 
-                <Box sx={{ display: displayForServiceSelectionProcess ? 'block' : 'none', }}>
+                <Box sx={{ display: displayForServiceSelectionProcess?'block':'none', }}>
                     <Box sx={{ position: 'sticky', top: 0, display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '70px', background: 'white', width: width, zIndex: '1000', px: '10px' }}>
                         <Typography sx={{ fontSize: "18px", fontWeight: '700' }}>Select Your Services</Typography>
                         <CloseIcon onClick={handleClose} sx={{ cursor: 'pointer' }} />
@@ -612,7 +612,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                     </Box>
                 </Box>
 
-                <Box sx={{ display: displayForPayment ? 'block' : 'none', height: '90vh', width: width, padding: '15px', }}>
+                <Box sx={{ display: displayForPayment?'block':'none',  width: width, padding: '15px', }}>
                     <Box sx={{ textAlign: 'right' }}>
                         <CloseIcon onClick={handleClose} sx={{ cursor: 'pointer', }} />
                     </Box>
@@ -651,15 +651,15 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                             }
                         </Box>
                     </Box>
-                    <Box sx={{ textAlign: 'center', mt: 2 }}>
-                        <Box sx={{ position: 'absolute', zIndex: '1000', top:"50%",left:'50%',transform:"translate(-50%,-50%)"}}>
-                            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', my: 3, padding: '0px 9px', borderRadius: 1, background: 'white' }}>
-                                <Typography sx={{ fontSize: '17px' }}>Add-on</Typography>
-                                <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka', fontWeight: '800', color: '#1565c0', cursor: 'pointer', textDecoration: 'underline', ml: 1, my: 2 }} onClick={() => handleClickOpen(MiniServices)}>Mini Services</Typography>
-                            </Box>
-                        </Box>
-                        <img src={require('../../assets/other/addon_service2.jpg')} alt="paypal" style={{ width: '100%', }} />
+                    {/* <Box sx={{ textAlign: 'center', mt: 2 }}> */}
+                    {/* <Box sx={{ position: 'absolute', zIndex: '1000', top:"50%",left:'50%',transform:"translate(-50%,-50%)"}}> */}
+                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', my: 3, padding: '0px 9px', borderRadius: 1, background: 'white' }}>
+                        <Typography sx={{ fontSize: '17px' }}>Add-on</Typography>
+                        <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka', fontWeight: '800', color: '#1565c0', cursor: 'pointer', textDecoration: 'underline', ml: 1, my: 2 }} onClick={() => handleClickOpen(MiniServices)}>Mini Services</Typography>
                     </Box>
+                    {/* </Box> */}
+                    {/* <img src={require('../../assets/other/addon_service2.jpg')} alt="paypal" style={{ width: '100%', }} />
+                    </Box> */}
                     <Box sx={{ my: 2, textAlign: 'center' }}>
 
                         {
@@ -707,20 +707,16 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                         alignItems: 'center',
                     }}>
 
-                        <Box sx={{ mt: 'auto', mb: '10px' }}>
-                            <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={saveDraft}>Shortlist</Button>
-                        </Box>
-                        <Box sx={{ mt: 'auto', mb: '10px' }}>
-                            {
-                                paymentLink ?
-                                    <a href={paymentLink} style={{ textDecoration: 'none', }} target="_blank" rel="noreferrer">
-                                        <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={onClickPay} >Pay Now</Button>
-                                    </a>
-                                    :
-                                    <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={CreateOrder} >Book</Button>
-                            }
+                        <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={saveDraft}>Shortlist</Button>
+                        {
+                            paymentLink ?
+                                <a href={paymentLink} style={{ textDecoration: 'none', }} target="_blank" rel="noreferrer">
+                                    <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={onClickPay} >Pay Now</Button>
+                                </a>
+                                :
+                                <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={CreateOrder} >Book</Button>
+                        }
 
-                        </Box>
                     </Box>
                 </Box>
                 <Login open={openLogin} setOpen={setOpenLogin} />
