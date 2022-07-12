@@ -653,7 +653,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width }) 
                     </Box>
                     {/* <Box sx={{ textAlign: 'center', mt: 2 }}> */}
                     {/* <Box sx={{ position: 'absolute', zIndex: '1000', top:"50%",left:'50%',transform:"translate(-50%,-50%)"}}> */}
-                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', my: 3, padding: '0px 9px', borderRadius: 1, background: 'white' }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', my: 3, padding: '0px 9px', borderRadius: 1, background: 'white',border:'3px solid orange' }}>
                         <Typography sx={{ fontSize: '17px' }}>Add-on</Typography>
                         <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka', fontWeight: '800', color: '#1565c0', cursor: 'pointer', textDecoration: 'underline', ml: 1, my: 2 }} onClick={() => handleClickOpen(MiniServices)}>Mini Services</Typography>
                     </Box>
