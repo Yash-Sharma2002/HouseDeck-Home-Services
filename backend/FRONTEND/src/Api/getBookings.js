@@ -9,7 +9,7 @@ export const getDraftBookingsAPI = async (user) => {
         const bookings = await axios.post(`/my-bookings-draft`, user)
         return bookings.data
     } catch (error) {
-        console.log('error while calling bookings API: ', error);
+        // console.log('error while calling bookings API: ', error);
 
     }
 }
@@ -19,7 +19,7 @@ export const getPaidBookingsAPI = async (user) => {
         const bookings = await axios.post(`/my-bookings-paid`, user)
         return bookings.data
     } catch (error) {
-        console.log('error while calling bookings API: ', error);
+        console.log('Error Occured Please Try Again Later.');
 
     }
 }
@@ -29,7 +29,7 @@ export const deletDraftBookingsAPI = async (user) => {
         const bookings = await axios.post(`/delete-draft`, user)
         return bookings.data
     } catch (error) {
-        console.log('error while calling bookings API: ', error);
+        console.log('Error Occured Please Try Again Later.');
 
     }
 }

@@ -8,7 +8,7 @@ export const serviceSenderAsDraft = async (service) => {
     try {
         return await axios.post(`/service`, service)
     } catch (error) {
-        console.log('error while calling login API: ', error);
+        console.log('Error Occured Please Try Again Later.')
         return false
     }
 }

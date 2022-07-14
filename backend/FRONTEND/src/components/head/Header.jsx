@@ -43,7 +43,7 @@ function XLHeader({ commonProps }) {
                 USERDATA_AS_EMAIL: '',
             }));
             localStorage.setItem('INIT_DATA', JSON.stringify(false))
-            window.location.reload(false)
+            navigate('/')
         }
         catch (err) {
         }

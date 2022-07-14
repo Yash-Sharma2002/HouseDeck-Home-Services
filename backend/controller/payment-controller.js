@@ -31,6 +31,7 @@ export const makePayments = async (req, res) => {
                     console.log('Please check the apiKey and apiSecret credentials and the environment',);
                     return;
                 } else {
+                    console.log(response)
                     return res.send(response)
                 }
             })
@@ -56,6 +57,7 @@ export const checkPaymentStatus = async (req, res) => {
                         const service = req.body;
                         const newService = new ServiceAsPaid(service);
                         await newService.save();
+                        console.log(data)
                         return res.send(data)
                     } catch (error) {
                         console.log('Error: from service controller ', error);
@@ -96,7 +98,6 @@ export const checkSubscriptionStatus = async (req, res) => {
             })
 
     } catch (error) {
-        console.log('Error: from payment controller ', error);
         return res.status(500).json('failed');
     }
 }

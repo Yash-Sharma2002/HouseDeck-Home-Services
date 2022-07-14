@@ -9,5 +9,6 @@ export const getPlace = async (user) => {
         const response = await axios.post(`/places`, user)
         return response.data
     } catch (error) {
+        console.log('Error Occured Please Try Again Later.');
     }
 }

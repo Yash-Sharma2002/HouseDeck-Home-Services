@@ -13,7 +13,7 @@ export const otpSend = async (req, res) => {
             to: req.body.Number,
             from: process.env.TWILIO_APP_NUMBER,
             channel: 'sms',
-            body: `The verification code for housedeck login is ${otp}`
+            body: `${otp} is your One Time Password (OTP) for phone no. verification on HouseDeck - India's Largest Home Products & Services Platform`
         }).then((response) => {
             if (response.errorCode == null) {
                 return res.send(otp + 'this is otp')

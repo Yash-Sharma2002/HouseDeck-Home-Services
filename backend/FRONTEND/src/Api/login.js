@@ -9,5 +9,6 @@ export const authenticateLogin = async (user) => {
         const response = await axios.post(`/login`, user)
         return response.data
     } catch (error) {
+        console.log('Error Occured Please Try Again Later.');
     }
 }

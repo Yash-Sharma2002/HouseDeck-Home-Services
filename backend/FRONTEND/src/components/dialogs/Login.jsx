@@ -144,7 +144,6 @@ function Content({ open, setOpen, width, display }) {
         }
         let response = await authenticateLogin(login)
         if (response) {
-          console.log(response);
           window.location.reload(false)
           handleClose();
           try {
@@ -250,7 +249,8 @@ function Content({ open, setOpen, width, display }) {
               Continue
             </Button>
 
-            <Typography sx={{ fontSize: '12px', fontFamily: 'Fredoka', position: 'absolute', bottom: 10 }}>By continuing, you agree to the <a href="/home-services/housedeck-partner-(Terms-of-Use)" style={{ color: 'black', textDecoration: 'none', fontWeight: '700' }}> Terms & Conditions</a></Typography>
+            <Typography sx={{ fontSize: '11px', fontFamily: 'Fredoka', position: 'absolute',textAlign:'start', bottom: 25 }}>By continuing, you agree to the <a href="/home-services/housedeck-partner-(Terms-of-Use)" style={{ color: 'black', textDecoration: 'none', fontWeight: '700' }}> Terms & Conditions</a></Typography>
+            <Typography sx={{ fontSize: '11px', fontFamily: 'Fredoka', position: 'absolute',textAlign:'start', bottom: 10 }}>For any issue/query please email <a href="mailto:homeservices@housedeck.in" style={{ color: 'black', textDecoration: 'none', fontWeight: '700' }}>homeservices@housedeck.in</a></Typography>
 
 
             <Box sx={{ display: displayForSecond ? 'block' : 'none', margin: '0px auto', }}>

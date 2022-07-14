@@ -9,7 +9,7 @@ export const makePayments = async (orderInfo) => {
         const response = await axios.post(`/create-order`, orderInfo)
         return response
     } catch (error) {
-        console.log('Error while calling Payment');
+        console.log('Error Occured Please Try Again Later.');
     }
 }
 
@@ -18,7 +18,7 @@ export const checkPaymentStatus = async (orderInfo) => {
         const response = await axios.post(`/check-payment`, orderInfo)
         return response.data
     } catch (error) {
-        console.log('Error while calling Payment'+error);
+        console.log('Error Occured Please Try Again Later.');
     }
 }
 
@@ -27,6 +27,6 @@ export const checkSubscriptionStatus = async (orderInfo) => {
         const response = await axios.post(`/check-subscription`, orderInfo)
         return response.data
     } catch (error) {
-        console.log('Error while calling Payment'+error);
+        console.log('Error Occured Please Try Again Later.');
     }
 }

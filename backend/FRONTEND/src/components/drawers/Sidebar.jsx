@@ -1,4 +1,5 @@
 import React from 'react';
+import {useNavigate} from 'react-router-dom';
 import Drawer from '@mui/material/Drawer';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
@@ -18,6 +19,7 @@ import { LoginContext } from '../../context/Context';
 export default function Sidebar({ commonProps }) {
     const { isLogin, userData, decrypt } = React.useContext(LoginContext)
     const [open, setOpen] = React.useState(false);
+    const navigate = useNavigate();
     const [state, setState] = React.useState({
         left: false,
     });
@@ -44,7 +46,7 @@ export default function Sidebar({ commonProps }) {
                 USERDATA_AS_EMAIL: '',
             }));
             localStorage.setItem('INIT_DATA', JSON.stringify(false))
-            window.location.reload(false)
+            navigate('/')
         }
         catch (err) {
             console.log(err);;

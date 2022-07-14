@@ -7,6 +7,6 @@ export const profileUpdate = async (user) => {
         const response = await axios.post(`/profile-update`, user)
         return response.data
     } catch (error) {
-        console.log('error while calling Signup API: ', error);
+        console.log('Error Occured Please Try Again Later.');
     }
 }

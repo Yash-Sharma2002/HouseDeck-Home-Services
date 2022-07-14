@@ -5,9 +5,9 @@ import axios from 'axios';
 export const authenticateSignup = async (user) => {
     try {
         const response =  await axios.post(`/signup`, user)
-        console.log(response);
         return response
     } catch (error) {
-        console.log('error while calling Signup API: ', error);
+        console.log('Error Occured Please Try Again Later.');
+        
     }
 }

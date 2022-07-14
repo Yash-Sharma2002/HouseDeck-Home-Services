@@ -19,7 +19,6 @@ export default function ServicesProvider({ service,width }) {
             setOptions(services)
         
     }
-
     return (
         <div style={{ padding: '10px 20px'}}>
             <Box sx={{ width: width, background: 'white', borderRadius: 3, padding: '0px 24px', boxShadow:2,border:'5px solid orange' }}>
@@ -41,7 +40,7 @@ export default function ServicesProvider({ service,width }) {
                 }
             </Box>
             <Login open={open} setOpen={setOpen} />
-            <ServiceSelector options={options} category={newService} data={ServiceDialogData[newService]} setOptions={setOptions} open={openForService} setOpen={setOpenForService} />
+            <ServiceSelector options={options} category={newService} data={ServiceDialogData[newService]} setOptions={setOptions} open={openForService} setOpen={setOpenForService} service={newService} />
         </div>
     )
 }
