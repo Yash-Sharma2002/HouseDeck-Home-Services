@@ -147,11 +147,18 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
     }
 
     function locationSubmit() {
+        if(location){
         setDisplayForServiceSelectionProcess(false)
         setDisplayForStepper(false)
         setDisplayAtStart(false)
         setDisplayForPayment(false)
         setDisplayForAppointment(true)
+        }
+        else{
+        setShow(true)
+        setMessageType('error')
+        setMessage('Please enter a valid location')
+        }
     }
 
     function getLocation(value, enteredCity) {

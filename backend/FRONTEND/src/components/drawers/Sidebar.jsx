@@ -90,7 +90,7 @@ export default function Sidebar({ commonProps }) {
                                             <AccountCircleIcon />
                                             <Typography sx={{ fontSize: '16px', fontFamily: 'Fredoka', marginLeft: '4px' }}>{decrypt(userData.USERDATA_AS_USERNAME)}</Typography>
                                         </Link>
-                                        <Link href="/home-services/profile" target="_blank" sx={{
+                                        <Link href="/home-services/profile" sx={{
                                             textDecoration: 'none',
                                         }} >
                                             <Typography sx={{
@@ -106,7 +106,7 @@ export default function Sidebar({ commonProps }) {
                                                 Profile
                                             </Typography>
                                         </Link>
-                                        <Link href="/home-services/my-bookings" target="_blank" sx={{
+                                        <Link href="/home-services/my-bookings" sx={{
                                             textDecoration: 'none',
                                         }} >
                                             <Typography sx={{

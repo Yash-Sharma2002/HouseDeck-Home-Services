@@ -85,7 +85,7 @@ function XLHeader({ commonProps }) {
                         {
                             isLogin ?
                                 <>
-                                    <a href="/home-services/my-bookings" target="_blank" style={{
+                                    <a href="/home-services/my-bookings"  style={{
                                         textDecoration: 'none'
                                     }}>
                                         <Button sx={{

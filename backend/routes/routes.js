@@ -18,7 +18,7 @@ router.post('/check-payment', checkPaymentStatus);
 router.post('/send-otp', otpSend);
 router.post('/promocode', promocodeFetch);
 router.post('/promocode-save', promocodeStore);
-// router.post('/send-mail', mailVerification);
+router.post('/send-mail', mailVerification);
 router.post('/profile-update', userUpdate);
 router.post('/check-subscription', checkSubscriptionStatus);
 router.post('/my-bookings-draft', getDraftBookings);

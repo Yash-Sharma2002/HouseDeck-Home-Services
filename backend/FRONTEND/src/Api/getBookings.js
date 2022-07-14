@@ -1,12 +1,12 @@
 
 import axios from 'axios';
 
-// const URL = 'http://localhost:8000';
+const URL = 'http://localhost:80';
 
 
 export const getDraftBookingsAPI = async (user) => {
     try {
-        const bookings = await axios.post(`/my-bookings-draft`, user)
+        const bookings = await axios.post(`${URL}/my-bookings-draft`, user)
         return bookings.data
     } catch (error) {
         // console.log('error while calling bookings API: ', error);
@@ -16,7 +16,7 @@ export const getDraftBookingsAPI = async (user) => {
 
 export const getPaidBookingsAPI = async (user) => {
     try {
-        const bookings = await axios.post(`/my-bookings-paid`, user)
+        const bookings = await axios.post(`${URL}/my-bookings-paid`, user)
         return bookings.data
     } catch (error) {
         console.log('Error Occured Please Try Again Later.');
@@ -26,7 +26,7 @@ export const getPaidBookingsAPI = async (user) => {
 
 export const deletDraftBookingsAPI = async (user) => {
     try {
-        const bookings = await axios.post(`/delete-draft`, user)
+        const bookings = await axios.post(`${URL}/delete-draft`, user)
         return bookings.data
     } catch (error) {
         console.log('Error Occured Please Try Again Later.');
