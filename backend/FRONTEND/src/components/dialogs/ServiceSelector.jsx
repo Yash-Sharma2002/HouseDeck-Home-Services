@@ -718,7 +718,11 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
                         <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={saveDraft}>Shortlist</Button>
                         {
                             paymentLink ?
-                                <a href={paymentLink} style={{ textDecoration: 'none', }} target="_blank" rel="noreferrer">
+                                <a href={paymentLink} style={{ textDecoration: 'none', }} target="_blank" rel="noreferrer" onClick={()=>{
+                                    setShow(true)
+                                    setMessage("Please wait while we processing the payment")
+                                    setMessageType("info")
+                                    }}>
                                     <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={onClickPay} >Pay Now</Button>
                                 </a>
                                 :

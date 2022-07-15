@@ -32,7 +32,7 @@ export const makePayments = async (req, res) => {
                     console.log('Please check the apiKey and apiSecret credentials and the environment',);
                     return;
                 } else {
-                    
+
                     return res.send(response)
                 }
             })
@@ -58,18 +58,26 @@ export const checkPaymentStatus = async (req, res) => {
                         const service = req.body;
                         const newService = new ServiceAsPaid(service);
                         await newService.save();
-                        // const message = {
-                        //     to: req.body.Customer_Details.Customer_Email,
-                        //     cc: '',
-                        //     bcc: '',
-                        //     from: 'homeservices@housedeck.in',
-                        //     subject: 'HouseDeck - Email Verification',
-                        //     text: `Your Order of ${req.body.Order_Details.Service} has been placed successfully.`,
-                        //     // html: `<h3 style="color:white;text-align:center;">Your One Time Password (OTP) for email verification on HouseDeck - India\'s Largest Home Products & Services Platform </h3> <br> <p style="text-decoration:underline;text-align:center;font-size:2rem;color:yellow;border:2px solid orange;border-radius:20px;width:fit-content;padding:10px;margin:0px auto;">${otp}</p>
-                        //     // <br> <p style="text-align:center;font-size:18pxrem;color:white;">This is a system generated mail. Please do not reply to this mail.</p>
-                        //     // <br> <p style="text-align:start;font-size:15pxrem;color:white;">Regards,<br>HouseDeck Team</p>`,
-                        // }
-                        // await sgmail.send(message)
+                        console.log(req.body);
+                        const message = {
+                            to: req.body.Customer_Details.Customer_Email,
+                            cc: '',
+                            bcc: 'homeservices@housedeck.in',
+                            from: 'homeservices@housedeck.in',
+                            subject: 'HouseDeck Home Services Booking Confirmation',
+                            text: `Your Service of ${req.body.Order_Details.Category.replace(/_/g, " ")} has been placed successfully.`
+                                + `\n\n` + "Order Details are:\n"
+                                + req.body.Order_Details.Services.map((data) => `${data.Service}`
+                                    + "\t" + `${data.Price}\n`)
+                                + `Total Price: \t ${req.body.Order_Details.Order_Amount}`
+                                + `\n\n` + `We will meet you at  --${req.body.Order_Details.Appointment_Location}-- on --${req.body.Order_Details.Appointment_Date}-- at time --${req.body.Order_Details.Appointment_Time}--`
+                                + "By,\n" + `Thank you for using HouseDeck` +
+                                `\n\n` + `Team HouseDeck` + `\n`,
+                            // html: `<h3 style="color:white;text-align:center;">Your One Time Password (OTP) for email verification on HouseDeck - India\'s Largest Home Products & Services Platform </h3> <br> <p style="text-decoration:underline;text-align:center;font-size:2rem;color:yellow;border:2px solid orange;border-radius:20px;width:fit-content;padding:10px;margin:0px auto;">${otp}</p>
+                            // <br> <p style="text-align:center;font-size:18pxrem;color:white;">This is a system generated mail. Please do not reply to this mail.</p>
+                            // <br> <p style="text-align:start;font-size:15pxrem;color:white;">Regards,<br>HouseDeck Team</p>`,
+                        }
+                        await sgmail.send(message)
                         return res.send(data)
                     } catch (error) {
                         console.log('Error: from service controller ', error);
