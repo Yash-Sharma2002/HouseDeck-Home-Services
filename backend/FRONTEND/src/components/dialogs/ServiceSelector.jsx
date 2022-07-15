@@ -59,6 +59,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
     const [displayForAppointment, setDisplayForAppointment] = React.useState(false)
     const [displayAtStart, setDisplayAtStart] = React.useState(false)
     const [displayForPayment, setDisplayForPayment] = React.useState(false)
+    const [displayForPaymentProcessor, setDisplayForPaymentProcessor] = React.useState(false)
     const [display, setDisplay] = React.useState(true)
     const [paymentLink, setPaymentLink] = React.useState('')
     const [orderId, setOrderId] = React.useState('')
@@ -75,6 +76,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
         setDisplayForServiceSelectionProcess(true)
         setDisplayForStepper(false)
         setDisplayForAppointment(false)
+        setDisplayForPaymentProcessor(false)
         setDisplayAtStart(false)
         setDisplayForPayment(false)
         setValueForLocation('')
@@ -147,17 +149,17 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
     }
 
     function locationSubmit() {
-        if(location){
-        setDisplayForServiceSelectionProcess(false)
-        setDisplayForStepper(false)
-        setDisplayAtStart(false)
-        setDisplayForPayment(false)
-        setDisplayForAppointment(true)
+        if (location) {
+            setDisplayForServiceSelectionProcess(false)
+            setDisplayForStepper(false)
+            setDisplayAtStart(false)
+            setDisplayForPayment(false)
+            setDisplayForAppointment(true)
         }
-        else{
-        setShow(true)
-        setMessageType('error')
-        setMessage('Please enter a valid location')
+        else {
+            setShow(true)
+            setMessageType('error')
+            setMessage('Please enter a valid location')
         }
     }
 
@@ -585,7 +587,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
                                         settime(newtime);
                                     }}
                                     minTime={new Date(0, 0, 0, 8)}
-                                    maxTime={ new Date(0, 0, 0, 16)}
+                                    maxTime={new Date(0, 0, 0, 16)}
                                 />
                             </Stack>
                         </LocalizationProvider>
@@ -654,6 +656,13 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
                             }
                         </Box>
                     </Box>
+                    {
+                        displayForPaymentProcessor ?
+                            <Box sx={{ textAlign: 'center', mt: 2 }}>
+                                <Typography sx={{ fontSize: '12px', fontFamily: 'Fredoka', mt: '5px' }}>*Do not refresh the page. We will automatically redirect you when payment is completed. </Typography>
+                            </Box>
+                            : null
+                    }
                     {/* <Box sx={{ textAlign: 'center', mt: 2 }}> */}
                     {/* <Box sx={{ position: 'absolute', zIndex: '1000', top:"50%",left:'50%',transform:"translate(-50%,-50%)"}}> */}
                     <Box sx={{ display: 'flex', alignItems: 'center', m: '0 auto', justifyContent: 'center', my: 3, padding: '0px 9px', borderRadius: 1, background: 'white', border: '3px solid orange', width: "fit-content", }}>
@@ -718,11 +727,11 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
                         <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={saveDraft}>Shortlist</Button>
                         {
                             paymentLink ?
-                                <a href={paymentLink} style={{ textDecoration: 'none', }} target="_blank" rel="noreferrer" onClick={()=>{
+                                <a href={paymentLink} style={{ textDecoration: 'none', }} target="_blank" rel="noreferrer" onClick={() => {
                                     setShow(true)
                                     setMessage("Please wait while we processing the payment")
                                     setMessageType("info")
-                                    }}>
+                                }}>
                                     <Button sx={{ fontSize: '16px', textTransform: 'none', }} variant='contained' onClick={onClickPay} >Pay Now</Button>
                                 </a>
                                 :

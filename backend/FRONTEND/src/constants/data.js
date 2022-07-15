@@ -1253,7 +1253,7 @@ export const WallsWallPapers = {
 export const FalseCeiling = {
   imgUrl: require('../assets/other/deepHomeCleaning.jpeg'),
   innerData: [
-    { type: 'Consulation', price: '01' },
+    { type: 'Consulation', price: '49' },
   ],
   quotes: [{ text: 'Consultation Duration Up to 50 min' }, { text: 'Visiting Team :  1-2 Experts' }, { text: 'Laser Measurement' }, { text: 'Design Consultation' }, { text: 'Experience Expert Professionals To handle the Project' }, { text: '100% Customization' }, { text: 'Price quotation(s) customized to your needs' },]
 }
