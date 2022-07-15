@@ -36,9 +36,9 @@ const ContextProvider = ({ children }) => {
         return ciphertext
     }
     function decrypt(ciphertext) {
-            var bytes = CryptoJS.AES.decrypt(ciphertext, 'housedeck-is in-bangalore');
-            var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-            return decryptedData
+        var bytes = CryptoJS.AES.decrypt(ciphertext, 'housedeck-is in-bangalore');
+        var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+        return decryptedData
     }
 
 
@@ -81,7 +81,7 @@ const ContextProvider = ({ children }) => {
             localStorage.getItem('INIT_DATA')
             localStorage.getItem('START_DATA')
             localStorage.getItem('CENTER_DATA')
-
+            localStorage.getItem('EMAIL_VERIFIED')
         }
         catch (err) {
             localStorage.setItem('INIT_DATA', JSON.stringify(false));
@@ -90,6 +90,7 @@ const ContextProvider = ({ children }) => {
                 USERDATA_AS_USERNAME: '',
                 USERDATA_AS_EMAIL: '',
             }))
+            localStorage.setItem('EMAIL_VERIFIED', true)
             localStorage.setItem('CENTER_DATA', JSON.stringify(''));
         }
     }

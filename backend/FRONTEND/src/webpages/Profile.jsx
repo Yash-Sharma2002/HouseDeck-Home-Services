@@ -45,7 +45,6 @@ export default function Profile() {
   const [email, setEmail] = React.useState(decrypt(userData.USERDATA_AS_EMAIL))
   const [emailOTP, setEMailOTP] = React.useState('')
   const [emailVerified, setEmailVerified] = React.useState(localStorage.getItem('EMAIL_VERIFIED'))
-
   const commonProps = [
     { name: 'Home Services', url: '/home-services' }
   ]
@@ -117,7 +116,6 @@ export default function Profile() {
     let response = await mailVerification({
       Email: email
     })
-    console.log(response)
     if (response) setEMailOTP(response.slice(0, 6))
     else {
       setShow(true)
@@ -168,9 +166,9 @@ export default function Profile() {
                   onChange={(e) => handleEmailChange(e.target.value)}
                   type='text'
                   style={{
-                    borderTop: emailVerified?'none':'1px solid #464646',
-                    borderBottom:emailVerified?'none': '1px solid #464646',
-                    borderLeft:emailVerified?'none': '1px solid #464646',
+                    borderTop: emailVerified==="true"?'none':'1px solid #464646',
+                    borderBottom:emailVerified==="true"?'none': '1px solid #464646',
+                    borderLeft:emailVerified==="true"?'none': '1px solid #464646',
                     borderRight: 'none',
                     userSelect: 'none',
                     width: '45%',
@@ -180,7 +178,7 @@ export default function Profile() {
                     marginLeft: '30px'
                   }} />
                 {
-                  emailVerified ?
+                  emailVerified==="true" ?
                     <Tooltip title="Verified" placement="right" arrow>
                       <Box className={classes.Verified2} sx={{ ml: 38 }}></Box>
                     </Tooltip>
@@ -212,7 +210,7 @@ export default function Profile() {
                     <Button sx={{ fontSize: '16px', textTransform: 'none', ml: 6 }} variant='contained' onClick={emailVerify} >Submit</Button>
                   </Box>
                   :
-                  <>{emailVerified ? null : <Typography sx={{ opacity: '0.5', cursor: 'pointer', fontSize: '16px', marginLeft: '120px', textDecoration: 'underline' }} onClick={emailVerify}>Click here to generate email verification mail.</Typography>}</>
+                  <>{emailVerified==="true" ? null : <Typography sx={{ opacity: '0.5', cursor: 'pointer', fontSize: '16px', marginLeft: '120px', textDecoration: 'underline' }} onClick={emailVerify}>Click here to generate email verification mail.</Typography>}</>
               }
 
               <Box sx={{ display: 'flex', displayContent: 'space-evenly', alignItems: 'center', p: 3 }}>
