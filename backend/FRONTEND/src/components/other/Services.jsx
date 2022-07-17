@@ -40,7 +40,7 @@ export default function ServicesProvider({ service,width }) {
                 }
             </Box>
             <Login open={open} setOpen={setOpen} />
-            <ServiceSelector options={options} category={newService} data={ServiceDialogData[newService]} setOptions={setOptions} open={openForService} setOpen={setOpenForService} service={newService} />
+            <ServiceSelector options={options} category={newService} data={ServiceDialogData[newService]} setOptions={setOptions} open={openForService} setOpen={setOpenForService} newService={service.replace(/ /g, '_').toLowerCase()} />
         </div>
     )
 }

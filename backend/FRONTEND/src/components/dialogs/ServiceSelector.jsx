@@ -44,6 +44,8 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 
 function Content({ options, category, data, setOptions, open, setOpen, width, newService }) {
 
+console.log(newService);
+
     const { city, isLogin, setMessage, setMessageType, setShow, userData, decrypt } = React.useContext(LoginContext)
     const navigate = useNavigate()
     const fullScreen = useMediaQuery('(max-width:650px)');
@@ -750,7 +752,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
 
 
 
-export default function ServiceSelector({ options, category, data, setOptions, open, setOpen }) {
+export default function ServiceSelector({ options, category, data, setOptions, open, setOpen,newService }) {
 
     const xlMax = useMediaQuery('(max-width:2000px)');
     const xlMin = useMediaQuery('(min-width:650px)');
@@ -759,9 +761,9 @@ export default function ServiceSelector({ options, category, data, setOptions, o
 
         <>
             {xlMax && xlMin && (
-                <Content options={options} category={category} data={data} setOptions={setOptions} open={open} setOpen={setOpen} width={'550px'} />
+                <Content options={options} category={category} data={data} setOptions={setOptions} open={open} setOpen={setOpen} width={'550px'} newService={newService} />
             )}
-            {sm && (<Content options={options} category={category} data={data} setOptions={setOptions} open={open} setOpen={setOpen} width={'auto'} />)}
+            {sm && (<Content options={options} category={category} data={data} setOptions={setOptions} open={open} setOpen={setOpen} width={'auto'} newService={newService} />)}
 
         </>
     )

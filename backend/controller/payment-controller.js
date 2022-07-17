@@ -58,24 +58,99 @@ export const checkPaymentStatus = async (req, res) => {
                         const service = req.body;
                         const newService = new ServiceAsPaid(service);
                         await newService.save();
-                        console.log(req.body);
                         const message = {
                             to: req.body.Customer_Details.Customer_Email,
                             cc: '',
                             bcc: 'homeservices@housedeck.in',
                             from: 'homeservices@housedeck.in',
                             subject: 'HouseDeck Home Services Booking Confirmation',
-                            text: `Your Service of ${req.body.Order_Details.Category.replace(/_/g, " ")} has been placed successfully.`
-                                + `\n\n` + "Order Details are:\n"
-                                + req.body.Order_Details.Services.map((data) => `${data.Service}`
-                                    + "\t" + `${data.Price}\n`)
-                                + `Total Price: \t ${req.body.Order_Details.Order_Amount}`
-                                + `\n\n` + `We will meet you at  --${req.body.Order_Details.Appointment_Location}-- on --${req.body.Order_Details.Appointment_Date}-- at time --${req.body.Order_Details.Appointment_Time}--`
-                                + "By,\n" + `Thank you for using HouseDeck` +
-                                `\n\n` + `Team HouseDeck` + `\n`,
-                            // html: `<h3 style="color:white;text-align:center;">Your One Time Password (OTP) for email verification on HouseDeck - India\'s Largest Home Products & Services Platform </h3> <br> <p style="text-decoration:underline;text-align:center;font-size:2rem;color:yellow;border:2px solid orange;border-radius:20px;width:fit-content;padding:10px;margin:0px auto;">${otp}</p>
-                            // <br> <p style="text-align:center;font-size:18pxrem;color:white;">This is a system generated mail. Please do not reply to this mail.</p>
-                            // <br> <p style="text-align:start;font-size:15pxrem;color:white;">Regards,<br>HouseDeck Team</p>`,
+                            text:
+                                `Thank you for placing an order in HouseDeck Home Services.\nYour Order Has Been Placed Successfully.\n\n`
+                                + `Service Details:\n\n`
+                                + `\tService Type: ${req.body.Order_Details.Category.replace(/_/g, " ")}\n`
+                                + `\tOrder ID: ${req.body.Order_Details.Order_Id}\n`
+                                + `\tBooking Date: ${req.body.Order_Details.Order_Date}\n`
+                                + `\tBooking Time: ${req.body.Order_Details.Order_Time}\n`
+                                + `\tBooking Status:\n\tPaid: ${req.body.Payment_Details.Paid}\n\n`
+                                + `By User:\nName: ${req.body.Customer_Details.Customer_Id}\n`
+                                + `Phone: ${req.body.Customer_Details.Customer_Phone}\n`
+                                + `Email: ${req.body.Customer_Details.Customer_Email}\n\n`
+                                + `Order_Details:\n`
+                                + req.body.Order_Details.Services.map((data) => `${data.Service}` + "\t" + `Rs.${data.Price}.00\n`)
+                                + `\nTotal: Rs.${req.body.Order_Details.Order_Amount}\n\n`
+                                + `Appointment Details:\n`
+                                + `Address: ${req.body.Order_Details.Appointment_Location}\n`
+                                + `Date: ${req.body.Order_Details.Appointment_Date}\n`
+                                + `Time: ${req.body.Order_Details.Appointment_Time}\n\n`
+                                + `If there is something wrong with your order, please contact us at homeservices@housedeck.in or call us at our toll free number 18003096606.\n`
+                                + `We look forward to serving you again.\n\n`
+                                + `Regards,\nHouseDeck Home Services\n\n`,
+                            html:
+                                `<div
+                            style="text-align: center;background-color:white;margin:0px auto;color:black;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;background-color: #fff;">
+                            <p style="text-align: center;font-size: 18px;font-weight: 600;">Thank you for placing an order in HouseDeck Home
+                                Services.</p><br><br>
+                            <img src="https://img.freepik.com/premium-vector/made-with-love-sticker-isolated-white-thank-you-order-vector-illustration_547674-485.jpg?size=338&ext=jpg&ga=GA1.2.278715099.1643443898"
+                                alt="Thanks Image">
+                            <p style="text-align: center;font-size: 16px;font-weight: 600;">Your Order Has Been Placed Successfully.</p>
+                            <br><br>
+                            <p style="text-align: start;font-weight: 800;">Service Details</p>
+                            <p style="text-align: start;font-weight: 800;padding-left: 30px;">Service Type: <span style="font-weight: 500;">
+                                    ${req.body.Order_Details.Category.replace(/_/g, " ")}</span></p>
+                            <p style="text-align: start;font-weight: 800;padding-left: 30px;">Order Id: <span style="font-weight: 500;">
+                                    ${req.body.Order_Details.Order_Id}</span></p>
+                            <p style="text-align: start;font-weight: 800;padding-left: 30px;">Booking Date: <span style="font-weight: 500;">
+                                    ${req.body.Order_Details.Order_Date}</span></p>
+                            <p style="text-align: start;font-weight: 800;padding-left: 30px;">Booking Time: <span style="font-weight: 500;">
+                                    ${req.body.Order_Details.Order_Time}</span></p>
+                            <p style="text-align: start;font-weight: 800;padding-left: 30px;">Booking Status: </p>
+                            <p style="text-align: start;font-weight: 800;padding-left: 60px;">Paid: <span
+                                    style="font-weight: 500;">${req.body.Payment_Details.Paid}</span></p><br>
+                            <p style="text-align: start;font-weight: 800;">By User:</p>
+                            <p style="text-align: start;font-weight: 800;padding-left: 30px;">Name: <span style="font-weight: 500;">
+                                    ${req.body.Customer_Details.Customer_Id}</span></p>
+                            <p style="text-align: start;font-weight: 800;padding-left: 30px;">Phone: <span style="font-weight: 500;">
+                                    ${req.body.Customer_Details.Customer_Phone}</span></p>
+                            <p style="text-align: start;font-weight: 800;padding-left: 30px;">Email: <span style="font-weight: 500;">
+                                    ${req.body.Customer_Details.Customer_Email}</span></p><br>
+                            <p style="text-align: start;font-weight: 800;">Order Details :</p>
+                    
+                            <div style="display: flex;justify-content:space-between;align-items:center;">
+                                <div style="width: 50%;">
+                                    <p style="text-align: start;font-weight: 800;">Service</p>
+                                </div>
+                                <div style="width: 50%;">
+                                    <p style="text-align: start;font-weight: 800;">Price</p>
+                                </div>
+                            </div>`
+                                + req.body.Order_Details.Services.map((data) => `<div style="display: flex;justify-content:space-between;align-items:center;">
+                                <div style="width: 50%;">
+                                    <p style="text-align: start;font-weight: 800;">`+ data.Service + `</p></div>`
+                                    + `<div style="width: 50%;">
+                            <p style="text-align: start;font-weight: 800;">Rs.`+ data.Price + `.00</p>
+                            </div></div>`) +
+                                `<div style="display: flex;justify-content:space-between;align-items:center;">
+                                <div style="width: 50%;"><p style="text-align: start;font-weight: 800;">Total Price</p></div>`
+                                + `<div style="width: 50%;">
+                                <p style="text-align: start;font-weight: 800;">Rs.${req.body.Order_Details.Order_Amount}</p>
+                                </div></div>`
+                                +
+                                `<p style="text-align: start;font-weight: 800;">Appointment Details:</p>
+                            <p style="text-align: start;font-weight: 800;padding-left: 30px;">Appointment Date: <span
+                                    style="font-weight: 500;">
+                                    ${req.body.Order_Details.Appointment_Date}</span></p>
+                            <p style="text-align: start;font-weight: 800;padding-left: 30px;">Appointment Time: <span
+                                    style="font-weight: 500;">
+                                    ${req.body.Order_Details.Appointment_Time}</span></p>
+                            <p style="text-align: start;font-weight: 800;padding-left: 30px;">Appointment Location: <span
+                                    style="font-weight: 500;">
+                                    ${req.body.Order_Details.Appointment_Location}</span></p> <br><br>
+                                    <p style="text-align: start;font-weight: 800">If there is something wrong with your order, please contact us at homeservices@housedeck.in or call us at our toll free number 18003096606.</p>
+                                    <p style="text-align: start;font-weight: 800">We look forward to serving you again.</p>
+                                    <p style="text-align: start;font-weight: 800">Regards,<br> HouseDeck Home Services.</p>
+                    
+                        </div>`
+                            ,
                         }
                         await sgmail.send(message)
                         return res.send(data)
