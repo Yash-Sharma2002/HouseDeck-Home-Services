@@ -4,6 +4,8 @@ import { useMediaQuery } from '@mui/material'
 import { ServiceWithImage } from '../../constants/data'
 import { LoginContext } from '../../context/Context'
 
+
+
 function Content({ width }) {
     const { city } = React.useContext(LoginContext)
     const currentCity = city.replace(/ /g, '_').toLowerCase()

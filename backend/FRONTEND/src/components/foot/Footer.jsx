@@ -7,6 +7,11 @@ import LinkedIn from '../../assets/socialmedia/linkedin.svg'
 import Twitter from '../../assets/socialmedia/twitter.svg'
 import YouTube from '../../assets/socialmedia/youtube.svg'
 
+
+
+
+
+
 function FooterContent({fontSize,margin}) {
     return (
         <div>

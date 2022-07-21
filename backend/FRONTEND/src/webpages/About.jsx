@@ -7,7 +7,7 @@ import AboutEnd from '../components/other/AboutEnd';
 
 export default function About() {
   const commonProps = [
-    { name: 'Home Services', url: '/home-services' },
+    { name: 'Home Services', url: '/' },
     { name: 'Who we are', url: '#who-we-are' }
   ]
   return (

@@ -4,7 +4,7 @@ import Header from '../components/head/Header';
 import Footer from '../components/foot/Footer';
 
 function Content({ width, padding, variant, margin }) {
-    const commonProps = [{ name: "Home Services", url: "/home-services" }];
+    const commonProps = [{ name: "Home Services", url: "/" }];
     return (
         <div>
             <Header commonProps={commonProps} />

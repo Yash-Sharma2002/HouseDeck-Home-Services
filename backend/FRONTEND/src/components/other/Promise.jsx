@@ -16,7 +16,7 @@ function Content({ padding, display, width }) {
                     marginTop: '20px'
                 }}>
                     HouseDeck Promise
-
+                    
                 </Typography>
                 <Box sx={{ display: display, justifyContent: 'space-between', textAlign: 'center', margin: '10px auto' }}>
                     <Box sx={{ width: width, textAlign: 'center', wordWrap: 'break-word', margin: '10px auto' }}>

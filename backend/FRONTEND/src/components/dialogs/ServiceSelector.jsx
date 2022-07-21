@@ -34,6 +34,8 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     },
 }));
 
+
+
 // displayAtStart - 0
 // displayForServiceSelectionProcess - 1
 // display-2
@@ -287,7 +289,7 @@ console.log(newService);
             setShow(true)
             setMessage('Saving as Draft....')
             setMessageType('info')
-            navigate('/home-services/my-bookings')
+            navigate('/my-bookings')
             handleClose()
         } else {
             setShow(true)
@@ -337,7 +339,7 @@ console.log(newService);
                     setShow(true)
                     setMessage('Order Placed')
                     setMessageType('success')
-                    navigate('/home-services/my-bookings')
+                    navigate('/my-bookings')
                 } else {
                     setShow(true)
                     setMessage('Payment is processing...')

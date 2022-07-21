@@ -121,7 +121,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                         fontFamily: "Fredoka",
                         borderRadius: 5,
                         display: displayForButton
-                    }} href="/home-services/subcription">
+                    }} href="/subcription">
                         View all plans &#10140;
                     </a>
                 </Box>
@@ -807,7 +807,7 @@ function SMContent({ displayForButton }) {
                     fontFamily: "Fredoka",
                     borderRadius: 5,
                     display: displayForButton
-                }} href="/home-services/subcription">
+                }} href="/subcription">
                     View all plans &#10140;
                 </a>
             </Box>

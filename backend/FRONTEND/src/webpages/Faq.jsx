@@ -17,8 +17,9 @@ const AccordianStyle = {
 
 }
 
+
 function Content({ width, padding, variant, margin }) {
-    const commonProps = [{ name: "Home Services", url: "/home-services" }];
+    const commonProps = [{ name: "Home Services", url: "/" }];
 
     const [expanded, setExpanded] = React.useState('panel1');
 

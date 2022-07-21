@@ -28,26 +28,25 @@ export default function App() {
 
               {/* home page  */}
               <Route exact path='/' element={<Home />} />
-              <Route exact path='/home-services' element={<Home />} />
 
               {/* footer pages  */}
-              <Route exact path='/home-services/about-us' element={<About />} />
-              <Route exact path='/home-services/privacy-policy' element={<Privacy />} />
-              <Route exact path='/home-services/return-exchange-and-refund' element={<Refund />} />
-              <Route exact path='/home-services/faqs' element={<Faq />} />
-              <Route exact path='/home-services/housedeck-partner-(Terms-of-Use)' element={<Partner />} />
+              <Route exact path='/about-us' element={<About />} />
+              <Route exact path='/privacy-policy' element={<Privacy />} />
+              <Route exact path='/return-exchange-and-refund' element={<Refund />} />
+              <Route exact path='/faqs' element={<Faq />} />
+              <Route exact path='/housedeck-partner-(Terms-of-Use)' element={<Partner />} />
 
               {/* services pages  */}
-              <Route exact path='/home-services/:service' element={<Service />} />
+              <Route exact path='/:service' element={<Service />} />
 
               {/* 404 page  */}
               <Route exact path='*' element={<Unknown />} />
-              <Route exact path='/home-services/404-Not-Found' element={<Unknown />} />
+              <Route exact path='/404-Not-Found' element={<Unknown />} />
 
               {/* Other Pages  */}
-              <Route exact path='/home-services/subcription' element={<Subscriptions />} />
-              <Route exact path='/home-services/my-bookings' element={<Bookings />} />
-              <Route exact path='/home-services/profile' element={<Profile />} />
+              <Route exact path='/subcription' element={<Subscriptions />} />
+              <Route exact path='/my-bookings' element={<Bookings />} />
+              <Route exact path='/profile' element={<Profile />} />
 
             </Routes>
           </Suspense>

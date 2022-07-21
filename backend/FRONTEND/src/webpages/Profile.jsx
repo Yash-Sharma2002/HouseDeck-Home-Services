@@ -46,7 +46,7 @@ export default function Profile() {
   const [emailOTP, setEMailOTP] = React.useState('')
   const [emailVerified, setEmailVerified] = React.useState(localStorage.getItem('EMAIL_VERIFIED'))
   const commonProps = [
-    { name: 'Home Services', url: '/home-services' }
+    { name: 'Home Services', url: '/' }
   ]
 
 

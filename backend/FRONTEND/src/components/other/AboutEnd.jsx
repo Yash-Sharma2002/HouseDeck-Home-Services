@@ -10,7 +10,7 @@ export default function AboutEnd() {
         xlMax && xlMin && (
           <Content display={'flex'} width={'31%'} />
         )
-
+        
       }
       {
         !(xlMax && xlMin) && sm && (

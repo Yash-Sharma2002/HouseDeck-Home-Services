@@ -7,6 +7,7 @@ function Content({ padding,display,width,service}) {
         <div id='how-it-works' style={{
             padding: padding
         }}>
+            
             <Box>
                 <Typography sx={{
                     fontWeight: '600',

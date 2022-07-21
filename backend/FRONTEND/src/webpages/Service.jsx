@@ -1,5 +1,6 @@
 import React from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams  } from 'react-router-dom'
+// import {  useNavigate } from 'react-router-dom'
 import Top from '../components/other/Top'
 import Header from '../components/head/Header';
 import Footer from '../components/foot/Footer';
@@ -9,44 +10,46 @@ import Working from '../components/other/Working'
 import Working2 from '../components/other/Working2'
 import Promise from '../components/other/Promise'
 import BottomServices from '../components/overall/Services'
-import { SearchBar } from '../constants/data';
-import { LoginContext } from '../context/Context';
+// import { SearchBar } from '../constants/data';
+// import { LoginContext } from '../context/Context';
 import FaqPainting from '../components/other/FaqPainting';
 
 const Similar2 = React.lazy(() => import('../components/similar-services/Similar2'))
 
 export default function Service() {
-  const navigate = useNavigate()
-  const { city, setMessage, setMessageType, setShow } = React.useContext(LoginContext)
+  // const navigate = useNavigate()
+  // const { city, setMessage, setMessageType, setShow } = React.useContext(LoginContext)
   const { service } = useParams()
   const newService = service.slice(8,)
-  const currentCity = city.replace(/ /g, '_').toLowerCase()
-  const result = SearchBar[currentCity].map(a => a.value)
+  // const currentCity = city.replace(/ /g, '_').toLowerCase()
+  // const result = SearchBar[currentCity].map(a => a.value)
   const [work, setWork] = React.useState(true)
-  const checkavailability = React.useRef(() => { })
+  // const checkavailability = React.useRef(() => { })
   const commonProps = [
-    { name: 'Home Services', url: '/home-services' },
+    { name: 'Home Services', url: '/' },
     { name: 'How it works', url: '#how-it-works' },
     { name: 'HouseDeck Promise', url: '#houseDeck-promise' },
     { name: 'Customer Stories', url: '#customer-stories' },
     { name: 'Similar Services', url: '#similar-services-for-other-pages' },
   ]
-  checkavailability.current = () => {
-    if (!result.includes(newService)) {
-      setShow(true)
-      setMessageType('error')
-      setMessage(`${newService} is not Available in ${city}`)
-      navigate('/home-services/404-Not-Found')
-      return
-    }
-    const random = Math.random()
-    if (service.slice(0, 7) !== 'service') return navigate('/home-services/404-Not-Found')
-    if (random > 0.5) return setWork(false)
-    if (random < 0.5) return setWork(true)
-    return
-  }
+  // checkavailability.current = () => {
+  //   if (!result.includes(newService)) {
+  //     setShow(true)
+  //     setMessageType('error')
+  //     setMessage(`${newService} is not Available in ${city}`)
+  //     navigate('/404-Not-Found')
+  //     return
+  //   }
+    // const random = Math.random()
+    // if (service.slice(0, 7) !== 'service') return navigate('/404-Not-Found')
+    // if (random > 0.5)  setWork(false)
+    // else  setWork(true)
+  // }
   React.useEffect(() => {
-    checkavailability.current()
+    // checkavailability.current()
+    const random = Math.random()
+    if (random > 0.5)  setWork(false)
+    else  setWork(true)
   }, [])
 
   return (
@@ -57,7 +60,6 @@ export default function Service() {
       {
         work ? <Working service={newService} /> : <Working2 service={newService} />
       }
-      <Working service={newService} />
 
       <Promise />
 

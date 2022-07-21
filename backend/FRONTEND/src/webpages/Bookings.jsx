@@ -48,7 +48,7 @@ function a11yProps(index) {
 
 function Content({ change }) {
   const commonProps = [
-    { name: 'Home Services', url: '/home-services' },
+    { name: 'Home Services', url: '/' },
   ]
 
   const [bookings, setBookings] = React.useState([])
@@ -150,7 +150,7 @@ function Content({ change }) {
                 underline="hover"
                 key="2"
                 color="black"
-                href="/home-services"
+                href="/"
               >
                 Home Services
               </Link>,
@@ -194,7 +194,7 @@ function Content({ change }) {
                             <Button variant="outlined" color='error' sx={{ textTransform: 'none' }} onClick={() => deleteDraft(item._id)}>
                               Delete
                             </Button>
-                            <a href={`/home-services/service=${category}`} style={{ textDecoration: 'none', }} target="_blank" rel="noreferrer">
+                            <a href={`/service=${category}`} style={{ textDecoration: 'none', }} target="_blank" rel="noreferrer">
                               <Button variant="outlined" color="secondary" sx={{ textTransform: 'none' }}>
                                 Start Again
                               </Button>

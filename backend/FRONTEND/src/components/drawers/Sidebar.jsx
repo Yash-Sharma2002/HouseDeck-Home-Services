@@ -86,11 +86,11 @@ export default function Sidebar({ commonProps }) {
                             {
                                 ((userData.USERDATA_AS_USERNAME) && isLogin) ?
                                     <>
-                                    <Link href='/home-services/profile' sx={{ color: 'black', display: 'flex', justifyContent: 'flex-start', alignItems: "center", marginLeft: '10px', textDecoration: 'none'}}>
+                                    <Link href='/profile' sx={{ color: 'black', display: 'flex', justifyContent: 'flex-start', alignItems: "center", marginLeft: '10px', textDecoration: 'none'}}>
                                             <AccountCircleIcon />
                                             <Typography sx={{ fontSize: '16px', fontFamily: 'Fredoka', marginLeft: '4px' }}>{decrypt(userData.USERDATA_AS_USERNAME)}</Typography>
                                         </Link>
-                                        <Link href="/home-services/profile" sx={{
+                                        <Link href="/profile" sx={{
                                             textDecoration: 'none',
                                         }} >
                                             <Typography sx={{
@@ -106,7 +106,7 @@ export default function Sidebar({ commonProps }) {
                                                 Profile
                                             </Typography>
                                         </Link>
-                                        <Link href="/home-services/my-bookings" sx={{
+                                        <Link href="/my-bookings" sx={{
                                             textDecoration: 'none',
                                         }} >
                                             <Typography sx={{

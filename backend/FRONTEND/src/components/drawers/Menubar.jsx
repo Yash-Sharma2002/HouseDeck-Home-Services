@@ -24,7 +24,6 @@ export default function Menubar() {
         setState({ ...state, [anchor]: open });
     };
 
-
     return (
         <div>
             <React.Fragment key={'right'}>
