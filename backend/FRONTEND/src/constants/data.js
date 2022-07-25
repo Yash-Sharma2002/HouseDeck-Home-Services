@@ -1,5 +1,4 @@
 
-
 export const CitiesImg = [
   { id: "bangalore", url: require("../assets/cities/bangalore.png"), name: "Bangalore", },
   { id: "chennai", url: require("../assets/cities/chennai.png"), name: "Chennai" },
@@ -127,7 +126,7 @@ export const DrawerData = [
   { url: 'https://housedeck.in/book-free-online-consultation/', name: "Home Interior", tag: true },
   { url: 'https://housedecklite.com/home-inspection/', name: "Home Inspection", tag: true },
   { url: '/service=Home Painting', name: "Painting", tag: true },
-  { url: '', name: 'False Ceiling', tag: false },
+  { url: '/service=False Ceiling', name: 'False Ceiling', tag: true },
   { url: '', name: 'Pay Utility bills', tag: false },
   { url: '', name: 'Rent Furniture', tag: false },
   { url: '', name: 'Buy Furniture', tag: false },
@@ -269,7 +268,7 @@ export const ServiceWithImage = {
     },
        {
       id: "False Ceiling",
-      src: require("../assets/imageService/painting.png"),
+      src: require("../assets/imageService/false_ceiling.png"),
       offer: "",
       tag: true,
       takeToPath: '/service=False Ceiling',
@@ -336,6 +335,14 @@ export const ServiceWithImage = {
       takeToPath: '/service=Home Cleaning',
     },
     {
+      id: "False Ceiling",
+      src: require("../assets/imageService/false_ceiling.png"),
+      offer: "",
+      tag: true,
+      takeToPath: '/service=False Ceiling',
+
+    },
+    {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
       offer: "",
@@ -396,7 +403,7 @@ export const ServiceWithImage = {
     },
        {
       id: "False Ceiling",
-      src: require("../assets/imageService/painting.png"),
+      src: require("../assets/imageService/false_ceiling.png"),
       offer: "",
       tag: true,
       takeToPath: '/service=False Ceiling',
@@ -462,7 +469,7 @@ export const ServiceWithImage = {
     },
        {
       id: "False Ceiling",
-      src: require("../assets/imageService/painting.png"),
+      src:require("../assets/imageService/false_ceiling.png"),
       offer: "",
       tag: true,
       takeToPath: '/service=False Ceiling',
@@ -528,7 +535,7 @@ export const ServiceWithImage = {
     },
        {
       id: "False Ceiling",
-      src: require("../assets/imageService/painting.png"),
+      src: require("../assets/imageService/false_ceiling.png"),
       offer: "",
       tag: true,
       takeToPath: '/service=False Ceiling',
@@ -599,7 +606,7 @@ export const ServiceWithImage = {
     },
        {
       id: "False Ceiling",
-      src: require("../assets/imageService/painting.png"),
+      src: require("../assets/imageService/false_ceiling.png"),
       offer: "",
       tag: true,
       takeToPath: '/service=False Ceiling',
@@ -670,7 +677,7 @@ export const ServiceWithImage = {
     },
        {
       id: "False Ceiling",
-      src: require("../assets/imageService/painting.png"),
+      src: require("../assets/imageService/false_ceiling.png"),
       offer: "",
       tag: true,
       takeToPath: '/service=False Ceiling',
@@ -741,7 +748,7 @@ export const ServiceWithImage = {
     },
        {
       id: "False Ceiling",
-      src: require("../assets/imageService/painting.png"),
+      src: require("../assets/imageService/false_ceiling.png"),
       offer: "",
       tag: true,
       takeToPath: '/service=False Ceiling',
@@ -812,7 +819,7 @@ export const ServiceWithImage = {
     },
        {
       id: "False Ceiling",
-      src: require("../assets/imageService/painting.png"),
+      src: require("../assets/imageService/false_ceiling.png"),
       offer: "",
       tag: true,
       takeToPath: '/service=False Ceiling',
@@ -883,7 +890,7 @@ export const ServiceWithImage = {
     },
        {
       id: "False Ceiling",
-      src: require("../assets/imageService/painting.png"),
+      src: require("../assets/imageService/false_ceiling.png"),
       offer: "",
       tag: true,
       takeToPath: '/service=False Ceiling',
@@ -949,7 +956,7 @@ export const ServiceWithImage = {
     },
        {
       id: "False Ceiling",
-      src: require("../assets/imageService/painting.png"),
+      src: require("../assets/imageService/false_ceiling.png"),
       offer: "",
       tag: true,
       takeToPath: '/service=False Ceiling',
@@ -1217,7 +1224,7 @@ export const HomePainting = {
 
 
 export const InteriorPainting = {
-  imgUrl: require('../assets/other/deepHomeCleaning.jpeg'),
+  imgUrl: require('../assets/other/painting.jpg'),
   innerData: [
     { type: 'Consulation', price: '49' },
   ],
@@ -1225,7 +1232,7 @@ export const InteriorPainting = {
 }
 
 export const ExteriorPainitng = {
-  imgUrl: require('../assets/other/deepHomeCleaning.jpeg'),
+  imgUrl: require('../assets/other/out_painting.jpg'),
   innerData: [
     { type: 'Consulation', price: '49' },
   ],
@@ -1234,7 +1241,7 @@ export const ExteriorPainitng = {
 
 
 export const WaterProofing = {
-  imgUrl: require('../assets/other/deepHomeCleaning.jpeg'),
+  imgUrl: require('../assets/other/painting.jpg'),
   innerData: [
     { type: 'Consulation', price: '49' },
   ],
@@ -1242,7 +1249,7 @@ export const WaterProofing = {
 }
 
 export const WallsWallPapers = {
-  imgUrl: require('../assets/other/deepHomeCleaning.jpeg'),
+  imgUrl: require('../assets/other/wallpapers.jpg'),
   innerData: [
     { type: 'Consulation', price: '49' },
   ],
@@ -1250,7 +1257,7 @@ export const WallsWallPapers = {
 }
 
 export const FalseCeiling = {
-  imgUrl: require('../assets/other/deepHomeCleaning.jpeg'),
+  imgUrl: require('../assets/other/false_ceiling.jpg'),
   innerData: [
     { type: 'Consulation', price: '49' },
   ],
@@ -1258,7 +1265,7 @@ export const FalseCeiling = {
 }
 
 export const EnamelPolish = {
-  imgUrl: require('../assets/other/deepHomeCleaning.jpeg'),
+  imgUrl: require('../assets/other/painting.jpg'),
   innerData: [
     { type: 'Consulation', price: '49' },
   ],
@@ -1380,7 +1387,7 @@ export const MiniServices = {
     { type: 'Dining Table Cleaning', price: '249' },
     { type: 'Trolley & Shelves cleaning', price: '749' },
     { type: 'Balcony Cleaning', price: '179' },
-    { type: 'Fridge Cleaning', price: '' },
+    { type: 'Fridge Cleaning', price: '89' },
     { type: 'Carpet Wet Shampooing & Vacumming (25 sq ft)', price: '349' },
     { type: 'Cushion Cleaning (Set of 5)', price: '139' },
     { type: 'Mattress Cleaning', price: '349' },
@@ -1399,15 +1406,15 @@ export const ServiceDialogData = {
     { imgUrl: require('../assets/other/miniServices.jpeg'), type: 'Mini Services', options: MiniServices },
   ],
   'home_painting': [
-    { imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'), type: 'Painting Consultation', options: HomePainting },
-    { imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'), type: 'Interior Painting', options: InteriorPainting },
-    { imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'), type: 'Exterior Painting', options: ExteriorPainitng },
-    { imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'), type: 'WaterProofing', options: WaterProofing },
-    { imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'), type: 'Textured Walls & Wallpapers', options: WallsWallPapers },
-    { imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'), type: 'Wood & Enamel Polish', options: EnamelPolish },
+    { imgUrl: require('../assets/other/out_painting.jpg'), type: 'Painting Consultation', options: HomePainting },
+    { imgUrl: require('../assets/other/out_painting.jpg'), type: 'Interior Painting', options: InteriorPainting },
+    { imgUrl: require('../assets/other/painting.jpg'), type: 'Exterior Painting', options: ExteriorPainitng },
+    { imgUrl: require('../assets/other/painting.jpg'), type: 'WaterProofing', options: WaterProofing },
+    { imgUrl: require('../assets/other/wallpapers.jpg'), type: 'Textured Walls & Wallpapers', options: WallsWallPapers },
+    { imgUrl: require('../assets/other/painting.jpg'), type: 'Wood & Enamel Polish', options: EnamelPolish },
   ],
   'false_ceiling': [
-    { imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'), type: 'False Ceiling (POP)', options: FalseCeiling },
+    { imgUrl: require('../assets/other/out_false_ceiling.jpg'), type: 'False Ceiling (POP)', options: FalseCeiling },
   ],
   'home_sanitization': [
     { imgUrl: require('../assets/other/essentialHomeCleaning.jpeg'), type: 'Disinfection Service', options: DisinfectionService },
