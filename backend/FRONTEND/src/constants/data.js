@@ -1215,7 +1215,7 @@ export const FAQData = [
 
 // Painting Data
 export const HomePainting = {
-  imgUrl: require('../assets/other/deepHomeCleaning.jpeg'),
+  imgUrl: require('../assets/other/painting.jpg'),
   innerData: [
     { type: 'Consulation', price: '49' },
   ],

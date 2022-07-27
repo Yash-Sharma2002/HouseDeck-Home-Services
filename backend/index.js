@@ -12,7 +12,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: './config.env' })
 
 const DB_URL = process.env.DB_URL
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 800;
 const app = express();
 
 

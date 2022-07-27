@@ -36,7 +36,6 @@ export const otpSend = async (req, res) => {
 export const mailVerification = async (req, res) => {
     try {
         var otp = String(parseInt(Math.floor(100000 + Math.random() * 900000)))
-        console.log(typeof(otp));
         const message = {
             to: req.body.Email,
             cc: '',

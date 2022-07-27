@@ -2,7 +2,23 @@ import api from 'api'
 import dotenv from 'dotenv'
 import { ServiceAsPaid } from '../model/serviceSchema.js'
 import { Subscriptions } from '../model/subscriptionSchema.js'
+import bizSdk from 'facebook-nodejs-business-sdk'
 import sgmail from '@sendgrid/mail'
+
+
+
+const Content = bizSdk.Content;
+const CustomData = bizSdk.CustomData;
+const DeliveryCategory = bizSdk.DeliveryCategory;
+const EventRequest = bizSdk.EventRequest;
+const UserData = bizSdk.UserData;
+const ServerEvent = bizSdk.ServerEvent;
+
+
+const access_token = 'EAAUjOBHpKPgBADozKt8UUbwYD9fkpM00u79IojQmGjoXkaTwjTMLSn3WQ6hxinrGNBgHCcUVAkYwXCoqEx9hqRb4LlE90nxHMKe1yy2e8002ivFVvAegaBNOQiywsCYJ4auArPTNVeTjMH5u1STWzVwW8eaFIEEILAR67JPZBtAwYMqxpCVwZC0tqZCPW8ZD';
+const pixel_id = '820907902616795';
+const apiFacebook = bizSdk.FacebookAdsApi.init(access_token);
+let current_timestamp = Math.floor(new Date() / 1000);
 
 dotenv.config({ path: './config.env' })
 
@@ -55,9 +71,13 @@ export const checkPaymentStatus = async (req, res) => {
                     return res.status(500).json('failed');
                 } else if (data.order_status === 'PAID') {
                     try {
+                        // saving data to database
                         const service = req.body;
                         const newService = new ServiceAsPaid(service);
                         await newService.save();
+
+
+                        // sending order details to email
                         const message = {
                             to: req.body.Customer_Details.Customer_Email,
                             cc: '',
@@ -153,6 +173,56 @@ export const checkPaymentStatus = async (req, res) => {
                             ,
                         }
                         await sgmail.send(message)
+
+
+
+
+
+                        // sending data to facebook business
+                        // const userData = (new UserData())
+                        //     .setEmails([req.body.Customer_Details.Customer_Email])
+                        //     .setPhones([req.body.Customer_Details.Customer_Phone])
+                        //     // It is recommended to send Client IP and User Agent for Conversions API Events.
+                        //     .setClientIpAddress(req.connection.remoteAddress)
+                        //     .setClientUserAgent(req.headers['user-agent'])
+                        //     .setFbp('fb.1.1558571054389.1098115397')
+                        //     .setFbc('fb.1.1554763741205.AbCdEfGhIjKlMnOpQrStUvWxYz1234567890');
+
+                        // const content = (new Content())
+                        //     .setId(req.body.Order_Details.Order_Id)
+                        //     .setQuantity(req.body.Order_Details.Services.length)
+
+                        // const customData = (new CustomData())
+                        //     .setContents(req.body.Order_Details.Services)
+                        //     .setCurrency('inr')
+                        //     .setValue(req.body.Order_Details.Order_Amount);
+
+                        // const serverEvent = (new ServerEvent())
+                        //     .setEventName('Purchase')
+                        //     .setEventTime(current_timestamp)
+                        //     .setUserData(userData)
+                        //     .setCustomData(customData)
+                        //     .setEventSourceUrl(`http://housedeckhomeservices.in/service${req.body.Order_Details.Category.replace(/_/g, " ")}`)
+                        //     .setActionSource('website');
+
+
+
+                        // const eventsData = [serverEvent];
+                        // const eventRequest = (new EventRequest(access_token, pixel_id))
+                        //     .setEvents(eventsData);
+
+
+                        // eventRequest.execute().then(
+                        //     response => {
+                        //         console.log('Response: ', response);
+                        //     },
+                        //     err => {
+                        //         console.error('Error: ', err);
+                        //     }
+                        // );
+
+
+
                         return res.send(data)
                     } catch (error) {
                         console.log('Error: from service controller ', error);

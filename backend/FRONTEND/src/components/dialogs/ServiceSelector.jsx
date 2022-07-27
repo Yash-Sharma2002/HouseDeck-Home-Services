@@ -46,7 +46,6 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 
 function Content({ options, category, data, setOptions, open, setOpen, width, newService }) {
 
-console.log(newService);
 
     const { city, isLogin, setMessage, setMessageType, setShow, userData, decrypt } = React.useContext(LoginContext)
     const navigate = useNavigate()
@@ -88,11 +87,6 @@ console.log(newService);
         setOrderId('')
         setDisplayForCode(false)
         setRelatedLocation({ predictions: [], status: '' })
-        setPromoCode({
-            code: '',
-            applied: false,
-            reduction: 0
-        })
     };
 
     const handleChange = (event) => {
@@ -205,7 +199,7 @@ console.log(newService);
     const CreateOrder = async () => {
         const data = {
             order_id: `OrderId_${orderId}`,
-            order_amount: `${totalPrice}.00`,
+            order_amount: `${totalPrice}`,
             order_currency: 'INR',
             customer_details: {
                 customer_id: decrypt(userData.USERDATA_AS_USERNAME),
@@ -245,8 +239,17 @@ console.log(newService);
                 setShow(true)
                 setMessage('Code Applied, Price Reduced')
                 setMessageType('success')
-                setPromoCode({ code: promoCode.code, applied: true, reduction: parseInt(response.Price_Reduction) })
-                setPrice((prevPrice) => prevPrice - parseInt(response.Price_Reduction))
+                const id = response.Price_Reduction
+                let newPrice;
+                if(id.substr(id.length-1) ==="%") {
+                    newPrice = totalPrice*parseInt(response.Price_Reduction)/100
+                    setPromoCode({ code: promoCode.code, applied: true, reduction: newPrice })
+                }
+                else {
+                    newPrice = parseInt(response.Price_Reduction) 
+                    setPromoCode({ code: promoCode.code, applied: true, reduction: newPrice})
+                }
+                setPrice((prevPrice) => prevPrice - newPrice)
             } else {
                 setShow(true)
                 setMessage('Wrong PromoCode')
@@ -268,7 +271,7 @@ console.log(newService);
                 Order_Time: currentDateTime.toString().slice(16, 25),
                 Category: category,
                 Services,
-                Order_Amount: `${totalPrice}.00`,
+                Order_Amount: `${totalPrice}`,
                 Appointment_Location: location,
                 Appointment_Date: date.toString().slice(0, 15),
                 Appointment_Time: time.toString().slice(16, 25),
@@ -315,7 +318,7 @@ console.log(newService);
                 Order_Time: currentDateTime.toString().slice(16, 25),
                 Category: category,
                 Services,
-                Order_Amount: `${totalPrice}.00`,
+                Order_Amount: `${totalPrice}`,
                 Appointment_Location: location,
                 Appointment_Date: date.toString().slice(0, 15),
                 Appointment_Time: time.toString().slice(16, 25),

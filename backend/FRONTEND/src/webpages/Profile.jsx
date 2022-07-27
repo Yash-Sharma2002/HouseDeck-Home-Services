@@ -104,6 +104,7 @@ export default function Profile() {
     if (value.length === 6) {
       if (value === emailOTP) {
         setEmailVerified(true)
+        window.location.reload(false)
         setEMailOTP('')
         localStorage.setItem('EMAIL_VERIFIED', true)
       }
