@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate,useParams } from 'react-router-dom'
+import { sha256 } from 'js-sha256';
 import CloseIcon from '@mui/icons-material/Close'
 import { Box, Stack, Typography, Dialog, useMediaQuery, TextField } from '@mui/material'
 import { Button, Divider } from '@mui/material'
@@ -26,6 +27,7 @@ import { getPlace } from '../../Api/getPlaces'
 import Login from './Login'
 import { MiniServices } from '../../constants/data'
 import { promocodeFetch, } from '../../Api/priceReductionPromocode'
+import fetch from 'node-fetch'
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -71,8 +73,10 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
         applied: false,
         redution: 0
     })
+    const [ip, setIP] = React.useState('')
     const [valueForLocation, setValueForLocation] = React.useState('');
     const [displayForCode, setDisplayForCode] = React.useState('');
+    fetch('http://api.ipify.org/?format=json').then(res => res.json()).then(data => { setIP(data.ip) })
     const handleClose = () => {
         setOpen(false)
         settime(new Date('2022-03-01 12:00'))
@@ -241,13 +245,13 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
                 setMessageType('success')
                 const id = response.Price_Reduction
                 let newPrice;
-                if(id.substr(id.length-1) ==="%") {
-                    newPrice = totalPrice*parseInt(response.Price_Reduction)/100
+                if (id.substr(id.length - 1) === "%") {
+                    newPrice = totalPrice * parseInt(response.Price_Reduction) / 100
                     setPromoCode({ code: promoCode.code, applied: true, reduction: newPrice })
                 }
                 else {
-                    newPrice = parseInt(response.Price_Reduction) 
-                    setPromoCode({ code: promoCode.code, applied: true, reduction: newPrice})
+                    newPrice = parseInt(response.Price_Reduction)
+                    setPromoCode({ code: promoCode.code, applied: true, reduction: newPrice })
                 }
                 setPrice((prevPrice) => prevPrice - newPrice)
             } else {
@@ -292,7 +296,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
             setShow(true)
             setMessage('Saving as Draft....')
             setMessageType('info')
-            navigate('/my-bookings')
+            // navigate('/my-bookings')
             handleClose()
         } else {
             setShow(true)
@@ -331,7 +335,11 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
                 Customer_Id: decrypt(userData.USERDATA_AS_USERNAME),
                 Customer_Email: decrypt(userData.USERDATA_AS_EMAIL),
                 Customer_Phone: decrypt(userData.USERDATA_AS_NUMBER)
-            }
+            },
+            // Facebook_Meta:{
+            //     IP:ip,
+            //     UserAgent:navigator.userAgent,
+            // }
         }
         const interval = setInterval(async () => {
             const response = await checkPaymentStatus(items)
@@ -343,6 +351,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
                     setMessage('Order Placed')
                     setMessageType('success')
                     navigate('/my-bookings')
+                    FacebookDataSender(items,ip)
                 } else {
                     setShow(true)
                     setMessage('Payment is processing...')
@@ -350,6 +359,52 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
                 }
             }
         }, 10000);
+    }
+
+
+
+   async function FacebookDataSender(item,ip){
+        const PixelID = '820907902616795'
+        const access_token = 'EAAUjOBHpKPgBAN9ZB0Xk7aoTL3t1UpZBSZBg7ghYTKqoqGQEMpTl7i6K1rMtTQzTXyr9jCpktAb9ZCRlIgZAF7TRCT1xv82rJOHRZB9RxXS7DVZA0oIOPt0ocJ2IbWTACAsVoICMIk373qggFe5XdPBQI6PyMXVJzqsoryQPWOEMdd2DHZAoTEiQZBiRBQJUnqIEZD'
+        const fbData = {
+            "data": [
+               {
+                  "event_name": "hello",
+                  "event_time":  Math.floor(new Date() / 1000),
+                  "event_id":uuidV4() ,
+                  "event_source_url": `http://housedeckhomeservices.in/service=${newService}`,         
+                  "action_source": "website",
+                  "user_data": {
+                     "client_ip_address": ip,
+                     "client_user_agent": navigator.userAgent,
+                     "em": [
+                        sha256(item.Customer_Details.Customer_Email)
+                     ],
+                     "ph": [
+                        sha256(item.Customer_Details.Customer_Phone)
+                     ],
+                     "fbc": "fb.1.1554763741205.AbCdEfGhIjKlMnOpQrStUvWxYz1234567890",
+                     "fbp": "fb.1.1558571054389.1098115397"
+                  },
+                  "custom_data": {
+                     "value":item.Order_Details.Total_Amount,
+                     "currency": "INR",
+                     "content_ids": [
+                        item.Order_Details.Order_Id
+                     ],
+                     "content_type": "product"
+                  },
+                  "opt_out": false
+               }
+            ]
+         }
+         const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(fbData)
+        };
+        await fetch(`https://graph.facebook.com/v14.0/${PixelID}/events?access_token=${access_token}`, requestOptions)
+        .then(response => response.json())
     }
 
     return (
@@ -757,7 +812,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
 
 
 
-export default function ServiceSelector({ options, category, data, setOptions, open, setOpen,newService }) {
+export default function ServiceSelector({ options, category, data, setOptions, open, setOpen, newService }) {
 
     const xlMax = useMediaQuery('(max-width:2000px)');
     const xlMin = useMediaQuery('(min-width:650px)');
@@ -773,3 +828,6 @@ export default function ServiceSelector({ options, category, data, setOptions, o
         </>
     )
 }
+
+
+
