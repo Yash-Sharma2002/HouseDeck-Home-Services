@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useNavigate,useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { sha256 } from 'js-sha256';
 import CloseIcon from '@mui/icons-material/Close'
 import { Box, Stack, Typography, Dialog, useMediaQuery, TextField } from '@mui/material'
@@ -296,7 +296,8 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
             setShow(true)
             setMessage('Saving as Draft....')
             setMessageType('info')
-            // navigate('/my-bookings')
+            navigate('/my-bookings')
+            FacebookDataSender(items,ip,"addtocart")
             handleClose()
         } else {
             setShow(true)
@@ -336,10 +337,6 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
                 Customer_Email: decrypt(userData.USERDATA_AS_EMAIL),
                 Customer_Phone: decrypt(userData.USERDATA_AS_NUMBER)
             },
-            // Facebook_Meta:{
-            //     IP:ip,
-            //     UserAgent:navigator.userAgent,
-            // }
         }
         const interval = setInterval(async () => {
             const response = await checkPaymentStatus(items)
@@ -351,7 +348,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
                     setMessage('Order Placed')
                     setMessageType('success')
                     navigate('/my-bookings')
-                    FacebookDataSender(items,ip)
+                    FacebookDataSender(items,ip,"Purchase")
                 } else {
                     setShow(true)
                     setMessage('Payment is processing...')
@@ -363,13 +360,13 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
 
 
 
-   async function FacebookDataSender(item,ip){
-        const PixelID = '820907902616795'
-        const access_token = 'EAAUjOBHpKPgBAN9ZB0Xk7aoTL3t1UpZBSZBg7ghYTKqoqGQEMpTl7i6K1rMtTQzTXyr9jCpktAb9ZCRlIgZAF7TRCT1xv82rJOHRZB9RxXS7DVZA0oIOPt0ocJ2IbWTACAsVoICMIk373qggFe5XdPBQI6PyMXVJzqsoryQPWOEMdd2DHZAoTEiQZBiRBQJUnqIEZD'
+   async function FacebookDataSender(item,ip,type){
+        const PixelID = '820907902616795' 
+        const access_token = 'EAAUjOBHpKPgBAOpx29gjOfT4pXEuDJqOCwZAZA2uIvbdbSqEYj3dtHV6CrNOZAHjtrBlxUahNDvopLlYDZCd1TQN3xDiwrojOWwoqPU1EaCbvjOesZAes0DW8QouEkfrZCXnzmaadue9W7oe1thCDCz9HiagsPOkdkTem3dshYmSZCc4rgfk8TDQhVfksdJH38ZD'
         const fbData = {
             "data": [
                {
-                  "event_name": "hello",
+                  "event_name": type,
                   "event_time":  Math.floor(new Date() / 1000),
                   "event_id":uuidV4() ,
                   "event_source_url": `http://housedeckhomeservices.in/service=${newService}`,         
@@ -404,7 +401,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
             body: JSON.stringify(fbData)
         };
         await fetch(`https://graph.facebook.com/v14.0/${PixelID}/events?access_token=${access_token}`, requestOptions)
-        .then(response => response.json())
+        .then(response => response.json()).then(data => {console.log(data)})
     }
 
     return (

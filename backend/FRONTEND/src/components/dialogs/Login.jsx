@@ -6,7 +6,6 @@ import Dialog from '@mui/material/Dialog';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
-// import { makeStyles } from '@mui/styles';
 import { sendOTP } from '../../Api/otpSend';
 import '../../css/OnlyForDialog.css';
 import { authenticateSignup } from '../../Api/signup';
@@ -167,17 +166,16 @@ function Content({ open, setOpen, width, display }) {
   }
   const sendToDatabase = async () => {
     var validRegexForEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    var validRegexForUsername = /^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/;
     if (!email.match(validRegexForEmail)) {
       setShow(true)
       setMessageType('error')
       setMessage("Invalid Email")
       return
     }
-    if (!username.match(validRegexForUsername)) {
+    if (username.lenght<5) {
       setShow(true)
       setMessageType('error')
-      setMessage("Username mut be 8 characters long and alphanumeric")
+      setMessage("Username mut be 8 characters.")
       return
     }
     const signup = {
@@ -305,7 +303,7 @@ function Content({ open, setOpen, width, display }) {
 
             <Box sx={{ display: displayForLast ? 'block' : 'none' }}>
               <input
-                placeholder='Username'
+                placeholder='First & Last Name'
                 type='text'
                 onChange={e => getUserName(e.target)}
                 style={{
