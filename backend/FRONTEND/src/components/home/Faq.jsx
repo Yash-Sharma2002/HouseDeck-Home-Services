@@ -163,6 +163,9 @@ export default function Faq() {
     const mdMax = useMediaQuery('(max-width:1160px)');
     const mdMin = useMediaQuery('(min-width:600px)');
     const sm = useMediaQuery('(max-width:600px)');
+
+
+    
     return (
 
         <>

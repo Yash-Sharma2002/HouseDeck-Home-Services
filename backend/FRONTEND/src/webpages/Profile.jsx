@@ -35,6 +35,8 @@ const useStyles = makeStyles({
 })
 
 export default function Profile() {
+
+
   const classes = useStyles()
   const xlMax = useMediaQuery('(max-width:2000px)');
   const xlMin = useMediaQuery('(min-width:550px)');
@@ -110,7 +112,6 @@ export default function Profile() {
       }
     }
   }
-
 
 
   const emailVerify = async () => {

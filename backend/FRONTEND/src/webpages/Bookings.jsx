@@ -13,7 +13,7 @@ import { LoginContext } from '../context/Context'
 
 
 function TabPanel(props) {
-  const { children, value, change,index, ...other } = props
+  const { children, value, change, index, ...other } = props
 
   return (
     <div
@@ -24,7 +24,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p:change?'2px 3px': 3 }}>
+        <Box sx={{ p: change ? '2px 3px' : 3 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -60,6 +60,8 @@ function Content({ change }) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  
 
   // for always loading draft services first
   useEffect(() => {
@@ -125,7 +127,7 @@ function Content({ change }) {
       <Header commonProps={commonProps} />
 
       <Box sx={{
-        mt:4,
+        mt: 4,
         // background: 'rgb(229, 246, 245)', 
         height: '300px',
       }}>
@@ -246,6 +248,10 @@ export default function Bookings() {
   const xlMax = useMediaQuery('(max-width:2000px)');
   const xlMin = useMediaQuery('(min-width:1170px)');
   const sm = useMediaQuery('(max-width:1170px)');
+
+
+
+
   return (
     <>
       {xlMax && xlMin && (

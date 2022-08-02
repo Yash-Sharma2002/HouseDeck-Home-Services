@@ -23,13 +23,16 @@ export default function Home() {
     { name: 'FAQs', url: '#faqs' },
     { name: 'HouseDeck Services', url: '#houseDeck-Services' },
   ]
+
+
+
   return (
     <>
       <Header commonProps={commonProps} />
       <Top />
       <React.Suspense fallback={<div><Loader /></div>}>
         <CarouselHome />
-        <Services  />
+        <Services />
       </React.Suspense>
 
       <Recommended />

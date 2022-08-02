@@ -26,7 +26,7 @@ export default function ServicesProvider({ service, width }) {
             <Box sx={{ width: width, background: 'white', borderRadius: 3, padding: '0px 24px', boxShadow: 2, border: '5px solid orange' }}>
                 <Typography sx={{ mt: 2, padding: '20px 0 8px', fontSize: '18px', fontWeight: '600', color: '#464646' }}>Select Your Service</Typography>
 
-                {city === 'Bangalore' && (newService === 'home_cleaning' || newService === 'home_painting' || newService === 'false_ceiling') ?
+                {city === 'Bangalore' && (newService === 'cleaning' || newService === 'painting' || newService === 'false_ceiling') ?
                     <>
                         {
                             ServiceDialogData[newService].map(data =>

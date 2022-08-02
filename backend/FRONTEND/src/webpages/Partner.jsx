@@ -5,6 +5,8 @@ import Footer from '../components/foot/Footer';
 
 function Content({ width, padding, variant, margin }) {
     const commonProps = [{ name: "Home Services", url: "/" }];
+    
+ 
     return (
         <div>
             <Header commonProps={commonProps} />
@@ -526,6 +528,10 @@ export default function Partner() {
     const mdMax = useMediaQuery("(max-width:1200px)");
     const mdMin = useMediaQuery("(min-width:600px)");
     const sm = useMediaQuery("(max-width:600px)");
+
+
+    
+
     return (
         <>
             {xlMax && xlMin && <Content width={"1170px"} padding={"unset"} variant={'h3'} margin={"100px auto"} />}

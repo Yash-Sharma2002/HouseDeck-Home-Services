@@ -8,6 +8,7 @@ function Content({ width, padding, variant, margin }) {
 
 
   const commonProps = [{ name: "Home Services", url: "/" }];
+ 
   return (
     <div>
       <Header commonProps={commonProps} />

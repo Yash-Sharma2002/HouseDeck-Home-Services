@@ -14,7 +14,7 @@ const ContextProvider = ({ children }) => {
 
     const [message, setMessage] = React.useState('')
     const [messageType, setMessageType] = React.useState('')
-    const [city, setCity] = React.useState("")
+    const [city, setCity] = React.useState("Bangalore")
     const [show, setShow] = React.useState(false)
     const isLogin = forCheckingLogin()
     const userData = loadUserData()
@@ -91,7 +91,7 @@ const ContextProvider = ({ children }) => {
                 USERDATA_AS_EMAIL: '',
             }))
             localStorage.setItem('EMAIL_VERIFIED', true)
-            localStorage.setItem('CENTER_DATA', JSON.stringify(''));
+            localStorage.setItem('CENTER_DATA', JSON.stringify(encrypt('Bangalore')));
         }
     }
 
@@ -107,12 +107,9 @@ const ContextProvider = ({ children }) => {
     function loadCity() {
         try {
             const serializedState = localStorage.getItem('CENTER_DATA')
-            if (serializedState === null) {
-                return '';
-            }
             return decrypt(JSON.parse(serializedState))
         } catch (err) {
-            localStorage.setItem('CENTER_DATA', JSON.stringify(''));
+            localStorage.setItem('CENTER_DATA', JSON.stringify(encrypt('Bangalore')));
             const serializedState = localStorage.getItem('CENTER_DATA')
             if (serializedState === null) {
                 return '';

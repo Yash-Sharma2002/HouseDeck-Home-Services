@@ -10,6 +10,8 @@ export default function About() {
     { name: 'Home Services', url: '/' },
     { name: 'Who we are', url: '#who-we-are' }
   ]
+
+
   return (
     <div>
       <Header commonProps={commonProps} />
