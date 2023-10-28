@@ -18,10 +18,10 @@ const SubscribeCard = React.lazy(() => import('../components/overall/SubscribeCa
 export default function Home() {
   const commonProps = [
     { name: 'Home Services', url: '/' },
-    { name: 'Recommended Services', url: '#houseDeck-Recommended-Services' },
+    { name: 'Recommended Services', url: '#Vapormop-Recommended-Services' },
     { name: 'Customer Stories', url: '#customer-stories' },
     { name: 'FAQs', url: '#faqs' },
-    { name: 'HouseDeck Services', url: '#houseDeck-Services' },
+    { name: 'Vapormop Services', url: '#Vapormop-Services' },
   ]
 
 

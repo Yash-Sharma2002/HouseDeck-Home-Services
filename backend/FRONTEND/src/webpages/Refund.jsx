@@ -45,7 +45,7 @@ function Content({ width, padding, variant }) {
             <br />
             3.Warranty of the service is for 1 year
             <br />
-            4.HouseDeck is not responsible for any damage due to seepage or
+            4.Vapormop is not responsible for any damage due to seepage or
             waterproofing on walls; warranties shall not be applicable in such
             cases
             <br />
@@ -70,7 +70,7 @@ function Content({ width, padding, variant }) {
             Scope of Work Policies
           </Typography>
           <Typography sx={{ mt: 4, fontSize: "16px", lineHeight: "2.4" }}>
-            1.Housedeck Painting Services will only be responsible for the work
+            1.Vapormop Painting Services will only be responsible for the work
             mentioned in the selected quotation.
             <br />
             2.Anything mentioned outside the scope will be charged additionally
@@ -79,7 +79,7 @@ function Content({ width, padding, variant }) {
             3.Anything mentioned outside the scope will be charged additionally
             as per actuals.
             <br />
-            4.Housedeck painting services and its vendors reserve the right to
+            4.Vapormop painting services and its vendors reserve the right to
             reject any request which is not mentioned in the quotation.
           </Typography>
           <Typography
@@ -104,7 +104,7 @@ function Content({ width, padding, variant }) {
             the commencement of work when both the material and the painting
             team has arrived.
             <br />
-            5.In case of non compliance of payment schedule Housedeck painting
+            5.In case of non compliance of payment schedule Vapormop painting
             services holds the right to cancel/hold the project and can forfeit
             the advance payment.
           </Typography>
@@ -123,11 +123,11 @@ function Content({ width, padding, variant }) {
             customer 2 days prior to the start of work and 50% advance should be
             paid for the project to start.
             <br />
-            2.Housedeck painting services shall hold the right to reschedule the
+            2.Vapormop painting services shall hold the right to reschedule the
             project start date if the required information, from the customer’s
             end, is not provided on time.
             <br />
-            3.Housedeck painting services shall hold the right to reschedule the
+            3.Vapormop painting services shall hold the right to reschedule the
             project start date if the required information, from the customer’s
             end, is not provided on time.
           </Typography>
@@ -144,13 +144,13 @@ function Content({ width, padding, variant }) {
           <Typography sx={{ mt: 4, fontSize: "16px", lineHeight: "2.4" }}>
             1.If the client has made advance payment but then wants to cancel the project because of unavoidable conditions then the refund will be made as per the following:
             <br />
-            <li>If the project is cancelled before 48 hrs of the scheduled start date (10AM) – Housedeck painting services will refund 100% of the amount received.</li>
-            <li>If the project is cancelled within 48 hrs of the scheduled start date (10AM) – Housedeck painting services will refund 0% of the amount received.</li>
+            <li>If the project is cancelled before 48 hrs of the scheduled start date (10AM) – Vapormop painting services will refund 100% of the amount received.</li>
+            <li>If the project is cancelled within 48 hrs of the scheduled start date (10AM) – Vapormop painting services will refund 0% of the amount received.</li>
             <br />
             2.If the client has made complete payment but then wants to cancel the project because of unavoidable conditions then the refund will be made as per the following:
             <br />
-            <li>If the project is cancelled on Day 1 of the schedule – Housedeck painting services will refund 50% of the amount received and Housedeck painting services assigned service vendor holds the right to pick up the material purchased.</li>
-            <li>If the project is cancelled after Day 1 of the schedule – Housedeck painting services will refund 0% of the amount received and the customer holds the right to retain the material for that particular site.</li>
+            <li>If the project is cancelled on Day 1 of the schedule – Vapormop painting services will refund 50% of the amount received and Vapormop painting services assigned service vendor holds the right to pick up the material purchased.</li>
+            <li>If the project is cancelled after Day 1 of the schedule – Vapormop painting services will refund 0% of the amount received and the customer holds the right to retain the material for that particular site.</li>
             <br />
             3.Warranty of the service is for 1 yearAll refunds processed to the customer will only be made through online bank transfers and it will take upto 14 business working days to get it processed.
           </Typography>

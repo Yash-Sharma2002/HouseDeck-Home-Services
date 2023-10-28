@@ -9,7 +9,7 @@ export default function Subscriptions() {
   const commonProps = [
     { name: 'Home Services', url: '/' },
     { name: 'Subscriptions Services', url: '#subscription-plans' },
-    { name: 'Recommended Services', url: '#houseDeck-Recommended-Services' },
+    { name: 'Recommended Services', url: '#Vapormop-Recommended-Services' },
   ]
   return (
     // i will change the contents when they are provided later 

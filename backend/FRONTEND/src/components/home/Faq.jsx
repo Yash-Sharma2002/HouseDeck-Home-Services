@@ -53,7 +53,7 @@ const TopQuestions = () => {
                 >
         
                     <Typography sx={{color:id===1?'#FF512F':'#464646',}}>
-                        How to book a service on HouseDeck?
+                        How to book a service on Vapormop?
                     </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
@@ -78,7 +78,7 @@ const TopQuestions = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography >
-                        HouseDeck Partners are selected individuals / companies who meet our stringent
+                        Vapormop Partners are selected individuals / companies who meet our stringent
                         criteria for delivering quality home services.
                     </Typography>
                 </AccordionDetails>
@@ -91,7 +91,7 @@ const TopQuestions = () => {
                     id="panel3bh-header"
                 >
                     <Typography sx={{color:id===3?'#FF512F':'#464646',}} >
-                        What all services are available on HouseDeck?
+                        What all services are available on Vapormop?
                     </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
@@ -106,14 +106,14 @@ const TopQuestions = () => {
                     aria-controls="panel4bh-content"
                     id="panel4bh-header"
                 >
-                    <Typography sx={{color:id===4?'#FF512F':'#464646',}} >How are HouseDeck services different
+                    <Typography sx={{color:id===4?'#FF512F':'#464646',}} >How are Vapormop services different
                         from other online portals?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
                         Other online portals merely put you in touch with the service providers
                         leaving the service quality upto individual vendors. On the other hand, all
-                        HouseDeck services are owned and fulfilled by HouseDeck Partners who adhere to a strict quality criteria.
+                        Vapormop services are owned and fulfilled by Vapormop Partners who adhere to a strict quality criteria.
                     </Typography>
                 </AccordionDetails>
             </Accordion>

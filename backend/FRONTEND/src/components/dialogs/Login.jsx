@@ -248,8 +248,8 @@ function Content({ open, setOpen, width, display }) {
               Continue
             </Button>
 
-            <Typography sx={{ fontSize: '11px', fontFamily: 'Fredoka', position: 'absolute',textAlign:'start', bottom: 25 }}>By continuing, you agree to the <a href="/housedeck-partner-(Terms-of-Use)" style={{ color: 'black', textDecoration: 'none', fontWeight: '700' }}> Terms & Conditions</a></Typography>
-            <Typography sx={{ fontSize: '11px', fontFamily: 'Fredoka', position: 'absolute',textAlign:'start', bottom: 10 }}>For any issue/query please email <a href="mailto:homeservices@housedeck.in" style={{ color: 'black', textDecoration: 'none', fontWeight: '700' }}>homeservices@housedeck.in</a></Typography>
+            <Typography sx={{ fontSize: '11px', fontFamily: 'Fredoka', position: 'absolute',textAlign:'start', bottom: 25 }}>By continuing, you agree to the <a href="/Vapormop-partner-(Terms-of-Use)" style={{ color: 'black', textDecoration: 'none', fontWeight: '700' }}> Terms & Conditions</a></Typography>
+            <Typography sx={{ fontSize: '11px', fontFamily: 'Fredoka', position: 'absolute',textAlign:'start', bottom: 10 }}>For any issue/query please email <a href="mailto:homeservices@Vapormop.in" style={{ color: 'black', textDecoration: 'none', fontWeight: '700' }}>homeservices@Vapormop.in</a></Typography>
 
 
             <Box sx={{ display: displayForSecond ? 'block' : 'none', margin: '0px auto', }}>

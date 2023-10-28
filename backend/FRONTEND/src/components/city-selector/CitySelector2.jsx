@@ -74,7 +74,7 @@ export default function CitySelector2({style}) {
 
   const handleClose = () => {
     setOpen(false);
-    handleData('Bangalore')
+    handleData('Chicago')
   };
 
 
@@ -84,6 +84,7 @@ export default function CitySelector2({style}) {
 
 
   return (
+    <>
     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
       <Box >
         <Box sx={style} onClick={handleClickOpen}>
@@ -104,12 +105,11 @@ export default function CitySelector2({style}) {
 
               </BootstrapDialogTitle>
               <DialogContent dividers>
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', padding: '15px' }}>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', padding: '15px',width:'100%' }}>
                   {CitiesImg.map(data =>
                     <>
-                      <Button sx={{ width: '25%', display: 'block', color: 'black',textTransform:'none', userSelect: 'none', textAlign: 'center', padding: '20px 0px', cursor: 'pointer', }} onClick={() => handleData(data.name)}>
-
-                        <img style={{ width: '50px', height: '50px' }} src={data.url} alt={data.id} />
+                      <Button sx={{ width: '25%', display: 'block', color: 'black',textTransform:'none', userSelect: 'none', textAlign: 'center', padding: '20px 0px', cursor: 'pointer', mx:'10px'}} onClick={() => handleData(data.name)}>
+                        <img style={{ width: '50px', height: '50px',borderRadius:"50%" }} src={data.url} alt={data.id} />
                         <Typography sx={{ fontSize: '14px' }}>{data.name}</Typography>
                       </Button>
                     </>
@@ -134,11 +134,11 @@ export default function CitySelector2({style}) {
 
               </BootstrapDialogTitle>
               <DialogContent dividers>
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', }}>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap',width:'100%' }}>
                   {CitiesImg.map(data =>
-                    <Button sx={{ width: '33%', display: 'block', color: 'black',textTransform:'none', userSelect: 'none', textAlign: 'center', padding: '15px 0px', cursor: 'pointer', }} onClick={() => handleData(data.name)}>
+                    <Button sx={{ width: '30%', display: 'block', color: 'black',textTransform:'none', userSelect: 'none', textAlign: 'center', padding: '15px 0px', cursor: 'pointer', }} onClick={() => handleData(data.name)}>
 
-                      <img style={{ width: '50px', height: '50px' }} src={data.url} alt={data.id} />
+                      <img style={{ width: '50px', height: '50px',borderRadius:"50%" }} src={data.url} alt={data.id} />
                       <Typography sx={{ fontSize: '14px' }}>{data.name}</Typography>
                     </Button>
                   )}
@@ -162,11 +162,11 @@ export default function CitySelector2({style}) {
 
               </BootstrapDialogTitle>
               <DialogContent dividers>
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', padding: '15px' }}>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', padding: '15px',width:'100%' }}>
                   {CitiesImg.map(data =>
-                    <Button sx={{ width: '50%', display: 'block', color: 'black',textTransform:'none', userSelect: 'none', textAlign: 'center', padding: '20px 0px', cursor: 'pointer', }} onClick={() => handleData(data.name)}>
+                    <Button sx={{ width: '50%', display: 'block', color: 'black',textTransform:'none', userSelect: 'none', textAlign: 'center', padding: '20px 0px', cursor: 'pointer', mx:'10px'}} onClick={() => handleData(data.name)}>
 
-                      <img style={{ width: '50px', height: '50px' }} src={data.url} alt={data.id} />
+                      <img style={{ width: '50px', height: '50px',borderRadius:"50%" }} src={data.url} alt={data.id} />
                       <Typography sx={{ fontSize: '14px' }}>{data.name}</Typography>
                     </Button>
                   )}
@@ -183,5 +183,6 @@ export default function CitySelector2({style}) {
 
       </Box>
     </div >
+    </>
   )
 }

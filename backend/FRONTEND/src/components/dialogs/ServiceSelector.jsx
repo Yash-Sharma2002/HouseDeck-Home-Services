@@ -369,7 +369,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
                   "event_name": type,
                   "event_time":  Math.floor(new Date() / 1000),
                   "event_id":uuidV4() ,
-                  "event_source_url": `http://housedeckhomeservices.in/service=${newService}`,         
+                  "event_source_url": `http://Vapormophomeservices.in/service=${newService}`,         
                   "action_source": "website",
                   "user_data": {
                      "client_ip_address": ip,
@@ -461,8 +461,8 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
                                             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '8px 4px' }}>
                                                 <Typography sx={{ fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>{service}</Typography>
                                                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
-                                                    <Typography sx={{ fontSize: '17px', fontWeight: '600', fontFamily: 'Fredoka', textDecoration: 'line-through', color: 'gray' }}>&#8377;{fakePrice.toLocaleString()}</Typography>
-                                                    <Typography sx={{ ml: 2, fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{price.toLocaleString()}</Typography>
+                                                    <Typography sx={{ fontSize: '17px', fontWeight: '600', fontFamily: 'Fredoka', textDecoration: 'line-through', color: 'gray' }}>${fakePrice.toLocaleString()}</Typography>
+                                                    <Typography sx={{ ml: 2, fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>${price.toLocaleString()}</Typography>
                                                 </Box>
                                             </Box>
 
@@ -518,7 +518,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
                                 (display && !(totalPrice === 0)) ?
                                     <>
                                         <Box sx={{ mt: 3, display: 'flex', alignItems: 'center', justifyContent: 'end' }}>
-                                            <Typography sx={{ mr: 1, fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{totalPrice}</Typography>
+                                            <Typography sx={{ mr: 1, fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>${totalPrice}</Typography>
                                             <Divider orientation='vertical' sx={{ color: 'black' }} flexItem />
                                             <Typography sx={{ ml: 1, color: 'gray', fontSize: '13px', fontFamily: 'Fredoka' }}>{Services.length} item</Typography>
                                             <Button variant='outlined' sx={{ ml: 1, textTransform: 'none', boxShadow: 0 }} color='secondary' endIcon={<SendIcon />} onClick={getRequiredThings}>Next</Button>
@@ -689,7 +689,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
                             return (
                                 <Box key={index} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                     <Typography sx={{ fontSize: '16px', fontFamily: 'Fredoka' }}>{data.Service}</Typography>
-                                    <Typography sx={{ fontSize: '16px', fontFamily: 'Fredoka' }}>&#8377;{data.Price}</Typography>
+                                    <Typography sx={{ fontSize: '16px', fontFamily: 'Fredoka' }}>${data.Price}</Typography>
                                 </Box>
                             )
                         })}
@@ -703,14 +703,14 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
                                             <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>New Price</Typography>
                                         </Box>
                                         <Box>
-                                            <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>&#8377;{totalPrice + promoCode.reduction}</Typography>
-                                            <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>&#8377;{totalPrice}</Typography>
+                                            <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>${totalPrice + promoCode.reduction}</Typography>
+                                            <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>${totalPrice}</Typography>
                                         </Box>
                                     </>
                                     :
                                     <>
                                         <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>Total Price</Typography>
-                                        <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>&#8377;{totalPrice}</Typography>
+                                        <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>${totalPrice}</Typography>
                                     </>
                             }
                         </Box>

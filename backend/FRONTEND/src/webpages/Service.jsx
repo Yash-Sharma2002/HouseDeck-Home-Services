@@ -28,7 +28,7 @@ export default function Service() {
   const commonProps = [
     { name: 'Home Services', url: '/' },
     { name: 'How it works', url: '#how-it-works' },
-    { name: 'HouseDeck Promise', url: '#houseDeck-promise' },
+    { name: 'Vapormop Promise', url: '#Vapormop-promise' },
     { name: 'Customer Stories', url: '#customer-stories' },
     { name: 'Similar Services', url: '#similar-services-for-other-pages' },
   ]

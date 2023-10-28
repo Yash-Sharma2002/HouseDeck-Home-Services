@@ -57,7 +57,7 @@ const Content = () => {
 }
 function XLRecommended() {
     return (
-        <div id="houseDeck-Recommended-Services" style={{
+        <div id="Vapormop-Recommended-Services" style={{
             padding: '60px 100px',
         }}>
             <div style={{ marginTop: '40px' }}><Content /></div>
@@ -67,7 +67,7 @@ function XLRecommended() {
 }
 function MDRecommended() {
     return (
-        <div id="houseDeck-Recommended-Services" style={{
+        <div id="Vapormop-Recommended-Services" style={{
             padding: '20px',
         }}>
 
@@ -79,7 +79,7 @@ function MDRecommended() {
 
 function SMRecommended() {
     return (
-        <div id="houseDeck-Recommended-Services" style={{
+        <div id="Vapormop-Recommended-Services" style={{
             padding: '20px',
         }}>
 

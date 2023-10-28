@@ -20,23 +20,23 @@ function Content({ width, padding, variant, margin }) {
                 }}
             >
                 <Typography variant={variant} sx={{ fontWeight: "600", color: "#1b685f" }}>
-                    Housedeck Partner - Terms of Use
+                    Vapormop Partner - Terms of Use
 
                 </Typography>
                 <Box sx={{ color: "#95b2af" }}>
                     <Typography sx={{ mt: 6, fontSize: "16px" }}>
-                        We are delighted that you are interested in becoming an Housedeck Partner!
+                        We are delighted that you are interested in becoming an Vapormop Partner!
                         <br />
                         <br />
-                        These Terms of Use (“Terms”) set forth the conditions to become a partner with Housedeck and use of the Services (defined below) of our website housedecklite.com or mobile application Housedeck (“Platform”) operated and managed by Housedeck Furnishing Private Limited (“Company”), a company duly registered and incorporated under the Companies Act, 2013 and having its re registered office at NO.1, T.C. PALLYA SONNATHAMMANAHALLI K.R.PURAM BANGALORE  KA 560036 IN .
+                        These Terms of Use (“Terms”) set forth the conditions to become a partner with Vapormop and use of the Services (defined below) of our website Vapormoplite.com or mobile application Vapormop (“Platform”) operated and managed by Vapormop Furnishing Private Limited (“Company”), a company duly registered and incorporated under the Companies Act, 2013 and having its re registered office at NO.1, T.C. PALLYA SONNATHAMMANAHALLI K.R.PURAM BANGALORE  KA 560036 IN .
 
                         <br />
                         <br />
-                        For the purpose of the understated terms and conditions, wherever the context so requires "We/we" or "Our/our" or "Us/us" or “housedecklite.com” or “Housedeck” refers to the Company and shall include its successors and assignees.
+                        For the purpose of the understated terms and conditions, wherever the context so requires "We/we" or "Our/our" or "Us/us" or “Vapormoplite.com” or “Vapormop” refers to the Company and shall include its successors and assignees.
 
                         <br />
                         <br />
-                        You/you" or “Your/your” or “Yourself/yourself or Housedeck Partner” shall mean any user interested in registering as a service provider and availing Services on our Platform or his/her representative and any other Person who has agreed to become a subscriber on the Platform by providing information on the Platform or accessing our Platform.
+                        You/you" or “Your/your” or “Yourself/yourself or Vapormop Partner” shall mean any user interested in registering as a service provider and availing Services on our Platform or his/her representative and any other Person who has agreed to become a subscriber on the Platform by providing information on the Platform or accessing our Platform.
 
                     </Typography>
                     <Typography
@@ -72,7 +72,7 @@ function Content({ width, padding, variant, margin }) {
                         ELIGIBILITY TO USE THE PLATFORM
                     </Typography>
                     <Typography sx={{ mt: 6, fontSize: "16px" }}>
-                        Use of the Platform and Services is limited to parties who can lawfully enter into and form contracts under the Applicable Law. To register with the Platform, the Housedeck Partner must provide its legal name, address, phone number, e-mail address, PAN and GST details, as may be applicable.
+                        Use of the Platform and Services is limited to parties who can lawfully enter into and form contracts under the Applicable Law. To register with the Platform, the Vapormop Partner must provide its legal name, address, phone number, e-mail address, PAN and GST details, as may be applicable.
                         <br />
                         <br />
                         Any Person who is not competent to enter into a legally binding contract including minors, un- discharged insolvents, Persons of unsound mind etc. are not eligible to use the Platform. Kindly note, the Platform is intended for individuals who are 18 years of age or above.
@@ -95,21 +95,21 @@ function Content({ width, padding, variant, margin }) {
 
                         <br />
                         <br />
-                        1.2 “Brand Name” or “Brand” shall mean “Housedeck” or such other successor or replacement brand name / trade mark / service mark as may be decided by Housedeck.
+                        1.2 “Brand Name” or “Brand” shall mean “Vapormop” or such other successor or replacement brand name / trade mark / service mark as may be decided by Vapormop.
 
                         <br />
                         <br />
-                        1.3 “Confidential Information” shall mean any and all data, information, and material that Housedeck Partner has access to while using the Platform and whether identified as confidential or proprietary or not and shall without limitation include information that forms part of or relates to the know-how, trade secrets, Intellectual Property Rights, business plan, strategies, operations, employees, suppliers, Customers, end users, vendors, financials, or otherwise of the Company, user ID and password for the Platform.
+                        1.3 “Confidential Information” shall mean any and all data, information, and material that Vapormop Partner has access to while using the Platform and whether identified as confidential or proprietary or not and shall without limitation include information that forms part of or relates to the know-how, trade secrets, Intellectual Property Rights, business plan, strategies, operations, employees, suppliers, Customers, end users, vendors, financials, or otherwise of the Company, user ID and password for the Platform.
 
                         <br />
                         <br />
-                        1.4 “Customer(s)” means any end users, whether any Person or entity, that avails or intends to avail any Housedeck Services from You through the Platform.
+                        1.4 “Customer(s)” means any end users, whether any Person or entity, that avails or intends to avail any Vapormop Services from You through the Platform.
                         <br />
                         <br />
-                        1.4 “Customer(s)” means any end users, whether any Person or entity, that avails or intends to avail any Housedeck Services from You through the Platform.
+                        1.4 “Customer(s)” means any end users, whether any Person or entity, that avails or intends to avail any Vapormop Services from You through the Platform.
                         <br />
                         <br />
-                        1.4 “Customer(s)” means any end users, whether any Person or entity, that avails or intends to avail any Housedeck Services from You through the Platform.
+                        1.4 “Customer(s)” means any end users, whether any Person or entity, that avails or intends to avail any Vapormop Services from You through the Platform.
                         <br />
                         <br />
                         1.7 “Platform” shall mean the platform on which the website is hosted, including the related mobile site and mobile application and bearing the Brand name with any top level domain name, that are required to support the market place managed by or on behalf of Company.
@@ -118,7 +118,7 @@ function Content({ width, padding, variant, margin }) {
                         1.8 “Services” shall have the meaning set forth in Clause 2;
                         <br />
                         <br />
-                        1.9 “Housedeck Services” shall mean home improvement and allied services listed and offered on the Platform in accordance with the terms and conditions set out hereunder.
+                        1.9 “Vapormop Services” shall mean home improvement and allied services listed and offered on the Platform in accordance with the terms and conditions set out hereunder.
                     </Typography>
                     <Typography
                         sx={{
@@ -128,10 +128,10 @@ function Content({ width, padding, variant, margin }) {
                             fontSize: "16px",
                         }}
                     >
-                        2. THE Housedeck PLATFORM – SERVICES
+                        2. THE Vapormop PLATFORM – SERVICES
                     </Typography>
                     <Typography sx={{ mt: 6, fontSize: "16px" }}>
-                        Services - The Company shall provide You the access and technical assistance to a technology enabled internet based intermediary Platform that facilitates (a) the Housedeck Partner to offer and deliver, as an independent third party service provider, Housedeck Services to the Customers; (b) determination of pricing for provision of Housedeck Services to Customers; and (c) timely and accurate receipt of payment from Customer and generation of invoices on your behalf, as and when applicable, for the Housedeck Services performed by You.
+                        Services - The Company shall provide You the access and technical assistance to a technology enabled internet based intermediary Platform that facilitates (a) the Vapormop Partner to offer and deliver, as an independent third party service provider, Vapormop Services to the Customers; (b) determination of pricing for provision of Vapormop Services to Customers; and (c) timely and accurate receipt of payment from Customer and generation of invoices on your behalf, as and when applicable, for the Vapormop Services performed by You.
 
                     </Typography>
                     <Typography
@@ -142,26 +142,26 @@ function Content({ width, padding, variant, margin }) {
                             fontSize: "16px",
                         }}
                     >
-                        3. OBLIGATIONS OF Housedeck PARTNER
+                        3. OBLIGATIONS OF Vapormop PARTNER
                     </Typography>
                     <Typography sx={{ mt: 6, fontSize: "16px" }}>
-                        Subject to the terms and conditions herein the Housedeck Partner:
+                        Subject to the terms and conditions herein the Vapormop Partner:
                         <br />
                         <br />
-                        3.1 shall create an account and register itself on the Platform with accurate details as required on the Platform. It shall be the obligation of the Housedeck Partner to maintain, at all times, complete and updated information, documents and authorisations, as may be applicable, on the Platform.
+                        3.1 shall create an account and register itself on the Platform with accurate details as required on the Platform. It shall be the obligation of the Vapormop Partner to maintain, at all times, complete and updated information, documents and authorisations, as may be applicable, on the Platform.
                         <br />
                         <br />
                         3.2 shall at all times maintain confidentiality of its account and in no event share the user name and password with any third Person to allow access or use the account. You undertake and warrant that You shall not under any circumstances maintain more than one account on the Platform.
                         <br />
                         <br />
-                        3.3 shall make himself/herself available on the Housedeck Platform to undertake requests, as and when an order is so placed by a Customer through the Platform, and to provide Housedeck Services to the Customers within the timelines and to the best of his/her abilities. understands that time is of essence of Housedeck Services and that delay in completion will result in imposition of penalty.
+                        3.3 shall make himself/herself available on the Vapormop Platform to undertake requests, as and when an order is so placed by a Customer through the Platform, and to provide Vapormop Services to the Customers within the timelines and to the best of his/her abilities. understands that time is of essence of Vapormop Services and that delay in completion will result in imposition of penalty.
                         <br />
                         <br />
-                        3.4 shall incur all expenses, including cost of all raw materials, required for performance of Housedeck Services, unless otherwise agreed by the Company.
+                        3.4 shall incur all expenses, including cost of all raw materials, required for performance of Vapormop Services, unless otherwise agreed by the Company.
 
                         <br />
                         <br />
-                        3.5 shall comply with and procure all its helpers/employees/assistants shall comply with personal health regulations and shall at all times wear gloves, masks and Company authorized uniform during the performance of Housedeck Services.
+                        3.5 shall comply with and procure all its helpers/employees/assistants shall comply with personal health regulations and shall at all times wear gloves, masks and Company authorized uniform during the performance of Vapormop Services.
                         <br />
                         <br />
                         3.6 shall not under any circumstances deviate from the quality guidelines specified by the Company.
@@ -170,10 +170,10 @@ function Content({ width, padding, variant, margin }) {
                         3.7 shall ensure proper clean-up of the Customers’ premises after completion of work; remove and recycle all packaging materials, shrink wrap, used and waste material, unless otherwise instructed by Company or the customers.
                         <br />
                         <br />
-                        3.8 undertakes that any and all Confidential Information accessed as result of use of Services shall not be disclosed to any third Person. Under no circumstances the Housedeck Partner shall use Customer’s personal data/information, for any reason, other than for the purpose of fulfilling Housedeck Services, as per these Terms of Use.
+                        3.8 undertakes that any and all Confidential Information accessed as result of use of Services shall not be disclosed to any third Person. Under no circumstances the Vapormop Partner shall use Customer’s personal data/information, for any reason, other than for the purpose of fulfilling Vapormop Services, as per these Terms of Use.
                         <br />
                         <br />
-                        3.9 shall ensure that all services are delivered to the Customer by properly trained professionals suited for such services provided to the Customer. The Housedeck Partner its helpers/employees/assistants shall maintain highest professional integrity, diligence and care while delivering such services.
+                        3.9 shall ensure that all services are delivered to the Customer by properly trained professionals suited for such services provided to the Customer. The Vapormop Partner its helpers/employees/assistants shall maintain highest professional integrity, diligence and care while delivering such services.
                     </Typography>
 
                     <Typography
@@ -188,10 +188,10 @@ function Content({ width, padding, variant, margin }) {
                     </Typography>
 
                     <Typography sx={{ mt: 6, fontSize: "16px" }}>
-                        4.1 Housedeck Platform Charges:
+                        4.1 Vapormop Platform Charges:
                         <br />
                         <br />
-                        In consideration of the Company making the Platform available to you for providing your Housedeck Services to Customers, the Company shall, at its discretion, charge a commission for providing the Services (“Platform Charges”). The Company reserves the right to revised the Platform Charges, at its sole discretion, from time to time and such revision shall be notified to the Housedeck Partner in such manner as may be determined by the Company. Your continuous use of the Services shall be a deemed acceptance of the Platform Charges.
+                        In consideration of the Company making the Platform available to you for providing your Vapormop Services to Customers, the Company shall, at its discretion, charge a commission for providing the Services (“Platform Charges”). The Company reserves the right to revised the Platform Charges, at its sole discretion, from time to time and such revision shall be notified to the Vapormop Partner in such manner as may be determined by the Company. Your continuous use of the Services shall be a deemed acceptance of the Platform Charges.
                         <br />
                         <br />
                         4.2 Service Fees:
@@ -200,16 +200,16 @@ function Content({ width, padding, variant, margin }) {
                         You agree, acknowledge and understand that the Company shall act solely as an intermediary to facilitate collection of payments through the Customer to You.
                         <br />
                         <br />
-                        a) In consideration of delivery of Housedeck Services through the Platform, to the satisfaction of the Customer, you may charge the Customer a service fee (“Housedeck Service Fees”) and subject to the Customer accepting the quoted Housedeck Service Fee; the payment of which shall be facilitated by the Company.
+                        a) In consideration of delivery of Vapormop Services through the Platform, to the satisfaction of the Customer, you may charge the Customer a service fee (“Vapormop Service Fees”) and subject to the Customer accepting the quoted Vapormop Service Fee; the payment of which shall be facilitated by the Company.
                         <br />
                         <br />
-                        b) You unconditionally agree and irrevocably authorize the Company to determine, on your behalf, the Housedeck Service Fee payable for the Housedeck Services offered by you. The Company shall determine the Housedeck Service Fees based on Customer requirement, demand for such services in the applicable geographical area, local and national holidays and such other factors as it may deem fit to enhance Customer experience.
+                        b) You unconditionally agree and irrevocably authorize the Company to determine, on your behalf, the Vapormop Service Fee payable for the Vapormop Services offered by you. The Company shall determine the Vapormop Service Fees based on Customer requirement, demand for such services in the applicable geographical area, local and national holidays and such other factors as it may deem fit to enhance Customer experience.
                         <br />
                         <br />
-                        c) You hereby authorize the Company to collect from the Customers, on your behalf, the Housedeck Service Fees charged by You to the Customers for undertaking Housedeck Services, which shall be remitted to you on a weekly basis through such mode and on such day(s) of a week as the Company may from time to time decide.
+                        c) You hereby authorize the Company to collect from the Customers, on your behalf, the Vapormop Service Fees charged by You to the Customers for undertaking Vapormop Services, which shall be remitted to you on a weekly basis through such mode and on such day(s) of a week as the Company may from time to time decide.
                         <br />
                         <br />
-                        d) You further authorised the Company to generate an invoice, on your behalf, for the Housedeck Services rendered by yourself to the Customer. Kindly note, the invoice shall be generated via the Platform and issued to the Customer in your name.
+                        d) You further authorised the Company to generate an invoice, on your behalf, for the Vapormop Services rendered by yourself to the Customer. Kindly note, the invoice shall be generated via the Platform and issued to the Customer in your name.
                     </Typography>
 
                     <Typography
@@ -228,13 +228,13 @@ function Content({ width, padding, variant, margin }) {
                         You understand that the Company and it’s Platform is acting solely as an intermediary for the collection of payments and fees between Customers and you.
                         <br />
                         <br />
-                        The Housedeck Partner shall be solely responsible for determining its own tax liabilities and reporting requirements in consultation with any tax advisors. You acknowledge and agree that applicable tax laws vary in different States and jurisdictions and therefore, in no event shall the Company be liable or responsible, in any manner, for any taxes payable by you.
+                        The Vapormop Partner shall be solely responsible for determining its own tax liabilities and reporting requirements in consultation with any tax advisors. You acknowledge and agree that applicable tax laws vary in different States and jurisdictions and therefore, in no event shall the Company be liable or responsible, in any manner, for any taxes payable by you.
                         <br />
                         <br />
                         In case of unregistered House Keeping services (‘HK services’), the Company shall pay taxes and raise tax invoices under the Central Goods and Services Tax Act, 2017 (‘CGST’), on your behalf. Additionally, You authorize the Company to make Tax Deduction at Source (TDS) as per the Income Tax Act, 1961, where applicable, and other applicable taxes from the amount paid or remitted to You under these Terms of Use
                         <br />
                         <br />
-                        In the event TDS is liable to be deducted u/s 194-O of the Income Tax Act, Company reserves the right to make deductions at a higher rate of @ 5% in case Housedeck Partner is unable to timely furnish PAN or Aadhar number as per Applicable Laws to Company, in all other cases, the TDS deducted shall be @ 1%.
+                        In the event TDS is liable to be deducted u/s 194-O of the Income Tax Act, Company reserves the right to make deductions at a higher rate of @ 5% in case Vapormop Partner is unable to timely furnish PAN or Aadhar number as per Applicable Laws to Company, in all other cases, the TDS deducted shall be @ 1%.
                         <br />
                         <br />
                         It is clarified that TDS shall be deducted only on the value of services provided by you to the Customer. TDS shall not be deducted on any goods/physical materials that might be used during the services or that might be essential to completing the service. It is your responsibility to determine any tax liability/implications in relation to goods/physical materials and you will be solely responsible to discharge such liabilities.
@@ -255,13 +255,13 @@ function Content({ width, padding, variant, margin }) {
                     </Typography>
 
                     <Typography sx={{ mt: 6, fontSize: "16px" }}>
-                        6.1. Platform Management: The management of the Platform including introducing, amending and changing of Services or listings on the Platform shall be under the sole and absolute control of the Company. The Company retains the right to determine the content, appearance, design, functionality and all other aspects of the Platform (including the right to re-design, modify, remove and alter the content, appearance, design, functionality, and other aspects of the Platform and any element, aspect, portion or feature thereof, from time to time), at their sole discretion. The Company in its sole and absolute discretion may refuse to provide any one or more of the Service including access to the Platform, payment facilitation for any reason whatsoever and especially if providing such Services to the Housedeck Partner can be detrimental to the reputation, goodwill and competitiveness of the Company and its Brand Name or could cause any breach of any contractual commitments of the Company and cause the Company to breach any Applicable Laws.
+                        6.1. Platform Management: The management of the Platform including introducing, amending and changing of Services or listings on the Platform shall be under the sole and absolute control of the Company. The Company retains the right to determine the content, appearance, design, functionality and all other aspects of the Platform (including the right to re-design, modify, remove and alter the content, appearance, design, functionality, and other aspects of the Platform and any element, aspect, portion or feature thereof, from time to time), at their sole discretion. The Company in its sole and absolute discretion may refuse to provide any one or more of the Service including access to the Platform, payment facilitation for any reason whatsoever and especially if providing such Services to the Vapormop Partner can be detrimental to the reputation, goodwill and competitiveness of the Company and its Brand Name or could cause any breach of any contractual commitments of the Company and cause the Company to breach any Applicable Laws.
                         <br />
                         <br />
-                        6.2. The Company shall endeavour to take reasonable measures and decisions that ensure sufficient flow of orders from Customers to the Housedeck Partner.
+                        6.2. The Company shall endeavour to take reasonable measures and decisions that ensure sufficient flow of orders from Customers to the Vapormop Partner.
                         <br />
                         <br />
-                        6.3. Ensure timely payment of Service Fees to Housedeck Partner for which the amounts have been received from the Customer<br />
+                        6.3. Ensure timely payment of Service Fees to Vapormop Partner for which the amounts have been received from the Customer<br />
                     </Typography>
 
                     <Typography
@@ -276,7 +276,7 @@ function Content({ width, padding, variant, margin }) {
                     </Typography>
 
                     <Typography sx={{ mt: 6, fontSize: "16px" }}>
-                        Subject to the Housedeck Partner’s compliance with these Terms of Use, the Company hereby grants a limited, personal, revocable, non-exclusive, temporary, non-assignable license to access and use our Platform solely for the purpose of providing Housedeck Services through the Platform and/or to use information, resources, products, and tools we provide to facilitate the provision of Housedeck Services.
+                        Subject to the Vapormop Partner’s compliance with these Terms of Use, the Company hereby grants a limited, personal, revocable, non-exclusive, temporary, non-assignable license to access and use our Platform solely for the purpose of providing Vapormop Services through the Platform and/or to use information, resources, products, and tools we provide to facilitate the provision of Vapormop Services.
                     </Typography>
 
                     <Typography
@@ -291,25 +291,25 @@ function Content({ width, padding, variant, margin }) {
                     </Typography>
 
                     <Typography sx={{ mt: 6, fontSize: "16px" }}>
-                        8.1 The Housedeck Partner shall indemnify, defend and hold harmless, the Company (including each of the respective directors, officers and employees, affiliates, personnel, assigns and successors in interest, as the case may be), from and against any and all losses or claims, damages, liabilities (whether criminal or civil, including loss of profits, loss of business, depletion of goodwill and similar losses), expenses and disbursements (including the fees, expenses and disbursements of attorney and / or other professional fees and costs) suffered and / or incurred by the Company which shall arise out of or as a result of:
+                        8.1 The Vapormop Partner shall indemnify, defend and hold harmless, the Company (including each of the respective directors, officers and employees, affiliates, personnel, assigns and successors in interest, as the case may be), from and against any and all losses or claims, damages, liabilities (whether criminal or civil, including loss of profits, loss of business, depletion of goodwill and similar losses), expenses and disbursements (including the fees, expenses and disbursements of attorney and / or other professional fees and costs) suffered and / or incurred by the Company which shall arise out of or as a result of:
                         <br />
                         <br />
-                        a) any breach of representations, warranties, obligations and covenants provided by the Housedeck Partner contained in these Terms of Use;
+                        a) any breach of representations, warranties, obligations and covenants provided by the Vapormop Partner contained in these Terms of Use;
                         <br />
                         <br />
-                        b) any claim made against the Company in respect of any liability, loss, damage, injury, cost or expense sustained by the Company’s employees or agents or by any Customer or third party to the extent that such liability, loss, damage, injury, cost or expense was caused by, relates to or arises from the provision, quality of Housedeck Services or as a consequence of a breach or negligent performance or failure in performance of these Terms of Use by the Housedeck Partner; in particular claims
+                        b) any claim made against the Company in respect of any liability, loss, damage, injury, cost or expense sustained by the Company’s employees or agents or by any Customer or third party to the extent that such liability, loss, damage, injury, cost or expense was caused by, relates to or arises from the provision, quality of Vapormop Services or as a consequence of a breach or negligent performance or failure in performance of these Terms of Use by the Vapormop Partner; in particular claims
                         <br />
                         <br />
                         (i) for defective service, or
                         <br />
                         <br />
-                        (ii) for any loss occurring due to the delay in the completion of the service by Housedeck Partner, or
+                        (ii) for any loss occurring due to the delay in the completion of the service by Vapormop Partner, or
                         <br />
                         <br />
                         (iii) if the services have not been completed in accordance with the standards prescribed;
                         <br />
                         <br />
-                        (iv) any act of theft, fraud, negligence and misconduct by you especially misbehaviour towards Customers while performing Housedeck Services.
+                        (iv) any act of theft, fraud, negligence and misconduct by you especially misbehaviour towards Customers while performing Vapormop Services.
                     </Typography>
 
                     <Typography
@@ -328,20 +328,20 @@ function Content({ width, padding, variant, margin }) {
                         9.1 Relationship between You and Customer:
                         <br />
                         <br />
-                        You acknowledge that the engagement with the Customer for the supply of the Housedeck Services is directly between the Customer and the Housedeck Partner. You understand and acknowledge that each Housedeck Service order performed by you shall constitute a separate contract for services under the Consumer Protection Act, 2019 or any successor legislations, between the Housedeck Partner and the Consumer, to which the Company is not a party.
+                        You acknowledge that the engagement with the Customer for the supply of the Vapormop Services is directly between the Customer and the Vapormop Partner. You understand and acknowledge that each Vapormop Service order performed by you shall constitute a separate contract for services under the Consumer Protection Act, 2019 or any successor legislations, between the Vapormop Partner and the Consumer, to which the Company is not a party.
                         <br />
                         <br />
                         9.2 Relationship between You and Company
                         <br />
                         <br />
-                        The Housedeck Partner is an independent business contractor and the Company does not and shall not deemed to have any form of direct or indirect control over the Housedeck Partners in respect of their availability on the Platform or authority to accept or decline a Customer’s order. You are solely responsible for procuring all necessary approvals or licenses as may be required for provising services to Customers.
+                        The Vapormop Partner is an independent business contractor and the Company does not and shall not deemed to have any form of direct or indirect control over the Vapormop Partners in respect of their availability on the Platform or authority to accept or decline a Customer’s order. You are solely responsible for procuring all necessary approvals or licenses as may be required for provising services to Customers.
                         <br />
                         <br />
 
-                        For sake of clarity, it is expressly agreed and understood that there is no employer-employee relationship between the Company and the Housedeck Partners. In no event, any Housedeck Partner shall have any claim for permanent employment or employment benefits under any statutes / local laws. Similarly, there is no partnership, joint venture or agency created as a result of these Terms.
+                        For sake of clarity, it is expressly agreed and understood that there is no employer-employee relationship between the Company and the Vapormop Partners. In no event, any Vapormop Partner shall have any claim for permanent employment or employment benefits under any statutes / local laws. Similarly, there is no partnership, joint venture or agency created as a result of these Terms.
                         <br />
                         <br />
-                        Nothing contained in these Terms shall be deemed to create any exclusivity in favour of the Company or Housedeck Partner. Both parties shall be free to or engage in similar arrangements with any other Person.
+                        Nothing contained in these Terms shall be deemed to create any exclusivity in favour of the Company or Vapormop Partner. Both parties shall be free to or engage in similar arrangements with any other Person.
                     </Typography>
 
                     <Typography
@@ -374,13 +374,13 @@ function Content({ width, padding, variant, margin }) {
                     </Typography>
 
                     <Typography sx={{ mt: 6, fontSize: "16px" }}>
-                        11.1. Confidential Information: All Confidential Information furnished by the Company to You for the purpose of offering services to Customers shall be treated as confidential by You, and your employees, helpers or representatives (collectively “Representatives”) whether so designated or not and shall not, without the prior written consent of the Company be disclosed by the Housedeck Partner or the Representatives, in any manner whatsoever, in whole or in part.
+                        11.1. Confidential Information: All Confidential Information furnished by the Company to You for the purpose of offering services to Customers shall be treated as confidential by You, and your employees, helpers or representatives (collectively “Representatives”) whether so designated or not and shall not, without the prior written consent of the Company be disclosed by the Vapormop Partner or the Representatives, in any manner whatsoever, in whole or in part.
                         <br />
                         <br />
-                        11.2. The Housedeck Partner shall not at any time misappropriate, copy or take extracts of/from any Confidential Information.
+                        11.2. The Vapormop Partner shall not at any time misappropriate, copy or take extracts of/from any Confidential Information.
                         <br />
                         <br />
-                        11.3. The Housedeck Partner shall not at any time disclose any Confidential Information of Company to any Person to gain directly or indirectly any improper advantage to itself or to any other person; and/or
+                        11.3. The Vapormop Partner shall not at any time disclose any Confidential Information of Company to any Person to gain directly or indirectly any improper advantage to itself or to any other person; and/or
                         <br />
                         <br />
                         11.4. The foregoing provisions pertaining to confidentiality shall not apply to the whole or any part of the Confidential Information which is:
@@ -417,22 +417,22 @@ function Content({ width, padding, variant, margin }) {
                         12.2. Termination for Breach: In addition to the terms provided hereunder, Company may terminate your access at any time effective immediately in any of the following events:
                         <br />
                         <br />
-                        a) Any attempted transfer or assignment or sub-contracting of its rights and/or obligations under these Terms or a part thereof by Housedeck Partner whether by voluntary act or operation of law;
+                        a) Any attempted transfer or assignment or sub-contracting of its rights and/or obligations under these Terms or a part thereof by Vapormop Partner whether by voluntary act or operation of law;
                         <br />
                         <br />
-                        b) Any act of the Housedeck Partner which will negatively affect the Brand name or any breach of the confidentiality provisions contained herein.
+                        b) Any act of the Vapormop Partner which will negatively affect the Brand name or any breach of the confidentiality provisions contained herein.
                         <br />
                         <br />
                         c) Commission of fraud/ misappropriation/embezzlement for undue monetary gain, which is against the interest of the Company
                         <br />
                         <br />
-                        d) any action or omission by the Housedeck Partner which can cause legal or contractual liability for the Company including but not limited to fraudulent conduct, Customer complaints, continuous unsatisfactory reviews by the Customer or Company employees, misconduct, negligence, and all other actions specifically prohibited under Applicable Law.
+                        d) any action or omission by the Vapormop Partner which can cause legal or contractual liability for the Company including but not limited to fraudulent conduct, Customer complaints, continuous unsatisfactory reviews by the Customer or Company employees, misconduct, negligence, and all other actions specifically prohibited under Applicable Law.
                         <br />
                         <br />
                         e) Failing in background verification or failure to provide identification documents
                         <br />
                         <br />
-                        12.3. Non-Disparagement: On and after the termination /expiry of this Agreement, Housedeck Partner shall not disparage either directly or indirectly the Company or any of its shareholders or employees, or its business or operations.
+                        12.3. Non-Disparagement: On and after the termination /expiry of this Agreement, Vapormop Partner shall not disparage either directly or indirectly the Company or any of its shareholders or employees, or its business or operations.
                     </Typography>
 
                     <Typography
@@ -468,7 +468,7 @@ function Content({ width, padding, variant, margin }) {
                     </Typography>
 
                     <Typography sx={{ mt: 6, fontSize: "16px" }}>
-                        Not withstanding anything contrary contained in these Terms, the Company shall reserve a right to charge You a penalty in the event You indulge in any kind of fraudulent activities while providing Housedeck Services. The penalty may be deducted from the payments made to You.
+                        Not withstanding anything contrary contained in these Terms, the Company shall reserve a right to charge You a penalty in the event You indulge in any kind of fraudulent activities while providing Vapormop Services. The penalty may be deducted from the payments made to You.
                     </Typography>
 
                     <Typography
@@ -498,10 +498,10 @@ function Content({ width, padding, variant, margin }) {
                     </Typography>
 
                     <Typography sx={{ mt: 6, fontSize: "16px" }}>
-                        16.1. Force Majeure - Housedeck Partner and the Company shall not be liable for failure to perform any of their obligations hereunder, when such failure is caused by or results from the occurrence of an event of force majeure which would be limited to an act of God, terrorist activities, authority of law and/or legislative or administrative measures (including the withdrawal of any clearances required by either Party to carry out the terms of this Agreement), embargo, quarantine, pandemic, riot, insurrection, a declared or undeclared war, state of war or belligerency or hazard or danger incidental thereto;
+                        16.1. Force Majeure - Vapormop Partner and the Company shall not be liable for failure to perform any of their obligations hereunder, when such failure is caused by or results from the occurrence of an event of force majeure which would be limited to an act of God, terrorist activities, authority of law and/or legislative or administrative measures (including the withdrawal of any clearances required by either Party to carry out the terms of this Agreement), embargo, quarantine, pandemic, riot, insurrection, a declared or undeclared war, state of war or belligerency or hazard or danger incidental thereto;
                         <br />
                         <br />
-                        16.2. Compliance with Applicable Laws: The Platform and Services may be used only for lawful purposes and in a lawful manner. The Housedeck Partner and Representatives shall comply with all the Applicable Laws, rules and regulations. The Housedeck Partner shall not register under a false name or may not impersonate any participant or use another participant's password(s). Such fraudulent conduct may be reported to law enforcement and Company shall render all necessary cooperation in this regard. 16.3. Disclosure of Information: Company reserves the right to report any activity that it suspects to be in violation of any law or regulation to the appropriate law enforcement officials or regulators. Company may access and disclose any information it considers necessary or appropriate, including but not limited to user contact details, IP addressing and traffic information, usage history, and posted content in this regard.
+                        16.2. Compliance with Applicable Laws: The Platform and Services may be used only for lawful purposes and in a lawful manner. The Vapormop Partner and Representatives shall comply with all the Applicable Laws, rules and regulations. The Vapormop Partner shall not register under a false name or may not impersonate any participant or use another participant's password(s). Such fraudulent conduct may be reported to law enforcement and Company shall render all necessary cooperation in this regard. 16.3. Disclosure of Information: Company reserves the right to report any activity that it suspects to be in violation of any law or regulation to the appropriate law enforcement officials or regulators. Company may access and disclose any information it considers necessary or appropriate, including but not limited to user contact details, IP addressing and traffic information, usage history, and posted content in this regard.
                         <br />
                         <br />
                         16.3. Disclosure of Information: Company reserves the right to report any activity that it suspects to be in violation of any law or regulation to the appropriate law enforcement officials or regulators. Company may access and disclose any information it considers necessary or appropriate, including but not limited to user contact details, IP addressing and traffic information, usage history, and posted content in this regard.
@@ -510,7 +510,7 @@ function Content({ width, padding, variant, margin }) {
                         16.4. Entire Agreement: These Terms of Use are the entire agreement and understanding with respect to the subject matter hereof and supersedes all prior discussions or representations between the parties.
                         <br />
                         <br />
-                        16.5. Assignment and Sub-Contracting: Except as specifically set forth herein, the Housedeck Partner may neither assign nor sub-contract any of its rights, obligations, or responsibilities under these Terms without the prior written consent of Company. The Agreement and the rights and/or obligations herein may be assigned/ novated by Company to any other third party.
+                        16.5. Assignment and Sub-Contracting: Except as specifically set forth herein, the Vapormop Partner may neither assign nor sub-contract any of its rights, obligations, or responsibilities under these Terms without the prior written consent of Company. The Agreement and the rights and/or obligations herein may be assigned/ novated by Company to any other third party.
                         <br />
                         <br />
                         16.6. Severability: Any provision of these Terms which is invalid or unenforceable shall be ineffective to the extent of such invalidity or unenforceability, without affecting in any way the validity, legality and enforceability of the remaining provisions hereof.

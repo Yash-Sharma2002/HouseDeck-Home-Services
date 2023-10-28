@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
-const PostLogo = <img src={require('../../assets/logos/houseDeck_copy1.png')} style={{ width: '10rem' }} alt="HouseDeck" />
+const PostLogo = <img src={require('../../assets/logos/houseDeck_copy1.png')} style={{ width: '10rem' }} alt="Vapormop" />
 
 
 

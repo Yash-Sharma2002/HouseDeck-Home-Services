@@ -6,7 +6,7 @@ function AboutMidLarge() {
     return (
         <div style={{ marginTop: '40px' }}>
             <Box sx={{ zIndex: 1000, position: 'absolute', wordWrap: 'break-word', right: '7pc', width: "55%", mt: 10 }}>
-                <Typography sx={{ color: 'white', fontFamily: 'Dancing script', fontSize: '80px', fontWeight: '900', textAlign: 'center' }}>HouseDeck</Typography>
+                <Typography sx={{ color: 'white', fontFamily: 'Dancing script', fontSize: '80px', fontWeight: '900', textAlign: 'center' }}>Vapormop</Typography>
                 <Typography sx={{ color: 'white', fontSize: '80px', fontWeight: '900', textAlign: 'right' }}>Is Your Expert For Home services!  </Typography>
                 <Typography sx={{ color: 'white', fontSize: '16px', textAlign: 'right', width: '60%', marginLeft: 'auto', marginRight: '0px' }}>We guarantee satisfaction. Just call us within 7 days of service and we’ll return to your home to remedy the problem.</Typography>
                 <Link href="tel:18003096606" target="_blank" sx={{
@@ -53,7 +53,7 @@ function AboutMidMedium({top}) {
     return (
         <div style={{ marginTop: '60px' }}>
             <Box sx={{ zIndex: 1000, position: 'absolute', wordWrap: 'break-word', left:'50%',transform:`translate(-50%,${top})`,textAlign:'center'}}>
-                <Typography sx={{ color: 'white', fontFamily: 'Dancing script', fontSize: '30px', fontWeight: '900', }}>HouseDeck</Typography>
+                <Typography sx={{ color: 'white', fontFamily: 'Dancing script', fontSize: '30px', fontWeight: '900', }}>Vapormop</Typography>
                 <Typography sx={{ color: 'white', fontSize: '20px', fontWeight: '700' }}>Is Your Expert For Home services!  </Typography>
                 <Typography sx={{ color: 'white', fontSize: '16px', width: '60%', m: '0px auto', mt: 2 }}>We guarantee satisfaction. Just call us within 7 days of service and we’ll return to your home to remedy the problem.</Typography>
                 <Link href="tel:18003096606" target="_blank" sx={{

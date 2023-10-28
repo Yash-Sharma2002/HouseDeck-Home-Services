@@ -149,7 +149,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                                 fontSize: '55px',
                                 pt: 5,
                             }}>
-                                &#8377;3350
+                                $3350
                                 <p style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</p>
                                 <p style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Kitchen Deep Cleaning</p>
                             </Typography>
@@ -242,7 +242,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                                 fontSize: '58px',
                                 pt: 4,
                             }}>
-                                &#8377;1400
+                                $1400
                                 <p style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</p>
                                 <p style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Bathroom Cleaning</p>
                             </Typography>
@@ -334,7 +334,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                                 fontSize: '55px',
                                 pt: 5
                             }}>
-                                &#8377;2800
+                                $2800
                                 <p style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</p>
                                 <p style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Sofa Cleaning (5 Seater)</p>
                             </Typography>
@@ -534,7 +534,7 @@ function SMContent({ displayForButton }) {
                                 fontSize: '55px',
                                 pt: 5
                             }}>
-                                &#8377;3350
+                                $3350
                                 <p style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</p>
                                 <p style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Kitchen Deep Cleaning</p>
                             </Typography>
@@ -626,7 +626,7 @@ function SMContent({ displayForButton }) {
                                 fontSize: '58px',
                                 pt: 4
                             }}>
-                                &#8377;1400
+                                $1400
                                 <p style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</p>
                                 <p style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Bathroom Cleaning</p>
 
@@ -719,7 +719,7 @@ function SMContent({ displayForButton }) {
                                 fontSize: '55px',
                                 pt: 5
                             }}>
-                                &#8377;2800
+                                $2800
                                 <p style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</p>
                                 <p style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Sofa Cleaning (5 Seater)</p>
                             </Typography>

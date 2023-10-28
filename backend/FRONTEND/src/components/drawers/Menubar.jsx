@@ -88,7 +88,7 @@ export default function Menubar() {
                             <ListItemText primary='Contact us' />
                         </ListItem>
                         <Typography sx={{ display: 'flex', justifyContent: 'space-evenly', alignItems: "center" }}>
-                            Email - <a href="mailto:hello@housedeck.in">hello@housedeck.in</a>
+                            Email - <a href="mailto:hello@Vapormop.in">hello@Vapormop.in</a>
                         </Typography>
                     </Box>
                 </Drawer>

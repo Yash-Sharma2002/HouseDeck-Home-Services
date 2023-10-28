@@ -34,7 +34,7 @@ export default function App() {
               <Route exact path='/privacy-policy' element={<Privacy />} />
               <Route exact path='/return-exchange-and-refund' element={<Refund />} />
               <Route exact path='/faqs' element={<Faq />} />
-              <Route exact path='/housedeck-partner-(Terms-of-Use)' element={<Partner />} />
+              <Route exact path='/Vapormop-partner-(Terms-of-Use)' element={<Partner />} />
 
               {/* services pages  */}
               <Route exact path='/:service' element={<Service />} />

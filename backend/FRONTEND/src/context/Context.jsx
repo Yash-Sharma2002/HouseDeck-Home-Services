@@ -14,7 +14,7 @@ const ContextProvider = ({ children }) => {
 
     const [message, setMessage] = React.useState('')
     const [messageType, setMessageType] = React.useState('')
-    const [city, setCity] = React.useState("Bangalore")
+    const [city, setCity] = React.useState("Chicago")
     const [show, setShow] = React.useState(false)
     const isLogin = forCheckingLogin()
     const userData = loadUserData()
@@ -32,11 +32,11 @@ const ContextProvider = ({ children }) => {
 
 
     function encrypt(text) {
-        var ciphertext = CryptoJS.AES.encrypt(JSON.stringify(text), 'housedeck-is in-bangalore').toString();
+        var ciphertext = CryptoJS.AES.encrypt(JSON.stringify(text), 'vapormop by vrisan').toString();
         return ciphertext
     }
     function decrypt(ciphertext) {
-        var bytes = CryptoJS.AES.decrypt(ciphertext, 'housedeck-is in-bangalore');
+        var bytes = CryptoJS.AES.decrypt(ciphertext, 'vapormop by vrisan');
         var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
         return decryptedData
     }
@@ -91,7 +91,7 @@ const ContextProvider = ({ children }) => {
                 USERDATA_AS_EMAIL: '',
             }))
             localStorage.setItem('EMAIL_VERIFIED', true)
-            localStorage.setItem('CENTER_DATA', JSON.stringify(encrypt('Bangalore')));
+            localStorage.setItem('CENTER_DATA', JSON.stringify(encrypt('Chicago')));
         }
     }
 
@@ -109,7 +109,7 @@ const ContextProvider = ({ children }) => {
             const serializedState = localStorage.getItem('CENTER_DATA')
             return decrypt(JSON.parse(serializedState))
         } catch (err) {
-            localStorage.setItem('CENTER_DATA', JSON.stringify(encrypt('Bangalore')));
+            localStorage.setItem('CENTER_DATA', JSON.stringify(encrypt('Chicago')));
             const serializedState = localStorage.getItem('CENTER_DATA')
             if (serializedState === null) {
                 return '';

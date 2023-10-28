@@ -4,7 +4,7 @@ import { useMediaQuery } from '@mui/material';
 
 function Content({ padding, display, width }) {
     return (
-        <div id='houseDeck-promise' style={{
+        <div id='Vapormop-promise' style={{
             padding: padding
         }}>
             <Box>
@@ -15,7 +15,7 @@ function Content({ padding, display, width }) {
                     paddingBottom: '50px',
                     marginTop: '20px'
                 }}>
-                    HouseDeck Promise
+                    Vapormop Promise
                     
                 </Typography>
                 <Box sx={{ display: display, justifyContent: 'space-between', textAlign: 'center', margin: '10px auto' }}>
