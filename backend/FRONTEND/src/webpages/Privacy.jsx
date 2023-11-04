@@ -8,7 +8,7 @@ function Content({ width, padding, variant, margin }) {
 
 
   const commonProps = [{ name: "Home Services", url: "/" }];
- 
+
   return (
     <div>
       <Header commonProps={commonProps} />
@@ -26,7 +26,7 @@ function Content({ width, padding, variant, margin }) {
         </Typography>
         <Box sx={{ color: "#95b2af" }}>
           <Typography sx={{ mt: 6, fontSize: "16px" }}>
-          Vapormop.com is a website owned by CodeFix Enterprise, an entity incorporated Under the Shop and Establishment Act, 1963 registration.
+            Vapormop.com is a website owned by CodeFix Enterprise, an entity incorporated Under the Shop and Establishment Act, 1963 registration.
             <br />
             <br />
             Wherever the term “Vapormop” or “Vapormop.com” or “Vapormop Home Services” is used it refers to Vapormop, and its subsidiaries, controlled entities, affiliates and related parties. Vapormop provides the services through www.Vapormop.in (‘Website’ or ‘Site’).
@@ -60,7 +60,7 @@ function Content({ width, padding, variant, margin }) {
             Acceptance of terms:
           </Typography>
           <Typography sx={{ mt: 6, fontSize: "16px" }}>
-            You are advised to read this Policy carefully. By accessing the services provided by Vapormop.in you agree to the collection and use of your data by Vapormop.in and certain authorized third party service providers in the manner provided in this Policy. The terms and conditions set forth below through the Privacy Policy constitute a legally-binding agreement between Vapormop Furnishing Pvt. Ltd. (“Vapormop”), and you.
+            You are advised to read this Policy carefully. By accessing the services provided by Vapormop.in/.com you agree to the collection and use of your data by Vapormop.in/com and certain authorized third party service providers in the manner provided in this Policy. The terms and conditions set forth below through the Privacy Policy constitute a legally-binding agreement between Vapormop.com (“Vapormop”), and you.
             <br />
             <br />
             This policy contains provisions that define your limits, legal rights and obligations with respect to your use of and participation on the Platform, including the classified advertisements, forums, various email functions and Internet links, and all content and Vapormop services available on the Platform. The Privacy Policy is applicable to all users of the Platform, including users who have access and/or register on the Platform,
@@ -69,8 +69,7 @@ function Content({ width, padding, variant, margin }) {
             and users who are also contributors of content, information, private and public messages, advertisements, and other materials or services on the Platform.
             <br />
             <br />
-            If you do not agree with this Policy, please do not use the Website.
-          </Typography>
+            If you do not agree with this Policy, please do not use the Website.   </Typography>
           <Typography
             sx={{
               mt: 4,
@@ -83,14 +82,14 @@ function Content({ width, padding, variant, margin }) {
             Privacy – Our Commitment:
           </Typography>
           <Typography sx={{ mt: 6, fontSize: "16px" }}>
-            At Vapormop, we are extremely committed to protect your privacy. We would like you to feel confident about us, use our services freely and recommend our services to your friends and family. <br />
+            At Vapormop, we are extremely committed to protecting your privacy. We would like you to feel confident about us, use our services freely and recommend our services to your friends and family.
 
             <br />
+
             We guarantee that we will not rent and sell your personal information to third parties (except as stated in this Policy) without your consent. In the day to day operations,
             <br />
             <br />
-            We guarantee that we will not rent and sell your personal information to third parties (except as stated in this Policy) without your consent. In the day to day operations,
-          </Typography>
+            We guarantee that we will not rent and sell your personal information to third parties (except as stated in this Policy) without your consent. In the day to day operations, </Typography>
           <Typography
             sx={{
               mt: 4,
@@ -449,10 +448,10 @@ function Content({ width, padding, variant, margin }) {
 
 
           <Typography sx={{ mt: 6, fontSize: "16px" }}>
-            HomeDeck.com regularly reviews its compliance with this Policy. Please feel free to direct any questions or concerns regarding this Policy or Vapormoplite.com’s treatment of personal information by contacting us through this Website or by e-mailing to us at care@Vapormop.in . When we receive complaints at this address, it is Vapormoplite.com’s policy to contact the complaining user regarding his or her concerns.
+            Vapormop.com regularly reviews its compliance with this Policy. Please feel free to direct any questions or concerns regarding this Policy or Vapormoplite.com’s treatment of personal information by contacting us through this Website or by e-mailing to us at care@Vapormop.in . When we receive complaints at this address, it is Vapormoplite.com’s policy to contact the complaining user regarding his or her concerns.
             <br />
             <br />
-            We will cooperate with the appropriate regulatory authorities to resolve any complaints regarding the transfer of personal data that cannot be resolved between Homedeck.com and an individual.
+            We will cooperate with the appropriate regulatory authorities to resolve any complaints regarding the transfer of personal data that cannot be resolved between Vapormop.com and an individual.
           </Typography>
 
           <Typography
@@ -487,7 +486,7 @@ function Content({ width, padding, variant, margin }) {
           </Typography>
 
           <Typography sx={{ mt: 6, fontSize: "16px" }}>
-            In the event You have any grievances relating to the Privacy Policy, please inform Vapormop within 24 hours of occurrence of the instance from which the grievance has arisen, by writing an email to the Grievance Officer at  <a style={{ textDecoration: 'underline', color: 'pink' }} href="mailto: admin@Vapormop.in">admin@Vapormop.in</a>.
+            In the event You have any grievances relating to the Privacy Policy, please inform Vapormop within 24 hours of occurrence of the instance from which the grievance has arisen, by writing an email to the Grievance Officer at  <a style={{ textDecoration: 'underline', color: 'pink' }} href="mailto: admin@Vapormop.com">admin@Vapormop.com</a>.
           </Typography>
 
           <Typography

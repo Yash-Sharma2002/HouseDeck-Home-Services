@@ -41,7 +41,7 @@ function Content({ display,width }) {
           }
         }}>
           <Typography sx={{ fontFamily: 'Fredoka', }} variant="h5">Equipments</Typography>
-          <Typography sx={{ fontFamily: 'Fredoka', mt: 2 }} variant="h6">Vapormop uses latest cleaning equipments, technologies and procedures to clean your home.</Typography>
+          <Typography sx={{ fontFamily: 'Fredoka', mt: 2 }} variant="h6">Vapormop uses the latest cleaning equipment, technologies and procedures to clean your home.</Typography>
         </Box>
         <Box sx={{
           my: 3, width: width,transition:".3s", '&:hover': {

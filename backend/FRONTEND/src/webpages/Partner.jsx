@@ -132,7 +132,7 @@ function Content({ width, padding, variant, margin }) {
                     </Typography>
                     <Typography sx={{ mt: 6, fontSize: "16px" }}>
                         Services - The Company shall provide You the access and technical assistance to a technology enabled internet based intermediary Platform that facilitates (a) the Vapormop Partner to offer and deliver, as an independent third party service provider, Vapormop Services to the Customers; (b) determination of pricing for provision of Vapormop Services to Customers; and (c) timely and accurate receipt of payment from Customer and generation of invoices on your behalf, as and when applicable, for the Vapormop Services performed by You.
-
+ 
                     </Typography>
                     <Typography
                         sx={{

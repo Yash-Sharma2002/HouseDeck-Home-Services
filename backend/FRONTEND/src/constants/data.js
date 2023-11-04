@@ -90,7 +90,7 @@ export const FooterLink = [
   { name: "Privacy Policy", url: "/privacy-policy" },
   { name: "Return Exchange & Refund", url: "/return-exchange-and-refund", },
   { name: "FAQs", url: "/faqs" },
-  { name: "Vapormop Partner (Services)", url: "/vapormop-(Terms-of-Use)" },
+  { name: "Vapormop Partner (Services)", url: "/Vapormop-partner-(Terms-of-Use)" },
 ];
 
 export const TopCarouselData = [
@@ -166,27 +166,11 @@ export const ServiceWithImage = {
 
     // fixed data
     {
-      id: "Painting",
-      src: require("../assets/imageService/painting.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/service=Painting',
-
-    },
-    {
       id: "Cleaning",
       src: require("../assets/imageService/cleaning.png"),
       offer: "",
       tag: true,
       takeToPath: '/service=Cleaning',
-    },
-       {
-      id: "False Ceiling",
-      src: require("../assets/imageService/false_ceiling.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/service=False Ceiling',
-
     },
     {
       id: "Home Sanitization",
@@ -203,6 +187,23 @@ export const ServiceWithImage = {
       tag: true,
       takeToPath: '/service=Pest Control',
     },
+    {
+      id: "Painting",
+      src: require("../assets/imageService/painting.png"),
+      offer: "",
+      tag: true,
+      takeToPath: '/service=Painting',
+
+    },
+    {
+      id: "False Ceiling",
+      src: require("../assets/imageService/false_ceiling.png"),
+      offer: "",
+      tag: true,
+      takeToPath: '/service=False Ceiling',
+
+    },
+
     // variable data
     {
       id: "AC Repair",
@@ -234,27 +235,13 @@ export const ServiceWithImage = {
   'chicago': [
 
     // fixed data
-    {
-      id: "Painting",
-      src: require("../assets/imageService/painting.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/service=Painting',
-    },
+
     {
       id: "Cleaning",
       src: require("../assets/imageService/cleaning.png"),
       offer: "",
       tag: true,
       takeToPath: '/service=Cleaning',
-    },
-    {
-      id: "False Ceiling",
-      src: require("../assets/imageService/false_ceiling.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/service=False Ceiling',
-
     },
     {
       id: "Home Sanitization",
@@ -271,6 +258,22 @@ export const ServiceWithImage = {
       tag: true,
       takeToPath: '/service=Pest Control',
     },
+    {
+      id: "Painting",
+      src: require("../assets/imageService/painting.png"),
+      offer: "",
+      tag: true,
+      takeToPath: '/service=Painting',
+    },
+    {
+      id: "False Ceiling",
+      src: require("../assets/imageService/false_ceiling.png"),
+      offer: "",
+      tag: true,
+      takeToPath: '/service=False Ceiling',
+
+    },
+
     // variable data
     {
       id: "AC Repair",
@@ -300,14 +303,7 @@ export const ServiceWithImage = {
   ],
   'california': [
     // fixed data
-    {
-      id: "Painting",
-      src: require("../assets/imageService/painting.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/service=Painting',
 
-    },
     {
       id: "Cleaning",
       src: require("../assets/imageService/cleaning.png"),
@@ -315,14 +311,7 @@ export const ServiceWithImage = {
       tag: true,
       takeToPath: '/service=Cleaning',
     },
-       {
-      id: "False Ceiling",
-      src: require("../assets/imageService/false_ceiling.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/service=False Ceiling',
 
-    },
     {
       id: "Home Sanitization",
       src: require("../assets/imageService/home-sanitization.png"),
@@ -338,6 +327,23 @@ export const ServiceWithImage = {
       tag: true,
       takeToPath: '/service=Pest Control',
     },
+    {
+      id: "Painting",
+      src: require("../assets/imageService/painting.png"),
+      offer: "",
+      tag: true,
+      takeToPath: '/service=Painting',
+
+    },
+    {
+      id: "False Ceiling",
+      src: require("../assets/imageService/false_ceiling.png"),
+      offer: "",
+      tag: true,
+      takeToPath: '/service=False Ceiling',
+
+    },
+    
     // variable data
     {
       id: "AC Repair",
@@ -378,193 +384,77 @@ export const ServiceWithImage = {
 }
 export const FAQData = [
   {
-    ques: "Why choose Vapormop Services?",
+    ques: "What do full house cleaning services involve?",
     ans: (
       <div>
-        Vapormop Services provides safe, professional, trusted painting
-        services to give your home a painting makeover. Get your home painted in
-        3 easy steps:
-        <br /> <br />
-        1.Book a site visit <br /> 2.Get an instant quotation <br />
-        3.Enjoy hassle-free home painting
+        When you hire a professional cleaning services, you can expect your home to be spotless upon completion. Cleaning professionals will use detergents, tools, and cleaning supplies designed for the particular surface being cleaned or stain is removed.
+
       </div>
     ),
     panel: "panel1",
   },
   {
-    ques: "What are the cities that Vapormop Services currently operates in?",
-    ans: ["Bangalore, Pune. We are launching soon in Chennai, Hyderabad."],
+    ques: "What is the cancellation policy for Vapormop Professional Home Cleaning Services?",
+    ans: ["You can reschedule your appointment for apartment/home cleaning services at any time, and you can cancel your appointment with Vapormop's Complete House Cleaning at no cost. You can trust Vapormop to provide you with the most thorough house cleaning services at prices that are significantly lower than those offered by competitors."],
     panel: "panel2",
   },
   {
-    ques: "Is the site visit chargeable??",
-    ans: "Yes, we charge 49/- for site visit.",
+    ques: "What is the average Home cleaning price?",
+    ans: "The cost of cleaning your home will depend on numerous variables. A 1 BHK cleaning will typically cost between INR 2,500 and INR 3,000 (India) & starting from $49 in USA. Get the lowest prices in your city for house cleaning services as well as commercial cleaning services in your city with the help of the Vapormop.",
     panel: "panel3",
   },
   {
-    ques: "Can I get 1 wall or 1 room painted?",
-    ans: "Yes, we take up projects with 1 wall or 1 room requirement. The minimum project value should be Rs.5,000/-",
+    ques: "How should I clean my empty house?",
+    ans: "An empty house may have accumulated a lot of dust and cobwebs, so cleaning and organizing it is an important part of housekeeping. It's best practice to wash cleaning rags and masks before moving in any furniture and to wear masks while cleaning an empty home. Instead, you can use the Vapormop to schedule a professional cleaning crew to come in while you're out of town.    ",
     panel: "panel4",
   },
   {
-    ques: "What should I expect during the site visit?",
-    ans: "Our Vapormop Consultant will visit your home and take measurements. Based on the on-site conditions and your needs, they will suggest suitable options and share multiple options across paint brands and types. They will also give you a walkthrough of how the project will go ahead if you decide to go ahead with us.",
+    ques: "What is the first thing to do when you are cleaning your house?",
+    ans: "Taking care of the dust is the first step in a thorough house cleaning. The sweeping can be done manually with a broom or mechanically with a vacuum cleaner. You can use the NoBroker app to arrange a home care cleaning service for your home.",
     panel: "panel5",
   },
   {
-    ques: "Where does Vapormop source paint material from?",
-    ans: "All material is sourced from authorized brand stores only, therefore you can be assured of quality. We ensure that all material is genuine through regular checks when the material is delivered on-site and during execution.",
+    ques: "Do you run background checks on employees / Partners?",
+    ans: "Background checks on potential employees/partners are the responsibility of the cleaning firm you are considering hiring. However Vapormop has exclusive tie-ups with the best rated & insured partners to serve its customers in the operating cities. Vapormop works closely with the partners to be on top of the verification & only the best get to serve our customers.",
     panel: "panel6",
   },
   {
-    ques: "Can I see few shade samples to choose paint color?",
-    ans: "Vapormop Consultant will show you the paint shade card to help you choose the right shade for your home. We don’t offer trial samples on the wall.",
+    ques: "Do you have cleaning supplies and equipment?",
+    ans: "The last thing you want to happen is to engage a cleaning service or housekeeper, only for them to arrive to clean without any cleaning supplies in their possession or in view. Some cleaning services want you to supply their products, while others supply their own. Make sure to provide your cleaner the particular product and instructions you want them to use at the beginning of the cleaning if there is one.",
     panel: "panel7",
   },
   {
-    ques: "What are the payment options available?",
-    ans: "On Vapormop payment gateway you can pay using a credit card, debit card, net banking, UPI options. You can also pay via cheque. Cash payments are acceptable up to a certain amount. Please check with your Vapormop Consultant for guidance. Please note a non-refundable gateway fee of 2% is applicable on payments made for a project against certain payment options. This information is communicated on the payment page.",
+    ques: "What is included in house cleaning services ?",
+    ans: "Various people have different expectations of their housekeepers. Some individuals prefer to manage the everyday cleaning themselves and save the housekeeper for bigger tasks like deep cleaning bathrooms or cleaning baseboards, while others prefer to hire someone to come in and conduct the daily cleaning. Make sure the services you desire are truly covered by asking the housekeeper about their rates before hiring them.",
     panel: "panel8",
   },
   {
-    ques: "Can I see few shade samples to choose paint color?",
-    ans: "Vapormop Consultant will show you the paint shade card to help you choose the right shade for your home. We don’t offer trial samples on the wall.",
+    ques: "What must I do with my pets?",
+    ans: "Even if your housekeeper prefers that you keep animals apart in a room or crate, you should still make sure they get a chance to interact and get to know one another. This will give them time to get to know one another.",
     panel: "panel9",
   },
   {
-    ques: "What are the payment terms?",
-    ans: "We collect 50% payment 3 days before the start of the project. This helps in partial material procurement and allocating vendors. The balance amount is collect midway. For eg.: If your project schedule is for 6 days, we request you to make the final 50% payment at end of the 3rd day.",
+    ques: "What cleaning supplies and equipment do you employ?",
+    ans: "Most cleaning businesses have a particular brand of cleaning supplies. If you don't use the same brand, don't be hesitant to request that they use your preferred product. Or, even better, offer the ones you already have at home. You can politely inquire with the company if they use brand new cleaning tools for every assignment to prevent germs from entering your home through shared cleaning gear. If not, you can give them the equipment you already have or let them use it.",
     panel: "panel10",
-  },
-  {
-    ques: "What are the payment options available?",
-    ans: "On Vapormop payment gateway you can pay using a credit card, debit card, net banking, UPI options. You can also pay via cheque. Cash payments are acceptable up to a certain amount. Please check with your Vapormop Consultant for guidance. Please note a non-refundable gateway fee of 2% is applicable on payments made for a project against certain payment options. This information is communicated on the payment page.",
-    panel: "panel11",
-  },
-  {
-    ques: "Who will work on my home painting project?",
-    ans: "On booking a site visit, you will be assigned an Vapormop Consultant who will be your point of contact for measurement and quotation. During site execution, Vapormop Pro will help you with managing the project.",
-    panel: "panel12",
-  },
-  {
-    ques: "Who will undertake the execution of my painting project?",
-    ans: "We work with skilled workmen with significant experience in delivering painting projects across the city. They are skilled to complete all types of painting requirements on time and with quality.",
-    panel: "panel13",
-  },
-  {
-    ques: "How can I track my project?",
-    ans: "Your Vapormop Consultant will create a common communication group (WhatsApp, Email) where regular updates will be shared.",
-    panel: "panel14",
-  },
-  {
-    ques: "How much time will it take to complete my project?",
-    ans: "Completing a painting project depends on the type of job i.e. fresh painting, repainting, rental painting as well as the work front available and site condition. For eg.: A typical 2bhk repainting requirement with full home available as work front should take about 4-5 days. Your Vapormop Consultant will be able to give you an estimate during consultation.",
-    panel: "panel15",
-  },
-  {
-    ques: "Can I stay in my home when it is getting painted?",
-    ans: "Yes, absolutely. We can take up painting your home in stages (say 2 rooms at a time) to ensure a smooth, hassle-free experience.",
-    panel: "panel16",
-  },
-  {
-    ques: "I have concerns about my project? Who can I reach out to?",
-    ans: "On the common communication group, we will have an Vapormop Consultant, Vapormop Pro, and Area Manager. You can ask your queries on this group for any updates.",
-    panel: "panel17",
-  },
-  {
-    ques: "Who will audit the quality of the project?",
-    ans: "Each project will have a Supervisor who monitors progress, shares work plan with the workers on-site on daily basis. The Vapormop Pro will also audit the quality on a regular basis.",
-    panel: "panel18",
-  },
-  {
-    ques: "Can I provide my own material for the painting project?",
-    ans: "No, this option is not available.",
-    panel: "panel19",
-  },
-  {
-    ques: "How soon can the work begin?",
-    ans: "We can start 3 days after payment of 50% of the project amount.",
-    panel: "panel20",
-  },
-  {
-    ques: "Who will audit the quality of the project?",
-    ans: "Each project will have a Supervisor who monitors progress, shares work plan with the workers on-site on daily basis. The Vapormop Pro will also audit the quality on a regular basis.",
-    panel: "panel21",
   },
   {
     ques: "Can I postpone or cancel my project?",
     ans: (
       <div>
-        In case of emergencies, you can choose to postpone your project from the
-        planned date by discussing it with your Vapormop team on the common
-        communication group. You can postpone up to 15 days from initially
-        planned date. Beyond that, it will be treated as a canceled project.{" "}
+        Obviously, price is a major concern. The cost of improving your property can be directly impacted by a number of factors, including:
         <br />
-        For cancellations before 3 days from the start date, we can refund the
-        paid-up amount. <br />
-        If you'd like to cancel within 3 days of the project start date, we will
-        not be able to refund the amount. However, we will deliver the procured
-        paint material to your home.
+        <ul>
+          <li> During the initial appointment, an hourly charge is typically provided.</li>
+          <li>  Whatever specialty cleaning service you want to hire</li>
+          <li>  How many cleaners they'll send</li>
+          <li>   The home's dimensions</li>
+        </ul>
       </div>
     ),
     panel: "panel22",
   },
-  {
-    ques: "What is the warranty offered?",
-    ans: "Vapormop offers a standard 1-year warranty on the service workmanship of the painting project.",
-    panel: "panel23",
-  },
-  {
-    ques: "How can I claim a warranty?",
-    ans: "Please write to care@Vapormoplite.com or call 8046809045 with details and an Vapormop representative will get in touch with you within 2 working days.",
-    panel: "panel24",
-  },
-  {
-    ques: "What are the warranty terms & conditions?",
-    ans: (
-      <div>
-        If a defect is found upon inspection by Vapormop Services
-        authorized representative, the defect will be rectified in accordance
-        with the claim terms below.
-        <br /> <br /> The warranty policy shall apply where: <br />
-        <br /> 1.The overall paint surface area exceeds 100 square feet, subject
-        to satisfactory inspection of the surface painted by Vapormop's
-        representative. <br /> 2.Vapormop shall provide replacement paint, as
-        long as the particular paint code (paint code is necessary) is not
-        discontinued by the manufacturer. <br /> 3.Paint failure shall mean any
-        of the following occurrences <br /> 4.Film integrity, flaking, and
-        peeling of the paint, caused by one coat of paint coming off from
-        another or the paint film coming off from the substrate
-        <br /> 5.Fading of the color shade <br /> 6.Growth of fungus and algae
-        on wall surfaces (spread over a minimum area of 10 sq. feet) <br />{" "}
-        7.The customer has used the entire paint system recommended by
-        Vapormop. This is applicable for fresh painting, repainting or rental
-        painting projects.
-        <br />
-        <br /> The warranty policy shall be void in the following events: <br />
-        <br />
-        1.Intermittent dripping of water due to proximity of vegetation or
-        air-conditioning units or any other sources of water leakage like plant
-        pots. <br /> 2.Water penetration due to capillary rise from the ground
-        level, water leakage, seeping, and continuous dampness of the surface.
-        <br /> 3.Defects arising due to contamination of surface and
-        failure/defects in the structure. <br />
-        <br />
-        The replacement cost includes the cost of paint and labor required to
-        set right the area of paint failure, at the time of claim lodged.
-        <br /> <br /> In coastal areas fading and chalking occur with all
-        surfaces. Within normal limits, this is not considered a failure.
-        <br /> <br /> Damage caused to the painted surface due to fire,
-        excessive heat exposure, corrosive agents, abrasive materials, or by the
-        customer including without limitation due to rework/fitting work done by
-        the customer after handover.
-        <br />
-        <br /> Any structural cracks or cracks arising due to structure
-        deformity shall not be covered under.
-      </div>
-    ),
-    panel: "panel25",
-  },
+
 ];
 
 
