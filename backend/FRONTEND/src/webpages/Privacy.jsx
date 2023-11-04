@@ -36,7 +36,7 @@ function Content({ width, padding, variant, margin }) {
             <br />
             <br />
             Unless restricted by applicable law, you agree that all your personal information collected by Vapormop through the Website may be used and disclosed as set out in this Policy.
-          </Typography>\
+          </Typography>
 
           <Typography
             sx={{
