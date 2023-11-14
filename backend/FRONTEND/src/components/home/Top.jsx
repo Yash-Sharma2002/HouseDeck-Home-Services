@@ -24,7 +24,7 @@ export default function Top() {
     backgroundColor: 'white',
     height: '50px!important',
     minWidth: '150px',
-    border: '7px solid orange',
+    border: '7px solid #ffd416',
     textAlign: 'center',
     borderRadius: '30px'
   }

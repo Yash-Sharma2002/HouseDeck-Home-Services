@@ -32,7 +32,7 @@ export default function Search({ width }) {
   return (
 
 
-    <Box sx={{ width: width, background: 'white', border: '7px solid orange', borderRadius: '30px', overflow: 'hidden' }} >
+    <Box sx={{ width: width, background: 'white', border: '7px solid #ffd416', borderRadius: '30px', overflow: 'hidden' }} >
       <Box sx={{ display: 'flex', alignItems: 'center', borderRadius: '4px', justifyContent: 'space-evenly', height: '50px!important' }} >
         <Input
           placeholder="Search..."

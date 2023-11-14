@@ -16,7 +16,7 @@ const TopHeadStyle = {
 export default function BottomServices() {
   return (
     <Box id='Vapormop-Services' style={mainPageBottomWidth} >
-      <Typography sx={TopHeadStyle}>Vapormop Services</Typography>
+      <Typography sx={TopHeadStyle}>Vapormop Business</Typography>
       <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'start' }}>
 
         <Box sx={{ marginTop: '10px' }}>

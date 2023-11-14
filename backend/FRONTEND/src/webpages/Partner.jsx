@@ -28,7 +28,7 @@ function Content({ width, padding, variant, margin }) {
                         We are delighted that you are interested in becoming an Vapormop Partner!
                         <br />
                         <br />
-                        These Terms of Use (“Terms”) set forth the conditions to become a partner with Vapormop and use of the Services (defined below) of our website Vapormoplite.com or mobile application Vapormop (“Platform”) operated and managed by Vapormop Furnishing Private Limited (“Company”), a company duly registered and incorporated under the Companies Act, 2013 and having its re registered office at NO.1, T.C. PALLYA SONNATHAMMANAHALLI K.R.PURAM BANGALORE  KA 560036 IN .
+                        These Terms of Use (“Terms”) set forth the conditions to become a partner with Vapormop and use of the Services (defined below) of our website Vapormoplite.com or mobile application Vapormop (“Platform”) operated and managed by Vapormop Furnishing Private Limited (“Company”), a company duly registered and incorporated under the Companies Act, 2013 and having its re registered office at Dover , Delaware-19901.
 
                         <br />
                         <br />
