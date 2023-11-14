@@ -18,7 +18,7 @@ export const sendService = async (req, res) => {
 
 export const getDraftBookings = async (req, res) => {
     try {
-        const user = await ServiceAsDraft.find({ "Customer_Details.Customer_Phone": req.body.Number }, { "Order_Details": 1, "Draft": 1, "Payment_Details": 1 });
+        const user = await ServiceAsDraft.find({ "Customer_Details.Customer_Email": req.body.Email }, { "Order_Details": 1, "Draft": 1, "Payment_Details": 1 });
         if (user) {
             return res.send(user)
         }
@@ -35,7 +35,7 @@ export const getDraftBookings = async (req, res) => {
 
 export const getPaidBookings = async (req, res) => {
     try {
-        const user = await ServiceAsPaid.find({ "Customer_Details.Customer_Phone": req.body.Number }, { "Order_Details": 1, "Draft": 1, "Payment_Details": 1 });
+        const user = await ServiceAsPaid.find({ "Customer_Details.Customer_Email": req.body.Email }, { "Order_Details": 1, "Draft": 1, "Payment_Details": 1 });
         if (user) {
             return res.send(user)
         }
@@ -52,7 +52,7 @@ export const getPaidBookings = async (req, res) => {
 
 export const getSubscriptions = async (req, res) => {
     try {
-        const user = await Subscriptions.find({ "Customer_Details.Customer_Phone": req.body.Number }, { "Order_Details": 1, "Subscription": 1, "Payment_Details": 1 });
+        const user = await Subscriptions.find({ "Customer_Details.Customer_Email": req.body.Email }, { "Order_Details": 1, "Subscription": 1, "Payment_Details": 1 });
         if (user) {
             return res.send(user)
         }
@@ -68,7 +68,7 @@ export const getSubscriptions = async (req, res) => {
 
 export const deleteDraftBookings = async (req, res) => {
     try {
-        await ServiceAsDraft.deleteOne({ "Customer_Details.Customer_Phone": req.body.Number, _id: req.body._id });
+        await ServiceAsDraft.deleteOne({ "Customer_Details.Customer_Email": req.body.Email, _id: req.body._id });
         return res.status(200).json('success');
 
     } catch (error) {

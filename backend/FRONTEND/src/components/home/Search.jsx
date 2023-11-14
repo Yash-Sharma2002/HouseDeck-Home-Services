@@ -80,8 +80,8 @@ export default function Search({ width }) {
                   textDecoration: 'none',
                   color: 'black',
                   '&:hover': {
-                    background: 'orange',
-                    color: 'white'
+                    background: '#ffd416',
+                    color: 'black'
                   }
                 }}>
                   {item.value}

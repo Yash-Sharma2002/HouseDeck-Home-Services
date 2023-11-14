@@ -42,17 +42,17 @@ const subscriptionSchema = new mongoose.Schema({
 
         Customer_Id: {
             type: String,
-            required: true,
+            // required: true,
             trim: true,
         },
         Customer_Email: {
             type: String,
-            required: true,
+            // required: true,
             trim: true,
         },
         Customer_Phone: {
             type: String,
-            required: true,
+            // required: true,
             trim: true,
         },
     },

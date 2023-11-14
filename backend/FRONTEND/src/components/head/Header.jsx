@@ -25,8 +25,10 @@ function XLHeader({ commonProps }) {
     const navigate = useNavigate()
     const { userData, isLogin, decrypt } = React.useContext(LoginContext)
     const [open, setOpen] = React.useState(false);
-    const handleClickOpen = () => {
+    const [type, setType] = React.useState(false);
+    const handleClickOpen = (type= 'signin') => {
         setOpen(true);
+        setType(type)
     };
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open1 = Boolean(anchorEl);
@@ -122,7 +124,7 @@ function XLHeader({ commonProps }) {
                                             backgroundColor: 'white',
                                             borderColor: '#c5c5c5'
                                         }
-                                    }} disableRipple onClick={handleClickOpen}>
+                                    }} disableRipple onClick={()=>handleClickOpen()}>
                                         <CallToActionIcon style={IconHeaderImage} />
                                         MyBookings
                                     </Button>
@@ -187,7 +189,7 @@ function XLHeader({ commonProps }) {
                                             border: 'none',
                                             backgroundColor: 'white'
                                         }
-                                    }} disableRipple onClick={handleClickOpen}>
+                                    }} disableRipple onClick={()=>handleClickOpen('signup')}>
                                         Sign Up
                                     </Button>
 
@@ -206,7 +208,7 @@ function XLHeader({ commonProps }) {
                                             border: 'none',
                                             backgroundColor: 'white'
                                         },
-                                    }} disableRipple onClick={handleClickOpen}>
+                                    }} disableRipple onClick={()=>handleClickOpen()}>
                                         Login
                                     </Button>
                                     <Divider orientation='vertical' sx={{ color: '#c5c5c5' }} flexItem />
@@ -217,7 +219,7 @@ function XLHeader({ commonProps }) {
                     </Box>
                 </Toolbar>
 
-                <Login open={open} setOpen={setOpen} />
+                <Login open={open} setOpen={setOpen} type={type} />
             </Container>
         </AppBar >
 

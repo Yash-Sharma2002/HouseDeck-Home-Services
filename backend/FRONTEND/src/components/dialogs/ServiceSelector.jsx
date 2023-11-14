@@ -76,7 +76,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
     const [ip, setIP] = React.useState('')
     const [valueForLocation, setValueForLocation] = React.useState('');
     const [displayForCode, setDisplayForCode] = React.useState('');
-    fetch('http://api.ipify.org/?format=json').then(res => res.json()).then(data => { setIP(data.ip) })
+    // fetch('http://api.ipify.org/?format=json').then(res => res.json()).then(data => { setIP(data.ip) })
     const handleClose = () => {
         setOpen(false)
         settime(new Date('2022-03-01 12:00'))
@@ -136,15 +136,15 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
     }
     function getRequiredThings() {
         if (isLogin) {
-            if (Services) {
+        if (Services) {
 
-                setDisplayForServiceSelectionProcess(false)
-                setDisplayForStepper(true)
-                setDisplayForAppointment(false)
-                setDisplayForPayment(false)
-                setDisplayAtStart(false)
-                setOrderId(uuidV4())
-            }
+            setDisplayForServiceSelectionProcess(false)
+            setDisplayForStepper(true)
+            setDisplayForAppointment(false)
+            setDisplayForPayment(false)
+            setDisplayAtStart(false)
+            setOrderId(uuidV4())
+        }
         } else {
             setOpenLogin(!openLogin)
         }
@@ -286,18 +286,19 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
                 Payment_Link: paymentLink,
             },
             Customer_Details: {
-                Customer_Id: decrypt(userData.USERDATA_AS_USERNAME),
-                Customer_Email: decrypt(userData.USERDATA_AS_EMAIL),
-                Customer_Phone: decrypt(userData.USERDATA_AS_NUMBER)
+                Customer_Id: userData.USERDATA_AS_USERNAME ? decrypt(userData.USERDATA_AS_USERNAME) : '',
+                Customer_Email: userData.USERDATA_AS_EMAIL ? decrypt(userData.USERDATA_AS_EMAIL) : '',
+                Customer_Phone: userData.USERDATA_AS_NUMBER ? decrypt(userData.USERDATA_AS_NUMBER) : ''
             }
         }
+        console.log(items)
         let response = await serviceSenderAsDraft(items)
         if (response) {
             setShow(true)
             setMessage('Saving as Draft....')
             setMessageType('info')
             navigate('/my-bookings')
-            FacebookDataSender(items,ip,"addtocart")
+            // FacebookDataSender(items,ip,"addtocart")
             handleClose()
         } else {
             setShow(true)
@@ -333,9 +334,9 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
                 Paid: 'Yes',
             },
             Customer_Details: {
-                Customer_Id: decrypt(userData.USERDATA_AS_USERNAME),
-                Customer_Email: decrypt(userData.USERDATA_AS_EMAIL),
-                Customer_Phone: decrypt(userData.USERDATA_AS_NUMBER)
+                Customer_Id: userData.USERDATA_AS_USERNAME ? decrypt(userData.USERDATA_AS_USERNAME) : '',
+                Customer_Email: userData.USERDATA_AS_EMAIL ? decrypt(userData.USERDATA_AS_EMAIL) : '',
+                Customer_Phone: userData.USERDATA_AS_NUMBER ? decrypt(userData.USERDATA_AS_NUMBER) : ''
             },
         }
         const interval = setInterval(async () => {
@@ -348,7 +349,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
                     setMessage('Order Placed')
                     setMessageType('success')
                     navigate('/my-bookings')
-                    FacebookDataSender(items,ip,"Purchase")
+                    // FacebookDataSender(items,ip,"Purchase")
                 } else {
                     setShow(true)
                     setMessage('Payment is processing...')
@@ -360,48 +361,48 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
 
 
 
-   async function FacebookDataSender(item,ip,type){
-        const PixelID = '820907902616795' 
+    async function FacebookDataSender(item, ip, type) {
+        const PixelID = '820907902616795'
         const access_token = 'EAAUjOBHpKPgBAOpx29gjOfT4pXEuDJqOCwZAZA2uIvbdbSqEYj3dtHV6CrNOZAHjtrBlxUahNDvopLlYDZCd1TQN3xDiwrojOWwoqPU1EaCbvjOesZAes0DW8QouEkfrZCXnzmaadue9W7oe1thCDCz9HiagsPOkdkTem3dshYmSZCc4rgfk8TDQhVfksdJH38ZD'
         const fbData = {
             "data": [
-               {
-                  "event_name": type,
-                  "event_time":  Math.floor(new Date() / 1000),
-                  "event_id":uuidV4() ,
-                  "event_source_url": `http://Vapormophomeservices.in/service=${newService}`,         
-                  "action_source": "website",
-                  "user_data": {
-                     "client_ip_address": ip,
-                     "client_user_agent": navigator.userAgent,
-                     "em": [
-                        sha256(item.Customer_Details.Customer_Email)
-                     ],
-                     "ph": [
-                        sha256(item.Customer_Details.Customer_Phone)
-                     ],
-                     "fbc": "fb.1.1554763741205.AbCdEfGhIjKlMnOpQrStUvWxYz1234567890",
-                     "fbp": "fb.1.1558571054389.1098115397"
-                  },
-                  "custom_data": {
-                     "value":item.Order_Details.Total_Amount,
-                     "currency": "INR",
-                     "content_ids": [
-                        item.Order_Details.Order_Id
-                     ],
-                     "content_type": "product"
-                  },
-                  "opt_out": false
-               }
+                {
+                    "event_name": type,
+                    "event_time": Math.floor(new Date() / 1000),
+                    "event_id": uuidV4(),
+                    "event_source_url": `http://Vapormophomeservices.in/service=${newService}`,
+                    "action_source": "website",
+                    "user_data": {
+                        "client_ip_address": ip,
+                        "client_user_agent": navigator.userAgent,
+                        "em": [
+                            sha256(item.Customer_Details.Customer_Email)
+                        ],
+                        "ph": [
+                            sha256(item.Customer_Details.Customer_Phone)
+                        ],
+                        "fbc": "fb.1.1554763741205.AbCdEfGhIjKlMnOpQrStUvWxYz1234567890",
+                        "fbp": "fb.1.1558571054389.1098115397"
+                    },
+                    "custom_data": {
+                        "value": item.Order_Details.Total_Amount,
+                        "currency": "INR",
+                        "content_ids": [
+                            item.Order_Details.Order_Id
+                        ],
+                        "content_type": "product"
+                    },
+                    "opt_out": false
+                }
             ]
-         }
-         const requestOptions = {
+        }
+        const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(fbData)
         };
         await fetch(`https://graph.facebook.com/v14.0/${PixelID}/events?access_token=${access_token}`, requestOptions)
-        .then(response => response.json()).then(data => {console.log(data)})
+            .then(response => response.json()).then(data => { console.log(data) })
     }
 
     return (
@@ -799,7 +800,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
 
                     </Box>
                 </Box>
-                <Login open={openLogin} setOpen={setOpenLogin} />
+                <Login open={openLogin} setOpen={setOpenLogin} type={'signin'} />
 
 
             </BootstrapDialog>

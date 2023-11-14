@@ -2,7 +2,7 @@ import User from "../model/signUpSchema.js";
 
 export const userSignUp = async (req, res) => {
     try {
-        const exist = await User.findOne({ Number: req.body.Number });
+        const exist = await User.findOne({ Email: req.body.Email });
         if (exist) {
             console.log('User Already existed');
             return res.send(400 + 'AlreadyExisted');
@@ -19,7 +19,7 @@ export const userSignUp = async (req, res) => {
 
 export const userLogIn = async (req, res) => {
     try {
-        const user = await User.findOne({ Number: req.body.Number }, { _id: 0, "Username": 1, "Email": 1, "Number": 1 });
+        const user = await User.findOne({ Email: req.body.Email }, { _id: 0, "Username": 1, "Email": 1, "Number": 1 });
         if (user) {
             return res.send(user)
         }
@@ -36,7 +36,7 @@ export const userLogIn = async (req, res) => {
 export const userUpdate = async (req, res) => {
     try {
 
-        const user = await User.replaceOne({ Number: req.body.Number }, req.body);
+        const user = await User.replaceOne({ Email: req.body.Email }, req.body);
         if (user) {
             return res.send(user)
         }

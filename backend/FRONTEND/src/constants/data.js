@@ -115,7 +115,7 @@ export const OtherPageTopCarouselData = [
 
 export const DrawerData = [
   { url: 'https://designelementary.com/', name: "Home Interior", tag: true },
-  { url: '', name: "Busniness Inspection", tag: true },
+  { url: '', name: "Property Inspection", tag: true },
   { url: '/service=Painting', name: "Painting", tag: true },
   { url: '/service=False Ceiling', name: 'False Ceiling', tag: true },
   // { url: '', name: 'Pay Utility bills', tag: false },

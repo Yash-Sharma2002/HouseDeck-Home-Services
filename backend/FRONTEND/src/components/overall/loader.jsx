@@ -1,11 +1,11 @@
 import React from 'react'
 import { css } from "@emotion/react";
-import PulseLoader from "react-spinners/PulseLoader";
+import ClockLoader from "react-spinners/ClockLoader";
 
 const override = css`
   display: block;
   margin: 0 auto;
-  border-color: #FFA736;
+  border-color: #ffd416;
   position:absolute;
   top:50%;
   left:50%;
@@ -13,6 +13,6 @@ const override = css`
 `;
 export default function Loader() {
     return (
-            <PulseLoader color={'#FFA736'} css={override} size={20} margin={10} />
+            <ClockLoader color={'#FFA736'} css={override} size={60} margin={10} />
     );
 }

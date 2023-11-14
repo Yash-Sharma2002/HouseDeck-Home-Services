@@ -11,7 +11,7 @@ import '../../css/OnlyForDialog.css';
 import { authenticateSignup } from '../../Api/signup';
 import { authenticateLogin } from '../../Api/login';
 import { LoginContext } from '../../context/Context';
-import SignupGoogle from '../signup-google/Signup';
+import SignupGoogle from '../sign-google/Signup';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -22,7 +22,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 
 
 
-function Content({ open, setOpen, width, display }) {
+function Content({ open, setOpen, width, display,type }) {
   const fullScreen = useMediaQuery('(max-width:700px)');
 
   const { setMessage, setMessageType, setShow, encrypt } = React.useContext(LoginContext)
@@ -249,7 +249,7 @@ function Content({ open, setOpen, width, display }) {
               Continue
             </Button>
 
-            <SignupGoogle />
+            <SignupGoogle type={type} />
 
 
             <Typography sx={{ fontSize: '11px', fontFamily: 'Fredoka', position: 'absolute',textAlign:'start', bottom: 25 }}>By continuing, you agree to the <a href="/privacy-policy" style={{ color: 'black', textDecoration: 'none', fontWeight: '700' }}> T&C / Privacy Policy</a></Typography>
@@ -359,7 +359,7 @@ function Content({ open, setOpen, width, display }) {
 
 
 
-function SMContent({ open, setOpen }) {
+function SMContent({ open, setOpen,type }) {
   const fullScreen = useMediaQuery('(max-width:700px)');
 
   const { setMessage, setMessageType, setShow, encrypt } = React.useContext(LoginContext)
@@ -589,6 +589,7 @@ function SMContent({ open, setOpen }) {
               Continue
             </Button>
 
+            <SignupGoogle type={type} />
 
 
 
@@ -695,7 +696,7 @@ function SMContent({ open, setOpen }) {
 
 
 
-export default function Login({ open, setOpen, setAccount }) {
+export default function Login({ open, setOpen, setAccount,type }) {
   const xlMax = useMediaQuery('(max-width:2000px)');
   const xlMin = useMediaQuery('(min-width:1160px)');
   const mdMax = useMediaQuery('(max-width:1160px)');
@@ -705,13 +706,13 @@ export default function Login({ open, setOpen, setAccount }) {
     <>
 
       {xlMax && xlMin && (
-        <Content open={open} setOpen={setOpen} width={'650px'} display={'flex'} />
+        <Content open={open} setOpen={setOpen} width={'650px'} display={'flex'} type={type} />
       )}
       {!(xlMax && xlMin) && mdMax && mdMin && (
-        <Content open={open} setOpen={setOpen} width={'650px'} display={'flex'} />
+        <Content open={open} setOpen={setOpen} width={'650px'} display={'flex'} type={type} />
       )}
       {sm && (
-        <SMContent open={open} setOpen={setOpen} />
+        <SMContent open={open} setOpen={setOpen} type={type} />
       )}
     </>
   )

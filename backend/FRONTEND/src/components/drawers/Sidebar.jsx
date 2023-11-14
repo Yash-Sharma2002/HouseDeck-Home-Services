@@ -19,6 +19,11 @@ import { LoginContext } from '../../context/Context';
 export default function Sidebar({ commonProps }) {
     const { isLogin, userData, decrypt } = React.useContext(LoginContext)
     const [open, setOpen] = React.useState(false);
+    const [type, setType] = React.useState(false);
+    const handleClickOpen = (type= 'signin') => {
+        setOpen(true);
+        setType(type)
+    };
     const navigate = useNavigate();
     const [state, setState] = React.useState({
         left: false,
@@ -33,9 +38,6 @@ export default function Sidebar({ commonProps }) {
     };
 
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
 
 
     function logout() {
@@ -135,8 +137,16 @@ export default function Sidebar({ commonProps }) {
                                             textTransform: 'none',
                                             padding: '0px 15px',
                                             my:1
-                                        }} onClick={handleClickOpen}>
+                                        }} onClick={()=>handleClickOpen()}>
                                             Login
+                                        </Typography>
+                                        <Typography sx={{
+                                            fontSize: '16px',
+                                            textTransform: 'none',
+                                            padding: '0px 15px',
+                                            my:1
+                                        }} onClick={()=>handleClickOpen('signup')}>
+                                            Signup
                                         </Typography>
                                         <Typography sx={{
                                             fontSize: '16px',
@@ -188,11 +198,11 @@ export default function Sidebar({ commonProps }) {
                             <ListItemText primary='Contact us' />
                         </ListItem>
                         <Typography sx={{ display: 'flex', justifyContent: 'space-evenly', alignItems: "center" }}>
-                            Email - <a href="mailto:hello@Vapormop.in">hello@Vapormop.in</a>
+                            Email - <a href="mailto:care@Vapormop.in">care@Vapormop.in</a>
                         </Typography>
                     </Box>
                 </Drawer>
-                {!isLogin && (<Login open={open} setOpen={setOpen} />)}
+                {!isLogin && (<Login open={open} setOpen={setOpen} type={type} />)}
             </React.Fragment>
         </div>
     )

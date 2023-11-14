@@ -3,9 +3,10 @@ import React from "react";
 import { auth, googleProvider } from "../../constants/firebase";
 import { LoginContext } from "../../context/Context";
 import { authenticateSignup } from "../../Api/signup";
+import { authenticateLogin } from "../../Api/login";
 
 
-export default function SignupGoogle() {
+export default function SignupGoogle({ type }) {
 	const { setMessage, setMessageType, setShow, encrypt } = React.useContext(LoginContext)
 
 
@@ -25,7 +26,11 @@ export default function SignupGoogle() {
 					Username: user.displayName,
 					Email: user.email
 				}
-				let response = await authenticateSignup(signup)
+
+				let response;
+				if (type === 'signup') response = await authenticateSignup(signup)
+				else if (type === 'signin') response = await authenticateLogin(signup)
+				else return;
 				if (!response) return;
 
 				localStorage.setItem('START_DATA', JSON.stringify({
@@ -70,7 +75,12 @@ export default function SignupGoogle() {
 				fontWeight: '400',
 				lineHeight: '20px',
 				color: 'black'
-			}} >Sign up with Google</p>
+			}} >
+				{type === 'signin' ?
+					'Sign in with Google' :
+					type === 'signup' ?
+						'Sign up with Google' :
+						''}</p>
 		</div>
 	);
 }

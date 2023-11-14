@@ -72,7 +72,7 @@ function Content({ change }) {
 
 
   const getDraftBookings = async () => {
-    const response = await getDraftBookingsAPI({ Number: decrypt(userData.USERDATA_AS_NUMBER) })
+    const response = await getDraftBookingsAPI({ Email: decrypt(userData.USERDATA_AS_EMAIL) })
     if (response) {
       setSubscriptions([])
       setBookings(response.reverse())
@@ -82,7 +82,7 @@ function Content({ change }) {
     }
   }
   const getPaidBookings = async () => {
-    const response = await getPaidBookingsAPI({ Number: decrypt(userData.USERDATA_AS_NUMBER) })
+    const response = await getPaidBookingsAPI({ Email: decrypt(userData.USERDATA_AS_EMAIL) })
     if (response) {
       setSubscriptions([])
       setBookings(response.reverse())
@@ -92,7 +92,7 @@ function Content({ change }) {
     }
   }
   const getSubscriptions = async () => {
-    const response = await getSubscriptionDetails({ Number: decrypt(userData.USERDATA_AS_NUMBER) })
+    const response = await getSubscriptionDetails({ Email: decrypt(userData.USERDATA_AS_EMAIL) })
     if (response) {
       setBookings([])
       setSubscriptions(response.reverse())
@@ -103,7 +103,7 @@ function Content({ change }) {
   const deleteDraft = async (id) => {
     const items = {
       _id: id,
-      Number: decrypt(userData.USERDATA_AS_NUMBER)
+      Number: decrypt(userData.USERDATA_AS_EMAIL)
     }
     const response = await deletDraftBookingsAPI(items)
     if (response) {
