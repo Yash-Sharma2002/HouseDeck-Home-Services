@@ -209,8 +209,8 @@ function Content({ open, setOpen, width, display }) {
         maxWidth={false}
       >
         <Box sx={{ display: 'flex', height: '70vh', width: width }} >
-          <Box sx={{ width: '40%', background: '#f8f8f8', paddingLeft: '30px' }}>
-            <img style={{ height: '100px', width: "100px", marginTop: '9rem' }} src={require('../../assets/logos/isLogin.png')} alt="Login" />
+          <Box sx={{ width: '40%', background: '#f8f8f8',textAlign:'center' }}>
+            <img style={{ height: '200px', width: "260px", marginTop: '5rem' }} src={require('../../assets/logos/isLogin.png')} alt="Login" />
             <Typography variant="h6" sx={{ fontSize: '18px', fontWeight: '600', ml: 1 }}>Login/Signup</Typography>
           </Box>
           <Box sx={{ ml: 5 }}>
@@ -248,8 +248,8 @@ function Content({ open, setOpen, width, display }) {
               Continue
             </Button>
 
-            <Typography sx={{ fontSize: '11px', fontFamily: 'Fredoka', position: 'absolute',textAlign:'start', bottom: 25 }}>By continuing, you agree to the <a href="/Vapormop-partner-(Terms-of-Use)" style={{ color: 'black', textDecoration: 'none', fontWeight: '700' }}> Terms & Conditions</a></Typography>
-            <Typography sx={{ fontSize: '11px', fontFamily: 'Fredoka', position: 'absolute',textAlign:'start', bottom: 10 }}>For any issue/query please email <a href="mailto:homeservices@Vapormop.in" style={{ color: 'black', textDecoration: 'none', fontWeight: '700' }}>homeservices@Vapormop.in</a></Typography>
+            <Typography sx={{ fontSize: '11px', fontFamily: 'Fredoka', position: 'absolute',textAlign:'start', bottom: 25 }}>By continuing, you agree to the <a href="/privacy-policy" style={{ color: 'black', textDecoration: 'none', fontWeight: '700' }}> T&C / Privacy Policy</a></Typography>
+            <Typography sx={{ fontSize: '11px', fontFamily: 'Fredoka', position: 'absolute',textAlign:'start', bottom: 10 }}>For any issue/query please email <a href="mailto:care@Vapormop.com" style={{ color: 'black', textDecoration: 'none', fontWeight: '700' }}>care@Vapormop.com</a></Typography>
 
 
             <Box sx={{ display: displayForSecond ? 'block' : 'none', margin: '0px auto', }}>
@@ -584,6 +584,7 @@ function SMContent({ open, setOpen }) {
             }} onClick={forSecondButtonDisplay} type="submit">
               Continue
             </Button>
+
 
             <Box sx={{ display: displayForSecond ? 'block' : 'none', margin: '0px auto', }}>
 

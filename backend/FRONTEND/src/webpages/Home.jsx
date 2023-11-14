@@ -21,7 +21,7 @@ export default function Home() {
     { name: 'Recommended Services', url: '#Vapormop-Recommended-Services' },
     { name: 'Customer Stories', url: '#customer-stories' },
     { name: 'FAQs', url: '#faqs' },
-    { name: 'Vapormop Services', url: '#Vapormop-Services' },
+    { name: 'Vapormop Business', url: '#Vapormop-Services' },
   ]
 
 

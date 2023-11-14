@@ -101,7 +101,7 @@ function Content({ padding, padding2, display, displayForButton }) {
             }}>
                 <Typography sx={{
                     fontWeight: '600',
-                    color: '#F45C43',
+                    color: '#000000',
                     fontSize: '22px',
                     paddingBottom: '50px',
                     marginTop: '40px',
@@ -131,7 +131,7 @@ function Content({ padding, padding2, display, displayForButton }) {
             <Box sx={{ display: display, alignItems: 'center', justifyContent: 'center' }}>
 
 
-                <Card sx={{ width: '33%', borderRadius: 4, height: '650px', margin: '0px 10px', background: "rgb(234,253,247)" }}>
+                <Card sx={{ width: '33%', borderRadius: 4, height: '650px', margin: '0px 10px', background: "#ffe732" }}>
                     <Box sx={{ textAlign: 'center' }}>
                         <Box sx={{
                             background: `url(${require('../../assets/other/kitchenCleaning.png')})`,
@@ -151,10 +151,10 @@ function Content({ padding, padding2, display, displayForButton }) {
                             }}>
                                 $3350
                                 <p style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</p>
-                                <p style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Kitchen Deep Cleaning</p>
+                                <p style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '600' }}>Kitchen Deep Cleaning</p>
                             </Typography>
                         </Box>
-                        <Typography sx={{ textAlign: 'center', wordWrap: 'break-word', fontSize: '16px', marginTop: '20px', padding: padding2 }} variant="body2" color="rgba(27,104,95,0.6)">
+                        <Typography sx={{ textAlign: 'center', wordWrap: 'break-word', fontSize: '16px', marginTop: '20px', padding: padding2 }} variant="body2" color="#000000">
                             Give your kitchen a deep clean from top to bottom, from inside the oven to outside the cabinets.
                         </Typography>
                         {
@@ -162,15 +162,15 @@ function Content({ padding, padding2, display, displayForButton }) {
                                 <Link href={paymentLink} target='_blank' rel="noreferrer" sx={{ textDecoration: 'none' }}>
                                     <Button sx={{
                                         fontSize: '12px',
-                                        color: '#3a7bd5 ',
+                                        color: '#ffffff ',
                                         padding: '15px 20px',
                                         borderRadius: 15,
-                                        background: "#bee9d8",
+                                        background: "#ff3110",
                                         textAlign: 'center',
                                         mt: 6,
                                         boxShadow: 0,
                                         '&:hover': {
-                                            background: '#F45C43',
+                                            background: '#000000',
                                             color: 'white'
                                         }
                                     }}
@@ -183,15 +183,15 @@ function Content({ padding, padding2, display, displayForButton }) {
                                     {
                                         isLogin ? <Button sx={{
                                             fontSize: '12px',
-                                            color: '#3a7bd5 ',
+                                            color: '#ffffff ',
                                             padding: '15px 20px',
                                             borderRadius: 15,
-                                            background: "#bee9d8",
+                                            background: "#ff3110",
                                             textAlign: 'center',
                                             mt: 6,
                                             boxShadow: 0,
                                             '&:hover': {
-                                                background: '#F45C43',
+                                                background: '#000000',
                                                 color: 'white'
                                             }
                                         }}
@@ -202,15 +202,15 @@ function Content({ padding, padding2, display, displayForButton }) {
                                             :
                                             <Button sx={{
                                                 fontSize: '12px',
-                                                color: '#3a7bd5 ',
+                                                color: '#ffffff ',
                                                 padding: '15px 20px',
                                                 borderRadius: 15,
-                                                background: "#bee9d8",
+                                                background: "#ff3110",
                                                 textAlign: 'center',
                                                 mt: 6,
                                                 boxShadow: 0,
                                                 '&:hover': {
-                                                    background: '#F45C43',
+                                                    background: '#000000',
                                                     color: 'white'
                                                 }
                                             }} onClick={handleClickOpen}>
@@ -244,10 +244,10 @@ function Content({ padding, padding2, display, displayForButton }) {
                             }}>
                                 $1400
                                 <p style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</p>
-                                <p style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Bathroom Cleaning</p>
+                                <p style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '600' }}>Bathroom Cleaning</p>
                             </Typography>
                         </Box>
-                        <Typography sx={{ textAlign: 'center', wordWrap: 'break-word', fontSize: '16px', marginTop: '20px', padding: padding2 }} variant="body2" color="rgba(27,104,95,0.6)">
+                        <Typography sx={{ textAlign: 'center', wordWrap: 'break-word', fontSize: '16px', marginTop: '20px', padding: padding2 }} variant="body2" color="#000000">
                             Don’t put off cleaning your bathroom! Let us handle it so you have more time for the things you love.
                         </Typography>
                         {
@@ -255,15 +255,15 @@ function Content({ padding, padding2, display, displayForButton }) {
                                 <Link href={paymentLink} target='_blank' rel="noreferrer" sx={{ textDecoration: 'none' }}>
                                     <Button sx={{
                                         fontSize: '12px',
-                                        color: '#3a7bd5 ',
+                                        color: '#ffffff ',
                                         padding: '15px 20px',
                                         borderRadius: 15,
-                                        background: "#bee9d8",
+                                        background: "#ff3110",
                                         textAlign: 'center',
                                         mt: 6,
                                         boxShadow: 0,
                                         '&:hover': {
-                                            background: '#F45C43',
+                                            background: '#000000',
                                             color: 'white'
                                         }
                                     }} onClick={() => GetPayment('Bathroom Cleaning- [For 3 months]', '1400')}>
@@ -275,15 +275,15 @@ function Content({ padding, padding2, display, displayForButton }) {
                                     {
                                         isLogin ? <Button sx={{
                                             fontSize: '12px',
-                                            color: '#3a7bd5 ',
+                                            color: '#ffffff ',
                                             padding: '15px 20px',
                                             borderRadius: 15,
-                                            background: "#bee9d8",
+                                            background: "#ff3110",
                                             textAlign: 'center',
                                             mt: 6,
                                             boxShadow: 0,
                                             '&:hover': {
-                                                background: '#F45C43',
+                                                background: '#000000',
                                                 color: 'white'
                                             }
                                         }}
@@ -294,15 +294,15 @@ function Content({ padding, padding2, display, displayForButton }) {
                                             :
                                             <Button sx={{
                                                 fontSize: '12px',
-                                                color: '#3a7bd5 ',
+                                                color: '#ffffff ',
                                                 padding: '15px 20px',
                                                 borderRadius: 15,
-                                                background: "#bee9d8",
+                                                background: "#ff3110",
                                                 textAlign: 'center',
                                                 mt: 6,
                                                 boxShadow: 0,
                                                 '&:hover': {
-                                                    background: '#F45C43',
+                                                    background: '#000000',
                                                     color: 'white'
                                                 }
                                             }} onClick={handleClickOpen}>
@@ -316,7 +316,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                 </Card>
 
 
-                <Card sx={{ width: '33%', borderRadius: 4, height: '650px', margin: '0px 10px', background: "rgb(234,253,247)" }}>
+                <Card sx={{ width: '33%', borderRadius: 4, height: '650px', margin: '0px 10px', background: "#ffe732" }}>
                     <Box sx={{ textAlign: 'center' }}>
                         <Box sx={{
                             background: `url(${require('../../assets/other/sofaCleaning.png')})`,
@@ -336,10 +336,10 @@ function Content({ padding, padding2, display, displayForButton }) {
                             }}>
                                 $2800
                                 <p style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</p>
-                                <p style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Sofa Cleaning (5 Seater)</p>
+                                <p style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '600' }}>Sofa Cleaning (5 Seater)</p>
                             </Typography>
                         </Box>
-                        <Typography sx={{ textAlign: 'center', wordWrap: 'break-word', fontSize: '16px', marginTop: '20px', padding: padding2 }} variant="body2" color="rgba(27,104,95,0.6)">
+                        <Typography sx={{ textAlign: 'center', wordWrap: 'break-word', fontSize: '16px', marginTop: '20px', padding: padding2 }} variant="body2" color="#000000">
                             We pride ourselves on providing you with a quick and convenient way to clean your home’s sofa and other upholstery items.
                         </Typography>
                         {
@@ -347,15 +347,15 @@ function Content({ padding, padding2, display, displayForButton }) {
                                 <Link href={paymentLink} target='_blank' rel="noreferrer" sx={{ textDecoration: 'none' }}>
                                     <Button sx={{
                                         fontSize: '12px',
-                                        color: '#3a7bd5 ',
+                                        color: '#ffffff ',
                                         padding: '15px 20px',
                                         borderRadius: 15,
-                                        background: "#bee9d8",
+                                        background: "#ff3110",
                                         textAlign: 'center',
                                         mt: 6,
                                         boxShadow: 0,
                                         '&:hover': {
-                                            background: '#F45C43',
+                                            background: '#000000',
                                             color: 'white'
                                         }
                                     }}
@@ -368,15 +368,15 @@ function Content({ padding, padding2, display, displayForButton }) {
                                     {
                                         isLogin ? <Button sx={{
                                             fontSize: '12px',
-                                            color: '#3a7bd5 ',
+                                            color: '#ffffff ',
                                             padding: '15px 20px',
                                             borderRadius: 15,
-                                            background: "#bee9d8",
+                                            background: "#ff3110",
                                             textAlign: 'center',
                                             mt: 6,
                                             boxShadow: 0,
                                             '&:hover': {
-                                                background: '#F45C43',
+                                                background: '#000000',
                                                 color: 'white'
                                             }
                                         }}
@@ -387,15 +387,15 @@ function Content({ padding, padding2, display, displayForButton }) {
                                             :
                                             <Button sx={{
                                                 fontSize: '12px',
-                                                color: '#3a7bd5 ',
+                                                color: '#ffffff ',
                                                 padding: '15px 20px',
                                                 borderRadius: 15,
-                                                background: "#bee9d8",
+                                                background: "#ff3110",
                                                 textAlign: 'center',
                                                 mt: 6,
                                                 boxShadow: 0,
                                                 '&:hover': {
-                                                    background: '#F45C43',
+                                                    background: '#000000',
                                                     color: 'white'
                                                 }
                                             }} onClick={handleClickOpen}>
@@ -502,7 +502,7 @@ function SMContent({ displayForButton }) {
         <div id="subscription-plans" style={{ padding: '20px' }}>
             <Typography sx={{
                 fontWeight: '600',
-                color: '#F45C43',
+                color: '#000000',
                 fontSize: '22px',
                 paddingBottom: '50px',
                 marginTop: '40px',
@@ -516,7 +516,7 @@ function SMContent({ displayForButton }) {
             <Box sx={{ display: 'block', alignItems: 'center', justifyContent: 'center' }}>
 
 
-                <Card sx={{ maxWidth: 'unset', borderRadius: 4, marginTop: '25px', height: '600px', background: "rgb(234,253,247)" }}>
+                <Card sx={{ maxWidth: 'unset', borderRadius: 4, marginTop: '25px', height: '600px', background: "#ffe732" }}>
                     <Box sx={{ textAlign: 'center' }}>
                         <Box sx={{
                             background: `url(${require('../../assets/other/kitchenCleaning.png')})`,
@@ -536,10 +536,10 @@ function SMContent({ displayForButton }) {
                             }}>
                                 $3350
                                 <p style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</p>
-                                <p style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Kitchen Deep Cleaning</p>
+                                <p style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '500' }}>Kitchen Deep Cleaning</p>
                             </Typography>
                         </Box>
-                        <Typography sx={{ textAlign: 'center', wordWrap: 'break-word', fontSize: '16px', marginTop: '20px', padding: '10px 20px' }} variant="body2" color="rgba(27,104,95,0.6)">
+                        <Typography sx={{ textAlign: 'center', wordWrap: 'break-word', fontSize: '16px', marginTop: '20px', padding: '10px 20px' }} variant="body2" color="#000000">
                             Give your kitchen a deep clean from top to bottom, from inside the oven to outside the cabinets.
                         </Typography>
                         {
@@ -547,15 +547,15 @@ function SMContent({ displayForButton }) {
                                 <Link href={paymentLink} target='_blank' rel="noreferrer" sx={{ textDecoration: 'none' }}>
                                     <Button sx={{
                                         fontSize: '12px',
-                                        color: '#3a7bd5 ',
+                                        color: '#ffffff ',
                                         padding: '15px 20px',
                                         borderRadius: 15,
-                                        background: "#bee9d8",
+                                        background: "#ff3110",
                                         textAlign: 'center',
                                         mt: 6,
                                         boxShadow: 0,
                                         '&:hover': {
-                                            background: '#F45C43',
+                                            background: '#000000',
                                             color: 'white'
                                         }
                                     }} onClick={() => GetPayment('Kitchen Deep Cleaning - [For 3 months]', '3350')}>
@@ -567,15 +567,15 @@ function SMContent({ displayForButton }) {
                                     {
                                         isLogin ? <Button sx={{
                                             fontSize: '12px',
-                                            color: '#3a7bd5 ',
+                                            color: '#ffffff ',
                                             padding: '15px 20px',
                                             borderRadius: 15,
-                                            background: "#bee9d8",
+                                            background: "#ff3110",
                                             textAlign: 'center',
                                             mt: 6,
                                             boxShadow: 0,
                                             '&:hover': {
-                                                background: '#F45C43',
+                                                background: '#000000',
                                                 color: 'white'
                                             }
                                         }}
@@ -586,15 +586,15 @@ function SMContent({ displayForButton }) {
                                             :
                                             <Button sx={{
                                                 fontSize: '12px',
-                                                color: '#3a7bd5 ',
+                                                color: '#ffffff ',
                                                 padding: '15px 20px',
                                                 borderRadius: 15,
-                                                background: "#bee9d8",
+                                                background: "#ff3110",
                                                 textAlign: 'center',
                                                 mt: 6,
                                                 boxShadow: 0,
                                                 '&:hover': {
-                                                    background: '#F45C43',
+                                                    background: '#000000',
                                                     color: 'white'
                                                 }
                                             }} onClick={handleClickOpen}>
@@ -628,11 +628,11 @@ function SMContent({ displayForButton }) {
                             }}>
                                 $1400
                                 <p style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</p>
-                                <p style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Bathroom Cleaning</p>
+                                <p style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '600' }}>Bathroom Cleaning</p>
 
                             </Typography>
                         </Box>
-                        <Typography sx={{ textAlign: 'center', wordWrap: 'break-word', fontSize: '16px', marginTop: '20px', padding: '10px 20px' }} variant="body2" color="rgba(27,104,95,0.6)">
+                        <Typography sx={{ textAlign: 'center', wordWrap: 'break-word', fontSize: '16px', marginTop: '20px', padding: '10px 20px' }} variant="body2" color="#000000">
                             Don’t put off cleaning your bathroom! Let us handle it so you have more time for the things you love.
                         </Typography>
                         {
@@ -640,15 +640,15 @@ function SMContent({ displayForButton }) {
                                 <Link href={paymentLink} target='_blank' rel="noreferrer" sx={{ textDecoration: 'none' }}>
                                     <Button sx={{
                                         fontSize: '12px',
-                                        color: '#3a7bd5 ',
+                                        color: '#ffffff ',
                                         padding: '15px 20px',
                                         borderRadius: 15,
-                                        background: "#bee9d8",
+                                        background: "#ff3110",
                                         textAlign: 'center',
                                         mt: 6,
                                         boxShadow: 0,
                                         '&:hover': {
-                                            background: '#F45C43',
+                                            background: '#000000',
                                             color: 'white'
                                         }
                                     }} onClick={() => GetPayment('Bathroom Cleaning- [For 3 months]', '1400')}>
@@ -660,15 +660,15 @@ function SMContent({ displayForButton }) {
                                     {
                                         isLogin ? <Button sx={{
                                             fontSize: '12px',
-                                            color: '#3a7bd5 ',
+                                            color: '#ffffff ',
                                             padding: '15px 20px',
                                             borderRadius: 15,
-                                            background: "#bee9d8",
+                                            background: "#ff3110",
                                             textAlign: 'center',
                                             mt: 6,
                                             boxShadow: 0,
                                             '&:hover': {
-                                                background: '#F45C43',
+                                                background: '#000000',
                                                 color: 'white'
                                             }
                                         }}
@@ -679,15 +679,15 @@ function SMContent({ displayForButton }) {
                                             :
                                             <Button sx={{
                                                 fontSize: '12px',
-                                                color: '#3a7bd5 ',
+                                                color: '#ffffff ',
                                                 padding: '15px 20px',
                                                 borderRadius: 15,
-                                                background: "#bee9d8",
+                                                background: "#ff3110",
                                                 textAlign: 'center',
                                                 mt: 6,
                                                 boxShadow: 0,
                                                 '&:hover': {
-                                                    background: '#F45C43',
+                                                    background: '#000000',
                                                     color: 'white'
                                                 }
                                             }} onClick={handleClickOpen}>
@@ -701,7 +701,7 @@ function SMContent({ displayForButton }) {
                 </Card>
 
 
-                <Card sx={{ maxWidth: 'unset', borderRadius: 4, marginTop: '25px', height: '600px', background: "rgb(234,253,247)" }}>
+                <Card sx={{ maxWidth: 'unset', borderRadius: 4, marginTop: '25px', height: '600px', background: "#ffe732" }}>
                     <Box sx={{ textAlign: 'center' }}>
                         <Box sx={{
                             background: `url(${require('../../assets/other/sofaCleaning.png')})`,
@@ -721,10 +721,10 @@ function SMContent({ displayForButton }) {
                             }}>
                                 $2800
                                 <p style={{ fontSize: '15px', marginTop: "-25px" }}>for 3-months</p>
-                                <p style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '100' }}>Sofa Cleaning (5 Seater)</p>
+                                <p style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '600' }}>Sofa Cleaning (5 Seater)</p>
                             </Typography>
                         </Box>
-                        <Typography sx={{ textAlign: 'center', wordWrap: 'break-word', fontSize: '16px', marginTop: '20px', padding: '10px 20px' }} variant="body2" color="rgba(27,104,95,0.6)">
+                        <Typography sx={{ textAlign: 'center', wordWrap: 'break-word', fontSize: '16px', marginTop: '20px', padding: '10px 20px' }} variant="body2" color="#000000">
                             We pride ourselves on providing you with a quick and convenient way to clean your home’s sofa and other upholstery items.
                         </Typography>
                         {
@@ -732,15 +732,15 @@ function SMContent({ displayForButton }) {
                                 <Link href={paymentLink} target='_blank' rel="noreferrer" sx={{ textDecoration: 'none' }}>
                                     <Button sx={{
                                         fontSize: '12px',
-                                        color: '#3a7bd5 ',
+                                        color: '#ffffff ',
                                         padding: '15px 20px',
                                         borderRadius: 15,
-                                        background: "#bee9d8",
+                                        background: "#ff3110",
                                         textAlign: 'center',
                                         mt: 6,
                                         boxShadow: 0,
                                         '&:hover': {
-                                            background: '#F45C43',
+                                            background: '#000000',
                                             color: 'white'
                                         }
                                     }}
@@ -753,15 +753,15 @@ function SMContent({ displayForButton }) {
                                     {
                                         isLogin ? <Button sx={{
                                             fontSize: '12px',
-                                            color: '#3a7bd5 ',
+                                            color: '#ffffff ',
                                             padding: '15px 20px',
                                             borderRadius: 15,
-                                            background: "#bee9d8",
+                                            background: "#ff3110",
                                             textAlign: 'center',
                                             mt: 6,
                                             boxShadow: 0,
                                             '&:hover': {
-                                                background: '#F45C43',
+                                                background: '#000000',
                                                 color: 'white'
                                             }
                                         }}
@@ -772,15 +772,15 @@ function SMContent({ displayForButton }) {
                                             :
                                             <Button sx={{
                                                 fontSize: '12px',
-                                                color: '#3a7bd5 ',
+                                                color: '#ffffff ',
                                                 padding: '15px 20px',
                                                 borderRadius: 15,
-                                                background: "#bee9d8",
+                                                background: "#ff3110",
                                                 textAlign: 'center',
                                                 mt: 6,
                                                 boxShadow: 0,
                                                 '&:hover': {
-                                                    background: '#F45C43',
+                                                    background: '#000000',
                                                     color: 'white'
                                                 }
                                             }} onClick={handleClickOpen}>

@@ -42,18 +42,21 @@ export const CustomerRatings = [
   {
     key: "E",
     name: "Emily Davis",
+    rating:5,
     text: `"I've never cleaned a house  before and these guys did a dream job. Came home and was amazed at how perfect everything was. The whole process was so easy and really helpful when I needed it. good value for money!"`,
   },
   // { key: 'R', name: 'Raj', text:`"I have never experienced a better company's full reliability and professional service  than Vapormop lite. They have characterized the company to provide effective products that are clean, effective, eco friendly and meet the needs of our families. As an organization, they are completely reliable and  always confident that they will provide exactly what we need in the most economical, environmentally friendly and safe way even in our absence. I highly recommend  their service-oriented approach to professionalism, communication and meeting  deadlines."`},
   {
     key: "Z",
     name: "Zoey Reed",
+    rating:5,
     text: `"Affordable price and great service. We booked an after party cleaning for the house and garden and the team did an amazing job of getting everything back to normal. They do our hectic work into just few time."`,
   },
   {
     key: "H",
     name: "Hannah Bennett",
     text: `"We ordered carpet cleaning for each room and got a good discount. Carpets clean very well and dry quickly with eco friendly products. Overall good service, punctuality  and well trained professionals are there.."`,
+    rating:4,
   },
 ];
 
@@ -127,30 +130,30 @@ export const DrawerData = [
 
 export const SearchBar = {
   'new_york': [
-    { value: "Home Painting", url: "/service=Painting" },
     { value: "Home Cleaning", url: "/service=Cleaning" },
-    { value: "False Ceiling", url: "/service=False Ceiling" },
     { value: "Home Sanitization", url: '/service=Home Sanitization' },
     { value: "Pest Control", url: '/service=Pest Control' },
+    { value: "Home Painting", url: "/service=Painting" },
+    { value: "False Ceiling", url: "/service=False Ceiling" },
     { value: "AC Repair", url: '/service=AC Repair' },
     { value: "Electrician", url: '/service=Electrician' },
     { value: "Carpentry", url: '/service=Carpentry' },
     { value: "Plumbing", url: '/service=Plumbing' },
   ],
   'chicago': [
-    { value: "Home Painting", url: "/service=Painting" },
     { value: "Home Cleaning", url: "/service=Cleaning" },
-    { value: "False Ceiling", url: "/service=False Ceiling" },
     { value: "Home Sanitization", url: '/service=Home Sanitization' },
     { value: "Pest Control", url: '/service=Pest Control' },
+    { value: "Home Painting", url: "/service=Painting" },
+    { value: "False Ceiling", url: "/service=False Ceiling" },
     { value: "AC Repair", url: '/service=AC Repair' },
   ],
   'california': [
-    { value: "Home Painting", url: "/service=Painting" },
     { value: "Home Cleaning", url: "/service=Cleaning" },
-    { value: "False Ceiling", url: "/service=False Ceiling" },
     { value: "Home Sanitization", url: '/service=Home Sanitization' },
     { value: "Pest Control", url: '/service=Pest Control' },
+    { value: "Home Painting", url: "/service=Painting" },
+    { value: "False Ceiling", url: "/service=False Ceiling" },
     { value: "AC Repair", url: '/service=AC Repair' },
     { value: "Electrician", url: '/service=Electrician' },
     { value: "Carpentry", url: '/service=Carpentry' },

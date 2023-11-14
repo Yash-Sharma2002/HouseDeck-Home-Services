@@ -47,7 +47,6 @@ const TopHeadQuestions = {
 }
 
 const RatingFunction = ({ width, height }) => {
-    const CardRating = <Rating sx={{ fontSize: '15px', color: '#009587' }} name="read-only" value={5} readOnly />
     return (
         <>
             {CustomerRatings.map((data,idx) =>
@@ -70,7 +69,7 @@ const RatingFunction = ({ width, height }) => {
                             }
                             sx={{ marginTop: -1 }}
                             title={data.name}
-                            subheader={CardRating}
+                            subheader={<Rating sx={{ fontSize: '15px', color: '#009587' }} name="read-only" value={data.rating} readOnly />}
                         />
                         <CardContent>
                             <Typography  variant="body2" color="text.secondary">
