@@ -11,6 +11,7 @@ import '../../css/OnlyForDialog.css';
 import { authenticateSignup } from '../../Api/signup';
 import { authenticateLogin } from '../../Api/login';
 import { LoginContext } from '../../context/Context';
+import SignupGoogle from '../signup-google/Signup';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -247,6 +248,9 @@ function Content({ open, setOpen, width, display }) {
             }} onClick={forSecondButtonDisplay} type="submit">
               Continue
             </Button>
+
+            <SignupGoogle />
+
 
             <Typography sx={{ fontSize: '11px', fontFamily: 'Fredoka', position: 'absolute',textAlign:'start', bottom: 25 }}>By continuing, you agree to the <a href="/privacy-policy" style={{ color: 'black', textDecoration: 'none', fontWeight: '700' }}> T&C / Privacy Policy</a></Typography>
             <Typography sx={{ fontSize: '11px', fontFamily: 'Fredoka', position: 'absolute',textAlign:'start', bottom: 10 }}>For any issue/query please email <a href="mailto:care@Vapormop.com" style={{ color: 'black', textDecoration: 'none', fontWeight: '700' }}>care@Vapormop.com</a></Typography>
@@ -584,6 +588,8 @@ function SMContent({ open, setOpen }) {
             }} onClick={forSecondButtonDisplay} type="submit">
               Continue
             </Button>
+
+
 
 
             <Box sx={{ display: displayForSecond ? 'block' : 'none', margin: '0px auto', }}>
