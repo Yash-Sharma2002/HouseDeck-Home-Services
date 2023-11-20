@@ -6,7 +6,7 @@ export const CitiesImg = [
   { id: "los_angeles", url: require("../assets/cities/los-angeles.png"), name: "Los Angeles", },
   { id: "seattle", url: require("../assets/cities/seattle.png"), name: "Seattle", },
   { id: "portland", url: require("../assets/cities/portland.png"), name: "Portland", },
-  { id: "phoenix", url: require("../assets/cities/phoenix.png"), name: "phoenix", },
+  { id: "phoenix", url: require("../assets/cities/phoenix.png"), name: "Phoenix", },
   { id: "dallas", url: require("../assets/cities/dallas.png"), name: "Dallas", },
   { id: "san_diego", url: require("../assets/cities/san-diego.png"), name: "San Diego", },
   { id: "philadelphia", url: require("../assets/cities/philadelphia.png"), name: "Philadelphia", },

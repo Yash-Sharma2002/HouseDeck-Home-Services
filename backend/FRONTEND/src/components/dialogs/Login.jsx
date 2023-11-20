@@ -556,7 +556,7 @@ function SMContent({ open, setOpen,type }) {
             <Typography variant="h6" sx={{ fontSize: '18px', fontWeight: '600' }}>Login/Signup</Typography>
 
           </Box>
-          <Box sx={{ ml: 2 }}>
+          <Box sx={{ width: '95%',mx:'auto' }}>
 
 
             <Typography sx={{ fontSize: '16px', fontWeight: '600', marginTop: 3 }}>Enter phone to continue</Typography>
@@ -581,7 +581,7 @@ function SMContent({ open, setOpen,type }) {
             </Box>
 
             <Button sx={{
-              display: displayForFirst ? 'block' : 'none', my: 2, boxShadow: 0, width: '96%', background: 'rgb(253, 55, 82)', color: 'white', padding: '8px 0px', textTransform: 'none',
+              display: displayForFirst ? 'block' : 'none', my: 2, boxShadow: 0, width: '100%', background: 'rgb(253, 55, 82)', color: 'white', padding: '8px 0px', textTransform: 'none',
               '&:hover': {
                 background: 'rgb(253, 55, 82)', color: 'white',
               }
@@ -624,7 +624,7 @@ function SMContent({ open, setOpen,type }) {
               <Button sx={{
                 my: 2,
                 boxShadow: 0,
-                width: '96%',
+                width: '100%',
                 background: 'rgb(253, 55, 82)',
                 color: 'white',
                 padding: '8px 0px',
@@ -669,7 +669,7 @@ function SMContent({ open, setOpen,type }) {
               <Button sx={{
                 my: 2,
                 boxShadow: 0,
-                width: '96%',
+                width: '100%',
                 background: 'rgb(253, 55, 82)',
                 color: 'white',
                 padding: '8px 0px',

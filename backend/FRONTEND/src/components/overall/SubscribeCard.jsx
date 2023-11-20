@@ -409,7 +409,7 @@ function Content({ padding, padding2, display, displayForButton }) {
                 </Card>
 
             </Box>
-            <Login open={open} setOpen={setOpen} />
+            <Login open={open} setOpen={setOpen} type={'signin'} />
         </div>
     )
 }
@@ -608,7 +608,7 @@ function SMContent({ displayForButton }) {
                 </Card>
 
 
-                <Card sx={{ maxWidth: 'unset', borderRadius: 4, marginTop: '25px', height: '600px', background: "rgb(234,253,247)" }}>
+                <Card sx={{ maxWidth: 'unset', borderRadius: 4, marginTop: '25px', height: '630px', background: "rgb(234,253,247)" }}>
                     <Box sx={{ textAlign: 'center' }}>
                         <Box sx={{
                             background: `url(${require('../../assets/other/bathroomCleaning.png')})`,
@@ -812,7 +812,7 @@ function SMContent({ displayForButton }) {
                 </a>
             </Box>
 
-            <Login open={open} setOpen={setOpen} />
+            <Login open={open} setOpen={setOpen} type={'signin'} />
 
         </div>
     )

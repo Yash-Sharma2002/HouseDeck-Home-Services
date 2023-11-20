@@ -31,19 +31,19 @@ function FooterContent({fontSize,margin}) {
 
             <Box  sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', m: 'auto' }}>
                 <a href= "https://www.facebook.com/Vapormop-105233744909399" target="_blank" rel="noreferrer">
-                    <img style={{ margin: '20px 20px' ,width:'20px',background: "#e5f6f5",borderRadius:'100%',padding:'7px'}} src={Facebook} alt="none" />
+                    <img style={{ margin: '20px 20px' ,width:'20px',background: "#ffd416",borderRadius:'100%',padding:'7px'}} src={Facebook} alt="none" />
                 </a>
                 <a href="https://twitter.com/Vapormop_India" target="_blank" rel="noreferrer">
-                    <img style={{ margin: '20px 20px' ,width:'20px',background: "#e5f6f5",borderRadius:'100%',padding:'7px'}} src={Twitter} alt="none" />
+                    <img style={{ margin: '20px 20px' ,width:'20px',background: "#ffd416",borderRadius:'100%',padding:'7px'}} src={Twitter} alt="none" />
                 </a>
                  <a href="https://www.instagram.com/Vapormop_india/" target="_blank" rel="noreferrer">
-                    <img style={{ margin: '20px 20px' ,width:'20px',background: "#e5f6f5",borderRadius:'100%',padding:'7px'}} src={Instagram} alt="none" />
+                    <img style={{ margin: '20px 20px' ,width:'20px',background: "#ffd416",borderRadius:'100%',padding:'7px'}} src={Instagram} alt="none" />
                 </a>
                 <a href="https://www.linkedin.com/company/Vapormop/?viewAsMember=true" target="_blank" rel="noreferrer">
-                    <img style={{ margin: '20px 20px' ,width:'20px',background: "#e5f6f5",borderRadius:'100%',padding:'7px'}} src={LinkedIn} alt="none" />
+                    <img style={{ margin: '20px 20px' ,width:'20px',background: "#ffd416",borderRadius:'100%',padding:'7px'}} src={LinkedIn} alt="none" />
                 </a>
                 <a href="https://www.youtube.com/channel/UCynivV8Qp5QeuSJcr81z9zA" target="_blank" rel="noreferrer">
-                    <img style={{ margin: '20px 20px' ,width:'20px',background: "#e5f6f5",borderRadius:'100%',padding:'7px'}} src={YouTube} alt="none" />
+                    <img style={{ margin: '20px 20px' ,width:'20px',background: "#ffd416",borderRadius:'100%',padding:'7px'}} src={YouTube} alt="none" />
                 </a>
             </Box>
             <Box sx={{textAlign:'center',fontSize:fontSize,marginBottom:'20px',color: '#464646'}}>
