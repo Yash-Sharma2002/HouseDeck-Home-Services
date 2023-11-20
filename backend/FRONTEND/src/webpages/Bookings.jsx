@@ -198,7 +198,7 @@ function Content({ change }) {
                             </Button>
                             <a href={`/service=${category}`} style={{ textDecoration: 'none', }} target="_blank" rel="noreferrer">
                               <Button variant="outlined" color="secondary" sx={{ textTransform: 'none' }}>
-                                Start Again
+                                Book Now
                               </Button>
                             </a>
 

@@ -72,7 +72,7 @@ export default function Carousel2() {
       {OtherPageTopCarouselData.map(data =>
         <Box key={data.url} sx={{
           marginRight: '10px',
-            border:'5px solid orange',
+            border:'5px solid #ffd416',
             // boxShadow:2,
         }}>
           <img style={{

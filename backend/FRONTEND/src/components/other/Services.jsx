@@ -23,7 +23,7 @@ export default function ServicesProvider({ service, width }) {
     }
     return (
         <div style={{ padding: '10px 20px' }}>
-            <Box sx={{ width: width, background: 'white', borderRadius: 3, padding: '0px 24px', boxShadow: 2, border: '5px solid orange' }}>
+            <Box sx={{ width: width, background: 'white', borderRadius: 3, padding: '0px 24px', boxShadow: 2, border: '5px solid #ffd416' }}>
                 <Typography sx={{ mt: 2, padding: '20px 0 8px', fontSize: '18px', fontWeight: '600', color: '#464646' }}>Select Your Service</Typography>
 
                 { (newService === 'cleaning' || newService === 'painting' || newService === 'false_ceiling') ?

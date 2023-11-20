@@ -73,7 +73,7 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
         applied: false,
         redution: 0
     })
-    const [ip, setIP] = React.useState('')
+    // const [ip, setIP] = React.useState('')
     const [valueForLocation, setValueForLocation] = React.useState('');
     const [displayForCode, setDisplayForCode] = React.useState('');
     // fetch('http://api.ipify.org/?format=json').then(res => res.json()).then(data => { setIP(data.ip) })
@@ -136,15 +136,15 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
     }
     function getRequiredThings() {
         if (isLogin) {
-        if (Services) {
+            if (Services) {
 
-            setDisplayForServiceSelectionProcess(false)
-            setDisplayForStepper(true)
-            setDisplayForAppointment(false)
-            setDisplayForPayment(false)
-            setDisplayAtStart(false)
-            setOrderId(uuidV4())
-        }
+                setDisplayForServiceSelectionProcess(false)
+                setDisplayForStepper(true)
+                setDisplayForAppointment(false)
+                setDisplayForPayment(false)
+                setDisplayAtStart(false)
+                setOrderId(uuidV4())
+            }
         } else {
             setOpenLogin(!openLogin)
         }
@@ -694,24 +694,24 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
                                 </Box>
                             )
                         })}
+                        <Divider orientation='horizontal' sx={{ color: 'black',my:'10px' }} flexItem />
                         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-
                             {
                                 promoCode.applied ?
                                     <>
                                         <Box>
-                                            <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>Total Price</Typography>
-                                            <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>New Price</Typography>
+                                            <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka', fontWeight: '700' }}>Total Price</Typography>
+                                            <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka', fontWeight: '700' }}>New Price</Typography>
                                         </Box>
                                         <Box>
-                                            <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>${totalPrice + promoCode.reduction}</Typography>
-                                            <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>${totalPrice}</Typography>
+                                            <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka', fontWeight: '700' }}>${totalPrice + promoCode.reduction}</Typography>
+                                            <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka', fontWeight: '700' }}>${totalPrice}</Typography>
                                         </Box>
                                     </>
                                     :
                                     <>
-                                        <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>Total Price</Typography>
-                                        <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka' }}>${totalPrice}</Typography>
+                                        <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka', fontWeight: '700' }}>Total Price</Typography>
+                                        <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka', fontWeight: '700' }}>${totalPrice}</Typography>
                                     </>
                             }
                         </Box>
@@ -725,59 +725,59 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
                     }
                     {/* <Box sx={{ textAlign: 'center', mt: 2 }}> */}
                     {/* <Box sx={{ position: 'absolute', zIndex: '1000', top:"50%",left:'50%',transform:"translate(-50%,-50%)"}}> */}
-                    <Box sx={{ display: 'flex', alignItems: 'center', m: '0 auto', justifyContent: 'center', my: 3, padding: '0px 9px', borderRadius: 1, background: 'white', border: '3px solid orange', width: "fit-content", }}>
-                        <Typography sx={{ fontSize: '17px' }}>Add-on</Typography>
-                        <Typography sx={{ fontSize: '17px', fontFamily: 'Fredoka', fontWeight: '800', color: '#1565c0', cursor: 'pointer', textDecoration: 'underline', ml: 1, my: 2 }} onClick={() => handleClickOpen(MiniServices)}>Mini Services</Typography>
+                    <Box sx={{ display: 'flex', alignItems: 'center', m: '0 auto', justifyContent: 'center', my: 3, padding: '0px 9px', borderRadius: 3, background: 'white', border: '3px solid #ffd416', width: "fit-content", }}>
+                        <Typography sx={{ fontSize: '20px' }}>Add-on</Typography>
+                        <Typography sx={{ fontSize: '20px', fontFamily: 'Fredoka', fontWeight: '800', color: '#1565c0', cursor: 'pointer', textDecoration: 'underline', ml: 1, my: 2 }} onClick={() => handleClickOpen(MiniServices)}>Mini Services</Typography>
                     </Box>
                     {/* </Box> */}
                     {/* <img src={require('../../assets/other/addon_service2.jpg')} alt="paypal" style={{ width: '100%', }} />
                     </Box> */}
-                    {
-                        newService === "home_cleaning" ?
-                            <Box sx={{ my: 2, textAlign: 'center' }}>
+                    {/* {
+                        newService === "home_cleaning" ? */}
+                    <Box sx={{ my: 2, textAlign: 'center' }}>
 
-                                {
-                                    promoCode.applied ?
-                                        <>
-                                            <Box sx={{ textAlign: 'center' }}>
-                                                <Typography sx={{ fontSize: '16px' }}>Applied PromoCode</Typography>
-                                                <Typography sx={{ fontSize: '16px', textDecoration: 'underline' }}>{promoCode.code}</Typography>
+                        {
+                            promoCode.applied ?
+                                <>
+                                    <Box sx={{ textAlign: 'center' }}>
+                                        <Typography sx={{ fontSize: '16px' }}>Applied PromoCode</Typography>
+                                        <Typography sx={{ fontSize: '16px', textDecoration: 'underline' }}>{promoCode.code}</Typography>
+                                    </Box>
+                                </>
+                                :
+                                <>
+                                    <FormLabel >Do you Have a promocode</FormLabel>
+
+                                    <RadioGroup row defaultValue="No" onChange={handleChange} sx={{ justifyContent: 'center' }}>
+                                        <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
+                                        <FormControlLabel value="No" control={<Radio />} label="No" />
+                                    </RadioGroup>
+                                    {
+                                        displayForCode ?
+                                            <Box sx={{ my: 5, textAlign: 'center' }}>
+                                                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
+                                                    <Typography sx={{ fontSize: "18px", fontWeight: '700', width: 'auto', margin: '10px auto' }}>Enter Promo-Code</Typography>
+                                                </Box>
+                                                <Box sx={{ textAlign: 'center' }}>
+                                                    <TextField
+                                                        placeholder="Enter Promo-Code (if any)"
+                                                        variant="standard"
+                                                        onChange={(e) => setPromoCode({ code: e.target.value, applied: false })}
+                                                        sx={{ margin: '0px auto', textAlign: 'center' }}
+                                                    />
+                                                </Box>
+                                                <Button sx={{ fontSize: '16px', textTransform: 'none', my: 2 }} variant='outlined' color='warning' onClick={OnPromoCodeApply} >Apply</Button>
                                             </Box>
-                                        </>
-                                        :
-                                        <>
-                                            <FormLabel >Do you Have a promocode</FormLabel>
+                                            :
+                                            <Box></Box>
 
-                                            <RadioGroup row defaultValue="No" onChange={handleChange} sx={{ justifyContent: 'center' }}>
-                                                <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
-                                                <FormControlLabel value="No" control={<Radio />} label="No" />
-                                            </RadioGroup>
-                                            {
-                                                displayForCode ?
-                                                    <Box sx={{ my: 10, textAlign: 'center' }}>
-                                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
-                                                            <Typography sx={{ fontSize: "18px", fontWeight: '700' }}>Enter Promo-Code</Typography>
-                                                        </Box>
-                                                        <Box sx={{ textAlign: 'center' }}>
-                                                            <TextField
-                                                                placeholder="Enter Promo-Code (if any)"
-                                                                variant="standard"
-                                                                onChange={(e) => setPromoCode({ code: e.target.value, applied: false })}
-                                                                sx={{ margin: '0px auto', textAlign: 'center' }}
-                                                            />
-                                                        </Box>
-                                                        <Button sx={{ fontSize: '16px', textTransform: 'none', my: 2 }} variant='outlined' color='success' onClick={OnPromoCodeApply} >Apply</Button>
-                                                    </Box>
-                                                    :
-                                                    <Box></Box>
-
-                                            }
-                                        </>
-                                }
-                            </Box>
-                            :
+                                    }
+                                </>
+                        }
+                    </Box>
+                    {/* :
                             null
-                    }
+                    } */}
                     <Box sx={{
                         display: 'flex',
                         justifyContent: 'space-between',
