@@ -44,7 +44,7 @@ export default function Home() {
         <img style={{
           width: '97%',
           height: 'unset',
-        }} src={require('../assets/other/bannerOfMiddle.png')} alt="Banner" />
+        }} src={require('../assets/other/bannerOfMiddle2.png')} alt="Banner" />
       </Box>
 
       <SubscribeCard displayForButton={'inline'} />

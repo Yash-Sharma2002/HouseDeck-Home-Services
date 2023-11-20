@@ -1,8 +1,20 @@
 
 export const CitiesImg = [
+  { id: "houston", url: require("../assets/cities/houston.png"), name: "Houston", },
   { id: "new_york", url: require("../assets/cities/new-york.png"), name: "New York", },
-  { id: "california", url: require("../assets/cities/california.png"), name: "California", },
   { id: "chicago", url: require("../assets/cities/chicago.png"), name: "Chicago", },
+  { id: "los_angeles", url: require("../assets/cities/los-angeles.png"), name: "Los Angeles", },
+  { id: "seattle", url: require("../assets/cities/seattle.png"), name: "Seattle", },
+  { id: "portland", url: require("../assets/cities/portland.png"), name: "Portland", },
+  { id: "phoenix", url: require("../assets/cities/phoenix.png"), name: "phoenix", },
+  { id: "dallas", url: require("../assets/cities/dallas.png"), name: "Dallas", },
+  { id: "san_diego", url: require("../assets/cities/san-diego.png"), name: "San Diego", },
+  { id: "philadelphia", url: require("../assets/cities/philadelphia.png"), name: "Philadelphia", },
+  { id: "san_jose", url: require("../assets/cities/san-jose.png"), name: "San Jose", },
+  { id: "california", url: require("../assets/cities/california.png"), name: "California", },
+  { id: "santa_clara", url: require("../assets/cities/santa-clara.png"), name: "Santa Clara", },
+  { id: "redwood_city", url: require("../assets/cities/redwood-city.png"), name: "Redwood City", },
+  { id: "cupertino", url: require("../assets/cities/cupertino.png"), name: "Cupertino", },
 ];
 
 export const mainPageMiddleWidth = {
@@ -14,6 +26,61 @@ export const mainPageBottomWidth = {
   width: "95%",
   margin: "0px auto",
 };
+
+export const PaintingData = {
+  id: "Painting",
+  src: require("../assets/imageService/painting.png"),
+  takeToPath: '/service=Painting',
+
+}
+
+export const CleaningData = {
+  id: "Cleaning",
+  src: require("../assets/imageService/cleaning.png"),
+  takeToPath: '/service=Cleaning',
+}
+
+export const HomeSanitization = {
+  id: "Home Sanitization",
+  src: require("../assets/imageService/home-sanitization.png"),
+  takeToPath: '/service=Home Sanitization',
+}
+
+export const PestControl = {
+  id: "Pest Control",
+  src: require("../assets/imageService/pest_control.png"),
+  takeToPath: '/service=Pest Control',
+}
+
+export const FalseCeilingData = {
+  id: "False Ceiling",
+  src: require("../assets/imageService/false_ceiling.png"),
+  takeToPath: '/service=False Ceiling',
+}
+
+export const ACRepair = {
+  id: "AC Repair",
+  src: require("../assets/imageService/ac_repair.png"),
+  takeToPath: '/service=AC Repair',
+}
+
+export const Electrician = {
+  id: "Electrician",
+  src: require("../assets/imageService/electricity.png"),
+  takeToPath: '/service=Electrician',
+}
+
+export const Carpentry = {
+  id: "Carpentry",
+  src: require("../assets/imageService/carpentry.png"),
+  takeToPath: '/service=Carpentry',
+}
+
+export const Plumbing = {
+  id: "Plumbing",
+  src: require("../assets/imageService/plumbing.png"),
+  takeToPath: '/service=Plumbing',
+}
 
 export const GlobalServicesBottomListAvailable = [
   { name: "Interiors", url: '#' },
@@ -42,21 +109,21 @@ export const CustomerRatings = [
   {
     key: "E",
     name: "Emily Davis",
-    rating:5,
+    rating: 5,
     text: `"I've never cleaned a house  before and these guys did a dream job. Came home and was amazed at how perfect everything was. The whole process was so easy and really helpful when I needed it. good value for money!"`,
   },
   // { key: 'R', name: 'Raj', text:`"I have never experienced a better company's full reliability and professional service  than Vapormop lite. They have characterized the company to provide effective products that are clean, effective, eco friendly and meet the needs of our families. As an organization, they are completely reliable and  always confident that they will provide exactly what we need in the most economical, environmentally friendly and safe way even in our absence. I highly recommend  their service-oriented approach to professionalism, communication and meeting  deadlines."`},
   {
     key: "Z",
     name: "Zoey Reed",
-    rating:5,
+    rating: 5,
     text: `"Affordable price and great service. We booked an after party cleaning for the house and garden and the team did an amazing job of getting everything back to normal. They do our hectic work into just few time."`,
   },
   {
     key: "H",
     name: "Hannah Bennett",
     text: `"We ordered carpet cleaning for each room and got a good discount. Carpets clean very well and dry quickly with eco friendly products. Overall good service, punctuality  and well trained professionals are there.."`,
-    rating:4,
+    rating: 4,
   },
 ];
 
@@ -129,6 +196,17 @@ export const DrawerData = [
 
 
 export const SearchBar = {
+  'houston': [
+    { value: "Home Cleaning", url: "/service=Cleaning" },
+    { value: "Home Sanitization", url: '/service=Home Sanitization' },
+    { value: "Pest Control", url: '/service=Pest Control' },
+    { value: "Home Painting", url: "/service=Painting" },
+    { value: "False Ceiling", url: "/service=False Ceiling" },
+    { value: "AC Repair", url: '/service=AC Repair' },
+    { value: "Electrician", url: '/service=Electrician' },
+    { value: "Carpentry", url: '/service=Carpentry' },
+    { value: "Plumbing", url: '/service=Plumbing' },
+  ],
   'new_york': [
     { value: "Home Cleaning", url: "/service=Cleaning" },
     { value: "Home Sanitization", url: '/service=Home Sanitization' },
@@ -148,7 +226,128 @@ export const SearchBar = {
     { value: "False Ceiling", url: "/service=False Ceiling" },
     { value: "AC Repair", url: '/service=AC Repair' },
   ],
+  'los_angeles': [
+    { value: "Home Cleaning", url: "/service=Cleaning" },
+    { value: "Home Sanitization", url: '/service=Home Sanitization' },
+    { value: "Pest Control", url: '/service=Pest Control' },
+    { value: "Home Painting", url: "/service=Painting" },
+    { value: "False Ceiling", url: "/service=False Ceiling" },
+    { value: "AC Repair", url: '/service=AC Repair' },
+    { value: "Electrician", url: '/service=Electrician' },
+    { value: "Carpentry", url: '/service=Carpentry' },
+    { value: "Plumbing", url: '/service=Plumbing' },
+  ],
+  'seattle': [
+    { value: "Home Cleaning", url: "/service=Cleaning" },
+    { value: "Home Sanitization", url: '/service=Home Sanitization' },
+    { value: "Pest Control", url: '/service=Pest Control' },
+    { value: "Home Painting", url: "/service=Painting" },
+    { value: "False Ceiling", url: "/service=False Ceiling" },
+    { value: "AC Repair", url: '/service=AC Repair' },
+    { value: "Electrician", url: '/service=Electrician' },
+    { value: "Carpentry", url: '/service=Carpentry' },
+    { value: "Plumbing", url: '/service=Plumbing' },
+  ],
+  'portland': [
+    { value: "Home Cleaning", url: "/service=Cleaning" },
+    { value: "Home Sanitization", url: '/service=Home Sanitization' },
+    { value: "Pest Control", url: '/service=Pest Control' },
+    { value: "Home Painting", url: "/service=Painting" },
+    { value: "False Ceiling", url: "/service=False Ceiling" },
+    { value: "AC Repair", url: '/service=AC Repair' },
+    { value: "Electrician", url: '/service=Electrician' },
+    { value: "Carpentry", url: '/service=Carpentry' },
+    { value: "Plumbing", url: '/service=Plumbing' },
+  ],
+  'phoenix': [
+    { value: "Home Cleaning", url: "/service=Cleaning" },
+    { value: "Home Sanitization", url: '/service=Home Sanitization' },
+    { value: "Pest Control", url: '/service=Pest Control' },
+    { value: "Home Painting", url: "/service=Painting" },
+    { value: "False Ceiling", url: "/service=False Ceiling" },
+    { value: "AC Repair", url: '/service=AC Repair' },
+    { value: "Electrician", url: '/service=Electrician' },
+    { value: "Carpentry", url: '/service=Carpentry' },
+    { value: "Plumbing", url: '/service=Plumbing' },
+  ],
+  'dallas': [
+    { value: "Home Cleaning", url: "/service=Cleaning" },
+    { value: "Home Sanitization", url: '/service=Home Sanitization' },
+    { value: "Pest Control", url: '/service=Pest Control' },
+    { value: "Home Painting", url: "/service=Painting" },
+    { value: "False Ceiling", url: "/service=False Ceiling" },
+    { value: "AC Repair", url: '/service=AC Repair' },
+    { value: "Electrician", url: '/service=Electrician' },
+    { value: "Carpentry", url: '/service=Carpentry' },
+    { value: "Plumbing", url: '/service=Plumbing' },
+  ],
+  'san_diego': [
+    { value: "Home Cleaning", url: "/service=Cleaning" },
+    { value: "Home Sanitization", url: '/service=Home Sanitization' },
+    { value: "Pest Control", url: '/service=Pest Control' },
+    { value: "Home Painting", url: "/service=Painting" },
+    { value: "False Ceiling", url: "/service=False Ceiling" },
+    { value: "AC Repair", url: '/service=AC Repair' },
+    { value: "Electrician", url: '/service=Electrician' },
+    { value: "Carpentry", url: '/service=Carpentry' },
+    { value: "Plumbing", url: '/service=Plumbing' },
+  ],
+  'philadelphia': [
+    { value: "Home Cleaning", url: "/service=Cleaning" },
+    { value: "Home Sanitization", url: '/service=Home Sanitization' },
+    { value: "Pest Control", url: '/service=Pest Control' },
+    { value: "Home Painting", url: "/service=Painting" },
+    { value: "False Ceiling", url: "/service=False Ceiling" },
+    { value: "AC Repair", url: '/service=AC Repair' },
+    { value: "Electrician", url: '/service=Electrician' },
+    { value: "Carpentry", url: '/service=Carpentry' },
+    { value: "Plumbing", url: '/service=Plumbing' },
+  ],
+  'san_jose': [
+    { value: "Home Cleaning", url: "/service=Cleaning" },
+    { value: "Home Sanitization", url: '/service=Home Sanitization' },
+    { value: "Pest Control", url: '/service=Pest Control' },
+    { value: "Home Painting", url: "/service=Painting" },
+    { value: "False Ceiling", url: "/service=False Ceiling" },
+    { value: "AC Repair", url: '/service=AC Repair' },
+    { value: "Electrician", url: '/service=Electrician' },
+    { value: "Carpentry", url: '/service=Carpentry' },
+    { value: "Plumbing", url: '/service=Plumbing' },
+  ],
   'california': [
+    { value: "Home Cleaning", url: "/service=Cleaning" },
+    { value: "Home Sanitization", url: '/service=Home Sanitization' },
+    { value: "Pest Control", url: '/service=Pest Control' },
+    { value: "Home Painting", url: "/service=Painting" },
+    { value: "False Ceiling", url: "/service=False Ceiling" },
+    { value: "AC Repair", url: '/service=AC Repair' },
+    { value: "Electrician", url: '/service=Electrician' },
+    { value: "Carpentry", url: '/service=Carpentry' },
+    { value: "Plumbing", url: '/service=Plumbing' },
+  ],
+  'santa_clara': [
+    { value: "Home Cleaning", url: "/service=Cleaning" },
+    { value: "Home Sanitization", url: '/service=Home Sanitization' },
+    { value: "Pest Control", url: '/service=Pest Control' },
+    { value: "Home Painting", url: "/service=Painting" },
+    { value: "False Ceiling", url: "/service=False Ceiling" },
+    { value: "AC Repair", url: '/service=AC Repair' },
+    { value: "Electrician", url: '/service=Electrician' },
+    { value: "Carpentry", url: '/service=Carpentry' },
+    { value: "Plumbing", url: '/service=Plumbing' },
+  ],
+  'redwood_city': [
+    { value: "Home Cleaning", url: "/service=Cleaning" },
+    { value: "Home Sanitization", url: '/service=Home Sanitization' },
+    { value: "Pest Control", url: '/service=Pest Control' },
+    { value: "Home Painting", url: "/service=Painting" },
+    { value: "False Ceiling", url: "/service=False Ceiling" },
+    { value: "AC Repair", url: '/service=AC Repair' },
+    { value: "Electrician", url: '/service=Electrician' },
+    { value: "Carpentry", url: '/service=Carpentry' },
+    { value: "Plumbing", url: '/service=Plumbing' },
+  ],
+  'cupertino': [
     { value: "Home Cleaning", url: "/service=Cleaning" },
     { value: "Home Sanitization", url: '/service=Home Sanitization' },
     { value: "Pest Control", url: '/service=Pest Control' },
@@ -165,213 +364,229 @@ export const SearchBar = {
 }
 
 export const ServiceWithImage = {
+  'houston': [
+
+    // fixed data
+    { ...CleaningData, offer: "", tag: true, },
+    { ...HomeSanitization, offer: "", tag: true, },
+    { ...PestControl, offer: "", tag: true, },
+    { ...PaintingData, offer: "", tag: true, },
+    { ...FalseCeilingData, offer: "", tag: true, },
+
+    // variable data
+    { ...ACRepair, offer: "", tag: true, },
+
+    { ...Electrician, offer: "", tag: true, },
+    { ...Carpentry, offer: "", tag: true, },
+    { ...Plumbing, offer: "", tag: true, },
+  ],
   'new_york': [
 
     // fixed data
-    {
-      id: "Cleaning",
-      src: require("../assets/imageService/cleaning.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/service=Cleaning',
-    },
-    {
-      id: "Home Sanitization",
-      src: require("../assets/imageService/home-sanitization.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/service=Home Sanitization',
-
-    },
-    {
-      id: "Pest Control",
-      src: require("../assets/imageService/pest_control.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/service=Pest Control',
-    },
-    {
-      id: "Painting",
-      src: require("../assets/imageService/painting.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/service=Painting',
-
-    },
-    {
-      id: "False Ceiling",
-      src: require("../assets/imageService/false_ceiling.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/service=False Ceiling',
-
-    },
+    { ...CleaningData, offer: "", tag: true, },
+    { ...HomeSanitization, offer: "", tag: true, },
+    { ...PestControl, offer: "", tag: true, },
+    { ...PaintingData, offer: "", tag: true, },
+    { ...FalseCeilingData, offer: "", tag: true, },
 
     // variable data
-    {
-      id: "AC Repair",
-      src: require("../assets/imageService/ac_repair.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/service=AC Repair',
-    },
+    { ...ACRepair, offer: "", tag: true, },
 
-    {
-      id: "Electrician",
-      src: require("../assets/imageService/electricity.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/service=Electrician',
-
-    },
-    {
-      id: "Carpentry",
-      src: require("../assets/imageService/carpentry.png"),
-      offer: "",
-      takeToPath: '/service=Carpentry',
-      tag: true,
-    },
-    {
-      id: "Plumbing", src: require("../assets/imageService/plumbing.png"), offer: "", tag: true, takeToPath: '/service=Plumbing',
-    },
+    { ...Electrician, offer: "", tag: true, },
+    { ...Carpentry, offer: "", tag: true, },
+    { ...Plumbing, offer: "", tag: true, },
   ],
   'chicago': [
 
     // fixed data
-
-    {
-      id: "Cleaning",
-      src: require("../assets/imageService/cleaning.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/service=Cleaning',
-    },
-    {
-      id: "Home Sanitization",
-      src: require("../assets/imageService/home-sanitization.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/service=Home Sanitization',
-
-    },
-    {
-      id: "Pest Control",
-      src: require("../assets/imageService/pest_control.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/service=Pest Control',
-    },
-    {
-      id: "Painting",
-      src: require("../assets/imageService/painting.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/service=Painting',
-    },
-    {
-      id: "False Ceiling",
-      src: require("../assets/imageService/false_ceiling.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/service=False Ceiling',
-
-    },
+    { ...CleaningData, offer: "", tag: true, },
+    { ...HomeSanitization, offer: "", tag: true, },
+    { ...PestControl, offer: "", tag: true, },
+    { ...PaintingData, offer: "", tag: true, },
+    { ...FalseCeilingData, offer: "", tag: true, },
 
     // variable data
-    {
-      id: "AC Repair",
-      src: require("../assets/imageService/ac_repair.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/service=AC Repair',
+    { ...ACRepair, offer: "", tag: true, },
 
-    },
-
-    {
-      id: "Electrician",
-      src: require("../assets/imageService/electricity.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/service=Electrician',
-
-    },
-    {
-      id: "Carpentry",
-      src: require("../assets/imageService/carpentry.png"),
-      offer: "",
-      takeToPath: '/service=Carpentry',
-      tag: true,
-    },
-    { id: "Plumbing", src: require("../assets/imageService/plumbing.png"), offer: "", tag: true, takeToPath: '/service=Plumbing', },
+    { ...Electrician, offer: "", tag: true, },
+    { ...Carpentry, offer: "", tag: true, },
+    { ...Plumbing, offer: "", tag: true, },
   ],
-  'california': [
+  'los_angeles': [
+
     // fixed data
+    { ...CleaningData, offer: "", tag: true, },
+    { ...HomeSanitization, offer: "", tag: true, },
+    { ...PestControl, offer: "", tag: true, },
+    { ...PaintingData, offer: "", tag: true, },
+    { ...FalseCeilingData, offer: "", tag: true, },
 
-    {
-      id: "Cleaning",
-      src: require("../assets/imageService/cleaning.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/service=Cleaning',
-    },
-
-    {
-      id: "Home Sanitization",
-      src: require("../assets/imageService/home-sanitization.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/service=Home Sanitization',
-
-    },
-    {
-      id: "Pest Control",
-      src: require("../assets/imageService/pest_control.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/service=Pest Control',
-    },
-    {
-      id: "Painting",
-      src: require("../assets/imageService/painting.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/service=Painting',
-
-    },
-    {
-      id: "False Ceiling",
-      src: require("../assets/imageService/false_ceiling.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/service=False Ceiling',
-
-    },
-    
     // variable data
-    {
-      id: "AC Repair",
-      src: require("../assets/imageService/ac_repair.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/service=AC Repair',
+    { ...ACRepair, offer: "", tag: true, },
 
-    },
-    {
-      id: "Electrician",
-      src: require("../assets/imageService/electricity.png"),
-      offer: "",
-      tag: true,
-      takeToPath: '/service=Electrician',
+    { ...Electrician, offer: "", tag: true, },
+    { ...Carpentry, offer: "", tag: true, },
+    { ...Plumbing, offer: "", tag: true, },
+  ],
+  'seattle': [
 
-    },
-    {
-      id: "Carpentry",
-      src: require("../assets/imageService/carpentry.png"),
-      offer: "",
-      takeToPath: '/service=Carpentry',
-      tag: true,
-    },
-    { id: "Plumbing", src: require("../assets/imageService/plumbing.png"), offer: "", tag: true, takeToPath: '/service=Plumbing', },
+    // fixed data
+    { ...CleaningData, offer: "", tag: true, },
+    { ...HomeSanitization, offer: "", tag: true, },
+    { ...PestControl, offer: "", tag: true, },
+    { ...PaintingData, offer: "", tag: true, },
+    { ...FalseCeilingData, offer: "", tag: true, },
+
+    // variable data
+    { ...ACRepair, offer: "", tag: true, },
+
+    { ...Electrician, offer: "", tag: true, },
+    { ...Carpentry, offer: "", tag: true, },
+    { ...Plumbing, offer: "", tag: true, },
+  ],
+  'portland': [
+
+    // fixed data
+    { ...CleaningData, offer: "", tag: true, },
+    { ...HomeSanitization, offer: "", tag: true, },
+    { ...PestControl, offer: "", tag: true, },
+    { ...PaintingData, offer: "", tag: true, },
+    { ...FalseCeilingData, offer: "", tag: true, },
+
+    // variable data
+    { ...ACRepair, offer: "", tag: true, },
+
+    { ...Electrician, offer: "", tag: true, },
+    { ...Carpentry, offer: "", tag: true, },
+    { ...Plumbing, offer: "", tag: true, },
+  ],
+  'phoenix': [
+
+    // fixed data
+    { ...CleaningData, offer: "", tag: true, },
+    { ...HomeSanitization, offer: "", tag: true, },
+    { ...PestControl, offer: "", tag: true, },
+    { ...PaintingData, offer: "", tag: true, },
+    { ...FalseCeilingData, offer: "", tag: true, },
+
+    // variable data
+    { ...ACRepair, offer: "", tag: true, },
+
+    { ...Electrician, offer: "", tag: true, },
+    { ...Carpentry, offer: "", tag: true, },
+    { ...Plumbing, offer: "", tag: true, },
+  ],
+  'dallas': [
+
+    // fixed data
+    { ...CleaningData, offer: "", tag: true, },
+    { ...HomeSanitization, offer: "", tag: true, },
+    { ...PestControl, offer: "", tag: true, },
+    { ...PaintingData, offer: "", tag: true, },
+    { ...FalseCeilingData, offer: "", tag: true, },
+
+    // variable data
+    { ...ACRepair, offer: "", tag: true, },
+
+    { ...Electrician, offer: "", tag: true, },
+    { ...Carpentry, offer: "", tag: true, },
+    { ...Plumbing, offer: "", tag: true, },
+  ],
+  'san_diego': [
+
+    // fixed data
+    { ...CleaningData, offer: "", tag: true, },
+    { ...HomeSanitization, offer: "", tag: true, },
+    { ...PestControl, offer: "", tag: true, },
+    { ...PaintingData, offer: "", tag: true, },
+    { ...FalseCeilingData, offer: "", tag: true, },
+
+    // variable data
+    { ...ACRepair, offer: "", tag: true, },
+
+    { ...Electrician, offer: "", tag: true, },
+    { ...Carpentry, offer: "", tag: true, },
+    { ...Plumbing, offer: "", tag: true, },
+  ],
+  'philadelphia': [
+
+    // fixed data
+    { ...CleaningData, offer: "", tag: true, },
+    { ...HomeSanitization, offer: "", tag: true, },
+    { ...PestControl, offer: "", tag: true, },
+    { ...PaintingData, offer: "", tag: true, },
+    { ...FalseCeilingData, offer: "", tag: true, },
+
+    // variable data
+    { ...ACRepair, offer: "", tag: true, },
+
+    { ...Electrician, offer: "", tag: true, },
+    { ...Carpentry, offer: "", tag: true, },
+    { ...Plumbing, offer: "", tag: true, },
+  ],
+  'california':[
+
+    // fixed data
+    { ...CleaningData, offer: "", tag: true, },
+    { ...HomeSanitization, offer: "", tag: true, },
+    { ...PestControl, offer: "", tag: true, },
+    { ...PaintingData, offer: "", tag: true, },
+    { ...FalseCeilingData, offer: "", tag: true, },
+
+    // variable data
+    { ...ACRepair, offer: "", tag: true, },
+
+    { ...Electrician, offer: "", tag: true, },
+    { ...Carpentry, offer: "", tag: true, },
+    { ...Plumbing, offer: "", tag: true, },
+  ],
+  'santa_clara':[
+
+    // fixed data
+    { ...CleaningData, offer: "", tag: true, },
+    { ...HomeSanitization, offer: "", tag: true, },
+    { ...PestControl, offer: "", tag: true, },
+    { ...PaintingData, offer: "", tag: true, },
+    { ...FalseCeilingData, offer: "", tag: true, },
+
+    // variable data
+    { ...ACRepair, offer: "", tag: true, },
+
+    { ...Electrician, offer: "", tag: true, },
+    { ...Carpentry, offer: "", tag: true, },
+    { ...Plumbing, offer: "", tag: true, },
+  ],
+  'redwood_city':[
+
+    // fixed data
+    { ...CleaningData, offer: "", tag: true, },
+    { ...HomeSanitization, offer: "", tag: true, },
+    { ...PestControl, offer: "", tag: true, },
+    { ...PaintingData, offer: "", tag: true, },
+    { ...FalseCeilingData, offer: "", tag: true, },
+
+    // variable data
+    { ...ACRepair, offer: "", tag: true, },
+
+    { ...Electrician, offer: "", tag: true, },
+    { ...Carpentry, offer: "", tag: true, },
+    { ...Plumbing, offer: "", tag: true, },
+  ],
+  'cupertino':[
+
+    // fixed data
+    { ...CleaningData, offer: "", tag: true, },
+    { ...HomeSanitization, offer: "", tag: true, },
+    { ...PestControl, offer: "", tag: true, },
+    { ...PaintingData, offer: "", tag: true, },
+    { ...FalseCeilingData, offer: "", tag: true, },
+
+    // variable data
+    { ...ACRepair, offer: "", tag: true, },
+
+    { ...Electrician, offer: "", tag: true, },
+    { ...Carpentry, offer: "", tag: true, },
+    { ...Plumbing, offer: "", tag: true, },
   ],
   '': [
     {

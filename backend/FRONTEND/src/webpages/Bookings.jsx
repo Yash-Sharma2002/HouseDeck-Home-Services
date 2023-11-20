@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { getPaidBookingsAPI, getDraftBookingsAPI, deletDraftBookingsAPI } from '../Api/getBookings'
+import { getPaidBookingsAPI, getDraftBookingsAPI, deletDraftBookingsAPI, getCancelledBookings, cancelBooking } from '../Api/getBookings'
 import { getSubscriptionDetails } from '../Api/getSubscriptionDetails'
 import { Box, Typography, Breadcrumbs, Link, Divider, Button, useMediaQuery } from '@mui/material'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext'
@@ -61,7 +61,7 @@ function Content({ change }) {
     setValue(newValue);
   };
 
-  
+
 
   // for always loading draft services first
   useEffect(() => {
@@ -91,6 +91,18 @@ function Content({ change }) {
       setBookings([])
     }
   }
+
+  const getCancelledBooking = async () => {
+    const response = await getCancelledBookings({ Email: decrypt(userData.USERDATA_AS_EMAIL) })
+    if (response) {
+      setSubscriptions([])
+      setBookings(response.reverse())
+    }
+    else {
+      setBookings([])
+    }
+  }
+
   const getSubscriptions = async () => {
     const response = await getSubscriptionDetails({ Email: decrypt(userData.USERDATA_AS_EMAIL) })
     if (response) {
@@ -114,6 +126,19 @@ function Content({ change }) {
     }
   }
 
+  const cancelPaidBooking = async (id) => {
+    const items = {
+      _id: id,
+      Number: decrypt(userData.USERDATA_AS_EMAIL)
+    }
+    const response = await cancelBooking(items)
+    if (response) {
+      window.location.reload(false)
+    }
+    else {
+      setBookings([])
+    }
+  }
   function toTitle(str) {
     return str.replace(
       /\w\S*/g,
@@ -138,6 +163,7 @@ function Content({ change }) {
               <Tab sx={{ textTransform: 'none' }} label="Shortlists" onClick={getDraftBookings} {...a11yProps(0)} />
               <Tab sx={{ textTransform: 'none' }} label="Booked" onClick={getPaidBookings} {...a11yProps(1)} />
               <Tab sx={{ textTransform: 'none' }} label="Subscriptions" onClick={getSubscriptions} {...a11yProps(2)} />
+              <Tab sx={{ textTransform: 'none' }} label="Cancelled" onClick={getCancelledBooking} {...a11yProps(3)} />
             </Tabs>
           </Box>
           <Box sx={{ pt: '7px', }}>
@@ -231,6 +257,49 @@ function Content({ change }) {
                   :
                   <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }}>
                     <Typography sx={{ color: 'black' }}>No Subscription Available</Typography>
+                  </Box>
+              }
+            </TabPanel>
+            <TabPanel change={change} value={value} index={3}>
+              {
+                bookings.length !== 0 ? bookings.map((item) => {
+                  const category = toTitle(item.Order_Details.Category.replace(/_/g, ' '))
+                  const services = item.Order_Details.Services
+                  return (
+                    <>
+                      <Divider sx={{ mt: 2, px: change ? 0 : 2, fontSize: '18px', }}>{item.Order_Details.Order_Date} {item.Order_Details.Order_Time}</Divider>
+                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: change ? 0 : 2, pt: 1 }}>
+                        <Typography sx={{ fontSize: '16px', fontWeight: '600', }}>Category</Typography>
+                        <Typography sx={{ fontSize: '16px', fontWeight: '600', fontFamily: 'Fredoka' }}>{category}</Typography>
+                      </Box>
+                      {services.map(data =>
+                        <>
+                          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: change ? 0 : 2, pt: 1 }}>
+                            <Typography sx={{ fontSize: '16px', fontWeight: '600', }}>{data.Service}</Typography>
+                            <Typography sx={{ fontSize: '16px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{data.Price}.00</Typography>
+                          </Box>
+                        </>
+
+                      )}
+                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: change ? 0 : 2, pt: 1 }}>
+                        <Typography sx={{ fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>Total Price</Typography>
+                        <Typography sx={{ fontSize: '18px', fontWeight: '600', fontFamily: 'Fredoka' }}>&#8377;{item.Order_Details.Order_Amount}</Typography>
+                      </Box>
+
+
+                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 2 }}>
+                        <Button variant="outlined" color='error' sx={{ textTransform: 'none' }} onClick={() => cancelPaidBooking(item._id)}>
+                          Cancel
+                        </Button>
+
+                      </Box>
+
+                    </>
+                  )
+                })
+                  :
+                  <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }}>
+                    <Typography sx={{ color: 'black' }}>No Bookings Available</Typography>
                   </Box>
               }
             </TabPanel>

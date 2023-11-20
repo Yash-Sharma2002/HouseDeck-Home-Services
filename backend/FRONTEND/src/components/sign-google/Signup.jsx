@@ -57,16 +57,18 @@ export default function SignupGoogle({ type }) {
 		<div
 			onClick={handleGoogleSignUp}
 			style={{
-				border: '1px solid black',
+				// border: '1px solid black',
 				margin: '4px auto',
 				borderRadius: '30px',
-				backgroundColor: 'white',
+				backgroundColor: '#ffd416',
 				padding: 'auto',
 				display: 'flex',
+				color:'white',
 				justifyContent: 'center',
 				alignItems: 'center',
+				fontFamily: 'Fredoka',
 				cursor: 'pointer',
-				width: '55%',
+				// width: '55%',
 			}}
 		>
 			{/* <FcGoogle className="mr-4 text-[24px] text-[#1B454D]" /> */}

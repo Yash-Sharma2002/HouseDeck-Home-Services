@@ -81,4 +81,5 @@ const serviceSchema = new mongoose.Schema({
 
 export const ServiceAsDraft = mongoose.model('Shortlisted_Services', serviceSchema);
 export const ServiceAsPaid = mongoose.model('Booked_Services', serviceSchema);
+export const ServiceAsCancelled = mongoose.model('Cancelled_Services', serviceSchema);
 

@@ -216,7 +216,7 @@ function Content({ open, setOpen, width, display,type }) {
           </Box>
           <Box sx={{ ml: 5 }}>
             <Box >
-              <CloseIcon onClick={handleClose} sx={{ margin: '8px 0px auto 290px', cursor: 'pointer' }} />
+              <CloseIcon onClick={handleClose} sx={{ margin: '8px 0px auto 322px', cursor: 'pointer' }} />
             </Box>
 
             <Typography sx={{ fontSize: '16px', fontWeight: '600', marginTop: 3, color: '#e65c00' }}>Enter phone to continue</Typography>
