@@ -214,7 +214,7 @@ function Content({ open, setOpen, width, display,type }) {
             <img style={{ height: '200px', width: "260px", marginTop: '5rem' }} src={require('../../assets/logos/isLogin.png')} alt="Login" />
             <Typography variant="h6" sx={{ fontSize: '18px', fontWeight: '600', ml: 1 }}>Login/Signup</Typography>
           </Box>
-          <Box sx={{ ml: 5 }}>
+          <Box sx={{ width:"50%",mx:'auto'}}>
             <Box >
               <CloseIcon onClick={handleClose} sx={{ margin: '8px 0px auto 322px', cursor: 'pointer' }} />
             </Box>
@@ -241,7 +241,7 @@ function Content({ open, setOpen, width, display,type }) {
 
 
             <Button sx={{
-              display: displayForFirst ? 'block' : 'none', my: 2, boxShadow: 0, width: '96%', background: 'rgb(253, 55, 82)', color: 'white', padding: '8px 0px', textTransform: 'none',
+              display: displayForFirst ? 'block' : 'none', my: 2, boxShadow: 0, width: '100%', background: 'rgb(253, 55, 82)', color: 'white', padding: '8px 0px', textTransform: 'none',
               '&:hover': {
                 background: 'rgb(253, 55, 82)', color: 'white',
               }
@@ -289,7 +289,7 @@ function Content({ open, setOpen, width, display,type }) {
               <Button sx={{
                 my: 2,
                 boxShadow: 0,
-                width: '96%',
+                width: '100%',
                 background: 'rgb(253, 55, 82)',
                 color: 'white',
                 padding: '8px 0px',
@@ -334,7 +334,7 @@ function Content({ open, setOpen, width, display,type }) {
               <Button sx={{
                 my: 2,
                 boxShadow: 0,
-                width: '96%',
+                width: '100%',
                 background: 'rgb(253, 55, 82)',
                 color: 'white',
                 padding: '8px 0px',

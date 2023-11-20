@@ -71,6 +71,12 @@ export default function SignupGoogle({ type }) {
 				// width: '55%',
 			}}
 		>
+			<img src={require("../../assets/other/google.png")} alt="Google" style={{
+				width: '24px',
+				marginRight: '10px',
+				marginTop: '3px'
+			
+			}} />
 			{/* <FcGoogle className="mr-4 text-[24px] text-[#1B454D]" /> */}
 			<p style={{
 				fontSize: '16px',
