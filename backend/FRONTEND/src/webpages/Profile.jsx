@@ -181,7 +181,7 @@ export default function Profile() {
                   type='text'
                   disabled={userData.EMAIL_VERIFIED === true}
                   style={{
-                    width: userData.EMAIL_VERIFIED === true ? 'unset' : '45%',
+                    width: '45%',
                     borderTop: userData.EMAIL_VERIFIED === true ? 'none' : '1px solid #464646',
                     borderBottom: userData.EMAIL_VERIFIED === true ? 'none' : '1px solid #464646',
                     borderLeft: userData.EMAIL_VERIFIED === true ? 'none' : '1px solid #464646',
@@ -189,15 +189,14 @@ export default function Profile() {
                     userSelect: 'none',
                     height: '30px',
                     fontSize: '14px',
-                    backgroundColor: 'white',
+                    backgroundColor: userData.EMAIL_VERIFIED === true ? 'green' : 'white',
+                    color: userData.EMAIL_VERIFIED === true ? 'white' : 'black',
                     paddingLeft: '10px',
                     marginLeft: '30px'
                   }} />
                 {
                   userData.EMAIL_VERIFIED === true ?
-                    <Tooltip title="Verified" placement="right" arrow>
-                      <Box className={classes.Verified2} ></Box>
-                    </Tooltip>
+                    null
                     :
                     <Tooltip title="Not Verified" placement="right" arrow>
                       <WarningIcon sx={{ height: '32px', borderTop: '1px solid #464646', borderBottom: '1px solid #464646', borderRight: '1px solid #464646', borderLeft: 'none', fontSize: '20px', color: 'red', px: 1, background: '#e5e5e5' }} />
@@ -211,9 +210,9 @@ export default function Profile() {
                 <Typography sx={{ color: '#464646', fontSize: '15px', fontWeight: '600', ml: 3, py: 2 }}>Number</Typography>
 
                 <Box sx={{
-                  display: 'flex', alignItems: 'center', justifyContent: 'space-between', border: userData.PHONE_VERIFIED === true ?'unset': '1px solid #000000', marginLeft: '30px', width: userData.PHONE_VERIFIED === true ? 'unset' : '45%', my: 2, textAlign: 'center',
+                  display: 'flex', alignItems: 'center', justifyContent: 'space-between', border: userData.PHONE_VERIFIED === true ? 'unset' : '1px solid #000000', marginLeft: '30px', width: '45%', my: 2, textAlign: 'center',
                 }}>
-                  <Typography sx={{ fontSize: '14px', margin: '0px auto', padding: "0 10px" }}> +1 </Typography>
+                  <Typography sx={{ fontSize: '14px', margin: '0px auto', height: '34px', padding: "0 10px", background: '#ffd416', display: "flex", justifyContent: 'center', alignItems: 'center' }}> +1 </Typography>
                   <input
                     placeholder='Enter Mobile Number'
                     type='number'
@@ -221,20 +220,19 @@ export default function Profile() {
                     disabled={userData.PHONE_VERIFIED === true}
                     onChange={e => handleNumChange(e.target.value)}
                     style={{
-                    border: 'none',
-                    userSelect: 'none',
-                      height: '30px',
+                      border: 'none',
+                      userSelect: 'none',
+                      height: '32px',
                       fontSize: '14px',
-                      backgroundColor: 'white',
+                      backgroundColor: userData.EMAIL_VERIFIED === true ? 'green' : 'white',
+                      color: userData.EMAIL_VERIFIED === true ? 'white' : 'black',
                       paddingLeft: '10px',
-                      width: userData.PHONE_VERIFIED === true ? 'unset' : '90%'
+                      width: '90%'
 
                     }} />
                   {
                     userData.PHONE_VERIFIED === true ?
-                      <Tooltip title="Verified" placement="right" arrow>
-                        <Box className={classes.Verified2} sx={{ml:2}}></Box>
-                      </Tooltip>
+                      null
                       :
                       <Tooltip title="Not Verified" placement="right" arrow>
                         <WarningIcon onClick={emailVerify} sx={{ height: '32px', borderTop: '1px solid #464646', borderBottom: '1px solid #464646', borderRight: '1px solid #464646', borderLeft: 'none', fontSize: '20px', color: 'red', px: 1, background: '#e5e5e5' }} />
@@ -327,17 +325,17 @@ export default function Profile() {
                   borderLeft: '1px solid #464646',
                   borderRight: 'none',
                   userSelect: 'none',
-                  width: userData.EMAIL_VERIFIED === true ? 'unset' : '45%',
+                  width: '45%',
                   height: '30px',
                   fontSize: '14px',
                   paddingLeft: '10px',
-                  marginLeft: '30px'
+                  marginLeft: '30px',
+                  backgroundColor: userData.EMAIL_VERIFIED === true ? 'green' : 'white',
+                  color: userData.EMAIL_VERIFIED === true ? 'white' : 'black',
                 }} />
               {
                 userData.EMAIL_VERIFIED === true ?
-                  <Tooltip title="Verified" placement="right" arrow>
-                    <Box className={classes.Verified2} ></Box>
-                  </Tooltip>
+                  null
                   :
                   <Tooltip title="Not Verified" placement="right" arrow>
                     <WarningIcon onClick={emailVerify} sx={{ height: '32px', borderTop: '1px solid #464646', borderBottom: '1px solid #464646', borderRight: '1px solid #464646', borderLeft: 'none', fontSize: '20px', color: 'red', px: 1, background: '#e5e5e5' }} />
@@ -348,9 +346,9 @@ export default function Profile() {
               <Typography sx={{ color: '#464646', fontSize: '15px', fontWeight: '600', ml: 3, py: 2 }}>Number</Typography>
 
               <Box sx={{
-                display: 'flex', alignItems: 'center', justifyContent: 'space-between', border: userData.PHONE_VERIFIED === true ?'unset': '1px solid #000000', width: userData.PHONE_VERIFIED === true ? 'unset' : '45%', my: 2, textAlign: 'center', marginLeft: '30px',
+                display: 'flex', alignItems: 'center', justifyContent: 'space-between', border: userData.PHONE_VERIFIED === true ? 'unset' : '1px solid #000000', width: '45%', my: 2, textAlign: 'center', marginLeft: '30px',
               }}>
-                <Typography sx={{ fontSize: '14px', margin: '0px auto', padding: "0 10px" }}> +1 </Typography>
+                <Typography sx={{ fontSize: '14px', margin: '0px auto', height: '34px', padding: "0 10px", background: '#ffd416', display: "flex", justifyContent: 'center', alignItems: 'center' }}> +1 </Typography>
                 <input
                   placeholder='Enter Mobile Number'
                   type='number'
@@ -360,17 +358,16 @@ export default function Profile() {
                   style={{
                     border: 'none',
                     userSelect: 'none',
-                    height: '30px',
+                    height: '34px',
                     fontSize: '14px',
-                    backgroundColor: 'white',
+                    backgroundColor: userData.EMAIL_VERIFIED === true ? 'green' : 'white',
+                    color: userData.EMAIL_VERIFIED === true ? 'white' : 'black',
                     paddingLeft: '10px',
-                    width: userData.PHONE_VERIFIED === true ? 'unset' : '90%'
+                    width: '90%'
                   }} />
                 {
                   userData.PHONE_VERIFIED === true ?
-                    <Tooltip title="Verified" placement="right" arrow>
-                      <Box className={classes.Verified2} ></Box>
-                    </Tooltip>
+                    null
                     :
                     <Tooltip title="Not Verified" placement="right" arrow>
                       <WarningIcon sx={{ height: '32px', borderTop: '1px solid #464646', borderBottom: '1px solid #464646', borderRight: '1px solid #464646', borderLeft: 'none', fontSize: '20px', color: 'red', px: 1, background: '#e5e5e5' }} />
