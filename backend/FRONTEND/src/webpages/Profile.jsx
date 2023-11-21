@@ -8,7 +8,7 @@ import { makeStyles } from '@mui/styles';
 import Tooltip from '@mui/material/Tooltip';
 import WarningIcon from '@mui/icons-material/Warning';
 import { profileUpdate } from '../Api/profileUpdate';
-import { mailVerification } from '../Api/otpSend';
+import { sendOTP } from '../Api/otpSend';
 const useStyles = makeStyles({
   Verified: {
     borderWidth: '0px 2px 2px 0px',
@@ -25,10 +25,9 @@ const useStyles = makeStyles({
     borderWidth: '0px 2px 2px 0px',
     borderStyle: 'solid',
     borderColor: 'green',
-    position: 'absolute',
     transform: 'rotate(45deg)',
-    height: '8px',
-    width: '3px',
+    height: '13px',
+    width: '6px',
     display: 'block',
     marginTop: '-4px',
   },
@@ -44,16 +43,16 @@ export default function Profile() {
 
   const { setShow, setMessage, setMessageType, userData, encrypt, decrypt } = React.useContext(LoginContext)
   const [username, setUsername] = React.useState(decrypt(userData.USERDATA_AS_USERNAME))
-  const [email, setEmail] = React.useState(decrypt(userData.USERDATA_AS_EMAIL))
+  const email = React.useState(decrypt(userData.USERDATA_AS_EMAIL))
+  const [number, setNumber] = React.useState(userData.USERDATA_AS_NUMBER ? decrypt(userData.USERDATA_AS_NUMBER).slice(2,) : '')
   const [emailOTP, setEMailOTP] = React.useState('')
-  const [emailVerified, setEmailVerified] = React.useState(localStorage.getItem('EMAIL_VERIFIED'))
   const commonProps = [
     { name: 'Home Services', url: '/' }
   ]
 
 
-  function handleEmailChange(value) {
-    setEmail(value)
+  function handleNumChange(value) {
+    setNumber(value)
   }
 
   function handleUsernameChange(value) {
@@ -77,9 +76,11 @@ export default function Profile() {
       return
     }
     const update = {
-      Number: decrypt(userData.USERDATA_AS_NUMBER),
+      Number: `+1${number}`,
       Username: username,
-      Email: email
+      Email: email,
+      Email_Verified: userData.EMAIL_VERIFIED,
+      Phone_Verified: userData.PHONE_VERIFIED,
     }
     let response = await profileUpdate(update)
     if (response.acknowledged) {
@@ -89,8 +90,9 @@ export default function Profile() {
           USERDATA_AS_NUMBER: userData.USERDATA_AS_NUMBER,
           USERDATA_AS_USERNAME: encrypt(username),
           USERDATA_AS_EMAIL: encrypt(email),
+          PHONE_VERIFIED: userData.PHONE_VERIFIED,
+          EMAIL_VERIFIED: userData.EMAIL_VERIFIED,
         }));
-        localStorage.setItem('EMAIL_VERIFIED', false)
       } catch (err) {
         return undefined;
       }
@@ -103,27 +105,38 @@ export default function Profile() {
   }
 
   const handleOTPChange = (value) => {
+    console.log(value, emailOTP)
     if (value.length === 6) {
       if (value === emailOTP) {
-        setEmailVerified(true)
+        let startData = JSON.parse(localStorage.getItem('START_DATA'))
+        startData.PHONE_VERIFIED = true
+        localStorage.setItem('START_DATA', JSON.stringify(startData));
         window.location.reload(false)
         setEMailOTP('')
-        localStorage.setItem('EMAIL_VERIFIED', true)
       }
     }
   }
 
 
   const emailVerify = async () => {
-    let response = await mailVerification({
-      Email: email
-    })
-    if (response) setEMailOTP(response.slice(0, 6))
-    else {
+    if (number.length < 10 || number.length > 10) {
       setShow(true)
       setMessageType('error')
-      setMessage("Your entered email is incorrect. Please enter and verify again.")
+      setMessage("Invalid Phone Number")
+      return
     }
+    let response = await sendOTP({
+      Number: `+1${number}`,
+    })
+    setEMailOTP('123456')
+    // if (response) {
+    // setEMailOTP(response.slice(0, 6))
+    // } 
+    // else {
+    //   setShow(true)
+    //   setMessageType('error')
+    //   setMessage("Your entered Phone is incorrect. Please enter and verify again.")
+    // }
   }
 
   return (
@@ -165,25 +178,25 @@ export default function Profile() {
                 <Typography sx={{ color: '#464646', fontSize: '16px', fontWeight: '600', ml: 3, py: 2 }}>Email</Typography>
                 <input
                   defaultValue={decrypt(userData.USERDATA_AS_EMAIL)}
-                  onChange={(e) => handleEmailChange(e.target.value)}
                   type='text'
-                  disabled={emailVerified==="true"}
+                  disabled={userData.EMAIL_VERIFIED === true}
                   style={{
-                    borderTop: emailVerified==="true"?'none':'1px solid #464646',
-                    borderBottom:emailVerified==="true"?'none': '1px solid #464646',
-                    borderLeft:emailVerified==="true"?'none': '1px solid #464646',
+                    width: userData.EMAIL_VERIFIED === true ? 'unset' : '45%',
+                    borderTop: userData.EMAIL_VERIFIED === true ? 'none' : '1px solid #464646',
+                    borderBottom: userData.EMAIL_VERIFIED === true ? 'none' : '1px solid #464646',
+                    borderLeft: userData.EMAIL_VERIFIED === true ? 'none' : '1px solid #464646',
                     borderRight: 'none',
                     userSelect: 'none',
-                    width: '45%',
                     height: '30px',
                     fontSize: '14px',
+                    backgroundColor: 'white',
                     paddingLeft: '10px',
                     marginLeft: '30px'
                   }} />
                 {
-                  emailVerified==="true" ?
+                  userData.EMAIL_VERIFIED === true ?
                     <Tooltip title="Verified" placement="right" arrow>
-                      <Box className={classes.Verified2} sx={{ ml: 38 }}></Box>
+                      <Box className={classes.Verified2} ></Box>
                     </Tooltip>
                     :
                     <Tooltip title="Not Verified" placement="right" arrow>
@@ -192,36 +205,66 @@ export default function Profile() {
                 }
 
               </Box>
-              {
-                emailOTP ?
-                  <Box sx={{ ml: 15 }}>
-                    <input
-                      placeholder='OTP'
-                      type='number'
-                      onChange={e => handleOTPChange(e.target.value)}
-                      style={{
-                        border: 'none',
-                        borderBottom: "1px solid black",
-                        userSelect: 'none',
-                        textAlign: 'center',
-                        // width: '50%',
-                        height: '35px',
-                        fontSize: '14px',
-                        margin: '5px auto',
-                      }} />
-                    <br />
-                    <Button sx={{ fontSize: '16px', textTransform: 'none', ml: 6 }} variant='contained' onClick={emailVerify} >Submit</Button>
-                  </Box>
-                  :
-                  <>{emailVerified==="true" ? null : <Typography sx={{ opacity: '0.5', cursor: 'pointer', fontSize: '16px', marginLeft: '120px', textDecoration: 'underline' }} onClick={emailVerify}>Click here to generate email verification mail.</Typography>}</>
-              }
+
 
               <Box sx={{ display: 'flex', displayContent: 'space-evenly', alignItems: 'center', p: 3 }}>
                 <Typography sx={{ color: '#464646', fontSize: '15px', fontWeight: '600', ml: 3, py: 2 }}>Number</Typography>
-                <Typography sx={{ color: '#464646', fontSize: '14px', fontWeight: '600', ml: 3, py: 2 }}>{userData.USERDATA_AS_NUMBER ?decrypt(userData.USERDATA_AS_NUMBER).slice(3,) : ''}</Typography>
-                <Tooltip title="Verified" placement="right" arrow>
-                  <Box className={classes.Verified} sx={{ ml: 25 }}></Box>
-                </Tooltip>
+
+                <Box sx={{
+                  display: 'flex', alignItems: 'center', justifyContent: 'space-between', border: userData.PHONE_VERIFIED === true ?'unset': '1px solid #000000', marginLeft: '30px', width: userData.PHONE_VERIFIED === true ? 'unset' : '45%', my: 2, textAlign: 'center',
+                }}>
+                  <Typography sx={{ fontSize: '14px', margin: '0px auto', padding: "0 10px" }}> +1 </Typography>
+                  <input
+                    placeholder='Enter Mobile Number'
+                    type='number'
+                    defaultValue={userData.USERDATA_AS_NUMBER ? decrypt(userData.USERDATA_AS_NUMBER).slice(2,) : ''}
+                    disabled={userData.PHONE_VERIFIED === true}
+                    onChange={e => handleNumChange(e.target.value)}
+                    style={{
+                    border: 'none',
+                    userSelect: 'none',
+                      height: '30px',
+                      fontSize: '14px',
+                      backgroundColor: 'white',
+                      paddingLeft: '10px',
+                      width: userData.PHONE_VERIFIED === true ? 'unset' : '90%'
+
+                    }} />
+                  {
+                    userData.PHONE_VERIFIED === true ?
+                      <Tooltip title="Verified" placement="right" arrow>
+                        <Box className={classes.Verified2} sx={{ml:2}}></Box>
+                      </Tooltip>
+                      :
+                      <Tooltip title="Not Verified" placement="right" arrow>
+                        <WarningIcon onClick={emailVerify} sx={{ height: '32px', borderTop: '1px solid #464646', borderBottom: '1px solid #464646', borderRight: '1px solid #464646', borderLeft: 'none', fontSize: '20px', color: 'red', px: 1, background: '#e5e5e5' }} />
+                      </Tooltip>
+                  }
+                </Box>
+                {
+                  emailOTP ?
+                    <Box sx={{ ml: 15 }}>
+                      <input
+                        placeholder='OTP'
+                        type='number'
+                        onChange={e => handleOTPChange(e.target.value)}
+                        style={{
+                          border: 'none',
+                          borderBottom: "1px solid black",
+                          userSelect: 'none',
+                          textAlign: 'center',
+                          // width: '50%',
+                          height: '35px',
+                          fontSize: '14px',
+                          margin: '5px auto',
+                        }} />
+                      <br />
+                      <Button sx={{ fontSize: '16px', textTransform: 'none', ml: 6 }} variant='contained' onClick={emailVerify} >Submit</Button>
+                    </Box>
+                    :
+                    null
+                  // <>{userData.PHONE_VERIFIED === true ? null : <Typography sx={{ opacity: '0.5', cursor: 'pointer', fontSize: '16px', marginLeft: '120px', textDecoration: 'underline' }} onClick={emailVerify}>Click here to generate phone verification OTP.</Typography>}</>
+                }
 
               </Box>
               <Box sx={{
@@ -276,7 +319,7 @@ export default function Profile() {
               <Typography sx={{ color: '#464646', fontSize: '16px', fontWeight: '600', ml: 3, py: 2 }}>Email</Typography>
               <input
                 value={decrypt(userData.USERDATA_AS_EMAIL)}
-                disabled={emailVerified==="true"}
+                disabled={userData.EMAIL_VERIFIED === true}
                 type='text'
                 style={{
                   borderTop: '1px solid #464646',
@@ -284,23 +327,80 @@ export default function Profile() {
                   borderLeft: '1px solid #464646',
                   borderRight: 'none',
                   userSelect: 'none',
-                  width: '45%',
+                  width: userData.EMAIL_VERIFIED === true ? 'unset' : '45%',
                   height: '30px',
                   fontSize: '14px',
                   paddingLeft: '10px',
                   marginLeft: '30px'
                 }} />
-              <Tooltip title="Not Verified" placement="right" arrow>
-                <WarningIcon sx={{ height: '32px', borderTop: '1px solid #464646', borderBottom: '1px solid #464646', borderRight: '1px solid #464646', borderLeft: 'none', fontSize: '20px', color: 'red', px: 1, background: '#e5e5e5' }} />
-              </Tooltip>
+              {
+                userData.EMAIL_VERIFIED === true ?
+                  <Tooltip title="Verified" placement="right" arrow>
+                    <Box className={classes.Verified2} ></Box>
+                  </Tooltip>
+                  :
+                  <Tooltip title="Not Verified" placement="right" arrow>
+                    <WarningIcon onClick={emailVerify} sx={{ height: '32px', borderTop: '1px solid #464646', borderBottom: '1px solid #464646', borderRight: '1px solid #464646', borderLeft: 'none', fontSize: '20px', color: 'red', px: 1, background: '#e5e5e5' }} />
+                  </Tooltip>
+              }
             </Box>
-            <Typography sx={{ opacity: '0.5', cursor: 'pointer', fontSize: '16px', marginLeft: '120px', textDecoration: 'underline' }}>Verify you email</Typography>
             <Box sx={{ display: 'flex', displayContent: 'space-evenly', alignItems: 'center', p: 3 }}>
               <Typography sx={{ color: '#464646', fontSize: '15px', fontWeight: '600', ml: 3, py: 2 }}>Number</Typography>
-              <Typography sx={{ color: '#464646', fontSize: '14px', fontWeight: '600', ml: 3, py: 2 }}>{userData.USERDATA_AS_NUMBER ?decrypt(userData.USERDATA_AS_NUMBER).slice(3,) :''}</Typography>
-              <Tooltip title="Verified" placement="right" arrow>
-                <Box className={classes.Verified} sx={{ ml: 25 }}></Box>
-              </Tooltip>
+
+              <Box sx={{
+                display: 'flex', alignItems: 'center', justifyContent: 'space-between', border: userData.PHONE_VERIFIED === true ?'unset': '1px solid #000000', width: userData.PHONE_VERIFIED === true ? 'unset' : '45%', my: 2, textAlign: 'center', marginLeft: '30px',
+              }}>
+                <Typography sx={{ fontSize: '14px', margin: '0px auto', padding: "0 10px" }}> +1 </Typography>
+                <input
+                  placeholder='Enter Mobile Number'
+                  type='number'
+                  defaultValue={userData.USERDATA_AS_NUMBER ? decrypt(userData.USERDATA_AS_NUMBER).slice(2,) : ''}
+                  disabled={userData.PHONE_VERIFIED === true}
+                  onChange={e => handleNumChange(e.target.value)}
+                  style={{
+                    border: 'none',
+                    userSelect: 'none',
+                    height: '30px',
+                    fontSize: '14px',
+                    backgroundColor: 'white',
+                    paddingLeft: '10px',
+                    width: userData.PHONE_VERIFIED === true ? 'unset' : '90%'
+                  }} />
+                {
+                  userData.PHONE_VERIFIED === true ?
+                    <Tooltip title="Verified" placement="right" arrow>
+                      <Box className={classes.Verified2} ></Box>
+                    </Tooltip>
+                    :
+                    <Tooltip title="Not Verified" placement="right" arrow>
+                      <WarningIcon sx={{ height: '32px', borderTop: '1px solid #464646', borderBottom: '1px solid #464646', borderRight: '1px solid #464646', borderLeft: 'none', fontSize: '20px', color: 'red', px: 1, background: '#e5e5e5' }} />
+                    </Tooltip>
+                }
+              </Box>
+              {
+                emailOTP ?
+                  <Box sx={{ ml: 15 }}>
+                    <input
+                      placeholder='OTP'
+                      type='number'
+                      onChange={e => handleOTPChange(e.target.value)}
+                      style={{
+                        border: 'none',
+                        borderBottom: "1px solid black",
+                        userSelect: 'none',
+                        textAlign: 'center',
+                        // width: '50%',
+                        height: '35px',
+                        fontSize: '14px',
+                        margin: '5px auto',
+                      }} />
+                    <br />
+                    <Button sx={{ fontSize: '16px', textTransform: 'none', ml: 6 }} variant='contained' onClick={emailVerify} >Submit</Button>
+                  </Box>
+                  :
+                  null
+                // <>{userData.EMAIL_VERIFIED === true ? null : <Typography sx={{ opacity: '0.5', cursor: 'pointer', fontSize: '16px', marginLeft: '120px', textDecoration: 'underline' }} onClick={emailVerify}>Click here to generate phone verification OTP.</Typography>}</>
+              }
 
             </Box>
             <Box sx={{

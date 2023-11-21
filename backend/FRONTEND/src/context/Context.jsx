@@ -54,6 +54,8 @@ const ContextProvider = ({ children }) => {
                 USERDATA_AS_NUMBER: '',
                 USERDATA_AS_USERNAME: '',
                 USERDATA_AS_EMAIL: '',
+                PHONE_VERIFIED: false,
+                EMAIL_VERIFIED: false,
             }));
             const serializedState = localStorage.getItem('START_DATA');
             if (serializedState === null) {
@@ -81,7 +83,6 @@ const ContextProvider = ({ children }) => {
             localStorage.getItem('INIT_DATA')
             localStorage.getItem('START_DATA')
             localStorage.getItem('CENTER_DATA')
-            localStorage.getItem('EMAIL_VERIFIED')
         }
         catch (err) {
             localStorage.setItem('INIT_DATA', JSON.stringify(false));
@@ -89,8 +90,9 @@ const ContextProvider = ({ children }) => {
                 USERDATA_AS_NUMBER: '',
                 USERDATA_AS_USERNAME: '',
                 USERDATA_AS_EMAIL: '',
+                PHONE_VERIFIED: false,
+                EMAIL_VERIFIED: false,
             }))
-            localStorage.setItem('EMAIL_VERIFIED', true)
             localStorage.setItem('CENTER_DATA', JSON.stringify(encrypt('Chicago')));
         }
     }

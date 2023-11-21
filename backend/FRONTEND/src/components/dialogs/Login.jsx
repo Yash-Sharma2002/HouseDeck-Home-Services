@@ -6,7 +6,7 @@ import Dialog from '@mui/material/Dialog';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { sendOTP } from '../../Api/otpSend';
+import { mailVerification } from '../../Api/otpSend';
 import '../../css/OnlyForDialog.css';
 import { authenticateSignup } from '../../Api/signup';
 import { authenticateLogin } from '../../Api/login';
@@ -22,8 +22,11 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 
 
 
-function Content({ open, setOpen, width, display,type }) {
+function Content({ open, setOpen, width, display, type }) {
   const fullScreen = useMediaQuery('(max-width:700px)');
+
+  var validRegexForEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  var validRegexForUsername = /^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/;
 
   const { setMessage, setMessageType, setShow, encrypt } = React.useContext(LoginContext)
 
@@ -59,12 +62,12 @@ function Content({ open, setOpen, width, display,type }) {
     clearInterval(timeRef.current);
     setResendTime(60);
     const items = {
-      Number: `+91${number}`
+      Email: email
     }
-    const response = await sendOTP(items)
+    const response = await mailVerification(items)
     if (response) {
       // setRealOTP(response.slice(0, 6))
-       setRealOTP(123456)
+      setRealOTP(123456)
     }
     timeRef.current = setInterval(() => {
       setResendTime((time) => time - 1)
@@ -91,12 +94,14 @@ function Content({ open, setOpen, width, display,type }) {
   }
 
   function forSecondButtonDisplay() {
-    if (number.length < 10 || number.length > 10) {
-      setShow(true);
-      setMessage('Enter valid number')
+
+    if (!email.match(validRegexForEmail)) {
+      setShow(true)
       setMessageType('error')
+      setMessage("Invalid Email")
+      return
     }
-    else if (number.length === 10) {
+    else {
       OTPSender()
       setShow(true)
       setMessage("OTP Sent")
@@ -107,10 +112,6 @@ function Content({ open, setOpen, width, display,type }) {
   }
   function handleNumChange(num) {
     setNumber(num.value)
-    if (num.value.length < 10 || number.length > 10) {
-      setDisplayForSecond((prevDisplay) => prevDisplay = false)
-      setDisplayForFirst((prevDisplay) => prevDisplay = true)
-    }
   }
   function handleOTPChange(num) {
     setOtp(num.value)
@@ -142,7 +143,7 @@ function Content({ open, setOpen, width, display,type }) {
       const success = verifyOTP(otp)
       if (success) {
         const login = {
-          Number: `+91${number}`
+          Email: email
         }
         let response = await authenticateLogin(login)
         if (response) {
@@ -153,6 +154,8 @@ function Content({ open, setOpen, width, display,type }) {
               USERDATA_AS_NUMBER: encrypt(response.Number),
               USERDATA_AS_USERNAME: encrypt(response.Username),
               USERDATA_AS_EMAIL: encrypt(response.Email),
+              EMAIL_VERIFIED: response.Email_Verified,
+              PHONE_VERIFIED: response.Phone_Verified
             }));
             localStorage.setItem('INIT_DATA', JSON.stringify(true));
           } catch (err) {
@@ -167,31 +170,33 @@ function Content({ open, setOpen, width, display,type }) {
     }
   }
   const sendToDatabase = async () => {
-    var validRegexForEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    if (!email.match(validRegexForEmail)) {
-      setShow(true)
+    if (number.length < 10 || number.length > 10) {
+      setShow(true);
+      setMessage('Enter valid number')
       setMessageType('error')
-      setMessage("Invalid Email")
-      return
     }
-    if (username.length<5) {
+    if (!username.match(validRegexForUsername)) {
       setShow(true)
       setMessageType('error')
       setMessage("Username mut be 8 characters.")
       return
     }
     const signup = {
-      Number: `+91${number}`,
+      Number: `+1${number}`,
       Username: username,
-      Email: email
+      Email: email,
+      Email_Verified: true,
+      Phone_Verified: false
     }
     let response = await authenticateSignup(signup)
     if (!response) return;
     try {
       localStorage.setItem('START_DATA', JSON.stringify({
-        USERDATA_AS_NUMBER: encrypt(`+91${number}`),
+        USERDATA_AS_NUMBER: encrypt(`+1${number}`),
         USERDATA_AS_USERNAME: encrypt(signup.Username),
         USERDATA_AS_EMAIL: encrypt(signup.Email),
+        PHONE_VERIFIED: signup.Phone_Verified,
+        EMAIL_VERIFIED: signup.Email_Verified
       }));
       localStorage.setItem('INIT_DATA', JSON.stringify(true));
       window.location.reload(false)
@@ -211,33 +216,30 @@ function Content({ open, setOpen, width, display,type }) {
         maxWidth={false}
       >
         <Box sx={{ display: 'flex', height: '70vh', width: width }} >
-          <Box sx={{ width: '40%', background: '#f8f8f8',textAlign:'center' }}>
+          <Box sx={{ width: '40%', background: '#f8f8f8', textAlign: 'center' }}>
             <img style={{ height: '200px', width: "260px", marginTop: '5rem' }} src={require('../../assets/logos/isLogin.png')} alt="Login" />
             <Typography variant="h6" sx={{ fontSize: '18px', fontWeight: '600', ml: 1 }}>Login/Signup</Typography>
           </Box>
-          <Box sx={{ width:"50%",mx:'auto'}}>
+          <Box sx={{ width: "50%", mx: 'auto' }}>
             <Box >
               <CloseIcon onClick={handleClose} sx={{ margin: '8px 0px auto 322px', cursor: 'pointer' }} />
             </Box>
 
-            <Typography sx={{ fontSize: '16px', fontWeight: '600', marginTop: 3, color: '#e65c00' }}>Enter phone to continue</Typography>
-            <Box sx={{
-              display: 'flex', alignItems: 'center', justifyContent: 'space-between', border: '1px solid #e5e5e5', width: '95%', my: 2, textAlign: 'center',
-            }}>
-              <Typography sx={{ fontSize: '14px', margin: '0px auto' }}> +91 </Typography>
-              <input
-                placeholder='Enter Mobile Number'
-                type='number'
-                disabled={displayForLast}
-                onChange={e => handleNumChange(e.target)}
-                style={{
-                  border: 'none',
-                  userSelect: 'none',
-                  width: '85%',
-                  height: '40px',
-                  fontSize: '14px',
-                }} />
-            </Box>
+            <Typography sx={{ fontSize: '16px', fontWeight: '600', marginTop: 1, color: '#e65c00' }}>Enter Email to continue</Typography>
+            <input
+              placeholder='Email'
+              onChange={e => getEmail(e.target)}
+              disabled={displayForLast}
+              type='email'
+              style={{
+                userSelect: 'none',
+                width: '90%',
+                height: '40px',
+                fontSize: '14px',
+                border: '1px solid #e5e5e5',
+                paddingLeft: '13px',
+                margin: '10px auto'
+              }} />
 
 
 
@@ -251,15 +253,15 @@ function Content({ open, setOpen, width, display,type }) {
             </Button>
 
             {
-              !displayForLast && <SignupGoogle type={type} />
+              displayForFirst ? <SignupGoogle type={type} /> : null
             }
 
 
-            <Typography sx={{ fontSize: '11px', fontFamily: 'Fredoka', position: 'absolute',textAlign:'start', bottom: 25 }}>By continuing, you agree to the <a href="/privacy-policy" style={{ color: 'black', textDecoration: 'none', fontWeight: '700' }}> T&C / Privacy Policy</a></Typography>
-            <Typography sx={{ fontSize: '11px', fontFamily: 'Fredoka', position: 'absolute',textAlign:'start', bottom: 10 }}>For any issue/query please email <a href="mailto:care@Vapormop.com" style={{ color: 'black', textDecoration: 'none', fontWeight: '700' }}>care@Vapormop.com</a></Typography>
+            <Typography sx={{ fontSize: '11px', fontFamily: 'Fredoka', position: 'absolute', textAlign: 'start', bottom: 25 }}>By continuing, you agree to the <a href="/privacy-policy" style={{ color: 'black', textDecoration: 'none', fontWeight: '700' }}> T&C / Privacy Policy</a></Typography>
+            <Typography sx={{ fontSize: '11px', fontFamily: 'Fredoka', position: 'absolute', textAlign: 'start', bottom: 10 }}>For any issue/query please email <a href="mailto:care@Vapormop.com" style={{ color: 'black', textDecoration: 'none', fontWeight: '700' }}>care@Vapormop.com</a></Typography>
 
 
-            <Box sx={{ display: displayForSecond ? 'block' : 'none', margin: '0px auto', }}>
+            <Box sx={{ display: displayForSecond ? 'block' : 'none', margin: '10px auto', }}>
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <Typography sx={{ fontSize: '14px', fontWeight: '600', textALign: 'start' }}>Enter OTP : </Typography>
                 <Box sx={{ textAlign: 'center' }}>
@@ -272,7 +274,7 @@ function Content({ open, setOpen, width, display,type }) {
                 </Box>
               </Box>
 
-              <Box sx={{ textAlign:"center"}}>
+              <Box sx={{ textAlign: "center", }}>
                 <input
                   placeholder='OTP'
                   type='number'
@@ -281,7 +283,7 @@ function Content({ open, setOpen, width, display,type }) {
                     border: 'none',
                     borderBottom: "1px solid black",
                     userSelect: 'none',
-                    textAlign:'center',
+                    textAlign: 'center',
                     width: '50%',
                     height: '35px',
                     fontSize: '14px',
@@ -309,6 +311,7 @@ function Content({ open, setOpen, width, display,type }) {
 
 
             <Box sx={{ display: displayForLast ? 'block' : 'none' }}>
+              <Box sx={{ my: 1 }}></Box>
               <input
                 placeholder='First & Last Name'
                 type='text'
@@ -322,18 +325,23 @@ function Content({ open, setOpen, width, display,type }) {
                   paddingLeft: '13px'
                 }} />
               <Box sx={{ my: 1 }}></Box>
-              <input
-                placeholder='Email'
-                onChange={e => getEmail(e.target)}
-                type='email'
-                style={{
-                  userSelect: 'none',
-                  width: '90%',
-                  height: '40px',
-                  fontSize: '14px',
-                  border: '1px solid #e5e5e5',
-                  paddingLeft: '13px'
-                }} />
+              <Box sx={{
+                display: 'flex', alignItems: 'center', c: 'space-between', border: '1px solid #e5e5e5', width: '95%', my: 2, textAlign: 'center',
+              }}>
+                <Typography sx={{ fontSize: '14px', margin: '0px auto' }}> +1 </Typography>
+                <input
+                  placeholder='Enter Mobile Number'
+                  type='number'
+                  onChange={e => handleNumChange(e.target)}
+                  style={{
+                    border: 'none',
+                    userSelect: 'none',
+                    width: '85%',
+                    height: '40px',
+                    fontSize: '14px',
+                  }} />
+              </Box>
+
               <Button sx={{
                 my: 2,
                 boxShadow: 0,
@@ -362,7 +370,7 @@ function Content({ open, setOpen, width, display,type }) {
 
 
 
-function SMContent({ open, setOpen,type }) {
+function SMContent({ open, setOpen, type }) {
   const fullScreen = useMediaQuery('(max-width:700px)');
 
   const { setMessage, setMessageType, setShow, encrypt } = React.useContext(LoginContext)
@@ -378,6 +386,9 @@ function SMContent({ open, setOpen,type }) {
   const [email, setEmail] = React.useState('')
   const [RealOTP, setRealOTP] = React.useState('')
   const [resendTime, setResendTime] = React.useState(60)
+
+  var validRegexForEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  var validRegexForUsername = /^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/;
 
 
   // ----------------------------functions------------------------------ 
@@ -400,9 +411,9 @@ function SMContent({ open, setOpen,type }) {
     clearInterval(timeRef.current);
     setResendTime(60);
     const items = {
-      Number: `+91${number}`
+      Email: email
     }
-    const response = await sendOTP(items)
+    const response = await mailVerification(items)
     if (response) {
       setRealOTP(response.slice(0, 6))
     }
@@ -432,12 +443,13 @@ function SMContent({ open, setOpen,type }) {
   }
 
   function forSecondButtonDisplay() {
-    if (number.length < 10 || number.length > 10) {
+    if (!email.match(validRegexForEmail)) {
       setShow(true)
       setMessageType('error')
-      setMessage('Please enter a valid number')
+      setMessage("Invalid Email")
+      return
     }
-    else if (number.length === 10) {
+    else {
       setDisplayForFirst((prevDisplay) => prevDisplay = false)
       setDisplayForSecond((prevDisplay) => prevDisplay = true)
       OTPSender()
@@ -445,10 +457,6 @@ function SMContent({ open, setOpen,type }) {
   }
   function handleNumChange(num) {
     setNumber(num.value)
-    if (num.value.length < 10) {
-      setDisplayForSecond((prevDisplay) => prevDisplay = false)
-      setDisplayForFirst((prevDisplay) => prevDisplay = true)
-    }
   }
   function handleOTPChange(num) {
     setOtp(num.value)
@@ -479,7 +487,7 @@ function SMContent({ open, setOpen,type }) {
       const success = verifyOTP(otp)
       if (success) {
         const login = {
-          Number: `+91${number}`
+          Email: email
         }
         let response = await authenticateLogin(login)
         if (response) {
@@ -491,6 +499,8 @@ function SMContent({ open, setOpen,type }) {
               USERDATA_AS_NUMBER: encrypt(response.Number),
               USERDATA_AS_USERNAME: encrypt(response.Username),
               USERDATA_AS_EMAIL: encrypt(response.Email),
+              EMAIL_VERIFIED: response.Email_Verified,
+              PHONE_VERIFIED: response.Phone_Verified
             }));
             localStorage.setItem('INIT_DATA', JSON.stringify(true));
           } catch (err) {
@@ -505,14 +515,12 @@ function SMContent({ open, setOpen,type }) {
     }
   }
   const sendToDatabase = async () => {
-    var validRegexForEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    var validRegexForUsername = /^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/;
-    if (!email.match(validRegexForEmail)) {
+    if (number.length < 10 || number.length > 10) {
       setShow(true)
       setMessageType('error')
-      setMessage("Invalid Email")
-      return
+      setMessage('Please enter a valid number')
     }
+
     if (!username.match(validRegexForUsername)) {
       setShow(true)
       setMessageType('error')
@@ -520,18 +528,22 @@ function SMContent({ open, setOpen,type }) {
       return
     }
     const signup = {
-      Number: `+91${number}`,
+      Number: `+1${number}`,
       Username: username,
-      Email: email
+      Email: email,
+      Phone_Verified: false,
+      Email_Verified: true
     }
     let response = await authenticateSignup(signup)
     if (!response) return;
     window.location.reload(false)
     try {
       localStorage.setItem('START_DATA', JSON.stringify({
-        USERDATA_AS_NUMBER: encrypt(`+91${number}`),
+        USERDATA_AS_NUMBER: encrypt(`+1${number}`),
         USERDATA_AS_USERNAME: encrypt(response.Username),
         USERDATA_AS_EMAIL: encrypt(response.Email),
+        PHONE_VERIFIED: response.Phone_Verified,
+        EMAIL_VERIFIED: response.Email_Verified
       }));
       localStorage.setItem('INIT_DATA', JSON.stringify(true));
     } catch (err) {
@@ -559,29 +571,26 @@ function SMContent({ open, setOpen,type }) {
             <Typography variant="h6" sx={{ fontSize: '18px', fontWeight: '600' }}>Login/Signup</Typography>
 
           </Box>
-          <Box sx={{ width: '95%',mx:'auto' }}>
+          <Box sx={{ width: '95%', mx: 'auto' }}>
 
 
-            <Typography sx={{ fontSize: '16px', fontWeight: '600', marginTop: 3 }}>Enter phone to continue</Typography>
+            <Typography sx={{ fontSize: '16px', fontWeight: '600', marginTop: 2 }}>Enter Email to continue</Typography>
 
 
-            <Box sx={{
-              display: 'flex', alignItems: 'center', justifyContent: 'space-between', border: '1px solid #e5e5e5', width: '95%', my: 2, textAlign: 'center',
-            }}>
-              <Typography sx={{ fontSize: '14px', margin: '0px auto' }}> +91 </Typography>
-              <input
-                placeholder='Enter Mobile Number'
-                type='number'
-                disabled={displayForLast}
-                onChange={e => handleNumChange(e.target)}
-                style={{
-                  border: 'none',
-                  userSelect: 'none',
-                  width: '85%',
-                  height: '40px',
-                  fontSize: '14px',
-                }} />
-            </Box>
+            <input
+              placeholder='Email'
+              onChange={e => getEmail(e.target)}
+              disabled={displayForLast}
+              type='email'
+              style={{
+                userSelect: 'none',
+                width: '90%',
+                height: '40px',
+                fontSize: '14px',
+                border: '1px solid #e5e5e5',
+                margin: '10px auto',
+                paddingLeft: '13px'
+              }} />
 
             <Button sx={{
               display: displayForFirst ? 'block' : 'none', my: 2, boxShadow: 0, width: '100%', background: 'rgb(253, 55, 82)', color: 'white', padding: '8px 0px', textTransform: 'none',
@@ -592,15 +601,17 @@ function SMContent({ open, setOpen,type }) {
               Continue
             </Button>
 
-            <SignupGoogle type={type} />
+            {
+              displayForFirst ? <SignupGoogle type={type} /> : null
+            }
 
 
 
-            <Box sx={{ display: displayForSecond ? 'block' : 'none', margin: '0px auto', }}>
+            <Box sx={{ display: displayForSecond ? 'block' : 'none', margin: '10px auto', }}>
 
               <Typography sx={{ fontSize: '14px', fontWeight: '600', textALign: 'start' }}>Enter OTP : </Typography>
 
-              <Box sx={{textAlign:"center"}}>
+              <Box sx={{ textAlign: "center", }}>
                 <input
                   placeholder='OTP'
                   type='number'
@@ -610,7 +621,7 @@ function SMContent({ open, setOpen,type }) {
                     borderBottom: "1px solid black",
                     userSelect: 'none',
                     width: '50%',
-                    textAlign:'center',
+                    textAlign: 'center',
                     height: '35px',
                     fontSize: '14px',
                     margin: '5px auto',
@@ -644,6 +655,7 @@ function SMContent({ open, setOpen,type }) {
 
 
             <Box sx={{ display: displayForLast ? 'block' : 'none' }}>
+              <Box sx={{ my: 1 }}></Box>
               <input
                 placeholder='Username'
                 type='text'
@@ -657,18 +669,23 @@ function SMContent({ open, setOpen,type }) {
                   paddingLeft: '13px'
                 }} />
               <Box sx={{ my: 1 }}></Box>
-              <input
-                placeholder='Email'
-                onChange={e => getEmail(e.target)}
-                type='email'
-                style={{
-                  userSelect: 'none',
-                  width: '90%',
-                  height: '40px',
-                  fontSize: '14px',
-                  border: '1px solid #e5e5e5',
-                  paddingLeft: '13px'
-                }} />
+              <Box sx={{
+                display: 'flex', alignItems: 'center', justifyContent: 'space-between', border: '1px solid #e5e5e5', width: '95%', my: 2, textAlign: 'center',
+              }}>
+                <Typography sx={{ fontSize: '14px', margin: '0px auto' }}> +1 </Typography>
+                <input
+                  placeholder='Enter Mobile Number'
+                  type='number'
+                  onChange={e => handleNumChange(e.target)}
+                  style={{
+                    border: 'none',
+                    userSelect: 'none',
+                    width: '85%',
+                    height: '40px',
+                    fontSize: '14px',
+                  }} />
+              </Box>
+
               <Button sx={{
                 my: 2,
                 boxShadow: 0,
@@ -699,7 +716,7 @@ function SMContent({ open, setOpen,type }) {
 
 
 
-export default function Login({ open, setOpen, setAccount,type }) {
+export default function Login({ open, setOpen, setAccount, type }) {
   const xlMax = useMediaQuery('(max-width:2000px)');
   const xlMin = useMediaQuery('(min-width:1160px)');
   const mdMax = useMediaQuery('(max-width:1160px)');
