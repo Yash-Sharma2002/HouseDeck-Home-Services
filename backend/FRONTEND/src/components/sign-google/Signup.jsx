@@ -22,9 +22,11 @@ export default function SignupGoogle({ type }) {
 
 				// need to send to database #TODO
 				const signup = {
-					Number: ``,
+					Number: `+1`,
 					Username: user.displayName,
-					Email: user.email
+					Email: user.email,
+					Phone_Verified: false,
+					Email_Verified: true,
 				}
 
 				let response;
@@ -37,9 +39,10 @@ export default function SignupGoogle({ type }) {
 					USERDATA_AS_NUMBER: '',
 					USERDATA_AS_USERNAME: encrypt(user.displayName),
 					USERDATA_AS_EMAIL: encrypt(user.email),
+					PHONE_VERIFIED: false,
+					EMAIL_VERIFIED: true,
 				}));
 				localStorage.setItem('INIT_DATA', JSON.stringify(true));
-				localStorage.setItem('EMAIL_VERIFIED', true)
 
 				return user.email;
 			})

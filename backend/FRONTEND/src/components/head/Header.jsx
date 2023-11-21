@@ -46,9 +46,12 @@ function XLHeader({ commonProps }) {
                 USERDATA_AS_NUMBER: '',
                 USERDATA_AS_USERNAME: '',
                 USERDATA_AS_EMAIL: '',
+                PHONE_VERIFIED: false,
+                EMAIL_VERIFIED: false,
             }));
             localStorage.setItem('INIT_DATA', JSON.stringify(false))
             navigate('/')
+            window.location.reload()
         }
         catch (err) {
         }
