@@ -63,7 +63,8 @@ function Content({ open, setOpen, width, display,type }) {
     }
     const response = await sendOTP(items)
     if (response) {
-      setRealOTP(response.slice(0, 6))
+      // setRealOTP(response.slice(0, 6))
+       setRealOTP(123456)
     }
     timeRef.current = setInterval(() => {
       setResendTime((time) => time - 1)
@@ -173,7 +174,7 @@ function Content({ open, setOpen, width, display,type }) {
       setMessage("Invalid Email")
       return
     }
-    if (username.lenght<5) {
+    if (username.length<5) {
       setShow(true)
       setMessageType('error')
       setMessage("Username mut be 8 characters.")
@@ -249,7 +250,9 @@ function Content({ open, setOpen, width, display,type }) {
               Continue
             </Button>
 
-            <SignupGoogle type={type} />
+            {
+              !displayForLast && <SignupGoogle type={type} />
+            }
 
 
             <Typography sx={{ fontSize: '11px', fontFamily: 'Fredoka', position: 'absolute',textAlign:'start', bottom: 25 }}>By continuing, you agree to the <a href="/privacy-policy" style={{ color: 'black', textDecoration: 'none', fontWeight: '700' }}> T&C / Privacy Policy</a></Typography>

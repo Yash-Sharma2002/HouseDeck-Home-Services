@@ -17,6 +17,12 @@ const userSchema = new mongoose.Schema({
         unique: true,
         lowercase: true
     },
+    Phone_Verified: {
+        type: Boolean,
+    },
+    Email_Verified: {
+        type: Boolean,
+    },
 });
 
 const User = mongoose.model('Users', userSchema);

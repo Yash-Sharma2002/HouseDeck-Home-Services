@@ -167,6 +167,7 @@ export default function Profile() {
                   defaultValue={decrypt(userData.USERDATA_AS_EMAIL)}
                   onChange={(e) => handleEmailChange(e.target.value)}
                   type='text'
+                  disabled={emailVerified==="true"}
                   style={{
                     borderTop: emailVerified==="true"?'none':'1px solid #464646',
                     borderBottom:emailVerified==="true"?'none': '1px solid #464646',
@@ -217,7 +218,7 @@ export default function Profile() {
 
               <Box sx={{ display: 'flex', displayContent: 'space-evenly', alignItems: 'center', p: 3 }}>
                 <Typography sx={{ color: '#464646', fontSize: '15px', fontWeight: '600', ml: 3, py: 2 }}>Number</Typography>
-                <Typography sx={{ color: '#464646', fontSize: '14px', fontWeight: '600', ml: 3, py: 2 }}>{decrypt(userData.USERDATA_AS_NUMBER).slice(3,)}</Typography>
+                <Typography sx={{ color: '#464646', fontSize: '14px', fontWeight: '600', ml: 3, py: 2 }}>{userData.USERDATA_AS_NUMBER ?decrypt(userData.USERDATA_AS_NUMBER).slice(3,) : ''}</Typography>
                 <Tooltip title="Verified" placement="right" arrow>
                   <Box className={classes.Verified} sx={{ ml: 25 }}></Box>
                 </Tooltip>
@@ -275,6 +276,7 @@ export default function Profile() {
               <Typography sx={{ color: '#464646', fontSize: '16px', fontWeight: '600', ml: 3, py: 2 }}>Email</Typography>
               <input
                 value={decrypt(userData.USERDATA_AS_EMAIL)}
+                disabled={emailVerified==="true"}
                 type='text'
                 style={{
                   borderTop: '1px solid #464646',
@@ -295,7 +297,7 @@ export default function Profile() {
             <Typography sx={{ opacity: '0.5', cursor: 'pointer', fontSize: '16px', marginLeft: '120px', textDecoration: 'underline' }}>Verify you email</Typography>
             <Box sx={{ display: 'flex', displayContent: 'space-evenly', alignItems: 'center', p: 3 }}>
               <Typography sx={{ color: '#464646', fontSize: '15px', fontWeight: '600', ml: 3, py: 2 }}>Number</Typography>
-              <Typography sx={{ color: '#464646', fontSize: '14px', fontWeight: '600', ml: 3, py: 2 }}>{decrypt(userData.USERDATA_AS_NUMBER).slice(3,)}</Typography>
+              <Typography sx={{ color: '#464646', fontSize: '14px', fontWeight: '600', ml: 3, py: 2 }}>{userData.USERDATA_AS_NUMBER ?decrypt(userData.USERDATA_AS_NUMBER).slice(3,) :''}</Typography>
               <Tooltip title="Verified" placement="right" arrow>
                 <Box className={classes.Verified} sx={{ ml: 25 }}></Box>
               </Tooltip>

@@ -33,6 +33,42 @@ export const userLogIn = async (req, res) => {
     }
 }
 
+
+export const verifyEmail = async (req, res) => {
+    try {
+        const user = await User.findOne({ Email: req.body.Email },  req.body);
+        if (user) {
+            return res.send(user)
+        }
+        else {
+            return res.status(500).json('failed');
+        }
+
+    } catch (error) {
+        console.log('error in catch',error);
+        return res.status(500).json('failed');
+    }
+}
+
+
+
+export const verifyPhone = async (req, res) => {
+    try {
+        const user = await User.findOne({ Email: req.body.Email },  req.body);
+        if (user) {
+            return res.send(user)
+        }
+        else {
+            return res.status(500).json('failed');
+        }
+
+    } catch (error) {
+        console.log('error in catch',error);
+        return res.status(500).json('failed');
+    }
+}
+
+
 export const userUpdate = async (req, res) => {
     try {
 

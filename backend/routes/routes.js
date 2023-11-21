@@ -4,7 +4,7 @@ import { checkPaymentStatus, checkSubscriptionStatus, makePayments } from "../co
 import { PlacesAutoComplete } from "../controller/placesAutocomplete.js";
 import { promocodeStore, promocodeFetch } from "../controller/promocode-controller.js";
 import { getDraftBookings, sendService, getPaidBookings, getSubscriptions, deleteDraftBookings, getCancelledBookings, cancelService } from "../controller/service-controller.js";
-import { userSignUp, userLogIn, userUpdate } from "../controller/user-controller.js";
+import { userSignUp, userLogIn, userUpdate, verifyEmail, verifyPhone } from "../controller/user-controller.js";
 
 const router = express.Router()
 
@@ -28,6 +28,8 @@ router.post('/delete-draft', deleteDraftBookings);
 router.post('/get-subscription', getSubscriptions);
 router.post('/get-cancelled-bookings', getCancelledBookings);
 router.post('/cancel-booking', cancelService);
+router.post('/email-verified', verifyEmail);
+router.post('/phone-verified', verifyPhone);
 
 
 export default router;
