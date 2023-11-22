@@ -1,10 +1,11 @@
 import express from "express";
 import { mailVerification, otpSend } from "../controller/otpSend.js";
-import { checkPaymentStatus, checkSubscriptionStatus, makePayments } from "../controller/payment-controller.js";
+import { checkPaymentStatus, checkSubscriptionStatus, makePayments } from "../controller/payment-controller-cashfree.js";
 import { PlacesAutoComplete } from "../controller/placesAutocomplete.js";
 import { promocodeStore, promocodeFetch } from "../controller/promocode-controller.js";
 import { getDraftBookings, sendService, getPaidBookings, getSubscriptions, deleteDraftBookings, getCancelledBookings, cancelService } from "../controller/service-controller.js";
 import { userSignUp, userLogIn, userUpdate, verifyEmail, verifyPhone } from "../controller/user-controller.js";
+import { createOrder } from "../controller/payment-controller-paypal.js";
 
 const router = express.Router()
 
@@ -13,7 +14,8 @@ const router = express.Router()
 router.post('/signup', userSignUp)
 router.post('/login', userLogIn);
 router.post('/service', sendService);
-router.post('/create-order', makePayments);
+// router.post('/create-order', makePayments);
+router.post('/create-order', createOrder);
 router.post('/check-payment', checkPaymentStatus);
 router.post('/send-otp', otpSend);
 router.post('/promocode', promocodeFetch);

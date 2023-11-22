@@ -204,21 +204,17 @@ function Content({ options, category, data, setOptions, open, setOpen, width, ne
         const data = {
             order_id: `OrderId_${orderId}`,
             order_amount: `${totalPrice}`,
-            order_currency: 'INR',
-            customer_details: {
-                customer_id: decrypt(userData.USERDATA_AS_USERNAME),
-                customer_email: decrypt(userData.USERDATA_AS_EMAIL),
-                customer_phone: decrypt(userData.USERDATA_AS_NUMBER)
-            },
+            order_currency: 'USD',
         }
         let response = await makePayments(data)
+        console.log(response)
         if (response) {
             setDisplayAtStart(false)
             setDisplayForServiceSelectionProcess(false)
             setDisplayForStepper(false)
             setDisplayForAppointment(false)
             setDisplayForPayment(true)
-            setPaymentLink(response.data.payment_link)
+            // setPaymentLink(response.data.payment_link)
         }
     }
 
