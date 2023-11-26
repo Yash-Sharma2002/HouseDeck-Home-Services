@@ -83,8 +83,8 @@ export const Plumbing = {
 }
 
 export const GlobalServicesBottomListAvailable = [
-  { name: "Interiors", url: '#' },
-  { name: "Business Inspection", url: '#' },
+  { name: "Interiors", url: 'https://www.designelementary.com/' },
+  { name: "Property Inspection", url: '#' },
   { name: "Services", url: '/' },
   { name: "Services questions", url: '/faqs' },
 
@@ -160,7 +160,7 @@ export const FooterLink = [
   { name: "Privacy Policy", url: "/privacy-policy" },
   { name: "Return Exchange & Refund", url: "/return-exchange-and-refund", },
   { name: "FAQs", url: "/faqs" },
-  { name: "Vapormop Partner (Services)", url: "/Vapormop-partner-(Terms-of-Use)" },
+  { name: "Terms & Conditions", url: "/terms-and-conditions" },
 ];
 
 export const TopCarouselData = [

@@ -49,35 +49,38 @@ const TopHeadQuestions = {
 const RatingFunction = ({ width, height }) => {
     return (
         <>
-            {CustomerRatings.map((data,idx) =>
-                    <Card key={idx} sx={{
-                        maxWidth: width,
-                        backgroundColor: '#f3f3f3',
-                        boxShadow: 0,
-                        padding: '19px',
-                        outline: 'none',
-                        overflowY: 'auto',
-                        m: 'auto',
-                        marginTop: '10px',
-                        height: height
-                    }}>
-                        <CardHeader
-                            avatar={
-                                <Avatar sx={{ bgcolor: red[500] }} aria-label="rating">
-                                    {data.key}
-                                </Avatar>
-                            }
-                            sx={{ marginTop: -1 }}
-                            title={data.name}
-                            subheader={<Rating sx={{ fontSize: '15px', color: '#009587' }} name="read-only" value={data.rating} readOnly />}
-                        />
-                        <CardContent>
-                            <Typography  variant="body2" color="text.secondary">
-                                {data.text}
-                            </Typography>
-                        </CardContent>
+            {CustomerRatings.map((data, idx) =>
+                <Card key={idx} sx={{
+                    maxWidth: width,
+                    backgroundColor: '#ffd416',
+                    // backgroundColor: '#f3f3f3',
+                    boxShadow: 0,
+                    padding: '19px',
+                    outline: 'none',
+                    overflowY: 'auto',
+                    m: 'auto',
+                    marginTop: '10px',
+                    height: height
+                }}>
+                    <CardHeader
+                        avatar={
+                            <Avatar sx={{ bgcolor: red[500] }} aria-label="rating">
+                                {data.key}
+                            </Avatar>
+                        }
+                        sx={{ marginTop: -1 }}
+                        title={<Typography variant="body2" color="black" sx={{ fontSize: '16px', fontWeight: '700', color: '#000000' }}>
+                            {data.name}
+                        </Typography>}
+                        subheader={<Rating sx={{ fontSize: '15px', color: '#009587' }} name="read-only" value={data.rating} readOnly />}
+                    />
+                    <CardContent>
+                        <Typography variant="body2" color="black" sx={{ fontWeight: '600' }}>
+                            {data.text}
+                        </Typography>
+                    </CardContent>
 
-                    </Card>
+                </Card>
             )}
         </>
     )
@@ -130,7 +133,7 @@ const MDReview = () => {
                             overflowY: 'auto',
                             m: 'auto',
                             marginTop: '10px',
-                            height: 'unset',ml:3
+                            height: 'unset', ml: 3
                         }}>
                             <CardHeader
                                 avatar={
@@ -186,7 +189,7 @@ const SMReview = () => {
                             overflowY: 'auto',
                             m: 'auto',
                             marginTop: '10px',
-                            height: 'unset',ml:1
+                            height: 'unset', ml: 1
                         }}>
                             <CardHeader
                                 avatar={

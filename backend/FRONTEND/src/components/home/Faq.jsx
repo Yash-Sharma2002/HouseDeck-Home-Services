@@ -47,12 +47,12 @@ const TopQuestions = () => {
                 disableGutters
                 sx={AccordianStyle}>
                 <AccordionSummary
-                    expandIcon={<ExpandMoreIcon sx={{color:id===1?'#FF512F':'#464646',}} />}
+                    expandIcon={<ExpandMoreIcon sx={{color:id===1?'#FF512F':'#000000',fontWeight:"700",}} />}
                     aria-controls="panel1bh-content"
                     id="panel1bh-header"
                 >
         
-                    <Typography sx={{color:id===1?'#FF512F':'#464646',}}>
+                    <Typography sx={{color:id===1?'#FF512F':'#000000',fontWeight:"700",}}>
                         How to book a service on Vapormop?
                     </Typography>
                 </AccordionSummary>
@@ -68,11 +68,11 @@ const TopQuestions = () => {
             <Accordion
                 expanded={expanded === 'panel2'} onChange={handleChange('panel2',2)} disableGutters sx={AccordianStyle}>
                 <AccordionSummary
-                    expandIcon={<ExpandMoreIcon sx={{color:id===2?'#FF512F':'#464646',}}/>}
+                    expandIcon={<ExpandMoreIcon sx={{color:id===2?'#FF512F':'#000000',fontWeight:"700",}}/>}
                     aria-controls="panel2bh-content"
                     id="panel2bh-header"
                 >
-                    <Typography sx={{color:id===2?'#FF512F':'#464646',}}>
+                    <Typography sx={{color:id===2?'#FF512F':'#000000',fontWeight:"700",}}>
                         Who is going to fulfill the service?
                     </Typography>
                 </AccordionSummary>
@@ -86,11 +86,11 @@ const TopQuestions = () => {
 
             <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3',3)} disableGutters sx={AccordianStyle}>
                 <AccordionSummary
-                    expandIcon={<ExpandMoreIcon sx={{color:id===3?'#FF512F':'#464646',}} />}
+                    expandIcon={<ExpandMoreIcon sx={{color:id===3?'#FF512F':'#000000',fontWeight:"700",}} />}
                     aria-controls="panel3bh-content"
                     id="panel3bh-header"
                 >
-                    <Typography sx={{color:id===3?'#FF512F':'#464646',}} >
+                    <Typography sx={{color:id===3?'#FF512F':'#000000',fontWeight:"700",}} >
                         What all services are available on Vapormop?
                     </Typography>
                 </AccordionSummary>
@@ -102,11 +102,11 @@ const TopQuestions = () => {
             </Accordion>
             <Accordion   expanded={expanded === 'panel4'} onChange={handleChange('panel4',4)} disableGutters sx={AccordianStyle}>
                 <AccordionSummary
-                    expandIcon={<ExpandMoreIcon sx={{color:id===4?'#FF512F':'#464646',}} />}
+                    expandIcon={<ExpandMoreIcon sx={{color:id===4?'#FF512F':'#000000',fontWeight:"700",}} />}
                     aria-controls="panel4bh-content"
                     id="panel4bh-header"
                 >
-                    <Typography sx={{color:id===4?'#FF512F':'#464646',}} >How are Vapormop services different
+                    <Typography sx={{color:id===4?'#FF512F':'#000000',fontWeight:"700",}} >How are Vapormop services different
                         from other online portals?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>

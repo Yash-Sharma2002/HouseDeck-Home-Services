@@ -224,7 +224,8 @@ function Content({ padding, padding2, display, displayForButton }) {
                 </Card>
 
 
-                <Card sx={{ width: '33%', borderRadius: 4, height: '700px', margin: '0px 10px', background: "rgb(234,253,247)" }}>
+                <Card sx={{ width: '33%', borderRadius: 4, height: '700px', margin: '0px 10px', background: "black", color:'#ffd416' }}>
+                {/* <Card sx={{ width: '33%', borderRadius: 4, height: '700px', margin: '0px 10px', background: "rgb(234,253,247)" }}> */}
                     <Box sx={{ textAlign: 'center' }}>
                         <Box sx={{
                             background: `url(${require('../../assets/other/bathroomCleaning.png')})`,
@@ -247,7 +248,8 @@ function Content({ padding, padding2, display, displayForButton }) {
                                 <p style={{ fontSize: '17px', fontFamily: 'sans-serif', fontWeight: '600' }}>Bathroom Cleaning</p>
                             </Typography>
                         </Box>
-                        <Typography sx={{ textAlign: 'center', wordWrap: 'break-word', fontSize: '16px', marginTop: '20px', padding: padding2 }} variant="body2" color="#000000">
+                        <Typography sx={{ textAlign: 'center', wordWrap: 'break-word', fontSize: '16px', marginTop: '20px', padding: padding2 }} variant="body2" color="#ffd416">
+                        {/* <Typography sx={{ textAlign: 'center', wordWrap: 'break-word', fontSize: '16px', marginTop: '20px', padding: padding2 }} variant="body2" color="#000000"> */}
                             Don’t put off cleaning your bathroom! Let us handle it so you have more time for the things you love.
                         </Typography>
                         {
@@ -608,7 +610,8 @@ function SMContent({ displayForButton }) {
                 </Card>
 
 
-                <Card sx={{ maxWidth: 'unset', borderRadius: 4, marginTop: '25px', height: '630px', background: "rgb(234,253,247)" }}>
+                {/* <Card sx={{ maxWidth: 'unset', borderRadius: 4, marginTop: '25px', height: '630px', background: "rgb(234,253,247)" }}> */}
+                <Card sx={{ maxWidth: 'unset', borderRadius: 4, marginTop: '25px', height: '630px', background: "black",color:'ffd416' }}>
                     <Box sx={{ textAlign: 'center' }}>
                         <Box sx={{
                             background: `url(${require('../../assets/other/bathroomCleaning.png')})`,
@@ -632,7 +635,7 @@ function SMContent({ displayForButton }) {
 
                             </Typography>
                         </Box>
-                        <Typography sx={{ textAlign: 'center', wordWrap: 'break-word', fontSize: '16px', marginTop: '20px', padding: '10px 20px' }} variant="body2" color="#000000">
+                        <Typography sx={{ textAlign: 'center', wordWrap: 'break-word', fontSize: '16px', marginTop: '20px', padding: '10px 20px' }} variant="body2" color="#ffd416">
                             Don’t put off cleaning your bathroom! Let us handle it so you have more time for the things you love.
                         </Typography>
                         {

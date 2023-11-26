@@ -490,7 +490,7 @@ function USAPrivacy({ variant }) {
 
 
         <Typography sx={{ mt: 6, fontSize: "16px" }}>
-          Vapormop.com regularly reviews its compliance with this Policy. Please feel free to direct any questions or concerns regarding this Policy or Vapormoplite.com’s treatment of personal information by contacting us through this Website or by e-mailing to us at care@Vapormop.in . When we receive complaints at this address, it is Vapormoplite.com’s policy to contact the complaining user regarding his or her concerns.
+          Vapormop.com regularly reviews its compliance with this Policy. Please feel free to direct any questions or concerns regarding this Policy or Vapormoplite.com’s treatment of personal information by contacting us through this Website or by e-mailing to us at care@Vapormop.com . When we receive complaints at this address, it is Vapormoplite.com’s policy to contact the complaining user regarding his or her concerns.
           <br />
           <br />
           We will cooperate with the appropriate regulatory authorities to resolve any complaints regarding the transfer of personal data that cannot be resolved between Vapormop.com and an individual.
@@ -1168,7 +1168,7 @@ function USAPrivacy({ variant }) {
         </Typography>
 
         <Typography sx={{ mt: 6, fontSize: "16px" }}>
-          In the event You have any grievances relating to the Privacy Policy, please inform Vapormop within 24 hours of occurrence of the instance from which the grievance has arisen, by writing an email to the Grievance Officer at <a style={{ color: 'pink' }} href="mailto: care@Vapormop.in">care@Vapormop.in</a>.
+          In the event You have any grievances relating to the Privacy Policy, please inform Vapormop within 24 hours of occurrence of the instance from which the grievance has arisen, by writing an email to the Grievance Officer at <a style={{ color: 'pink' }} href="mailto: care@Vapormop.com">care@Vapormop.com</a>.
         </Typography>
 
         <Typography
@@ -1626,7 +1626,7 @@ function IndiaPrivacy({ variant }) {
 
 
         <Typography sx={{ mt: 6, fontSize: "16px" }}>
-          Vapormop.com regularly reviews its compliance with this Policy. Please feel free to direct any questions or concerns regarding this Policy or Vapormoplite.com’s treatment of personal information by contacting us through this Website or by e-mailing to us at care@Vapormop.in . When we receive complaints at this address, it is Vapormoplite.com’s policy to contact the complaining user regarding his or her concerns.
+          Vapormop.com regularly reviews its compliance with this Policy. Please feel free to direct any questions or concerns regarding this Policy or Vapormoplite.com’s treatment of personal information by contacting us through this Website or by e-mailing to us at care@Vapormop.com . When we receive complaints at this address, it is Vapormoplite.com’s policy to contact the complaining user regarding his or her concerns.
           <br />
           <br />
           We will cooperate with the appropriate regulatory authorities to resolve any complaints regarding the transfer of personal data that cannot be resolved between Vapormop.com and an individual.
@@ -2304,7 +2304,7 @@ function IndiaPrivacy({ variant }) {
         </Typography>
 
         <Typography sx={{ mt: 6, fontSize: "16px" }}>
-          In the event You have any grievances relating to the Privacy Policy, please inform Vapormop within 24 hours of occurrence of the instance from which the grievance has arisen, by writing an email to the Grievance Officer at <a style={{ color: 'pink' }} href="mailto: care@Vapormop.in">care@Vapormop.in</a>.
+          In the event You have any grievances relating to the Privacy Policy, please inform Vapormop within 24 hours of occurrence of the instance from which the grievance has arisen, by writing an email to the Grievance Officer at <a style={{ color: 'pink' }} href="mailto: care@Vapormop.com">care@Vapormop.com</a>.
         </Typography>
 
         <Typography
