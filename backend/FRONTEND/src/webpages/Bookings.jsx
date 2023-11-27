@@ -115,7 +115,7 @@ function Content({ change }) {
   const deleteDraft = async (id) => {
     const items = {
       _id: id,
-      Number: decrypt(userData.USERDATA_AS_EMAIL)
+      Email: decrypt(userData.USERDATA_AS_EMAIL)
     }
     const response = await deletDraftBookingsAPI(items)
     if (response) {
@@ -129,7 +129,7 @@ function Content({ change }) {
   const cancelPaidBooking = async (id) => {
     const items = {
       _id: id,
-      Number: decrypt(userData.USERDATA_AS_EMAIL)
+      Email: decrypt(userData.USERDATA_AS_EMAIL)
     }
     const response = await cancelBooking(items)
     if (response) {
@@ -188,7 +188,7 @@ function Content({ change }) {
 
             </Breadcrumbs>
           </Box>
-          <Box sx={{ background: 'white', height: '500px', border: '5px solid orange', borderRadius: 4, margin: '0px auto', mt: 1, overflowY: 'auto' }}>
+          <Box sx={{ background: 'white', height: '500px', border: '5px solid #ffd416', borderRadius: 4, margin: '0px auto', mt: 1, overflowY: 'auto' }}>
 
             <TabPanel change={change} value={value} index={value === 0 ? 0 : 1}>
               {
