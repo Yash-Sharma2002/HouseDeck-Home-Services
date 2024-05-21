@@ -1,0 +1,741 @@
+import * as React from 'react';
+import CloseIcon from '@mui/icons-material/Close';
+import { Button } from '@mui/material';
+import Box from '@mui/material/Box';
+import Dialog from '@mui/material/Dialog';
+import { styled } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { mailVerification } from '../../Api/otpSend';
+import '../../css/OnlyForDialog.css';
+import { authenticateSignup } from '../../Api/signup';
+import { authenticateLogin } from '../../Api/login';
+import { LoginContext } from '../../context/Context';
+import SignupGoogle from '../sign-google/Signup';
+
+const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+  '& .MuiDialogContent-root': {
+    padding: theme.spacing(2),
+    // width: '600px'
+  },
+}));
+
+
+
+function Content({ open, setOpen, width, display, type }) {
+  const fullScreen = useMediaQuery('(max-width:700px)');
+
+  var validRegexForEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  var validRegexForUsername = /^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/;
+
+  const { setMessage, setMessageType, setShow, encrypt } = React.useContext(LoginContext)
+
+  const timeRef = React.useRef()
+
+  const [displayForFirst, setDisplayForFirst] = React.useState(true)
+  const [displayForSecond, setDisplayForSecond] = React.useState(false)
+  const [displayForLast, setDisplayForLast] = React.useState(false)
+  const [otp, setOtp] = React.useState('');
+  const [number, setNumber] = React.useState('')
+  const [username, setUsername] = React.useState('')
+  const [email, setEmail] = React.useState('')
+  const [RealOTP, setRealOTP] = React.useState('')
+  const [resendTime, setResendTime] = React.useState(60)
+
+
+  // ----------------------------functions------------------------------ 
+  const handleClose = () => {
+    setOpen(false);
+    setNumber('')
+    setDisplayForSecond(false)
+    setDisplayForFirst(true)
+    setDisplayForLast(false)
+
+  }
+
+  // ----------For OTP--------------------------
+
+
+
+  async function OTPSender() {
+    setRealOTP('')
+    clearInterval(timeRef.current);
+    setResendTime(60);
+    const items = {
+      Email: email
+    }
+    const response = await mailVerification(items)
+    if (response) {
+      // setRealOTP(response.slice(0, 6))
+      setRealOTP(123456)
+    }
+    timeRef.current = setInterval(() => {
+      setResendTime((time) => time - 1)
+    }, 1000);
+  }
+  if (resendTime === 0) {
+    clearInterval(timeRef.current)
+  }
+  const verifyOTP = (enteredOtp) => {
+    if (RealOTP === enteredOtp) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  //---------------END--------------------------
+
+
+  function afterVerifiedOTP() {
+    setDisplayForFirst(false)
+    setDisplayForSecond(false)
+    setDisplayForLast(true)
+  }
+
+  function forSecondButtonDisplay() {
+
+    if (!email.match(validRegexForEmail)) {
+      setShow(true)
+      setMessageType('error')
+      setMessage("Invalid Email")
+      return
+    }
+    else {
+      OTPSender()
+      setShow(true)
+      setMessage("OTP Sent")
+      setMessageType('success')
+      setDisplayForFirst((prevDisplay) => prevDisplay = false)
+      setDisplayForSecond((prevDisplay) => prevDisplay = true)
+    }
+  }
+  function handleNumChange(num) {
+    setNumber(num.value)
+  }
+  function handleOTPChange(num) {
+    setOtp(num.value)
+    if (num.value.length < 6) {
+      setDisplayForSecond((prevDisplay) => prevDisplay = true)
+      setDisplayForLast((prevDisplay) => prevDisplay = false)
+    }
+  }
+
+
+  function onClickResend() {
+    setRealOTP('')
+    OTPSender()
+  }
+
+  function getUserName(name) {
+    setUsername(name.value)
+  }
+  function getEmail(name) {
+    setEmail(name.value)
+  }
+  const onclickOTPButton = async () => {
+    if (otp.length < 6 || otp.length > 6) {
+      setShow(true)
+      setMessage('OTP must be of 6 number.')
+      setMessageType('error')
+    }
+    else if (otp.length === 6) {
+      const success = verifyOTP(otp)
+      if (success) {
+        const login = {
+          Email: email
+        }
+        let response = await authenticateLogin(login)
+        if (response) {
+          window.location.reload(false)
+          handleClose();
+          try {
+            localStorage.setItem('START_DATA', JSON.stringify({
+              USERDATA_AS_NUMBER: encrypt(response.Number),
+              USERDATA_AS_USERNAME: encrypt(response.Username),
+              USERDATA_AS_EMAIL: encrypt(response.Email),
+              EMAIL_VERIFIED: response.Email_Verified,
+              PHONE_VERIFIED: response.Phone_Verified
+            }));
+            localStorage.setItem('INIT_DATA', JSON.stringify(true));
+          } catch (err) {
+            return undefined;
+          }
+        } else {
+          afterVerifiedOTP()
+        }
+      } else {
+        afterVerifiedOTP()
+      }
+    }
+  }
+  const sendToDatabase = async () => {
+    if (number.length < 10 || number.length > 10) {
+      setShow(true);
+      setMessage('Enter valid number')
+      setMessageType('error')
+    }
+    if (!username.match(validRegexForUsername)) {
+      setShow(true)
+      setMessageType('error')
+      setMessage("Username mut be 8 characters.")
+      return
+    }
+    const signup = {
+      Number: `+1${number}`,
+      Username: username,
+      Email: email,
+      Email_Verified: true,
+      Phone_Verified: false
+    }
+    let response = await authenticateSignup(signup)
+    if (!response) return;
+    try {
+      localStorage.setItem('START_DATA', JSON.stringify({
+        USERDATA_AS_NUMBER: encrypt(`+1${number}`),
+        USERDATA_AS_USERNAME: encrypt(signup.Username),
+        USERDATA_AS_EMAIL: encrypt(signup.Email),
+        PHONE_VERIFIED: signup.Phone_Verified,
+        EMAIL_VERIFIED: signup.Email_Verified
+      }));
+      localStorage.setItem('INIT_DATA', JSON.stringify(true));
+      window.location.reload(false)
+    } catch (err) {
+      return undefined;
+    }
+    handleClose();
+  }
+
+  return (
+    <>
+      <BootstrapDialog
+        fullScreen={fullScreen}
+        onClose={handleClose}
+        aria-labelledby="customized-dialog-title"
+        open={open}
+        maxWidth={false}
+      >
+        <Box sx={{ display: 'flex', height: '70vh', width: width }} >
+          <Box sx={{ width: '40%', background: '#f8f8f8', textAlign: 'center' }}>
+            <img style={{ height: '200px', width: "260px", marginTop: '5rem' }} src={require('../../assets/logos/isLogin.png')} alt="Login" />
+            <Typography variant="h6" sx={{ fontSize: '18px', fontWeight: '600', ml: 1 }}>Login/Signup</Typography>
+          </Box>
+          <Box sx={{ width: "50%", mx: 'auto' }}>
+            <Box >
+              <CloseIcon onClick={handleClose} sx={{ margin: '8px 0px auto 322px', cursor: 'pointer' }} />
+            </Box>
+
+            <Typography sx={{ fontSize: '16px', fontWeight: '600', marginTop: 1, color: '#e65c00' }}>Enter Email to continue</Typography>
+            <input
+              placeholder='Email'
+              onChange={e => getEmail(e.target)}
+              disabled={displayForLast}
+              type='email'
+              style={{
+                userSelect: 'none',
+                width: '90%',
+                height: '40px',
+                fontSize: '14px',
+                border: '1px solid #e5e5e5',
+                paddingLeft: '13px',
+                margin: '10px auto'
+              }} />
+
+
+
+            <Button sx={{
+              display: displayForFirst ? 'block' : 'none', my: 2, boxShadow: 0, width: '100%', background: 'rgb(253, 55, 82)', color: 'white', padding: '8px 0px', textTransform: 'none',
+              '&:hover': {
+                background: 'rgb(253, 55, 82)', color: 'white',
+              }
+            }} onClick={forSecondButtonDisplay} type="submit">
+              Continue
+            </Button>
+
+            {
+              displayForFirst ? <SignupGoogle type={type} /> : null
+            }
+
+
+            <Typography sx={{ fontSize: '11px', fontFamily: 'Fredoka', position: 'absolute', textAlign: 'start', bottom: 25 }}>By continuing, you agree to the <a href="/privacy-policy" style={{ color: 'black', textDecoration: 'none', fontWeight: '700' }}> T&C / Privacy Policy</a></Typography>
+            <Typography sx={{ fontSize: '11px', fontFamily: 'Fredoka', position: 'absolute', textAlign: 'start', bottom: 10 }}>For any issue/query please email <a href="mailto:care@Vapormop.com" style={{ color: 'black', textDecoration: 'none', fontWeight: '700' }}>care@Vapormop.com</a></Typography>
+
+
+            <Box sx={{ display: displayForSecond ? 'block' : 'none', margin: '10px auto', }}>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <Typography sx={{ fontSize: '14px', fontWeight: '600', textALign: 'start' }}>Enter OTP : </Typography>
+                <Box sx={{ textAlign: 'center' }}>
+                  <Typography sx={{ pointerEvents: resendTime === 0 ? 'auto' : 'none', opacity: resendTime === 0 ? '1' : '0.6', cursor: resendTime === 0 ? 'pointer' : 'no-drop', fontSize: '16px', mr: 1 }} onClick={() => onClickResend()}>
+                    Resend {
+                      resendTime === 0 ? null :
+                        <span>0:{resendTime < 10 ? `0${resendTime}` : resendTime}</span>
+                    }
+                  </Typography>
+                </Box>
+              </Box>
+
+              <Box sx={{ textAlign: "center", }}>
+                <input
+                  placeholder='OTP'
+                  type='number'
+                  onChange={e => handleOTPChange(e.target)}
+                  style={{
+                    border: 'none',
+                    borderBottom: "1px solid black",
+                    userSelect: 'none',
+                    textAlign: 'center',
+                    width: '50%',
+                    height: '35px',
+                    fontSize: '14px',
+                    margin: '5px auto',
+                  }} />
+              </Box>
+
+              <Button sx={{
+                my: 2,
+                boxShadow: 0,
+                width: '100%',
+                background: 'rgb(253, 55, 82)',
+                color: 'white',
+                padding: '8px 0px',
+                textTransform: 'none',
+                '&:hover': {
+                  background: 'rgb(253, 55, 82)',
+                  color: 'white',
+                }
+              }} onClick={onclickOTPButton}>
+                Continue
+              </Button>
+
+            </Box>
+
+
+            <Box sx={{ display: displayForLast ? 'block' : 'none' }}>
+              <Box sx={{ my: 1 }}></Box>
+              <input
+                placeholder='First & Last Name'
+                type='text'
+                onChange={e => getUserName(e.target)}
+                style={{
+                  userSelect: 'none',
+                  width: '90%',
+                  height: '40px',
+                  fontSize: '14px',
+                  border: '1px solid #e5e5e5',
+                  paddingLeft: '13px'
+                }} />
+              <Box sx={{ my: 1 }}></Box>
+              <Box sx={{
+                display: 'flex', alignItems: 'center', c: 'space-between', border: '1px solid #e5e5e5', width: '95%', my: 2, textAlign: 'center',
+              }}>
+                <Typography sx={{ fontSize: '14px', margin: '0px auto' }}> +1 </Typography>
+                <input
+                  placeholder='Enter Mobile Number'
+                  type='number'
+                  onChange={e => handleNumChange(e.target)}
+                  style={{
+                    border: 'none',
+                    userSelect: 'none',
+                    width: '85%',
+                    height: '40px',
+                    fontSize: '14px',
+                  }} />
+              </Box>
+
+              <Button sx={{
+                my: 2,
+                boxShadow: 0,
+                width: '100%',
+                background: 'rgb(253, 55, 82)',
+                color: 'white',
+                padding: '8px 0px',
+                textTransform: 'none',
+                '&:hover': {
+                  background: 'rgb(253, 55, 82)',
+                  color: 'white',
+                }
+              }}
+                onClick={sendToDatabase}
+              >
+                Continue
+              </Button>
+
+            </Box>
+          </Box>
+        </Box>
+      </BootstrapDialog>
+    </>
+  );
+}
+
+
+
+function SMContent({ open, setOpen, type }) {
+  const fullScreen = useMediaQuery('(max-width:700px)');
+
+  const { setMessage, setMessageType, setShow, encrypt } = React.useContext(LoginContext)
+
+  const timeRef = React.useRef()
+
+  const [displayForFirst, setDisplayForFirst] = React.useState(true)
+  const [displayForSecond, setDisplayForSecond] = React.useState(false)
+  const [displayForLast, setDisplayForLast] = React.useState(false)
+  const [otp, setOtp] = React.useState('');
+  const [number, setNumber] = React.useState('')
+  const [username, setUsername] = React.useState('')
+  const [email, setEmail] = React.useState('')
+  const [RealOTP, setRealOTP] = React.useState('')
+  const [resendTime, setResendTime] = React.useState(60)
+
+  var validRegexForEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  var validRegexForUsername = /^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/;
+
+
+  // ----------------------------functions------------------------------ 
+  const handleClose = () => {
+    setOpen(false);
+    setNumber('')
+    setDisplayForSecond(false)
+    setDisplayForFirst(true)
+    setDisplayForLast(false)
+
+  };
+
+
+
+
+  // ----------For OTP--------------------------
+
+  async function OTPSender() {
+    setRealOTP('')
+    clearInterval(timeRef.current);
+    setResendTime(60);
+    const items = {
+      Email: email
+    }
+    const response = await mailVerification(items)
+    if (response) {
+      setRealOTP(response.slice(0, 6))
+    }
+    timeRef.current = setInterval(() => {
+      setResendTime((time) => time - 1)
+    }, 1000);
+  }
+  if (resendTime === 0) {
+    clearInterval(timeRef.current)
+  }
+  const verifyOTP = (enteredOtp) => {
+    if (RealOTP === enteredOtp) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+
+  //---------------END--------------------------
+
+
+  function afterVerifiedOTP() {
+    setDisplayForFirst(false)
+    setDisplayForSecond(false)
+    setDisplayForLast(true)
+  }
+
+  function forSecondButtonDisplay() {
+    if (!email.match(validRegexForEmail)) {
+      setShow(true)
+      setMessageType('error')
+      setMessage("Invalid Email")
+      return
+    }
+    else {
+      setDisplayForFirst((prevDisplay) => prevDisplay = false)
+      setDisplayForSecond((prevDisplay) => prevDisplay = true)
+      OTPSender()
+    }
+  }
+  function handleNumChange(num) {
+    setNumber(num.value)
+  }
+  function handleOTPChange(num) {
+    setOtp(num.value)
+    if (num.value.length < 6) {
+      setDisplayForSecond((prevDisplay) => prevDisplay = true)
+      setDisplayForLast((prevDisplay) => prevDisplay = false)
+    }
+  }
+
+  function onClickResend() {
+    setRealOTP('')
+    OTPSender()
+  }
+
+  function getUserName(name) {
+    setUsername(name.value)
+  }
+  function getEmail(name) {
+    setEmail(name.value)
+  }
+  const onclickOTPButton = async () => {
+    if (otp.length < 6 || otp.length > 6) {
+      setShow(true)
+      setMessage('OTP must be of 6 number.')
+      setMessageType('error')
+    }
+    else if (otp.length === 6) {
+      const success = verifyOTP(otp)
+      if (success) {
+        const login = {
+          Email: email
+        }
+        let response = await authenticateLogin(login)
+        if (response) {
+          console.log(response);
+          window.location.reload(false)
+          handleClose();
+          try {
+            localStorage.setItem('START_DATA', JSON.stringify({
+              USERDATA_AS_NUMBER: encrypt(response.Number),
+              USERDATA_AS_USERNAME: encrypt(response.Username),
+              USERDATA_AS_EMAIL: encrypt(response.Email),
+              EMAIL_VERIFIED: response.Email_Verified,
+              PHONE_VERIFIED: response.Phone_Verified
+            }));
+            localStorage.setItem('INIT_DATA', JSON.stringify(true));
+          } catch (err) {
+            return undefined;
+          }
+        } else {
+          afterVerifiedOTP()
+        }
+      } else {
+        afterVerifiedOTP()
+      }
+    }
+  }
+  const sendToDatabase = async () => {
+    if (number.length < 10 || number.length > 10) {
+      setShow(true)
+      setMessageType('error')
+      setMessage('Please enter a valid number')
+    }
+
+    if (!username.match(validRegexForUsername)) {
+      setShow(true)
+      setMessageType('error')
+      setMessage("Username does not contains spaces and must be alphanumeric")
+      return
+    }
+    const signup = {
+      Number: `+1${number}`,
+      Username: username,
+      Email: email,
+      Phone_Verified: false,
+      Email_Verified: true
+    }
+    let response = await authenticateSignup(signup)
+    if (!response) return;
+    window.location.reload(false)
+    try {
+      localStorage.setItem('START_DATA', JSON.stringify({
+        USERDATA_AS_NUMBER: encrypt(`+1${number}`),
+        USERDATA_AS_USERNAME: encrypt(response.Username),
+        USERDATA_AS_EMAIL: encrypt(response.Email),
+        PHONE_VERIFIED: response.Phone_Verified,
+        EMAIL_VERIFIED: response.Email_Verified
+      }));
+      localStorage.setItem('INIT_DATA', JSON.stringify(true));
+    } catch (err) {
+      return undefined;
+    }
+    handleClose();
+  }
+
+
+  return (
+    <>
+      <BootstrapDialog
+        fullScreen={fullScreen}
+        onClose={handleClose}
+        aria-labelledby="customized-dialog-title"
+        open={open}
+        maxWidth={false}
+      >
+        <Box sx={{ background: '#f8f8f8' }}>
+          <Box sx={{ textAlign: 'end', marginRight: "10px", mt: 1 }}>
+            <CloseIcon onClick={handleClose} sx={{ margin: '8px 0px auto 290px', cursor: 'pointer' }} />
+          </Box>
+          <Box sx={{ textAlign: 'center' }}>
+            <img style={{ height: '100px', width: "100px", }} src={require('../../assets/logos/isLogin.png')} alt="Login" />
+            <Typography variant="h6" sx={{ fontSize: '18px', fontWeight: '600' }}>Login/Signup</Typography>
+
+          </Box>
+          <Box sx={{ width: '95%', mx: 'auto' }}>
+
+
+            <Typography sx={{ fontSize: '16px', fontWeight: '600', marginTop: 2 }}>Enter Email to continue</Typography>
+
+
+            <input
+              placeholder='Email'
+              onChange={e => getEmail(e.target)}
+              disabled={displayForLast}
+              type='email'
+              style={{
+                userSelect: 'none',
+                width: '90%',
+                height: '40px',
+                fontSize: '14px',
+                border: '1px solid #e5e5e5',
+                margin: '10px auto',
+                paddingLeft: '13px'
+              }} />
+
+            <Button sx={{
+              display: displayForFirst ? 'block' : 'none', my: 2, boxShadow: 0, width: '100%', background: 'rgb(253, 55, 82)', color: 'white', padding: '8px 0px', textTransform: 'none',
+              '&:hover': {
+                background: 'rgb(253, 55, 82)', color: 'white',
+              }
+            }} onClick={forSecondButtonDisplay} type="submit">
+              Continue
+            </Button>
+
+            {
+              displayForFirst ? <SignupGoogle type={type} /> : null
+            }
+
+
+
+            <Box sx={{ display: displayForSecond ? 'block' : 'none', margin: '10px auto', }}>
+
+              <Typography sx={{ fontSize: '14px', fontWeight: '600', textALign: 'start' }}>Enter OTP : </Typography>
+
+              <Box sx={{ textAlign: "center", }}>
+                <input
+                  placeholder='OTP'
+                  type='number'
+                  onChange={e => handleOTPChange(e.target)}
+                  style={{
+                    border: 'none',
+                    borderBottom: "1px solid black",
+                    userSelect: 'none',
+                    width: '50%',
+                    textAlign: 'center',
+                    height: '35px',
+                    fontSize: '14px',
+                    margin: '5px auto',
+                  }} />
+              </Box>
+              <Box sx={{ textAlign: 'center' }}>
+                <Typography sx={{ my: 1, pointerEvents: resendTime === 0 ? 'auto' : 'none', opacity: resendTime === 0 ? '1' : '0.6', cursor: resendTime === 0 ? 'pointer' : 'no-drop', fontSize: '16px', mr: 1 }} onClick={() => onClickResend()}>
+                  Resend {
+                    resendTime === 0 ? null :
+                      <span>0:{resendTime < 10 ? `0${resendTime}` : resendTime}</span>
+                  }
+                </Typography>
+              </Box>
+              <Button sx={{
+                my: 2,
+                boxShadow: 0,
+                width: '100%',
+                background: 'rgb(253, 55, 82)',
+                color: 'white',
+                padding: '8px 0px',
+                textTransform: 'none',
+                '&:hover': {
+                  background: 'rgb(253, 55, 82)',
+                  color: 'white',
+                }
+              }} onClick={onclickOTPButton}>
+                Continue
+              </Button>
+
+            </Box>
+
+
+            <Box sx={{ display: displayForLast ? 'block' : 'none' }}>
+              <Box sx={{ my: 1 }}></Box>
+              <input
+                placeholder='Username'
+                type='text'
+                onChange={e => getUserName(e.target)}
+                style={{
+                  userSelect: 'none',
+                  width: '90%',
+                  height: '40px',
+                  fontSize: '14px',
+                  border: '1px solid #e5e5e5',
+                  paddingLeft: '13px'
+                }} />
+              <Box sx={{ my: 1 }}></Box>
+              <Box sx={{
+                display: 'flex', alignItems: 'center', justifyContent: 'space-between', border: '1px solid #e5e5e5', width: '95%', my: 2, textAlign: 'center',
+              }}>
+                <Typography sx={{ fontSize: '14px', margin: '0px auto' }}> +1 </Typography>
+                <input
+                  placeholder='Enter Mobile Number'
+                  type='number'
+                  onChange={e => handleNumChange(e.target)}
+                  style={{
+                    border: 'none',
+                    userSelect: 'none',
+                    width: '85%',
+                    height: '40px',
+                    fontSize: '14px',
+                  }} />
+              </Box>
+
+              <Button sx={{
+                my: 2,
+                boxShadow: 0,
+                width: '100%',
+                background: 'rgb(253, 55, 82)',
+                color: 'white',
+                padding: '8px 0px',
+                textTransform: 'none',
+                '&:hover': {
+                  background: 'rgb(253, 55, 82)',
+                  color: 'white',
+                }
+              }}
+                onClick={sendToDatabase}
+              >
+                Continue
+              </Button>
+
+            </Box>
+          </Box>
+        </Box>
+        <div id='sign-in-button'></div>
+      </BootstrapDialog>
+    </>
+  );
+}
+
+
+
+
+export default function Login({ open, setOpen, setAccount, type }) {
+  const xlMax = useMediaQuery('(max-width:2000px)');
+  const xlMin = useMediaQuery('(min-width:1160px)');
+  const mdMax = useMediaQuery('(max-width:1160px)');
+  const mdMin = useMediaQuery('(min-width:610px)');
+  const sm = useMediaQuery('(max-width:610px)');
+  return (
+    <>
+
+      {xlMax && xlMin && (
+        <Content open={open} setOpen={setOpen} width={'650px'} display={'flex'} type={type} />
+      )}
+      {!(xlMax && xlMin) && mdMax && mdMin && (
+        <Content open={open} setOpen={setOpen} width={'650px'} display={'flex'} type={type} />
+      )}
+      {sm && (
+        <SMContent open={open} setOpen={setOpen} type={type} />
+      )}
+    </>
+  )
+}
+
+
